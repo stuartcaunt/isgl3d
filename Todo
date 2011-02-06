@@ -1,0 +1,47 @@
+iSGL3D - TODO
+=============
+
+Note
+----
+The following is a list of elements to be modified and ideas for future functionality in iSGL3D.
+Modifications to iSGL3D are welcome from motivated members of the community... let me know if you
+wish any of your changes to be added to the source repository - iSGL3D is always looking for motivated
+team members!
+Similarly, if you have ideas for new functionality then don't hesitate to contact me at isgl3d@gmail.com
+or via the user group at http://groups.google.com/group/isgl3d
+
+
+Priority
+--------
+  - OpenGL ES 2.0 render problems: generic shader not working since iOS4.2? 
+  - use [touch view] for touch events rather than view3d.
+  - redo architecture for view/scenes... like layers? Make view3d shared instance.
+  - redo vectors/matrices using simple structures for performance (use miniVec, miniMat as principal elements)
+
+Desirable
+---------
+  - Actions for animations
+  - Collada import
+  - Tweens
+    - phase events
+    - delay
+    - replace by actions?
+  - Extended UI features (or integration of cocos2d)
+  - Shadows: shadow mapping + antialiasing
+     - Control of shadow map generation with ShadowCastingLight view matrix properties (fov etc)
+     - or shadow map generation on cube map
+     - or shadow volume
+     - use texture floats for depths
+  - Shaders in ES 2.0:
+    - Ambient occlusion
+    - Bump mapping
+    - User-defined shaders incorporated into materials (kind of Isgl3dFXMaterial)
+    - Improve generic vertex shader perf for lighting using #defines for lights enabled?
+  - Try 16 bit textures (http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:best_practices)
+  - Better particle system (improve perfs and more user-definable generators)
+  - Group multiple mesh VBOs into a single VBO but with different offsets (same VBO Id... how to handle UVs)
+  - gl_lines
+  - Print order of rendered objects with OpenGL requirements for a scene for debug
+
+
+  
