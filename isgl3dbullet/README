@@ -1,0 +1,34 @@
+
+These classes illustrate how to bridge between iSGL3D and a physics engine - in this
+case we bridge to the Bullet Physics Library (http://bulletphysics.org).
+
+The aim of the bridge is to take the transformation of a physics object and apply it to the rendered one. For example
+in both the physics world there is a box shape and the rendered scene there is an Isgl3dMeshNode containing a cube mesh.
+The box shape transformation is updated by the physics library (collisions, gravity, etc) and at each frame the
+matrix transformation is passed to the mesh node to update its rendered position.
+
+The classes provided here produce only a simple bridging for rigid body physics as an illustration of how
+to achieve this. 
+ 
+The classes contained here are as follows:
+
+ - Isgl3dPhysicsWorld: 
+   The physics world is a container class for the btDiscreteDynamicsWorld and all Isgl3dPhysicsObject3Ds. 
+   It inherits from Isgl3dNode so is added directly to the scene. At every frame it updates automatically the 
+   btDiscreteDynamicsWorld (the physics simulation is updated) and hence the transformations of the physics
+   objects (btRigidBody) are updated.
+   
+ - Isgl3dPhysicsObject3D:
+   The Isgl3dPhysicsObject3D contains both an Isgl3dNode and a btRigidBody providing a strong link between both
+   the physicaly object and its rendered peer. 
+   Note that when the Isgl3dPhysicsObject3D is deleted, the associated btRigidBody, the btCollisionShape and
+   the btMotionState are also deleted. During construction, The Isgl3dNode is retained and when the
+   Isgl3dPhysicsObject3D is deleted the Isgl3dNode is released.
+   
+ - Isgl3dMotionState:
+   The Isgl3dMotionState inherits from btMotionState and is passed in the constructor of a btRigidBody.
+   The Isgl3dMotionState constructor takes an Isgl3dNode: this node corresponds to the rendered equivalent
+   to the btRigidBody. This provides the bridging between the btRigidBody and the Isgl3dNode, allowing the 
+   transformation from one to be passed to the other. During the simulation step of Bullet, the btMotionState
+   allows direct access to the transformation of the physics object to update any graphical peers.
+   
