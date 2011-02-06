@@ -1,0 +1,272 @@
+/*
+ * iSGL3D: http://isgl3d.com
+ *
+ * Copyright (c) 2010-2011 Stuart Caunt
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
+
+#import "Isgl3dShader.h"
+#import "Isgl3dGLContext2.h"
+#import "Isgl3dGLProgram.h"
+#import "Isgl3dGLVBOData.h"
+#import "Isgl3dMatrix4D.h"
+
+@interface Isgl3dShader (PrivateMethods)
+- (void) getAttributeAndUniformLocations;
+@end
+
+//static GLuint _currentVBOIndex = -1;
+
+@implementation Isgl3dShader
+
+- (id) initWithContext:(Isgl3dGLContext2 *)context vertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+	
+	if (self = [super init]) {
+		_glContext = [context retain];
+		_glProgram = [[_glContext createProgram] retain];
+		
+		NSString * vertexExtension = [vertexShaderName pathExtension];
+		NSString * vertexName = [vertexShaderName stringByDeletingPathExtension];
+		NSString * fragmentExtension = [fragmentShaderName pathExtension];
+		NSString * fragmentName = [fragmentShaderName stringByDeletingPathExtension];
+		
+       	
+   		NSString * vertexShaderFileName = [[NSBundle mainBundle] pathForResource:vertexName ofType:vertexExtension];
+		NSString * fragmentShaderFileName = [[NSBundle mainBundle] pathForResource:fragmentName ofType:fragmentExtension];
+	
+   		if (![_glProgram loadShaderFile:GL_VERTEX_SHADER file:vertexShaderFileName withPreProcessorHeader:vsPreProcHeader]) {
+   			[self release];
+			return nil;
+		}
+		if (![_glProgram loadShaderFile:GL_FRAGMENT_SHADER file:fragmentShaderFileName withPreProcessorHeader:fsPreProcHeader]) {
+   			[self release];
+			return nil;
+		}
+
+		[_glProgram linkProgram];
+		[self getAttributeAndUniformLocations];
+	
+		_whiteAndAlpha[0] = 1.0;	
+		_whiteAndAlpha[1] = 1.0;	
+		_whiteAndAlpha[2] = 1.0;	
+		_whiteAndAlpha[3] = 1.0;
+		_blackAndAlpha[0] = 0.0;	
+		_blackAndAlpha[1] = 0.0;	
+		_blackAndAlpha[2] = 0.0;	
+		_blackAndAlpha[3] = 1.0;
+
+	}
+	
+	return self;
+}
+
+
+- (void) dealloc {
+
+	[_glProgram release];
+	[_glContext release];
+		
+	[super dealloc];
+}
+
+- (void) initShader {
+}
+
+
+- (void) getAttributeAndUniformLocations {
+}
+
+- (void) bindBufferToAttribute:(GLuint)bufferIndex attributeLocation:(GLuint)attributeLocation size:(GLint)size {
+	// Enable attribute array and bind to buffer data 
+	glEnableVertexAttribArray(attributeLocation);
+	glBindBuffer(GL_ARRAY_BUFFER, bufferIndex);
+	glVertexAttribPointer(attributeLocation, size, GL_FLOAT, GL_FALSE, 0, 0);
+}
+
+- (void) bindVertexBuffer:(GLuint)bufferIndex {
+//	if (_currentVBOIndex != bufferIndex) {
+		glBindBuffer(GL_ARRAY_BUFFER, bufferIndex);
+//		_currentVBOIndex = bufferIndex;
+//	}
+}
+
+- (void) setVertexAttribute:(GLenum)type attributeLocation:(GLuint)attributeLocation size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset {
+	// Enable attribute array and bind to buffer data 
+	glEnableVertexAttribArray(attributeLocation);
+	glVertexAttribPointer(attributeLocation, size, type, GL_FALSE, strideBytes, (const void *)offset);
+}
+
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4D *)matrix {
+	float matrixArray[9];
+	[matrix convertTo3x3ColumnMajorFloatArray:matrixArray];
+	glUniformMatrix3fv(uniformLocation, 1, GL_FALSE, matrixArray);
+}
+
+- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4D *)matrix {
+	float matrixArray[16];
+	[matrix convertToColumnMajorFloatArray:matrixArray];
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrixArray);
+}
+
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
+	float matrixArray[size * 9];
+	int offset = 0;
+	for (Matrix4D * matrix in matrices) {
+		[matrix convertTo3x3ColumnMajorFloatArray:&(matrixArray[offset])];
+		offset += 9;
+	}
+	glUniformMatrix3fv(uniformLocation, size, GL_FALSE, matrixArray);
+}
+
+- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
+	float matrixArray[size * 16];
+	int offset = 0;
+	for (Matrix4D * matrix in matrices) {
+		[matrix convertToColumnMajorFloatArray:&(matrixArray[offset])];
+		offset += 16;
+	}
+	
+	glUniformMatrix4fv(uniformLocation, size, GL_FALSE, matrixArray);
+}
+
+
+- (void) setUniform1i:(GLint)uniformIndex value:(GLint)value {
+	glUniform1i(uniformIndex, value);
+}
+
+- (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value {
+	glUniform1f(uniformIndex, value);
+}
+
+- (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform3f(uniformIndex, values[0], values[1], values[2]);
+}
+
+- (void) setUniform4f:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform4f(uniformIndex, values[0], values[1], values[2], values[3]);
+}
+
+- (void) setUniformSampler:(GLint)samplerIndex forTextureIndex:(GLuint)textureIndex {
+	glUniform1i(samplerIndex, textureIndex);
+}
+
+- (void) bindTexture:(GLuint)textureIndex index:(GLuint)index {
+	if (index == 0) {
+		glActiveTexture(GL_TEXTURE0);
+	} else if (index == 1) {
+		glActiveTexture(GL_TEXTURE1);
+	}
+	glBindTexture(GL_TEXTURE_2D, textureIndex);
+}
+
+- (void) setModelViewMatrix:(Isgl3dMatrix4D *)modelViewMatrix {
+}
+
+- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4D *)modelViewProjectionMatrix {
+}
+
+- (void) setActive {
+	// Set program to be used
+	[_glContext useProgram:_glProgram];
+}
+
+- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+}
+
+- (void) setVertexBufferData:(GLuint)bufferId {
+}
+
+- (void) setColorBufferData:(GLuint)bufferId {
+}
+
+- (void) setNormalBufferData:(GLuint)bufferId {
+}
+
+- (void) setTexCoordBufferData:(GLuint)bufferId {
+}
+
+- (void) setPointSizeBufferData:(GLuint)bufferId {
+}
+
+- (void) setBoneIndexBufferData:(GLuint)bufferId size:(GLint)size {
+}
+
+- (void) setBoneWeightsBufferData:(GLuint)bufferId size:(GLint)size {
+}
+
+- (void) setTexture:(GLuint)textureId {
+}
+
+- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
+}
+
+
+- (void) enableLighting:(BOOL)lightingEnabled {
+}
+
+- (void) setAlphaCullingValue:(float)cullValue {
+}
+
+- (void) preRender {
+}
+
+- (void) postRender {
+}
+
+- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+}
+
+- (void) setPointAttenuation:(float *)attenuation {
+}
+
+- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
+}
+
+- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
+}
+
+- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+}
+
+- (void) setSceneAmbient:(NSString *)ambient {
+}
+
+- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4D *)mvpMatrix {
+}
+
+- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+}
+
+- (void) setShadowMap:(unsigned int)textureId {
+}
+
+- (void) setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha {
+}
+
+- (void) setCaptureColor:(float *)color {
+}
+
+- (void) clean {
+}
+
+
+
+@end
