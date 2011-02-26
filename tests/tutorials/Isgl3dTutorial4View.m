@@ -1,0 +1,150 @@
+/*
+ * iSGL3D: http://isgl3d.com
+ *
+ * Copyright (c) 2010-2011 Stuart Caunt
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
+
+#import "Isgl3dTutorial4View.h"
+
+@implementation Isgl3dTutorial4View
+
+- (void) dealloc {
+	// Release scene
+	[_scene release];
+
+	[super dealloc];
+}
+
+- (void) initView {
+	// Prepare the view with the background color.
+	float clearColor[4] = {0.2, 0.2, 0.2, 1};
+	[self prepareView:clearColor];
+
+	// Create the root scene graph object and set it active in the view.
+	_scene = [[Isgl3dScene3D alloc] init];
+	[self setActiveScene:_scene];
+
+	// Create a standard camera in the scene and set it active in the view.
+	Isgl3dCamera * camera = [_scene createCameraNodeWithView:self];
+	[self setActiveCamera:camera];
+
+	// Translate the camera.
+	[camera setTranslation:7 y:4 z:6];
+	
+	// Set the device in landscape mode.
+	self.isLandscape = YES;
+}
+
+- (void) initScene {
+
+	// Create texture material for the ball with darker ambient color.
+	Isgl3dTextureMaterial * ballMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ball.png" shininess:0.7 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	[ballMaterial setAmbientColorAsString:@"444444"];
+	
+	// Create texture material for the pitch.
+	Isgl3dTextureMaterial * pitchMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pitch.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+
+	// Create the primitive meshes: a sphere and a plane.
+	Isgl3dSphere * sphere = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:8];
+	Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:24 height:16 nx:2 ny:2];
+	
+	// Create a container node as a parent for all scene objects.
+	_container = [_scene createNode];
+	
+	// Create the pitch node from plane mesh and pitch material with container as parent. Rotate and translate it. Disable lighting effects.
+	Isgl3dMeshNode * pitch = [_container createNodeWithMesh:[plane autorelease] andMaterial:[pitchMaterial autorelease]];
+	[pitch setRotation:-90 x:1 y:0 z:0];
+	[pitch setTranslation:0 y:-1 z:0];
+	pitch.lightingEnabled = NO;
+	
+	// Create a number of ball nodes.
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 3; j++) {
+			
+			// Create ball node from sphere mesh and ball material with container as parent. Translate it.
+			Isgl3dMeshNode * ballNode = [_container createNodeWithMesh:sphere andMaterial:ballMaterial];
+			[ballNode setTranslation:i * 4 - 6 y:0 z:j * 4 - 4];
+			
+			// Set the ball as interactive and add an event listener for the touch event.
+			ballNode.interactive = YES;
+			[ballNode addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
+			
+		} 
+	} 
+	
+	// Release sphere mesh and ball material.
+	[sphere autorelease];
+	[ballMaterial autorelease];
+
+	// Create directional white light and add to scene (will not move with container).
+	Isgl3dLight * light = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
+	light.lightType = DirectionalLight;
+	[light setDirection:-1 y:-1 z:1];
+	[_scene addChild:[light autorelease]];
+}
+
+- (void) updateScene {
+	// Rotate the container.
+	[_container rotate:0.3 x:0 y:1 z:0];
+}
+
+/*
+ * Callback for touch event on 3D object
+ */
+- (void) objectTouched:(Isgl3dEvent3D *)event {
+	
+	// Get the object associated with the 3D event.
+	Isgl3dGLObject3D * object = event.object;
+	
+	// Create a tween to move the object vertically (0.5s duration, callback to "tweenEnded" on completion).
+	[Isgl3dTweener addTween:object withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	[NSNumber numberWithFloat:0.5], TWEEN_DURATION, 
+																								TWEEN_FUNC_EASEOUTSINE, TWEEN_TRANSITION, 
+																								[NSNumber numberWithFloat:object.y + 5.0], @"y", 
+																								self, TWEEN_ON_COMPLETE_TARGET, 
+																								@"tweenEnded:", TWEEN_ON_COMPLETE_SELECTOR, 
+																								nil]];
+}
+
+/*
+ * Callback when tween ended
+ */
+- (void) tweenEnded:(id)sender {
+	// Create a new tween to move the object back to original position (duration 1.5s).
+	[Isgl3dTweener addTween:sender withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	[NSNumber numberWithFloat:1.5], TWEEN_DURATION, 
+																								TWEEN_FUNC_EASEOUTBOUNCE, TWEEN_TRANSITION, 
+																								[NSNumber numberWithFloat:0], @"y", 
+																								nil]];
+}
+
+@end
+
+#pragma mark AppController
+
+/*
+ * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ */
+@implementation AppController
+
+- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
+	return [[[Isgl3dTutorial4View alloc] initWithFrame:frame] autorelease];
+}
+@end
