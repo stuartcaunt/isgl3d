@@ -23,20 +23,12 @@
  *
  */
 
-@class Isgl3dViewController;
-@class Isgl3dView3D;
+#import "Isgl3dAppController.h"
 
-@interface Isgl3dAppController : NSObject <UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate, UIApplicationDelegate> {
+@interface Isgl3dAppControllerWithCamera : Isgl3dAppController {
 
 @private
-    Isgl3dViewController * _viewController;
-
-	UIWindow * _window;
 }
 
-@property (readonly, nonatomic) UIWindow * window; 
-@property (readonly, nonatomic) Isgl3dViewController * viewController; 
-
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
 
 @end

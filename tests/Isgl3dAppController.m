@@ -29,6 +29,9 @@
 
 @implementation Isgl3dAppController
 
+@synthesize window = _window;
+@synthesize viewController = _viewController;;
+
 - (void) applicationDidFinishLaunching:(UIApplication*)application {
 
 	[application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:NO];

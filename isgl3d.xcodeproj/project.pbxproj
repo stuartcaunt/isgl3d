@@ -37,6 +37,21 @@
 		17116BBB12FE0FB600C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17116BCB12FE11F700C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17116BD312FE136400C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		171CB84F13195C65003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
+		171CB85613195C65003712F4 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
+		171CB85713195C65003712F4 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
+		171CB85813195C65003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		171CB85B13195C65003712F4 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
+		171CB85E13195C65003712F4 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		171CB85F13195C65003712F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		171CB86013195C65003712F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		171CB86113195C65003712F4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		171CB86213195C65003712F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		171CB86313195C65003712F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		171CB86A13195CF8003712F4 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		171CB87013195D0C003712F4 /* CubeAndCameraView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */; };
+		171CB87113195D0C003712F4 /* Isgl3dAppControllerWithCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 171CB86F13195D0C003712F4 /* Isgl3dAppControllerWithCamera.m */; };
 		1731214112FB3D6500861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731214512FB3D6500861D84 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
 		1731214612FB3D6500861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -811,6 +826,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		171CB84D13195C65003712F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
 		1731213F12FB3D6500861D84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -952,6 +974,11 @@
 		17116C1A12FF1D9500C4BC65 /* LICENSE.isgl3d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.isgl3d; sourceTree = "<group>"; };
 		17116C1B12FF1D9500C4BC65 /* Resources.Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Resources.Credits; sourceTree = "<group>"; };
 		17116C1C12FF1D9500C4BC65 /* Todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo; sourceTree = "<group>"; };
+		171CB86713195C65003712F4 /* CubeOverCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeOverCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		171CB86C13195D0C003712F4 /* CubeAndCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeAndCameraView.h; sourceTree = "<group>"; };
+		171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubeAndCameraView.mm; sourceTree = "<group>"; };
+		171CB86E13195D0C003712F4 /* Isgl3dAppControllerWithCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAppControllerWithCamera.h; sourceTree = "<group>"; };
+		171CB86F13195D0C003712F4 /* Isgl3dAppControllerWithCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAppControllerWithCamera.m; sourceTree = "<group>"; };
 		1731215312FB3D6500861D84 /* ParticleSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParticleSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1731215712FB3D9B00861D84 /* ParticleGeneratorDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleGeneratorDemoView.h; sourceTree = "<group>"; };
 		1731215812FB3D9B00861D84 /* ParticleGeneratorDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleGeneratorDemoView.m; sourceTree = "<group>"; };
@@ -1616,6 +1643,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		171CB85C13195C65003712F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				171CB85E13195C65003712F4 /* libisgl3d.a in Frameworks */,
+				171CB85F13195C65003712F4 /* Foundation.framework in Frameworks */,
+				171CB86013195C65003712F4 /* CoreGraphics.framework in Frameworks */,
+				171CB86113195C65003712F4 /* OpenGLES.framework in Frameworks */,
+				171CB86213195C65003712F4 /* QuartzCore.framework in Frameworks */,
+				171CB86313195C65003712F4 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1731214912FB3D6500861D84 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1861,6 +1901,7 @@
 				1731238A12FC82BD00861D84 /* TextureOptionsTest.app */,
 				173123B712FC841000861D84 /* TweeningDemo.app */,
 				1731240112FD627B00861D84 /* UIDemo.app */,
+				171CB86713195C65003712F4 /* CubeOverCamera.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1895,6 +1936,17 @@
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		171CB86B13195D0C003712F4 /* augmentedreality */ = {
+			isa = PBXGroup;
+			children = (
+				171CB86C13195D0C003712F4 /* CubeAndCameraView.h */,
+				171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */,
+				171CB86E13195D0C003712F4 /* Isgl3dAppControllerWithCamera.h */,
+				171CB86F13195D0C003712F4 /* Isgl3dAppControllerWithCamera.m */,
+			);
+			path = augmentedreality;
 			sourceTree = "<group>";
 		};
 		1731215612FB3D9B00861D84 /* particles */ = {
@@ -2934,6 +2986,7 @@
 			isa = PBXGroup;
 			children = (
 				17F1E07812F89324008D39E8 /* accelerometer */,
+				171CB86B13195D0C003712F4 /* augmentedreality */,
 				1762372112F9CE31008CDB4B /* camera */,
 				17F7A88712FA0D7F00C7BB82 /* lighting */,
 				178963E212FB3AFA00E6272F /* occultation */,
@@ -3335,6 +3388,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		171CB84913195C65003712F4 /* CubeOverCamera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 171CB86413195C65003712F4 /* Build configuration list for PBXNativeTarget "CubeOverCamera" */;
+			buildPhases = (
+				171CB84E13195C65003712F4 /* Resources */,
+				171CB85513195C65003712F4 /* Sources */,
+				171CB85C13195C65003712F4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				171CB84C13195C65003712F4 /* PBXTargetDependency */,
+			);
+			name = CubeOverCamera;
+			productName = Accelerometer;
+			productReference = 171CB86713195C65003712F4 /* CubeOverCamera.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1731213D12FB3D6500861D84 /* ParticleSystem */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1731215012FB3D6500861D84 /* Build configuration list for PBXNativeTarget "ParticleSystem" */;
@@ -3698,11 +3769,20 @@
 				1731237412FC82BD00861D84 /* TextureOptionsTest */,
 				173123A212FC841000861D84 /* TweeningDemo */,
 				173123EC12FD627B00861D84 /* UIDemo */,
+				171CB84913195C65003712F4 /* CubeOverCamera */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		171CB84E13195C65003712F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				171CB84F13195C65003712F4 /* isgl3d.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1731214012FB3D6500861D84 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3858,6 +3938,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		171CB85513195C65003712F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				171CB86A13195CF8003712F4 /* Isgl3dDemoCameraController.m in Sources */,
+				171CB85613195C65003712F4 /* Isgl3dDemoView.m in Sources */,
+				171CB85713195C65003712F4 /* Isgl3dFpsDisplay.m in Sources */,
+				171CB85813195C65003712F4 /* main.m in Sources */,
+				171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */,
+				171CB85B13195C65003712F4 /* Isgl3dAppController.m in Sources */,
+				171CB87013195D0C003712F4 /* CubeAndCameraView.mm in Sources */,
+				171CB87113195D0C003712F4 /* Isgl3dAppControllerWithCamera.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1731214312FB3D6500861D84 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4332,6 +4427,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		171CB84C13195C65003712F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 171CB84D13195C65003712F4 /* PBXContainerItemProxy */;
+		};
 		1731213E12FB3D6500861D84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
@@ -4430,6 +4530,57 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		171CB86513195C65003712F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CubeOverCamera;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		171CB86613195C65003712F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Info copy.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Accelerometer;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		1731215112FB3D6500861D84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5286,6 +5437,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		171CB86413195C65003712F4 /* Build configuration list for PBXNativeTarget "CubeOverCamera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				171CB86513195C65003712F4 /* Debug */,
+				171CB86613195C65003712F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1731215012FB3D6500861D84 /* Build configuration list for PBXNativeTarget "ParticleSystem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

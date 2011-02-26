@@ -23,20 +23,30 @@
  *
  */
 
-@class Isgl3dViewController;
-@class Isgl3dView3D;
+#import "Isgl3d.h"
+#import "Isgl3dDemoView.h"
 
-@interface Isgl3dAppController : NSObject <UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate, UIApplicationDelegate> {
+@class Isgl3dDemoCameraController;
+
+@interface CubeAndCameraView : Isgl3dDemoView {
 
 @private
-    Isgl3dViewController * _viewController;
-
-	UIWindow * _window;
+	Isgl3dDemoCameraController * _cameraController;
+	
+	// The multi-material cube
+	Isgl3dMultiMaterialCube * _cube;
 }
 
-@property (readonly, nonatomic) UIWindow * window; 
-@property (readonly, nonatomic) Isgl3dViewController * viewController; 
-
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
-
 @end
+
+
+/*
+ * Principal class to be instantiated in main.h. 
+ * The window and view are created in Isgl3dAppController, the demo view is returned from viewWithFrame.
+ */
+#import "Isgl3dAppControllerWithCamera.h"
+@interface AppController : Isgl3dAppControllerWithCamera
+- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+@end
+
+
