@@ -1,6 +1,6 @@
 /*
 Bullet Continuous Collision Detection and Physics Library
-Copyright (c) 2003-2006 Erwin Coumans  http://continuousphysics.com/Bullet/
+Copyright (c) 2003-2010 Erwin Coumans  http://continuousphysics.com/Bullet/
 
 This software is provided 'as-is', without any express or implied warranty.
 In no event will the authors be held liable for any damages arising from the use of this software.
@@ -20,7 +20,8 @@ class btRigidBody;
 #include "LinearMath/btScalar.h"
 #include "btSolverConstraint.h"
 #include "BulletCollision/NarrowPhaseCollision/btPersistentManifold.h"
-struct  btSolverBody;
+
+class btSerializer;
 
 enum btTypedConstraintType
 {
@@ -32,11 +33,33 @@ enum btTypedConstraintType
 	CONTACT_CONSTRAINT_TYPE
 };
 
+
+enum btConstraintParams
+{
+	BT_CONSTRAINT_ERP=1,
+	BT_CONSTRAINT_STOP_ERP,
+	BT_CONSTRAINT_CFM,
+	BT_CONSTRAINT_STOP_CFM
+};
+
+#if 1
+	#define btAssertConstrParams(_par) btAssert(_par) 
+#else
+	#define btAssertConstrParams(_par)
+#endif
+
+
 ///TypedConstraint is the baseclass for Bullet constraints and vehicles
 class btTypedConstraint : public btTypedObject
 {
 	int	m_userConstraintType;
-	int	m_userConstraintId;
+
+	union
+	{
+		int	m_userConstraintId;
+		void* m_userConstraintPtr;
+	};
+
 	bool m_needsFeedback;
 
 	btTypedConstraint&	operator=(btTypedConstraint&	other)
@@ -52,13 +75,13 @@ protected:
 	btScalar	m_appliedImpulse;
 	btScalar	m_dbgDrawSize;
 
-	btVector3	m_appliedLinearImpulse;
-	btVector3	m_appliedAngularImpulseA;
-	btVector3	m_appliedAngularImpulseB;
+	///internal method used by the constraint solver, don't use them directly
+	btScalar getMotorFactor(btScalar pos, btScalar lowLim, btScalar uppLim, btScalar vel, btScalar timeFact);
+	
+	static btRigidBody& getFixedBody();
 
 public:
 
-	btTypedConstraint(btTypedConstraintType type);
 	virtual ~btTypedConstraint() {};
 	btTypedConstraint(btTypedConstraintType type, btRigidBody& rbA);
 	btTypedConstraint(btTypedConstraintType type, btRigidBody& rbA,btRigidBody& rbB);
@@ -96,14 +119,21 @@ public:
 		int *findex;
 		// number of solver iterations
 		int m_numIterations;
+
+		//damping of the velocity
+		btScalar	m_damping;
 	};
 
 	///internal method used by the constraint solver, don't use them directly
-	virtual void	buildJacobian() = 0;
+	virtual void	buildJacobian() {};
 
 	///internal method used by the constraint solver, don't use them directly
 	virtual	void	setupSolverConstraint(btConstraintArray& ca, int solverBodyA,int solverBodyB, btScalar timeStep)
 	{
+        (void)ca;
+        (void)solverBodyA;
+        (void)solverBodyB;
+        (void)timeStep;
 	}
 	
 	///internal method used by the constraint solver, don't use them directly
@@ -117,12 +147,15 @@ public:
 	{
 		m_appliedImpulse = appliedImpulse;
 	}
+	///internal method used by the constraint solver, don't use them directly
+	btScalar	internalGetAppliedImpulse()
+	{
+		return m_appliedImpulse;
+	}
 
 	///internal method used by the constraint solver, don't use them directly
-	virtual	void	solveConstraintObsolete(btSolverBody& bodyA,btSolverBody& bodyB,btScalar	timeStep) = 0;
+	virtual	void	solveConstraintObsolete(btRigidBody& /*bodyA*/,btRigidBody& /*bodyB*/,btScalar	/*timeStep*/) {};
 
-	///internal method used by the constraint solver, don't use them directly
-	btScalar getMotorFactor(btScalar pos, btScalar lowLim, btScalar uppLim, btScalar vel, btScalar timeFact);
 	
 	const btRigidBody& getRigidBodyA() const
 	{
@@ -162,6 +195,16 @@ public:
 		return m_userConstraintId;
 	}
 
+	void	setUserConstraintPtr(void* ptr)
+	{
+		m_userConstraintPtr = ptr;
+	}
+
+	void*	getUserConstraintPtr()
+	{
+		return m_userConstraintPtr;
+	}
+
 	int getUid() const
 	{
 		return m_userConstraintId;   
@@ -187,44 +230,6 @@ public:
 		return m_appliedImpulse;
 	}
 
-	const btVector3& getAppliedLinearImpulse() const
-	{
-		btAssert(m_needsFeedback);
-		return m_appliedLinearImpulse;
-	}
-
-	btVector3& getAppliedLinearImpulse()
-	{
-		btAssert(m_needsFeedback);
-		return m_appliedLinearImpulse;
-	}
-
-	const btVector3& getAppliedAngularImpulseA() const
-	{
-		btAssert(m_needsFeedback);
-		return m_appliedAngularImpulseA;
-	}
-
-	btVector3& getAppliedAngularImpulseA()
-	{
-		btAssert(m_needsFeedback);
-		return m_appliedAngularImpulseA;
-	}
-
-	const btVector3& getAppliedAngularImpulseB() const
-	{
-		btAssert(m_needsFeedback);
-		return m_appliedAngularImpulseB;
-	}
-
-	btVector3& getAppliedAngularImpulseB()
-	{
-		btAssert(m_needsFeedback);
-		return m_appliedAngularImpulseB;
-	}
-
-	
-
 	btTypedConstraintType getConstraintType () const
 	{
 		return btTypedConstraintType(m_objectType);
@@ -238,7 +243,19 @@ public:
 	{
 		return m_dbgDrawSize;
 	}
+
+	///override the default global value of a parameter (such as ERP or CFM), optionally provide the axis (0..5). 
+	///If no axis is provided, it uses the default axis for this constraint.
+	virtual	void	setParam(int num, btScalar value, int axis = -1) = 0;
+
+	///return the local value of parameter
+	virtual	btScalar getParam(int num, int axis = -1) const = 0;
 	
+	virtual	int	calculateSerializeBufferSize() const;
+
+	///fills the dataBuffer and returns the struct name (and 0 on failure)
+	virtual	const char*	serialize(void* dataBuffer, btSerializer* serializer) const;
+
 };
 
 // returns angle in range [-SIMD_2_PI, SIMD_2_PI], closest to one of the limits 
@@ -251,13 +268,13 @@ SIMD_FORCE_INLINE btScalar btAdjustAngleToLimits(btScalar angleInRadians, btScal
 	}
 	else if(angleInRadians < angleLowerLimitInRadians)
 	{
-		btScalar diffLo = btNormalizeAngle(angleLowerLimitInRadians - angleInRadians); // this is positive
+		btScalar diffLo = btFabs(btNormalizeAngle(angleLowerLimitInRadians - angleInRadians));
 		btScalar diffHi = btFabs(btNormalizeAngle(angleUpperLimitInRadians - angleInRadians));
 		return (diffLo < diffHi) ? angleInRadians : (angleInRadians + SIMD_2_PI);
 	}
 	else if(angleInRadians > angleUpperLimitInRadians)
 	{
-		btScalar diffHi = btNormalizeAngle(angleInRadians - angleUpperLimitInRadians); // this is positive
+		btScalar diffHi = btFabs(btNormalizeAngle(angleInRadians - angleUpperLimitInRadians));
 		btScalar diffLo = btFabs(btNormalizeAngle(angleInRadians - angleLowerLimitInRadians));
 		return (diffLo < diffHi) ? (angleInRadians - SIMD_2_PI) : angleInRadians;
 	}
@@ -266,6 +283,33 @@ SIMD_FORCE_INLINE btScalar btAdjustAngleToLimits(btScalar angleInRadians, btScal
 		return angleInRadians;
 	}
 }
+
+///do not change those serialization structures, it requires an updated sBulletDNAstr/sBulletDNAstr64
+struct	btTypedConstraintData
+{
+	btRigidBodyData		*m_rbA;
+	btRigidBodyData		*m_rbB;
+	char	*m_name;
+
+	int	m_objectType;
+	int	m_userConstraintType;
+	int	m_userConstraintId;
+	int	m_needsFeedback;
+
+	float	m_appliedImpulse;
+	float	m_dbgDrawSize;
+
+	int	m_disableCollisionsBetweenLinkedBodies;
+	char	m_pad4[4];
+	
+};
+
+SIMD_FORCE_INLINE	int	btTypedConstraint::calculateSerializeBufferSize() const
+{
+	return sizeof(btTypedConstraintData);
+}
+
+
 
 
 #endif //TYPED_CONSTRAINT_H

@@ -22,10 +22,7 @@ subject to the following restrictions:
 #include "LinearMath/btMinMax.h"
 #include "BulletCollision/NarrowPhaseCollision/btManifoldPoint.h"
 
-btContactConstraint::btContactConstraint()
-:btTypedConstraint(CONTACT_CONSTRAINT_TYPE)
-{
-}
+
 
 btContactConstraint::btContactConstraint(btPersistentManifold* contactManifold,btRigidBody& rbA,btRigidBody& rbB)
 :btTypedConstraint(CONTACT_CONSTRAINT_TYPE,rbA,rbB),
@@ -59,10 +56,6 @@ void	btContactConstraint::buildJacobian()
 
 }
 
-void	btContactConstraint::solveConstraintObsolete(btSolverBody& bodyA,btSolverBody& bodyB,btScalar	timeStep)
-{
-
-}
 
 
 

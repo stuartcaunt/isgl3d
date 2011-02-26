@@ -30,7 +30,6 @@ protected:
 
 public:
 
-	btContactConstraint();
 
 	btContactConstraint(btPersistentManifold* contactManifold,btRigidBody& rbA,btRigidBody& rbB);
 
@@ -55,8 +54,6 @@ public:
 	///obsolete methods
 	virtual void	buildJacobian();
 
-	///obsolete methods
-	virtual	void	solveConstraintObsolete(btSolverBody& bodyA,btSolverBody& bodyB,btScalar	timeStep);
 
 };
 

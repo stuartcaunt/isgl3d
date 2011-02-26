@@ -15,7 +15,6 @@ Priority
 --------
   - OpenGL ES 2.0 render problems: generic shader not working since iOS4.2? 
   - Support for retina display
-  - Update Bullet library
   - use [touch view] for touch events rather than view3d.
   - redo architecture for view/scenes... like layers? Make view3d shared instance.
   - redo vectors/matrices using simple structures for performance (use miniVec, miniMat as principal elements)

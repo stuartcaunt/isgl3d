@@ -64,11 +64,13 @@ void btGeneric6DofSpringConstraint::setDamping(int index, btScalar damping)
 void btGeneric6DofSpringConstraint::setEquilibriumPoint()
 {
 	calculateTransforms();
-	for(int i = 0; i < 3; i++)
+	int i;
+
+	for( i = 0; i < 3; i++)
 	{
 		m_equilibriumPoint[i] = m_calculatedLinearDiff[i];
 	}
-	for(int i = 0; i < 3; i++)
+	for(i = 0; i < 3; i++)
 	{
 		m_equilibriumPoint[i + 3] = m_calculatedAxisAngleDiff[i];
 	}
@@ -86,10 +88,15 @@ void btGeneric6DofSpringConstraint::setEquilibriumPoint(int index)
 	}
 	else
 	{
-		m_equilibriumPoint[index + 3] = m_calculatedAxisAngleDiff[index];
+		m_equilibriumPoint[index] = m_calculatedAxisAngleDiff[index - 3];
 	}
 }
 
+void btGeneric6DofSpringConstraint::setEquilibriumPoint(int index, btScalar val)
+{
+	btAssert((index >= 0) && (index < 6));
+	m_equilibriumPoint[index] = val;
+}
 
 
 void btGeneric6DofSpringConstraint::internalUpdateSprings(btConstraintInfo2* info)

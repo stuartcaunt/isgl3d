@@ -18,8 +18,8 @@ struct btHashString
 		:m_string(name)
 	{
 		/* magic numbers from http://www.isthe.com/chongo/tech/comp/fnv/ */
-		static const unsigned int  InitialFNV = 2166136261;
-		static const unsigned int FNVMultiple = 16777619;
+		static const unsigned int  InitialFNV = 2166136261u;
+		static const unsigned int FNVMultiple = 16777619u;
 
 		/* Fowler / Noll / Vo (FNV) Hash */
 		unsigned int hash = InitialFNV;
@@ -47,7 +47,7 @@ struct btHashString
 			return( ret );
 	}
 
-	const bool equals(const btHashString& other) const
+	bool equals(const btHashString& other) const
 	{
 		return (m_string == other.m_string) ||
 			(0==portableStringCompare(m_string,other.m_string));
@@ -58,14 +58,123 @@ struct btHashString
 
 const int BT_HASH_NULL=0xffffffff;
 
+
+class btHashInt
+{
+	int	m_uid;
+public:
+	btHashInt(int uid)	:m_uid(uid)
+	{
+	}
+
+	int	getUid1() const
+	{
+		return m_uid;
+	}
+
+	void	setUid1(int uid)
+	{
+		m_uid = uid;
+	}
+
+	bool equals(const btHashInt& other) const
+	{
+		return getUid1() == other.getUid1();
+	}
+	//to our success
+	SIMD_FORCE_INLINE	unsigned int getHash()const
+	{
+		int key = m_uid;
+		// Thomas Wang's hash
+		key += ~(key << 15);	key ^=  (key >> 10);	key +=  (key << 3);	key ^=  (key >> 6);	key += ~(key << 11);	key ^=  (key >> 16);
+		return key;
+	}
+};
+
+
+
+class btHashPtr
+{
+
+	union
+	{
+		const void*	m_pointer;
+		int	m_hashValues[2];
+	};
+
+public:
+
+	btHashPtr(const void* ptr)
+		:m_pointer(ptr)
+	{
+	}
+
+	const void*	getPointer() const
+	{
+		return m_pointer;
+	}
+
+	bool equals(const btHashPtr& other) const
+	{
+		return getPointer() == other.getPointer();
+	}
+
+	//to our success
+	SIMD_FORCE_INLINE	unsigned int getHash()const
+	{
+		const bool VOID_IS_8 = ((sizeof(void*)==8));
+		
+		int key = VOID_IS_8? m_hashValues[0]+m_hashValues[1] : m_hashValues[0];
+	
+		// Thomas Wang's hash
+		key += ~(key << 15);	key ^=  (key >> 10);	key +=  (key << 3);	key ^=  (key >> 6);	key += ~(key << 11);	key ^=  (key >> 16);
+		return key;
+	}
+
+	
+};
+
+
+template <class Value>
+class btHashKeyPtr
+{
+        int     m_uid;
+public:
+
+        btHashKeyPtr(int uid)    :m_uid(uid)
+        {
+        }
+
+        int     getUid1() const
+        {
+                return m_uid;
+        }
+
+        bool equals(const btHashKeyPtr<Value>& other) const
+        {
+                return getUid1() == other.getUid1();
+        }
+
+        //to our success
+        SIMD_FORCE_INLINE       unsigned int getHash()const
+        {
+                int key = m_uid;
+                // Thomas Wang's hash
+                key += ~(key << 15);	key ^=  (key >> 10);	key +=  (key << 3);	key ^=  (key >> 6);	key += ~(key << 11);	key ^=  (key >> 16);
+                return key;
+        }
+
+        
+};
+
+
 template <class Value>
 class btHashKey
 {
 	int	m_uid;
 public:
 
-	btHashKey(int uid)
-		:m_uid(uid)
+	btHashKey(int uid)	:m_uid(uid)
 	{
 	}
 
@@ -83,56 +192,11 @@ public:
 	{
 		int key = m_uid;
 		// Thomas Wang's hash
-		key += ~(key << 15);
-		key ^=  (key >> 10);
-		key +=  (key << 3);
-		key ^=  (key >> 6);
-		key += ~(key << 11);
-		key ^=  (key >> 16);
+		key += ~(key << 15);	key ^=  (key >> 10);	key +=  (key << 3);	key ^=  (key >> 6);	key += ~(key << 11);	key ^=  (key >> 16);
 		return key;
 	}
-
-	
 };
 
-
-template <class Value>
-class btHashKeyPtr
-{
-	int	m_uid;
-public:
-
-	btHashKeyPtr(int uid)
-		:m_uid(uid)
-	{
-	}
-
-	int	getUid1() const
-	{
-		return m_uid;
-	}
-
-	bool equals(const btHashKeyPtr<Value>& other) const
-	{
-		return getUid1() == other.getUid1();
-	}
-
-	//to our success
-	SIMD_FORCE_INLINE	unsigned int getHash()const
-	{
-		int key = m_uid;
-		// Thomas Wang's hash
-		key += ~(key << 15);
-		key ^=  (key >> 10);
-		key +=  (key << 3);
-		key ^=  (key >> 6);
-		key += ~(key << 11);
-		key ^=  (key >> 16);
-		return key;
-	}
-
-	
-};
 
 ///The btHashMap template class implements a generic and lightweight hashmap.
 ///A basic sample of how to use btHashMap is located in Demos\BasicDemo\main.cpp
@@ -140,13 +204,14 @@ template <class Key, class Value>
 class btHashMap
 {
 
+protected:
 	btAlignedObjectArray<int>		m_hashTable;
 	btAlignedObjectArray<int>		m_next;
 	
 	btAlignedObjectArray<Value>		m_valueArray;
 	btAlignedObjectArray<Key>		m_keyArray;
 
-	void	growTables(const Key& key)
+	void	growTables(const Key& /*key*/)
 	{
 		int newCapacity = m_valueArray.capacity();
 
@@ -259,7 +324,6 @@ class btHashMap
 		}
 
 		// Remove the last pair from the hash table.
-		const Value* lastValue = &m_valueArray[lastPairIndex];
 		int lastHash = m_keyArray[lastPairIndex].getHash() & (m_valueArray.capacity()-1);
 
 		index = m_hashTable[lastHash];
