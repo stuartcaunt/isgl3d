@@ -23,50 +23,32 @@
  *
  */
 
-#import "Isgl3dDemoView.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@implementation Isgl3dDemoView
+@class Isgl3dFpsTracer;
+@class Isgl3dGLUILabel;
+@class Isgl3dView3D;
 
-- (void) dealloc {
+@interface Isgl3dFpsDisplay : NSObject {
 
-	[_scene release];
-	[_camera release];
+@private
+	Isgl3dView3D * _view;
 
-	[_fpsDisplay release];
-
-	[super dealloc];
-}
-
-- (void) initView {
-
-	float clearColor[4] = {0, 0, 0, 1};
-    [self prepareView:clearColor];
-
-	_scene = [[Isgl3dScene3D alloc] init];
-	[self setActiveScene:_scene];
+	Isgl3dFpsTracer * _fpsTracer;
+	Isgl3dGLUILabel * _fpsLabel;
 	
-	_camera = [[Isgl3dCamera alloc] initWithView:self];
-	[_camera setPerspectiveProjection:45 near:1 far:10000 landscape:NO];
-	[_scene addChild:_camera];
-	[self setActiveCamera:_camera];
-	
-	[self setActiveUI:nil];
-
-	_fpsDisplay = [[Isgl3dFpsDisplay alloc] initWithView:self];
-
+	CGPoint _position;
+	BOOL _added;
+	int _counter;
 }
 
-- (void) initScene {
-	
+@property (nonatomic) CGPoint position;
 
-}
+- (id) initWithView:(Isgl3dView3D *)view;
 
-- (void) updateScene {
-
-	[_fpsDisplay update];
-
-}
-
+- (void) update;
+- (CGPoint) position;
+- (void) setPosition:(CGPoint)position;
 
 @end
-

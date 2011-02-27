@@ -125,6 +125,7 @@
 #import "ui/Isgl3dGLUIProgressBar.h"
 #import "utils/Isgl3dColorUtil.h"
 #import "utils/Isgl3dFloatArray.h"
+#import "utils/Isgl3dFpsDisplay.h"
 #import "utils/Isgl3dFpsTracer.h"
 #import "utils/Isgl3dLog.h"
 #import "utils/Isgl3dUShortArray.h"

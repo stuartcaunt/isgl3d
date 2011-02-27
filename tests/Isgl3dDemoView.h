@@ -25,8 +25,6 @@
 
 #import "isgl3d.h"
 
-@class Isgl3dFpsDisplay;
-
 @interface Isgl3dDemoView : Isgl3dView3D {
 
 @private

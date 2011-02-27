@@ -8,36 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		17116AC512FDD34600C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116AC812FDD35600C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116AD212FDD3AE00C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116AD312FDD3AE00C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116AED12FDD50500C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116AEE12FDD50500C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B0712FDD5F100C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B0812FDD5F100C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B0E12FDD64B00C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B0F12FDD64B00C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B1512FDD6E000C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B1612FDD6E000C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B2212FDD7F000C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B2312FDD7F000C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B2712FDD81B00C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B2812FDD81B00C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B2912FDD82100C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B2A12FDD82100C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B2B12FDD82800C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B2C12FDD82800C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B2D12FDD82D00C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B2E12FDD82D00C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B2F12FDD83300C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116B3012FDD83300C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116BB512FE0F1100C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17116BBB12FE0FB600C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17116BCB12FE11F700C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17116BD312FE136400C4BC65 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		171CB84F13195C65003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB85613195C65003712F4 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		171CB85713195C65003712F4 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		171CB85813195C65003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		171CB85B13195C65003712F4 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
@@ -561,10 +548,8 @@
 		1731240812FD62CE00861D84 /* angle.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F012F9CA87008CDB4B /* angle.png */; };
 		1731240912FD62CE00861D84 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F212F9CA87008CDB4B /* camera.png */; };
 		1731240A12FD62CE00861D84 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F312F9CA87008CDB4B /* pause.png */; };
-		1731242A12FD69E700861D84 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		1731244F12FD6DB500861D84 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
 		1731245B12FD6E5400861D84 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		1731245C12FD6E5400861D84 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		176236CF12F9C92F008CDB4B /* libisgl3dbullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17F1D86212F88A4A008D39E8 /* libisgl3dbullet.a */; };
 		176236F512F9CA87008CDB4B /* angle.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F012F9CA87008CDB4B /* angle.png */; };
 		176236F612F9CA87008CDB4B /* BeachBall.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F112F9CA87008CDB4B /* BeachBall.png */; };
@@ -586,7 +571,6 @@
 		17801A4B131A955A0045803F /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		17801A4C131A955A0045803F /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
 		17801A4E131A955A0045803F /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17801A4F131A955A0045803F /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17801A50131A955A0045803F /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17801A51131A955A0045803F /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
 		17801A52131A955A0045803F /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -598,6 +582,8 @@
 		17801A5A131A955A0045803F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		17801A5B131A955A0045803F /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17801A65131A959D0045803F /* OcclusionDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801A64131A959D0045803F /* OcclusionDemoView.m */; };
+		1780214C131AC1FA0045803F /* Isgl3dFpsDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 1780214A131AC1FA0045803F /* Isgl3dFpsDisplay.h */; };
+		1780214D131AC1FA0045803F /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1780214B131AC1FA0045803F /* Isgl3dFpsDisplay.m */; };
 		178B256B12F9C03E000F8DF1 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
 		17B71FE212F8B8F400F80DFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		17B7209812F8B9A100F80DFD /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
@@ -1458,8 +1444,6 @@
 		1731240112FD627B00861D84 /* UIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1731240512FD62B200861D84 /* UITestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITestView.h; sourceTree = "<group>"; };
 		1731240612FD62B200861D84 /* UITestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITestView.m; sourceTree = "<group>"; };
-		1731242812FD69E700861D84 /* Isgl3dFpsDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dFpsDisplay.h; sourceTree = "<group>"; };
-		1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dFpsDisplay.m; sourceTree = "<group>"; };
 		1731244D12FD6DB500861D84 /* Isgl3dDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDemoView.h; sourceTree = "<group>"; };
 		1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dDemoView.m; sourceTree = "<group>"; };
 		176236F012F9CA87008CDB4B /* angle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angle.png; sourceTree = "<group>"; };
@@ -1473,6 +1457,8 @@
 		17801A5F131A955A0045803F /* Occlusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Occlusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17801A63131A959D0045803F /* OcclusionDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OcclusionDemoView.h; sourceTree = "<group>"; };
 		17801A64131A959D0045803F /* OcclusionDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OcclusionDemoView.m; sourceTree = "<group>"; };
+		1780214A131AC1FA0045803F /* Isgl3dFpsDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dFpsDisplay.h; sourceTree = "<group>"; };
+		1780214B131AC1FA0045803F /* Isgl3dFpsDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dFpsDisplay.m; sourceTree = "<group>"; };
 		178963B712FB3AA500E6272F /* Isgl3dDemoCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDemoCameraController.h; sourceTree = "<group>"; };
 		178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dDemoCameraController.m; sourceTree = "<group>"; };
 		178B256912F9C03E000F8DF1 /* Isgl3dAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAppController.h; sourceTree = "<group>"; };
@@ -3090,6 +3076,8 @@
 				17F1D74C12F87EC5008D39E8 /* Isgl3dColorUtil.m */,
 				17F1D74D12F87EC5008D39E8 /* Isgl3dFloatArray.h */,
 				17F1D74E12F87EC5008D39E8 /* Isgl3dFloatArray.m */,
+				1780214A131AC1FA0045803F /* Isgl3dFpsDisplay.h */,
+				1780214B131AC1FA0045803F /* Isgl3dFpsDisplay.m */,
 				17F1D74F12F87EC5008D39E8 /* Isgl3dFpsTracer.h */,
 				17F1D75012F87EC5008D39E8 /* Isgl3dFpsTracer.m */,
 				17F1D75112F87EC5008D39E8 /* Isgl3dLog.h */,
@@ -3229,8 +3217,6 @@
 				178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */,
 				1731244D12FD6DB500861D84 /* Isgl3dDemoView.h */,
 				1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */,
-				1731242812FD69E700861D84 /* Isgl3dFpsDisplay.h */,
-				1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */,
 				17B720BE12F8BD7100F80DFD /* Isgl3dViewController.h */,
 				17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */,
 				17B71FE112F8B8F400F80DFD /* main.m */,
@@ -3601,6 +3587,7 @@
 				17F1D82812F87EC5008D39E8 /* Isgl3dFpsTracer.h in Headers */,
 				17F1D82A12F87EC5008D39E8 /* Isgl3dLog.h in Headers */,
 				17F1D82C12F87EC5008D39E8 /* Isgl3dUShortArray.h in Headers */,
+				1780214C131AC1FA0045803F /* Isgl3dFpsDisplay.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4326,7 +4313,6 @@
 			files = (
 				171CB86A13195CF8003712F4 /* Isgl3dDemoCameraController.m in Sources */,
 				171CB85613195C65003712F4 /* Isgl3dDemoView.m in Sources */,
-				171CB85713195C65003712F4 /* Isgl3dFpsDisplay.m in Sources */,
 				171CB85813195C65003712F4 /* main.m in Sources */,
 				171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */,
 				171CB85B13195C65003712F4 /* Isgl3dAppController.m in Sources */,
@@ -4397,7 +4383,6 @@
 			files = (
 				17116BBB12FE0FB600C4BC65 /* Isgl3dDemoCameraController.m in Sources */,
 				17116B0712FDD5F100C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B0812FDD5F100C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				1731215A12FB3DB000861D84 /* ParticleGeneratorDemoView.m in Sources */,
 				1731214512FB3D6500861D84 /* Isgl3dAppController.m in Sources */,
 				1731214612FB3D6500861D84 /* Isgl3dViewController.m in Sources */,
@@ -4411,7 +4396,6 @@
 			files = (
 				17116BCB12FE11F700C4BC65 /* Isgl3dDemoCameraController.m in Sources */,
 				17116B0E12FDD64B00C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B0F12FDD64B00C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				1731218012FB562900861D84 /* Isgl3dAppController.m in Sources */,
 				1731218112FB562900861D84 /* Isgl3dViewController.m in Sources */,
 				1731218212FB562900861D84 /* main.m in Sources */,
@@ -4424,7 +4408,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116B1512FDD6E000C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B1612FDD6E000C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				173121BB12FB58A000861D84 /* Isgl3dAppController.m in Sources */,
 				173121BC12FB58A000861D84 /* Isgl3dViewController.m in Sources */,
 				173121BD12FB58A000861D84 /* main.m in Sources */,
@@ -4437,7 +4420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116B2212FDD7F000C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B2312FDD7F000C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				1731226012FC764100861D84 /* Isgl3dDemoCameraController.m in Sources */,
 				1731226112FC764100861D84 /* Isgl3dAppController.m in Sources */,
 				1731226212FC764100861D84 /* Isgl3dViewController.m in Sources */,
@@ -4451,7 +4433,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116B2912FDD82100C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B2A12FDD82100C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				173122A412FC797300861D84 /* Isgl3dDemoCameraController.m in Sources */,
 				173122A512FC797300861D84 /* Isgl3dAppController.m in Sources */,
 				173122A612FC797300861D84 /* Isgl3dViewController.m in Sources */,
@@ -4466,7 +4447,6 @@
 			files = (
 				17116BD312FE136400C4BC65 /* Isgl3dDemoCameraController.m in Sources */,
 				17116B2712FDD81B00C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B2812FDD81B00C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				173122E112FC7B9300861D84 /* Isgl3dAppController.m in Sources */,
 				173122E212FC7B9300861D84 /* Isgl3dViewController.m in Sources */,
 				173122E312FC7B9300861D84 /* main.m in Sources */,
@@ -4479,7 +4459,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116B2B12FDD82800C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B2C12FDD82800C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				1731232712FC7DFA00861D84 /* Isgl3dDemoCameraController.m in Sources */,
 				1731232812FC7DFA00861D84 /* Isgl3dAppController.m in Sources */,
 				1731232912FC7DFA00861D84 /* Isgl3dViewController.m in Sources */,
@@ -4493,7 +4472,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116B2D12FDD82D00C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B2E12FDD82D00C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				1731237C12FC82BD00861D84 /* Isgl3dAppController.m in Sources */,
 				1731237D12FC82BD00861D84 /* Isgl3dViewController.m in Sources */,
 				1731237E12FC82BD00861D84 /* main.m in Sources */,
@@ -4506,7 +4484,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116B2F12FDD83300C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116B3012FDD83300C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				173123A912FC841000861D84 /* Isgl3dAppController.m in Sources */,
 				173123AA12FC841000861D84 /* Isgl3dViewController.m in Sources */,
 				173123AB12FC841000861D84 /* main.m in Sources */,
@@ -4522,7 +4499,6 @@
 				173123F412FD627B00861D84 /* Isgl3dViewController.m in Sources */,
 				173123F512FD627B00861D84 /* main.m in Sources */,
 				1731240712FD62B200861D84 /* UITestView.m in Sources */,
-				1731242A12FD69E700861D84 /* Isgl3dFpsDisplay.m in Sources */,
 				1731244F12FD6DB500861D84 /* Isgl3dDemoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4532,7 +4508,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116AD212FDD3AE00C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116AD312FDD3AE00C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				1762372612F9CE3A008CDB4B /* Isgl3dAppController.m in Sources */,
 				1762372812F9CE3A008CDB4B /* Isgl3dViewController.m in Sources */,
 				1762372912F9CE3A008CDB4B /* main.m in Sources */,
@@ -4545,7 +4520,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17801A4E131A955A0045803F /* Isgl3dDemoView.m in Sources */,
-				17801A4F131A955A0045803F /* Isgl3dFpsDisplay.m in Sources */,
 				17801A50131A955A0045803F /* Isgl3dDemoCameraController.m in Sources */,
 				17801A51131A955A0045803F /* Isgl3dAppController.m in Sources */,
 				17801A52131A955A0045803F /* Isgl3dViewController.m in Sources */,
@@ -4712,7 +4686,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1731245B12FD6E5400861D84 /* Isgl3dDemoView.m in Sources */,
-				1731245C12FD6E5400861D84 /* Isgl3dFpsDisplay.m in Sources */,
 				17B71FE212F8B8F400F80DFD /* main.m in Sources */,
 				17B720C012F8BD7100F80DFD /* Isgl3dViewController.m in Sources */,
 				17B7228F12F8C9E000F80DFD /* AccelerometerDemoView.mm in Sources */,
@@ -4724,7 +4697,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17116AC812FDD35600C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				17116AC512FDD34600C4BC65 /* Isgl3dDemoView.m in Sources */,
 				17F7A84212FA0BB000C7BB82 /* Isgl3dAppController.m in Sources */,
 				17F7A84312FA0BB000C7BB82 /* Isgl3dViewController.m in Sources */,
@@ -4739,7 +4711,6 @@
 			files = (
 				17116BB512FE0F1100C4BC65 /* Isgl3dDemoCameraController.m in Sources */,
 				17116AED12FDD50500C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116AEE12FDD50500C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
 				17F7A87612FA0D6100C7BB82 /* Isgl3dAppController.m in Sources */,
 				17F7A87712FA0D6100C7BB82 /* Isgl3dViewController.m in Sources */,
 				17F7A87812FA0D6100C7BB82 /* main.m in Sources */,
@@ -4854,6 +4825,7 @@
 				17F1D82912F87EC5008D39E8 /* Isgl3dFpsTracer.m in Sources */,
 				17F1D82B12F87EC5008D39E8 /* Isgl3dLog.m in Sources */,
 				17F1D82D12F87EC5008D39E8 /* Isgl3dUShortArray.m in Sources */,
+				1780214D131AC1FA0045803F /* Isgl3dFpsDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
