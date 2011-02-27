@@ -1,0 +1,164 @@
+version 1.1.1 (2011-02-01)
+	Open source release.
+	Moved pvr tools to external folder and moved importers and physics back to isgl3d classes. Include bullet physics library.
+	Added MIT license to all files.
+	Remove internal headers and watermark/license
+
+version 1.1.0 (2010-09-13)
+	GLView no longer performs the animation (allowing users more control): drawView must be called at each frame.
+
+version 1.0.12 (2010-09-08)
+	Added Isgl3dLog: use instead of NSLog.
+	Add categories for internal API of isgl3d.
+	Handle license keys for iSGL3D. Display watermark if key not ok.
+	Watermark appears then disappears for 60 seconds.
+	All code documentation finished.
+
+version 1.0.11 (2010-07-21)
+	Refactoring: - All classes now prefixed by Isgl3d.
+
+version 1.0.10 (2010-07-07)
+	Add boolean "interactive" to Node so that only certain, user-specified elements are rendered for capturing touch events.
+	Fix build-and-analyze bug.
+	Stencil buffer using packed depth/stencil buffer for iOS4. If not available use separate buffers.
+
+version 1.0.9 (2010-06-19)
+	Add optional cutoff tilt angle for rotation value with Accelerometer: Very sensitive rotation at low tilt angles.
+	Remove need to specify compressed images files: looks simply for pvr extension.
+	Addition of MiniVec3D, a pure c struct with associated c functions for manipulation. The objective is to improve performance and avoid creation of thousands of vector objects.
+	Performance improvements: initialise mesh data arrays (FloatArray, UShortArray) with specific sizes calculated by each primitive. Reduce number of Matrix4D creations.
+	Performance improvements: - Added MiniMat struct (like for MiniVec) to improve some matrix calculations.
+
+version 1.0.8 (2010-06-10)
+	Allow ui components to be centered
+	Added CubeSphere primitive: aims to map spherical texture maps onto a cube. Useful for skyboxes. Also provides a single mesh for a cube.
+	Added TerrainMesh: create 3D relief terrain from an image file. Use specific colour channel in an image as offset in y (x and z calculated as a grid on a plane)
+	Allow GLUIImages to be created with a rectangle specifyied to crop the texture material associated.
+
+version 1.0.7 (2010-05-15)
+	Add enable/disable lighting per node (enabled by default).
+	Added Goursat's surface as primitive (rounded cube)
+	Bug fixes picked up by "build and analyse" tool in xcode.
+	Fix bug in Tweener reset: must stop animation before releasing instance otherwise tweens can still occur after reset.
+
+version 1.0.6 (2010-04-22)
+	Added GLUIImage: similar to GLUIButton but has configurable width and height: not intended for user interaction.
+	Add check in GLUILabel for text change before creating texture.
+	Added GLUIProgressBar.
+	Add "visible" flag to GLUICompontents (not rendered if not visible)
+
+version 1.0.5 (2010-04-19)
+	Improve planar shadows: render before and after transparent objects to ensure that transparent nodes containing shadow-node correctly render shadows.
+	Add translation along a Vector3D.
+	Add ellipsoid mesh and allow event capture only from UI.
+	Fix bug in particle color in VBOData (was fixed as white before).
+
+version 1.0.4 (2010-04-14)
+	Added ovoid primitive
+	Set real positions of UIComponents with X and Y starting from top left of screen.
+	Added SpringCamera: similar to FollowCamera except that it uses the transformation matrix of its target as a frame of reference.
+
+version 1.0.3 (2010-03-28)
+	Architecture changes.
+	GLUILabel rendered correctly with text of specific size and font. Text can be modified dynamically.
+	Fix some memory management bugs.
+
+version 1.0.2 (2010-03-26)
+	Added FollowCamera: follows the movement of a target node with simple spring/friction physics for the movement.
+	Allow materials to be set dynamically to MeshNodes.
+	Addition of TextMaterial and GLUILabel.
+	Added FollowNode: Allows a node to simply follow the movement of another node but without being under the influence of the rotation matrix of the other.
+	Added applyForce to PhysicsObject3D.
+
+version 1.0.1 (2010-03-14)
+	Creation of static library.
+
+version 0.99.16 (2010-03-12)
+	Added functions to obtain current rotation and scale values from a transformation matrix.
+	Added camera controls for fov, zoom and focus.
+	Added cone and torus primitives.
+	Added cylinder and arrow primitives.
+	Moved touch event handling to separate class: TouchScreen. Allows for more independent handling of touch events outside of View3D.
+
+version 0.99.15 (2010-03-07)
+	Integrate simple 2D GUI facility: allows for adding buttons to screen for simple user interactions. 
+	Accelerometer integration: Added Accelerometer singleton to handle all iphone accelerometer values. Gravity vector calculated using low pass filter.
+
+version 0.99.14 (2010-03-05)
+	Optimise transformation matrix recalculations: Set "dirty" flag when a matrix needs to be updated.
+	Allow override of textures used in pod files: need to be specified before objects are added to the scene.
+	Added timer to AnimationController to automatically animate a skeleton.
+	Modified camera to allow for ortho projections.
+
+version 0.99.13 (2010-02-28)
+	Vertex skinning in ES 1.1 and ES 2.0: added POD support to read animation/bone/skinning date from POD files.
+
+version 0.99.12 (2010-02-21)
+	Modifications to materials: TextureMaterial inherits from ColorMaterial allowing more precise control of underlying color.
+	Full parsing of POD data and creation of complete scene from contained objects (and transformations), materials, textures, etc.
+	Added directional lighting. If w component of light position is zero then it is considered as directional. 
+	Add lights and cameras imported from POD file. Add constant and linear attenuation factors to lights.
+	Nodes architecture implemented. Scene graph is now composed of nodes. Allows meshes and materials to be fully re-usable in different nodes. VBO should not be swapped as much in GPU.
+	Stencil buffer used for planar shadow rendering. Shadows can now be fixed to specific meshes (nodes) rather than being rendered on an infinite plane and stops z-fighting between super-posed shadows.
+	Addition of spot lighting.
+
+version 0.99.11 (2010-02-11)
+	Modify planar shadow rendering: render shadows before other transparent objects (assume they are always behind), render using textures if necessary to account for alpha culling.
+	Change VBO structure (combine into array of structures) to try to improve performance. Also needed for POD data.
+	Start of POD support: read in POD file using Imagination Technologies PVR tools. Convert SPODMesh into usable GLMesh.
+
+version 0.99.10 (2010-02-05)
+	Simple integration of bullet physics engine. Use MotionState to update rendered object transformations.  
+
+version 0.99.9 (2010-01-30)
+	Improved performance in ES 2.0 using pre-processor directives in glsl shaders.
+	Planar shadows added in ES 1.1 and ES 2.0. User can specify which plane to cast to.
+
+version 0.99.8 (2010-01-23)
+	Start of shadow mapping in ES 2.0.
+
+version 0.99.7 (2010-01-17)
+	Memory management: Clear all xcode analysis problems. Major re-working of Renderer architecture. 
+	Add precision modifier to creation of textures (low, medium or high). 
+	Occlusion transparency running in ES 1.1 and ES 2.0. Allow objects in front of camera target (lookAt) and within a specified angle to have increased alpha.
+
+version 0.99.6 (2010-01-09)
+	Added particles and particle systems in ES 1.1 
+	Memory management. Ensure that all objects are released/autoreleased/retained correctly. 
+	Added particle generators
+	Improve particle generation performance on iPhone.
+	Allow glContext version to be specified in the isgl-options.plist file, or if not specified, use the capabilities of the iphone.
+	Particles/sprites in ES 2.0. Start of creating generic vertex/fragment shaders.
+	Consolidate ES 2.0 renderers. Single generic renderer used to provide ES 1.1 fixed-pipeline functionality. Better handling of renderer states.
+	Particle size attenuation in ES 2.0. Improved reliability of generator animation (no longer dependent on real-time).
+
+version 0.99.5 (2009-12-19)
+	Tweening functionality added.
+
+version 0.99.4 (2009-12-17)
+	Added "discard" to opengl ES 2.0 renderers for alpha testing.
+	Better renderer state handling. textureEnabled and backCullingEnabled handled per object rather than globally.
+	Added Z-sorting option for transparent objects. During second stage rendering (non-opaque), order transparent objects by the distance of their origins to camera before rendering.
+	Added extra render pass: render opaque objects followed by transparent ones. Allow user to specify per-object alpha testing to "discard" pixels whose alpha is less than or equal to given value.
+
+version 0.99.3 (2009-12-13)
+	Object interaction added. Can now add Event3D listeners to Object3Ds. 
+	Added single touch filter as utility for users just wanting to detect single touches.
+	Added double-sided planes, alpha testing, texture transparency and UV Map.
+
+version 0.99.2 (2009-12-06)
+	OpenGL ES 1.1 development: refactoring and creation of 1.1-specific classes. Texture mapping in ES 1.1.
+	Lighing in ES 1.1 and handling of different client states.
+	Specular lighting added to textures + perf improvement.
+	Scene graph implemented, rendering loop modified. Start of camera and object containers.
+
+version 0.99.1 (2009-11-25)
+	Start of project using OpenGL ES 2.0
+	Start of primitives and materials
+	Renderers: handling of rendering (inluding loading shaders, getting attribute and uniform locations) passed to RendererManager and GLRenderer. Spinning sphere example.
+	Depth render buffer added to frame buffer.
+	Added lighting and texture mapping.
+	Added landscape mode and fragment shader lighting.
+	Added ColorMaterial. 
+
+
