@@ -45,7 +45,7 @@
 - (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
     if (self = [super init]) {
 
-    	_occultationAlpha = 1.0;
+    	_occlusionAlpha = 1.0;
 
 		_doubleSided = NO;
 		_skinningEnabled = NO;
@@ -105,8 +105,8 @@
 	}
 }
 
-- (void) occultationTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
-	// Test if occulting
+- (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
+	// Test for occlusion
 	mv3DFill(&_eyeToModel, _transformation.tx, _transformation.ty, _transformation.tz);
 	mv3DSub(&_eyeToModel, eye);
 
@@ -117,51 +117,49 @@
 	float angle = acos(dot) * 180 / M_PI;
 	
 	
-	// Calculate occultation distance factor: 
+	// Calculate occlusion distance factor: 
 	//    0 < f < 1 => object between target and eye
 	//            0 => at camera
 	//            1 => at target
 	//        f > 1 => object behind target		
 	//        f < 0 => object behind camera		
-	float occultationDistanceFactor = mv3DDot(normal, &_eyeToModel) / targetDistance;
+	float occlusionDistanceFactor = mv3DDot(normal, &_eyeToModel) / targetDistance;
 	
-	// Calculate occultation angle factor: 
+	// Calculate occlusion angle factor: 
 	//    0 < f < 1 => object between target and max angle
 	//            1 => at max angle
 	//            0 => at target
 	//        f > 1 => object outside max angle		
-	float occultationAngleFactor = angle / maxAngle;
+	float occlusionAngleFactor = angle / maxAngle;
 		
 		
-	if (occultationAngleFactor < 1 && occultationAngleFactor >= 0 && occultationDistanceFactor < 0.999 && occultationDistanceFactor > 0.0001) {
-		float occultationEffect = 0.0;
+	if (occlusionAngleFactor < 1 && occlusionAngleFactor >= 0 && occlusionDistanceFactor < 0.999 && occlusionDistanceFactor > 0.0001) {
+		float occlusionEffect = 0.0;
 		
-		if ([Isgl3dNode occultationMode] == OCCULTATION_MODE_QUAD_DISTANCE_AND_ANGLE) {
-			occultationEffect = (1.0 - occultationDistanceFactor * occultationDistanceFactor) * (1.0 - occultationAngleFactor);
+		if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE) {
+			occlusionEffect = (1.0 - occlusionDistanceFactor * occlusionDistanceFactor) * (1.0 - occlusionAngleFactor);
 			
-		} else if ([Isgl3dNode occultationMode] == OCCULTATION_MODE_DISTANCE_AND_ANGLE) {
-			occultationEffect = (1.0 - occultationDistanceFactor) * (1.0 - occultationAngleFactor);
+		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_DISTANCE_AND_ANGLE) {
+			occlusionEffect = (1.0 - occlusionDistanceFactor) * (1.0 - occlusionAngleFactor);
 			
-		} else if ([Isgl3dNode occultationMode] == OCCULTATION_MODE_QUAD_DISTANCE) {
-			occultationEffect = 1.0 - occultationDistanceFactor * occultationDistanceFactor;
+		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_QUAD_DISTANCE) {
+			occlusionEffect = 1.0 - occlusionDistanceFactor * occlusionDistanceFactor;
 			
-		} else if ([Isgl3dNode occultationMode] == OCCULTATION_MODE_DISTANCE) {
-			occultationEffect = 1.0 - occultationDistanceFactor;
+		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_DISTANCE) {
+			occlusionEffect = 1.0 - occlusionDistanceFactor;
 			
-		} else if ([Isgl3dNode occultationMode] == OCCULTATION_MODE_ANGLE) {
-			occultationEffect = 1.0 - occultationAngleFactor;
+		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_ANGLE) {
+			occlusionEffect = 1.0 - occlusionAngleFactor;
 		} 
 
-		_occultationAlpha = (1.0 - occultationEffect);
+		_occlusionAlpha = (1.0 - occlusionEffect);
 
-		//Isgl3dLog(Info, @"is occulting, angle = %f, distance = %f", _occultationAngleFactor, _occultationDistanceFactor);
-	
 	} else {
-		_occultationAlpha = 1.0;
+		_occlusionAlpha = 1.0;
 	}
 	
 	// Recurse over children
-	[super occultationTest:eye normal:normal targetDistance:targetDistance maxAngle:maxAngle];
+	[super occlusionTest:eye normal:normal targetDistance:targetDistance maxAngle:maxAngle];
 }
 
 - (void) renderMesh:(Isgl3dGLRenderer *)renderer {
@@ -174,11 +172,11 @@
 	
 	BOOL goOn = YES;
 	if (opaque) {
-		if (_transparent || _occultationAlpha < 1.0 || _alpha < 1.0) {
+		if (_transparent || _occlusionAlpha < 1.0 || _alpha < 1.0) {
 			goOn = NO;
 		}
 	} else {
-		if (!_transparent && _occultationAlpha == 1.0 && _alpha == 1.0) {
+		if (!_transparent && _occlusionAlpha == 1.0 && _alpha == 1.0) {
 			goOn = NO;
 		}
 	}
@@ -196,7 +194,7 @@
 		[renderer setRendererRequirements:rendererRequirements];
 		
 		// Prepare the material to be rendered
-		float alpha = _alpha * _occultationAlpha;
+		float alpha = _alpha * _occlusionAlpha;
 		[_material prepareRenderer:renderer alpha:alpha];
 	
 		// Send the vertex data to the renderer
@@ -327,7 +325,7 @@
 		[renderer setRendererRequirements:rendererRequirements];
 
 		// Prepare the material to be rendered
-		float alpha = _alpha * _occultationAlpha;
+		float alpha = _alpha * _occlusionAlpha;
 		[_material prepareRenderer:renderer alpha:alpha];
 		
 		// Send the vertex data to the renderer
@@ -357,7 +355,7 @@
 }
 
 - (void) collectAlphaObjects:(NSMutableArray *)alphaObjects {
-	if (_transparent || _occultationAlpha < 1.0 || _alpha < 1.0) {
+	if (_transparent || _occlusionAlpha < 1.0 || _alpha < 1.0) {
 		[alphaObjects addObject:self];
 	}
 	

@@ -13,8 +13,6 @@
 		17116AD312FDD3AE00C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116AED12FDD50500C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
 		17116AEE12FDD50500C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
-		17116AFD12FDD58E00C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
-		17116AFE12FDD58E00C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B0712FDD5F100C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
 		17116B0812FDD5F100C4BC65 /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
 		17116B0E12FDD64B00C4BC65 /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
@@ -435,7 +433,6 @@
 		1731214E12FB3D6500861D84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		1731214F12FB3D6500861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		1731215A12FB3DB000861D84 /* ParticleGeneratorDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731215812FB3D9B00861D84 /* ParticleGeneratorDemoView.m */; };
-		1731216612FB3DEC00861D84 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
 		1731216912FB3E0400861D84 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
 		1731217D12FB562900861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731218012FB562900861D84 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
@@ -585,19 +582,22 @@
 		1762383312F9CEDD008CDB4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		1762383412F9CEDD008CDB4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		1762384C12F9CFCF008CDB4B /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
-		178963C912FB3AB800E6272F /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
-		178963CA12FB3AB800E6272F /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
-		178963CC12FB3AB800E6272F /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
-		178963CD12FB3AB800E6272F /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
-		178963CE12FB3AB800E6272F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
-		178963D112FB3AB800E6272F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
-		178963D212FB3AB800E6272F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
-		178963D312FB3AB800E6272F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
-		178963D412FB3AB800E6272F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
-		178963D512FB3AB800E6272F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		178963D612FB3AB800E6272F /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
-		178963DD12FB3AD500E6272F /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
-		178963E512FB3AFA00E6272F /* OccultationDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963E412FB3AFA00E6272F /* OccultationDemoView.m */; };
+		17801A4A131A955A0045803F /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
+		17801A4B131A955A0045803F /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
+		17801A4C131A955A0045803F /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
+		17801A4E131A955A0045803F /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
+		17801A4F131A955A0045803F /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731242912FD69E700861D84 /* Isgl3dFpsDisplay.m */; };
+		17801A50131A955A0045803F /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		17801A51131A955A0045803F /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
+		17801A52131A955A0045803F /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		17801A53131A955A0045803F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		17801A56131A955A0045803F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		17801A57131A955A0045803F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		17801A58131A955A0045803F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		17801A59131A955A0045803F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		17801A5A131A955A0045803F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		17801A5B131A955A0045803F /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		17801A65131A959D0045803F /* OcclusionDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801A64131A959D0045803F /* OcclusionDemoView.m */; };
 		178B256B12F9C03E000F8DF1 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
 		17B71FE212F8B8F400F80DFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		17B7209812F8B9A100F80DFD /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
@@ -1046,7 +1046,7 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
-		178963C712FB3AB800E6272F /* PBXContainerItemProxy */ = {
+		17801A48131A955A0045803F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -1470,11 +1470,11 @@
 		1762371812F9CE06008CDB4B /* CameraZoomAndFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraZoomAndFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1762372212F9CE31008CDB4B /* CameraZoomAndFocusDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraZoomAndFocusDemoView.h; sourceTree = "<group>"; };
 		1762372312F9CE31008CDB4B /* CameraZoomAndFocusDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraZoomAndFocusDemoView.m; sourceTree = "<group>"; };
+		17801A5F131A955A0045803F /* Occlusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Occlusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17801A63131A959D0045803F /* OcclusionDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OcclusionDemoView.h; sourceTree = "<group>"; };
+		17801A64131A959D0045803F /* OcclusionDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OcclusionDemoView.m; sourceTree = "<group>"; };
 		178963B712FB3AA500E6272F /* Isgl3dDemoCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDemoCameraController.h; sourceTree = "<group>"; };
 		178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dDemoCameraController.m; sourceTree = "<group>"; };
-		178963DA12FB3AB800E6272F /* Occultation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Occultation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		178963E312FB3AFA00E6272F /* OccultationDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccultationDemoView.h; sourceTree = "<group>"; };
-		178963E412FB3AFA00E6272F /* OccultationDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccultationDemoView.m; sourceTree = "<group>"; };
 		178B256912F9C03E000F8DF1 /* Isgl3dAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAppController.h; sourceTree = "<group>"; };
 		178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAppController.m; sourceTree = "<group>"; };
 		17B71FE112F8B8F400F80DFD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2001,16 +2001,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		178963D012FB3AB800E6272F /* Frameworks */ = {
+		17801A55131A955A0045803F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				178963D112FB3AB800E6272F /* CoreGraphics.framework in Frameworks */,
-				178963D212FB3AB800E6272F /* OpenGLES.framework in Frameworks */,
-				178963D312FB3AB800E6272F /* QuartzCore.framework in Frameworks */,
-				178963D412FB3AB800E6272F /* UIKit.framework in Frameworks */,
-				178963D512FB3AB800E6272F /* Foundation.framework in Frameworks */,
-				178963D612FB3AB800E6272F /* libisgl3d.a in Frameworks */,
+				17801A56131A955A0045803F /* CoreGraphics.framework in Frameworks */,
+				17801A57131A955A0045803F /* OpenGLES.framework in Frameworks */,
+				17801A58131A955A0045803F /* QuartzCore.framework in Frameworks */,
+				17801A59131A955A0045803F /* UIKit.framework in Frameworks */,
+				17801A5A131A955A0045803F /* Foundation.framework in Frameworks */,
+				17801A5B131A955A0045803F /* libisgl3d.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2089,7 +2089,6 @@
 				1762371812F9CE06008CDB4B /* CameraZoomAndFocus.app */,
 				17F7A85012FA0BB000C7BB82 /* CameraMovement.app */,
 				17F7A88412FA0D6100C7BB82 /* Lighting.app */,
-				178963DA12FB3AB800E6272F /* Occultation.app */,
 				1731215312FB3D6500861D84 /* ParticleSystem.app */,
 				1731218D12FB562900861D84 /* Physics.app */,
 				173121C812FB58A000861D84 /* PODTest.app */,
@@ -2106,6 +2105,7 @@
 				171CB943131966E7003712F4 /* Tutorial3.app */,
 				171CB967131967C1003712F4 /* Tutorial4.app */,
 				171CB99413196880003712F4 /* Tutorial5.app */,
+				17801A5F131A955A0045803F /* Occlusion.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2707,13 +2707,13 @@
 			path = camera;
 			sourceTree = "<group>";
 		};
-		178963E212FB3AFA00E6272F /* occultation */ = {
+		17801A62131A959D0045803F /* occlusion */ = {
 			isa = PBXGroup;
 			children = (
-				178963E312FB3AFA00E6272F /* OccultationDemoView.h */,
-				178963E412FB3AFA00E6272F /* OccultationDemoView.m */,
+				17801A63131A959D0045803F /* OcclusionDemoView.h */,
+				17801A64131A959D0045803F /* OcclusionDemoView.m */,
 			);
-			path = occultation;
+			path = occlusion;
 			sourceTree = "<group>";
 		};
 		17F1D66112F87EC5008D39E8 /* isgl3d */ = {
@@ -3213,7 +3213,7 @@
 				171CB86B13195D0C003712F4 /* augmentedreality */,
 				1762372112F9CE31008CDB4B /* camera */,
 				17F7A88712FA0D7F00C7BB82 /* lighting */,
-				178963E212FB3AFA00E6272F /* occultation */,
+				17801A62131A959D0045803F /* occlusion */,
 				1731215612FB3D9B00861D84 /* particles */,
 				1731219012FB566A00861D84 /* physics */,
 				173121CB12FB58F600861D84 /* pod */,
@@ -3916,22 +3916,22 @@
 			productReference = 1762371812F9CE06008CDB4B /* CameraZoomAndFocus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		178963C512FB3AB800E6272F /* Occultation */ = {
+		17801A46131A955A0045803F /* Occlusion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 178963D712FB3AB800E6272F /* Build configuration list for PBXNativeTarget "Occultation" */;
+			buildConfigurationList = 17801A5C131A955A0045803F /* Build configuration list for PBXNativeTarget "Occlusion" */;
 			buildPhases = (
-				178963C812FB3AB800E6272F /* Resources */,
-				178963CB12FB3AB800E6272F /* Sources */,
-				178963D012FB3AB800E6272F /* Frameworks */,
+				17801A49131A955A0045803F /* Resources */,
+				17801A4D131A955A0045803F /* Sources */,
+				17801A55131A955A0045803F /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				178963C612FB3AB800E6272F /* PBXTargetDependency */,
+				17801A47131A955A0045803F /* PBXTargetDependency */,
 			);
-			name = Occultation;
+			name = Occlusion;
 			productName = CameraZoomAndFocus;
-			productReference = 178963DA12FB3AB800E6272F /* Occultation.app */;
+			productReference = 17801A5F131A955A0045803F /* Occlusion.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17F1D85312F88A14008D39E8 /* isgl3dpodimporter */ = {
@@ -4067,7 +4067,7 @@
 				17F7A83C12FA0BB000C7BB82 /* CameraMovement */,
 				1762371712F9CE06008CDB4B /* CameraZoomAndFocus */,
 				17F7A87012FA0D6100C7BB82 /* Lighting */,
-				178963C512FB3AB800E6272F /* Occultation */,
+				17801A46131A955A0045803F /* Occlusion */,
 				1731213D12FB3D6500861D84 /* ParticleSystem */,
 				1731217812FB562900861D84 /* PhysicsTest */,
 				173121B312FB58A000861D84 /* PODTest */,
@@ -4276,13 +4276,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		178963C812FB3AB800E6272F /* Resources */ = {
+		17801A49131A955A0045803F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				178963C912FB3AB800E6272F /* isgl3d.plist in Resources */,
-				178963CA12FB3AB800E6272F /* mars.png in Resources */,
-				1731216612FB3DEC00861D84 /* particle.png in Resources */,
+				17801A4A131A955A0045803F /* isgl3d.plist in Resources */,
+				17801A4B131A955A0045803F /* mars.png in Resources */,
+				17801A4C131A955A0045803F /* particle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4540,17 +4540,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		178963CB12FB3AB800E6272F /* Sources */ = {
+		17801A4D131A955A0045803F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17116AFD12FDD58E00C4BC65 /* Isgl3dDemoView.m in Sources */,
-				17116AFE12FDD58E00C4BC65 /* Isgl3dFpsDisplay.m in Sources */,
-				178963DD12FB3AD500E6272F /* Isgl3dDemoCameraController.m in Sources */,
-				178963CC12FB3AB800E6272F /* Isgl3dAppController.m in Sources */,
-				178963CD12FB3AB800E6272F /* Isgl3dViewController.m in Sources */,
-				178963CE12FB3AB800E6272F /* main.m in Sources */,
-				178963E512FB3AFA00E6272F /* OccultationDemoView.m in Sources */,
+				17801A4E131A955A0045803F /* Isgl3dDemoView.m in Sources */,
+				17801A4F131A955A0045803F /* Isgl3dFpsDisplay.m in Sources */,
+				17801A50131A955A0045803F /* Isgl3dDemoCameraController.m in Sources */,
+				17801A51131A955A0045803F /* Isgl3dAppController.m in Sources */,
+				17801A52131A955A0045803F /* Isgl3dViewController.m in Sources */,
+				17801A53131A955A0045803F /* main.m in Sources */,
+				17801A65131A959D0045803F /* OcclusionDemoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4965,10 +4965,10 @@
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 1762371E12F9CE16008CDB4B /* PBXContainerItemProxy */;
 		};
-		178963C612FB3AB800E6272F /* PBXTargetDependency */ = {
+		17801A47131A955A0045803F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
-			targetProxy = 178963C712FB3AB800E6272F /* PBXContainerItemProxy */;
+			targetProxy = 17801A48131A955A0045803F /* PBXContainerItemProxy */;
 		};
 		17F1E07E12F89333008D39E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5824,7 +5824,7 @@
 			};
 			name = Release;
 		};
-		178963D812FB3AB800E6272F /* Debug */ = {
+		17801A5D131A955A0045803F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -5843,12 +5843,12 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Occultation;
+				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		178963D912FB3AB800E6272F /* Release */ = {
+		17801A5E131A955A0045803F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6293,11 +6293,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		178963D712FB3AB800E6272F /* Build configuration list for PBXNativeTarget "Occultation" */ = {
+		17801A5C131A955A0045803F /* Build configuration list for PBXNativeTarget "Occlusion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				178963D812FB3AB800E6272F /* Debug */,
-				178963D912FB3AB800E6272F /* Release */,
+				17801A5D131A955A0045803F /* Debug */,
+				17801A5E131A955A0045803F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -25,11 +25,11 @@
 
 #import "Isgl3dGLObject3D.h"
 
-#define OCCULTATION_MODE_QUAD_DISTANCE_AND_ANGLE 0
-#define OCCULTATION_MODE_DISTANCE_AND_ANGLE 1
-#define OCCULTATION_MODE_QUAD_DISTANCE 2
-#define OCCULTATION_MODE_DISTANCE 3
-#define OCCULTATION_MODE_ANGLE 4
+#define OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE 0
+#define OCCLUSION_MODE_DISTANCE_AND_ANGLE 1
+#define OCCLUSION_MODE_QUAD_DISTANCE 2
+#define OCCLUSION_MODE_DISTANCE 3
+#define OCCLUSION_MODE_ANGLE 4
 
 @class Isgl3dView3D;
 @class Isgl3dMatrix4D;
@@ -227,25 +227,25 @@
 - (void) clearAll;
 
 /**
- * Sets the mode of occultation. The mode determines how the alpha value is calculated, relating to the distance
+ * Sets the mode of occlusion. The mode determines how the alpha value is calculated, relating to the distance
  * to the target and the angle from the vector between the observer and the target. the following modes are available
  * <ul>
- * <li>OCCULTATION_MODE_QUAD_DISTANCE_AND_ANGLE: Occultation alpha calculated from quadratic distance and angle.</li>
- * <li>OCCULTATION_MODE_DISTANCE_AND_ANGLE: Occultation alpha calculated from linear distance and angle.</li>
- * <li>OCCULTATION_MODE_QUAD_DISTANCE: Occultation alpha calculated from quadratic distance only.</li>
- * <li>OCCULTATION_MODE_DISTANCE: Occultation alpha calculated from linear distance only.</li>
- * <li>OCCULTATION_MODE_ANGLE: Occultation alpha calculated from angle only.</li>
+ * <li>OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE: Occlusion alpha calculated from quadratic distance and angle.</li>
+ * <li>OCCLUSION_MODE_DISTANCE_AND_ANGLE: Occlusion alpha calculated from linear distance and angle.</li>
+ * <li>OCCLUSION_MODE_QUAD_DISTANCE: Occlusion alpha calculated from quadratic distance only.</li>
+ * <li>OCCLUSION_MODE_DISTANCE: Occlusion alpha calculated from linear distance only.</li>
+ * <li>OCCLUSION_MODE_ANGLE: Occlusion alpha calculated from angle only.</li>
  * </ul>
- * The occultation mode is static, therefore the same for all nodes in the scene.
- * @param mode The mode of occultation.
+ * The occlusion mode is static, therefore the same for all nodes in the scene.
+ * @param mode The mode of occlusion.
  */
-+ (void) setOccultationMode:(unsigned int)mode;
++ (void) setOcclusionMode:(unsigned int)mode;
 
 /**
- * Returns the current occultation mode.
- * @return the occultation mode. 
+ * Returns the current occlusion mode.
+ * @return the occlusion mode. 
  */
-+ (unsigned int) occultationMode;
++ (unsigned int) occlusionMode;
 
 /**
  * Sets whether the node casts shadows and iterates over children with the same value.
@@ -320,9 +320,9 @@
  * @param eye The position of the observer.
  * @param normal The direction from the observer to the target.
  * @param targetDistance The distance from the observer to the target.
- * @param maxAngle The maximum angle for which occultation should be considered. 
+ * @param maxAngle The maximum angle for which occlusion should be considered. 
  */
-- (void) occultationTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle;
+- (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle;
 
 /*
  * Creates the shadow map for the scene. The shadow rendering light is searched for in the node

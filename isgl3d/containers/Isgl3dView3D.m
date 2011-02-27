@@ -47,8 +47,8 @@
 @implementation Isgl3dView3D
 
 @synthesize zSortingEnabled = _zSortingEnabled;
-@synthesize occultationTestingEnabled = _occultationTestingEnabled;
-@synthesize occultationTestingAngle = _occultationTestingAngle;
+@synthesize occlusionTestingEnabled = _occlusionTestingEnabled;
+@synthesize occlusionTestingAngle = _occlusionTestingAngle;
 @synthesize uiEventsOnly = _uiEventsOnly;
 @synthesize objectTouched = _objectTouched;
 @synthesize width = _width;
@@ -64,8 +64,8 @@
 	 	
 		_isLandscape = NO;	
 		_zSortingEnabled = NO;
-		_occultationTestingEnabled = NO;
-		_occultationTestingAngle = 20.0;
+		_occlusionTestingEnabled = NO;
+		_occlusionTestingAngle = 20.0;
 			
 		[[Isgl3dTouchScreen sharedInstance] setupWithView:self];
 
@@ -101,8 +101,8 @@
 
 	_isLandscape = NO;
 	_zSortingEnabled = NO;
-	_occultationTestingEnabled = NO;
-	_occultationTestingAngle = 20.0;
+	_occlusionTestingEnabled = NO;
+	_occlusionTestingAngle = 20.0;
 	
 	// clear screen
 	float clearColor[4] = {0, 0, 0, 1};
@@ -217,9 +217,9 @@
 	_zSortingEnabled = isZSortingEnabled;
 }
 
-- (void) setOccultationTestingEnabledWithAngle:(float)angle {
-	self.occultationTestingEnabled = TRUE;
-	self.occultationTestingAngle = angle;
+- (void) setOcclusionTestingEnabledWithAngle:(float)angle {
+	self.occlusionTestingEnabled = TRUE;
+	self.occlusionTestingAngle = angle;
 }
 
 - (void) prepareView:(float *)clearColor {
@@ -249,14 +249,14 @@
 		// Pass 2: add lights to scene
 		[_activeScene renderLights:_renderer];
 		
-		// Pass 3: test occultation of objects
-		if (_occultationTestingEnabled) {
+		// Pass 3: test occlusion of objects
+		if (_occlusionTestingEnabled) {
 			[_activeCamera getEyeNormal:&_eyeNormal];
 			float distance = mv3DLength(&_eyeNormal);
 			mv3DNormalize(&_eyeNormal);
 			[_activeCamera positionAsMiniVec3D:&_cameraPosition];
 
-			[_activeScene occultationTest:&_cameraPosition normal:&_eyeNormal targetDistance:distance maxAngle:_occultationTestingAngle];
+			[_activeScene occlusionTest:&_cameraPosition normal:&_eyeNormal targetDistance:distance maxAngle:_occlusionTestingAngle];
 		}
 		
 		// Pass 4: render the opaque meshes

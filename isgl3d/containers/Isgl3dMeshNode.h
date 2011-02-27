@@ -47,7 +47,7 @@
 	Isgl3dMiniVec3D _eyeToModel;
 	Isgl3dMiniVec3D _eyeToModelNormal;
 	
-	float _occultationAlpha;
+	float _occlusionAlpha;
 	
 }
 

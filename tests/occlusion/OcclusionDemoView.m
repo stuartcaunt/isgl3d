@@ -23,11 +23,11 @@
  *
  */
 
-#import "OccultationDemoView.h"
+#import "OcclusionDemoView.h"
 #import "Isgl3dDemoCameraController.h"
 
 
-@implementation OccultationDemoView
+@implementation OcclusionDemoView
 
 - (void) dealloc {
 	// Remove camera controller from touch-screen manager and release
@@ -53,9 +53,9 @@
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
 		
 	self.zSortingEnabled = YES;
-	self.occultationTestingEnabled = YES;
-	self.occultationTestingAngle = 20;
-//	[GLObject3D setOccultationMode:OCCULTATION_MODE_ANGLE];
+	self.occlusionTestingEnabled = YES;
+	self.occlusionTestingAngle = 20;
+//	[GLObject3D setOcclusionMode:OCCLUSION_MODE_ANGLE];
 	self.isLandscape = YES;
 		
 }
@@ -115,7 +115,7 @@
 @implementation AppController
 
 - (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[OccultationDemoView alloc] initWithFrame:frame] autorelease];
+	return [[[OcclusionDemoView alloc] initWithFrame:frame] autorelease];
 }
 
 @end

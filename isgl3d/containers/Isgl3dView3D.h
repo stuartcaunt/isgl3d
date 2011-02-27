@@ -75,8 +75,8 @@
 
 	BOOL _isLandscape;
 	BOOL _zSortingEnabled;
-	BOOL _occultationTestingEnabled;
-	float _occultationTestingAngle;
+	BOOL _occlusionTestingEnabled;
+	float _occlusionTestingAngle;
 	
 	BOOL _skipUpdates;
 	
@@ -120,18 +120,18 @@
 @property (nonatomic) BOOL zSortingEnabled;
 
 /**
- * Indicates whether occultation testing is enabled. A target is specified in the camera (as the "look-at" position): nodes
+ * Indicates whether occlusion testing is enabled. A target is specified in the camera (as the "look-at" position): nodes
  * that are between the camera and the target will become transparent. The amount of transparency can be modified by changing
- * the occultation mode in Isgl3dNode.
- * By default occultation testing is not enabled.
+ * the occlusion mode in Isgl3dNode.
+ * By default occlusion testing is not enabled.
  */
-@property (nonatomic) BOOL occultationTestingEnabled;
+@property (nonatomic) BOOL occlusionTestingEnabled;
 
 /**
  * Specifies the maximum angle (between the camera-target vector and the camera-node vector) for which nodes become transparent.
  * By default the angle is 20 degrees.
  */
-@property (nonatomic) float occultationTestingAngle;
+@property (nonatomic) float occlusionTestingAngle;
 
 /**
  * Specifies the shadow rendering method to be used.
@@ -223,10 +223,10 @@
 - (void) setZSortingEnabled:(BOOL)isZSortingEnabled;
 
 /**
- * Sets occultation testing to true and the maximum angle for which it occurs.
+ * Sets occlusion testing to true and the maximum angle for which it occurs.
  * @param angle The maximum angle (between the camera-target vector and the camera-node vector) for which nodes become transparent.
  */
-- (void) setOccultationTestingEnabledWithAngle:(float)angle;
+- (void) setOcclusionTestingEnabledWithAngle:(float)angle;
 
 /**
  * Prepares the view for rendering (initialising and clearing OpenGL buffers for example) and sets the background colour.

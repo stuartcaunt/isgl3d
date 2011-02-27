@@ -28,7 +28,7 @@
 
 @class Isgl3dDemoCameraController;
 
-@interface OccultationDemoView : Isgl3dDemoView {
+@interface OcclusionDemoView : Isgl3dDemoView {
 
 	Isgl3dNode * _container;
 	Isgl3dDemoCameraController * _cameraController;

@@ -34,7 +34,7 @@
 #import "Isgl3dVector3D.h"
 #import "Isgl3dGLRenderer.h"
 
-static unsigned int Isgl3dNode_OccultationMode = OCCULTATION_MODE_QUAD_DISTANCE_AND_ANGLE;
+static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE;
 
 
 @implementation Isgl3dNode
@@ -209,21 +209,21 @@ static unsigned int Isgl3dNode_OccultationMode = OCCULTATION_MODE_QUAD_DISTANCE_
 	_alphaCullValue = value;
 }
 
-- (void) occultationTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
+- (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
 	if (_hasChildren) {
 		for (Isgl3dNode * node in _children) {
-			[node occultationTest:eye normal:normal targetDistance:targetDistance maxAngle:maxAngle];
+			[node occlusionTest:eye normal:normal targetDistance:targetDistance maxAngle:maxAngle];
 	    }
 	}	
 }
 
 
-+ (void) setOccultationMode:(unsigned int)mode {
-	Isgl3dNode_OccultationMode = mode;
++ (void) setOcclusionMode:(unsigned int)mode {
+	Isgl3dNode_OcclusionMode = mode;
 }
 
-+ (unsigned int) occultationMode {
-	return Isgl3dNode_OccultationMode;
++ (unsigned int) occlusionMode {
+	return Isgl3dNode_OcclusionMode;
 }
 
 - (BOOL) lightingEnabled {
