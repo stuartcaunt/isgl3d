@@ -14,9 +14,6 @@
 	// Release scene
 	[_scene release];
 	
-	// Release cube
-	[_cube release];
-
 	// Release fps display
 	[_fpsDisplay release];
 
