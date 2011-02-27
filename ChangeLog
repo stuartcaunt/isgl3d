@@ -1,3 +1,8 @@
+current SVN version
+	Added Xcode project template for iSGL3D application
+	Added tutorials to included tests and added simple augmented reality test
+	Updated bullet physics library to 2.77
+
 version 1.1.1 (2011-02-01)
 	Open source release.
 	Moved pvr tools to external folder and moved importers and physics back to isgl3d classes. Include bullet physics library.
