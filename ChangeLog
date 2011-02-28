@@ -1,4 +1,8 @@
 current SVN version
+
+version 1.1.2 (2011-02-28)
+	Fixed bug in orthographic projection matrix when in portrait mode
+	Added Isgl3dFpsDisplay to utils
 	Added Xcode project template for iSGL3D application
 	Added tutorials to included tests and added simple augmented reality test
 	Updated bullet physics library to 2.77
