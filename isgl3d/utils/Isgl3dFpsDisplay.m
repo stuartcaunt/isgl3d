@@ -39,7 +39,6 @@
 		_view = [view retain];
 		_fpsTracer = [[Isgl3dFpsTracer alloc] init];
 		_added = NO;
-		_position = CGPointMake(8, 290);
 		_counter = 0;
     }
 	
@@ -69,6 +68,12 @@
 			Isgl3dGLUI * ui = [[Isgl3dGLUI alloc] initWithView:_view];
 			_view.activeUI = [ui autorelease];
 		} 
+
+		if (_view.isLandscape) {
+			_position = CGPointMake(8, 290);
+		} else {
+			_position = CGPointMake(8, 450);
+		}
 
 		// add fps label
 		_fpsLabel = [[Isgl3dGLUILabel alloc] initWithText:@"0.0" fontName:@"Arial" fontSize:24];

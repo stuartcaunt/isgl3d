@@ -162,7 +162,7 @@
 		matrix.sxx = 2 / (right - left);
 		matrix.sxy = 0;
 		matrix.sxz = 0;
-		matrix.tx  = tx;
+		matrix.tx  = -tx;
 		matrix.syx = 0;
 		matrix.syy = 2 / (top - bottom);
 		matrix.syz = 0;
