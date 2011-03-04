@@ -25,6 +25,9 @@
 
 #import "Isgl3dShader.h"
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dShadowMapShader : Isgl3dShader {
 
 @private

@@ -31,6 +31,9 @@
 @class Isgl3dGLDepthRenderTexture;
 @class Isgl3dGLTextureFactoryState;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLTextureFactory : NSObject {
 
 @private

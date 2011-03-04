@@ -28,6 +28,9 @@
 #import "Isgl3dGLContext.h"
 
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLContext1 : Isgl3dGLContext {
 
 @private

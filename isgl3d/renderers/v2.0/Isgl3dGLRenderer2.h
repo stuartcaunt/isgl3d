@@ -32,6 +32,9 @@
 @class Isgl3dGLRenderer2State;
 @class Isgl3dShader;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLRenderer2 : Isgl3dGLRenderer {
 
 @private

@@ -27,6 +27,9 @@
 
 @class Isgl3dShaderState;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dParticleShader : Isgl3dShader {
 
 @private

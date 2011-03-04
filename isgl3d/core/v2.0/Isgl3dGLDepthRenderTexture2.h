@@ -27,6 +27,9 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLDepthRenderTexture2 : Isgl3dGLDepthRenderTexture {
 
 @private

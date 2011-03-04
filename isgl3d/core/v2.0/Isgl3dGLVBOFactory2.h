@@ -25,6 +25,9 @@
 
 #import "Isgl3dGLVBOFactory.h"
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLVBOFactory2 : Isgl3dGLVBOFactory {
 
 @private

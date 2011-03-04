@@ -26,6 +26,9 @@
 #import <OpenGLES/ES2/gl.h>
 #import <Foundation/Foundation.h>
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLProgram : NSObject {
 	
 @private

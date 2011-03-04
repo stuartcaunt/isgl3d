@@ -28,6 +28,7 @@
 @class Isgl3dNode;
 
 /**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
  * Transient class used for sorting nodes.
  */
 @interface Isgl3dSortableNode : NSObject {

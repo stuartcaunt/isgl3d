@@ -30,6 +30,9 @@
 #define GLTEXTURE_MEDIUM_PRECISION 1
 #define GLTEXTURE_HIGH_PRECISION 2
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLTexture : NSObject {
 
 @private

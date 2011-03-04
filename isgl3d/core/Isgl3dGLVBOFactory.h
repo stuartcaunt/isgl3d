@@ -28,6 +28,9 @@
 @class Isgl3dFloatArray;
 @class Isgl3dUShortArray;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLVBOFactory : NSObject {
 
 @private

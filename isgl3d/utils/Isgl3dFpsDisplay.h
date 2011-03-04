@@ -30,6 +30,15 @@
 @class Isgl3dGLUILabel;
 @class Isgl3dView3D;
 
+/**
+ * The Isgl3dFpsDisplay is a utility class to display the current frame rate above the 3D scene using the Isgl3dGLUI and an Isgl3dGLUILabel.
+ * Simple instantiated with an Isgl3dView3d, the Isgl3dFpsDisplay automatically adds the label to the view and determines whether the
+ * device is in landscape or portrait mode.
+ * 
+ * It uses the Isgl3dFpsTracer to calculate the average framerate over the last 20 frames. The label text is updated every 10 frames.
+ * 
+ * The position of the label is set automatically but can be modified by the user.
+ */
 @interface Isgl3dFpsDisplay : NSObject {
 
 @private
@@ -45,10 +54,28 @@
 
 @property (nonatomic) CGPoint position;
 
+/**
+ * Initialises the Isgl3dFpsDisplay with the view.
+ * @param view The Isgl3dView3D object.
+ */
 - (id) initWithView:(Isgl3dView3D *)view;
 
+/**
+ * Must be called at every frame to update the calculated frame rate and the displayed text.
+ * This should be called in the <em>updateScene</em> method of the Isgl3dView3D sub-class.
+ */
 - (void) update;
+
+/**
+ * Returns the current position of the Isgl3dGLUILabel showing the framerate.
+ * @return a CGPoint containing the x and y coordinates of the fps label.
+ */
 - (CGPoint) position;
+
+/**
+ * Sets the position of the Isgl3dGLUILabel showing the framerate.
+ * @param position The position of the fps label.
+ */
 - (void) setPosition:(CGPoint)position;
 
 @end

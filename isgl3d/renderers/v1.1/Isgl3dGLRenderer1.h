@@ -32,6 +32,9 @@
 @class Isgl3dGLContext1;
 @class Isgl3dGLRenderer1State;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLRenderer1 : Isgl3dGLRenderer {
 
 

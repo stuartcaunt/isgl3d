@@ -27,6 +27,9 @@
 
 @class Isgl3dGLObject3D;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dObject3DGrabber : NSObject {
 	    
 @private

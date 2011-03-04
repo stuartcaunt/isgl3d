@@ -25,6 +25,9 @@
 
 #import "Isgl3dGLTextureFactoryState.h"
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLTextureFactoryState2 : Isgl3dGLTextureFactoryState {
 
 @private

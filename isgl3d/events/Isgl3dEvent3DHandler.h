@@ -27,6 +27,9 @@
 #import <UIKit/UIKit.h>
 @class Isgl3dView3D;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dEvent3DHandler : NSObject {
 	    
 @private

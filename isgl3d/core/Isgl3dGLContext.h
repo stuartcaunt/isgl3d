@@ -31,6 +31,9 @@
 
 @class Isgl3dGLRenderer;
 
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 @interface Isgl3dGLContext : NSObject {
 
 @protected	
