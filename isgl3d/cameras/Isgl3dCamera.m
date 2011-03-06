@@ -58,14 +58,20 @@
 
 - (id) initWithView:(Isgl3dView3D *)view {
 	
-	if (self = [self initWithView:view andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f]) {
-		// Initialization
-	}
+	return [self initWithWidth:view.width andHeight:view.height];
+}
+
+- (id) initWithWidth:(float)width andHeight:(float)height {
 	
-	return self;
+	return [self initWithWidth:width height:height andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f];
 }
 
 - (id) initWithView:(Isgl3dView3D *)view andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
+	
+	return [self initWithWidth:view.width height:view.height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ];
+}
+
+- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
 	
 	if (self = [super init]) {
 		mv3DFill(&_lookAt, lookAtX, lookAtY, lookAtZ);
@@ -79,8 +85,8 @@
 		_zoom = 1;
 		_isPerspective = YES;
 		
-		_width = view.width;
-		_height = view.height;
+		_width = width;
+		_height = height;
 		
 		[self setTranslation:x y:y z:z];
 		

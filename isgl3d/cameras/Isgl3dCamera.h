@@ -28,9 +28,6 @@
 @class Isgl3dMatrix4D;
 @class Isgl3dView3D;
 
-// Keep inheritance from Node: this allow for graphical rendering of camera (if viewed by another camera for example)
-// Need to overload position/rotation methods to produce an equivalent view matrix
-
 /**
  * The Isgl3dCamera is the principal form of camera used in iSGL3D. It behaves as a traditional camera and is 
  * used to provide a projection of the scene as viewed from an observer.
@@ -215,14 +212,23 @@
  * Initialises the camera with an Isgl3dView3D object.
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
- * @param view The view to be used by the camera.
+ * @param view The view to be used by the camera (provides width and height).
  */
 - (id) initWithView:(Isgl3dView3D *)view;
 
 /**
+ * Initialises the camera with a specified width and height.
+ * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
+ * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ */
+- (id) initWithWidth:(float)width andHeight:(float)height;
+
+/**
  * Initialises the camera with user-defined geometry.
  * Perspective projection is used as default.
- * @param view The view to be used by the camera.
+ * @param view The view to be used by the camera (provides width and height).
  * @param x The x position of the camera.
  * @param y The y position of the camera.
  * @param z The z position of the camera.
@@ -234,6 +240,24 @@
  * @param lookAtZ The z position where the camera will look at.
  */
 - (id) initWithView:(Isgl3dView3D *)view andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ;
+
+/**
+ * Initialises the camera with user-defined geometry.
+ * Perspective projection is used as default.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ * @param x The x position of the camera.
+ * @param y The y position of the camera.
+ * @param z The z position of the camera.
+ * @param upX The x component of the up vector.
+ * @param upY The y component of the up vector.
+ * @param upZ The z component of the up vector.
+ * @param lookAtX The x position where the camera will look at.
+ * @param lookAtY The y position where the camera will look at.
+ * @param lookAtZ The z position where the camera will look at.
+ */
+- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ;
+
 
 /**
  * Resets the camera position and look-at to their initial values.
