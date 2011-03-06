@@ -103,9 +103,9 @@
 		_lightAmbientLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@ambientColor", lightStruct]];
 		_lightDiffuseLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@diffuseColor", lightStruct]];
 		_lightSpecularLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@specularColor", lightStruct]];
-		_lightConstantAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@constantAttenuation", lightStruct]];
-		_lightLinearAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@linearAttenuation", lightStruct]];
-		_lightQuadraticAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@quadraticAttenuation", lightStruct]];
+		_lightConstantAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation[0]", lightStruct]];
+		_lightLinearAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation[1]", lightStruct]];
+		_lightQuadraticAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation[2]", lightStruct]];
 		_lightSpotDirectionLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@spotDirection", lightStruct]];
 		_lightSpotCutoffAngleLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@spotCutoffAngle", lightStruct]];
 		_lightSpotFalloffExponentLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@spotFalloffExponent", lightStruct]];

@@ -5,9 +5,7 @@ struct Light {
 	vec4 ambientColor;
 	vec4 diffuseColor;
 	vec4 specularColor;
-	float constantAttenuation;
-	float linearAttenuation;
-	float quadraticAttenuation;
+	vec3 attenuation;
 	vec3 spotDirection;
 	float spotCutoffAngle;
 	float spotFalloffExponent;
@@ -97,9 +95,9 @@ void pointLight(in int lightIndex,
 		VP = normalize(VP);
 		
 		// Calculate attenuation
-		attenuation = c_one / (	u_light[lightIndex].constantAttenuation + 
-								u_light[lightIndex].linearAttenuation * d + 
-								u_light[lightIndex].quadraticAttenuation * d * d);
+		attenuation = c_one / (	u_light[lightIndex].attenuation[0] + 
+								u_light[lightIndex].attenuation[1] * d + 
+								u_light[lightIndex].attenuation[2] * d * d);
 								
 		// Calculate spot lighting effects						
 		if (u_light[lightIndex].spotCutoffAngle < 180.0) {
