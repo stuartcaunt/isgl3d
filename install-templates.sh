@@ -8,7 +8,7 @@
 
 echo 'iSGL3D template installer'
 
-ISGL3D_VERSION='iSGL3D 1.1.1'
+ISGL3D_VERSION='iSGL3D 1.1.2'
 BASE_TEMPLATE_DIR="/Library/Application Support/Developer/Shared/Xcode"
 BASE_TEMPLATE_USER_DIR="$HOME/Library/Application Support/Developer/Shared/Xcode"
 
