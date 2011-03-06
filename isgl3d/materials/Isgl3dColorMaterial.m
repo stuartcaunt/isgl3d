@@ -69,16 +69,32 @@
 
 }
 
+- (float *) ambientColor {
+	return _ambientColor;
+}
+
 - (void) setAmbientColor:(float *)color {
 	memcpy(_ambientColor, color, sizeof(float) * 3);
+}
+
+- (float *) diffuseColor {
+	return _diffuseColor;
 }
 
 - (void) setDiffuseColor:(float *)color {
 	memcpy(_diffuseColor, color, sizeof(float) * 3);
 }
 
+- (float *) specularColor {
+	return _specularColor;
+}
+
 - (void) setSpecularColor:(float *)color {
 	memcpy(_specularColor, color, sizeof(float) * 3);
+}
+
+- (float) shininess {
+	return _shininess;
 }
 
 - (void) setShininess:(float)shininess {

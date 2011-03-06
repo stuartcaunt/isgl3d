@@ -48,6 +48,11 @@
 	float _shininess;
 }
 
+@property (nonatomic) float * ambientColor;
+@property (nonatomic) float * diffuseColor;
+@property (nonatomic) float * specularColor;
+@property (nonatomic) float shininess;
+
 /**
  * Initialises the material with a random color. The same color is used for all three material properties. The material has
  * zero shininess.
@@ -64,10 +69,22 @@
 - (id) initWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess;
 
 /**
+ * Returns the float array containing the ambient color
+ * @return the ambient color
+ */
+- (float *) ambientColor;
+
+/**
  * Sets the ambient color property of the material.
  * @param color Float array containing the rgb values of the ambient material color.
  */
 - (void) setAmbientColor:(float *)color;
+
+/**
+ * Returns the float array containing the diffuse color
+ * @return the diffuse color
+ */
+- (float *) diffuseColor;
 
 /**
  * Sets the diffuse color property of the material.
@@ -76,10 +93,22 @@
 - (void) setDiffuseColor:(float *)color;
 
 /**
+ * Returns the float array containing the specular color
+ * @return the specular color
+ */
+- (float *) specularColor;
+
+/**
  * Sets the specular color property of the material.
  * @param color Float array containing the rgb values of the specular material color.
  */
 - (void) setSpecularColor:(float *)color;
+
+/**
+ * Returns the shininess
+ * @return the shininess
+ */
+- (float) shininess;
 
 /**
  * Sets the shininess of the material.
