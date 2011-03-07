@@ -6,8 +6,8 @@ struct Light {
 	vec4 diffuseColor;
 	vec4 specularColor;
 	vec3 attenuation;
-	vec3 spotDirection;
 	float spotCutoffAngle;
+	vec3 spotDirection;
 	float spotFalloffExponent;
 };
 
@@ -21,15 +21,28 @@ struct Material {
 attribute vec4 a_vertex;
 attribute vec3 a_normal;
 
+uniform mat4 u_mvpMatrix;
+uniform mat4 u_mvMatrix;
+uniform mat3 u_normalMatrix;
+
+uniform vec4 u_sceneAmbientColor;
+
+uniform Material u_material;
+uniform Light u_light[MAX_LIGHTS];
+uniform bool u_lightEnabled[MAX_LIGHTS];
+
+uniform bool u_includeSpecular;
+uniform bool u_lightingEnabled;
+
+varying lowp vec4 v_color;
+varying lowp vec4 v_specular;
+
+
 #ifdef TEXTURE_MAPPING_ENABLED
 attribute vec2 a_texCoord;
 
 varying mediump vec2 v_texCoord;
 #endif
-
-uniform mat4 u_mvpMatrix;
-uniform mat4 u_mvMatrix;
-uniform mat3 u_normalMatrix;
 
 
 #ifdef SHADOW_MAPPING_ENABLED
@@ -47,17 +60,6 @@ uniform highp mat4 u_boneMatrixArray[8];
 uniform highp mat3 u_boneMatrixArrayIT[8];
 #endif
 
-uniform vec4 u_sceneAmbientColor;
-
-uniform Material u_material;
-uniform Light u_light[MAX_LIGHTS];
-uniform int u_lightEnabled[MAX_LIGHTS];
-
-uniform bool u_includeSpecular;
-uniform bool u_lightingEnabled;
-
-varying lowp vec4 v_color;
-varying lowp vec4 v_specular;
 
 const float	c_zero = 0.0;
 const float	c_one = 1.0;
@@ -95,12 +97,16 @@ void pointLight(in int lightIndex,
 		VP = normalize(VP);
 		
 		// Calculate attenuation
-		attenuation = c_one / (	u_light[lightIndex].attenuation[0] + 
-								u_light[lightIndex].attenuation[1] * d + 
-								u_light[lightIndex].attenuation[2] * d * d);
+		vec3 attDist = vec3(c_one, d, d * d);
+		attenuation = c_one / dot(u_light[lightIndex].attenuation, attDist);
 								
-		// Calculate spot lighting effects						
-		if (u_light[lightIndex].spotCutoffAngle < 180.0) {
+		// Calculate spot lighting effects			
+		//
+		// THIS IS COMMENTED OUT TEMPORARILY:
+		// THE FOLLOWING TEST DOES NOT WORK CORRECTLY IN IPHONE SHADER EVEN IF UNIFORM VALUES
+		// ARE CORRECTLY SENT TO GPU
+		//			
+/*		if (u_light[lightIndex].spotCutoffAngle > c_zero) {
 			float spotFactor = dot(-VP, u_light[lightIndex].spotDirection);
 			if (spotFactor >= cos(radians(u_light[lightIndex].spotCutoffAngle))) {
 				spotFactor = pow(spotFactor, u_light[lightIndex].spotFalloffExponent);
@@ -110,7 +116,7 @@ void pointLight(in int lightIndex,
 			}
 			attenuation *= spotFactor;
 		}
-		
+*/		
 	} else {
 		attenuation = c_one;
 		VP = u_light[lightIndex].position.xyz;
@@ -154,7 +160,7 @@ void doLighting() {
 		normal = normalize(normal);
 
 		for (i = int(c_zero); i < MAX_LIGHTS; i++) {
-			if (u_lightEnabled[i] == 1) {
+			if (u_lightEnabled[i]) {
 				pointLight(i, amb, diff, spec);
 			} 	
 		}

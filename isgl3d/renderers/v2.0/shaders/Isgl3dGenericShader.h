@@ -65,14 +65,13 @@
 	GLint _lightAmbientLocation[MAX_LIGHTS];
 	GLint _lightDiffuseLocation[MAX_LIGHTS];
 	GLint _lightSpecularLocation[MAX_LIGHTS];
-	GLint _lightConstantAttenuationLocation[MAX_LIGHTS];
-	GLint _lightLinearAttenuationLocation[MAX_LIGHTS];
-	GLint _lightQuadraticAttenuationLocation[MAX_LIGHTS];
+	GLint _lightAttenuationLocation[MAX_LIGHTS];
 	GLint _lightSpotDirectionLocation[MAX_LIGHTS];
 	GLint _lightSpotCutoffAngleLocation[MAX_LIGHTS];
 	GLint _lightSpotFalloffExponentLocation[MAX_LIGHTS];
 	GLint _lightEnabledLocation[MAX_LIGHTS];
 	GLint _sceneAmbientUniformLocation;
+	GLfloat _attenuation[3];
 	GLfloat _sceneAmbient[4];
 	int _lightCount;
 

@@ -103,9 +103,7 @@
 		_lightAmbientLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@ambientColor", lightStruct]];
 		_lightDiffuseLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@diffuseColor", lightStruct]];
 		_lightSpecularLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@specularColor", lightStruct]];
-		_lightConstantAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation[0]", lightStruct]];
-		_lightLinearAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation[1]", lightStruct]];
-		_lightQuadraticAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation[2]", lightStruct]];
+		_lightAttenuationLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@attenuation", lightStruct]];
 		_lightSpotDirectionLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@spotDirection", lightStruct]];
 		_lightSpotCutoffAngleLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@spotCutoffAngle", lightStruct]];
 		_lightSpotFalloffExponentLocation[i] = [_glProgram getUniformLocation:[NSString stringWithFormat:@"%@spotFalloffExponent", lightStruct]];
@@ -261,9 +259,10 @@
 	[self setUniform4f:_lightPositionLocation[lightIndex] values:transformedLightPosition];
 	
 	// set attenuation factors
-	[self setUniform1f:_lightConstantAttenuationLocation[lightIndex] value:light.constantAttenuation];
-	[self setUniform1f:_lightLinearAttenuationLocation[lightIndex] value:light.linearAttenuation];
-	[self setUniform1f:_lightQuadraticAttenuationLocation[lightIndex] value:light.quadraticAttenuation];
+	_attenuation[0] = light.constantAttenuation;
+	_attenuation[1] = light.linearAttenuation;
+	_attenuation[2] = light.quadraticAttenuation;
+	[self setUniform3f:_lightAttenuationLocation[lightIndex] values:_attenuation];
 	
 	// Set spot factors
 	if (light.lightType == SpotLight) {
@@ -278,7 +277,7 @@
 		[self setUniform1f:_lightSpotCutoffAngleLocation[lightIndex] value:light.spotCutoffAngle];
 		[self setUniform1f:_lightSpotFalloffExponentLocation[lightIndex] value:light.spotFalloffExponent];
 	} else {
-		[self setUniform1f:_lightSpotCutoffAngleLocation[lightIndex] value:360.0];
+		[self setUniform1f:_lightSpotCutoffAngleLocation[lightIndex] value:-1.0];
 	}
 	
 	
@@ -371,6 +370,7 @@
 
 	if (!_currentState.lightingEnabled && _previousState.lightingEnabled) {
 		[self setUniform1i:_lightingEnabledUniformLocation value:0];
+
 	} else if (_currentState.lightingEnabled && !_previousState.lightingEnabled) {
 		if (_lightCount > 0) {
 			[self setUniform1i:_lightingEnabledUniformLocation value:1];

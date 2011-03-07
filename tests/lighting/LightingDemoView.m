@@ -100,7 +100,10 @@
 	[_whiteLight setTranslation:7 y:7 z:4];
 
 	// Set the scene ambient color
-	[self setSceneAmbient:@"444444"];	
+	[self setSceneAmbient:@"444444"];
+	
+	[primitive release];	
+	[textureMaterial release];	
 
 }
 
