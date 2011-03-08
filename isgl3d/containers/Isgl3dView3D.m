@@ -66,8 +66,6 @@
 		_zSortingEnabled = NO;
 		_occlusionTestingEnabled = NO;
 		_occlusionTestingAngle = 20.0;
-			
-		[[Isgl3dTouchScreen sharedInstance] setupWithView:self];
 
 		_width = [_glContext backingWidth];
 		_height = [_glContext backingHeight];
@@ -114,7 +112,6 @@
 	[Isgl3dObject3DGrabber resetInstance];
 	[[Isgl3dGLTextureFactory sharedInstance] clear];
 	[Isgl3dTouchScreen resetInstance];
-	[[Isgl3dTouchScreen sharedInstance] setupWithView:self];
 
 	[self setActiveCamera:nil];
 	[self setActiveScene:nil];

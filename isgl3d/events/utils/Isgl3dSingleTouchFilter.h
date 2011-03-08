@@ -38,7 +38,6 @@
 	    
 @private
 	Isgl3dGLObject3D * _object;
-	Isgl3dView3D * _view3D;
 
 	NSString * _eventId;
 	
@@ -47,11 +46,10 @@
 
 /**
  * Initialises the Isgl3dSingleTouchFilter with an Isgl3dGLObject3D (all nodes inherit from this) that we
- * wish to add an event listener to, and an Isgl3dView3D.
+ * wish to add an event listener to.
  * @param object The interactive object for which event listeners should be attached.
- * @param view3D The Isgl3dView3D.
  */
-- (id) initWithObject:(Isgl3dGLObject3D *)object andView:(Isgl3dView3D *)view3D;
+- (id) initWithObject:(Isgl3dGLObject3D *)object;
 
 /**
  * Adds an event listener to the filter. A callback is sent to the specified object and method

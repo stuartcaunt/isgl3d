@@ -1207,6 +1207,153 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
+		17C04FDA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F1E06A12F89091008D39E8 /* Accelerometer */;
+			remoteInfo = Accelerometer;
+		};
+		17C04FDC1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F7A83C12FA0BB000C7BB82 /* CameraMovement */;
+			remoteInfo = CameraMovement;
+		};
+		17C04FDE1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1762371712F9CE06008CDB4B /* CameraZoomAndFocus */;
+			remoteInfo = CameraZoomAndFocus;
+		};
+		17C04FE01326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F7A87012FA0D6100C7BB82 /* Lighting */;
+			remoteInfo = Lighting;
+		};
+		17C04FE21326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17801A46131A955A0045803F /* Occlusion */;
+			remoteInfo = Occlusion;
+		};
+		17C04FE41326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731213D12FB3D6500861D84 /* ParticleSystem */;
+			remoteInfo = ParticleSystem;
+		};
+		17C04FE61326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731217812FB562900861D84 /* PhysicsTest */;
+			remoteInfo = PhysicsTest;
+		};
+		17C04FE81326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173121B312FB58A000861D84 /* PODTest */;
+			remoteInfo = PODTest;
+		};
+		17C04FEA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731225812FC764100861D84 /* PrimitivesDemo */;
+			remoteInfo = PrimitivesDemo;
+		};
+		17C04FEC1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731229B12FC797300861D84 /* ShadowMappingTest */;
+			remoteInfo = ShadowMappingTest;
+		};
+		17C04FEE1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173122D612FC7B9300861D84 /* SkinningTest */;
+			remoteInfo = SkinningTest;
+		};
+		17C04FF01326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731232012FC7DFA00861D84 /* TerrainMeshTest */;
+			remoteInfo = TerrainMeshTest;
+		};
+		17C04FF21326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731237412FC82BD00861D84 /* TextureOptionsTest */;
+			remoteInfo = TextureOptionsTest;
+		};
+		17C04FF41326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173123A212FC841000861D84 /* TweeningDemo */;
+			remoteInfo = TweeningDemo;
+		};
+		17C04FF61326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173123EC12FD627B00861D84 /* UIDemo */;
+			remoteInfo = UIDemo;
+		};
+		17C04FF81326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB84913195C65003712F4 /* CubeOverCamera */;
+			remoteInfo = CubeOverCamera;
+		};
+		17C04FFA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB8D713196403003712F4 /* Tutorial1 */;
+			remoteInfo = Tutorial1;
+		};
+		17C04FFC1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB90913196613003712F4 /* Tutorial2 */;
+			remoteInfo = Tutorial2;
+		};
+		17C04FFE1326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB92F131966E7003712F4 /* Tutorial3 */;
+			remoteInfo = Tutorial3;
+		};
+		17C050001326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB951131967C1003712F4 /* Tutorial4 */;
+			remoteInfo = Tutorial4;
+		};
+		17C050021326BAB4001C96CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB97C13196880003712F4 /* Tutorial5 */;
+			remoteInfo = Tutorial5;
+		};
 		17F1E07D12F89333008D39E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -1641,6 +1788,7 @@
 		17B7228312F8C8C000F80DFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		17B7228D12F8C9E000F80DFD /* AccelerometerDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerDemoView.h; sourceTree = "<group>"; };
 		17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AccelerometerDemoView.mm; sourceTree = "<group>"; };
+		17C04FD71326BA9D001C96CF /* libbuild all.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libbuild all.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimatedMeshNode.h; sourceTree = "<group>"; };
 		17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAnimatedMeshNode.m; sourceTree = "<group>"; };
 		17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimationController.h; sourceTree = "<group>"; };
@@ -2168,6 +2316,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C04FD51326BA9D001C96CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1D85212F88A14008D39E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2260,6 +2415,7 @@
 				171CB967131967C1003712F4 /* Tutorial4.app */,
 				171CB99413196880003712F4 /* Tutorial5.app */,
 				17801A5F131A955A0045803F /* Occlusion.app */,
+				17C04FD71326BA9D001C96CF /* libbuild all.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3429,6 +3585,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		17C04FD31326BA9D001C96CF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1D85012F88A14008D39E8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -4089,6 +4252,44 @@
 			productReference = 17801A5F131A955A0045803F /* Occlusion.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17C04FD61326BA9D001C96CF /* build all */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C050081326BAE6001C96CF /* Build configuration list for PBXNativeTarget "build all" */;
+			buildPhases = (
+				17C04FD31326BA9D001C96CF /* Headers */,
+				17C04FD41326BA9D001C96CF /* Sources */,
+				17C04FD51326BA9D001C96CF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17C04FDB1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FDD1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FDF1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FE11326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FE31326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FE51326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FE71326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FE91326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FEB1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FED1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FEF1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FF11326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FF31326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FF51326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FF71326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FF91326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FFB1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FFD1326BAB4001C96CF /* PBXTargetDependency */,
+				17C04FFF1326BAB4001C96CF /* PBXTargetDependency */,
+				17C050011326BAB4001C96CF /* PBXTargetDependency */,
+				17C050031326BAB4001C96CF /* PBXTargetDependency */,
+			);
+			name = "build all";
+			productName = "build all";
+			productReference = 17C04FD71326BA9D001C96CF /* libbuild all.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		17F1D85312F88A14008D39E8 /* isgl3dpodimporter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17F1D85D12F88A2F008D39E8 /* Build configuration list for PBXNativeTarget "isgl3dpodimporter" */;
@@ -4215,6 +4416,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				17C04FD61326BA9D001C96CF /* build all */,
 				D2AAC07D0554694100DB518D /* isgl3d */,
 				17F1D85312F88A14008D39E8 /* isgl3dpodimporter */,
 				17F1D86112F88A4A008D39E8 /* isgl3dbullet */,
@@ -4864,6 +5066,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C04FD41326BA9D001C96CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1D85112F88A14008D39E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5277,6 +5486,111 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17801A48131A955A0045803F /* PBXContainerItemProxy */;
+		};
+		17C04FDB1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F1E06A12F89091008D39E8 /* Accelerometer */;
+			targetProxy = 17C04FDA1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FDD1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F7A83C12FA0BB000C7BB82 /* CameraMovement */;
+			targetProxy = 17C04FDC1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FDF1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1762371712F9CE06008CDB4B /* CameraZoomAndFocus */;
+			targetProxy = 17C04FDE1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FE11326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F7A87012FA0D6100C7BB82 /* Lighting */;
+			targetProxy = 17C04FE01326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FE31326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17801A46131A955A0045803F /* Occlusion */;
+			targetProxy = 17C04FE21326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FE51326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731213D12FB3D6500861D84 /* ParticleSystem */;
+			targetProxy = 17C04FE41326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FE71326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731217812FB562900861D84 /* PhysicsTest */;
+			targetProxy = 17C04FE61326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FE91326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173121B312FB58A000861D84 /* PODTest */;
+			targetProxy = 17C04FE81326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FEB1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731225812FC764100861D84 /* PrimitivesDemo */;
+			targetProxy = 17C04FEA1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FED1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731229B12FC797300861D84 /* ShadowMappingTest */;
+			targetProxy = 17C04FEC1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FEF1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173122D612FC7B9300861D84 /* SkinningTest */;
+			targetProxy = 17C04FEE1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FF11326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731232012FC7DFA00861D84 /* TerrainMeshTest */;
+			targetProxy = 17C04FF01326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FF31326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731237412FC82BD00861D84 /* TextureOptionsTest */;
+			targetProxy = 17C04FF21326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FF51326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173123A212FC841000861D84 /* TweeningDemo */;
+			targetProxy = 17C04FF41326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FF71326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173123EC12FD627B00861D84 /* UIDemo */;
+			targetProxy = 17C04FF61326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FF91326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB84913195C65003712F4 /* CubeOverCamera */;
+			targetProxy = 17C04FF81326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FFB1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB8D713196403003712F4 /* Tutorial1 */;
+			targetProxy = 17C04FFA1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FFD1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB90913196613003712F4 /* Tutorial2 */;
+			targetProxy = 17C04FFC1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C04FFF1326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB92F131966E7003712F4 /* Tutorial3 */;
+			targetProxy = 17C04FFE1326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C050011326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB951131967C1003712F4 /* Tutorial4 */;
+			targetProxy = 17C050001326BAB4001C96CF /* PBXContainerItemProxy */;
+		};
+		17C050031326BAB4001C96CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB97C13196880003712F4 /* Tutorial5 */;
+			targetProxy = 17C050021326BAB4001C96CF /* PBXContainerItemProxy */;
 		};
 		17F1E07E12F89333008D39E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6181,6 +6495,33 @@
 			};
 			name = Release;
 		};
+		17C04FD81326BA9D001C96CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				PRODUCT_NAME = "build all";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17C04FD91326BA9D001C96CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PREBINDING = NO;
+				PRODUCT_NAME = "build all";
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		17F1D85512F88A14008D39E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6607,6 +6948,15 @@
 			buildConfigurations = (
 				17801A5D131A955A0045803F /* Debug */,
 				17801A5E131A955A0045803F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C050081326BAE6001C96CF /* Build configuration list for PBXNativeTarget "build all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C04FD81326BA9D001C96CF /* Debug */,
+				17C04FD91326BA9D001C96CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

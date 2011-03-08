@@ -27,7 +27,6 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "Isgl3dTouchScreenResponder.h"
 
-@class Isgl3dView3D;
 @class UITouch;
 
 /**
@@ -39,10 +38,8 @@
  * Touch events are forwarded here from the Isgl3dGLView3D (which inherits from UIView): the standard UIResponder methods
  * for touches are therefore available.
  * 
- * When using the Isgl3dTouchScreen, a call to setupWithView must be made during the initialisation of the application.
  */
 @interface Isgl3dTouchScreen : NSObject  {
-	Isgl3dView3D * _view;
 	
 	NSMutableArray * _responders;
 }
@@ -59,12 +56,6 @@
  * must be made again.
  */
 + (void) resetInstance;
-
-/**
- * Initialises the Isgl3dTouchScreen withe the Isgl3dView3D.
- * @param view the Isgl3dView3D.
- */
-- (void) setupWithView:(Isgl3dView3D *)view;
 
 /*
  * Adds a new object that implements the Isgl3dTouchScreenResponder protocol to the array of responders. All touch events
@@ -102,12 +93,5 @@
  * @param event An object representing the event to which the touches belong.
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-
-/**
- * Returns the location in the view for a particular UITouch.
- * @param touch The UITouch.
- * @return the location on the display as a CGPoint.
- */
-- (CGPoint) locationInView:(UITouch *)touch;
 
 @end

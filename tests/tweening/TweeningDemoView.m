@@ -75,7 +75,7 @@
 	_sphere1.transparent = YES;
 	
 	// Add an event filter for single touch events
-	_eventFilter = [[Isgl3dSingleTouchFilter alloc] initWithObject:_sphere1 andView:self];
+	_eventFilter = [[Isgl3dSingleTouchFilter alloc] initWithObject:_sphere1];
 	[_eventFilter addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 	[_eventFilter addEvent3DListener:self method:@selector(objectMoved:) forEventType:MOVE_EVENT];
 	[_eventFilter addEvent3DListener:self method:@selector(objectReleased:) forEventType:RELEASE_EVENT];

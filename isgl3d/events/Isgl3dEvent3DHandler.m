@@ -71,7 +71,7 @@
 
 	// Iterate over all touches
 	for (UITouch * touch in touches) {
-		CGPoint point = [touch locationInView:_view3D];
+		CGPoint point = [touch locationInView:touch.view];
 		
 		unsigned int eventX = (unsigned int)point.x;
 		unsigned int eventY = (unsigned int)point.y;
@@ -92,7 +92,7 @@
 				touchedObject = [[Isgl3dTouchedObject3D alloc] initWithObject:object];
 				[_touchedObjects addObject:[touchedObject autorelease]];
 			}
-			[touchedObject addTouch:touch view:_view3D];
+			[touchedObject addTouch:touch];
 		}
 		
 	}
@@ -121,11 +121,11 @@
 	for (UITouch * touch in touches) {
 		
 		// Find TouchedObject that has previous position equal to previous position of touch (has moved)
-		touchedObject = [self touchedObjectForLocation:NSStringFromCGPoint([touch previousLocationInView:_view3D])];
+		touchedObject = [self touchedObjectForLocation:NSStringFromCGPoint([touch previousLocationInView:touch.view])];
 		
 		// Create new touched object if necessary, associate touch with it
 		if (touchedObject != nil) {
-			[touchedObject moveTouch:touch view:_view3D];
+			[touchedObject moveTouch:touch];
 		}
 		
 	}
@@ -151,16 +151,16 @@
 	for (UITouch * touch in touches) {
 		
 		// Find TouchedObject that has previous position equal to current position of touch (not moved)
-		touchedObject = [self touchedObjectForLocation:NSStringFromCGPoint([touch locationInView:_view3D])];
+		touchedObject = [self touchedObjectForLocation:NSStringFromCGPoint([touch locationInView:touch.view])];
 		
 		// If not found, try previous location (iphone seems a bit funny about this)
 		if (touchedObject == nil) {
-			touchedObject = [self touchedObjectForLocation:NSStringFromCGPoint([touch previousLocationInView:_view3D])];
+			touchedObject = [self touchedObjectForLocation:NSStringFromCGPoint([touch previousLocationInView:touch.view])];
 		}
 		
 		// Create new touched object if necessary, associate touch with it
 		if (touchedObject != nil) {
-			[touchedObject removeTouch:touch view:_view3D];
+			[touchedObject removeTouch:touch];
 		}
 		
 	}

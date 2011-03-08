@@ -40,9 +40,9 @@
 }
 
 - (id) initWithObject:(Isgl3dGLObject3D *)object;
-- (void) addTouch:(UITouch *)touch view:(UIView *)view;
-- (void) removeTouch:(UITouch *)touch view:(UIView *)view;
-- (void) moveTouch:(UITouch *)touch view:(UIView *)view;
+- (void) addTouch:(UITouch *)touch;
+- (void) removeTouch:(UITouch *)touch;
+- (void) moveTouch:(UITouch *)touch;
 
 - (BOOL) respondsToObject:(Isgl3dGLObject3D *)object;
 - (BOOL) respondsToLocation:(NSString *)location;

@@ -41,11 +41,7 @@ static Isgl3dTouchScreen * _instance = nil;
 }
 
 - (void) dealloc {
-	if (_view) {
-		[_view release];
-		_view = nil;
-	}
-	
+
 	[_responders release];
     [super dealloc];
 }
@@ -66,19 +62,6 @@ static Isgl3dTouchScreen * _instance = nil;
 		[_instance release];
 		_instance = nil;
 	}
-}
-
-- (void) setupWithView:(Isgl3dView3D *)view {
-	if (_view != view) {
-		if (_view) {
-			[_view release];
-			_view = nil;
-		}
-		
-		if (view) {
-			_view = [view retain];
-		}
-	} 
 }
 
 - (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder {
@@ -106,10 +89,5 @@ static Isgl3dTouchScreen * _instance = nil;
 		[responder touchesEnded:touches withEvent:event];
 	}
 }
-
-- (CGPoint) locationInView:(UITouch *)touch {
-	return [touch locationInView:_view];
-}
-
 
 @end

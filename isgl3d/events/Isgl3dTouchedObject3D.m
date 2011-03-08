@@ -53,17 +53,17 @@
     [super dealloc];
 }
 
-- (void) addTouch:(UITouch *)touch view:(UIView *)view {
+- (void) addTouch:(UITouch *)touch {
 	[_newTouches addObject:touch];
-	[_previousLocations addObject:NSStringFromCGPoint([touch locationInView:view])];
+	[_previousLocations addObject:NSStringFromCGPoint([touch locationInView:touch.view])];
 }
 
-- (void) removeTouch:(UITouch *)touch view:(UIView *)view {
+- (void) removeTouch:(UITouch *)touch {
 
 	// Find touch at CURRENT location (touch has not moved)
 	NSString * previousLocation;
 	for (previousLocation in _previousLocations) {
-		if ([self areTheSamePoints:[touch locationInView:view] point2:previousLocation]) {
+		if ([self areTheSamePoints:[touch locationInView:touch.view] point2:previousLocation]) {
 			break;
 		}
 	}
@@ -71,7 +71,7 @@
 	// Try the touche's previous location if not found (iphone funny behaviour)
 	if (previousLocation == nil) {
 		for (previousLocation in _previousLocations) {
-			if ([self areTheSamePoints:[touch previousLocationInView:view] point2:previousLocation]) {
+			if ([self areTheSamePoints:[touch previousLocationInView:touch.view] point2:previousLocation]) {
 				break;
 			}
 		}
@@ -84,12 +84,12 @@
 	}
 }
 
-- (void) moveTouch:(UITouch *)touch view:(UIView *)view  {
+- (void) moveTouch:(UITouch *)touch  {
 
 	// Find touch at PREVIOUS location (touch HAS moved)
 	NSString * previousLocation;
 	for (previousLocation in _previousLocations) {
-		if ([self areTheSamePoints:[touch previousLocationInView:view] point2:previousLocation]) {
+		if ([self areTheSamePoints:[touch previousLocationInView:touch.view] point2:previousLocation]) {
 			break;
 		}
 	}
@@ -98,7 +98,7 @@
 	if (previousLocation != nil) {
 		[_newTouches addObject:touch];
 		[_previousLocations removeObject:previousLocation];
-		[_previousLocations addObject:NSStringFromCGPoint([touch locationInView:view])];
+		[_previousLocations addObject:NSStringFromCGPoint([touch locationInView:touch.view])];
 	}
 	
 }
