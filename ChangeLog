@@ -1,4 +1,9 @@
 current SVN version
+	Xcode: added target to build all
+	Isgl3d events: remove dependency on Isgl3dView3D
+	OpenGL ES 2.0: generic shader runtime behaviour fixes (appearing in iOS 4.2?). All but spot-lighting working.
+	Isgl3dColorMaterial: properties for colors and shininess
+	Isgl3dCamera: remove dependency on Isgl3dView3D
 
 version 1.1.2 (2011-02-28)
 	Fixed bug in orthographic projection matrix when in portrait mode

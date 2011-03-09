@@ -32,23 +32,27 @@
 
 @synthesize animating;
 
-- (void) loadView {
+- (id) initWithNibName:(NSString *)nibName bundle:(NSBundle *)bundle {
+	if ((self = [super initWithNibName:nibName bundle:bundle])) {
 	
-    animating = FALSE;
-    displayLinkSupported = FALSE;
-    animationFrameInterval = 1;
-    displayLink = nil;
-    animationTimer = nil;
-    
-    // Use of CADisplayLink requires iOS version 3.1 or greater.
-	// The NSTimer object is used as fallback when it isn't available.
-    NSString *reqSysVer = @"3.1";
-    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
-    if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
-        displayLinkSupported = TRUE;
-    }
-    
+	    animating = FALSE;
+	    displayLinkSupported = FALSE;
+	    animationFrameInterval = 1;
+	    displayLink = nil;
+	    animationTimer = nil;
+	    
+	    // Use of CADisplayLink requires iOS version 3.1 or greater.
+		// The NSTimer object is used as fallback when it isn't available.
+	    NSString *reqSysVer = @"3.1";
+	    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+	    if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
+	        displayLinkSupported = TRUE;
+	    }		
+	}
+	
+	return self;
 }
+
 
 - (void)dealloc {    
     [super dealloc];
