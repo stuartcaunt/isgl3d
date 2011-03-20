@@ -61,19 +61,19 @@
 	// Create a button to calibrate the accelerometer
 	Isgl3dTextureMaterial * calibrateButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"angle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
 	Isgl3dGLUIButton * calibrateButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[calibrateButtonMaterial autorelease]];
-	[ui addComponent:calibrateButton];
+	[ui addComponent:[calibrateButton autorelease]];
 	[calibrateButton setX:8 andY:8];
 
 	// Create a button to pause the scene
 	Isgl3dTextureMaterial * pauseButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pause.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
 	Isgl3dGLUIButton * pauseButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[pauseButtonMaterial autorelease]];
-	[ui addComponent:pauseButton];
+	[ui addComponent:[pauseButton autorelease]];
 	[calibrateButton setX:400 andY:8];
 
 	// Create a button to allow movement of the camera
 	Isgl3dTextureMaterial * cameraButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"camera.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
 	Isgl3dGLUIButton * cameraButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[cameraButtonMaterial autorelease]];
-	[ui addComponent:cameraButton];
+	[ui addComponent:[cameraButton autorelease]];
 	[cameraButton setX:400 andY:260];
 
 	// Activate the ui
