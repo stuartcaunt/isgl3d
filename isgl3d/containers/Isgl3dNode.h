@@ -40,9 +40,11 @@
 @class Isgl3dCamera;
 @class Isgl3dLight;
 @class Isgl3dParticleNode;
+@class Isgl3dBillboardNode;
 @class Isgl3dMaterial;
 @class Isgl3dGLMesh;
 @class Isgl3dGLParticle;
+@class Isgl3dBillboard;
 @class Isgl3dGLRenderer;
 
 /**
@@ -176,6 +178,14 @@
  * @return (autorelease) The created node.
  */
 - (Isgl3dParticleNode *) createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
+
+/**
+ * Utility method to create an Isgl3dBillboardNode and add it as a child.
+ * @param billboard The billboard to be rendered.
+ * @param material The material to be displayed on the particle.
+ * @return (autorelease) The created node.
+ */
+- (Isgl3dBillboardNode *) createNodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Utility method to create an Isgl3dSkeletonNode and add it as a child.

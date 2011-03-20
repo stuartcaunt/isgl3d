@@ -26,6 +26,7 @@
 #import "Isgl3dNode.h"
 #import "Isgl3dMeshNode.h"
 #import "Isgl3dParticleNode.h"
+#import "Isgl3dBillboardNode.h"
 #import "Isgl3dFollowNode.h"
 #import "Isgl3dSkeletonNode.h"
 #import "Isgl3dCamera.h"
@@ -89,6 +90,10 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 
 - (Isgl3dParticleNode *) createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
 	return (Isgl3dParticleNode *)[[self addChild:[[Isgl3dParticleNode alloc] initWithParticle:particle andMaterial:material]] autorelease];
+}
+
+- (Isgl3dBillboardNode *) createNodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
+	return (Isgl3dBillboardNode *)[[self addChild:[[Isgl3dBillboardNode alloc] initWithBillboard:billboard andMaterial:material]] autorelease];
 }
 
 - (Isgl3dSkeletonNode *) createSkeletonNode {

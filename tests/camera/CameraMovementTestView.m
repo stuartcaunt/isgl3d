@@ -56,7 +56,7 @@
 	[super initScene];
 	
 	// Create the sphere
-	Isgl3dTextureMaterial * material = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"isgl_logo.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	Isgl3dTextureMaterial * material = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"isgl3d_logo.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
 	Isgl3dCube * cubeMesh = [[Isgl3dCube alloc] initWithGeometry:2 height:2 depth:2 nx:2 ny:2];
 	[_scene createNodeWithMesh:[cubeMesh autorelease] andMaterial:[material autorelease]];
 	

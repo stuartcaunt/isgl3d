@@ -478,7 +478,6 @@
 		173122AF12FC797300861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		173122B912FC79A600861D84 /* ShadowMappingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 173122B812FC79A600861D84 /* ShadowMappingTestView.m */; };
 		173122BB12FC79BF00861D84 /* hostel.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122BA12FC79BF00861D84 /* hostel.png */; };
-		173122CC12FC7A3100861D84 /* isgl_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A86812FA0C3D00C7BB82 /* isgl_logo.png */; };
 		173122DC12FC7B9300861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		173122E112FC7B9300861D84 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
 		173122E212FC7B9300861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -763,6 +762,34 @@
 		17B7228212F8C8C000F80DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
 		17B7228412F8C8C000F80DFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		17B7228F12F8C9E000F80DFD /* AccelerometerDemoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */; };
+		17BE1732132E92A100D053BA /* Isgl3dBillboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BE1730132E92A100D053BA /* Isgl3dBillboard.h */; };
+		17BE1733132E92A100D053BA /* Isgl3dBillboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE1731132E92A100D053BA /* Isgl3dBillboard.m */; };
+		17BE1736132E92AF00D053BA /* Isgl3dBillboardNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */; };
+		17BE1737132E92AF00D053BA /* Isgl3dBillboardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */; };
+		17BE174A132E94E400D053BA /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		17BE174B132E94E400D053BA /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		17BE174C132E94E400D053BA /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		17BE174D132E94E400D053BA /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		17BE174E132E94E400D053BA /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		17BE174F132E94E400D053BA /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		17BE1750132E94E400D053BA /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		17BE1751132E94E400D053BA /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		17BE1752132E94E400D053BA /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
+		17BE1755132E94E400D053BA /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		17BE1756132E94E400D053BA /* Isgl3dDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731244E12FD6DB500861D84 /* Isgl3dDemoView.m */; };
+		17BE1757132E94E400D053BA /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
+		17BE1758132E94E400D053BA /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		17BE1759132E94E400D053BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		17BE175C132E94E400D053BA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		17BE175D132E94E400D053BA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		17BE175E132E94E400D053BA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		17BE175F132E94E400D053BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		17BE1760132E94E400D053BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		17BE1761132E94E400D053BA /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		17BE176B132E95BD00D053BA /* BillboardTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE176A132E95BD00D053BA /* BillboardTestView.m */; };
+		17BE17A3132E9A0B00D053BA /* isgl3d_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 17BE17A1132E99E000D053BA /* isgl3d_logo.png */; };
+		17BE17A8132E9A2100D053BA /* isgl3d_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 17BE17A1132E99E000D053BA /* isgl3d_logo.png */; };
+		17BE17AD132E9C8400D053BA /* billboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 17BE17AC132E9C8400D053BA /* billboard.png */; };
 		17F1D75512F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */; };
 		17F1D75612F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */; };
 		17F1D75712F87EC5008D39E8 /* Isgl3dAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */; };
@@ -1036,7 +1063,6 @@
 		17F7A84B12FA0BB000C7BB82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		17F7A84C12FA0BB000C7BB82 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17F7A85512FA0BD300C7BB82 /* CameraMovementTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F7A85412FA0BD300C7BB82 /* CameraMovementTestView.m */; };
-		17F7A86912FA0C3D00C7BB82 /* isgl_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A86812FA0C3D00C7BB82 /* isgl_logo.png */; };
 		17F7A87412FA0D6100C7BB82 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17F7A87612FA0D6100C7BB82 /* Isgl3dAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B256A12F9C03E000F8DF1 /* Isgl3dAppController.m */; };
 		17F7A87712FA0D6100C7BB82 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -1206,6 +1232,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
+		};
+		17BE1748132E94E400D053BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		17BE178E132E98B000D053BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17BE1746132E94E400D053BA /* BillboardTest */;
+			remoteInfo = BillboardTest;
 		};
 		17C04FDA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1788,6 +1828,15 @@
 		17B7228312F8C8C000F80DFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		17B7228D12F8C9E000F80DFD /* AccelerometerDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerDemoView.h; sourceTree = "<group>"; };
 		17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AccelerometerDemoView.mm; sourceTree = "<group>"; };
+		17BE1730132E92A100D053BA /* Isgl3dBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dBillboard.h; sourceTree = "<group>"; };
+		17BE1731132E92A100D053BA /* Isgl3dBillboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dBillboard.m; sourceTree = "<group>"; };
+		17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dBillboardNode.h; sourceTree = "<group>"; };
+		17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dBillboardNode.m; sourceTree = "<group>"; };
+		17BE1769132E95BD00D053BA /* BillboardTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillboardTestView.h; sourceTree = "<group>"; };
+		17BE176A132E95BD00D053BA /* BillboardTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillboardTestView.m; sourceTree = "<group>"; };
+		17BE1790132E98B100D053BA /* BillboardTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillboardTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17BE17A1132E99E000D053BA /* isgl3d_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = isgl3d_logo.png; sourceTree = "<group>"; };
+		17BE17AC132E9C8400D053BA /* billboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = billboard.png; sourceTree = "<group>"; };
 		17C04FD71326BA9D001C96CF /* libbuild all.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libbuild all.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimatedMeshNode.h; sourceTree = "<group>"; };
 		17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAnimatedMeshNode.m; sourceTree = "<group>"; };
@@ -2061,7 +2110,6 @@
 		17F7A85012FA0BB000C7BB82 /* CameraMovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraMovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7A85312FA0BD300C7BB82 /* CameraMovementTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraMovementTestView.h; sourceTree = "<group>"; };
 		17F7A85412FA0BD300C7BB82 /* CameraMovementTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraMovementTestView.m; sourceTree = "<group>"; };
-		17F7A86812FA0C3D00C7BB82 /* isgl_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = isgl_logo.png; sourceTree = "<group>"; };
 		17F7A88412FA0D6100C7BB82 /* Lighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F7A88812FA0D7F00C7BB82 /* LightingDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightingDemoView.h; sourceTree = "<group>"; };
 		17F7A88912FA0D7F00C7BB82 /* LightingDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightingDemoView.m; sourceTree = "<group>"; };
@@ -2316,6 +2364,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17BE175B132E94E400D053BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17BE175C132E94E400D053BA /* CoreGraphics.framework in Frameworks */,
+				17BE175D132E94E400D053BA /* OpenGLES.framework in Frameworks */,
+				17BE175E132E94E400D053BA /* QuartzCore.framework in Frameworks */,
+				17BE175F132E94E400D053BA /* UIKit.framework in Frameworks */,
+				17BE1760132E94E400D053BA /* Foundation.framework in Frameworks */,
+				17BE1761132E94E400D053BA /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17C04FD51326BA9D001C96CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2416,6 +2477,7 @@
 				171CB99413196880003712F4 /* Tutorial5.app */,
 				17801A5F131A955A0045803F /* Occlusion.app */,
 				17C04FD71326BA9D001C96CF /* libbuild all.a */,
+				17BE1790132E98B100D053BA /* BillboardTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2959,6 +3021,7 @@
 		176236EF12F9CA87008CDB4B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				17BE17AC132E9C8400D053BA /* billboard.png */,
 				171CB99A131968F9003712F4 /* SpaceStation.png */,
 				171CB99B131968F9003712F4 /* stars.png */,
 				171CB99C131968F9003712F4 /* ufo00.png */,
@@ -2991,7 +3054,7 @@
 				173121A412FB570200861D84 /* cardboard.jpg */,
 				173122FB12FC7BE000861D84 /* ground.png */,
 				173122BA12FC79BF00861D84 /* hostel.png */,
-				17F7A86812FA0C3D00C7BB82 /* isgl_logo.png */,
+				17BE17A1132E99E000D053BA /* isgl3d_logo.png */,
 				1731223D12FB59BE00861D84 /* kettle.bmp */,
 				173122FC12FC7BE000861D84 /* Legs.pvr */,
 				17F7A89B12FA0DF100C7BB82 /* mars.png */,
@@ -3026,10 +3089,29 @@
 			path = occlusion;
 			sourceTree = "<group>";
 		};
+		17BE172F132E92A100D053BA /* billboards */ = {
+			isa = PBXGroup;
+			children = (
+				17BE1730132E92A100D053BA /* Isgl3dBillboard.h */,
+				17BE1731132E92A100D053BA /* Isgl3dBillboard.m */,
+			);
+			path = billboards;
+			sourceTree = "<group>";
+		};
+		17BE1768132E95BD00D053BA /* billboard */ = {
+			isa = PBXGroup;
+			children = (
+				17BE1769132E95BD00D053BA /* BillboardTestView.h */,
+				17BE176A132E95BD00D053BA /* BillboardTestView.m */,
+			);
+			path = billboard;
+			sourceTree = "<group>";
+		};
 		17F1D66112F87EC5008D39E8 /* isgl3d */ = {
 			isa = PBXGroup;
 			children = (
 				17F1D66212F87EC5008D39E8 /* animators */,
+				17BE172F132E92A100D053BA /* billboards */,
 				17F1D66D12F87EC5008D39E8 /* cameras */,
 				17F1D67412F87EC5008D39E8 /* containers */,
 				17F1D68312F87EC5008D39E8 /* core */,
@@ -3081,6 +3163,8 @@
 		17F1D67412F87EC5008D39E8 /* containers */ = {
 			isa = PBXGroup;
 			children = (
+				17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */,
+				17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */,
 				17F1D67512F87EC5008D39E8 /* Isgl3dFollowNode.h */,
 				17F1D67612F87EC5008D39E8 /* Isgl3dFollowNode.m */,
 				17F1D67712F87EC5008D39E8 /* Isgl3dMeshNode.h */,
@@ -3521,6 +3605,7 @@
 		17F1E05B12F88FFA008D39E8 /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				17BE1768132E95BD00D053BA /* billboard */,
 				17F1E07812F89324008D39E8 /* accelerometer */,
 				171CB86B13195D0C003712F4 /* augmentedreality */,
 				1762372112F9CE31008CDB4B /* camera */,
@@ -3919,6 +4004,8 @@
 				17F1D82A12F87EC5008D39E8 /* Isgl3dLog.h in Headers */,
 				17F1D82C12F87EC5008D39E8 /* Isgl3dUShortArray.h in Headers */,
 				1780214C131AC1FA0045803F /* Isgl3dFpsDisplay.h in Headers */,
+				17BE1732132E92A100D053BA /* Isgl3dBillboard.h in Headers */,
+				17BE1736132E92AF00D053BA /* Isgl3dBillboardNode.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4252,6 +4339,24 @@
 			productReference = 17801A5F131A955A0045803F /* Occlusion.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17BE1746132E94E400D053BA /* BillboardTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17BE1762132E94E400D053BA /* Build configuration list for PBXNativeTarget "BillboardTest" */;
+			buildPhases = (
+				17BE1749132E94E400D053BA /* Resources */,
+				17BE1754132E94E400D053BA /* Sources */,
+				17BE175B132E94E400D053BA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17BE1747132E94E400D053BA /* PBXTargetDependency */,
+			);
+			name = BillboardTest;
+			productName = CameraZoomAndFocus;
+			productReference = 17BE1790132E98B100D053BA /* BillboardTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 		17C04FD61326BA9D001C96CF /* build all */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C050081326BAE6001C96CF /* Build configuration list for PBXNativeTarget "build all" */;
@@ -4284,6 +4389,7 @@
 				17C04FFF1326BAB4001C96CF /* PBXTargetDependency */,
 				17C050011326BAB4001C96CF /* PBXTargetDependency */,
 				17C050031326BAB4001C96CF /* PBXTargetDependency */,
+				17BE178F132E98B000D053BA /* PBXTargetDependency */,
 			);
 			name = "build all";
 			productName = "build all";
@@ -4441,6 +4547,7 @@
 				171CB92F131966E7003712F4 /* Tutorial3 */,
 				171CB951131967C1003712F4 /* Tutorial4 */,
 				171CB97C13196880003712F4 /* Tutorial5 */,
+				17BE1746132E94E400D053BA /* BillboardTest */,
 			);
 		};
 /* End PBXProject section */
@@ -4648,13 +4755,13 @@
 			files = (
 				17A95EDF1325757C00D06694 /* capture.fsh in Resources */,
 				17A95EE01325757C00D06694 /* capture.vsh in Resources */,
+				17BE17A8132E9A2100D053BA /* isgl3d_logo.png in Resources */,
 				17A95EE11325757C00D06694 /* generic.fsh in Resources */,
 				17A95EE21325757C00D06694 /* generic.vsh in Resources */,
 				17A95EE31325757C00D06694 /* particle.fsh in Resources */,
 				17A95EE41325757C00D06694 /* particle.vsh in Resources */,
 				17A95EE51325757C00D06694 /* shadowMap.fsh in Resources */,
 				17A95EE61325757C00D06694 /* shadowMap.vsh in Resources */,
-				173122CC12FC7A3100861D84 /* isgl_logo.png in Resources */,
 				1731229F12FC797300861D84 /* isgl3d.plist in Resources */,
 				173122A012FC797300861D84 /* mars.png in Resources */,
 				173122BB12FC79BF00861D84 /* hostel.png in Resources */,
@@ -4787,6 +4894,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17BE1749132E94E400D053BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17BE174A132E94E400D053BA /* capture.fsh in Resources */,
+				17BE174B132E94E400D053BA /* capture.vsh in Resources */,
+				17BE174C132E94E400D053BA /* generic.fsh in Resources */,
+				17BE174D132E94E400D053BA /* generic.vsh in Resources */,
+				17BE174E132E94E400D053BA /* particle.fsh in Resources */,
+				17BE174F132E94E400D053BA /* particle.vsh in Resources */,
+				17BE1750132E94E400D053BA /* shadowMap.fsh in Resources */,
+				17BE1751132E94E400D053BA /* shadowMap.vsh in Resources */,
+				17BE1752132E94E400D053BA /* isgl3d.plist in Resources */,
+				17BE17AD132E9C8400D053BA /* billboard.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1E06712F89091008D39E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4812,6 +4936,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17BE17A3132E9A0B00D053BA /* isgl3d_logo.png in Resources */,
 				17A95EA71325753200D06694 /* capture.fsh in Resources */,
 				17A95EA81325753200D06694 /* capture.vsh in Resources */,
 				17A95EA91325753200D06694 /* generic.fsh in Resources */,
@@ -4821,7 +4946,6 @@
 				17A95EAD1325753200D06694 /* shadowMap.fsh in Resources */,
 				17A95EAE1325753200D06694 /* shadowMap.vsh in Resources */,
 				17F7A84012FA0BB000C7BB82 /* isgl3d.plist in Resources */,
-				17F7A86912FA0C3D00C7BB82 /* isgl_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5063,6 +5187,19 @@
 				17801A52131A955A0045803F /* Isgl3dViewController.m in Sources */,
 				17801A53131A955A0045803F /* main.m in Sources */,
 				17801A65131A959D0045803F /* OcclusionDemoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17BE1754132E94E400D053BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17BE1755132E94E400D053BA /* Isgl3dDemoCameraController.m in Sources */,
+				17BE1756132E94E400D053BA /* Isgl3dDemoView.m in Sources */,
+				17BE1757132E94E400D053BA /* Isgl3dAppController.m in Sources */,
+				17BE1758132E94E400D053BA /* Isgl3dViewController.m in Sources */,
+				17BE1759132E94E400D053BA /* main.m in Sources */,
+				17BE176B132E95BD00D053BA /* BillboardTestView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5371,6 +5508,8 @@
 				17F1D82B12F87EC5008D39E8 /* Isgl3dLog.m in Sources */,
 				17F1D82D12F87EC5008D39E8 /* Isgl3dUShortArray.m in Sources */,
 				1780214D131AC1FA0045803F /* Isgl3dFpsDisplay.m in Sources */,
+				17BE1733132E92A100D053BA /* Isgl3dBillboard.m in Sources */,
+				17BE1737132E92AF00D053BA /* Isgl3dBillboardNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5486,6 +5625,16 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17801A48131A955A0045803F /* PBXContainerItemProxy */;
+		};
+		17BE1747132E94E400D053BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 17BE1748132E94E400D053BA /* PBXContainerItemProxy */;
+		};
+		17BE178F132E98B000D053BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17BE1746132E94E400D053BA /* BillboardTest */;
+			targetProxy = 17BE178E132E98B000D053BA /* PBXContainerItemProxy */;
 		};
 		17C04FDB1326BAB4001C96CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5646,7 +5795,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5655,7 +5804,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = Accelerometer;
+				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5695,7 +5844,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5704,7 +5853,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5744,7 +5893,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy 2.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5753,7 +5902,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5793,7 +5942,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5802,7 +5951,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5842,7 +5991,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy 2.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5851,7 +6000,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5891,7 +6040,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5900,7 +6049,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5940,7 +6089,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5949,7 +6098,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -5990,7 +6139,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -5999,7 +6148,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6039,7 +6188,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6048,7 +6197,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6088,7 +6237,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6097,7 +6246,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6137,7 +6286,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6146,7 +6295,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6186,7 +6335,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6195,7 +6344,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6235,7 +6384,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy 2.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6244,7 +6393,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6284,7 +6433,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6293,7 +6442,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6333,7 +6482,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy 2.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6342,7 +6491,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6382,7 +6531,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6391,7 +6540,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6431,7 +6580,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "CameraZoomAndFocus-Info.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6480,7 +6629,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6489,7 +6638,57 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Occlusion;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		17BE1763132E94E400D053BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = BillboardTest;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17BE1764132E94E400D053BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info2.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = BillboardTest;
+				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6614,7 +6813,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Accelerometer-Info.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6663,7 +6862,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6672,7 +6871,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6712,7 +6911,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Info copy.plist";
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -6721,7 +6920,7 @@
 					UIKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = CameraZoomAndFocus;
+				PRODUCT_NAME = Lighting;
 				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -6948,6 +7147,15 @@
 			buildConfigurations = (
 				17801A5D131A955A0045803F /* Debug */,
 				17801A5E131A955A0045803F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17BE1762132E94E400D053BA /* Build configuration list for PBXNativeTarget "BillboardTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17BE1763132E94E400D053BA /* Debug */,
+				17BE1764132E94E400D053BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
