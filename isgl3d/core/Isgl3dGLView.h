@@ -42,8 +42,10 @@
  * animation: at each frame a call to drawView must be called. For user-specific updates to the scene and 
  * event handling, the updateScene method should be overridden.
  * 
- * @deprecated Will be removed in v1.2
+ * WARNING: This class is deprecated and will be removed in v1.2
  * This class has been replaced by Isgl3dView, used in conjunction with Isgl3dDirector.
+ * 
+ * @deprecated Will be removed in v1.2
  */ 
 @interface Isgl3dGLView : UIView {
 	    

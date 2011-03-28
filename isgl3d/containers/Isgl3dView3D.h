@@ -64,8 +64,10 @@
  * the Isgl3dTouchScreen for user-defined call-backs. It is also possible to override these methods but the super methods must always
  * be called first to ensure correct functionign of iSGL3D.
  * 
- * @deprecated Will be removed in v1.2
+ * WARNING: This class is deprecated and will be removed in v1.2
  * This class has been replaced by Isgl3dView, used in conjunction with Isgl3dDirector.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 @interface Isgl3dView3D : Isgl3dGLView {
 

@@ -39,8 +39,9 @@
  * 
  * The position of the label is set automatically but can be modified by the user.
  * 
+ * WARNING: This class is deprecated and will be removed in v1.2
+ * 
  * @deprecated Will be removed in v1.2
- * The fps display is handled automatically by the Isgl3dDirector.
  */
 @interface Isgl3dFpsDisplay : NSObject {
 

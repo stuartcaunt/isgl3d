@@ -231,6 +231,7 @@
  * Initialises the camera with an Isgl3dView3D object.
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
+ * WARNING: This method is deprecated and will be removed in v1.2.
  * @param view The view to be used by the camera (provides width and height).
  * 
  * @deprecated Will be removed in v1.2
@@ -249,6 +250,7 @@
 /**
  * Initialises the camera with user-defined geometry.
  * Perspective projection is used as default.
+ * WARNING: This method is deprecated and will be removed in v1.2.
  * @param view The view to be used by the camera (provides width and height).
  * @param x The x position of the camera.
  * @param y The y position of the camera.
@@ -289,6 +291,7 @@
 
 /**
  * Sets the camera in projective projection mode with the given parameters.
+ * WARNING: This method is deprecated and will be removed in v1.2.
  * @param fovy The field of view in the y direction.
  * @param near The near value (closer than this an objects won't be rendered).
  * @param far The far value (further than this an objects won't be rendered).
@@ -309,6 +312,7 @@
 
 /**
  * Sets the camera in orthographics projection mode.
+ * WARNING: This method is deprecated and will be removed in v1.2.
  * @param left The left value (Objects to the left of this won't be rendered).
  * @param right The right value (Objects to the right of this won't be rendered).
  * @param bottom The bottom value (Objects below this won't be rendered).

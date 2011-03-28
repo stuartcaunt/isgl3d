@@ -71,6 +71,7 @@
 
 /**
  * Calculates a projection matrix for a perspective view.
+ * WARNING: This method is deprecated and will be removed in v1.2.
  * @param fovy The field of view in the y direction.
  * @param aspect The aspect ratio of the display.
  * @param near The nearest distance along the z-axis for which elements are rendered.
@@ -95,6 +96,7 @@
 
 /**
  * Calculates a projection matrix for an orthographic view.
+ * WARNING: This method is deprecated and will be removed in v1.2.
  * @param left The left-most position along the x-axis for which elements are rendered. 
  * @param right The right-most position along the x-axis for which elements are rendered. 
  * @param bottom The bottom-most position along the y-axis for which elements are rendered. 

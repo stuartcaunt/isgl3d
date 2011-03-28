@@ -44,8 +44,8 @@
  * order in which they are added to ther Isgl3dDirector. 
  * 
  * Device orientation is set through the Isgl3dDirector. Each Isgl3dView can have its own separate orientation, the resulting orientation
- * being the combination of the two. For example the device can have an orientation of 90¡ clockwise and a view also of 90¡ clockwise: the
- * resulting orientation of the view is 180¡ relative to the default portrait orientation of the device.
+ * being the combination of the two. For example the device can have an orientation of 90 degrees clockwise and a view also of 90 degrees clockwise: the
+ * resulting orientation of the view is 180 degrees relative to the default portrait orientation of the device.
  * 
  * The Isgl3dDirector can be set to display the FPS of the application. It also allows for a background color to be set. Individual views
  * can override this by having their own background color set.
