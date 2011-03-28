@@ -1,4 +1,6 @@
 current SVN version
+
+version 1.1.3 (2011-03-28)
 	Architecture changes with Isgl3dDirector and Isgl3dView:
 		Isgl3dDirector: added - singleton for application control, manging animation, rendering, event handling, device rotation, etc
 		Isgl3dView: added - replaces Isgl3dView3D and Isgl3dGLView (with help of Isgl3dDirector). Contains a camera, scene and viewport.
