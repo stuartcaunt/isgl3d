@@ -41,7 +41,7 @@
 
 - (id)initWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_radius = radius;
 		_longs = longs;
 		_lats = lats;

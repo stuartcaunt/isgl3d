@@ -23,20 +23,24 @@
  *
  */
 
-@class Isgl3dViewController;
-@class Isgl3dView3D;
+#import "isgl3d.h"
 
-@interface Isgl3dAppController : NSObject <UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate, UIApplicationDelegate> {
+@class SandboxCameraController;
 
-@private
-    Isgl3dViewController * _viewController;
-
-	UIWindow * _window;
+@interface SandboxOcclusionView : Isgl3dBasic3DView {
+	
+	Isgl3dNode * _container;
+	SandboxCameraController * _cameraController;
 }
 
-@property (readonly, nonatomic) UIWindow * window; 
-@property (readonly, nonatomic) Isgl3dViewController * viewController; 
-
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
-
 @end
+
+
+/*
+ * Principal class to be instantiated in main.h. 
+ */
+#import "SandboxAppDelegate.h"
+@interface AppDelegate : SandboxAppDelegate
+- (void) createViews;
+@end
+

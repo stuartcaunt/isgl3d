@@ -43,7 +43,7 @@
 }
 
 - (id) initWithObject:(id)object forParameters:(NSDictionary *)parameters {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_object = object;
 		_startTime = [[NSDate alloc] init];
 		_isCompleted = NO;

@@ -14,7 +14,6 @@ or via the user group at http://groups.google.com/group/isgl3d
 Priority
 --------
   - Support for retina display
-  - redo architecture for view/scenes... like layers? Make view3d shared instance.
   - redo vectors/matrices using simple structures for performance (use miniVec, miniMat as principal elements)
 
 Desirable

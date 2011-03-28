@@ -38,7 +38,7 @@
 
 - (id)initWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_radiusX = radiusX;
 		_radiusY = radiusY;
 		_radiusZ = radiusZ;

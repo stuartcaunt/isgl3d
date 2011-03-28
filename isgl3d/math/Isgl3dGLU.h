@@ -25,6 +25,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "isgl3dTypes.h"
+
 @class Isgl3dMatrix4D;
 
 /**
@@ -75,8 +77,21 @@
  * @param far the furthest distance along the z-axis for which elements are rendered.
  * @param zoom The zoom factor.
  * @param landscape indicates whether the device is in landscape more or not. 
+ * 
+ * @deprecated Will be removed in v1.2
  */
 + (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
+
+/**
+ * Calculates a projection matrix for a perspective view.
+ * @param fovy The field of view in the y direction.
+ * @param aspect The aspect ratio of the display.
+ * @param near The nearest distance along the z-axis for which elements are rendered.
+ * @param far the furthest distance along the z-axis for which elements are rendered.
+ * @param zoom The zoom factor.
+ * @param orientation indicates the rotation (about z) for the projection. 
+ */
++ (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
 
 /**
  * Calculates a projection matrix for an orthographic view.
@@ -87,8 +102,23 @@
  * @param near The nearest distance along the z-axis for which elements are rendered.
  * @param far the furthest distance along the z-axis for which elements are rendered.
  * @param zoom The zoom factor.
- * @param landscape indicates whether the device is in landscape more or not. 
+ * @param landscape indicates whether the device is in landscape more or not.
+ *  
+ * @deprecated Will be removed in v1.2
  */
 + (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
+
+/**
+ * Calculates a projection matrix for an orthographic view.
+ * @param left The left-most position along the x-axis for which elements are rendered. 
+ * @param right The right-most position along the x-axis for which elements are rendered. 
+ * @param bottom The bottom-most position along the y-axis for which elements are rendered. 
+ * @param top The top-most position along the y-axis for which elements are rendered. 
+ * @param near The nearest distance along the z-axis for which elements are rendered.
+ * @param far the furthest distance along the z-axis for which elements are rendered.
+ * @param zoom The zoom factor.
+ * @param orientation indicates the rotation (about z) for the projection. 
+ */
++ (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
 
 @end

@@ -35,7 +35,7 @@
 
 
 - (id) initWithView:(Isgl3dView3D *)view {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_view = [view retain];
 		
 
@@ -71,19 +71,14 @@
 	[renderer setProjectionMatrix:_projectionMatrix];
 	[renderer setViewMatrix:_viewMatrix];
 	
-	// Disable lighting
-	renderer.uiActive = YES;
-
 	// Update transformations
-	[_uiElements udpateGlobalTransformation:nil];
+	[_uiElements updateGlobalTransformation:nil];
 
 	// Render opaque elements
 	[_uiElements render:renderer opaque:true];
 	
 	// Render transparent elements
 	[_uiElements render:renderer opaque:false];
-	
-	renderer.uiActive = NO;
 }
 
 - (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {

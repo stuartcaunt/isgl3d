@@ -231,12 +231,12 @@
 
 
 
-#pragma mark AppController
+#pragma mark AppDelegate
 
 /*
  * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
  */
-@implementation AppController
+@implementation AppDelegate
 
 - (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
 	return [[[PhysicsTestView alloc] initWithFrame:frame] autorelease];

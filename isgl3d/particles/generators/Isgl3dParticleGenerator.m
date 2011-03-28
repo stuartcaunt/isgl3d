@@ -47,7 +47,7 @@
 
 - (id) initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_particleSystem = [particleSystem retain];
 		_particleNode = [node retain];
 

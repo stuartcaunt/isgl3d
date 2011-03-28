@@ -32,7 +32,7 @@
 
 - (id) initWithObject:(id)object forTouches:(NSSet *)touches {
 
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_object = [object retain];
 		
 		_touches = [touches retain];

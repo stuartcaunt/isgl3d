@@ -42,7 +42,7 @@
 
 - (id) init {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_vboIndex = 0;
 		
 		_positionOffset = -1;

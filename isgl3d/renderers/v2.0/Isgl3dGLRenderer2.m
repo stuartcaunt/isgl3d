@@ -29,7 +29,6 @@
 #import "Isgl3dParticleShader.h"
 #import "Isgl3dCaptureShader.h"
 #import "Isgl3dShadowMapShader.h"
-#import "Isgl3dGLContext2.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMatrix4D.h"
 #import "Isgl3dLog.h"
@@ -46,11 +45,9 @@
 
 @implementation Isgl3dGLRenderer2
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context {
+- (id) init {
 	
-	if (self = [super init]) {
-		_glContext = [context retain];
-		
+	if ((self = [super init])) {
        	_mvMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
        	_mvpMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
        	
@@ -67,14 +64,14 @@
 		_currentElementBufferId = 0;
 
 		[self buildAllShaders];
+
+		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : created renderer for OpenGL ES 2.0");
 	}
 	
 	return self;
 }
 
 - (void) dealloc {
-	[_glContext release];
-
 	[_currentState release];
 	[_previousState release];
 
@@ -140,16 +137,16 @@
 		}
 		
 		if (rendererType & SHADOW_MAP_CREATION_ON) {
-			shader = [[Isgl3dShadowMapShader alloc] initWithContext:_glContext vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+			shader = [[Isgl3dShadowMapShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
 		
 		} else if (rendererType & CAPTURE_ON) {
-			shader = [[Isgl3dCaptureShader alloc] initWithContext:_glContext vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+			shader = [[Isgl3dCaptureShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
 		
 		} else if (rendererType & PARTICLES_ON) {
-			shader = [[Isgl3dParticleShader alloc] initWithContext:_glContext vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+			shader = [[Isgl3dParticleShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
 		
 		} else {
-			shader = [[Isgl3dGenericShader alloc] initWithContext:_glContext vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+			shader = [[Isgl3dGenericShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
 		}
 
 		[_shaders setObject:shader forKey:[NSNumber numberWithUnsignedInt:rendererType]];
@@ -157,6 +154,53 @@
 		[self initShader:shader];
 		[shader release];
 	}
+}
+
+- (void) clear:(unsigned int)bufferBits {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glClear(glBufferBits);
+}
+
+- (void) clear:(unsigned int)bufferBits color:(float *)color {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glClearColor(color[0], color[1], color[2], color[3]);
+
+	glClear(glBufferBits);
+}
+
+- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glEnable(GL_SCISSOR_TEST);	
+	glViewport(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
+	glScissor(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);	
+	glClear(glBufferBits);
+	glDisable(GL_SCISSOR_TEST);	
+}
+
+- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glEnable(GL_SCISSOR_TEST);	
+	glViewport(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
+	glScissor(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);	
+	glClearColor(color[0], color[1], color[2], color[3]);
+	glClear(glBufferBits);
+	glDisable(GL_SCISSOR_TEST);	
 }
 
 
@@ -401,16 +445,20 @@
 	return _shadowMapActive;
 }
 
-- (void) setShadowRenderingMethod:(unsigned int)shadowRenderingMethod {
-	if (!_stencilBufferAvailable && shadowRenderingMethod != GLRENDERER_SHADOW_RENDERING_NONE) {
-		_shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_NONE;
-		Isgl3dLog(Warn, @"Request for shadow rendering refused: not available on this device");
-		_shadowRenderingMethod = shadowRenderingMethod;
+- (void) setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
+	if (!_stencilBufferAvailable && shadowRenderingMethod != Isgl3dShadowNone) {
+		_shadowRenderingMethod = Isgl3dShadowNone;
+		Isgl3dLog(Warn, @"Isgl3dGLRenderer2 : Request for shadow rendering refused: not available on this device");
+
 	} else {
+		if (shadowRenderingMethod == Isgl3dShadowMaps) {
+			Isgl3dLog(Info, @"Isgl3dGLRenderer2 : Shadow mapping activated.");
+		} else {
+			Isgl3dLog(Info, @"Isgl3dGLRenderer2 : Planar shadows activated.");
+		}
 		_shadowRenderingMethod = shadowRenderingMethod;
 	}
 }
-
 
 - (void) enableShadowStencil:(BOOL)shadowStencilEnabled {
 	if (_stencilBufferAvailable) {

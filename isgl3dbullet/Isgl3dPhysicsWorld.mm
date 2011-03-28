@@ -32,7 +32,7 @@
 @implementation Isgl3dPhysicsWorld
 
 - (id) init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
     	
     	_lastStepTime = [[NSDate alloc] init];
        	_physicsObjects = [[NSMutableArray alloc] init];
@@ -83,7 +83,7 @@
 	[_physicsObjects removeAllObjects];
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 	// Get time since last step
 	NSDate * currentTime = [[NSDate alloc] init];
 	
@@ -102,7 +102,7 @@
 	//NSLog(@"N objects = %i", [_physicsObjects count]);
 
 	// Update all global matrices
-	[super udpateGlobalTransformation:parentTransformation];
+	[super updateGlobalTransformation:parentTransformation];
 }
 
 - (void) setGravity:(float)x y:(float)y z:(float)z {

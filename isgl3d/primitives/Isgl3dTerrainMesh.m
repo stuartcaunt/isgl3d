@@ -39,7 +39,7 @@
 @implementation Isgl3dTerrainMesh
 
 - (id)initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_terrainDataFile = [terrainDataFile retain];
 		_channel = channel;
 		

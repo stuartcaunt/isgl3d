@@ -35,7 +35,7 @@
 @synthesize rigidBody = _rigidBody;
 
 - (id) initWithNode:(Isgl3dNode *)node andRigidBody:(btRigidBody *)rigidBody {
-    if (self = [super init]) {
+    if ((self = [super init])) {
     	_node = [node retain];
     	_rigidBody = rigidBody;
     	

@@ -31,7 +31,7 @@
 @implementation Isgl3dParticleNode
 
 - (id) initWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
 		_particle = [particle retain];
 		_material = [material retain];

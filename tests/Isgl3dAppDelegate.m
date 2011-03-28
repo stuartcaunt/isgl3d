@@ -23,11 +23,11 @@
  *
  */
 
-#import "Isgl3dAppController.h"
+#import "Isgl3dAppDelegate.h"
 #import "Isgl3dViewController.h"
 #import "Isgl3dView3D.h"
 
-@implementation Isgl3dAppController
+@implementation Isgl3dAppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;;

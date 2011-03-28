@@ -35,7 +35,7 @@
 
 - (id)initWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_height = height;
 		_topRadius = topRadius;
 		_bottomRadius = bottomRadius;

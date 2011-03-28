@@ -1,4 +1,34 @@
 current SVN version
+	Architecture changes with Isgl3dDirector and Isgl3dView:
+		Isgl3dDirector: added - singleton for application control, manging animation, rendering, event handling, device rotation, etc
+		Isgl3dView: added - replaces Isgl3dView3D and Isgl3dGLView (with help of Isgl3dDirector). Contains a camera, scene and viewport.
+		Isgl3dBasic3DView and Isgl3dBasic2DView: added - helper classes, inheriting from Isgl3dView constructing camera and scene.
+		Isgl3dEAGLView: added - replaces Isgl3dGLView, user views no longer need to inherit from this.
+		Isgl3dScheduler: added - used for callbacks at each frame. Replaces updateScene in Isgl3dView3D.
+		Isgl3dFpsRender: added - used by Isgl3dDirector to render the framerate automatically.
+		Multiple Isgl3dView can be rendered on same window, each with an optional viewport and orientation
+		Opaque/transparent Isgl3dView: opaque can have background color, transparent used as an overlay (eg 2D user interface).
+		Background color in Isgl3dDirector (opaque Isgl3dView can specify different background color).
+		Full device rotation for portrait, landscape left, landscape right and portrait upside down
+		OpenGL version handling: Remove need for isgl3d.plist - can be handled programatically.
+		UITouch events: can be filtered for Isgl3dView viewports.
+		Shadow technique desired handled by Isgl3dDirector.
+		Occlusion testing handled by Isgl3dView.
+		Improved application control with run/end/pause/resume in Isgl3dDirector.
+		Isgl3dTouchScreenResponder: "touches cancelled" added.
+		Conversion of UI pixel to point in view (handling viewport dimensions and orientation)
+		Isgl3dGLU: orthographic projection with y inverted - (0, 0) now bottom left not top left.
+		Isgl3dGLU: projection matrix calculations for any device orientation.
+		Isgl3dColorUtil: support for rgba hex strings.
+		isgl3dSandbox.xcodeproj, tests/sandbox added for development testing.
+		Isgl3dGLView: deprecated. Will be removed in v1.2 
+		Isgl3dView3D: deprecated. Will be removed in v1.2 
+		Isgl3dFpsDisplay: deprecated. Will be removed in v1.2. Functionality in Isgl3dDirector. 
+		Isgl3dFpsTracer: deprecated. Will be removed in v1.2. Functionality in Isgl3dDirector. 
+		Isgl3dUIView: deprecated. Will be removed in v1.2. Functionality can be obtained by Isgl3dView (eg Isgl3dBasic2DView). 
+
+	Fix initialisation semantics bug (self = [super init]).
+	Isgl3dBillboard: added (wrapper to Isgl3dGLParticle)
 	Xcode: added target to build all
 	Isgl3d events: remove dependency on Isgl3dView3D
 	OpenGL ES 2.0: generic shader runtime behaviour fixes (appearing in iOS 4.2?). All but spot-lighting working.

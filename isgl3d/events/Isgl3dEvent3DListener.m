@@ -33,7 +33,7 @@
 
 - (id) initWithObject:(id)object method:(SEL)method {
 
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_object = object;
 		
 		_method = method;

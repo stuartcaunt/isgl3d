@@ -30,7 +30,7 @@
 
 - (id) init {    
 
-    if (self = [super init]) {
+    if ((self = [super init])) {
     	_program = glCreateProgram();
 		if (!_program) {
 			Isgl3dLog(Error, @"Could not create gl program");

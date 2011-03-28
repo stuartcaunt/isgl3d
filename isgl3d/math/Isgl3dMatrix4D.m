@@ -52,14 +52,14 @@
 @synthesize tw  = _tw;
 
 - (id) init {    
-	if (self = [super init]) {
+	if ((self = [super init])) {
 	}
 	
 	return self;
 }
 
 - (id) initWithIdentity {    
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_sxx = _syy = _szz = _tw = 1.0;
 		_sxy = _sxz = _tx  = 0.0;
 		_syx = _syz = _ty  = 0.0;
@@ -70,7 +70,7 @@
 }
 
 - (id) initFromMatrix:(Isgl3dMatrix4D*)matrix {    
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_sxx = matrix.sxx;
 		_sxy = matrix.sxy;
 		_sxz = matrix.sxz;
@@ -93,7 +93,7 @@
 }
 
 - (id) initFromFloatArray:(float *)array size:(int)size {    
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		if (size != 9 && size != 16) {
 			Isgl3dLog(Error, @"Cannot create Isgl3dMatrix4D from array of size %i", size);
 	        [self release];
@@ -142,7 +142,7 @@
 }
 
 - (id) initFromOpenGLMatrix:(float *)array {    
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_sxx = array[ 0];
 		_sxy = array[ 4];
 		_sxz = array[ 8];
@@ -165,7 +165,7 @@
 }
 
 - (id) initWithScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_sxx = scaleX;
 		_syy = scaleY;
 		_szz = scaleZ;

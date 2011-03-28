@@ -82,7 +82,7 @@ typedef struct _PVRTexHeader {
 
 - (id) init {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_textures = [[NSMutableDictionary alloc] init];
 	}
 	

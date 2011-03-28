@@ -37,7 +37,7 @@
 
 - (id)initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_a = a;
 		_b = b;
 		_k = k;

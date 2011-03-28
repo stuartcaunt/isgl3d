@@ -31,7 +31,7 @@
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
 	
-	if (self = [super initWithId:textureId width:width height:height]) {
+	if ((self = [super initWithId:textureId width:width height:height])) {
 		// Create depth frame buffer
 		glGenFramebuffers(1, &_frameBuffer);
 		glGenRenderbuffers(1, &_depthRenderBuffer);

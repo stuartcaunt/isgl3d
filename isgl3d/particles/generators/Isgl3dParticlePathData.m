@@ -33,7 +33,7 @@
 
 - (id) initWithX:(float)x y:(float)y z:(float)z {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_x = x;
 		_y = y;
 		_z = z;

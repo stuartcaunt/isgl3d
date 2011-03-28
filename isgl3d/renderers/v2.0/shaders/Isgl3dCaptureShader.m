@@ -24,16 +24,15 @@
  */
 
 #import "Isgl3dCaptureShader.h"
-#import "Isgl3dGLContext2.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dCaptureShader
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
-	if (self = [super initWithContext:context vertexShaderName:@"capture.vsh" fragmentShaderName:@"capture.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader]) {
+	if ((self = [super initWithVertexShaderName:@"capture.vsh" fragmentShaderName:@"capture.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
 	}
 	
 	return self;

@@ -63,7 +63,7 @@
 
 
 - (id) initWithFile:(NSString *)path andView3D:(Isgl3dView3D *)view3D {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_view3D = [view3D retain];
 		_podScene = new CPVRTModelPOD();
 

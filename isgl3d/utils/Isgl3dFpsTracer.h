@@ -47,6 +47,9 @@ typedef struct {
  * 
  * The method "tick" should be called at every frame: when this is called the time since the last call is
  * calculated. The time intervals are averaged over the last 20 frames and the fps is calculated. 
+ * 
+ * @deprecated Will be removed in v1.2
+ * The fps calculation and display is handled automatically by the Isgl3dDirector.
  */
 @interface Isgl3dFpsTracer : NSObject {
 	

@@ -41,7 +41,7 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 @implementation Isgl3dPrimitiveFactory
 
 - (id) init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_primitives = [[NSMutableDictionary alloc] init];
 	}
 	

@@ -23,27 +23,52 @@
  *
  */
 
-#import <Foundation/Foundation.h>
+#define ISGL3D_FPS_N_TICKS 20
 
-@class Isgl3dNode;
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "isgl3dTypes.h"
+
+@class Isgl3dGLUILabel;
+@class Isgl3dMatrix4D;
+@class Isgl3dGLRenderer;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
- * Transient class used for sorting nodes.
  */
-@interface Isgl3dSortableNode : NSObject {
+
+/**
+ * The Isgl3dFpsRenderer is used to display the current framerate. 
+ * It is used internally by the Isgl3dDirector.
+ * The frame rate is shown in the bottom left of the display for whichever orientation is used.
+ */
+@interface Isgl3dFpsRenderer : NSObject {
 
 @private
-	float _distance;
-	Isgl3dNode * _node;
+	Isgl3dGLUILabel * _fpsLabel;
+	int _displayCounter;
+	float _deltaTimes[ISGL3D_FPS_N_TICKS];
+	float _fps;
+	unsigned long _tickIndex;
+	Isgl3dMatrix4D * _projectionMatrix;
+	Isgl3dMatrix4D * _viewMatrix;
+	CGRect _viewport;
+	isgl3dOrientation _orientation;
 }
 
-@property (readonly) float distance;
-@property (readonly) Isgl3dNode * node;
+@property (nonatomic) isgl3dOrientation orientation;
 
+/**
+ * Initialises an Isgl3dFpsRenderer with the specified orientation.
+ * @param orientation The orientation of the device.
+ */
+- (id) initWithOrientation:(isgl3dOrientation)orientation;
 
-- (id) initWithDistance:(float)distance forNode:(Isgl3dNode *)node;
-
-- (NSComparisonResult) compareDistances:(Isgl3dSortableNode *)node;
+/**
+ * Updates the calculation of the current framerate and renders the value on the display.
+ * Rendering occurs once every 10 frames. If isPaused is specified then the framerate is
+ * not calculated and "paused" is displayed in its place.
+ */
+- (void) update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused;
 
 @end

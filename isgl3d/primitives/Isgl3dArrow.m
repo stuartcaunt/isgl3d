@@ -36,7 +36,7 @@
 
 - (id)initWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_height = height;
 		_radius = radius;
 		_headHeight = headHeight;

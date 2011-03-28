@@ -33,7 +33,7 @@
  * 
  * The methods here correspond exactly to those defined in the UIResponder.
  */
-@protocol Isgl3dTouchScreenResponder
+@protocol Isgl3dTouchScreenResponder <NSObject>
 /**
  * Tells the receiver when one or more fingers touch down in a view or window.
  * @param touches A set of UITouch instances that represent the touches for the starting phase of the event represented by event.
@@ -54,4 +54,14 @@
  * @param event An object representing the event to which the touches belong.
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+
+
+/**
+ * Sent to the receiver when a system event (such as a low-memory warning) cancels a touch event.
+ * @param touches A set of UITouch instances that represent the touches for the ending phase of the event represented by event.
+ * @param event An object representing the event to which the touches belong.
+ */
+@optional
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+
 @end

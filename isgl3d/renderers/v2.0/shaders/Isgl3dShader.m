@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3dShader.h"
-#import "Isgl3dGLContext2.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMatrix4D.h"
@@ -37,11 +36,10 @@
 
 @implementation Isgl3dShader
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id) initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
-	if (self = [super init]) {
-		_glContext = [context retain];
-		_glProgram = [[_glContext createProgram] retain];
+	if ((self = [super init])) {
+		_glProgram = [[Isgl3dGLProgram alloc] init];
 		
 		NSString * vertexExtension = [vertexShaderName pathExtension];
 		NSString * vertexName = [vertexShaderName stringByDeletingPathExtension];
@@ -82,7 +80,6 @@
 - (void) dealloc {
 
 	[_glProgram release];
-	[_glContext release];
 		
 	[super dealloc];
 }
@@ -129,7 +126,7 @@
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
 	float matrixArray[size * 9];
 	int offset = 0;
-	for (Matrix4D * matrix in matrices) {
+	for (Isgl3dMatrix4D * matrix in matrices) {
 		[matrix convertTo3x3ColumnMajorFloatArray:&(matrixArray[offset])];
 		offset += 9;
 	}
@@ -139,7 +136,7 @@
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
 	float matrixArray[size * 16];
 	int offset = 0;
-	for (Matrix4D * matrix in matrices) {
+	for (Isgl3dMatrix4D * matrix in matrices) {
 		[matrix convertToColumnMajorFloatArray:&(matrixArray[offset])];
 		offset += 16;
 	}
@@ -185,7 +182,7 @@
 
 - (void) setActive {
 	// Set program to be used
-	[_glContext useProgram:_glProgram];
+	glUseProgram([_glProgram glProgram]);
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {

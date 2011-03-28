@@ -35,7 +35,7 @@
 
 
 - (id) initWithObject:(Isgl3dGLObject3D *)object {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_object = [object retain];
 		
 		_previousLocations = [[NSMutableSet alloc] init];

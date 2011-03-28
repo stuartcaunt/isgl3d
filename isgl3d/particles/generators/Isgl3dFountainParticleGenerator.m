@@ -38,7 +38,7 @@
 
 - (id) initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
 	
-	if (self = [super initWithParticleSystem:particleSystem andNode:node]) {
+	if ((self = [super initWithParticleSystem:particleSystem andNode:node])) {
 		srandom(time(NULL));
 		_scatterAngle = 90;
 		_time = 2;

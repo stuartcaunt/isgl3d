@@ -28,6 +28,7 @@
 #import "Isgl3dObject3DGrabber.h"
 #import "Isgl3dTouchedObject3D.h"
 #import "Isgl3dView3D.h"
+#import "Isgl3dDirector.h"
 #import "Isgl3dGLObject3D.h"
 
 @interface Isgl3dEvent3DHandler (PrivateMethods)
@@ -37,8 +38,18 @@
 
 @implementation Isgl3dEvent3DHandler
 
+- (id) init {
+	if ((self = [super init])) {
+		_useDirector = YES;
+		_touchedObjects = [[NSMutableArray alloc] init];
+	}
+	
+	return self;
+}
+
 - (id) initWithView3D:(Isgl3dView3D *)view3D {
-	if (self = [super init]) {
+	if ((self = [super init])) {
+		_useDirector = NO;
 		_view3D = [view3D retain];
 
 		_touchedObjects = [[NSMutableArray alloc] init];
@@ -48,7 +59,9 @@
 }
 
 - (void) dealloc {
-	[_view3D release];
+	if (_view3D) {
+		[_view3D release];
+	}
 	[_touchedObjects release];
 		
     [super dealloc];
@@ -77,7 +90,14 @@
 		unsigned int eventY = (unsigned int)point.y;
 		
 		// Get pixel color associated with touch
-		NSString * colorString = [_view3D getPixelString:eventX y:eventY];
+		NSString * colorString;
+		if (_useDirector) {
+			colorString = [[Isgl3dDirector sharedInstance] getPixelString:eventX y:eventY];
+			//NSLog(@"Color string = %@", colorString);
+			
+		} else {
+			colorString = [_view3D getPixelString:eventX y:eventY];
+		}
 		
 		// Get object associated with pixel colour (if one exists)
 		Isgl3dGLObject3D * object = [[Isgl3dObject3DGrabber sharedInstance] getObjectWithColorString:colorString];

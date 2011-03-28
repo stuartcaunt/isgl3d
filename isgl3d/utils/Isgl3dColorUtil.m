@@ -38,35 +38,57 @@
 }
 
 + (void) hexColorStringToFloatArray:(NSString*)inColorString floatArray:(float *)floatArray {
-	if ([inColorString length] < 6) {
+	if ([inColorString length] > 2) {
+		if ([inColorString hasPrefix:@"0x"] || [inColorString hasPrefix:@"0X"]) {
+			inColorString = [inColorString substringFromIndex:2];
+		}
+	}
+		
+	if ([inColorString length] != 6 && [inColorString length] != 8) {
 		Isgl3dLog(Error, @"Input string is not a valid color: %s", inColorString);
 		return;
 	}
 
 	unsigned colorCode = 0;
-	unsigned char redByte, greenByte, blueByte;
+	unsigned char redByte;
+	unsigned char greenByte;
+	unsigned char blueByte;
+	unsigned char alphaByte;
  
 	if (inColorString != nil) {
 		NSScanner* scanner = [NSScanner scannerWithString:inColorString];
-		(void) [scanner scanHexInt:&colorCode]; // ignore error
+		(void) [scanner scanHexInt:&colorCode];
 	}
 	
-	redByte   = (unsigned char)(colorCode >> 16);
-	greenByte = (unsigned char)(colorCode >> 8);
-	blueByte  = (unsigned char)(colorCode);     // masks off high bits
+	if ([inColorString length] == 8) {
+		redByte   = (unsigned char)(colorCode >> 24);
+		greenByte = (unsigned char)(colorCode >> 16);
+		blueByte  = (unsigned char)(colorCode >> 8);
+		alphaByte  = (unsigned char)(colorCode);
+		
+	} else {
+		redByte   = (unsigned char)(colorCode >> 16);
+		greenByte = (unsigned char)(colorCode >> 8);
+		blueByte  = (unsigned char)(colorCode);
+		alphaByte = 255;
+	}
 
-	floatArray[0] = (float)redByte / 255.0f; 
-	floatArray[1] = (float)greenByte / 255.0f; 
-	floatArray[2] = (float)blueByte / 255.0f; 
-	floatArray[3] = 1.0f; 
+	floatArray[0] = (float)redByte / 255.0f;
+	floatArray[1] = (float)greenByte / 255.0f;
+	floatArray[2] = (float)blueByte / 255.0f;
+	floatArray[3] = (float)alphaByte / 255.0f;
 }
 
 + (NSString *) randomHexColor {
 	return [NSString stringWithFormat:@"%02x%02x%02x", (int)(255.0 * random() / RAND_MAX), (int)(255.0 * random() / RAND_MAX), (int)(255.0 * random() / RAND_MAX)];
 }
 
-+ (NSString *) colorString:(float *)color {
++ (NSString *) rgbString:(float *)color {
 	return [NSString stringWithFormat:@"%02x%02x%02x", color[0], color[1], color[2]];
+}
+
++ (NSString *) rgbaString:(float *)color {
+	return [NSString stringWithFormat:@"%02x%02x%02x%02x", color[0], color[1], color[2], color[3]];
 }
 
 - (void) dealloc {

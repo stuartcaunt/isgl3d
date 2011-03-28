@@ -35,8 +35,14 @@
 @private
 	Isgl3dView3D * _view3D;
 	NSMutableArray * _touchedObjects;
+	BOOL _useDirector;
 }
 
+- (id) init;
+
+/**
+ * @deprecated Will be removed in v1.2
+ */
 - (id) initWithView3D:(Isgl3dView3D *)view3D;
 
 - (BOOL) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;

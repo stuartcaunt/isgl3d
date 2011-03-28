@@ -86,14 +86,14 @@ static Isgl3dVector3D * _down = nil;
 }
 
 - (id) init:(float)x y:(float)y z:(float)z {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_vector = mv3DCreate(x, y, z);
 	}
 	return self;
 }
 
 - (id) initWithMiniVec3D:(Isgl3dMiniVec3D)vector {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_vector = vector;
 	}
 	return self;

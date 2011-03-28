@@ -48,7 +48,7 @@
 }
 
 - (id) init:(float)x y:(float)y z:(float)z {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_x = x;
 		_y = y;
 		_z = z;
@@ -58,7 +58,7 @@
 }
 
 - (id) init:(float)x y:(float)y z:(float)z w:(float)w {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_x = x;
 		_y = y;
 		_z = z;

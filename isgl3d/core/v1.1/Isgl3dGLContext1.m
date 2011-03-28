@@ -35,7 +35,7 @@
 // Create an ES 1.1 context
 - (id) initWithLayer:(CAEAGLLayer *) layer {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 
 		// Create the OpenGL context using ES 1.1
 		_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
@@ -83,7 +83,7 @@
 			glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, _backingWidth, _backingHeight);
 			glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, _depthRenderBuffer);
 			if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
-				Isgl3dLog(Error, @"No depth buffer available on this device: failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
+				Isgl3dLog(Error, @"Isgl3dGLContext1 : No depth buffer available on this device: failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
 				[self release];
 				return nil;
 			}
@@ -94,24 +94,29 @@
 			glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_STENCIL_INDEX8_OES, _backingWidth, _backingHeight);
 			glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_STENCIL_ATTACHMENT_OES, GL_RENDERBUFFER_OES, _stencilRenderBuffer);
 			if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
-				Isgl3dLog(Info, @"Depth buffer in use, no stencil buffer on this device: some iSGL3D functionalities are not available.");
+				Isgl3dLog(Info, @"Isgl3dGLContext1 : Depth buffer in use, no stencil buffer on this device: some iSGL3D functionalities are not available.");
 
 				glDeleteRenderbuffersOES(1, &_stencilRenderBuffer);
 				_stencilRenderBuffer = 0;
 				_stencilBufferAvailable = NO;
 				
 			} else {
-				Isgl3dLog(Info, @"Separate stencil and depth buffers in use: all iSGL3D functionalities available.");
+				Isgl3dLog(Info, @"Isgl3dGLContext1 : Separate stencil and depth buffers in use: all iSGL3D functionalities available.");
 			}
 
 		} else {
-			Isgl3dLog(Info, @"Packed stencil and depth buffer in use: all iSGL3D functionalities available.");
+			Isgl3dLog(Info, @"Isgl3dGLContext1 : Packed stencil and depth buffer in use: all iSGL3D functionalities available.");
 		}
 
 
+		// Initialise texture factory and vbo factory
 		[[Isgl3dGLTextureFactory sharedInstance] setState:[[[Isgl3dGLTextureFactoryState1 alloc] init] autorelease]];
 		[[Isgl3dGLVBOFactory sharedInstance] setConcreteFactory:[[[Isgl3dGLVBOFactory1 alloc] init] autorelease]];
-		
+
+		// Enable depth testing
+		glEnable(GL_DEPTH_TEST);
+		glClearDepthf(1.0f);
+					
 	}
 	
 	return self;
@@ -152,6 +157,10 @@
 	[_context release];
 	_context = nil;
 	
+	[Isgl3dGLTextureFactory resetInstance];
+	[Isgl3dGLVBOFactory resetInstance];
+	
+	
 	[super dealloc];
 }
 
@@ -162,20 +171,29 @@
 	_clearColor[3] = clearColor[3];
 	
 	glViewport(0, 0, _backingWidth, _backingHeight);
-
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	glClearColor(clearColor[0], clearColor[1], clearColor[2], clearColor[3]);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	glEnable(GL_DEPTH_TEST);
 	glClearDepthf(1.0f);
 }
 
 
 - (void) clearBuffer {
-	glViewport(0, 0, _backingWidth, _backingHeight);
 
+	glViewport(0, 0, _backingWidth, _backingHeight);
 	glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+/*
+	glEnable(GL_SCISSOR_TEST);	
+	glViewport(50, 50, 220, 380);
+	glScissor(50, 50, 220, 380);	
+	glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	glDisable(GL_SCISSOR_TEST);
+*/
 }
 
 - (void) clearBufferForEventCapture {
@@ -188,7 +206,9 @@
 }
 
 - (Isgl3dGLRenderer *) createRenderer {
-	_currentRenderer = [[Isgl3dGLRenderer1 alloc] initWithContext:self];
+	_currentRenderer = [[Isgl3dGLRenderer1 alloc] init];
+	_currentRenderer.stencilBufferAvailable = self.stencilBufferAvailable;
+	
 	return [_currentRenderer autorelease];
 }
 
@@ -232,7 +252,7 @@
 	}
 	
 	if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
-		Isgl3dLog(Error, @"Failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
+		Isgl3dLog(Error, @"Isgl3dGLContext1 : Failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
 		return NO;
 	}
 	 
@@ -245,7 +265,6 @@
 	glReadPixels(x, _backingHeight - y, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, &pixelData);
 	
 	NSString * pixelString = [NSString stringWithFormat:@"0x%02X%02X%02X", pixelData[0], pixelData[1], pixelData[2]];
-	
 	return pixelString;
 }
 

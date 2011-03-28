@@ -37,7 +37,7 @@
 static Isgl3dTweener * _instance;
 
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_activeTweens = [[NSMutableArray alloc] init];
 		
 		_animating = FALSE;

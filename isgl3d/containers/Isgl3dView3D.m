@@ -58,7 +58,6 @@
 	
     if ([super initializeContext]) {
 		_renderer = [[_glContext createRenderer] retain];
-		_renderer.stencilBufferAvailable = _glContext.stencilBufferAvailable; 
 		
 		_event3DHandler = [[Isgl3dEvent3DHandler alloc] initWithView3D:self];
 	 	
@@ -76,7 +75,7 @@
 
 		[self initView];
 		[self initScene];
-		[_activeScene udpateGlobalTransformation:nil];
+		[_activeScene updateGlobalTransformation:nil];
 		
 		return YES;
 
@@ -203,7 +202,12 @@
 		}
 	}
 	
-	[Isgl3dAccelerometer sharedInstance].isLandscape = _isLandscape;
+	if (_isLandscape) {
+		[Isgl3dAccelerometer sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
+		
+	} else {
+		[Isgl3dAccelerometer sharedInstance].deviceOrientation = Isgl3dOrientation0;
+	}
 }
 
 - (BOOL) isLandscape {
@@ -229,10 +233,10 @@
 
 	if (!_skipUpdates) {
 		// Pass 1: update model matrices
-		[_activeScene udpateGlobalTransformation:nil];
+		[_activeScene updateGlobalTransformation:nil];
 	} else {
 		// update only camera
-		[_activeCamera udpateGlobalTransformation:nil];
+		[_activeCamera updateGlobalTransformation:nil];
 	}
 }
 
@@ -283,13 +287,13 @@
 }
 
 - (void) renderForShadowMaps {
-	if ((_renderer.shadowRenderingMethod == GLRENDERER_SHADOW_RENDERING_MAPS) && _activeScene && _activeCamera) {
+	if ((_renderer.shadowRenderingMethod == Isgl3dShadowMaps) && _activeScene && _activeCamera) {
 		[_activeScene createShadowMaps:_renderer forScene:_activeScene];
 	}
 }
 
 - (void) renderPlanarShadows {
-	if ((_renderer.shadowRenderingMethod == GLRENDERER_SHADOW_RENDERING_PLANAR) && _activeScene && _activeCamera) {
+	if ((_renderer.shadowRenderingMethod == Isgl3dShadowPlanar) && _activeScene && _activeCamera) {
 
 		// Set camera characteristics
 		[_renderer setProjectionMatrix:[_activeCamera projectionMatrix]];
@@ -344,11 +348,11 @@
 
 - (void) setShadowRenderingMethod:(unsigned int)shadowRenderingMethod {
 	if (shadowRenderingMethod == SHADOW_RENDERING_NONE) {
-		_renderer.shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_NONE;
+		_renderer.shadowRenderingMethod = Isgl3dShadowNone;
 	} else if (shadowRenderingMethod == SHADOW_RENDERING_MAPS) {
-		_renderer.shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_MAPS;
+		_renderer.shadowRenderingMethod = Isgl3dShadowMaps;
 	} else if (shadowRenderingMethod == SHADOW_RENDERING_PLANAR) {
-		_renderer.shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_PLANAR;
+		_renderer.shadowRenderingMethod = Isgl3dShadowPlanar;
 	} 
 }
 

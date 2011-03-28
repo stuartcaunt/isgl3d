@@ -37,7 +37,7 @@
 @implementation Isgl3dPrimitive
 
 - (id) init {    
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
     }
 	

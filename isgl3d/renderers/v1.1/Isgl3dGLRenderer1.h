@@ -29,7 +29,6 @@
 
 #import "Isgl3dGLRenderer.h"
 
-@class Isgl3dGLContext1;
 @class Isgl3dGLRenderer1State;
 
 /**
@@ -39,12 +38,11 @@
 
 
 @private
-	Isgl3dGLContext1 * _glContext;
-
 	int _lightCount;
 
 	GLfloat _sceneAmbient[4];
 	GLfloat _sceneAmbientAndAlpha[4];
+	NSString * _sceneAmbientString;
 	
 	unsigned int _glLight[8];
 	
@@ -66,6 +64,6 @@
 	unsigned int _currentElementBufferId;
 }
 
-- (id) initWithContext:(Isgl3dGLContext1 *)context;
+- (id) init;
 
 @end

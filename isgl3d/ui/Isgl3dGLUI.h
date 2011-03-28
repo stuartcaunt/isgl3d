@@ -46,6 +46,10 @@
  * 
  * The Isgl3dGLUI provides only simple functionality at the moment: complex and automatic layouts for example are not
  * yet provided: for this reason the current API may change as the functionality increases later.
+ * 
+ * @deprecated Will be removed in v1.2
+ * The functionality of this class can be performed using the Isgl3dBasic2DView (helper class for Isgl3dView). All 
+ * Isgl3dGLUIComponents can be added directly as children to scene contained in the Isgl3dView.
  */
 @interface Isgl3dGLUI : NSObject {
 	

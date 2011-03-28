@@ -33,7 +33,7 @@
 @implementation Isgl3dUShortArray
 
 - (id) init {    
-    if (self = [super init]) {
+    if ((self = [super init])) {
 		_array = (ushort *)malloc(sizeof(ushort));
     	_arraySize = 1;
     	_size = 0;
@@ -43,7 +43,7 @@
 }
 
 - (id) initWithSize:(unsigned int)size {    
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
     	// Convert to power of 2 number
     	unsigned int arraySize = pow(2, ceil(log2(size)));

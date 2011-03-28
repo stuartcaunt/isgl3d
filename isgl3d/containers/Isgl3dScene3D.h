@@ -64,3 +64,43 @@
 - (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4D *)viewMatrix;
 
 @end
+
+
+#pragma mark Isgl3dSortableNode
+
+/**
+ * The Isgl3dSortableNode is used internally by Isgl3dScene3D for sorting nodes by distance from the 
+ * camera.
+ */
+@interface Isgl3dSortableNode : NSObject {
+
+@private
+	float _distance;
+	Isgl3dNode * _node;
+}
+
+/**
+ * Returns the distance to the camera.
+ */
+@property (nonatomic, readonly) float distance;
+
+/**
+ * Returns the node.
+ */
+@property (nonatomic, readonly) Isgl3dNode * node;
+
+/**
+ * Initialise with distance from camera and node.
+ * @param distance Distance from the camera.
+ * @param node The Isgl3dNode.
+ */
+- (id) initWithDistance:(float)distance forNode:(Isgl3dNode *)node;
+
+/**
+ * Compares distances between another node and this node.
+ * @param node The node to be compared with.
+ * @reult the comparison result.
+ */
+- (NSComparisonResult) compareDistances:(Isgl3dSortableNode *)node;
+
+@end

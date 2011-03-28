@@ -42,10 +42,10 @@
 
 /*
  * Principal class to be instantiated in main.h. 
- * The window and view are created in Isgl3dAppController, the demo view is returned from viewWithFrame.
+ * The window and view are created in Isgl3dAppDelegate, the demo view is returned from viewWithFrame.
  */
-#import "Isgl3dAppControllerWithCamera.h"
-@interface AppController : Isgl3dAppControllerWithCamera
+#import "Isgl3dAppDelegateWithCamera.h"
+@interface AppDelegate : Isgl3dAppDelegateWithCamera
 - (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
 @end
 

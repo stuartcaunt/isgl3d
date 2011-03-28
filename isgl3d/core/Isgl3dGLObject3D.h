@@ -223,7 +223,7 @@
  * Note that this intended to be called internally by iSGL3D.
  * @param parentTransformation The parent's global transformation matrix.
  */
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation;
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation;
 
 /*
  * Given a view matrix, this returns the distance along the observer's viewing direction to the object.

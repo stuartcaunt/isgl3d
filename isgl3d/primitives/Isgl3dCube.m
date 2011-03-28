@@ -51,7 +51,7 @@
 	
 - (id)initWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_width = width;
 		_height = height;
 		_depth = depth;

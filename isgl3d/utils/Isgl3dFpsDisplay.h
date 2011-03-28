@@ -38,6 +38,9 @@
  * It uses the Isgl3dFpsTracer to calculate the average framerate over the last 20 frames. The label text is updated every 10 frames.
  * 
  * The position of the label is set automatically but can be modified by the user.
+ * 
+ * @deprecated Will be removed in v1.2
+ * The fps display is handled automatically by the Isgl3dDirector.
  */
 @interface Isgl3dFpsDisplay : NSObject {
 

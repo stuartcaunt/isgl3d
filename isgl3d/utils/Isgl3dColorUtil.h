@@ -49,6 +49,13 @@
  * @param color a 3-value float array of rgb values between 0 and 1.
  * @result (autorelease) NSString containing hex value of given color
  */
-+ (NSString *) colorString:(float *)color;
++ (NSString *) rgbString:(float *)color;
+
+/**
+ * Returns the hex string equivalent for a color
+ * @param color a 4-value float array of rgba values between 0 and 1.
+ * @result (autorelease) NSString containing hex value of given color
+ */
++ (NSString *) rgbaString:(float *)color;
 
 @end

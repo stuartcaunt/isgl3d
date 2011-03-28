@@ -27,7 +27,6 @@
 #import <OpenGLES/ES2/gl.h>
 
 @class Isgl3dGLProgram;
-@class Isgl3dGLContext2;
 @class Isgl3dMatrix4D;
 @class Isgl3dLight;
 @class Isgl3dGLVBOData;
@@ -43,7 +42,6 @@
 @interface Isgl3dShader : NSObject {
 
 @protected
-	Isgl3dGLContext2 * _glContext;
 	Isgl3dGLProgram * _glProgram;
 	
 	float _whiteAndAlpha[4];
@@ -51,7 +49,7 @@
 	
 }
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
+- (id) initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 - (void) initShader;
 
 - (void) bindBufferToAttribute:(GLuint)bufferIndex attributeLocation:(GLuint)attributeLocation size:(GLint)size;

@@ -23,12 +23,9 @@
  *
  */
 
-#import "Isgl3dAppController.h"
+#import <UIKit/UIKit.h>
 
-@interface Isgl3dAppControllerWithCamera : Isgl3dAppController {
+@interface SandboxViewController : UIViewController {
 
-@private
 }
-
-
 @end

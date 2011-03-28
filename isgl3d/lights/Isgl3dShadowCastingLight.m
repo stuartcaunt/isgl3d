@@ -31,6 +31,7 @@
 #import "Isgl3dGLU.h"
 #import "Isgl3dMatrix4D.h"
 #import "Isgl3dVector4D.h"
+#import "Isgl3dTypes.h"
 
 @interface Isgl3dShadowCastingLight (PrivateMethods)
 - (void) calculateViewMatrix;
@@ -43,7 +44,7 @@
 
 - (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
 	
-	if (self = [super initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation]) {
+	if ((self = [super initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation])) {
 
 		_planarShadowsNodeNormal = [[Isgl3dVector4D alloc] init:0 y:0 z:1 w:0];
 	}
@@ -70,7 +71,7 @@
 - (void) renderLights:(Isgl3dGLRenderer *)renderer {
 	[super renderLights:renderer];
 	
-	if (renderer.shadowRenderingMethod == GLRENDERER_SHADOW_RENDERING_MAPS) {
+	if (renderer.shadowRenderingMethod == Isgl3dShadowMaps) {
 		
 		[renderer setShadowMap:_shadowRenderTexture.textureId];
 		
@@ -155,10 +156,10 @@
 	[self setTranslation:0 y:0 z:10];
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 	
 	BOOL calculateViewMatrix = _transformationDirty;
-	[super udpateGlobalTransformation:parentTransformation];
+	[super updateGlobalTransformation:parentTransformation];
 
 	if (calculateViewMatrix) {
 		[self calculateViewMatrix];

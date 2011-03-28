@@ -74,6 +74,7 @@
 	GLfloat _attenuation[3];
 	GLfloat _sceneAmbient[4];
 	int _lightCount;
+	NSString * _sceneAmbientString;
 
 	// material characteristics
 	GLint _materialAmbientLocation;
@@ -101,6 +102,6 @@
 	
 }
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
+- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 
 @end

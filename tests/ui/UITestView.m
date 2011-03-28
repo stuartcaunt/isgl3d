@@ -68,7 +68,7 @@
 	Isgl3dTextureMaterial * pauseButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pause.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
 	Isgl3dGLUIButton * pauseButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[pauseButtonMaterial autorelease]];
 	[ui addComponent:[pauseButton autorelease]];
-	[calibrateButton setX:400 andY:8];
+	[pauseButton setX:400 andY:8];
 
 	// Create a button to allow movement of the camera
 	Isgl3dTextureMaterial * cameraButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"camera.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
@@ -84,12 +84,12 @@
 
 
 
-#pragma mark AppController
+#pragma mark AppDelegate
 
 /*
  * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
  */
-@implementation AppController
+@implementation AppDelegate
 
 - (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
 	return [[[UITestView alloc] initWithFrame:frame] autorelease];

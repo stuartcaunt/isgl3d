@@ -29,7 +29,7 @@
 
 - (id)initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
 	
-	if (self = [super initWithGeometry:height topRadius:radius bottomRadius:radius ns:ns nt:nt openEnded:openEnded]) {
+	if ((self = [super initWithGeometry:height topRadius:radius bottomRadius:radius ns:ns nt:nt openEnded:openEnded])) {
 	}
 	
 	return self;

@@ -25,7 +25,6 @@
 
 #import "Isgl3dParticleShader.h"
 #import "Isgl3dShaderState.h"
-#import "Isgl3dGLContext2.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMatrix4D.h"
@@ -36,9 +35,9 @@
 
 @implementation Isgl3dParticleShader
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
-	if (self = [super initWithContext:context vertexShaderName:@"particle.vsh" fragmentShaderName:@"particle.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader]) {
+	if ((self = [super initWithVertexShaderName:@"particle.vsh" fragmentShaderName:@"particle.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
 
 		_currentState = [[Isgl3dShaderState alloc] init];
 		_previousState = [[Isgl3dShaderState alloc] init];

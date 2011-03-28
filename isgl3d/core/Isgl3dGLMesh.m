@@ -33,7 +33,7 @@
 @synthesize normalizationEnabled = _normalizationEnabled;
 
 - (id) init {    
-    if (self = [super init]) {
+    if ((self = [super init])) {
 		
 		_vertexData = 0;
 		_indices = 0;

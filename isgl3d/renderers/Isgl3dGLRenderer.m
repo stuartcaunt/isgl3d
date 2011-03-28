@@ -30,12 +30,11 @@
 @implementation Isgl3dGLRenderer
 
 @synthesize shadowAlpha = _shadowAlpha;
-@synthesize uiActive = _uiActive;
 @synthesize stencilBufferAvailable = _stencilBufferAvailable;
 
 - (id) init {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		
        	_modelMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
         _viewMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
@@ -59,12 +58,10 @@
 		_whiteAndAlpha[2] = 1.0;	
 		_whiteAndAlpha[3] = 1.0;
 
-		_shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_NONE;
+		_shadowRenderingMethod = Isgl3dShadowNone;
 		_planarShadowsMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
 		_planarShadowsActive = NO;
 		_shadowAlpha = 1.0;
-		
-		_uiActive = NO;
 	}
 	
 	return self;
@@ -80,6 +77,22 @@
 }
 
 - (void) reset {
+}
+
+- (void) clear:(unsigned int)bufferBits {
+	// OpenGL version specific
+}
+
+- (void) clear:(unsigned int)bufferBits color:(float *)color {
+	// OpenGL version specific
+}
+
+- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
+	// OpenGL version specific
+}
+
+- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
+	// OpenGL version specific
 }
 
 - (void) setProjectionMatrix:(Isgl3dMatrix4D *)projectionMatrix {
@@ -194,10 +207,10 @@
 - (void) initRenderForShadowMap {
 }
 
-- (void) setShadowRenderingMethod:(unsigned int)shadowRenderingMethod {
+- (void) setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
 }
 
-- (unsigned int) shadowRenderingMethod {
+- (isgl3dShadowType) shadowRenderingMethod {
 	return _shadowRenderingMethod;
 }
 

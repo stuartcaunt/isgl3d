@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3dShadowMapShader.h"
-#import "Isgl3dGLContext2.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dGLVBOData.h"
@@ -32,9 +31,9 @@
 
 @implementation Isgl3dShadowMapShader
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
-	if (self = [super initWithContext:context vertexShaderName:@"shadowMap.vsh" fragmentShaderName:@"shadowMap.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader]) {
+	if ((self = [super initWithVertexShaderName:@"shadowMap.vsh" fragmentShaderName:@"shadowMap.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
 	}
 	
 	return self;

@@ -23,10 +23,10 @@
  *
  */
 
-#import "Isgl3dAppControllerWithCamera.h"
+#import "Isgl3dAppDelegateWithCamera.h"
 #import "Isgl3dViewController.h"
 
-@implementation Isgl3dAppControllerWithCamera
+@implementation Isgl3dAppDelegateWithCamera
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application {
 	[super applicationDidFinishLaunching:application];

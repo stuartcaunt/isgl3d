@@ -23,38 +23,16 @@
  *
  */
 
-#import "Isgl3dSortableNode.h"
-#import "Isgl3dNode.h"
+@class SandboxViewController;
 
-@implementation Isgl3dSortableNode
+@interface SandboxAppDelegate : NSObject <UIApplicationDelegate> {
 
-@synthesize distance = _distance;
-@synthesize node = _node;
-
-- (id) initWithDistance:(float)distance forNode:(Isgl3dNode *)node {
-    if (self = [super init]) {
-    	_distance = distance;
-    	
-    	_node = [node retain];
-    }
-	
-    return self;
+@private
+    SandboxViewController * _viewController;
+	UIWindow * _window;
 }
 
-- (void) dealloc {
-	[_node release];
-
-	[super dealloc];
-}
-
-- (NSComparisonResult) compareDistances:(Isgl3dSortableNode *)node {
-	NSComparisonResult retVal = NSOrderedSame;
-	if (_distance < node.distance) {
-		retVal = NSOrderedAscending;
-	} else if (_distance > node.distance) { 
-		retVal = NSOrderedDescending;
-	}
-	return retVal;
-}
-
+- (void) createViews;
+ 
 @end
+

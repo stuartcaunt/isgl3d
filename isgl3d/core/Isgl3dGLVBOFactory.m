@@ -32,7 +32,7 @@ static Isgl3dGLVBOFactory * _instance = nil;
 
 - (id) init {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 	}
 	
 	return self;

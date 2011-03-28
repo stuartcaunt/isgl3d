@@ -54,7 +54,7 @@
 
 - (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_constantAttenuation = 1.0;
 		_linearAttenuation = 0.0;
 		_quadraticAttenuation = attenuation;
@@ -172,7 +172,7 @@
 
 
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 	// Directional lights are not subject to parent transformations:
 	//   their direction remains constant, but the direction is stored as a translation
 	//   so copy it from the local transformation
@@ -182,7 +182,7 @@
 		_transformation.tz = self.z;
 		_transformation.tw = 0.0;
 	} else {
-		[super udpateGlobalTransformation:parentTransformation];
+		[super updateGlobalTransformation:parentTransformation];
 	}
 }
 

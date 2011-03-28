@@ -30,7 +30,7 @@
 @implementation Isgl3dBillboardNode
 
 - (id) initWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
-    if (self = [super initWithParticle:billboard andMaterial:material]) {
+    if ((self = [super initWithParticle:billboard andMaterial:material])) {
     }
 	
     return self;

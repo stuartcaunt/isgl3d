@@ -22,7 +22,7 @@
 
 - (id) initWithCamera:(Isgl3dCamera *)camera andView:(Isgl3dView3D *)view {
 	
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
 		_camera = [camera retain];
 		_view = [view retain];

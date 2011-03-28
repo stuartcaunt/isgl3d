@@ -32,7 +32,7 @@
 @synthesize frameRate = _frameRate;
 
 - (id) initWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
-    if (self = [super init]) {
+    if ((self = [super init])) {
 		_skeleton = [skeleton retain];
 		_numberOfFrames = numberOfFrames;
 		_currentFrame = 0;

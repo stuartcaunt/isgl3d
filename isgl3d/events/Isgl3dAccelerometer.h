@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "isgl3dTypes.h"
 
 @class Matrix4D;
 
@@ -60,7 +61,7 @@
 	float _acceleration[3];
 	
 	float _updateFrequency;
-	BOOL _isLandscape;
+	isgl3dOrientation _deviceOrientation;
 	
 	float _calibrationY[ACCELEROMETER_CALIBRATION_MAX];
 	float _calibrationZ[ACCELEROMETER_CALIBRATION_MAX];
@@ -83,29 +84,28 @@
  * Returns the gravity vector as a float array of three values. This vector takes into account any
  * tilt calibration that has been performed.
  */
-@property (readonly) float * gravity;
+@property (nonatomic, readonly) float * gravity;
 
 /**
  * Returns the raw gravity vector as a float array of three values without any tilt calibration.
  */
-@property (readonly) float * rawGravity;
+@property (nonatomic, readonly) float * rawGravity;
 
 /**
  * Returns the raw acceleration of the device.
  */
-@property (readonly) float * acceleration;
+@property (nonatomic, readonly) float * acceleration;
 
 /**
- * Specified whether the device is in landscape or portrait mode as this changes the axes of the 
- * acceleration and gravity.
+ * Specified whether the orientation of the device - this changes the axes of the acceleration and gravity.
  */
-@property (nonatomic) BOOL isLandscape;
+@property (nonatomic) isgl3dOrientation deviceOrientation;
 
 /**
  * Returns true if the the tilt of the device is being measured and the gravity vector
  * calibrated accordingly.
  */
-@property (readonly) BOOL isCalibrating;
+@property (nonatomic, readonly) BOOL isCalibrating;
 
 /**
  * Specified the maximum title angle of the device for which the rotation of the device

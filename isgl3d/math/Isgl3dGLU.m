@@ -30,7 +30,7 @@
 @implementation Isgl3dGLU
 
 - (id) init {    
-    if (self = [super init]) {
+    if ((self = [super init])) {
     }
 	
     return self;
@@ -87,8 +87,12 @@
 }
 
 + (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape {
+	return [Isgl3dGLU perspective:fovy aspect:aspect near:near far:far zoom:zoom orientation:landscape ? Isgl3dOrientation90CounterClockwise : Isgl3dOrientation0];
+}
 
-	if (landscape) {
++ (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation {
+	
+	if (orientation == Isgl3dOrientation90Clockwise || orientation == Isgl3dOrientation90CounterClockwise) {
 		aspect = 1. / aspect;
 	}
 
@@ -123,29 +127,100 @@
 	matrix.tz = D;
 	matrix.tw = 0;
 	
-	if (landscape) {
+	if (orientation == Isgl3dOrientation90Clockwise) {
+		float landscapeArray[9] = {0, -1, 0, 1, 0, 0, 0, 0, 1}; 
+		Isgl3dMatrix4D * landscapeMatrix = [Isgl3dMatrix4D matrixFromFloatArray:landscapeArray size:9];
+		
+		[matrix multiplyOnLeft3x3:landscapeMatrix];
+		
+	} else if (orientation == Isgl3dOrientation180) {
+		float landscapeArray[9] = {-1, 0, 0, 0, -1, 0, 0, 0, 1}; 
+		Isgl3dMatrix4D * landscapeMatrix = [Isgl3dMatrix4D matrixFromFloatArray:landscapeArray size:9];
+		
+		[matrix multiplyOnLeft3x3:landscapeMatrix];
+		
+	} else if (orientation == Isgl3dOrientation90CounterClockwise) {
 		float landscapeArray[9] = {0, 1, 0, -1, 0, 0, 0, 0, 1}; 
 		Isgl3dMatrix4D * landscapeMatrix = [Isgl3dMatrix4D matrixFromFloatArray:landscapeArray size:9];
 		
-		[matrix multiplyOnLeft:landscapeMatrix];
-	}
+		[matrix multiplyOnLeft3x3:landscapeMatrix];
+	} 
 	
-	return matrix;
+	return matrix;	
 }
 
 + (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape {
+	return [Isgl3dGLU ortho:left right:right bottom:bottom top:top near:near far:far zoom:zoom orientation:landscape ? Isgl3dOrientation90CounterClockwise : Isgl3dOrientation0];
+}
+
++ (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation {
 	float tx = (left + right) / ((right - left) * zoom);
 	float ty = (top + bottom) / ((top - bottom) * zoom);
 	float tz = (far + near) / (far - near);
 	
 	Isgl3dMatrix4D* matrix = [Isgl3dMatrix4D matrix];
 
-	if (landscape) {
+
+	if (orientation == Isgl3dOrientation0) {
+		matrix.sxx = 2 / (right - left);
+		matrix.sxy = 0;
+		matrix.sxz = 0;
+		matrix.tx  = -tx;
+		matrix.syx = 0;
+		matrix.syy = 2 / (top - bottom);
+		matrix.syz = 0;
+		matrix.ty  = -ty;
+		matrix.szx = 0;
+		matrix.szy = 0;
+		matrix.szz = -2 / (far - near);
+		matrix.tz  = -tz;
+		matrix.swx = 0;
+		matrix.swy = 0;
+		matrix.swz = 0;
+		matrix.tw  = 1;
+		
+	} else if (orientation == Isgl3dOrientation90Clockwise) {
+		matrix.sxx = 0;
+		matrix.sxy = -2 / (right - left);
+		matrix.sxz = 0;
+		matrix.tx  = tx;
+		matrix.syx = 2 / (top - bottom);
+		matrix.syy = 0;
+		matrix.syz = 0;
+		matrix.ty  = -ty;
+		matrix.szx = 0;
+		matrix.szy = 0;
+		matrix.szz = -2 / (far - near);
+		matrix.tz  = -tz;
+		matrix.swx = 0;
+		matrix.swy = 0;
+		matrix.swz = 0;
+		matrix.tw  = 1;
+		
+	} else if (orientation == Isgl3dOrientation180) {
+		matrix.sxx = -2 / (right - left);
+		matrix.sxy = 0;
+		matrix.sxz = 0;
+		matrix.tx  = tx;
+		matrix.syx = 0;
+		matrix.syy = -2 / (top - bottom);
+		matrix.syz = 0;
+		matrix.ty  = ty;
+		matrix.szx = 0;
+		matrix.szy = 0;
+		matrix.szz = -2 / (far - near);
+		matrix.tz  = -tz;
+		matrix.swx = 0;
+		matrix.swy = 0;
+		matrix.swz = 0;
+		matrix.tw  = 1;
+
+	} else if (orientation == Isgl3dOrientation90CounterClockwise) {
 		matrix.sxx = 0;
 		matrix.sxy = 2 / (right - left);
 		matrix.sxz = 0;
-		matrix.tx  = tx;
-		matrix.syx = 2 / (bottom - top);
+		matrix.tx  = -tx;
+		matrix.syx = -2 / (top - bottom);
 		matrix.syy = 0;
 		matrix.syz = 0;
 		matrix.ty  = ty;
@@ -157,28 +232,8 @@
 		matrix.swy = 0;
 		matrix.swz = 0;
 		matrix.tw  = 1;
-		
-	} else {
-		matrix.sxx = 2 / (right - left);
-		matrix.sxy = 0;
-		matrix.sxz = 0;
-		matrix.tx  = -tx;
-		matrix.syx = 0;
-		matrix.syy = 2 / (top - bottom);
-		matrix.syz = 0;
-		matrix.ty  = ty;
-		matrix.szx = 0;
-		matrix.szy = 0;
-		matrix.szz = -2 / (far - near);
-		matrix.tz  = -tz;
-		matrix.swx = 0;
-		matrix.swy = 0;
-		matrix.swz = 0;
-		matrix.tw  = 1;
-	}
-	
+	} 		
 	return matrix;
 }
-
 
 @end

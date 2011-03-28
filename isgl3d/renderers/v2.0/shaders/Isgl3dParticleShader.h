@@ -64,7 +64,7 @@
 	GLint _samplerLocation;
 }
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
+- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 
 
 @end

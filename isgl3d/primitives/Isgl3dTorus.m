@@ -34,7 +34,7 @@
 
 - (id)initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_radius = radius;
 		_tubeRadius = tubeRadius;
 		_ns = ns;

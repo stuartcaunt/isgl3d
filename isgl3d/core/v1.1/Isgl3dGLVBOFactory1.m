@@ -32,7 +32,7 @@
 @implementation Isgl3dGLVBOFactory1
 
 - (id) init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 	}
 	
 	return self;

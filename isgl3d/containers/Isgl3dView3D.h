@@ -63,6 +63,9 @@
  * and touchesMoved methods are available. In Isgl3dView3D the events occuring on rendered nodes is handled intially and then delegated to
  * the Isgl3dTouchScreen for user-defined call-backs. It is also possible to override these methods but the super methods must always
  * be called first to ensure correct functionign of iSGL3D.
+ * 
+ * @deprecated Will be removed in v1.2
+ * This class has been replaced by Isgl3dView, used in conjunction with Isgl3dDirector.
  */
 @interface Isgl3dView3D : Isgl3dGLView {
 

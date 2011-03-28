@@ -40,7 +40,7 @@
 
 - (id)initWithGeometry:(float)a b:(float)b c:(float)c width:(float)width height:(float)height depth:(float)depth longs:(int)longs lats:(int)lats {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_a = a;
 		_b = b;
 		_c = c;

@@ -28,6 +28,7 @@
 #import "Isgl3dTouchScreenResponder.h"
 
 @class UITouch;
+@class Isgl3dView;
 
 /**
  * The Isgl3dTouchScreen provides a singleton class that delegates all touch events that occur on the device display.
@@ -35,8 +36,7 @@
  * This provides additional functionality to the events that occur on the rendered objects (the Isgl3dEvent3D): these touch
  * events are intended to be handled directly by the application using iSGL3D rather than iSGL3D itself.
  * 
- * Touch events are forwarded here from the Isgl3dGLView3D (which inherits from UIView): the standard UIResponder methods
- * for touches are therefore available.
+ * Touch events are forwarded here from the UIView: the standard UIResponder methods for touches are therefore available.
  * 
  */
 @interface Isgl3dTouchScreen : NSObject  {
@@ -63,6 +63,14 @@
  * @param responder An object implementing the Isgl3dTouchScreenResponder protocol to which touch events should be forwarded.
  */
 - (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder;
+
+/*
+ * Adds a new object that implements the Isgl3dTouchScreenResponder protocol to the array of responders. Only touch events
+ * that are inside the view's viewport will be forwarded to this object.
+ * @param responder An object implementing the Isgl3dTouchScreenResponder protocol to which touch events should be forwarded.
+ * @param view The view in which events will be forwared to the responder 
+ */
+- (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder withView:(Isgl3dView *)view;
 
 /**
  * Removes a particular object that implements the Isgl3dTouchScreenResponder protocol from the array of responders.
@@ -93,5 +101,37 @@
  * @param event An object representing the event to which the touches belong.
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+
+/**
+ * Sent to the receiver when a system event (such as a low-memory warning) cancels a touch event.
+ * @param touches A set of UITouch instances that represent the touches for the ending phase of the event represented by event.
+ * @param event An object representing the event to which the touches belong.
+ */
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+
+@end
+
+
+#pragma mark Isgl3dViewTouchResponder
+
+/**
+ * An internal class used by the Isgl3dTouchScreen to store views associated with responders.
+ */
+@interface Isgl3dViewTouchResponder : NSObject {
+
+@private
+	id<Isgl3dTouchScreenResponder> _responder;
+	Isgl3dView * _view;
+}
+
+@property (nonatomic, readonly) Isgl3dView * view;
+@property (nonatomic, readonly) id<Isgl3dTouchScreenResponder> responder;
+
+
++ (id) responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder;
++ (id) responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view;
+
+- (id) initWithResponder:(id<Isgl3dTouchScreenResponder>)responder;
+- (id) initWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view;
 
 @end

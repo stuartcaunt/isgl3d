@@ -32,7 +32,7 @@
 static Isgl3dObject3DGrabber * _instance;
 
 - (id) init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_activeObjects = [[NSMutableDictionary alloc] init];
 		_objectCount = 0;
 		
@@ -75,13 +75,15 @@ static Isgl3dObject3DGrabber * _instance;
 	_objectCount++;
 	
 	NSString * colorString = [NSString stringWithFormat:@"0x%06X", _objectCount];
+//	NSLog(@"colorString = %@", colorString);
 	
 //	Uncomment to see capture render
-//	[ColorUtil hexColorStringToFloatArray:@"FF0000" floatArray:color];
+//	[Isgl3dColorUtil hexColorStringToFloatArray:@"FF0000" floatArray:color];
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:color];
 	
-	[_activeObjects setObject:object forKey:colorString];
+//	NSLog(@"color = (%f, %f, %f)",color[0], color[1], color[2]);
 	
+	[_activeObjects setObject:object forKey:colorString];
 }
 
 - (Isgl3dGLObject3D *) getObjectWithColorString:(NSString *)colorString {

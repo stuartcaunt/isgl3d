@@ -24,6 +24,9 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+#import "Isgl3dTypes.h"
 
 #define COLOR_RENDERING @"ColorRendering"
 #define GENERIC_RENDERING @"GenericRendering"
@@ -38,10 +41,9 @@
 #define SHADOW_MAP_CREATION_ON 0x20
 #define CAPTURE_ON 0x40
 
-
-#define GLRENDERER_SHADOW_RENDERING_NONE 0
-#define GLRENDERER_SHADOW_RENDERING_MAPS 1
-#define GLRENDERER_SHADOW_RENDERING_PLANAR 2
+#define ISGL3D_COLOR_BUFFER_BIT 1
+#define ISGL3D_DEPTH_BUFFER_BIT 2
+#define ISGL3D_STENCIL_BUFFER_BIT 4
 
 typedef enum {
 	Triangles = 0,
@@ -70,24 +72,27 @@ typedef enum {
 	float _blackAndAlpha[4];
 	float _whiteAndAlpha[4];
 	
-	unsigned int _shadowRenderingMethod;
+	isgl3dShadowType _shadowRenderingMethod;
 	Isgl3dMatrix4D * _planarShadowsMatrix;
 	BOOL _planarShadowsActive;
 	float _shadowAlpha;
 	
-	BOOL _uiActive;
 	BOOL _stencilBufferAvailable;
 	
 }
 
 @property (readonly, getter=shadowMapActive) BOOL shadowMapActive;
-@property (nonatomic) unsigned int shadowRenderingMethod;
+@property (nonatomic) isgl3dShadowType shadowRenderingMethod;
 @property (nonatomic) float shadowAlpha;
-@property (nonatomic) BOOL uiActive;
 @property (nonatomic) BOOL stencilBufferAvailable;
 
 - (id) init;
 - (void) reset;
+
+- (void) clear:(unsigned int)bufferBits;
+- (void) clear:(unsigned int)bufferBits color:(float *)color;
+- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport;
+- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport;
 
 - (void) setProjectionMatrix:(Isgl3dMatrix4D *)projectionMatrix;
 - (void) setViewMatrix:(Isgl3dMatrix4D *)viewMatrix;

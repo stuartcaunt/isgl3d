@@ -33,7 +33,7 @@
 @synthesize keepHorizontal = _keepHorizontal;
 
 - (id) initWithTarget:(Isgl3dNode *)target {
-    if (self = [super init]) {
+    if ((self = [super init])) {
     	_target = [target retain];
 		_targetMovementIT = [[Isgl3dMatrix4D identityMatrix] retain];
     }
@@ -51,7 +51,7 @@
 	[super dealloc];
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)targetTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)targetTransformation {
 	// Get current position
 	Isgl3dVector3D * currentTargetPosition = [Isgl3dVector3D vectorFromVector:[_target position]];
 
@@ -79,7 +79,7 @@
 	[_oldTargetPosition release];	
 	_oldTargetPosition = [currentTargetPosition retain];
 
-	[super udpateGlobalTransformation:targetTransformation];
+	[super updateGlobalTransformation:targetTransformation];
 }
 
 

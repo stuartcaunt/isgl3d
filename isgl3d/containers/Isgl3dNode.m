@@ -52,7 +52,7 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 @synthesize interactive = _interactive;
 
 - (id) init {    
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
        	_children = [[NSMutableArray alloc] init];
 
@@ -146,12 +146,12 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 	}
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
-	[super udpateGlobalTransformation:parentTransformation];
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+	[super updateGlobalTransformation:parentTransformation];
 	
 	if (_hasChildren) {
 		for (Isgl3dNode * node in _children) {
-			[node udpateGlobalTransformation:_transformation];
+			[node updateGlobalTransformation:_transformation];
 	    }
 	}
 }

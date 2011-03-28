@@ -34,7 +34,7 @@
 
 - (id) initWithView:(Isgl3dView3D *)view {
 	
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
 		_view = [view retain];
 		_fpsTracer = [[Isgl3dFpsTracer alloc] init];

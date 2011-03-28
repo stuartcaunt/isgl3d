@@ -93,7 +93,7 @@
 }
 
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 
 
 	if (_target) {
@@ -174,7 +174,7 @@
 		mv3DCopy(&_oldPosition, &_currentPosition);
 	}
 	
-	[super udpateGlobalTransformation:parentTransformation];
+	[super updateGlobalTransformation:parentTransformation];
 }
 
 - (void) setLookAt:(Isgl3dMiniVec3D *)lookAt {

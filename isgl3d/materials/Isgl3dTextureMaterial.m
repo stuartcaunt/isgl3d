@@ -42,7 +42,7 @@
 	
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 	
-	if (self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:specular shininess:shininess]) {
+	if ((self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:specular shininess:shininess])) {
 
 		_texture = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:fileName precision:precision repeatX:repeatX repeatY:repeatY] retain];
 	}
@@ -54,7 +54,7 @@
 	
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 	
-	if (self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:specular shininess:shininess]) {
+	if ((self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:specular shininess:shininess])) {
 
 		_texture = [[[Isgl3dGLTextureFactory sharedInstance] createCubemapTextureFromFiles:texturePathArray precision:precision repeatX:repeatX repeatY:repeatY] retain];
 	}
@@ -64,7 +64,7 @@
 
 - (id)initWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	
-	if (self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"000000" shininess:0]) {
+	if ((self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"000000" shininess:0])) {
 		_texture = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromText:text fontName:fontName fontSize:fontSize] retain];
 	}
 	

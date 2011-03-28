@@ -23,7 +23,10 @@
  *
  */
 
+#import <UIKit/UIKit.h>
+
 #import "Isgl3dNode.h"
+#import "isgl3dTypes.h"
 
 @class Isgl3dMatrix4D;
 @class Isgl3dView3D;
@@ -68,8 +71,8 @@
  * The above values are of course relative the the x, y and z-values as they appear to the camera and not physically in
  * world-space. 
  * 
- * It is necessary to indicate whether the camera is in landscape of portrait mode: For an application intended to be used 
- * with an iPhone in landscape orientation, the camera too should be in landscape mode.
+ * It is necessary to specify the orientation of the device/viewport when setting the projection matrix. This is done
+ * automatically by Isgl3dView when the orientation is changed.
  * 
  * The Isgl3dCamera inherits from Isgl3dNode so that, if desired, it can be rendered on the scene (for example if multiple
  * cameras are in use, one of the cameras may be visible to the other). This can be achieved by adding an Isgl3dMesh node 
@@ -104,7 +107,8 @@
 	float _right;
 	float _bottom;
 	float _top;
-	BOOL _isLandscape;
+	
+	isgl3dOrientation _orientation;
 
 	float _width;	
 	float _height;	
@@ -129,12 +133,12 @@
 /**
  * The current view matrix.
  */
-@property (readonly) Isgl3dMatrix4D * viewMatrix;
+@property (nonatomic, readonly) Isgl3dMatrix4D * viewMatrix;
 
 /**
  * The current projection matrix.
  */
-@property (readonly) Isgl3dMatrix4D * projectionMatrix;
+@property (nonatomic, retain) Isgl3dMatrix4D * projectionMatrix;
 
 /**
  * Indicates whether the camera is in perspective mode.
@@ -146,6 +150,18 @@
  * This is the angle between the z-axis of the camera and the maximum vertical angle visible.
  */
 @property (nonatomic) float fov;
+
+/**
+ * The width of the viewport.
+ * Used in conjunction with height to obtain the aspect ratio of the camera (in perspective mode).
+ */
+@property (nonatomic) float width;
+
+/**
+ * The height of the viewport.
+ * Used in conjunction with width to obtain the aspect ratio of the camera (in perspective mode).
+ */
+@property (nonatomic) float height;
 
 /**
  * The aspect ratio of the camera (in perspective mode).
@@ -202,9 +218,12 @@
  */
 @property (nonatomic) float zoom;
 
-/*
- * Warning: should NEVER be called: this is here to produce a warning log message. An Isgl3DCamera should
- * ALWAYS be initialised with an Isgl3dView3D.
+/**
+ * Initialises the camera.
+ * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
+ * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
+ * Note: For perspective projections the camera can only be used if the width and height are set 
+ * @param view The view to be used by the camera (provides width and height).
  */
 - (id) init;
 
@@ -213,6 +232,8 @@
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
  * @param view The view to be used by the camera (provides width and height).
+ * 
+ * @deprecated Will be removed in v1.2
  */
 - (id) initWithView:(Isgl3dView3D *)view;
 
@@ -238,6 +259,8 @@
  * @param lookAtX The x position where the camera will look at.
  * @param lookAtY The y position where the camera will look at.
  * @param lookAtZ The z position where the camera will look at.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 - (id) initWithView:(Isgl3dView3D *)view andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ;
 
@@ -269,9 +292,20 @@
  * @param fovy The field of view in the y direction.
  * @param near The near value (closer than this an objects won't be rendered).
  * @param far The far value (further than this an objects won't be rendered).
- * @landscape Indicates whether the camera should assume that the device is oriented in landscape mode.
+ * @param Indicates whether the camera should assume that the device is oriented in landscape mode.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 - (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far landscape:(BOOL)landscape;
+
+/**
+ * Sets the camera in projective projection mode with the given parameters.
+ * @param fovy The field of view in the y direction.
+ * @param near The near value (closer than this an objects won't be rendered).
+ * @param far The far value (further than this an objects won't be rendered).
+ * @param orientation indicates the rotation (about z) for the projection. 
+ */
+- (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation;
 
 /**
  * Sets the camera in orthographics projection mode.
@@ -281,9 +315,37 @@
  * @param top The top value (Objects above this won't be rendered).
  * @param near The near value (closer than this an objects won't be rendered).
  * @param far The far value (further than this an objects won't be rendered).
- * @landscape Indicates whether the camera should assume that the device is oriented in landscape mode.
+ * @param Indicates whether the camera should assume that the device is oriented in landscape mode.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 - (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far landscape:(BOOL)landscape;
+
+/**
+ * Sets the camera in orthographics projection mode.
+ * @param left The left value (Objects to the left of this won't be rendered).
+ * @param right The right value (Objects to the right of this won't be rendered).
+ * @param bottom The bottom value (Objects below this won't be rendered).
+ * @param top The top value (Objects above this won't be rendered).
+ * @param near The near value (closer than this an objects won't be rendered).
+ * @param far The far value (further than this an objects won't be rendered).
+ * @param orientation indicates the rotation (about z) for the projection. 
+ */
+- (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation;
+
+/**
+ * Sets the width and height of the viewport.
+ * If the camera is in perspective mode then the projection matrix is recalculated.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ */
+- (void) setWidth:(float)width andHeight:(float)height;
+
+/**
+ * Sets the orientation (rotation about z) for the projection.
+ * @param orientation indicates the rotation (about z) for the projection. 
+ */
+- (void) setOrientation:(isgl3dOrientation)orientation;
 
 /**
  * Specifies the postion in space as a vector where the camera should look at.

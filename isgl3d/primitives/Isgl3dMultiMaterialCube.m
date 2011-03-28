@@ -42,7 +42,7 @@
 - (id) initWithDimensions:(float)width height:(float)height depth:(float)depth 
 		 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 
 		_width = width;
 		_height = height;

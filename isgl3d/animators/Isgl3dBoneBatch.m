@@ -32,7 +32,7 @@
 
 
 - (id) initWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset {
-    if (self = [super init]) {
+    if ((self = [super init])) {
     	_numberOfElements = numberOfElements;
     	_elementOffset = elementOffset;
 			
@@ -73,7 +73,7 @@
 	_transformationDirty = isDirty;
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 	
 	if (_transformationDirty || _frameChanged) {
 		[_currentFrameGlobalTransformations removeAllObjects];

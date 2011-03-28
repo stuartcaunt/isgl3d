@@ -76,7 +76,7 @@
 	_meshDirty = YES;
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 	if (_meshDirty) {
 		float x;
 		float y;
@@ -91,22 +91,23 @@
 		}
 		
 		if (_centerY) {
-			y = -1.0 * _y;
+			y = _y;
 		} else {
 			if (_fixTop) {
-				y = -(float)(_y + (_height + 1) / 2);
+				y = (float)(_y + (_height + 1) / 2);
 			} else {
-				y = -(float)(_y + _height / 2);
+				y = (float)(_y + _height / 2);
 			}
 		}
 				
 		[self setTranslation:x y:y z:self.z];
+//		NSLog(@"setting x = %f y = %f z = %f", x, y, self.z);
 //		[self setTranslation:x y:y z:-0.1];
 		
 		_meshDirty = NO;
 	}
 	
-	[super udpateGlobalTransformation:parentTransformation];
+	[super updateGlobalTransformation:parentTransformation];
 }
 
 - (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {

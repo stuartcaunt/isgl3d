@@ -34,7 +34,7 @@
 
 
 - (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
-    if (self = [super initWithMesh:mesh andMaterial:material]) {
+    if ((self = [super initWithMesh:mesh andMaterial:material])) {
 			
 		_boneBatches = [[NSMutableArray alloc] init];
 		_numberOfBonesPerVertex = 0;
@@ -72,9 +72,9 @@
 	}
 }
 
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
 	BOOL transformationDirty = _transformationDirty;
-	[super udpateGlobalTransformation:parentTransformation];
+	[super updateGlobalTransformation:parentTransformation];
 	
 	// Need to reset the current node transformation: the "model" matrices 
 	// Are included in the bone matrices.
@@ -83,7 +83,7 @@
 	}
 	
 	for (Isgl3dBoneBatch * boneBatch in _boneBatches) {
-		[boneBatch udpateGlobalTransformation:parentTransformation];
+		[boneBatch updateGlobalTransformation:parentTransformation];
 	}
 
 }

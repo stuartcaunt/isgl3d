@@ -47,7 +47,7 @@
 }
 
 - (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_width = width;
 		_height = height;
 		_nx = nx;

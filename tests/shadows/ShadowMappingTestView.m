@@ -44,7 +44,7 @@
 //	[_camera setTranslation:7 y:10 z:9];
 		
 	self.isLandscape = YES;
-//	view3D.shadowRenderingMethod = SHADOW_RENDERING_MAPS;
+//	self.shadowRenderingMethod = SHADOW_RENDERING_MAPS;
 	self.shadowRenderingMethod = SHADOW_RENDERING_PLANAR;
 	self.shadowAlpha = 0.5;
 	
@@ -136,12 +136,12 @@
 
 
 
-#pragma mark AppController
+#pragma mark AppDelegate
 
 /*
  * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
  */
-@implementation AppController
+@implementation AppDelegate
 
 - (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
 	return [[[ShadowMappingTestView alloc] initWithFrame:frame] autorelease];

@@ -107,6 +107,6 @@
  * 
  * Note that this is called internally in iSGL3D and should never be called explicitly.
  */
-- (void) udpateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation;
+- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation;
 
 @end

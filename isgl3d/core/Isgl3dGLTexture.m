@@ -38,7 +38,7 @@
 }
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_textureId = textureId;
 		_width = width;
 		_height = height;

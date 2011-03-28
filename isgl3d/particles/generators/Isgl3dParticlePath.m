@@ -34,7 +34,7 @@
 
 - (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(NSArray *)path forDuration:(float)duration {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_particle = particle;
 		[particle retain];
 		

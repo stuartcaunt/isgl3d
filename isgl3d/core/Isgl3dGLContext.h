@@ -51,9 +51,16 @@
 @property (readonly) int backingHeight;
 @property (readonly) BOOL stencilBufferAvailable;
 
+// @deprecated Will be removed in v1.2
 - (void) prepare:(float *)clearColor;
+
+// @deprecated Will be removed in v1.2
 - (void) clearBuffer;
+
+// @deprecated Will be removed in v1.2
 - (void) clearBufferForEventCapture;
+
+// @deprecated Will be removed in v1.2
 - (void) clearDepthBuffer;
 
 /**
@@ -62,7 +69,10 @@
 - (Isgl3dGLRenderer *) createRenderer;
 
 - (BOOL) resizeFromLayer:(CAEAGLLayer *)layer;
+
+// @deprecated Will be removed in v1.2
 - (void) initializeRender;
+
 - (void) finalizeRender;
 
 - (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y;

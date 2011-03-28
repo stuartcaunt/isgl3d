@@ -25,7 +25,6 @@
 
 #import "Isgl3dGenericShader.h"
 #import "Isgl3dShaderState.h"
-#import "Isgl3dGLContext2.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMatrix4D.h"
@@ -43,9 +42,9 @@
 
 @implementation Isgl3dGenericShader
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
-	if (self = [super initWithContext:context vertexShaderName:@"generic.vsh" fragmentShaderName:@"generic.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader]) {
+	if ((self = [super initWithVertexShaderName:@"generic.vsh" fragmentShaderName:@"generic.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
 		
 		_currentState = [[Isgl3dShaderState alloc] init];
 		_previousState = [[Isgl3dShaderState alloc] init];
@@ -58,6 +57,8 @@
 		_sceneAmbient[1] = 0.0;
 		_sceneAmbient[2] = 0.0;
 		_sceneAmbient[3] = 1.0;
+		
+		_sceneAmbientString = @"000000";
 		
 		_planarShadowsActive = NO,
 		_shadowAlpha = 1.0;
@@ -284,10 +285,14 @@
 }
 
 - (void) setSceneAmbient:(NSString *)ambient {
-	[self setActive];
-	// Set scene ambient levels
-	[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_sceneAmbient];
-	[self setUniform4f:_sceneAmbientUniformLocation values:_sceneAmbient];
+	if (![_sceneAmbientString isEqualToString:ambient]) { 
+		_sceneAmbientString = ambient;
+		
+		[self setActive];
+		// Set scene ambient levels
+		[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_sceneAmbient];
+		[self setUniform4f:_sceneAmbientUniformLocation values:_sceneAmbient];
+	}
 }
 
 - (void) enableLighting:(BOOL)lightingEnabled {

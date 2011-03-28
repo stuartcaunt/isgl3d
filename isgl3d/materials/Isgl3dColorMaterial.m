@@ -36,7 +36,7 @@
 }
 
 - (id) init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 
 		NSString * hexColor = [Isgl3dColorUtil randomHexColor];
 		[Isgl3dColorUtil hexColorStringToFloatArray:hexColor floatArray:_ambientColor]; 
@@ -51,7 +51,7 @@
 
 - (id) initWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess {
 	
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_ambientColor]; 
 		[Isgl3dColorUtil hexColorStringToFloatArray:diffuse floatArray:_diffuseColor]; 
 		[Isgl3dColorUtil hexColorStringToFloatArray:specular floatArray:_specularColor]; 

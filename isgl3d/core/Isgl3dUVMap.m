@@ -42,7 +42,7 @@ static Isgl3dUVMap *theStandardUVMap = nil;
 
 
 - (id) initWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_uA = uA;
 		_vA = vA;
 		_uB = uB;

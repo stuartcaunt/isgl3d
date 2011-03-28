@@ -25,7 +25,6 @@
 
 #import "Isgl3dGLRenderer1.h"
 #import "Isgl3dGLRenderer1State.h"
-#import "Isgl3dGLContext1.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMaterial.h"
 #import "Isgl3dLight.h"
@@ -40,11 +39,9 @@
 
 @implementation Isgl3dGLRenderer1
 
-- (id) initWithContext:(Isgl3dGLContext1 *)context {
+- (id) init {
 	
-	if (self = [super init]) {
-		_glContext = [context retain];
-
+	if ((self = [super init])) {
 		_lightCount = 0;
 		
 		_currentState = [[Isgl3dGLRenderer1State alloc] init];
@@ -73,14 +70,13 @@
 		_currentBoneWeightBufferId = 0;
 		_currentElementBufferId = 0;
 		
+		Isgl3dLog(Info, @"Isgl3dGLRenderer1 : created renderer for OpenGL ES 1.1");
 	}
 	
 	return self;
 }
 
 - (void) dealloc {
-	[_glContext release];
-
 	[_currentState release];
 	[_previousState release];
 
@@ -120,6 +116,53 @@
 	_currentBoneWeightBufferId = 0;
 	_currentElementBufferId = 0;
 
+}
+
+- (void) clear:(unsigned int)bufferBits {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glClear(glBufferBits);
+}
+
+- (void) clear:(unsigned int)bufferBits color:(float *)color {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glClearColor(color[0], color[1], color[2], color[3]);
+
+	glClear(glBufferBits);
+}
+
+- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glEnable(GL_SCISSOR_TEST);	
+	glViewport(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
+	glScissor(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);	
+	glClear(glBufferBits);
+	glDisable(GL_SCISSOR_TEST);	
+}
+
+- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
+	unsigned int glBufferBits = 0;
+	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
+	glBufferBits |= (bufferBits & ISGL3D_STENCIL_BUFFER_BIT) ? GL_STENCIL_BUFFER_BIT : 0;
+
+	glEnable(GL_SCISSOR_TEST);	
+	glViewport(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
+	glScissor(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);	
+	glClearColor(color[0], color[1], color[2], color[3]);
+	glClear(glBufferBits);
+	glDisable(GL_SCISSOR_TEST);	
 }
 
 
@@ -365,10 +408,13 @@
 }
 
 - (void) setSceneAmbient:(NSString *)ambient {
-	[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_sceneAmbient];
-	[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_sceneAmbientAndAlpha];
-	
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, _sceneAmbient);
+	if (![_sceneAmbientString isEqualToString:ambient]) { 
+		_sceneAmbientString = ambient;
+		[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_sceneAmbient];
+		[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_sceneAmbientAndAlpha];
+		
+		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, _sceneAmbient);
+	}
 }
 
 - (void) enableLighting:(BOOL)lightingEnabled {
@@ -559,14 +605,16 @@
 	glColor4f(_white[0], _white[1], _white[2], _white[3]);
 }
 
-- (void) setShadowRenderingMethod:(unsigned int)shadowRenderingMethod {
-	if (!_stencilBufferAvailable && shadowRenderingMethod != GLRENDERER_SHADOW_RENDERING_NONE) {
-		_shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_NONE;
-		Isgl3dLog(Warn, @"Request for shadow rendering refused: not available on this device");
+- (void) setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
+	if (!_stencilBufferAvailable && shadowRenderingMethod != Isgl3dShadowNone) {
+		_shadowRenderingMethod = Isgl3dShadowNone;
+		Isgl3dLog(Warn, @"Isgl3dGLRenderer1 : Request for shadow rendering refused: not available on this device");
 	} else {
-		if (shadowRenderingMethod == GLRENDERER_SHADOW_RENDERING_MAPS) {
-			_shadowRenderingMethod = GLRENDERER_SHADOW_RENDERING_PLANAR;
+		if (shadowRenderingMethod == Isgl3dShadowMaps) {
+			Isgl3dLog(Info, @"Isgl3dGLRenderer1 : Request for shadow mapping refused: not available with OpenGL ES 1.1. Using planar shadows.");
+			_shadowRenderingMethod = Isgl3dShadowPlanar;
 		} else {
+			Isgl3dLog(Info, @"Isgl3dGLRenderer1 : Planar shadows activated.");
 			_shadowRenderingMethod = shadowRenderingMethod;
 		}
 	}

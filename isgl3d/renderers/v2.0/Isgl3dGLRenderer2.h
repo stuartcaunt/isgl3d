@@ -27,7 +27,6 @@
 
 #import "Isgl3dGLRenderer.h"
 
-@class Isgl3dGLContext2;
 @class Isgl3dMatrix4D;
 @class Isgl3dGLRenderer2State;
 @class Isgl3dShader;
@@ -38,8 +37,6 @@
 @interface Isgl3dGLRenderer2 : Isgl3dGLRenderer {
 
 @private
-	Isgl3dGLContext2 * _glContext;
-
 	Isgl3dMatrix4D * _mvpMatrix;
 	Isgl3dMatrix4D * _mvMatrix;
 
@@ -62,6 +59,6 @@
 	GLuint _currentElementBufferId;
 }
 
-- (id) initWithContext:(Isgl3dGLContext2 *)context;
+- (id) init;
 
 @end

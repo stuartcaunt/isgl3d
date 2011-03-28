@@ -30,20 +30,20 @@
 
 static Isgl3dAccelerometer * _instance = nil;
 
-@interface Isgl3dAccelerometer (PrivateMethods)
+@interface Isgl3dAccelerometer ()
 - (void) calculateGravity;
 - (void) calibrateTilt;
 @end
 
 @implementation Isgl3dAccelerometer
 
-@synthesize isLandscape = _isLandscape;
+@synthesize deviceOrientation = _deviceOrientation;
 @synthesize isCalibrating = _isCalibrating;
 @synthesize tiltCutoff = _tiltCutoff;
 
 - (id) init {
 
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_updateFrequency = 30;
 		
 		_isCalibrating = NO;
@@ -108,27 +108,49 @@ static Isgl3dAccelerometer * _instance = nil;
 
 - (void) accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration {
 
-
-	// Store raw data
-    _acceleration[0] = acceleration.x;
-    _acceleration[1] = acceleration.y;
-    _acceleration[2] = acceleration.z;
+	// Store raw data, modified with device rotation
+	if (_deviceOrientation == Isgl3dOrientation0) {
+	    _acceleration[0] = acceleration.x;
+	    _acceleration[1] = acceleration.y;
+	    _acceleration[2] = acceleration.z;
+		
+	} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
+	    _acceleration[0] = acceleration.y;
+	    _acceleration[1] = -acceleration.x;
+	    _acceleration[2] = acceleration.z;
+		
+	} else if (_deviceOrientation == Isgl3dOrientation180) {
+	    _acceleration[0] = -acceleration.x;
+	    _acceleration[1] = -acceleration.y;
+	    _acceleration[2] = acceleration.z;
+		
+	} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
+	    _acceleration[0] = -acceleration.y;
+	    _acceleration[1] = acceleration.x;
+	    _acceleration[2] = acceleration.z;
+	}
 
 
 	if (_isCalibrating) {
+		// normalise gravity
 		float length = sqrtf(_acceleration[0] * _acceleration[0] + _acceleration[1] * _acceleration[1] + _acceleration[2] * _acceleration[2]);
 	    _acceleration[0] /= length;
 	    _acceleration[1] /= length;
 	    _acceleration[2] /= length;
+	    
+	    // ... then calibrate tilt
 		[self calibrateTilt];
 	} else {
+		
+		// Calculate gravity first...
 		[self calculateGravity];
 
+		// ... then normalise gravity
 		float length = sqrtf(_acceleration[0] * _acceleration[0] + _acceleration[1] * _acceleration[1] + _acceleration[2] * _acceleration[2]);
 	    _acceleration[0] /= length;
 	    _acceleration[1] /= length;
 	    _acceleration[2] /= length;
-	}	
+	}
 	
 }
 
@@ -140,61 +162,32 @@ static Isgl3dAccelerometer * _instance = nil;
 
 - (void) calculateGravity {
 
-	// Use a basic low-pass filter to keep only the gravity component of each axis.
-	// see http://developer.apple.com/iPhone/library/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/AdvancedFeatures/AdvancedFeatures.html
-	if (_isLandscape) {
-	    _rawGravity[0] = -(_acceleration[1] * LOWPASS_FILTER_VALUE) + _rawGravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
-	    _rawGravity[1] = (_acceleration[0] * LOWPASS_FILTER_VALUE) + _rawGravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
-	    _rawGravity[2] = (_acceleration[2] * LOWPASS_FILTER_VALUE) + _rawGravity[2] * (1.0 - LOWPASS_FILTER_VALUE);
+    _rawGravity[0] = (_acceleration[0] * LOWPASS_FILTER_VALUE) + _rawGravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
+    _rawGravity[1] = (_acceleration[1] * LOWPASS_FILTER_VALUE) + _rawGravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
+    _rawGravity[2] = (_acceleration[2] * LOWPASS_FILTER_VALUE) + _rawGravity[2] * (1.0 - LOWPASS_FILTER_VALUE);
 
-		if (_tiltActive) {
-		    _gravity[0] = -(_acceleration[1] * LOWPASS_FILTER_VALUE) + _gravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
+	if (_tiltActive) {
+	    _gravity[0] = (_acceleration[0] * LOWPASS_FILTER_VALUE) + _gravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
 
-			float gravY =  _cosTilt * _acceleration[0] + _sinTilt * _acceleration[2];
-			float gravZ = -_sinTilt * _acceleration[0] + _cosTilt * _acceleration[2];
+		float gravY =  _cosTilt * _acceleration[1] + _sinTilt * _acceleration[2];
+		float gravZ = -_sinTilt * _acceleration[1] + _cosTilt * _acceleration[2];
 
-		    _gravity[1] = gravY * LOWPASS_FILTER_VALUE + _gravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
-		    _gravity[2] = gravZ * LOWPASS_FILTER_VALUE + _gravity[2] * (1.0 - LOWPASS_FILTER_VALUE);
-			
-		} else {
-			_gravity[0] = _rawGravity[0];
-			_gravity[1] = _rawGravity[1];
-			_gravity[2] = _rawGravity[2];
-		}
+	    _gravity[1] = gravY * LOWPASS_FILTER_VALUE + _gravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
+	    _gravity[2] = gravZ * LOWPASS_FILTER_VALUE + _gravity[2] * (1.0 - LOWPASS_FILTER_VALUE);
+
 		
 	} else {
-	    _rawGravity[0] = (_acceleration[0] * LOWPASS_FILTER_VALUE) + _rawGravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
-	    _rawGravity[1] = (_acceleration[1] * LOWPASS_FILTER_VALUE) + _rawGravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
-	    _rawGravity[2] = (_acceleration[2] * LOWPASS_FILTER_VALUE) + _rawGravity[2] * (1.0 - LOWPASS_FILTER_VALUE);
-
-		if (_tiltActive) {
-		    _gravity[0] = (_acceleration[0] * LOWPASS_FILTER_VALUE) + _gravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
-
-			float gravY =  _cosTilt * _acceleration[1] + _sinTilt * _acceleration[2];
-			float gravZ = -_sinTilt * _acceleration[1] + _cosTilt * _acceleration[2];
-
-		    _gravity[1] = gravY * LOWPASS_FILTER_VALUE + _gravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
-		    _gravity[2] = gravZ * LOWPASS_FILTER_VALUE + _gravity[2] * (1.0 - LOWPASS_FILTER_VALUE);
-
-			
-		} else {
-			_gravity[0] = _rawGravity[0];
-			_gravity[1] = _rawGravity[1];
-			_gravity[2] = _rawGravity[2];
-		}
+		_gravity[0] = _rawGravity[0];
+		_gravity[1] = _rawGravity[1];
+		_gravity[2] = _rawGravity[2];
 	}
 
 }
 
 - (void) calibrateTilt {
-	if (_isLandscape) {
-		_calibrationY[_calibrationSampleNumber] = _acceleration[0];
-		_calibrationZ[_calibrationSampleNumber] = _acceleration[2];
-	} else {
-		_calibrationY[_calibrationSampleNumber] = _acceleration[1];
-		_calibrationZ[_calibrationSampleNumber] = _acceleration[2];
-	}
-	
+	_calibrationY[_calibrationSampleNumber] = _acceleration[1];
+	_calibrationZ[_calibrationSampleNumber] = _acceleration[2];
+
 	_calibrationSampleNumber++;
 	
 	if (_calibrationSampleNumber == ACCELEROMETER_CALIBRATION_MAX) {

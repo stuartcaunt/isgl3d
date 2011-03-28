@@ -25,13 +25,12 @@
 
 #import "Isgl3dScene3D.h"
 #import "Isgl3dNode.h"
-#import "Isgl3dSortableNode.h"
 #import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dScene3D
 
 - (id) init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
 		_alphaNodes = [[NSMutableArray alloc] init];
 		_sortedNodes = [[NSMutableArray alloc] init];
     }
@@ -73,7 +72,40 @@
 	[_sortedNodes removeAllObjects];
 }
 
+@end
 
 
+#pragma mark Isgl3dSortableNode
+
+@implementation Isgl3dSortableNode
+
+@synthesize distance = _distance;
+@synthesize node = _node;
+
+- (id) initWithDistance:(float)distance forNode:(Isgl3dNode *)node {
+    if ((self = [super init])) {
+    	_distance = distance;
+    	
+    	_node = [node retain];
+    }
+	
+    return self;
+}
+
+- (void) dealloc {
+	[_node release];
+
+	[super dealloc];
+}
+
+- (NSComparisonResult) compareDistances:(Isgl3dSortableNode *)node {
+	NSComparisonResult retVal = NSOrderedSame;
+	if (_distance < node.distance) {
+		retVal = NSOrderedAscending;
+	} else if (_distance > node.distance) { 
+		retVal = NSOrderedDescending;
+	}
+	return retVal;
+}
 
 @end

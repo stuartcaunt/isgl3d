@@ -43,7 +43,7 @@
 @synthesize doubleSided = _doubleSided;
 
 - (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
-    if (self = [super init]) {
+    if ((self = [super init])) {
 
     	_occlusionAlpha = 1.0;
 
