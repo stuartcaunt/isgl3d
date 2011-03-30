@@ -84,11 +84,11 @@
 }
 
 + (NSString *) rgbString:(float *)color {
-	return [NSString stringWithFormat:@"%02x%02x%02x", color[0], color[1], color[2]];
+	return [NSString stringWithFormat:@"%02x%02x%02x",  (int)(255.0 * color[0]), (int)(255.0 * color[1]), (int)(255.0 * color[2])];
 }
 
 + (NSString *) rgbaString:(float *)color {
-	return [NSString stringWithFormat:@"%02x%02x%02x%02x", color[0], color[1], color[2], color[3]];
+	return [NSString stringWithFormat:@"%02x%02x%02x%02x", (int)(255.0 * color[0]), (int)(255.0 * color[1]), (int)(255.0 * color[2]), (int)(255.0 * color[3])];
 }
 
 - (void) dealloc {

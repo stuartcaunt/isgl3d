@@ -1254,6 +1254,13 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
+		17AD09F5134352BF005F5F7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17AD09D113434FD7005F5F7F;
+			remoteInfo = ViewportTest;
+		};
 		17BE1748132E94E400D053BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -3134,6 +3141,15 @@
 			path = occlusion;
 			sourceTree = "<group>";
 		};
+		178C2D32134379BC003679AB /* viewport */ = {
+			isa = PBXGroup;
+			children = (
+				17AD09F213435013005F5F7F /* ViewportTestView.h */,
+				17AD09F313435013005F5F7F /* ViewportTestView.m */,
+			);
+			name = viewport;
+			sourceTree = "<group>";
+		};
 		179F86EF133E67CA007F4671 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -3667,8 +3683,6 @@
 		17F1E05B12F88FFA008D39E8 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				17AD09F213435013005F5F7F /* ViewportTestView.h */,
-				17AD09F313435013005F5F7F /* ViewportTestView.m */,
 				17BE1768132E95BD00D053BA /* billboard */,
 				17F1E07812F89324008D39E8 /* accelerometer */,
 				171CB86B13195D0C003712F4 /* augmentedreality */,
@@ -3683,6 +3697,7 @@
 				1731239512FC830C00861D84 /* textures */,
 				173123BA12FC845700861D84 /* tweening */,
 				1731240412FD62B200861D84 /* ui */,
+				178C2D32134379BC003679AB /* viewport */,
 				171CB8F1131964F1003712F4 /* tutorials */,
 				1733546E13408C38000F26F0 /* Isgl3dAppDelegate.h */,
 				1733546F13408C38000F26F0 /* Isgl3dAppDelegate.m */,
@@ -4474,6 +4489,7 @@
 				17C050011326BAB4001C96CF /* PBXTargetDependency */,
 				17C050031326BAB4001C96CF /* PBXTargetDependency */,
 				17BE178F132E98B000D053BA /* PBXTargetDependency */,
+				17AD09F6134352BF005F5F7F /* PBXTargetDependency */,
 			);
 			name = "build all";
 			productName = "build all";
@@ -5733,6 +5749,11 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17AD09D313434FD7005F5F7F /* PBXContainerItemProxy */;
+		};
+		17AD09F6134352BF005F5F7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17AD09D113434FD7005F5F7F /* ViewportTest */;
+			targetProxy = 17AD09F5134352BF005F5F7F /* PBXContainerItemProxy */;
 		};
 		17BE1747132E94E400D053BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

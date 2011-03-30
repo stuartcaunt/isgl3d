@@ -30,9 +30,6 @@
 - (id) init {
 	
 	if ((self = [super init])) {
-
-		// Set background color of view
-		self.backgroundColorString = @"111111";
 	
 		// Translate the camera and modify the look-at position (used to center the torus in the screen).
 		[self.camera setTranslation:2 y:9 z:10];

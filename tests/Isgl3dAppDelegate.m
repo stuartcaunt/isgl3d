@@ -42,9 +42,6 @@
 	// Set the director to display the FPS
 	[Isgl3dDirector sharedInstance].displayFPS = YES; 
 
-	// Set the device orientation
-//	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
-	
 	// Create the UIViewController
 	_viewController = [[Isgl3dViewController alloc] initWithNibName:nil bundle:nil];
 	_viewController.wantsFullScreenLayout = YES;

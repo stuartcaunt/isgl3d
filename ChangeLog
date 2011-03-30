@@ -1,4 +1,8 @@
 current SVN version
+	Isgl3dColorUtil: fix bug in returning rgb and rgba hex strings
+	Isgl3dView: default isOpaque = NO (improved rendering, simplify UI overlay)
+	Isgl3dView: default background color to Isgl3dDirector background color
+	Isgl3dView: fix bug in combined device + view orientation
 	Demos and tutorials updated for new architecture
 	Added viewport test demo
 	Isgl3dDirector, Isgl3dView: allow orientations as landscape or portrait (eg Isgl3dOrientationPortrait)

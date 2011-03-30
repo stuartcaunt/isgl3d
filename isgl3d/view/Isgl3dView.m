@@ -71,11 +71,9 @@
 		CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
 		_viewport = CGRectMake(0, 0, windowSize.width, windowSize.height);
 			
-		_isOpaque = YES;
-		_backgroundColor[0] = 0;
-		_backgroundColor[1] = 0;
-		_backgroundColor[2] = 0;
-		_backgroundColor[3] = 1;
+		_isOpaque = NO;
+		
+		self.backgroundColorString = [Isgl3dDirector sharedInstance].backgroundColorString;
 
 		_isEventCaptureEnabled = YES;
 		
@@ -103,7 +101,7 @@
 
 - (void) setViewOrientation:(isgl3dOrientation)orientation {
 	_viewOrientation = orientation;
-	_deviceViewOrientation = ([Isgl3dDirector sharedInstance].deviceOrientation + _viewOrientation) % 4;
+	_deviceViewOrientation = ([Isgl3dDirector sharedInstance].deviceOrientation - _viewOrientation) % 4;
 	
 	// Update camera orientation
 	if (_camera) {

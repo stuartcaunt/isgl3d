@@ -108,19 +108,21 @@
 
 - (void) createViews {
 	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 
 	// Add Isgl3dView 1
 	Isgl3dView * view1 = [ViewportTestView view];
 	view1.viewport = CGRectMake(2, 241, 316, 237);
 	view1.backgroundColorString = @"000022ff";
+	view1.isOpaque = YES;
 	[[Isgl3dDirector sharedInstance] addView:view1];
 	
 	// Add Isgl3dView 2
 	Isgl3dView * view2 = [ViewportTestView view];
 	view2.viewport = CGRectMake(2, 2, 316, 237);
 	view2.backgroundColorString = @"002200ff";
-	view2.viewOrientation = Isgl3dOrientationLandscapeRight;
+	view2.isOpaque = YES;
+	view2.viewOrientation = Isgl3dOrientation90CounterClockwise;
 	[[Isgl3dDirector sharedInstance] addView:view2];
 }
 

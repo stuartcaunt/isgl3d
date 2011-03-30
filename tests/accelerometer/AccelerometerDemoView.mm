@@ -210,7 +210,6 @@
 - (id) init {
 	
 	if ((self = [super init])) {
-		self.isOpaque = NO;
 
 		// Create a button to calibrate the accelerometer
 		Isgl3dTextureMaterial * calibrateButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"angle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];

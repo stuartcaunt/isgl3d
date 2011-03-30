@@ -32,9 +32,6 @@
 	
 	if ((self = [super init])) {
 
-		// Set background color of view
-		self.backgroundColorString = @"111111";
-
 		// Translate the camera.
 		[self.camera setTranslation:2 y:8 z:10];
 

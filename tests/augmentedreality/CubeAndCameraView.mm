@@ -32,9 +32,6 @@
 	
 	if ((self = [super init])) {
 
-		// Set transparent
-		self.isOpaque = NO;
-
 		// Create and configure touch-screen camera controller
 		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
 		_cameraController.orbit = 16;
