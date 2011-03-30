@@ -5,7 +5,7 @@
 
 @private
 	Isgl3dCamera * _camera;
-	Isgl3dView3D * _view;
+	Isgl3dView * _view;
 	
 	Isgl3dNode * _target;
 	
@@ -27,7 +27,7 @@
 @property (nonatomic) float damping;
 @property (nonatomic) BOOL doubleTapEnabled;
 
-- (id) initWithCamera:(Isgl3dCamera *)camera andView:(Isgl3dView3D *)view;
+- (id) initWithCamera:(Isgl3dCamera *)camera andView:(Isgl3dView *)view;
 
 - (void) update;
 

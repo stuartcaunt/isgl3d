@@ -28,8 +28,50 @@
 
 @implementation ParticleGeneratorDemoView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+
+		// Enable zsorting
+		self.zSortingEnabled = YES;
+
+		// Create and configure touch-screen camera controller
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController.orbit = 14;
+		_cameraController.theta = 30;
+		_cameraController.phi = 30;
+		_cameraController.doubleTapEnabled = NO;
+
+		Isgl3dTextureMaterial *  spriteMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"particle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	
+		Isgl3dParticleSystem * particleSystem = [[Isgl3dParticleSystem alloc] init];
+		Isgl3dParticleNode * particleNode =  [self.scene createNodeWithParticle:particleSystem andMaterial:[spriteMaterial autorelease]];
+		particleNode.transparent = YES;
+		[particleNode enableAlphaCullingWithValue:0.5];
+		[particleSystem setAttenuation:0.01 linear:0.02 quadratic:0.007];
+		
+		_fountainParticleGenerator = [[Isgl3dFountainBounceParticleGenerator alloc] initWithParticleSystem:particleSystem andNode:particleNode];
+		_fountainParticleGenerator.radius = 5;
+		_fountainParticleGenerator.height = 5;
+		_fountainParticleGenerator.particleRate = 300;
+		_fountainParticleGenerator.maxParticles = 2000;
+		_fountainParticleGenerator.randomizeColor = YES;
+		_fountainParticleGenerator.randomizeSize = YES;
+		_fountainParticleGenerator.size = 10;
+		[_fountainParticleGenerator startAnimation];
+		_fountainParticleGenerator.time = 2;
+		
+		[particleSystem release];
+
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
-	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 	[_cameraController release];
 
 	[_fountainParticleGenerator stopAnimation];
@@ -38,67 +80,18 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-
-	// Create and configure touch-screen camera controller
-	_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:_camera andView:self];
-	_cameraController.orbit = 14;
-	_cameraController.theta = 30;
-	_cameraController.phi = 30;
-	_cameraController.doubleTapEnabled = NO;
-	
+- (void) onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
-		
-	[self setZSortingEnabled:TRUE];
-	self.isLandscape = YES;	
-	
 }
 
-- (void) initScene {
-	[super initScene];
-	
-	Isgl3dTextureMaterial *  spriteMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"particle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-
-	Isgl3dParticleSystem * particleSystem = [[Isgl3dParticleSystem alloc] init];
-	Isgl3dParticleNode * particleNode =  [_scene createNodeWithParticle:particleSystem andMaterial:[spriteMaterial autorelease]];
-	particleNode.transparent = YES;
-	[particleNode enableAlphaCullingWithValue:0.5];
-	[particleSystem setAttenuation:0.01 linear:0.02 quadratic:0.007];
-	
-//	ParticleSystem * particleSystem2 = [[ParticleSystem alloc] initWithMaterial:particleTextureMaterial];
-//	[_scene addChild:particleSystem2];
-	
-	_fountainParticleGenerator = [[Isgl3dFountainBounceParticleGenerator alloc] initWithParticleSystem:particleSystem andNode:particleNode];
-//	_fountainParticleGenerator.scatterAngle = 45;
-	_fountainParticleGenerator.radius = 5;
-	_fountainParticleGenerator.height = 5;
-	_fountainParticleGenerator.particleRate = 300;
-	_fountainParticleGenerator.maxParticles = 2000;
-	_fountainParticleGenerator.randomizeColor = YES;
-	_fountainParticleGenerator.randomizeSize = YES;
-	_fountainParticleGenerator.size = 10;
-	[_fountainParticleGenerator startAnimation];
-	_fountainParticleGenerator.time = 2;
-/*
-	Isgl3dExplosionParticleGenerator * explosionGenerator = [[Isgl3dExplosionParticleGenerator alloc] initWithParticleSystem:[particleSystem2 autorelease]];
-	explosionGenerator.radius = 2;
-	explosionGenerator.randomizeColor = YES;
-	explosionGenerator.randomizeSize = YES;
-	explosionGenerator.size = 6;
-	[explosionGenerator generateParticles:100];
-	explosionGenerator.selfDestructing = YES;
-	[explosionGenerator startAnimation];
-	[explosionGenerator release];
-	*/
-	
-	[particleSystem release];
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) updateScene {
-	[super updateScene];
-
+- (void) tick:(float)dt {
+	
 	// update camera
 	[_cameraController update];
 }
@@ -110,12 +103,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[ParticleGeneratorDemoView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [ParticleGeneratorDemoView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

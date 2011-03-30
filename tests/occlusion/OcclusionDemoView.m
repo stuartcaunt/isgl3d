@@ -29,9 +29,61 @@
 
 @implementation OcclusionDemoView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+
+		// Enable zsorting and occlusion testing
+		self.zSortingEnabled = YES;
+		self.occlusionTestingEnabled = YES;
+		self.occlusionTestingAngle = 20;
+
+		// Create and configure touch-screen camera controller
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController.orbit = 11;
+		_cameraController.theta = 30;
+		_cameraController.phi = 10;
+		_cameraController.doubleTapEnabled = NO;
+
+		// Construct scene
+		Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"mars.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dSphere * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:10 lats:10];
+	
+		_container = [self.scene createNode];
+		[_container retain];
+	
+		float containerWidth = 10;
+		float containerLength = 10;
+		int nX = 5;
+		int nZ = 5;
+	
+		for (int i = 0; i < nX; i++) {
+			for (int k = 0; k < nZ; k++) {
+				
+				Isgl3dMeshNode * sphere = [_container createNodeWithMesh:sphereMesh andMaterial:textureMaterial];
+				[sphere setTranslation:i * containerWidth / (nX - 1) - 0.5 * containerWidth y:0 z:k * containerLength / (nZ - 1) - 0.5 *containerLength];
+			}
+		}
+	
+		[textureMaterial release];
+		[sphereMesh release];
+	
+		// Create the lights
+		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"444444" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
+		[light setTranslation:2 y:6 z:4];
+		[self.scene addChild:light];
+		
+		[light release];
+	
+		[self setSceneAmbient:@"444444"];
+
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	return self;
+}
+
 - (void) dealloc {
-	// Remove camera controller from touch-screen manager and release
-	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 	[_cameraController release];
 
 	[_container release];
@@ -39,68 +91,20 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
 
-	// Create and configure touch-screen camera controller
-	_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:_camera andView:self];
-	_cameraController.orbit = 11;
-	_cameraController.theta = 30;
-	_cameraController.phi = 10;
-	_cameraController.doubleTapEnabled = NO;
-	
+- (void) onActivated {
 	// Add camera controller to touch-screen manager
-	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
-		
-	self.zSortingEnabled = YES;
-	self.occlusionTestingEnabled = YES;
-	self.occlusionTestingAngle = 20;
-//	[GLObject3D setOcclusionMode:OCCLUSION_MODE_ANGLE];
-	self.isLandscape = YES;
-		
+	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController withView:self];
 }
 
-- (void) initScene {
-	[super initScene];
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
+}
 
-	Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"mars.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dSphere * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:10 lats:10];
-
-	_container = [_scene createNode];
-	[_container retain];
-
-	float containerWidth = 10;
-	float containerLength = 10;
-	int nX = 5;
-	int nZ = 5;
-
-	for (int i = 0; i < nX; i++) {
-		for (int k = 0; k < nZ; k++) {
-			
-			Isgl3dMeshNode * sphere = [_container createNodeWithMesh:sphereMesh andMaterial:textureMaterial];
-			[sphere setTranslation:i * containerWidth / (nX - 1) - 0.5 * containerWidth y:0 z:k * containerLength / (nZ - 1) - 0.5 *containerLength];
-		}
-	}
-
-	[textureMaterial release];
-	[sphereMesh release];
-
-	// Create the lights
-	Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"444444" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
-	[light setTranslation:2 y:6 z:4];
-	[_scene addChild:light];
+- (void) tick:(float)dt {
 	
-	[light release];
-
-	[self setSceneAmbient:@"444444"];
-}
-
-- (void) updateScene {
-	[super updateScene];
-
-	// update camera
 	[_cameraController update];
-
 }
 
 @end
@@ -110,12 +114,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[OcclusionDemoView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [OcclusionDemoView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

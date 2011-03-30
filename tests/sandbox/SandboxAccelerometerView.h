@@ -51,8 +51,6 @@ class btDiscreteDynamicsWorld;
 
 #pragma mark SimpleUIView
 
-@class SandboxCameraController;
-
 @interface SimpleUIView : Isgl3dBasic2DView {
 
 @private	

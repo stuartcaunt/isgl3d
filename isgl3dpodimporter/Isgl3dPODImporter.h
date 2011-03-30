@@ -77,8 +77,16 @@ class CPVRTModelPOD;
  * Initialises the importer with the POD data file path and the view3D.
  * @param path The path to the POD data file.
  * @param view3D the Isgl3dView3D.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 - (id) initWithFile:(NSString *)path andView3D:(Isgl3dView3D *)view3D;
+
+/**
+ * Initialises the importer with the POD data file path.
+ * @param path The path to the POD data file.
+ */
+- (id) initWithFile:(NSString *)path;
 
 /**
  * Prints to the console information about the structure and contents of the POD.

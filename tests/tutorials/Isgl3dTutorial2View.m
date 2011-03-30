@@ -28,69 +28,61 @@
 
 @implementation Isgl3dTutorial2View
 
-- (void) dealloc {
-	// Release scene
-	[_scene release];
+- (id) init {
+	
+	if ((self = [super init])) {
 
+		// Set background color of view
+		self.backgroundColorString = @"111111";
+
+		// Translate the camera.
+		[self.camera setTranslation:2 y:8 z:10];
+
+		// Create a white color material (with grey ambient color)
+		Isgl3dColorMaterial * colorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"444444" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
+		
+		// Create a torus primitive
+		Isgl3dTorus * torus = [[Isgl3dTorus alloc] initWithGeometry:3.0 tubeRadius:1.0 ns:32 nt:20];
+		
+		// Create a mesh node in the scene using torus primitive and color material
+		_torusNode = [self.scene createNodeWithMesh:[torus autorelease] andMaterial:[colorMaterial autorelease]];
+	
+		// Create red light (producing white specular light), with rendering, and add to scene
+		_redLight = [[Isgl3dLight alloc] initWithHexColor:@"FF0000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.02];
+		_redLight.renderLight = YES;
+		[self.scene addChild:_redLight];
+		
+		// Create green light (producing white specular light), with rendering, and add to scene
+		_greenLight = [[Isgl3dLight alloc] initWithHexColor:@"00FF00" diffuseColor:@"00FF00" specularColor:@"FFFFFF" attenuation:0.02];
+		_greenLight.renderLight = YES;
+		[self.scene addChild:_greenLight];
+	
+		// Create blue light (producing white specular light), with rendering, and add to scene
+		_blueLight = [[Isgl3dLight alloc] initWithHexColor:@"0000FF" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.02];
+		_blueLight.renderLight = YES;
+		[self.scene addChild:_blueLight];
+		
+		// Set the scene ambient color
+		[self setSceneAmbient:@"444444"];
+
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
+- (void) dealloc {
 	// Release the lights
 	[_blueLight release];
 	[_redLight release];
 	[_greenLight release];
-	
+
 	[super dealloc];
 }
 
-- (void) initView {
-	// Prepare the view with the background color.
-	float clearColor[4] = {0.05, 0.05, 0.05, 1};
-	[self prepareView:clearColor];
-
-	// Create the root scene graph object and set it active in the view.
-	_scene = [[Isgl3dScene3D alloc] init];
-	[self setActiveScene:_scene];
-
-	// Create a standard camera in the scene and set it active in the view.
-	Isgl3dCamera * camera = [_scene createCameraNodeWithView:self];
-	[self setActiveCamera:camera];
-
-	// Translate the camera.
-	[camera setTranslation:2 y:8 z:5];
-	
-	// Set the device in landscape mode.
-	self.isLandscape = YES;
-}
-
-- (void) initScene {
-
-	// Create a white color material (with grey ambient color)
-	Isgl3dColorMaterial * colorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"444444" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
-	
-	// Create a torus primitive
-	Isgl3dTorus * torus = [[Isgl3dTorus alloc] initWithGeometry:3.0 tubeRadius:1.0 ns:32 nt:20];
-	
-	// Create a mesh node in the scene using torus primitive and color material
-	_torusNode = [_scene createNodeWithMesh:[torus autorelease] andMaterial:[colorMaterial autorelease]];
-
-	// Create red light (producing white specular light), with rendering, and add to scene
-	_redLight = [[Isgl3dLight alloc] initWithHexColor:@"FF0000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.02];
-	_redLight.renderLight = YES;
-	[_scene addChild:_redLight];
-	
-	// Create green light (producing white specular light), with rendering, and add to scene
-	_greenLight = [[Isgl3dLight alloc] initWithHexColor:@"00FF00" diffuseColor:@"00FF00" specularColor:@"FFFFFF" attenuation:0.02];
-	_greenLight.renderLight = YES;
-	[_scene addChild:_greenLight];
-
-	// Create blue light (producing white specular light), with rendering, and add to scene
-	_blueLight = [[Isgl3dLight alloc] initWithHexColor:@"0000FF" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.02];
-	_blueLight.renderLight = YES;
-	[_scene addChild:_blueLight];
-	
-	// Set the scene ambient color
-	[self setSceneAmbient:@"444444"];
-}
-
-- (void) updateScene {
+- (void) tick:(float)dt {
 	// Rotate the torus
 	[_torusNode rotate:1 x:0 y:0 z:1];
 	
@@ -103,16 +95,23 @@
 	_lightAngle = _lightAngle + 0.5;
 }
 
+
 @end
 
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[Isgl3dTutorial2View alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [Isgl3dTutorial2View view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
+
 @end

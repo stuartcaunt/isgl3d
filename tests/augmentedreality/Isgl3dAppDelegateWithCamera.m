@@ -25,6 +25,7 @@
 
 #import "Isgl3dAppDelegateWithCamera.h"
 #import "Isgl3dViewController.h"
+#import "Isgl3d.h"
 
 @implementation Isgl3dAppDelegateWithCamera
 
@@ -53,8 +54,8 @@
 	[self.window sendSubviewToBack:cameraController.view];
 	
 	// Make the opengl view transparent
-	self.viewController.view.backgroundColor = [UIColor clearColor];
-	self.viewController.view.opaque = NO;
+	[Isgl3dDirector sharedInstance].openGLView.backgroundColor = [UIColor clearColor];
+	[Isgl3dDirector sharedInstance].openGLView.opaque = NO;
 }
 
 - (void) dealloc {

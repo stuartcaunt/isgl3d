@@ -24,22 +24,33 @@
  */
 
 #import "isgl3d.h"
-#import "Isgl3dDemoView.h"
 
-@interface UITestView : Isgl3dDemoView {
-
+@interface UITestView : Isgl3dBasic2DView {
 }
 
 @end
 
 
+#pragma mark Simple3DView
+
+@class Isgl3dDemoCameraController;
+
+@interface Simple3DView : Isgl3dBasic3DView {
+
+@private	
+	Isgl3dMeshNode * _torus;
+	Isgl3dDemoCameraController * _cameraController;
+
+}
+
+@end
+
 /*
  * Principal class to be instantiated in main.h. 
- * The window and view are created in Isgl3dAppDelegate, the demo view is returned from viewWithFrame.
  */
 #import "Isgl3dAppDelegate.h"
 @interface AppDelegate : Isgl3dAppDelegate
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+- (void) createViews;
 @end
 
 

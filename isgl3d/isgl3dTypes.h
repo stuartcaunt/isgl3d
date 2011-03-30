@@ -30,7 +30,12 @@ typedef enum {
 	Isgl3dOrientation0 = 0,	
     Isgl3dOrientation90Clockwise,
     Isgl3dOrientation180,
-    Isgl3dOrientation90CounterClockwise
+    Isgl3dOrientation90CounterClockwise,
+    
+    Isgl3dOrientationPortrait = Isgl3dOrientation0,
+    Isgl3dOrientationLandscapeRight = Isgl3dOrientation90Clockwise,
+    Isgl3dOrientationPortraitUpsideDown = Isgl3dOrientation180,
+    Isgl3dOrientationLandscapeLeft = Isgl3dOrientation90CounterClockwise
 } isgl3dOrientation;
 
 /**

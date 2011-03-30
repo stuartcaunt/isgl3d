@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3d.h"
-#import "Isgl3dDemoView.h"
 
 @class Isgl3dPhysicsWorld;
 
@@ -34,8 +33,7 @@ class btCollisionDispatcher;
 class btSequentialImpulseConstraintSolver;
 class btDiscreteDynamicsWorld;
 
-@interface AccelerometerDemoView : Isgl3dDemoView {
-
+@interface AccelerometerDemoView : Isgl3dBasic3DView {
 	btDefaultCollisionConfiguration * _collisionConfig;
 	btDbvtBroadphase * _broadphase;
 	btCollisionDispatcher * _collisionDispatcher;
@@ -51,14 +49,28 @@ class btDiscreteDynamicsWorld;
 
 @end
 
+#pragma mark SimpleUIView
+
+@interface SimpleUIView : Isgl3dBasic2DView {
+
+@private	
+	Isgl3dGLUIButton * _calibrateButton;
+	Isgl3dGLUIButton * _pauseButton;
+	Isgl3dGLUIButton * _cameraButton;
+}
+
+@property (nonatomic, readonly) Isgl3dGLUIButton * calibrateButton;
+@property (nonatomic, readonly) Isgl3dGLUIButton * pauseButton;
+@property (nonatomic, readonly) Isgl3dGLUIButton * cameraButton;
+
+@end
 
 /*
  * Principal class to be instantiated in main.h. 
- * The window and view are created in Isgl3dAppDelegate, the demo view is returned from viewWithFrame.
  */
 #import "Isgl3dAppDelegate.h"
 @interface AppDelegate : Isgl3dAppDelegate
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+- (void) createViews;
 @end
 
 

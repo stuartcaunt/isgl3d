@@ -27,82 +27,90 @@
 
 @implementation CameraZoomAndFocusDemoView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+
+		[self.camera setTranslation:0 y:0 z:1000];
+		self.camera.focus = 4;
+		self.camera.zoom = 10;
+		_zoom = self.camera.zoom;
+		_focus = self.camera.focus;
+		_theta = 0;	 	
+		_moving = NO;	
+
+
+		Isgl3dColorMaterial * redMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FF0000" diffuse:@"FF0000" specular:@"FF0000" shininess:0];
+		Isgl3dColorMaterial * greenMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"00FF00" diffuse:@"00FF00" specular:@"00FF00" shininess:0];
+		Isgl3dColorMaterial * blueMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"0000FF" diffuse:@"0000FF" specular:@"0000FF" shininess:0];
+		Isgl3dColorMaterial * yellowMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0];
+		
+		Isgl3dPlane * sidePlane = [[Isgl3dPlane alloc] initWithGeometry:150 height:350 nx:10 ny:10];
+		Isgl3dPlane * horizontalPlane = [[Isgl3dPlane alloc] initWithGeometry:850 height:150 nx:10 ny:10];
+		
+		for (int i = 0; i < 3; i++) {
+	
+			Isgl3dMeshNode * bottomNode = [self.scene createNodeWithMesh:horizontalPlane andMaterial:blueMaterial];
+			[bottomNode rotate:-90 x:1 y:0 z:0];
+			[bottomNode translate:0 y:-200 z:-(i - 1) * 1000];
+			bottomNode.doubleSided = YES;
+	
+			Isgl3dMeshNode * topNode = [self.scene createNodeWithMesh:horizontalPlane andMaterial:greenMaterial];
+			[topNode rotate:90 x:1 y:0 z:0];
+			[topNode translate:0 y:200 z:-(i - 1) * 1000];
+			topNode.doubleSided = YES;
+	
+			Isgl3dMeshNode * rightNode = [self.scene createNodeWithMesh:sidePlane andMaterial:redMaterial];
+			[rightNode rotate:-90 x:0 y:1 z:0];
+			[rightNode translate:450 y:0 z:-(i - 1) * 1000];
+			rightNode.doubleSided = YES;
+			
+			Isgl3dMeshNode * leftNode = [self.scene createNodeWithMesh:sidePlane andMaterial:yellowMaterial];
+			[leftNode rotate:90 x:0 y:1 z:0];
+			[leftNode translate:-450 y:0 z:-(i - 1) * 1000];
+			leftNode.doubleSided = YES;
+		}
+		
+		[redMaterial release];
+		[greenMaterial release];
+		[blueMaterial release];
+		[yellowMaterial release];
+		
+		[sidePlane release];
+		[horizontalPlane release];
+		
+		// Add shadow casting light
+		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
+		[light setTranslation:400 y:1000 z:400];
+		[self.scene addChild:light];
+	
+		// Initialise accelerometer
+		[[Isgl3dAccelerometer sharedInstance] setup:30];
+
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
 
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-
-	[_camera setTranslation:0 y:0 z:1000];
-		
-	self.isLandscape = YES;
-	
-	_camera.focus = 4;
-	_camera.zoom = 10;
-	
-	_zoom = _camera.zoom;
-	_focus = _camera.focus;
-	
+- (void) onActivated {
+	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:self];
-	_theta = 0;	 	
-	_moving = NO;	
 }
 
-- (void) initScene {
-	[super initScene];
-	
-	Isgl3dColorMaterial * redMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FF0000" diffuse:@"FF0000" specular:@"FF0000" shininess:0];
-	Isgl3dColorMaterial * greenMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"00FF00" diffuse:@"00FF00" specular:@"00FF00" shininess:0];
-	Isgl3dColorMaterial * blueMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"0000FF" diffuse:@"0000FF" specular:@"0000FF" shininess:0];
-	Isgl3dColorMaterial * yellowMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0];
-	
-	Isgl3dPlane * sidePlane = [[Isgl3dPlane alloc] initWithGeometry:150 height:350 nx:10 ny:10];
-	Isgl3dPlane * horizontalPlane = [[Isgl3dPlane alloc] initWithGeometry:850 height:150 nx:10 ny:10];
-	
-	for (int i = 0; i < 3; i++) {
-
-		Isgl3dMeshNode * bottomNode = [_scene createNodeWithMesh:horizontalPlane andMaterial:blueMaterial];
-		[bottomNode rotate:-90 x:1 y:0 z:0];
-		[bottomNode translate:0 y:-200 z:-(i - 1) * 1000];
-		bottomNode.doubleSided = YES;
-
-		Isgl3dMeshNode * topNode = [_scene createNodeWithMesh:horizontalPlane andMaterial:greenMaterial];
-		[topNode rotate:90 x:1 y:0 z:0];
-		[topNode translate:0 y:200 z:-(i - 1) * 1000];
-		topNode.doubleSided = YES;
-
-		Isgl3dMeshNode * rightNode = [_scene createNodeWithMesh:sidePlane andMaterial:redMaterial];
-		[rightNode rotate:-90 x:0 y:1 z:0];
-		[rightNode translate:450 y:0 z:-(i - 1) * 1000];
-		rightNode.doubleSided = YES;
-		
-		Isgl3dMeshNode * leftNode = [_scene createNodeWithMesh:sidePlane andMaterial:yellowMaterial];
-		[leftNode rotate:90 x:0 y:1 z:0];
-		[leftNode translate:-450 y:0 z:-(i - 1) * 1000];
-		leftNode.doubleSided = YES;
-	}
-	
-	[redMaterial release];
-	[greenMaterial release];
-	[blueMaterial release];
-	[yellowMaterial release];
-	
-	[sidePlane release];
-	[horizontalPlane release];
-	
-	// Add shadow casting light
-	Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
-	[light setTranslation:400 y:1000 z:400];
-	[_scene addChild:light];
-
-	// Initialise accelerometer
-	[[Isgl3dAccelerometer sharedInstance] setup:30];
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:self];
 }
 
-- (void) updateScene {
-	[super updateScene];
+- (void) tick:(float)dt {
 	
 	float orbitDistance = 1000;
 	float y = orbitDistance * cos([[Isgl3dAccelerometer sharedInstance] tiltAngle]);
@@ -111,7 +119,7 @@
 	_theta += 0.05 * [[Isgl3dAccelerometer sharedInstance] rotationAngle];
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	[_camera setTranslation:x y:y z:z];
+	[self.camera setTranslation:x y:y z:z];
 
 	if (_moving) {
 		_focus += _dFocus;
@@ -124,8 +132,8 @@
 			_focus = 1;
 		}
 		
-		_camera.focus = _focus;
-		_camera.zoom = _zoom;
+		self.camera.focus = _focus;
+		self.camera.zoom = _zoom;
 		
 		_moving = NO;
 	}
@@ -133,11 +141,12 @@
 //	NSLog(@"Angle = %f", [[Accelerometer sharedInstance] rotationAngle] * 180 / M_PI);
 }
 
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	NSEnumerator * enumerator = [touches objectEnumerator];
 	UITouch * touch = [enumerator nextObject];
 
-	CGPoint	location = [touch locationInView:self];
+	CGPoint	location = [touch locationInView:touch.view];
     _lastTouchX = location.x;
     _lastTouchY = location.y;
 }
@@ -150,7 +159,7 @@
 	NSEnumerator * enumerator = [touches objectEnumerator];
 	UITouch * touch = [enumerator nextObject];
 
-	CGPoint	location = [touch locationInView:self];
+	CGPoint	location = [touch locationInView:touch.view];
 
 	_dZoom = (location.x - _lastTouchX) / 20;
 	_dFocus = (location.y - _lastTouchY) / 10;
@@ -168,12 +177,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[CameraZoomAndFocusDemoView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [CameraZoomAndFocusDemoView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

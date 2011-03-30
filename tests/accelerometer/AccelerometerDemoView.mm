@@ -24,8 +24,6 @@
  */
 
 #import "AccelerometerDemoView.h"
-#import "isgl3d.h"
-
 #include "Isgl3dPhysicsWorld.h"
 #include "Isgl3dPhysicsObject3D.h"
 #include "Isgl3dMotionState.h"
@@ -36,10 +34,73 @@
 @interface AccelerometerDemoView ()
 - (void) translateCamera:(float)phi;
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution;
-- (void) buildUI;
 @end
 
 @implementation AccelerometerDemoView
+
+- (id) init {
+	
+	if ((self = [super init])) {
+
+		_pauseActive = NO;	 	
+		_theta = M_PI / 2;
+		_orbitalDistance = 20;
+	
+		// Initialise camera position
+		[self translateCamera:M_PI / 4.0];	
+	
+		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
+		[Isgl3dDirector sharedInstance].shadowAlpha = 0.4;
+
+
+		// Create physics world with discrete dynamics
+		_collisionConfig = new btDefaultCollisionConfiguration();
+		_broadphase = new btDbvtBroadphase();
+		_collisionDispatcher = new btCollisionDispatcher(_collisionConfig);
+		_constraintSolver = new btSequentialImpulseConstraintSolver;
+		_discreteDynamicsWorld = new btDiscreteDynamicsWorld(_collisionDispatcher, _broadphase, _constraintSolver, _collisionConfig);
+		_discreteDynamicsWorld->setGravity(btVector3(0,-10,0));
+	
+		_physicsWorld = [[Isgl3dPhysicsWorld alloc] init];
+		[_physicsWorld setDiscreteDynamicsWorld:_discreteDynamicsWorld];
+		[self.scene addChild:_physicsWorld];
+	
+		// Create the sphere
+		Isgl3dTextureMaterial * beachBallMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"BeachBall.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dSphere * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:16];
+		Isgl3dMeshNode * sphereNode = [self.scene createNodeWithMesh:[sphereMesh autorelease] andMaterial:[beachBallMaterial autorelease]];
+		[sphereNode setTranslation:0 y:3 z:0];
+		sphereNode.enableShadowCasting = YES;
+	
+		btCollisionShape * sphereShape = new btSphereShape(sphereMesh.radius);
+		[self createPhysicsObject:sphereNode shape:sphereShape mass:1.0 restitution:0.9]; 
+	
+		// Create the ground surface
+		Isgl3dTextureMaterial * woodMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"wood.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:100.0 height:100.0 nx:10 ny:10];
+		Isgl3dMeshNode * groundNode = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
+		[groundNode setRotation:-90 x:1 y:0 z:0];
+		[groundNode setTranslation:0 y:-2 z:0];
+	
+		btCollisionShape* groundShape = new btBox2dShape(btVector3(50, 50, 0));
+		[self createPhysicsObject:groundNode shape:groundShape mass:0 restitution:0.6];
+		
+		// Add shadow casting light
+		Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.001];
+		[light setTranslation:10 y:20 z:10];
+		light.planarShadowsNode = groundNode;
+		[self.scene addChild:light];
+	
+		// Initialise accelerometer
+		[[Isgl3dAccelerometer sharedInstance] setup:30];
+		[[Isgl3dAccelerometer sharedInstance] startTiltCalibration];
+
+
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	return self;
+}
 
 - (void) dealloc {
 	delete _discreteDynamicsWorld;
@@ -53,104 +114,30 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-	
-	_pauseActive = NO;	 	
-	_theta = M_PI / 2;
-	_orbitalDistance = 20;
 
-	// Initialise camera position
-	[self translateCamera:M_PI / 4.0];	
-
-	self.isLandscape = YES;	
-		
-	self.shadowRenderingMethod = SHADOW_RENDERING_PLANAR;
-	self.shadowAlpha = 0.4;
-	
-}
-
-- (void) initScene {
-	[super initScene];
-	
-	// Create physics world with discrete dynamics
-	_collisionConfig = new btDefaultCollisionConfiguration();
-	_broadphase = new btDbvtBroadphase();
-	_collisionDispatcher = new btCollisionDispatcher(_collisionConfig);
-	_constraintSolver = new btSequentialImpulseConstraintSolver;
-	_discreteDynamicsWorld = new btDiscreteDynamicsWorld(_collisionDispatcher, _broadphase, _constraintSolver, _collisionConfig);
-	_discreteDynamicsWorld->setGravity(btVector3(0,-10,0));
-
-	_physicsWorld = [[Isgl3dPhysicsWorld alloc] init];
-	[_physicsWorld setDiscreteDynamicsWorld:_discreteDynamicsWorld];
-	[_scene addChild:_physicsWorld];
-
-	// Create the sphere
-	Isgl3dTextureMaterial * beachBallMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"BeachBall.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dSphere * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:16];
-	Isgl3dMeshNode * sphereNode = [_scene createNodeWithMesh:[sphereMesh autorelease] andMaterial:[beachBallMaterial autorelease]];
-	[sphereNode setTranslation:0 y:3 z:0];
-	sphereNode.enableShadowCasting = YES;
-
-	btCollisionShape * sphereShape = new btSphereShape(sphereMesh.radius);
-	[self createPhysicsObject:sphereNode shape:sphereShape mass:1.0 restitution:0.9]; 
-
-	// Create the ground surface
-	Isgl3dTextureMaterial * woodMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"wood.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:100.0 height:100.0 nx:10 ny:10];
-	Isgl3dMeshNode * groundNode = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
-	[groundNode setRotation:-90 x:1 y:0 z:0];
-	[groundNode setTranslation:0 y:-2 z:0];
-
-	btCollisionShape* groundShape = new btBox2dShape(btVector3(50, 50, 0));
-	[self createPhysicsObject:groundNode shape:groundShape mass:0 restitution:0.6];
-	
-	// Add shadow casting light
-	Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.001];
-	[light setTranslation:10 y:20 z:10];
-	light.planarShadowsNode = groundNode;
-	[_scene addChild:light];
-
-	// Initialise accelerometer
-	[[Isgl3dAccelerometer sharedInstance] setup:30];
-	[[Isgl3dAccelerometer sharedInstance] startTiltCalibration];
-
-	// Build the UI
-	[self buildUI];
-}
-
-- (void) updateScene {
-	[super updateScene];
-	
+- (void) tick:(float)dt {
 	if (_pauseActive) {
 		
-		// Don't update the transformation matrices (except for camera)
-		[self skipUpdates];
-
 		// Move the camera if it is active
-		if (_cameraActive) {
+		if (_cameraActive && ![Isgl3dAccelerometer sharedInstance].isCalibrating) {
 			_theta += 0.05 * [[Isgl3dAccelerometer sharedInstance] rotationAngle];
 			[self translateCamera:[[Isgl3dAccelerometer sharedInstance] tiltAngle]];
 		}
 
 	}  else {
 		// Update gravity if calibration not in progress
-		if (![Isgl3dAccelerometer sharedInstance].isCalibrating) {
-			float G = 10.0;
-			float * gravityVector = [Isgl3dAccelerometer sharedInstance].gravity;
+		float G = 10.0;
+		float * gravityVector = [Isgl3dAccelerometer sharedInstance].gravity;
 
-			// Rotate gravity vector x-z components relative to camera horizontal angle
-			// (Accelerometer returns gravity relative to the device itself: needs to be converted to coordinates of camera)
-			float horizontalAngle = atan2(_camera.viewMatrix.szx, _camera.viewMatrix.szz);
-			float transformedGravity[3];
-			transformedGravity[0] =  cos(horizontalAngle) * gravityVector[0] + sin(horizontalAngle) * gravityVector[2];
-			transformedGravity[1] = gravityVector[1];
-			transformedGravity[2] = -sin(horizontalAngle) * gravityVector[0] + cos(horizontalAngle) * gravityVector[2];
-			
-			[_physicsWorld setGravity:transformedGravity[0] * G y:transformedGravity[1]* G z:transformedGravity[2] * G];
-		} else {
-			[self skipUpdates];
-		}
+		// Rotate gravity vector x-z components relative to camera horizontal angle
+		// (Accelerometer returns gravity relative to the device itself: needs to be converted to coordinates of camera)
+		float horizontalAngle = atan2(self.camera.viewMatrix.szx, self.camera.viewMatrix.szz);
+		float transformedGravity[3];
+		transformedGravity[0] =  cos(horizontalAngle) * gravityVector[0] + sin(horizontalAngle) * gravityVector[2];
+		transformedGravity[1] = gravityVector[1];
+		transformedGravity[2] = -sin(horizontalAngle) * gravityVector[0] + cos(horizontalAngle) * gravityVector[2];
+		
+		[_physicsWorld setGravity:transformedGravity[0] * G y:transformedGravity[1]* G z:transformedGravity[2] * G];
 	}
 }
 
@@ -162,7 +149,11 @@
 - (void) togglePause:(Isgl3dEvent3D *)event {
 	// Toggles the scene transformation calculations
 	_pauseActive = !_pauseActive;
-	if (!_pauseActive) {
+	if (_pauseActive) {
+		self.cameraUpdateOnly = YES;
+
+	} else {
+		self.cameraUpdateOnly = NO;
 		_cameraActive = NO;
 	}
 	
@@ -184,7 +175,7 @@
 	float radius = _orbitalDistance * sin(phi);
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	[_camera setTranslation:x y:y z:z];
+	[self.camera setTranslation:x y:y z:z];
 }
 
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution {
@@ -205,36 +196,52 @@
 	return [physicsObject autorelease];
 }
 
-- (void) buildUI {
-	Isgl3dGLUI * ui = [[Isgl3dGLUI alloc] initWithView:self];
+@end
 
-	// Create a button to calibrate the accelerometer
-	Isgl3dTextureMaterial * calibrateButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"angle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dGLUIButton * calibrateButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[calibrateButtonMaterial autorelease]];
-	[ui addComponent:[calibrateButton autorelease]];
-	[calibrateButton setX:8 andY:8];
-	calibrateButton.alpha = 0.7;
-	[calibrateButton addEvent3DListener:self method:@selector(calibrateAccelerometer:) forEventType:TOUCH_EVENT];
 
-	// Create a button to pause the scene
-	Isgl3dTextureMaterial * pauseButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pause.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dGLUIButton * pauseButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[pauseButtonMaterial autorelease]];
-	[ui addComponent:[pauseButton autorelease]];
-	[pauseButton setX:432 andY:270];
-	pauseButton.alpha = 0.7;
-	[pauseButton addEvent3DListener:self method:@selector(togglePause:) forEventType:TOUCH_EVENT];
+#pragma mark SimpleUIView
 
-	// Create a button to allow movement of the camera
-	Isgl3dTextureMaterial * cameraButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"camera.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dGLUIButton * cameraButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[cameraButtonMaterial autorelease]];
-	[ui addComponent:[cameraButton autorelease]];
-	[cameraButton setX:8 andY:270];
-	cameraButton.alpha = 0.7;
-	[cameraButton addEvent3DListener:self method:@selector(toggleCamera:) forEventType:TOUCH_EVENT];
+@implementation SimpleUIView
 
-	// Activate the ui
-	[self setActiveUI:ui];
+@synthesize calibrateButton = _calibrateButton;
+@synthesize pauseButton = _pauseButton;
+@synthesize cameraButton = _cameraButton;
+
+- (id) init {
+	
+	if ((self = [super init])) {
+		self.isOpaque = NO;
+
+		// Create a button to calibrate the accelerometer
+		Isgl3dTextureMaterial * calibrateButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"angle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		_calibrateButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[calibrateButtonMaterial autorelease]];
+		[self.scene addChild:[_calibrateButton autorelease]];
+		[_calibrateButton setX:8 andY:264];
+		_calibrateButton.alpha = 0.7;
+	
+		// Create a button to pause the scene
+		Isgl3dTextureMaterial * pauseButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pause.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		_pauseButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[pauseButtonMaterial autorelease]];
+		[self.scene addChild:[_pauseButton autorelease]];
+		[_pauseButton setX:424 andY:264];
+		_pauseButton.alpha = 0.7;
+	
+		// Create a button to allow movement of the camera
+		Isgl3dTextureMaterial * cameraButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"camera.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		_cameraButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[cameraButtonMaterial autorelease]];
+		[self.scene addChild:[_cameraButton autorelease]];
+		[_cameraButton setX:8 andY:8];
+		_cameraButton.alpha = 0.7;
+
+	}
+	return self;
 }
+
+- (void) dealloc {
+
+	[super dealloc];
+}
+
 
 @end
 
@@ -243,12 +250,26 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: creates the view(s) and adds them to the director
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[AccelerometerDemoView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
+
+	// Create views
+	AccelerometerDemoView * mainView = [AccelerometerDemoView view];
+	[[Isgl3dDirector sharedInstance] addView:mainView];
+	
+	SimpleUIView * uiView = [SimpleUIView view];
+	[[Isgl3dDirector sharedInstance] addView:uiView];
+	
+	[uiView.calibrateButton addEvent3DListener:mainView method:@selector(calibrateAccelerometer:) forEventType:TOUCH_EVENT];
+	[uiView.pauseButton addEvent3DListener:mainView method:@selector(togglePause:) forEventType:TOUCH_EVENT];
+	[uiView.cameraButton addEvent3DListener:mainView method:@selector(toggleCamera:) forEventType:TOUCH_EVENT];
+	
 }
 
 @end
+

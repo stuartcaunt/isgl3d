@@ -23,10 +23,10 @@
  *
  */
 
-#import "SandboxViewportTestView.h"
-#import "SandboxCameraController.h"
+#import "ViewportTestView.h"
+#import "Isgl3dDemoCameraController.h"
 
-@implementation SandboxViewportTestView
+@implementation ViewportTestView
 
 - (id) init {
 	
@@ -47,12 +47,8 @@
 		[light setTranslation:5 y:15 z:15];
 		[self.scene addChild:[light autorelease]];
 
-//		Isgl3dPlane * planeMesh =  [[Isgl3dPlane alloc] initWithGeometry:150 height:150 nx:2 ny:2];
-//		Isgl3dMeshNode * node = [self.activeScene createNodeWithMesh:[planeMesh autorelease] andMaterial:[material autorelease]];
-//		[node setTranslation:100 y:100 z:0];
-
 		// Create camera controller
-		_cameraController = [[SandboxCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
 		_cameraController.orbit = 14;
 		_cameraController.theta = 30;
 		_cameraController.phi = 30;
@@ -70,7 +66,7 @@
 
 
 - (void) onActivated {
-	// Add camera controller to touch-screen manager
+	// Add camera controller to touch-screen manager - responds only to touches in viewport
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController withView:self];
 }
 
@@ -111,17 +107,20 @@
 @implementation AppDelegate
 
 - (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
+
 	// Add Isgl3dView 1
-	Isgl3dView * view1 = [SandboxViewportTestView view];
-	view1.viewport = CGRectMake(2, 2, 316, 237);
-	//view1.backgroundColorString = @"191919ff";
+	Isgl3dView * view1 = [ViewportTestView view];
+	view1.viewport = CGRectMake(2, 241, 316, 237);
+	view1.backgroundColorString = @"000022ff";
 	[[Isgl3dDirector sharedInstance] addView:view1];
 	
 	// Add Isgl3dView 2
-	Isgl3dView * view2 = [SandboxViewportTestView view];
-	view2.viewport = CGRectMake(2, 241, 316, 237);
-	//view2.backgroundColorString = @"191919ff";
-	view2.viewOrientation = Isgl3dOrientationLandscapeLeft;
+	Isgl3dView * view2 = [ViewportTestView view];
+	view2.viewport = CGRectMake(2, 2, 316, 237);
+	view2.backgroundColorString = @"002200ff";
+	view2.viewOrientation = Isgl3dOrientationLandscapeRight;
 	[[Isgl3dDirector sharedInstance] addView:view2];
 }
 

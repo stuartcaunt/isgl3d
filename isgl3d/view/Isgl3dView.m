@@ -65,7 +65,7 @@
 		_zSortingEnabled = NO;
 		
 		_viewOrientation = Isgl3dOrientation0;
-		_deviceViewOrientation = ([Isgl3dDirector sharedInstance].deviceOrientation + _viewOrientation) % 4;
+		_deviceViewOrientation = [Isgl3dDirector sharedInstance].deviceOrientation;
 		
 		// Get default viewport size from Isgl3dDirector (UIView window size)
 		CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;

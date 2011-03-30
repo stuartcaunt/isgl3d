@@ -28,46 +28,51 @@
 
 @implementation CubeAndCameraView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+
+		// Set transparent
+		self.isOpaque = NO;
+
+		// Create and configure touch-screen camera controller
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController.orbit = 16;
+		_cameraController.theta = 30;
+		_cameraController.phi = 30;
+		_cameraController.doubleTapEnabled = NO;
+
+		// Create an Isgl3dMultiMaterialCube with random colors.
+		_cube = [[Isgl3dMultiMaterialCube alloc] initWithDimensionsAndRandomColors:3 height:3 depth:3 nSegmentWidth:2 nSegmentHeight:2 nSegmentDepth:2];
+		
+		// Add the cube to the scene.
+		[self.scene addChild:_cube];
+
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	return self;
+}
+
 - (void) dealloc {
-	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 	[_cameraController release];
 	[_cube release];
 
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
 
-	// Make the clear color completely transparent
-	float clearColor[4] = {0, 0, 0, 0};
-    [self prepareView:clearColor];
-
-	// Create and configure touch-screen camera controller
-	_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:_camera andView:self];
-	_cameraController.orbit = 16;
-	_cameraController.theta = 30;
-	_cameraController.phi = 30;
-	_cameraController.doubleTapEnabled = NO;
-	
+- (void) onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
-	
-	self.isLandscape = YES;
 }
 
-- (void) initScene {
-	[super initScene];
-	
-	// Create an Isgl3dMultiMaterialCube with random colors.
-	_cube = [[Isgl3dMultiMaterialCube alloc] initWithDimensionsAndRandomColors:3 height:3 depth:3 nSegmentWidth:2 nSegmentHeight:2 nSegmentDepth:2];
-	
-	// Add the cube to the scene.
-	[_scene addChild:_cube];
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) updateScene {
-	[super updateScene];
+- (void) tick:(float)dt {
 	
 	// Rotate the cube by 1 degree about its y-axis
 	[_cube rotate:1 x:0 y:1 z:0];
@@ -76,7 +81,6 @@
 	[_cameraController update];
 }
 
-
 @end
 
 
@@ -84,12 +88,20 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[CubeAndCameraView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationPortrait;
+
+	// Set the background transparent
+	[Isgl3dDirector sharedInstance].backgroundColorString = @"00000000"; 
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [CubeAndCameraView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

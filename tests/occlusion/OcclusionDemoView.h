@@ -24,11 +24,10 @@
  */
 
 #import "isgl3d.h"
-#import "Isgl3dDemoView.h"
 
 @class Isgl3dDemoCameraController;
 
-@interface OcclusionDemoView : Isgl3dDemoView {
+@interface OcclusionDemoView : Isgl3dBasic3DView {
 
 	Isgl3dNode * _container;
 	Isgl3dDemoCameraController * _cameraController;
@@ -40,11 +39,10 @@
 
 /*
  * Principal class to be instantiated in main.h. 
- * The window and view are created in Isgl3dAppDelegate, the demo view is returned from viewWithFrame.
  */
 #import "Isgl3dAppDelegate.h"
 @interface AppDelegate : Isgl3dAppDelegate
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+- (void) createViews;
 @end
 
 

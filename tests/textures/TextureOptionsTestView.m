@@ -27,6 +27,35 @@
 
 @implementation TextureOptionsTestView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+
+		_planeAngle = 0;
+		_cameraDistanceAngle = 0;
+
+		Isgl3dTextureMaterial *  textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:TEXTURE_MATERIAL_HIGH_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial *  textureMaterial2 = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:TEXTURE_MATERIAL_LOW_PRECISION repeatX:NO repeatY:NO];
+	
+		Isgl3dGLMesh * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:10.0 height:10.0 nx:10 ny:10]; 
+		
+		_plane1 = [[self.scene createNodeWithMesh:planeMesh andMaterial:[textureMaterial autorelease]] retain];
+		[_plane1 setRotation:-90 x:1 y:0 z:0];
+		[_plane1 setTranslation:0 y:-0.5 z:0];
+	
+		_plane2 = [[self.scene createNodeWithMesh:planeMesh andMaterial:[textureMaterial2 autorelease]] retain];
+		[_plane2 setRotation:90 x:1 y:0 z:0];
+		[_plane2 setTranslation:0 y:0.5 z:0];
+				   
+		[planeMesh release];
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
 	[_plane1 release];
 	[_plane2 release];
@@ -34,38 +63,8 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
 
-	self.isLandscape = YES;
-
-	_planeAngle = 0;
-	_cameraDistanceAngle = 0;
-		
-}
-
-- (void) initScene {
-	[super initScene];
-	
-	Isgl3dTextureMaterial *  textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:TEXTURE_MATERIAL_HIGH_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dTextureMaterial *  textureMaterial2 = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:TEXTURE_MATERIAL_LOW_PRECISION repeatX:NO repeatY:NO];
-
-	Isgl3dGLMesh * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:10.0 height:10.0 nx:10 ny:10]; 
-	
-	_plane1 = [[_scene createNodeWithMesh:planeMesh andMaterial:[textureMaterial autorelease]] retain];
-	[_plane1 setRotation:-90 x:1 y:0 z:0];
-	[_plane1 setTranslation:0 y:-0.5 z:0];
-
-	_plane2 = [[_scene createNodeWithMesh:planeMesh andMaterial:[textureMaterial2 autorelease]] retain];
-	[_plane2 setRotation:90 x:1 y:0 z:0];
-	[_plane2 setTranslation:0 y:0.5 z:0];
-			   
-	[planeMesh release];
-}
-
-- (void) updateScene {
-	[super updateScene];
-
+- (void) tick:(float)dt {
 	_planeAngle += 1;
 	if (_planeAngle > 360) {
 		_planeAngle -= 360;
@@ -78,9 +77,9 @@
 
 	[_plane1 rotate:0.3 x:0 y:1 z:0];	
 	[_plane2 rotate:0.3 x:0 y:1 z:0];	
-	[_camera setTranslation:0 y:0.15 * sin(_cameraDistanceAngle * M_PI / 90) z:2 + 1.9 * sin(_cameraDistanceAngle * M_PI / 180)];
+	[self.camera setTranslation:0 y:0.15 * sin(_cameraDistanceAngle * M_PI / 90) z:2 + 1.9 * sin(_cameraDistanceAngle * M_PI / 180)];
+	
 }
-
 
 @end
 
@@ -89,12 +88,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[TextureOptionsTestView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [TextureOptionsTestView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

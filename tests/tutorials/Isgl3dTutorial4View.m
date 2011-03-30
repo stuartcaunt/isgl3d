@@ -27,82 +27,73 @@
 
 @implementation Isgl3dTutorial4View
 
+- (id) init {
+	
+	if ((self = [super init])) {
+		// Set background color of view
+		self.backgroundColorString = @"222222";
+		
+		// Translate the camera.
+		[self.camera setTranslation:7 y:4 z:10];
+
+		// Create texture material for the ball with darker ambient color.
+		Isgl3dTextureMaterial * ballMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ball.png" shininess:0.7 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		[ballMaterial setAmbientColorAsString:@"444444"];
+		
+		// Create texture material for the pitch.
+		Isgl3dTextureMaterial * pitchMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pitch.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	
+		// Create the primitive meshes: a sphere and a plane.
+		Isgl3dSphere * sphere = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:8];
+		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:24 height:16 nx:2 ny:2];
+		
+		// Create a container node as a parent for all scene objects.
+		_container = [self.scene createNode];
+		
+		// Create the pitch node from plane mesh and pitch material with container as parent. Rotate and translate it. Disable lighting effects.
+		Isgl3dMeshNode * pitch = [_container createNodeWithMesh:[plane autorelease] andMaterial:[pitchMaterial autorelease]];
+		[pitch setRotation:-90 x:1 y:0 z:0];
+		[pitch setTranslation:0 y:-1 z:0];
+		pitch.lightingEnabled = NO;
+		
+		// Create a number of ball nodes.
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 3; j++) {
+				
+				// Create ball node from sphere mesh and ball material with container as parent. Translate it.
+				Isgl3dMeshNode * ballNode = [_container createNodeWithMesh:sphere andMaterial:ballMaterial];
+				[ballNode setTranslation:i * 4 - 6 y:0 z:j * 4 - 4];
+				
+				// Set the ball as interactive and add an event listener for the touch event.
+				ballNode.interactive = YES;
+				[ballNode addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
+				
+			} 
+		} 
+		
+		// Release sphere mesh and ball material.
+		[sphere autorelease];
+		[ballMaterial autorelease];
+	
+		// Create directional white light and add to scene (will not move with container).
+		Isgl3dLight * light = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
+		light.lightType = DirectionalLight;
+		[light setDirection:-1 y:-1 z:1];
+		[self.scene addChild:[light autorelease]];
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
-	// Release scene
-	[_scene release];
 
 	[super dealloc];
 }
 
-- (void) initView {
-	// Prepare the view with the background color.
-	float clearColor[4] = {0.2, 0.2, 0.2, 1};
-	[self prepareView:clearColor];
-
-	// Create the root scene graph object and set it active in the view.
-	_scene = [[Isgl3dScene3D alloc] init];
-	[self setActiveScene:_scene];
-
-	// Create a standard camera in the scene and set it active in the view.
-	Isgl3dCamera * camera = [_scene createCameraNodeWithView:self];
-	[self setActiveCamera:camera];
-
-	// Translate the camera.
-	[camera setTranslation:7 y:4 z:6];
-	
-	// Set the device in landscape mode.
-	self.isLandscape = YES;
-}
-
-- (void) initScene {
-
-	// Create texture material for the ball with darker ambient color.
-	Isgl3dTextureMaterial * ballMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ball.png" shininess:0.7 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	[ballMaterial setAmbientColorAsString:@"444444"];
-	
-	// Create texture material for the pitch.
-	Isgl3dTextureMaterial * pitchMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pitch.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-
-	// Create the primitive meshes: a sphere and a plane.
-	Isgl3dSphere * sphere = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:8];
-	Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:24 height:16 nx:2 ny:2];
-	
-	// Create a container node as a parent for all scene objects.
-	_container = [_scene createNode];
-	
-	// Create the pitch node from plane mesh and pitch material with container as parent. Rotate and translate it. Disable lighting effects.
-	Isgl3dMeshNode * pitch = [_container createNodeWithMesh:[plane autorelease] andMaterial:[pitchMaterial autorelease]];
-	[pitch setRotation:-90 x:1 y:0 z:0];
-	[pitch setTranslation:0 y:-1 z:0];
-	pitch.lightingEnabled = NO;
-	
-	// Create a number of ball nodes.
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 3; j++) {
-			
-			// Create ball node from sphere mesh and ball material with container as parent. Translate it.
-			Isgl3dMeshNode * ballNode = [_container createNodeWithMesh:sphere andMaterial:ballMaterial];
-			[ballNode setTranslation:i * 4 - 6 y:0 z:j * 4 - 4];
-			
-			// Set the ball as interactive and add an event listener for the touch event.
-			ballNode.interactive = YES;
-			[ballNode addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
-			
-		} 
-	} 
-	
-	// Release sphere mesh and ball material.
-	[sphere autorelease];
-	[ballMaterial autorelease];
-
-	// Create directional white light and add to scene (will not move with container).
-	Isgl3dLight * light = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
-	light.lightType = DirectionalLight;
-	[light setDirection:-1 y:-1 z:1];
-	[_scene addChild:[light autorelease]];
-}
-
-- (void) updateScene {
+- (void) tick:(float)dt {
 	// Rotate the container.
 	[_container rotate:0.3 x:0 y:1 z:0];
 }
@@ -140,11 +131,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[Isgl3dTutorial4View alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [Isgl3dTutorial4View view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
+
 @end

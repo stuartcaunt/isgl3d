@@ -24,11 +24,10 @@
  */
 
 #import "Isgl3d.h"
-#import "Isgl3dDemoView.h"
 
 @class Isgl3dDemoCameraController;
 
-@interface CubeAndCameraView : Isgl3dDemoView {
+@interface CubeAndCameraView : Isgl3dBasic3DView {
 
 @private
 	Isgl3dDemoCameraController * _cameraController;
@@ -46,7 +45,7 @@
  */
 #import "Isgl3dAppDelegateWithCamera.h"
 @interface AppDelegate : Isgl3dAppDelegateWithCamera
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+- (void) createViews;
 @end
 
 

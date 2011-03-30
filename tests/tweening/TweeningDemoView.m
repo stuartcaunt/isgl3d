@@ -27,95 +27,95 @@
 
 @implementation TweeningDemoView
 
-- (void) dealloc {
+- (id) init {
 	
+	if ((self = [super init])) {
+		
+		[self.camera setTranslation:0 y:2 z:7];
+		[self.camera lookAt:0 y:0 z:-2];
+
+		// Enable zsorting
+		self.zSortingEnabled = YES;
+	
+		_containerAngle = 0;
+		_sphereAngle = 0;
+		_moving = NO;	
+
+		_container = [self.scene createNode];
+		[_container retain];
+		
+		Isgl3dNode * container1 = [_container createNode];
+		[container1 setTranslation:-2 y:0 z:0];
+	
+		Isgl3dNode * container2 = [_container createNode];
+		[container2 setTranslation:2 y:0 z:0];
+		
+		// Create a texture material
+		Isgl3dTextureMaterial * textureMaterial1 = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"checker.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		
+		// Create a sphere mesh
+		Isgl3dGLMesh * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:25 lats:25];
+	
+		// Create an interactive mesh node, transparent for correct z sorting
+		_sphere1 = [[container1 createNodeWithMesh:sphereMesh andMaterial:textureMaterial1] retain];
+		_sphere1.interactive = YES;
+		_sphere1.transparent = YES;
+		
+		// Add an event filter for single touch events
+		_eventFilter = [[Isgl3dSingleTouchFilter alloc] initWithObject:_sphere1];
+		[_eventFilter addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
+		[_eventFilter addEvent3DListener:self method:@selector(objectMoved:) forEventType:MOVE_EVENT];
+		[_eventFilter addEvent3DListener:self method:@selector(objectReleased:) forEventType:RELEASE_EVENT];
+	
+		// Create a sphere, double sided and culled so that inside of sphere is visible
+		_sphere2 = [[container2 createNodeWithMesh:[sphereMesh autorelease] andMaterial:[textureMaterial1 autorelease]] retain];
+		_sphere2.interactive = YES;
+		_sphere2.transparent = YES;
+		_sphere2.doubleSided = YES;
+		[_sphere2 enableAlphaCullingWithValue:0.0];
+		[_sphere2 addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
+		
+		// Create the lights
+		Isgl3dLight * light1 = [[Isgl3dLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		[light1 setTranslation:0 y:2 z:5];
+		[self.scene addChild:[light1 autorelease]];
+		
+		Isgl3dLight * light2 = [[Isgl3dLight alloc] initWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.001];
+		[light2 setTranslation:-2 y:0 z:0];
+		[container1 addChild:[light2 autorelease]];
+		
+		Isgl3dLight * light3 = [[Isgl3dLight alloc] initWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.001];
+		[light3 setTranslation:2 y:0 z:0];
+		[container2 addChild:[light3 autorelease]];
+		
+		// Set the scene ambient color
+		[self setSceneAmbient:@"111111"];	
+
+
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
+- (void) dealloc {
 	[_eventFilter release];
 	[_sphere1 release];
 	[_sphere2 release];
 	[_container release];
-		
+
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-
-	[_camera setTranslation:0 y:2 z:7];
-	[_camera lookAt:0 y:0 z:-2];
-
-	[self setZSortingEnabled:TRUE];
-	self.isLandscape = YES;
-
-	_containerAngle = 0;
-	_sphereAngle = 0;
-	_moving = NO;	
-}
-
-- (void) initScene {
-	[super initScene];
-	
-	_container = [_scene createNode];
-	[_container retain];
-	
-	Isgl3dNode * container1 = [_container createNode];
-	[container1 setTranslation:-2 y:0 z:0];
-
-	Isgl3dNode * container2 = [_container createNode];
-	[container2 setTranslation:2 y:0 z:0];
-	
-	// Create a texture material
-	Isgl3dTextureMaterial * textureMaterial1 = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"checker.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	
-	// Create a sphere mesh
-	Isgl3dGLMesh * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:25 lats:25];
-
-	// Create an interactive mesh node, transparent for correct z sorting
-	_sphere1 = [[container1 createNodeWithMesh:sphereMesh andMaterial:textureMaterial1] retain];
-	_sphere1.interactive = YES;
-	_sphere1.transparent = YES;
-	
-	// Add an event filter for single touch events
-	_eventFilter = [[Isgl3dSingleTouchFilter alloc] initWithObject:_sphere1];
-	[_eventFilter addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
-	[_eventFilter addEvent3DListener:self method:@selector(objectMoved:) forEventType:MOVE_EVENT];
-	[_eventFilter addEvent3DListener:self method:@selector(objectReleased:) forEventType:RELEASE_EVENT];
-
-	// Create a sphere, double sided and culled so that inside of sphere is visible
-	_sphere2 = [[container2 createNodeWithMesh:[sphereMesh autorelease] andMaterial:[textureMaterial1 autorelease]] retain];
-	_sphere2.interactive = YES;
-	_sphere2.transparent = YES;
-	_sphere2.doubleSided = YES;
-	[_sphere2 enableAlphaCullingWithValue:0.0];
-	[_sphere2 addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
-	
-	// Create the lights
-	Isgl3dLight * light1 = [[Isgl3dLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-	[light1 setTranslation:0 y:2 z:5];
-	[_scene addChild:[light1 autorelease]];
-	
-	Isgl3dLight * light2 = [[Isgl3dLight alloc] initWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.001];
-	[light2 setTranslation:-2 y:0 z:0];
-	[container1 addChild:[light2 autorelease]];
-	
-	Isgl3dLight * light3 = [[Isgl3dLight alloc] initWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.001];
-	[light3 setTranslation:2 y:0 z:0];
-	[container2 addChild:[light3 autorelease]];
-	
-	// Set the scene ambient color
-	[self setSceneAmbient:@"111111"];	
-
-}
-
-- (void) updateScene {
-	[super updateScene];
-
+- (void) tick:(float)dt {
 	[_container setRotation:_containerAngle x:0 y:1 z:0];
 
 	[_sphere1 setRotation:_sphereAngle x:0 y:1 z:0];
 	[_sphere2 setRotation:_sphereAngle x:0 y:1 z:0];
 
-	_sphereAngle = _sphereAngle + 0.5;
-	_containerAngle = _containerAngle + 0.5;
+	_sphereAngle = _sphereAngle + 1;
+	_containerAngle = _containerAngle + 1;
 }
 
 
@@ -156,12 +156,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[TweeningDemoView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [TweeningDemoView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

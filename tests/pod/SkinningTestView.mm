@@ -30,8 +30,65 @@
 
 @implementation SkinningTestView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+		// Create and configure touch-screen camera controller
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController.orbit = 400;
+		_cameraController.theta = 30;
+		_cameraController.phi = 30;
+		_cameraController.doubleTapEnabled = NO;
+
+		// Enable shadow rendering
+		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
+		[Isgl3dDirector sharedInstance].shadowAlpha = 0.4;
+
+		Isgl3dPODImporter * podImporter = [[Isgl3dPODImporter alloc] initWithFile:@"man.pod"];
+		
+		// Modify texture files
+		[podImporter modifyTexture:@"body.bmp" withTexture:@"Body.pvr"];
+		[podImporter modifyTexture:@"legs.bmp" withTexture:@"Legs.pvr"];
+		[podImporter modifyTexture:@"belt.bmp" withTexture:@"Belt.pvr"];
+	
+		// Create skeleton node	
+		Isgl3dSkeletonNode * skeleton = [self.scene createSkeletonNode];
+		[skeleton setTranslation:0 y:-130 z:0];
+		
+		// Add meshes to skeleton
+		[podImporter addMeshesToScene:skeleton];
+		[skeleton setAlphaWithChildren:0.8];
+		[podImporter addBonesToSkeleton:skeleton];
+		[skeleton enableShadowCastingWithChildren:YES];
+	
+		// Add animation controller
+		_animationController = [[Isgl3dAnimationController alloc] initWithSkeleton:skeleton andNumberOfFrames:[podImporter numberOfFrames]];
+		[_animationController start];
+	
+		// Create a simple plane
+		Isgl3dTextureMaterial * groundMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ground.png" shininess:0.9 precision:TEXTURE_MATERIAL_LOW_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:800.0 height:800.0 nx:2 ny:2];
+		Isgl3dMeshNode * ground = [self.scene createNodeWithMesh:[plane autorelease] andMaterial:[groundMaterial autorelease]];
+		[ground setRotation:-90 x:1 y:0 z:0];
+		[ground setTranslation:0 y:-130 z:-100];
+	
+		// Add light to scene and fix the Sphere01 mesh to it
+		Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
+		[light setTranslation:300 y:600 z:300];
+		[self.scene addChild:[light autorelease]];
+		light.planarShadowsNode = ground;
+		
+		[podImporter release];	
+
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
-	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 	[_cameraController release];
 
 	[_animationController release];
@@ -39,74 +96,22 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-
-
-	// Create and configure touch-screen camera controller
-	_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:_camera andView:self];
-	_cameraController.orbit = 400;
-	_cameraController.theta = 30;
-	_cameraController.phi = 30;
-	_cameraController.doubleTapEnabled = NO;
-	
+- (void) onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
-	
-	self.isLandscape = YES;
-	self.shadowRenderingMethod = SHADOW_RENDERING_PLANAR;
-	self.shadowAlpha = 0.5;
-	
-	_lastTime = [[NSDate alloc] init];	
 }
 
-- (void) initScene {
-	[super initScene];
-	
-	Isgl3dPODImporter * podImporter = [[Isgl3dPODImporter alloc] initWithFile:@"man.pod" andView3D:self];
-	
-	// Modify texture files
-	[podImporter modifyTexture:@"body.bmp" withTexture:@"Body.pvr"];
-	[podImporter modifyTexture:@"legs.bmp" withTexture:@"Legs.pvr"];
-	[podImporter modifyTexture:@"belt.bmp" withTexture:@"Belt.pvr"];
-
-	// Create skeleton node	
-	Isgl3dSkeletonNode * skeleton = [_scene createSkeletonNode];
-	[skeleton setTranslation:0 y:-130 z:0];
-	
-	// Add meshes to skeleton
-	[podImporter addMeshesToScene:skeleton];
-	[skeleton setAlphaWithChildren:0.8];
-	[podImporter addBonesToSkeleton:skeleton];
-	[skeleton enableShadowCastingWithChildren:YES];
-
-	// Add animation controller
-	_animationController = [[Isgl3dAnimationController alloc] initWithSkeleton:skeleton andNumberOfFrames:[podImporter numberOfFrames]];
-	[_animationController start];
-
-	// Create a simple plane
-	Isgl3dTextureMaterial * groundMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ground.png" shininess:0.9 precision:TEXTURE_MATERIAL_LOW_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:800.0 height:800.0 nx:2 ny:2];
-	Isgl3dMeshNode * ground = [_scene createNodeWithMesh:[plane autorelease] andMaterial:[groundMaterial autorelease]];
-	[ground setRotation:-90 x:1 y:0 z:0];
-	[ground setTranslation:0 y:-130 z:-100];
-
-	// Add light to scene and fix the Sphere01 mesh to it
-	Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
-	[light setTranslation:300 y:600 z:300];
-	[_scene addChild:[light autorelease]];
-	light.planarShadowsNode = ground;
-	
-	[podImporter release];	
-
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) updateScene {
-	[super updateScene];
+- (void) tick:(float)dt {
 	
 	// update camera
 	[_cameraController update];
 }
+
 
 @end
 
@@ -115,12 +120,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[SkinningTestView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [SkinningTestView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

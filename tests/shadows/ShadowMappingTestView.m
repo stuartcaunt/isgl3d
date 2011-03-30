@@ -27,8 +27,83 @@
 
 @implementation ShadowMappingTestView
 
-- (void) dealloc {
+- (id) init {
 	
+	if ((self = [super init])) {
+		
+		_sphereAngle = 0;
+		_littleSphereAngle = 25;
+		_lightAngle = 0;	
+
+		[self.camera setTranslation:5 y:5 z:6];
+
+		// Enable shadow rendering
+//		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowMaps;
+		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
+		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
+
+		// Construct scene
+		Isgl3dColorMaterial * colorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
+		Isgl3dTextureMaterial *  isglLogo = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"isgl3d_logo.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial *  textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"mars.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial *  hostel = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"hostel.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	
+		Isgl3dGLMesh * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:16 lats:16];
+		_sphere = [[self.scene createNodeWithMesh:[sphereMesh autorelease] andMaterial:textureMaterial] retain];
+		[_sphere setTranslation:-1 y:0 z:3];
+		_sphere.enableShadowCasting = YES;
+	
+		Isgl3dGLMesh * littleSphereMesh = [[Isgl3dSphere alloc] initWithGeometry:0.3 longs:16 lats:16];
+		_littleSphere = [[self.scene createNodeWithMesh:[littleSphereMesh autorelease] andMaterial:textureMaterial] retain];
+		_littleSphere.enableShadowCasting = YES;
+	
+		Isgl3dGLMesh * cubeMesh = [[Isgl3dCube alloc] initWithGeometry:2 height:2 depth:2 nx:4 ny:4];
+		Isgl3dMeshNode * cube = [self.scene createNodeWithMesh:[cubeMesh autorelease] andMaterial:isglLogo];
+		[cube setTranslation:2 y:-1 z:-3];
+		cube.enableShadowCasting = YES;
+	
+		Isgl3dGLMesh * buildingMesh = [[Isgl3dPlane alloc] initWithGeometry:2.0 height:2.0 nx:4 ny:4];
+		Isgl3dMeshNode * building = [self.scene createNodeWithMesh:[buildingMesh autorelease] andMaterial:[hostel autorelease]];
+		[building setTranslation:0 y:-1 z:0];
+		building.enableShadowCasting = YES;
+		building.transparent = YES;
+		building.doubleSided = YES;
+	
+		Isgl3dPlane * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:12.0 height:12.0 nx:10 ny:10];
+		Isgl3dMeshNode * plane = [self.scene createNodeWithMesh:planeMesh andMaterial:isglLogo];
+		[plane setRotation:-90 x:1 y:0 z:0];
+		[plane setTranslation:0 y:-2 z:0];
+	
+		Isgl3dMeshNode * plane2 = [self.scene createNodeWithMesh:planeMesh andMaterial:colorMaterial];
+		[plane2 setTranslation:0 y:1 z:-6];
+		//plane2.enableShadowRendering = NO;
+	
+		Isgl3dMeshNode * plane3 = [self.scene createNodeWithMesh:planeMesh andMaterial:colorMaterial];
+		[plane3 setRotation:90 x:0 y:1 z:0];
+		[plane3 setTranslation:-6 y:1 z:0];
+		//plane3.enableShadowRendering = NO;
+		
+		[planeMesh release];
+		[textureMaterial release];
+		[colorMaterial release];
+		[isglLogo release];
+	
+	
+		_light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.05];
+		[self.scene addChild:_light];
+		_light.renderLight = YES;
+		_light.planarShadowsNode = plane;
+	
+		[self setSceneAmbient:@"444444"];
+
+
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	return self;
+}
+
+- (void) dealloc {
 	[_sphere release];
 	[_littleSphere release];
 
@@ -37,84 +112,8 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
 
-	[_camera setTranslation:5 y:5 z:6];
-//	[_camera setTranslation:7 y:10 z:9];
-		
-	self.isLandscape = YES;
-//	self.shadowRenderingMethod = SHADOW_RENDERING_MAPS;
-	self.shadowRenderingMethod = SHADOW_RENDERING_PLANAR;
-	self.shadowAlpha = 0.5;
-	
-	_sphereAngle = 0;
-	_littleSphereAngle = 25;
-	_lightAngle = 0;	
-}
-
-- (void) initScene {
-	[super initScene];
-	
-	Isgl3dColorMaterial * colorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
-	Isgl3dTextureMaterial *  isglLogo = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"isgl3d_logo.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dTextureMaterial *  textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"mars.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dTextureMaterial *  hostel = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"hostel.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-
-	Isgl3dGLMesh * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:16 lats:16];
-	_sphere = [[_scene createNodeWithMesh:[sphereMesh autorelease] andMaterial:textureMaterial] retain];
-	[_sphere setTranslation:-1 y:0 z:3];
-	_sphere.enableShadowCasting = YES;
-
-	Isgl3dGLMesh * littleSphereMesh = [[Isgl3dSphere alloc] initWithGeometry:0.3 longs:16 lats:16];
-	_littleSphere = [[_scene createNodeWithMesh:[littleSphereMesh autorelease] andMaterial:textureMaterial] retain];
-	_littleSphere.enableShadowCasting = YES;
-
-	Isgl3dGLMesh * cubeMesh = [[Isgl3dCube alloc] initWithGeometry:2 height:2 depth:2 nx:4 ny:4];
-	Isgl3dMeshNode * cube = [_scene createNodeWithMesh:[cubeMesh autorelease] andMaterial:isglLogo];
-	[cube setTranslation:2 y:-1 z:-3];
-	cube.enableShadowCasting = YES;
-
-	Isgl3dGLMesh * buildingMesh = [[Isgl3dPlane alloc] initWithGeometry:2.0 height:2.0 nx:4 ny:4];
-	Isgl3dMeshNode * building = [_scene createNodeWithMesh:[buildingMesh autorelease] andMaterial:[hostel autorelease]];
-	[building setTranslation:0 y:-1 z:0];
-	building.enableShadowCasting = YES;
-	building.transparent = YES;
-	building.doubleSided = YES;
-
-
-
-	Isgl3dPlane * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:12.0 height:12.0 nx:10 ny:10];
-	Isgl3dMeshNode * plane = [_scene createNodeWithMesh:planeMesh andMaterial:isglLogo];
-	[plane setRotation:-90 x:1 y:0 z:0];
-	[plane setTranslation:0 y:-2 z:0];
-
-	Isgl3dMeshNode * plane2 = [_scene createNodeWithMesh:planeMesh andMaterial:colorMaterial];
-	[plane2 setTranslation:0 y:1 z:-6];
-	//plane2.enableShadowRendering = NO;
-
-	Isgl3dMeshNode * plane3 = [_scene createNodeWithMesh:planeMesh andMaterial:colorMaterial];
-	[plane3 setRotation:90 x:0 y:1 z:0];
-	[plane3 setTranslation:-6 y:1 z:0];
-	//plane3.enableShadowRendering = NO;
-	
-	[planeMesh release];
-	[textureMaterial release];
-	[colorMaterial release];
-	[isglLogo release];
-
-
-	_light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.05];
-	[_scene addChild:_light];
-	_light.renderLight = YES;
-	_light.planarShadowsNode = plane;
-
-	[self setSceneAmbient:@"444444"];
-}
-
-- (void) updateScene {
-	[super updateScene];
-
+- (void) tick:(float)dt {
 	[_sphere setRotation:_sphereAngle x:0 y:1 z:0];
 	_sphereAngle = _sphereAngle - 1;
 	
@@ -131,7 +130,6 @@
 	_littleSphereAngle += 2;
 }
 
-
 @end
 
 
@@ -139,12 +137,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[ShadowMappingTestView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [ShadowMappingTestView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

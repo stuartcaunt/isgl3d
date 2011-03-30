@@ -44,8 +44,81 @@
 
 @implementation PhysicsTestView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+		_physicsObjects = [[NSMutableArray alloc] init];
+	 	_lastStepTime = [[NSDate alloc] init];
+	 
+	 	srandom(time(NULL));
+	
+		// Create and configure touch-screen camera controller
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController.orbit = 16;
+		_cameraController.theta = 30;
+		_cameraController.phi = 30;
+		_cameraController.doubleTapEnabled = NO;
+		
+		// Enable shadow rendering
+		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
+		[Isgl3dDirector sharedInstance].shadowAlpha = 0.4;
+
+
+		// Create physics world with discrete dynamics
+		_collisionConfig = new btDefaultCollisionConfiguration();
+		_broadphase = new btDbvtBroadphase();
+		_collisionDispatcher = new btCollisionDispatcher(_collisionConfig);
+		_constraintSolver = new btSequentialImpulseConstraintSolver;
+		_discreteDynamicsWorld = new btDiscreteDynamicsWorld(_collisionDispatcher, _broadphase, _constraintSolver, _collisionConfig);
+		_discreteDynamicsWorld->setGravity(btVector3(0,-10,0));
+	
+		_physicsWorld = [[Isgl3dPhysicsWorld alloc] init];
+		[_physicsWorld setDiscreteDynamicsWorld:_discreteDynamicsWorld];
+		[self.scene addChild:_physicsWorld];
+	
+		// Create textures
+		_beachBallMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"BeachBall.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		_isglLogo = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"cardboard.jpg" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * woodMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"wood.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	
+	
+		float radius = 1.0;
+		float width = 2.0;
+		_sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:radius longs:16 lats:16];
+		_cubeMesh = [[Isgl3dCube alloc] initWithGeometry:width height:width depth:width nx:2 ny:2];
+	
+		// Create two nodes for the different meshes
+		_cubesNode = [[_physicsWorld createNode] retain];
+		_spheresNode = [[_physicsWorld createNode] retain];
+	
+	
+		// Create the ground surface
+		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:10.0 height:10.0 nx:10 ny:10];
+		btCollisionShape* groundShape = new btBox2dShape(btVector3(5, 5, 0));
+		Isgl3dMeshNode * node = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
+		[node setRotation:-90 x:1 y:0 z:0];
+		[node setTranslation:0 y:-2 z:0];
+		Isgl3dPhysicsObject3D * physicsObject = [self createPhysicsObject:node shape:groundShape mass:0 restitution:0.6 isFalling:NO];
+		
+	
+		_light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.003];
+		[self.scene addChild:_light];
+		[_light setTranslation:10 y:20 z:10];
+	
+		_light.planarShadowsNode = physicsObject.node;
+	
+		[self setSceneAmbient:@"666666"];
+
+
+		
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
-	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 	[_cameraController release];
 
 	delete _discreteDynamicsWorld;
@@ -65,87 +138,22 @@
 	
 	[_cubesNode release];
 	[_spheresNode release];
+
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-
-	_physicsObjects = [[NSMutableArray alloc] init];
- 	_lastStepTime = [[NSDate alloc] init];
- 
- 	srandom(time(NULL));
-
-
-	// Create and configure touch-screen camera controller
-	_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:_camera andView:self];
-	_cameraController.orbit = 16;
-	_cameraController.theta = 30;
-	_cameraController.phi = 30;
-	_cameraController.doubleTapEnabled = NO;
-	
+- (void) onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
-		
-	self.isLandscape = YES;
-	
-	self.shadowRenderingMethod = SHADOW_RENDERING_PLANAR;
-	self.shadowAlpha = 0.4;
-	
 }
 
-- (void) initScene {
-	[super initScene];
-	
-	// Create physics world with discrete dynamics
-	_collisionConfig = new btDefaultCollisionConfiguration();
-	_broadphase = new btDbvtBroadphase();
-	_collisionDispatcher = new btCollisionDispatcher(_collisionConfig);
-	_constraintSolver = new btSequentialImpulseConstraintSolver;
-	_discreteDynamicsWorld = new btDiscreteDynamicsWorld(_collisionDispatcher, _broadphase, _constraintSolver, _collisionConfig);
-	_discreteDynamicsWorld->setGravity(btVector3(0,-10,0));
-
-	_physicsWorld = [[Isgl3dPhysicsWorld alloc] init];
-	[_physicsWorld setDiscreteDynamicsWorld:_discreteDynamicsWorld];
-	[_scene addChild:_physicsWorld];
-
-	// Create textures
-	_beachBallMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"BeachBall.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	_isglLogo = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"cardboard.jpg" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dTextureMaterial * woodMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"wood.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-
-
-	float radius = 1.0;
-	float width = 2.0;
-	_sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:radius longs:16 lats:16];
-	_cubeMesh = [[Isgl3dCube alloc] initWithGeometry:width height:width depth:width nx:2 ny:2];
-
-	// Create two nodes for the different meshes
-	_cubesNode = [[_physicsWorld createNode] retain];
-	_spheresNode = [[_physicsWorld createNode] retain];
-
-
-	// Create the ground surface
-	Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:10.0 height:10.0 nx:10 ny:10];
-	btCollisionShape* groundShape = new btBox2dShape(btVector3(5, 5, 0));
-	Isgl3dMeshNode * node = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
-	[node setRotation:-90 x:1 y:0 z:0];
-	[node setTranslation:0 y:-2 z:0];
-	Isgl3dPhysicsObject3D * physicsObject = [self createPhysicsObject:node shape:groundShape mass:0 restitution:0.6 isFalling:NO];
-	
-
-	_light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.003];
-	[_scene addChild:_light];
-	[_light setTranslation:10 y:20 z:10];
-
-	_light.planarShadowsNode = physicsObject.node;
-
-	[self setSceneAmbient:@"666666"];
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) updateScene {
-	[super updateScene];
-	
+- (void) tick:(float)dt {
+
 	// Get time since last step
 	NSDate * currentTime = [[NSDate alloc] init];
 	
@@ -182,10 +190,11 @@
 	
 	[objectsToDelete release];
 
-
+	
 	// update camera
 	[_cameraController update];
 }
+
 
 - (void) createSphere {
 	
@@ -234,12 +243,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[PhysicsTestView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [PhysicsTestView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

@@ -23,50 +23,23 @@
  *
  */
 
-#import "Isgl3dDemoView.h"
+#import "isgl3d.h"
 
-@implementation Isgl3dDemoView
+@class Isgl3dDemoCameraController;
 
-- (void) dealloc {
-
-	[_scene release];
-	[_camera release];
-
-	[_fpsDisplay release];
-
-	[super dealloc];
-}
-
-- (void) initView {
-
-	float clearColor[4] = {0, 0, 0, 1};
-    [self prepareView:clearColor];
-
-	_scene = [[Isgl3dScene3D alloc] init];
-	[self setActiveScene:_scene];
+@interface ViewportTestView : Isgl3dBasic3DView {
 	
-	_camera = [[Isgl3dCamera alloc] initWithView:self];
-	[_camera setPerspectiveProjection:45 near:1 far:10000 landscape:NO];
-	[_scene addChild:_camera];
-	[self setActiveCamera:_camera];
-	
-	[self setActiveUI:nil];
-
-	_fpsDisplay = [[Isgl3dFpsDisplay alloc] initWithView:self];
-
+	Isgl3dMeshNode * _torus;
+	Isgl3dDemoCameraController * _cameraController;
 }
-
-- (void) initScene {
-	
-
-}
-
-- (void) updateScene {
-
-	[_fpsDisplay update];
-
-}
-
 
 @end
 
+
+/*
+ * Principal class to be instantiated in main.h. 
+ */
+#import "Isgl3dAppDelegate.h"
+@interface AppDelegate : Isgl3dAppDelegate
+- (void) createViews;
+@end

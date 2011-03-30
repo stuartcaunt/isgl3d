@@ -25,66 +25,104 @@
 
 #import "Isgl3dAppDelegate.h"
 #import "Isgl3dViewController.h"
-#import "Isgl3dView3D.h"
+#import "Isgl3d.h"
 
 @implementation Isgl3dAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;;
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application {
-
-	[application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:NO];
 
 	// Create the UIWindow
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
+	// Instantiate the Isgl3dDirector and set background color
+	[Isgl3dDirector sharedInstance].backgroundColorString = @"333333ff"; 
+
+	// Set the director to display the FPS
+	[Isgl3dDirector sharedInstance].displayFPS = YES; 
+
+	// Set the device orientation
+//	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
+	
 	// Create the UIViewController
 	_viewController = [[Isgl3dViewController alloc] initWithNibName:nil bundle:nil];
+	_viewController.wantsFullScreenLayout = YES;
 	
-	// Create the specific view (initialises the OpenGL context)
-	_viewController.view = [self viewWithFrame:[_window bounds]];
+	// Create OpenGL view (here for OpenGL ES 1.1)
+	Isgl3dEAGLView * glView = [Isgl3dEAGLView viewWithFrameForES1:[_window bounds]];
+
+	// Set view in director
+	[Isgl3dDirector sharedInstance].openGLView = glView;
+	
+	// Add the OpenGL view to the view controller
+	_viewController.view = glView;
+	
+	// Set the animation frame rate
+	[[Isgl3dDirector sharedInstance] setAnimationInterval:1.0/60];
+
+	// Creates the view(s) and adds them to the director
+	[self createViews];
 
 	// Add view to window and make visible
 	[_window addSubview:_viewController.view];
 	[_window makeKeyAndVisible];
+	
+	// Run the director
+	[[Isgl3dDirector sharedInstance] run];
 }
 
 - (void) dealloc {
-	[_viewController release];
-	[_window release];
+	if (_viewController) {
+		[_viewController release];
+	}
+	if (_window) {
+		[_window release];
+	}
 	
 	[super dealloc];
 }
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	// override me
-	return nil;
+- (void) createViews {
+	// Implement in sub-classes
 }
 
-
--(void) applicationWillResignActive:(UIApplication *)application {
-	[_viewController stopAnimation];
+- (void) applicationWillResignActive:(UIApplication *)application {
+	[[Isgl3dDirector sharedInstance] pause];
 }
 
--(void) applicationDidBecomeActive:(UIApplication *)application {
-	[_viewController startAnimation];
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+	[[Isgl3dDirector sharedInstance] resume];
 }
 
--(void) applicationDidEnterBackground:(UIApplication*)application {
+- (void) applicationDidEnterBackground:(UIApplication *)application {
+	[[Isgl3dDirector sharedInstance] stopAnimation];
 }
 
--(void) applicationWillEnterForeground:(UIApplication*)application {
+- (void) applicationWillEnterForeground:(UIApplication *)application {
+	[[Isgl3dDirector sharedInstance] startAnimation];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {	
-	[_viewController stopAnimation];
+- (void) applicationWillTerminate:(UIApplication *)application {
+	// Remove the OpenGL view from the view controller
+	[[Isgl3dDirector sharedInstance].openGLView removeFromSuperview];
+	
+	// End and reset the director	
+	[Isgl3dDirector resetInstance];
+	
+	// Release
+	[_viewController release];
+	_viewController = nil;
+	[_window release];
+	_window = nil;
 }
 
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+- (void) applicationDidReceiveMemoryWarning:(UIApplication *)application {
+	[[Isgl3dDirector sharedInstance] onMemoryWarning];
 }
 
--(void) applicationSignificantTimeChange:(UIApplication *)application {
+- (void) applicationSignificantTimeChange:(UIApplication *)application {
+	[[Isgl3dDirector sharedInstance] onSignificantTimeChange];
 }
 
 @end

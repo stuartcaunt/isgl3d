@@ -24,9 +24,8 @@
  */
 
 #import "isgl3d.h"
-#import "Isgl3dDemoView.h"
 
-@interface TweeningDemoView : Isgl3dDemoView {
+@interface TweeningDemoView : Isgl3dBasic3DView {
 
 	Isgl3dNode * _container;
 	Isgl3dMeshNode * _sphere1;
@@ -45,11 +44,10 @@
 
 /*
  * Principal class to be instantiated in main.h. 
- * The window and view are created in Isgl3dAppDelegate, the demo view is returned from viewWithFrame.
  */
 #import "Isgl3dAppDelegate.h"
 @interface AppDelegate : Isgl3dAppDelegate
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+- (void) createViews;
 @end
 
 

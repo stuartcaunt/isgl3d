@@ -9,6 +9,8 @@
  * A Simple camera controller: the camera orbits around the origin or a target node (if one has been set). Single touch
  * movement adds rotation to the camera in altitude and azimuth directions. Double touch will modify the orbital
  * radius of the camera.
+ * 
+ * This camera controller will only modify the camera if the touches begain in the specified view
  */
 @implementation Isgl3dDemoCameraController
 
@@ -20,7 +22,7 @@
 @synthesize damping = _damping;
 @synthesize doubleTapEnabled = _doubleTapEnabled;
 
-- (id) initWithCamera:(Isgl3dCamera *)camera andView:(Isgl3dView3D *)view {
+- (id) initWithCamera:(Isgl3dCamera *)camera andView:(Isgl3dView *)view {
 	
     if ((self = [super init])) {
 
@@ -107,10 +109,10 @@
 	_vPhi *= 0.99;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	// Test for touches if no 3D object has been touched
-	if (!_view.objectTouched) {
+	if (![Isgl3dDirector sharedInstance].objectTouched && ![Isgl3dDirector sharedInstance].isPaused) {
 		
 		NSEnumerator * enumerator = [touches objectEnumerator];
 		UITouch * touch1 = [enumerator nextObject];
@@ -131,37 +133,39 @@
 	}
 } 
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	// Do nothing
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 
-	NSEnumerator * enumerator = [touches objectEnumerator];
-	UITouch * touch1 = [enumerator nextObject];
-
-	// For single touch event: set the camera velocities...
-	if ([touches count] == 1) {
-		CGPoint	location = [touch1 locationInView:_view];
-		CGPoint	previousLocation = [touch1 previousLocationInView:_view];
+	if (![Isgl3dDirector sharedInstance].isPaused) {
+		NSEnumerator * enumerator = [touches objectEnumerator];
+		UITouch * touch1 = [enumerator nextObject];
 	
-		_vPhi = (location.x - previousLocation.x) / 4;
-		_vTheta = (location.y - previousLocation.y) / 4;
+		// For single touch event: set the camera velocities...
+		if ([touches count] == 1) {
+			CGPoint	location = [_view convertUIPointToView:[touch1 locationInView:touch1.view]];
+			CGPoint	previousLocation = [_view convertUIPointToView:[touch1 previousLocationInView:touch1.view]];
 		
-	// ... for double touch, modify the orbital distance of the camera
-	} else if ([touches count] == 2) {
-		UITouch * touch2 = [enumerator nextObject];
-		
-		CGPoint	location1 = [touch1 locationInView:_view];
-		CGPoint	previousLocation1 = [touch1 previousLocationInView:_view];
-		CGPoint	location2 = [touch2 locationInView:_view];
-		CGPoint	previousLocation2 = [touch2 previousLocationInView:_view];
-		
-		float previousDistance = [self distanceBetweenPoint1:previousLocation1 andPoint2:previousLocation2]; 
-		float currentDistance = [self distanceBetweenPoint1:location1 andPoint2:location2]; 
-		
-		float changeInDistance = currentDistance - previousDistance;
-		_orbit += changeInDistance * 0.1;
+			_vPhi = (location.y - previousLocation.y) / 4;
+			_vTheta = (location.x - previousLocation.x) / 4;
+			
+		// ... for double touch, modify the orbital distance of the camera
+		} else if ([touches count] == 2) {
+			UITouch * touch2 = [enumerator nextObject];
+			
+			CGPoint	location1 = [_view convertUIPointToView:[touch1 locationInView:touch1.view]];
+			CGPoint	previousLocation1 = [_view convertUIPointToView:[touch1 previousLocationInView:touch1.view]];
+			CGPoint	location2 = [_view convertUIPointToView:[touch2 locationInView:touch2.view]];
+			CGPoint	previousLocation2 = [_view convertUIPointToView:[touch2 previousLocationInView:touch2.view]];
+			
+			float previousDistance = [self distanceBetweenPoint1:previousLocation1 andPoint2:previousLocation2]; 
+			float currentDistance = [self distanceBetweenPoint1:location1 andPoint2:location2]; 
+			
+			float changeInDistance = currentDistance - previousDistance;
+			_orbit += changeInDistance * 0.1;
+		}
 	}
 }
 

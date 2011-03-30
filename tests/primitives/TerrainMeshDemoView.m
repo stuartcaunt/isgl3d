@@ -28,8 +28,44 @@
 
 @implementation TerrainMeshDemoView
 
+- (id) init {
+	
+	if ((self = [super init])) {
+		// Create and configure touch-screen camera controller
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController.orbit = 40;
+		_cameraController.theta = 30;
+		_cameraController.phi = 10;
+		_cameraController.doubleTapEnabled = NO;
+		
+		_container = [[self.scene createNode] retain];
+		
+		// Create the primitive
+		Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"RaceTrack1Terrain_1024.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * dataMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"RaceTrack1Path_512.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+	
+		Isgl3dPlane * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:32 height:32 nx:4 ny:4];
+		_plane = [_container createNodeWithMesh:[planeMesh autorelease] andMaterial:[dataMaterial autorelease]];
+		[_plane rotate:-90 x:1 y:0 z:0];
+		[_plane setTranslation:0 y:-5 z:0];
+		_plane.lightingEnabled = NO;
+	
+		Isgl3dTerrainMesh * terrainMesh = [[Isgl3dTerrainMesh alloc] initWithTerrainDataFile:@"RaceTrack1Path_512.png" channel:2 width:32 depth:32 height:10 nx:32 nz:32];
+		_terrain = [_container createNodeWithMesh:[terrainMesh autorelease] andMaterial:[textureMaterial autorelease]];
+	
+		// Add light
+		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		[light setTranslation:5 y:10 z:10];
+		[self.scene addChild:light];	
+
+		// Schedule updates
+		[self schedule:@selector(tick:)];
+	}
+	
+	return self;
+}
+
 - (void) dealloc {
-	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 	[_cameraController release];
 
 	[_container release];
@@ -37,54 +73,21 @@
 	[super dealloc];
 }
 
-- (void) initView {
-	[super initView];
-
-	// Create and configure touch-screen camera controller
-	_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:_camera andView:self];
-	_cameraController.orbit = 40;
-	_cameraController.theta = 30;
-	_cameraController.phi = 10;
-	_cameraController.doubleTapEnabled = NO;
-	
+- (void) onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
-
-	self.isLandscape = YES;
 }
 
-- (void) initScene {
-	[super initScene];
-	
-	_container = [[_scene createNode] retain];
-	
-	// Create the primitive
-	Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"RaceTrack1Terrain_1024.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-	Isgl3dTextureMaterial * dataMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"RaceTrack1Path_512.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-
-	Isgl3dPlane * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:40 height:40 nx:4 ny:4];
-	_plane = [_container createNodeWithMesh:[planeMesh autorelease] andMaterial:[dataMaterial autorelease]];
-	[_plane rotate:-90 x:1 y:0 z:0];
-	[_plane setTranslation:0 y:-5 z:0];
-	_plane.lightingEnabled = NO;
-
-	Isgl3dTerrainMesh * terrainMesh = [[Isgl3dTerrainMesh alloc] initWithTerrainDataFile:@"RaceTrack1Path_512.png" channel:2 width:32 depth:32 height:10 nx:32 nz:32];
-	_terrain = [_container createNodeWithMesh:[terrainMesh autorelease] andMaterial:[textureMaterial autorelease]];
-
-	// Add light
-	Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-	[light setTranslation:5 y:10 z:10];
-	[_scene addChild:light];	
-
+- (void) onDeactivated {
+	// Remove camera controller from touch-screen manager
+	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) updateScene {
-	[super updateScene];
+- (void) tick:(float)dt {
 	
 	// update camera
 	[_cameraController update];
 }
-
 
 @end
 
@@ -93,12 +96,17 @@
 #pragma mark AppDelegate
 
 /*
- * Implement principal class: simply override the viewWithFrame method to return the desired demo view.
+ * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame {
-	return [[[TerrainMeshDemoView alloc] initWithFrame:frame] autorelease];
+- (void) createViews {
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create view and add to Isgl3dDirector
+	Isgl3dView * view = [TerrainMeshDemoView view];
+	[[Isgl3dDirector sharedInstance] addView:view];
 }
 
 @end

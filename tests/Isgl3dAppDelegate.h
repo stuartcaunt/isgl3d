@@ -24,19 +24,16 @@
  */
 
 @class Isgl3dViewController;
-@class Isgl3dView3D;
 
 @interface Isgl3dAppDelegate : NSObject <UIApplicationDelegate> {
 
 @private
-    Isgl3dViewController * _viewController;
-
+	Isgl3dViewController * _viewController;
 	UIWindow * _window;
 }
 
-@property (readonly, nonatomic) UIWindow * window; 
-@property (readonly, nonatomic) Isgl3dViewController * viewController; 
+@property (nonatomic, readonly) UIWindow * window;
 
-- (Isgl3dView3D *) viewWithFrame:(CGRect)frame;
+- (void) createViews;
 
 @end
