@@ -51,7 +51,7 @@
  * 
  * Isgl3dViews have independent orientations. As well as the device orientation (specified in Isgl3dDirector) a view can be
  * further rotated by specifying the viewOrientation. By default the view is rendered in the same orientation as the device.
- * When an orientation is specified, the rendered scene orientation is the sum of both device and view orientations.
+ * When an orientation is specified, the rendered scene orientation is the combination of both device and view orientations.
  * The orientation of the Isgl3dView has no effect on the coordinates specified in the viewport: these are always relative
  * to the device in portrait mode.
  * 
@@ -136,7 +136,7 @@
  * <li>Isgl3dOrientation180: portrait, upside down.</li>
  * </ul>
  * 
- * The rendered scene will have an orientation being the sum of this orientation with the Isgl3dDirector device orientation.
+ * The rendered scene will have an orientation being the combination of this orientation with the Isgl3dDirector device orientation.
  */
 @property (nonatomic) isgl3dOrientation viewOrientation;
 
