@@ -44,6 +44,11 @@
 	unsigned int _width;
 	unsigned int _height;
 	
+	unsigned int _xInPixels;
+	unsigned int _yInPixels;
+	unsigned int _widthInPixels;
+	unsigned int _heightInPixels;
+	
 	BOOL _meshDirty;
 	
 	BOOL _isVisible;
@@ -57,24 +62,48 @@
 }
 
 /**
- * The x-coordinate in pixels on the screen of the component. By default the left hand side of the component is placed here.
+ * The x-coordinate in <em>points</em> on the screen of the component. This value is identical for rentina and non-retina displays.
+ * By default the left hand side of the component is placed here.
  */
-@property (readonly) unsigned int x;
+@property (nonatomic, readonly) unsigned int x;
 
 /**
- * The y-coordinate in pixels on the screen of the component. By default the top of the component is placed here.
+ * The x-coordinate in pixels on the screen of the component. This value differs for rentina and non-retina displays.
+ * By default the left hand side of the component is placed here.
  */
-@property (readonly) unsigned int y;
+@property (nonatomic, readonly) unsigned int xInPixels;
 
 /**
- * The width of the component.
+ * The y-coordinate in <em>points</em> on the screen of the component. This value is identical for rentina and non-retina displays.
+ * By default the bottom of the component is placed here.
  */
-@property (readonly) unsigned int width;
+@property (nonatomic, readonly) unsigned int y;
 
 /**
- * The height of the component.
+ * The y-coordinate in pixels on the screen of the component. This value differs for rentina and non-retina displays.
+ * By default the bottom of the component is placed here.
  */
-@property (readonly) unsigned int height;
+@property (nonatomic, readonly) unsigned int yInPixels;
+
+/**
+ * The width of the component in <em>points</em>. This value is identical for rentina and non-retina displays.
+ */
+@property (nonatomic, readonly) unsigned int width;
+
+/**
+ * The width of the component in pixels. This value differs for rentina and non-retina displays.
+ */
+@property (nonatomic, readonly) unsigned int widthInPixels;
+
+/**
+ * The height of the component in <em>points</em>. This value is identical for rentina and non-retina displays.
+ */
+@property (nonatomic, readonly) unsigned int height;
+
+/**
+ * The height of the component in pixels. This value differs for rentina and non-retina displays.
+ */
+@property (nonatomic, readonly) unsigned int heightInPixels;
 
 /**
  * Whether the component is visible or not. If the component is not visible then no user events will occur (for example for 
@@ -114,11 +143,31 @@
 - (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
- * Sets both x and y at the same time.
+ * Sets both x and y at the same time in <em>points</em>. <em>Points</em> are identical for rentina and non-retina displays.
+ * @param x The x-coordinate in points on the screen of the component.
+ * @param y The y-coordinate in points on the screen of the component.
+ */
+- (void) setX:(unsigned int)x andY:(unsigned int)y;
+
+/**
+ * Sets both x and y at the same time in pixels. Pixels differ for rentina and non-retina displays.
  * @param x The x-coordinate in pixels on the screen of the component.
  * @param y The y-coordinate in pixels on the screen of the component.
  */
-- (void) setX:(unsigned int)x andY:(unsigned int)y;
+- (void) setXInPixels:(unsigned int)x andYInPixels:(unsigned int)y;
+
+/**
+ * Sets the width and height of the component in <em>points</em>. <em>Points</em> are identical for rentina and non-retina displays.
+ * @param width The width in points of the component.
+ * @param height The height in points of the component.
+ */
 - (void) setWidth:(unsigned int)width andHeight:(unsigned int)height;
+
+/**
+ * Sets the width and height of the component in pixels. Pixels are different for rentina and non-retina displays.
+ * @param width The width in pixels of the component.
+ * @param height The height in pixels of the component.
+ */
+- (void) setWidthInPixels:(unsigned int)width andHeightInPixels:(unsigned int)height;
 
 @end

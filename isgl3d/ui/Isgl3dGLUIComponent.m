@@ -31,9 +31,13 @@
 @implementation Isgl3dGLUIComponent
 
 @synthesize x = _x;
+@synthesize xInPixels = _xInPixels;
 @synthesize y = _y;
+@synthesize yInPixels = _yInPixels;
 @synthesize width = _width;
+@synthesize widthInPixels = _widthInPixels;
 @synthesize height = _height;
+@synthesize heightInPixels = _heightInPixels;
 @synthesize visible = _isVisible;
 @synthesize fixLeft = _fixLeft;
 @synthesize fixTop = _fixTop;
@@ -44,9 +48,13 @@
 	if ((self = [super initWithMesh:mesh andMaterial:material])) {
 		_x = 0;
 		_y = 0;
+		_xInPixels = 0;
+		_yInPixels = 0;
 		self.z = GLUICOMPONENT_DEFAULT_DEPTH;
 		_width = 0;
 		_height = 0;
+		_widthInPixels = 0;
+		_heightInPixels = 0;
 		_meshDirty = YES;
 		
 		_isVisible = YES;
@@ -65,15 +73,36 @@
 	[super dealloc];
 }
 
+
 - (void) setX:(unsigned int)x andY:(unsigned int)y {
 	_x = x * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_y = y * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_xInPixels = x * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_yInPixels = y * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_meshDirty = YES;
+}
+
+- (void) setXInPixels:(unsigned int)x andYInPixels:(unsigned int)y {
+	_x = x / [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_y = y / [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_xInPixels = x;
+	_yInPixels = y;
 	_meshDirty = YES;
 }
 
 - (void) setWidth:(unsigned int)width andHeight:(unsigned int)height {
+	_width = width;
+	_height = height;
+	_widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_meshDirty = YES;
+}
+
+- (void) setWidthInPixels:(unsigned int)width andHeightInPixels:(unsigned int)height {
 	_width = width * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_height = height * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_widthInPixels = width;
+	_heightInPixels = height;
 	_meshDirty = YES;
 }
 
@@ -82,22 +111,22 @@
 		float x;
 		float y;
 		if (_centerX) {
-			x = 1.0 * _x;
+			x = 1.0 * _xInPixels;
 		} else {
 			if (_fixLeft) {
-				x = _x + (_width + 1)/ 2;
+				x = _xInPixels + (_widthInPixels + 1)/ 2;
 			} else {
-				x = _x + _width / 2;
+				x = _xInPixels + _widthInPixels / 2;
 			}
 		}
 		
 		if (_centerY) {
-			y = _y;
+			y = _yInPixels;
 		} else {
 			if (_fixTop) {
-				y = (float)(_y + (_height + 1) / 2);
+				y = (float)(_yInPixels + (_heightInPixels + 1) / 2);
 			} else {
-				y = (float)(_y + _height / 2);
+				y = (float)(_yInPixels + _heightInPixels / 2);
 			}
 		}
 				
