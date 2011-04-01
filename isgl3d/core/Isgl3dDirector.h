@@ -178,6 +178,11 @@
  */
 @property (nonatomic, readonly) float contentScaleFactor;
 
+/**
+ * Returns true if the retina display is enabled.
+ */
+@property (nonatomic, readonly) BOOL retinaDisplayEnabled;
+
 
 /**
  * Returns the singleton instance of the Isgl3dDirector.

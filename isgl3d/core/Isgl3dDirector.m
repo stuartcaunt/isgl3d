@@ -59,6 +59,7 @@ static Isgl3dDirector * _instance = nil;
 @synthesize isPaused = _isPaused;
 @synthesize displayFPS = _displayFPS;
 @synthesize contentScaleFactor = _contentScaleFactor;
+@synthesize retinaDisplayEnabled = _retinaDisplayEnabled;
 
 - (id) init {
 	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");

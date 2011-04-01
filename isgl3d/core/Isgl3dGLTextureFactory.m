@@ -27,6 +27,7 @@
 #import "Isgl3dGLTextureFactoryState.h"
 #import "Isgl3dGLTexture.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dDirector.h"
 
 #define PVR_TEXTURE_FLAG_TYPE_MASK	0xff
 
@@ -253,14 +254,34 @@ typedef struct _PVRTexHeader {
 
 		// cut filename into name and extension
 		NSString * extension = [file pathExtension];
-		NSString * fileName = [file stringByDeletingPathExtension];
+		NSString * origFileName = [file stringByDeletingPathExtension];
+
+		NSString * fileName = origFileName;
+		if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
+			fileName = [origFileName stringByAppendingString:@"-hd"];
+		}
+	
 
 		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
 		NSData * data = [NSData dataWithContentsOfFile:filePath];
 
 		if ([data bytes] == 0) {
-			Isgl3dLog(Error, @"Error loading compressed image file %@", file);
-			return nil;
+			Isgl3dLog(Error, @"Error loading compressed image file %@.%@", fileName, extension);
+			
+			
+			if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
+				Isgl3dLog(Info, @"Trying %@...", file);
+
+				fileName = origFileName;
+				filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
+				data = [NSData dataWithContentsOfFile:filePath];
+
+				if ([data bytes] == 0) {
+					Isgl3dLog(Error, @"Error loading compressed image file %@", file);
+
+					return nil;
+				}
+			}
 		}
 
 		PVRTexHeader * header = (PVRTexHeader *)[data bytes];
@@ -291,11 +312,11 @@ typedef struct _PVRTexHeader {
 				return [texture autorelease];		
 			
 			} else {
-				Isgl3dLog(Error, @"PVR file %@ contains no image data", file);
+				Isgl3dLog(Error, @"PVR file%@.%@ contains no image data", fileName, extension);
 			}
 		
 		} else {
-				Isgl3dLog(Error, @"File %@ is not of a recognised PVR format", file);
+				Isgl3dLog(Error, @"File %@.%@ is not of a recognised PVR format", fileName, extension);
 		}
 		
 	} else {
@@ -420,18 +441,37 @@ typedef struct _PVRTexHeader {
 - (UIImage *) loadImage:(NSString *)path {
 	// cut filename into name and extension
 	NSString * extension = [path pathExtension];
-	NSString * fileName = [path stringByDeletingPathExtension];
+	NSString * origFileName = [path stringByDeletingPathExtension];
+	
+	NSString * fileName = origFileName;
+	if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
+		fileName = [origFileName stringByAppendingString:@"-hd"];
+	}
 	
 	NSData *texData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:extension]];
     UIImage *image = [[UIImage alloc] initWithData:texData];
    	[texData release];
     
 	if (image == nil) {
-
-		Isgl3dLog(Error, @"Failed to load %@", path);
+		Isgl3dLog(Error, @"Failed to load %@.%@", fileName, extension);
+		
+		if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
+			Isgl3dLog(Info, @"Trying %@...", path);
+			[image release];
+            
+			texData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:origFileName ofType:extension]];
+		    image = [[UIImage alloc] initWithData:texData];
+		   	[texData release];
+			
+			if (image == nil) {
+				Isgl3dLog(Error, @"Failed to load %@.%@", origFileName, extension);
+			}
+				
+		}
+		
 	}
+    return [image autorelease];	
 
-	return [image autorelease];	
 }
 
 - (void) copyImage:(UIImage *)image toRawData:(void *)data {
