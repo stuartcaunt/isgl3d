@@ -46,7 +46,6 @@
 @synthesize zSortingEnabled = _zSortingEnabled;
 @synthesize occlusionTestingEnabled = _occlusionTestingEnabled;
 @synthesize occlusionTestingAngle = _occlusionTestingAngle;
-@synthesize viewport = _viewport;
 @synthesize deviceViewOrientation = _deviceViewOrientation;
 @synthesize isOpaque = _isOpaque;
 @synthesize isEventCaptureEnabled = _isEventCaptureEnabled;
@@ -68,8 +67,7 @@
 		_deviceViewOrientation = [Isgl3dDirector sharedInstance].deviceOrientation;
 		
 		// Get default viewport size from Isgl3dDirector (UIView window size)
-		CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
-		_viewport = CGRectMake(0, 0, windowSize.width, windowSize.height);
+		self.viewport = [Isgl3dDirector sharedInstance].windowRect;
 			
 		_isOpaque = NO;
 		
@@ -94,6 +92,34 @@
 }
 
 // Properties
+
+- (CGRect) viewport {
+	return _viewport;
+}
+
+- (void) setViewport:(CGRect)viewport {
+	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_viewport = CGRectMake(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
+	_viewportInPixels = CGRectMake(viewport.origin.x * s, viewport.origin.y * s, viewport.size.width * s, viewport.size.height * s);
+
+	if (_camera) {
+		[_camera setWidth:_viewportInPixels.size.width andHeight:_viewportInPixels.size.height];
+	}	
+}
+
+- (CGRect) viewportInPixels {
+	return _viewportInPixels;
+}
+
+- (void) setViewportInPixels:(CGRect)viewportInPixels {
+	float s = 1. / [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_viewportInPixels = CGRectMake(viewportInPixels.origin.x, viewportInPixels.origin.y, viewportInPixels.size.width, viewportInPixels.size.height);
+	_viewport = CGRectMake(viewportInPixels.origin.x * s, viewportInPixels.origin.y * s, viewportInPixels.size.width * s, viewportInPixels.size.height * s);
+
+	if (_camera) {
+		[_camera setWidth:_viewportInPixels.size.width andHeight:_viewportInPixels.size.height];
+	}	
+}
 
 - (isgl3dOrientation) viewOrientation {
 	return _viewOrientation;
@@ -125,16 +151,6 @@
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:_backgroundColor];
 }
 
-- (CGRect) viewport {
-	return _viewport;
-}
-
-- (void) setViewport:(CGRect)viewport {
-	_viewport = viewport;
-	if (_camera) {
-		[_camera setWidth:viewport.size.width andHeight:viewport.size.height];
-	}
-}
 
 // Methods
 
@@ -189,11 +205,11 @@
 - (void) clearBuffers:(Isgl3dGLRenderer *)renderer {
 	if (_isOpaque) {
 		// Clear color buffer with background color
-		[renderer clear:(ISGL3D_COLOR_BUFFER_BIT | ISGL3D_DEPTH_BUFFER_BIT | ISGL3D_STENCIL_BUFFER_BIT) color:_backgroundColor viewport:_viewport];
+		[renderer clear:(ISGL3D_COLOR_BUFFER_BIT | ISGL3D_DEPTH_BUFFER_BIT | ISGL3D_STENCIL_BUFFER_BIT) color:_backgroundColor viewport:_viewportInPixels];
 		
 	} else {
 		// Don't clear color buffer, only depth and stencil
-		[renderer clear:(ISGL3D_DEPTH_BUFFER_BIT | ISGL3D_STENCIL_BUFFER_BIT) viewport:_viewport];
+		[renderer clear:(ISGL3D_DEPTH_BUFFER_BIT | ISGL3D_STENCIL_BUFFER_BIT) viewport:_viewportInPixels];
 	}
 }
 
@@ -274,7 +290,7 @@
 	if (_isEventCaptureEnabled && _scene && _camera) {
 	
 		// Clear the depth buffer	
-		[renderer clear:ISGL3D_DEPTH_BUFFER_BIT viewport:_viewport];
+		[renderer clear:ISGL3D_DEPTH_BUFFER_BIT viewport:_viewportInPixels];
 		
 		// Set camera characteristics
 		[renderer setProjectionMatrix:[_camera projectionMatrix]];
@@ -290,6 +306,7 @@
 	CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
 	uiPoint.y = windowSize.height - uiPoint.y;
 	
+	// UI point is in "points" not pixels
 	CGPoint viewportOrigin = _viewport.origin;
 	CGSize viewportSize = _viewport.size;
 	
@@ -323,11 +340,20 @@
 	return viewPoint;
 }
 
+- (CGPoint) convertUIPointToViewInPixels:(CGPoint)uiPoint {
+	CGPoint pixelPoint = [self convertUIPointToView:uiPoint];
+	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
+	
+	return CGPointMake(pixelPoint.x * s, pixelPoint.y * s);
+}
+
+
 - (BOOL) isUIPointInView:(CGPoint)uiPoint {
 	// Invert y coordinate (viewport in GL coordinates: origin at bottom left)
 	CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
 	uiPoint.y = windowSize.height - uiPoint.y;
 
+	// UI point is in "points" not pixels
 	CGPoint viewportOrigin = _viewport.origin;
 	CGSize viewportSize = _viewport.size;
 
@@ -381,9 +407,9 @@
 		self.scene = [[[Isgl3dScene3D alloc] init] autorelease];
 		Isgl3dLog(Info, @"Isgl3dBasic2DView : creating default scene.");
 
-		CGSize viewSize = self.viewport.size;
+		CGSize viewSize = self.viewportInPixels.size;
 		self.camera = [[[Isgl3dCamera alloc] initWithWidth:viewSize.width andHeight:viewSize.height] autorelease];
-		[self.camera setOrthoProjection:0 right:self.viewport.size.width bottom:0 top:self.viewport.size.height near:1 far:1000 orientation:self.deviceViewOrientation];
+		[self.camera setOrthoProjection:0 right:viewSize.width bottom:0 top:viewSize.height near:1 far:1000 orientation:self.deviceViewOrientation];
 		Isgl3dLog(Info, @"Isgl3dBasic2DView : creating default camera with ortho projection. Viewport size = %@", NSStringFromCGSize(viewSize));
 
 		[self.scene addChild:self.camera];
@@ -397,8 +423,8 @@
 	[super setViewport:viewport];
 
 	if (self.camera) {
-		[self.camera setOrthoProjection:0 right:self.viewport.size.width bottom:0 top:self.viewport.size.height near:self.camera.near far:self.camera.far orientation:self.deviceViewOrientation];
-		Isgl3dLog(Info, @"Isgl3dBasic2DView : setting camera with ortho projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+		[self.camera setOrthoProjection:0 right:self.viewportInPixels.size.width bottom:0 top:self.viewportInPixels.size.height near:self.camera.near far:self.camera.far orientation:self.deviceViewOrientation];
+		Isgl3dLog(Info, @"Isgl3dBasic2DView : setting camera with ortho projection. Viewport size = %@", NSStringFromCGSize(self.viewportInPixels.size));
 	}
 }
 

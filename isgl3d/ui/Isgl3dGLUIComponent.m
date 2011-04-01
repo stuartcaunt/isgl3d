@@ -26,6 +26,7 @@
 #import "Isgl3dGLUIComponent.h"
 #import "Isgl3dNode.h"
 #import "Isgl3dGLRenderer.h"
+#import "Isgl3dDirector.h"
 
 @implementation Isgl3dGLUIComponent
 
@@ -65,14 +66,14 @@
 }
 
 - (void) setX:(unsigned int)x andY:(unsigned int)y {
-	_x = x;
-	_y = y;
+	_x = x * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_y = y * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_meshDirty = YES;
 }
 
 - (void) setWidth:(unsigned int)width andHeight:(unsigned int)height {
-	_width = width;
-	_height = height;
+	_width = width * [Isgl3dDirector sharedInstance].contentScaleFactor;
+	_height = height * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_meshDirty = YES;
 }
 

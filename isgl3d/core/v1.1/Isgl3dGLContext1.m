@@ -186,14 +186,6 @@
 	glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-/*
-	glEnable(GL_SCISSOR_TEST);	
-	glViewport(50, 50, 220, 380);
-	glScissor(50, 50, 220, 380);	
-	glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	glDisable(GL_SCISSOR_TEST);
-*/
 }
 
 - (void) clearBufferForEventCapture {
@@ -234,6 +226,8 @@
 	// Get current width and height
 	glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &_backingWidth);
 	glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &_backingHeight);
+
+	Isgl3dLog(Info, @"Isgl3dGLContext1 : Resizing OpenGL buffers to %ix%i", _backingWidth, _backingHeight);
 
 	// Allocate depth and stencil buffer storage
 	if (_depthAndStencilRenderBuffer) {

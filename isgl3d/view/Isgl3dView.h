@@ -78,6 +78,7 @@
 	Isgl3dMiniVec3D _cameraPosition;
 	
 	CGRect _viewport;
+	CGRect _viewportInPixels;
 	BOOL _isOpaque;
 	float _backgroundColor[4];
 	
@@ -123,8 +124,21 @@
  * The viewport (rectangle on the screen) in which the scene is rendered. The coordinates of the viewport are always relative
  * to the device in portrait mode with (0, 0) at the bottom left of the screen. Modifying device or view orientations has
  * no effect on these coordinates.
+ * 
+ * Note that this sets the viewport in <em>points</em> which are identical on retina and non-retina devices. The viewport
+ * rectangle in pixels is scaled by the Isgl3dDirector contentScaleFactor.
  */
 @property (nonatomic) CGRect viewport;
+
+/**
+ * The viewport (rectangle on the screen) in which the scene is rendered. The coordinates of the viewport are always relative
+ * to the device in portrait mode with (0, 0) at the bottom left of the screen. Modifying device or view orientations has
+ * no effect on these coordinates.
+ * 
+ * Note that this sets the viewport in pixels which differs between retina and non-retina display devices. Using the <code>viewport</code> 
+ * property will ensure identical results on both types of devices.
+ */
+@property (nonatomic) CGRect viewportInPixels;
 
 /**
  * The orientation of the view.
@@ -261,10 +275,27 @@
  * Converts a window point relative to the UIKit user interface to a point in the local coordinate system of the viewport.
  * This can be used when handling touch events to determine the position in the Isgl3dView. The viewport coordinate
  * system has (0, 0) at the bottom left, taking into account the orientation of the device and the Isgl3dView.
+ * 
+ * Note that this returns a CGPoint containing the <em>point</em> position in the view which is identical for
+ * retina and non-retina enabled devices.
+ * 
  * @param uiPoint A CGPoint relative to the main window. Note that (0, 0) is top left
- * @return A CGPoint relative to the viewport with (0, 0) at hte bottom left.
+ * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
  */
 - (CGPoint) convertUIPointToView:(CGPoint)uiPoint;
+
+/**
+ * Converts a window point relative to the UIKit user interface to a point in the local coordinate system of the viewport.
+ * This can be used when handling touch events to determine the position in the Isgl3dView. The viewport coordinate
+ * system has (0, 0) at the bottom left, taking into account the orientation of the device and the Isgl3dView.
+ * 
+ * Note that this returns a CGPoint containing the pixel position in the view which is differs for
+ * retina and non-retina enabled devices.
+ * 
+ * @param uiPoint A CGPoint relative to the main window. Note that (0, 0) is top left
+ * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
+ */
+- (CGPoint) convertUIPointToViewInPixels:(CGPoint)uiPoint;
 
 /**
  * Returns true if a window point relative to the UIKit user interface is inside the viewport of the Isgl3dView.

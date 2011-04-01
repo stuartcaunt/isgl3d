@@ -24,6 +24,7 @@
  */
 
 #import "Isgl3dViewController.h"
+#import "isgl3d.h"
 
 @implementation Isgl3dViewController
 
@@ -33,6 +34,10 @@
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return NO;
+}
+
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {

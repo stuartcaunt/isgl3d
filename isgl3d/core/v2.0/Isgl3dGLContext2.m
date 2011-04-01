@@ -235,6 +235,9 @@
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
 
+	Isgl3dLog(Info, @"Isgl3dGLContext2 : Resizing OpenGL buffers to %ix%i", _backingWidth, _backingHeight);
+	
+
 	if (_depthAndStencilRenderBuffer) {
 		// Allocate depth and stencil buffer storage
 		glBindRenderbuffer(GL_RENDERBUFFER, _depthAndStencilRenderBuffer);

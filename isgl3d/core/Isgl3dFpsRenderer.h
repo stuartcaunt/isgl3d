@@ -38,8 +38,10 @@
  */
 
 /**
- * The Isgl3dFpsRenderer is used to display the current framerate. 
- * It is used internally by the Isgl3dDirector.
+ * The Isgl3dFpsRenderer is used to display the current framerate.
+ *  
+ * Note: it is used internally by the Isgl3dDirector.
+ * 
  * The frame rate is shown in the bottom left of the display for whichever orientation is used.
  */
 @interface Isgl3dFpsRenderer : NSObject {
@@ -52,7 +54,7 @@
 	unsigned long _tickIndex;
 	Isgl3dMatrix4D * _projectionMatrix;
 	Isgl3dMatrix4D * _viewMatrix;
-	CGRect _viewport;
+	CGRect _viewportInPixels;
 	isgl3dOrientation _orientation;
 }
 
@@ -70,5 +72,10 @@
  * not calculated and "paused" is displayed in its place.
  */
 - (void) update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused;
+
+/**
+ * Updates the viewport rectangle. Called when the Isgl3dDirector has a change in viewport size or content scale factor.
+ */
+- (void) updateViewport;
 
 @end

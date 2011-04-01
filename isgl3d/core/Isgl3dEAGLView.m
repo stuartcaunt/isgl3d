@@ -26,6 +26,7 @@
 #import "Isgl3dEAGLView.h"
 #import "v2.0/Isgl3dGLContext2.h"
 #import "v1.1/Isgl3dGLContext1.h"
+#import "Isgl3dDirector.h"
 #import "Isgl3dLog.h"
 
 @interface Isgl3dEAGLView ()
@@ -219,6 +220,8 @@
 
 - (void) layoutSubviews {
 	[_glContext resizeFromLayer:(CAEAGLLayer*)self.layer];
+	
+	[[Isgl3dDirector sharedInstance] onResizeFromLayer];
 }
 
 - (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y {

@@ -52,18 +52,21 @@
 	// Set view in director
 	[Isgl3dDirector sharedInstance].openGLView = glView;
 	
-	// Add the OpenGL view to the view controller
-	_viewController.view = glView;
+	// Enable retina display : uncomment if desired
+//	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
 	
 	// Set the animation frame rate
 	[[Isgl3dDirector sharedInstance] setAnimationInterval:1.0/60];
 
-	// Creates the view(s) and adds them to the director
-	[self createViews];
+	// Add the OpenGL view to the view controller
+	_viewController.view = glView;
 
 	// Add view to window and make visible
 	[_window addSubview:_viewController.view];
 	[_window makeKeyAndVisible];
+
+	// Creates the view(s) and adds them to the director
+	[self createViews];
 	
 	// Run the director
 	[[Isgl3dDirector sharedInstance] run];

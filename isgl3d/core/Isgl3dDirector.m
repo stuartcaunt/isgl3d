@@ -44,6 +44,7 @@ static Isgl3dDirector * _instance = nil;
 
 @interface Isgl3dDirector ()
 - (id) initSingleton;
+- (void) setContentScaleFactor:(float)contentScaleFactor;
 - (void) mainLoop;
 - (void) calculateDeltaTime;
 - (void) render;
@@ -54,8 +55,10 @@ static Isgl3dDirector * _instance = nil;
 
 @synthesize objectTouched = _objectTouched;
 @synthesize windowRect = _windowRect;
+@synthesize windowRectInPixels = _windowRectInPixels;
 @synthesize isPaused = _isPaused;
 @synthesize displayFPS = _displayFPS;
+@synthesize contentScaleFactor = _contentScaleFactor;
 
 - (id) init {
 	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
@@ -103,6 +106,9 @@ static Isgl3dDirector * _instance = nil;
 		_event3DHandler = [[Isgl3dEvent3DHandler alloc] init];
 		
 		_displayFPS = NO;
+		
+		_retinaDisplayEnabled = NO;
+		_contentScaleFactor = 1.0f;
 	}
 
 	return self;
@@ -156,6 +162,10 @@ static Isgl3dDirector * _instance = nil;
 
 - (CGSize) windowSize {
 	return _windowRect.size;
+}
+
+- (CGSize) windowSizeInPixels {
+	return _windowRectInPixels.size;
 }
 
 - (float *) backgroundColor {
@@ -230,10 +240,11 @@ static Isgl3dDirector * _instance = nil;
 		
 		if (glView) {
 			_glView = [glView retain];
-			
+
 			// Get the window dimensions
 			_windowRect = [_glView bounds];
-		
+			[self setContentScaleFactor:_contentScaleFactor];
+
 			// Create the renderer	
 			_renderer = [[_glView createRenderer] retain];
 
@@ -265,13 +276,6 @@ static Isgl3dDirector * _instance = nil;
 
 - (void) setShadowAlpha:(float)shadowAlpha {
 	_renderer.shadowAlpha = shadowAlpha;
-}
-
-// Public methods
-#pragma mark public methods
-
-- (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y {
-	return [_glView getPixelString:x y:y];
 }
 
 #pragma mark start animation control
@@ -402,7 +406,81 @@ static Isgl3dDirector * _instance = nil;
 }
 
 
-// Public methods
+#pragma mark public methods
+
+- (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y {
+	return [_glView getPixelString:x y:y];
+}
+
+- (void) enableRetinaDisplay:(BOOL)enabled {
+	if (enabled && !_glView) {
+		Isgl3dLog(Error, @"Isgl3dDirector : cannot enable retina display before Isgl3dEAGLView has been set.");
+		return;
+	}
+	
+	// Check if alreay set
+	if ((_retinaDisplayEnabled && enabled) || (!_retinaDisplayEnabled && !enabled)) {
+		return;
+	}
+	
+	// See if retina display is supported in iOS
+	if (enabled) {
+		if (![_glView respondsToSelector:@selector(setContentScaleFactor:)]) {
+			Isgl3dLog(Error, @"Isgl3dDirector : retina display not supported in this version of iOS.");
+		} else {
+			
+			// See if retina display is supported on device
+			if ([UIScreen mainScreen].scale == 1.0f) {
+				Isgl3dLog(Error, @"Isgl3dDirector : retina display not supported on this device.");
+				
+			} else {
+				Isgl3dLog(Info, @"Isgl3dDirector : retina display enabled.");
+				_retinaDisplayEnabled = YES;
+				[self setContentScaleFactor:2.0f];
+			}
+			
+		}
+		
+	} else {
+		Isgl3dLog(Info, @"Isgl3dDirector : retina display disabled.");
+		_retinaDisplayEnabled = NO;
+		[self setContentScaleFactor:1.0f];
+	}
+}
+
+- (void) setContentScaleFactor:(float)contentScaleFactor {
+	if (_contentScaleFactor != contentScaleFactor) {
+		_contentScaleFactor = contentScaleFactor;
+		
+		// Set content scale factor in EAGL view
+		[_glView setContentScaleFactor:_contentScaleFactor];
+		
+		// Scale current window rectangle (cannot call [_glView bounds] because resizing view is asynchronous)
+		_windowRectInPixels = CGRectMake(_windowRect.origin.x * _contentScaleFactor, 
+			_windowRect.origin.y * _contentScaleFactor, 
+			_windowRect.size.width * _contentScaleFactor, 
+	        _windowRect.size.height * _contentScaleFactor);
+	
+		// Update the viewport in the fps renderer
+		[_fpsRenderer updateViewport];
+	
+		Isgl3dLog(Info, @"Isgl3dDirector : content scale factor changed, window size in pixels = %ix%i",  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
+	}
+}
+
+- (void) onResizeFromLayer {
+	_windowRect = [_glView bounds];
+	_windowRectInPixels = CGRectMake(_windowRect.origin.x * _contentScaleFactor, 
+		_windowRect.origin.y * _contentScaleFactor, 
+		_windowRect.size.width * _contentScaleFactor, 
+        _windowRect.size.height * _contentScaleFactor);
+
+	// Update the viewport in the fps renderer
+	[_fpsRenderer updateViewport];
+
+	Isgl3dLog(Info, @"Isgl3dDirector : layer resized, window size in points = %ix%i and pixels = %ix%i", (int)_windowRect.size.width, (int)_windowRect.size.height,  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
+}
+
 #pragma mark main loop
 
 - (void) mainLoop {
@@ -451,7 +529,7 @@ static Isgl3dDirector * _instance = nil;
 - (void) render {
 
 	// Clear the color buffer of full screen (depth/stencil handled by individual views)
-	[_renderer clear:ISGL3D_COLOR_BUFFER_BIT color:_backgroundColor viewport:_windowRect];
+	[_renderer clear:ISGL3D_COLOR_BUFFER_BIT color:_backgroundColor viewport:_windowRectInPixels];
 
 	// Render scenes in all views
 	for (Isgl3dView * view in _views) {
@@ -472,7 +550,7 @@ static Isgl3dDirector * _instance = nil;
 
 	static float black[4] = {0, 0, 0, 1};
 	// Clear the color buffer of full screen (depth/stencil handled by individual views)
-	[_renderer clear:ISGL3D_COLOR_BUFFER_BIT color:black viewport:_windowRect];
+	[_renderer clear:ISGL3D_COLOR_BUFFER_BIT color:black viewport:_windowRectInPixels];
 
 	// Render shadow maps in all view
 	for (Isgl3dView * view in _views) {

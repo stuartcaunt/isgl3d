@@ -50,11 +50,11 @@
 		_fpsLabel.transparent = YES;
 
 		// Get viewport from director
-		_viewport = [Isgl3dDirector sharedInstance].windowRect;
+		_viewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
 		
 		// Create view and projection matrices
 		_viewMatrix = [[Isgl3dGLU lookAt:0 eyey:0 eyez:1 centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:1] retain];
-		_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewport.size.width bottom:0 top:_viewport.size.height near:1 far:1000 zoom:1 orientation:orientation] retain];
+		_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation] retain];
 		
 	}
     return self;
@@ -77,7 +77,16 @@
 	// Update projection matrix
 	_orientation = orientation;
 	[_projectionMatrix release];
-	_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewport.size.width bottom:0 top:_viewport.size.height near:1 far:1000 zoom:1 orientation:orientation] retain];
+	_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation] retain];
+}
+
+- (void) updateViewport {
+	// Get viewport from director
+	_viewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
+	
+	// Update projection matrix
+	[_projectionMatrix release];
+	_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:_orientation] retain];
 }
 
 - (void) update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused {
@@ -119,7 +128,7 @@
 	[_fpsLabel updateGlobalTransformation:nil];
 	
 	// Clear the depth buffer
-	[renderer clear:(ISGL3D_DEPTH_BUFFER_BIT) viewport:_viewport];
+	[renderer clear:(ISGL3D_DEPTH_BUFFER_BIT) viewport:_viewportInPixels];
 
 	// Cleanup from last render
 	[renderer clean];

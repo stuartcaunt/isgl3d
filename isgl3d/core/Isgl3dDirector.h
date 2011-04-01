@@ -68,6 +68,7 @@
 	
 	Isgl3dEAGLView * _glView;
 	CGRect _windowRect;
+	CGRect _windowRectInPixels;
 	
 	NSMutableArray * _views;
 	
@@ -84,17 +85,30 @@
 	
 	BOOL _displayFPS;
 	Isgl3dFpsRenderer * _fpsRenderer;
+	
+	BOOL _retinaDisplayEnabled;
+	float _contentScaleFactor;
 }
 
 /**
- * Returns the window size.
+ * Returns the window size in <em>points</em> which are identical on retina and non-retina devices.
  */
 @property (nonatomic, readonly) CGSize windowSize;
 
 /**
- * Returns the window rectangle.
+ * Returns the window size in pixels which can differ between retina and non-retina devices.
+ */
+@property (nonatomic, readonly) CGSize windowSizeInPixels;
+
+/**
+ * Returns the window rectangle in <em>points</em> which are identical on retina and non-retina devices.
  */
 @property (nonatomic, readonly) CGRect windowRect;
+
+/**
+ * Returns the window rectangle in pixels which can differ between retina and non-retina devices.
+ */
+@property (nonatomic, readonly) CGRect windowRectInPixels;
 
 /**
  * The background color (four float values ,rgba, between 0 and 1) of the main window.
@@ -160,6 +174,12 @@
 @property (nonatomic) float shadowAlpha;
 
 /**
+ * Returns the current content scale factor (1 for non-retina displays, 2 for retina displays).
+ */
+@property (nonatomic, readonly) float contentScaleFactor;
+
+
+/**
  * Returns the singleton instance of the Isgl3dDirector.
  * @return The singleton instance of the Isgl3dDirector.
  */
@@ -222,6 +242,12 @@
 - (void) onSignificantTimeChange;
 
 /**
+ * Called internally when the UIView rendering layer is resized.
+ * Note, this should never be called manually. This is called internally by the Isgl3dEAGLView.
+ */
+- (void) onResizeFromLayer;
+
+/**
  * Sets the Isgl3dUIView.
  * From the Isgl3dEAGLView the Isgl3dDirector determines the size of the window and creates the renderers.
  * @param glView The Isgl3dEAGLView containing the OpenGL buffers. 
@@ -254,6 +280,12 @@
  * @return The hexidecimal value for the pixel colour.
  */
 - (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y;
+
+/**
+ * Enables or disables the retina display if the device allows it.
+ * @param enabled True if the retina display should be enabled.
+ */
+- (void) enableRetinaDisplay:(BOOL)enabled;
 
 @end
 

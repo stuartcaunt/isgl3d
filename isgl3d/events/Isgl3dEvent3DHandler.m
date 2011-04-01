@@ -86,8 +86,8 @@
 	for (UITouch * touch in touches) {
 		CGPoint point = [touch locationInView:touch.view];
 		
-		unsigned int eventX = (unsigned int)point.x;
-		unsigned int eventY = (unsigned int)point.y;
+		unsigned int eventX = (unsigned int)point.x * [Isgl3dDirector sharedInstance].contentScaleFactor;
+		unsigned int eventY = (unsigned int)point.y * [Isgl3dDirector sharedInstance].contentScaleFactor;
 		
 		// Get pixel color associated with touch
 		NSString * colorString;

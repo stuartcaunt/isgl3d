@@ -28,6 +28,7 @@
 #import "Isgl3dPlane.h"
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dUVMap.h"
+#import "Isgl3dDirector.h"
 
 #define BONE_MESH @"__boneMesh"
 #define GLUIBUTTON_MESH @"__glUIButtonMesh"
@@ -86,7 +87,7 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 - (Isgl3dGLMesh *) UIButtonMesh {
 	Isgl3dGLMesh * buttonMesh = [_primitives objectForKey:GLUIBUTTON_MESH];
 	if (!buttonMesh) {
-		buttonMesh = [[Isgl3dPlane alloc] initWithGeometry:GLUIBUTTON_WIDTH height:GLUIBUTTON_HEIGHT nx:2 ny:2];
+		buttonMesh = [[Isgl3dPlane alloc] initWithGeometry:GLUIBUTTON_WIDTH * [Isgl3dDirector sharedInstance].contentScaleFactor height:GLUIBUTTON_HEIGHT * [Isgl3dDirector sharedInstance].contentScaleFactor nx:2 ny:2];
 		[_primitives setObject:[buttonMesh autorelease] forKey:GLUIBUTTON_MESH];
 	}
 	return buttonMesh;	
