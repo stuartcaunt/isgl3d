@@ -31,6 +31,14 @@
 @end
 
 
+#pragma mark UIBackgroundView
+
+@interface UIBackgroundView : Isgl3dBasic2DView {
+}
+
+@end
+
+
 #pragma mark Simple3DView
 
 @class Isgl3dDemoCameraController;

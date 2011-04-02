@@ -41,14 +41,17 @@
 	unsigned int _width;
 	unsigned int _height;
 	CGSize _contentSize;
+	
+	BOOL _isHighDefinition;
 }
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
-@property (readonly) unsigned int textureId;
-@property (readonly) unsigned int width;
-@property (readonly) unsigned int height;
-@property (readonly) CGSize contentSize;
+@property (nonatomic, readonly) unsigned int textureId;
+@property (nonatomic, readonly) unsigned int width;
+@property (nonatomic, readonly) unsigned int height;
+@property (nonatomic, readonly) CGSize contentSize;
+@property (nonatomic) BOOL isHighDefinition;
 
 @end

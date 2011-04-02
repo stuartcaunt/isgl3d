@@ -32,6 +32,7 @@
 @synthesize width = _width;
 @synthesize height = _height;
 @synthesize contentSize = _contentSize;
+@synthesize isHighDefinition = _isHighDefinition;
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
 	return [self initWithId:textureId width:width height:height contentSize:CGSizeMake(_width, _height)];

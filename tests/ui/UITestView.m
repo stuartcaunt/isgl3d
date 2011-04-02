@@ -76,7 +76,30 @@
 
 @end
 
+#pragma mark UIBackgroundView
 
+
+@implementation UIBackgroundView
+
+- (id) init {
+	
+	if ((self = [super init])) {
+		// Create a button to calibrate the accelerometer
+		Isgl3dTextureMaterial * backgroundMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ui_bg.pvr" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dGLUIImage * background = [[Isgl3dGLUIImage alloc] initWithMaterial:backgroundMaterial andRectangle:CGRectMake(0, 0, 480, 320) width:480 height:320];
+		[self.scene addChild:[background autorelease]];
+	}
+	
+	return self;
+}
+
+- (void) dealloc {
+
+	[super dealloc];
+}
+
+
+@end
 
 #pragma mark Simple3DView
 
@@ -145,6 +168,10 @@
 - (void) createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
+
+	// Create 2D view background and add to Isgl3dDirector
+	Isgl3dView * background = [UIBackgroundView view];
+	[[Isgl3dDirector sharedInstance] addView:background];
 
 	// Create 3D view and add to Isgl3dDirector
 	Isgl3dView * view = [Simple3DView view];

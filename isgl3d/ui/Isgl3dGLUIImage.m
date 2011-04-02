@@ -27,14 +27,17 @@
 #import "Isgl3dPlane.h"
 #import "Isgl3dTextureMaterial.h"
 #import "Isgl3dUVMap.h"
+#import "Isgl3dDirector.h"
 
 @implementation Isgl3dGLUIImage
 
 
 
 - (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
-	
-	if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometry:width height:height nx:2 ny:2] autorelease] andMaterial:material])) {
+
+	float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
+	float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
+	if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometry:widthInPixels height:heightInPixels nx:2 ny:2] autorelease] andMaterial:material])) {
 		[self setWidth:width andHeight:height];
 	}
 	
@@ -50,16 +53,23 @@
 		CGPoint origin = rectangle.origin;
 		CGSize size = rectangle.size;
 		
-		float ua = origin.x / materialWidth;
-		float va = origin.y / materialHeight;
+		float scaleFactor = 1;
+		if (textureMaterial.isHighDefinition) {
+			scaleFactor = [Isgl3dDirector sharedInstance].contentScaleFactor;
+		}
 		
-		float ub = ua + size.width / materialWidth;
+		float ua = origin.x * scaleFactor / materialWidth;
+		float va = origin.y * scaleFactor / materialHeight;
+		
+		float ub = ua + size.width * scaleFactor / materialWidth;
 		float vb = va;
 
 		float uc = ua;
-		float vc = va + size.height / materialHeight;
+		float vc = va + size.height * scaleFactor / materialHeight;
 		
-		if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometryAndUVMap:width height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:ua vA:va uB:ub vB:vb uC:uc vC:vc]] autorelease] andMaterial:material])) {
+		float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
+		float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
+		if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometryAndUVMap:widthInPixels height:heightInPixels nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:ua vA:va uB:ub vB:vb uC:uc vC:vc]] autorelease] andMaterial:material])) {
 			[self setWidth:width andHeight:height];
 		}
 		

@@ -101,6 +101,14 @@
 	return _texture.contentSize;
 }
 
+- (BOOL) isHighDefinition {
+	return _texture.isHighDefinition;
+}
+
+- (void) setIsHighDefinition:(BOOL)isHighDefinition {
+	_texture.isHighDefinition = isHighDefinition;
+}
+
 - (int) convertPrecision:(int)materialPrecision {
 	if (materialPrecision == TEXTURE_MATERIAL_LOW_PRECISION) {
 		return GLTEXTURE_LOW_PRECISION;

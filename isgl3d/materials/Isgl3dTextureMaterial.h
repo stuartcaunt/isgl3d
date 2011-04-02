@@ -51,6 +51,8 @@
 	
 @protected
 	Isgl3dGLTexture * _texture;
+	
+	BOOL _isHighDefinition;
 }
 
 /**
@@ -68,6 +70,12 @@
  * be smaller than the dimensions of the full texture.
  */
 @property (readonly) CGSize contentSize;
+
+/**
+ * Used for retina display textures. Returns tru if the image file has come from a -hd resource. Can be set manually
+ * if needed but has no effect on the texture.
+ */
+@property (nonatomic) BOOL isHighDefinition;
 
 /**
  * Initialises the texture material from an image file.

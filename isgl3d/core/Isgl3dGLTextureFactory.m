@@ -67,6 +67,7 @@ typedef struct _PVRTexHeader {
  */
 - (UIImage *) loadImage:(NSString *)path;
 - (void) copyImage:(UIImage *)image toRawData:(void *)data;
+- (BOOL) imageIsHD:(NSString *)path;
 
 /**
  * @result (autorelease) NSArray with image data
@@ -78,6 +79,8 @@ typedef struct _PVRTexHeader {
  */
 - (NSString *) textureKeyForFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
+
+
 
 @implementation Isgl3dGLTextureFactory
 
@@ -166,6 +169,10 @@ typedef struct _PVRTexHeader {
 		
 		// Create texture and store in dictionary
 		texture = [[Isgl3dGLTexture alloc] initWithId:textureId width:width height:height];
+		
+		BOOL isHD = [self imageIsHD:file];
+		texture.isHighDefinition = isHD;
+		
 		[_textures setObject:texture forKey:textureKey];
 		
 		return [texture autorelease];		
@@ -222,7 +229,7 @@ typedef struct _PVRTexHeader {
 	    [text drawInRect:CGRectMake(0, 0, dimensions.width, dimensions.height) withFont:uiFont lineBreakMode:UILineBreakModeWordWrap alignment:alignment];
 		
 		if (!uiFont) {
-			Isgl3dLog(Error, @"GLTextureFactory: Font '%@' not found", name);
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Font '%@' not found", name);
 		}
 		UIGraphicsPopContext();
 		
@@ -263,25 +270,34 @@ typedef struct _PVRTexHeader {
 	
 
 		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
+		
+		BOOL isHD = [Isgl3dDirector sharedInstance].retinaDisplayEnabled;
+		if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file not found %@.%@", fileName, extension);
+
+			if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
+				fileName = origFileName;
+				filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
+
+				Isgl3dLog(Info, @"Isgl3dGLTextureFactor : Trying %@...", file);
+	
+				isHD = NO;
+				if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+					Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file not found %@.%@", fileName, extension);
+					return nil;
+				}
+				
+			} else {
+				return nil;
+			}
+		}
+		
+		
 		NSData * data = [NSData dataWithContentsOfFile:filePath];
 
 		if ([data bytes] == 0) {
-			Isgl3dLog(Error, @"Error loading compressed image file %@.%@", fileName, extension);
-			
-			
-			if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
-				Isgl3dLog(Info, @"Trying %@...", file);
-
-				fileName = origFileName;
-				filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
-				data = [NSData dataWithContentsOfFile:filePath];
-
-				if ([data bytes] == 0) {
-					Isgl3dLog(Error, @"Error loading compressed image file %@", file);
-
-					return nil;
-				}
-			}
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file contains no data %@.%@", fileName, extension);
+			return nil;
 		}
 
 		PVRTexHeader * header = (PVRTexHeader *)[data bytes];
@@ -307,16 +323,17 @@ typedef struct _PVRTexHeader {
 
 				// Create texture and store in dictionary
 				texture = [[Isgl3dGLTexture alloc] initWithId:textureId width:width height:height];
+				texture.isHighDefinition = isHD;
 				[_textures setObject:texture forKey:textureKey];
 				
 				return [texture autorelease];		
 			
 			} else {
-				Isgl3dLog(Error, @"PVR file%@.%@ contains no image data", fileName, extension);
+				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : PVR file%@.%@ contains no image data", fileName, extension);
 			}
 		
 		} else {
-				Isgl3dLog(Error, @"File %@.%@ is not of a recognised PVR format", fileName, extension);
+				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : File %@.%@ is not of a recognised PVR format", fileName, extension);
 		}
 		
 	} else {
@@ -344,14 +361,14 @@ typedef struct _PVRTexHeader {
 		}
 
 		if (compressed) {
-			Isgl3dLog(Error, @"Cubemaps using compressed images is not yet available");
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Cubemaps using compressed images is not yet available");
 			[images release];
 			return nil;
 		}
 
 
 		if ([images count] != 6) {
-			Isgl3dLog(Error, @"Generation of cubmap texture requires 6 images: only %i given", [images count]);
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires 6 images: only %i given", [images count]);
 			[images release];
 			return nil;
 		}
@@ -367,7 +384,7 @@ typedef struct _PVRTexHeader {
 		unsigned int height = CGImageGetHeight(posXImage.CGImage);
 		
 		if (height != width) {
-			Isgl3dLog(Error, @"Generation of cubmap texture requires images of equal width and height");
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires images of equal width and height");
 			[images release];
 			return nil;
 		}
@@ -382,7 +399,7 @@ typedef struct _PVRTexHeader {
 			CGImageGetHeight(posZImage.CGImage) != width ||
 			CGImageGetWidth(negZImage.CGImage) != width ||
 			CGImageGetHeight(negZImage.CGImage) != width) {
-			Isgl3dLog(Error, @"Generation of cubmap texture requires all images to be the same size");
+			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires all images to be the same size");
 			[images release];
 			return nil;
 		}
@@ -448,30 +465,56 @@ typedef struct _PVRTexHeader {
 		fileName = [origFileName stringByAppendingString:@"-hd"];
 	}
 	
-	NSData *texData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:extension]];
-    UIImage *image = [[UIImage alloc] initWithData:texData];
-   	[texData release];
-    
-	if (image == nil) {
-		Isgl3dLog(Error, @"Failed to load %@.%@", fileName, extension);
-		
+	NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+	if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : image file not found %@.%@", fileName, extension);
+
 		if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
-			Isgl3dLog(Info, @"Trying %@...", path);
-			[image release];
-            
-			texData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:origFileName ofType:extension]];
-		    image = [[UIImage alloc] initWithData:texData];
-		   	[texData release];
-			
-			if (image == nil) {
-				Isgl3dLog(Error, @"Failed to load %@.%@", origFileName, extension);
+			fileName = origFileName;
+			filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
+
+			Isgl3dLog(Info, @"Isgl3dGLTextureFactor : Trying %@...", path);
+
+			if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Image file not found %@.%@", fileName, extension);
+				return nil;
 			}
-				
+			
+		} else {
+			return nil;
 		}
 		
 	}
+	
+	
+	NSData *texData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:extension]];
+    UIImage *image = [[UIImage alloc] initWithData:texData];
+   	[texData release];
+
+	if (image == nil) {
+		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Failed to load %@.%@", fileName, extension);
+	}
     return [image autorelease];	
 
+}
+
+- (BOOL) imageIsHD:(NSString *)path {
+	// cut filename into name and extension
+	NSString * extension = [path pathExtension];
+	NSString * origFileName = [path stringByDeletingPathExtension];
+	
+	NSString * fileName = origFileName;
+	if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
+		fileName = [origFileName stringByAppendingString:@"-hd"];
+		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+		
+		if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+			
+			return YES;
+		}
+	
+	}
+	return NO;	
 }
 
 - (void) copyImage:(UIImage *)image toRawData:(void *)data {

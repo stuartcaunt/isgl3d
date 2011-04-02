@@ -613,6 +613,7 @@
 		17801A65131A959D0045803F /* OcclusionDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801A64131A959D0045803F /* OcclusionDemoView.m */; };
 		1780214C131AC1FA0045803F /* Isgl3dFpsDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 1780214A131AC1FA0045803F /* Isgl3dFpsDisplay.h */; };
 		1780214D131AC1FA0045803F /* Isgl3dFpsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1780214B131AC1FA0045803F /* Isgl3dFpsDisplay.m */; };
+		178C2D7F13472AFC003679AB /* ui_bg.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 178C2D7E13472AFC003679AB /* ui_bg.pvr */; };
 		179F86E5133E67A5007F4671 /* Isgl3dDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F86E3133E67A5007F4671 /* Isgl3dDirector.h */; };
 		179F86E6133E67A5007F4671 /* Isgl3dDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 179F86E4133E67A5007F4671 /* Isgl3dDirector.m */; };
 		179F86EB133E67BB007F4671 /* Isgl3dScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F86E7133E67BB007F4671 /* Isgl3dScheduler.h */; };
@@ -1846,6 +1847,7 @@
 		1780214B131AC1FA0045803F /* Isgl3dFpsDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dFpsDisplay.m; sourceTree = "<group>"; };
 		178963B712FB3AA500E6272F /* Isgl3dDemoCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDemoCameraController.h; sourceTree = "<group>"; };
 		178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dDemoCameraController.m; sourceTree = "<group>"; };
+		178C2D7E13472AFC003679AB /* ui_bg.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_bg.pvr; sourceTree = "<group>"; };
 		179F86E2133E6746007F4671 /* isgl3dTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isgl3dTypes.h; sourceTree = "<group>"; };
 		179F86E3133E67A5007F4671 /* Isgl3dDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDirector.h; sourceTree = "<group>"; };
 		179F86E4133E67A5007F4671 /* Isgl3dDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dDirector.m; sourceTree = "<group>"; };
@@ -3073,6 +3075,7 @@
 		176236EF12F9CA87008CDB4B /* images */ = {
 			isa = PBXGroup;
 			children = (
+				178C2D7E13472AFC003679AB /* ui_bg.pvr */,
 				17BE17AC132E9C8400D053BA /* billboard.png */,
 				171CB99A131968F9003712F4 /* SpaceStation.png */,
 				171CB99B131968F9003712F4 /* stars.png */,
@@ -4959,6 +4962,7 @@
 				17AD09D0134270E2005F5F7F /* red_checker.png in Resources */,
 				1731240A12FD62CE00861D84 /* pause.png in Resources */,
 				173123F012FD627B00861D84 /* isgl3d.plist in Resources */,
+				178C2D7F13472AFC003679AB /* ui_bg.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
