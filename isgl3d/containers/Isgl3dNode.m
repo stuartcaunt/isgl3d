@@ -50,6 +50,7 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 @synthesize alphaCulling = _alphaCulling;
 @synthesize alphaCullValue = _alphaCullValue;
 @synthesize interactive = _interactive;
+@synthesize isVisible = _isVisible;
 
 - (id) init {    
     if ((self = [super init])) {
@@ -69,6 +70,8 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 		
 		_lightingEnabled = YES;
 		_interactive = NO;
+		
+		_isVisible = YES;
 	}
 	
     return self;
@@ -158,53 +161,65 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 
 - (void) renderLights:(Isgl3dGLRenderer *)renderer {
 	
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node renderLights:renderer];
+			if (node.isVisible) {
+				[node renderLights:renderer];
+			}
 	    }
 	}
 }
 
 - (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
 	
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node render:renderer opaque:opaque];
+			if (node.isVisible) {
+				[node render:renderer opaque:opaque];
+			}
 	    }
 	}
 }
 
 - (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {
 	
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node renderForEventCapture:renderer];
+			if (node.isVisible) {
+				[node renderForEventCapture:renderer];
+			}
 	    }
 	}
 }
 
 - (void) renderForShadowMap:(Isgl3dGLRenderer *)renderer {
 	
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node renderForShadowMap:renderer];
+			if (node.isVisible) {
+				[node renderForShadowMap:renderer];
+			}
 	    }
 	}
 }
 
 - (void) renderForPlanarShadows:(Isgl3dGLRenderer *)renderer {
 	
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node renderForPlanarShadows:renderer];
+			if (node.isVisible) {
+				[node renderForPlanarShadows:renderer];
+			}
 	    }
 	}
 }
 
 - (void) collectAlphaObjects:(NSMutableArray *)alphaObjects {
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node collectAlphaObjects:alphaObjects];
+			if (node.isVisible) {
+				[node collectAlphaObjects:alphaObjects];
+			}
 	    }
 	}	
 }
@@ -215,9 +230,11 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node occlusionTest:eye normal:normal targetDistance:targetDistance maxAngle:maxAngle];
+			if (node.isVisible) {
+				[node occlusionTest:eye normal:normal targetDistance:targetDistance maxAngle:maxAngle];
+			}
 	    }
 	}	
 }
@@ -240,17 +257,21 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (void) createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node createShadowMaps:renderer forScene:scene];
+			if (node.isVisible) {
+				[node createShadowMaps:renderer forScene:scene];
+			}
 	    }
 	}
 }
 
 - (void) createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
-	if (_hasChildren) {
+	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
-			[node createPlanarShadows:renderer forScene:scene];
+			if (node.isVisible) {
+				[node createPlanarShadows:renderer forScene:scene];
+			}
 	    }
 	}
 }

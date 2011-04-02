@@ -51,8 +51,6 @@
 	
 	BOOL _meshDirty;
 	
-	BOOL _isVisible;
-	
 	// "Fix left & top" stop pixel movement of component on specified side when resizing
 	BOOL _fixLeft;
 	BOOL _fixTop;
@@ -104,12 +102,6 @@
  * The height of the component in pixels. This value differs for rentina and non-retina displays.
  */
 @property (nonatomic, readonly) unsigned int heightInPixels;
-
-/**
- * Whether the component is visible or not. If the component is not visible then no user events will occur (for example for 
- * an Isgl3dGLUIButton).
- */
-@property (nonatomic) BOOL visible;
 
 /**
  * Fix left is used to correct undesirable behaviour when the component it resized (such as with an Isgl3dProgressBar). With

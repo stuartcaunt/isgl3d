@@ -1,4 +1,5 @@
 current SVN version
+	Isgl3dNode: added isVisible property to allow nodes not to be rendered but remain in scene
 	Added support for retina display
 
 version 1.1.4 (2011-03-31)

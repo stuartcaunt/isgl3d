@@ -75,6 +75,8 @@
 	BOOL _lightingEnabled;
 	
 	BOOL _interactive;
+
+	BOOL _isVisible;
 	
 @private
 	Isgl3dNode * _parent;
@@ -151,6 +153,13 @@
  * Indicates whether the node reacts to user touch interactions. By default, the node is not interactive.
  */
 @property (nonatomic) BOOL interactive;
+
+/**
+ * Indicates whether the node is visible or not. For rendered nodes (eg Isgl3dMeshNode) this allows them to be
+ * dynamically made visible or not while keeping them in the scene.
+ * Note: this affects all child nodes too.
+ */
+@property (nonatomic) BOOL isVisible;
 
 /**
  * Initialises the node.

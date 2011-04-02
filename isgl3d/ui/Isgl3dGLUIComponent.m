@@ -38,7 +38,6 @@
 @synthesize widthInPixels = _widthInPixels;
 @synthesize height = _height;
 @synthesize heightInPixels = _heightInPixels;
-@synthesize visible = _isVisible;
 @synthesize fixLeft = _fixLeft;
 @synthesize fixTop = _fixTop;
 @synthesize centerX = _centerX;
@@ -56,8 +55,6 @@
 		_widthInPixels = 0;
 		_heightInPixels = 0;
 		_meshDirty = YES;
-		
-		_isVisible = YES;
 		
 		_fixLeft = YES;
 		_fixTop = YES;
@@ -138,18 +135,6 @@
 	}
 	
 	[super updateGlobalTransformation:parentTransformation];
-}
-
-- (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
-	if (_isVisible) {
-		[super render:renderer opaque:opaque];
-	}
-}
-
-- (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {
-	if (_isVisible) {
-		[super renderForEventCapture:renderer];
-	}
 }
 
 @end
