@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3dAccelerometer.h"
-#import "Isgl3dMatrix4D.h"
 
 #define LOWPASS_FILTER_VALUE 0.1
 

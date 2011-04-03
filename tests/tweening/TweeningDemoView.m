@@ -122,7 +122,7 @@
 - (void) objectTouched:(Isgl3dEvent3D *)event {
 	NSLog(@"object touched %i", [event.touches count]);
 	
-	Isgl3dGLObject3D * object = event.object;
+	Isgl3dNode * object = event.object;
 	
 	[Isgl3dTweener addTween:object withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	[NSNumber numberWithFloat:0.5], TWEEN_DURATION, 
 																							TWEEN_FUNC_EASEOUTSINE, TWEEN_TRANSITION, 

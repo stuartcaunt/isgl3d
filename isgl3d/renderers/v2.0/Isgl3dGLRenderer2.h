@@ -27,7 +27,6 @@
 
 #import "Isgl3dGLRenderer.h"
 
-@class Isgl3dMatrix4D;
 @class Isgl3dGLRenderer2State;
 @class Isgl3dShader;
 
@@ -37,11 +36,11 @@
 @interface Isgl3dGLRenderer2 : Isgl3dGLRenderer {
 
 @private
-	Isgl3dMatrix4D * _mvpMatrix;
-	Isgl3dMatrix4D * _mvMatrix;
+	Isgl3dMatrix4 _mvpMatrix;
+	Isgl3dMatrix4 _mvMatrix;
 
-	Isgl3dMatrix4D * _lightViewProjectionMatrix;
-	Isgl3dMatrix4D * _lightModelViewProjectionMatrix;
+	Isgl3dMatrix4 _lightViewProjectionMatrix;
+	Isgl3dMatrix4 _lightModelViewProjectionMatrix;
 
 	
 	BOOL _shadowMapActive;

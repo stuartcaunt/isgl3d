@@ -139,6 +139,11 @@
 @property (nonatomic, retain) Isgl3dEAGLView * openGLView;
 
 /**
+ * Returns the change in time since the last frame.
+ */
+@property (nonatomic, readonly) float deltaTime;
+
+/**
  * Returns a BOOL value of whether the Isgl3dDirector (and thereby all Isgl3dViews) are paused.
  */
 @property (nonatomic, readonly) BOOL isPaused;

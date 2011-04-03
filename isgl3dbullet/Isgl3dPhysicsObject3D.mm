@@ -25,7 +25,6 @@
 
 #import "Isgl3dPhysicsObject3D.h"
 #import "Isgl3dNode.h"
-#import "Isgl3dVector3D.h"
 
 #include "btBulletDynamicsCommon.h"
 
@@ -54,7 +53,7 @@
 	[super dealloc];
 }
 
-- (void) applyForce:(Isgl3dVector3D *)force withPosition:(Isgl3dVector3D *)position {
+- (void) applyForce:(Isgl3dVector3)force withPosition:(Isgl3dVector3)position {
 	btVector3 bodyForce(force.x, force.y, force.z);
 	btVector3 bodyPosition(position.x, position.y, position.z);
 

@@ -28,7 +28,6 @@
 #import "Isgl3dNode.h"
 #import "Isgl3dView3D.h"
 #import "Isgl3dGLU.h"
-#import "Isgl3dMatrix4D.h"
 #import "Isgl3dGLRenderer.h"
 
 @implementation Isgl3dGLUI
@@ -42,9 +41,8 @@
 		int width = view.width;
 		int height = view.height;
 
-		_viewMatrix = [[Isgl3dGLU lookAt:0 eyey:0 eyez:1 centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:1] retain];
-//		_viewMatrix = [[GLU lookAt:width eyey:height eyez:1 centerx:width centery:height centerz:0 upx:0 upy:1 upz:1] retain];
-		_projectionMatrix = [[Isgl3dGLU ortho:0 right:width bottom:0 top:height near:1 far:1000 zoom:1 landscape:view.isLandscape] retain];
+		_viewMatrix = [Isgl3dGLU lookAt:0 eyey:0 eyez:1 centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:1];
+		_projectionMatrix = [Isgl3dGLU ortho:0 right:width bottom:0 top:height near:1 far:1000 zoom:1 landscape:view.isLandscape];
 		
 		_uiElements = [[Isgl3dNode alloc] init];
 	}
@@ -53,8 +51,6 @@
 
 - (void) dealloc {
 	[_view release];	
-	[_viewMatrix release];
-	[_projectionMatrix release];
 	
 	[_uiElements release];
 	
@@ -68,11 +64,11 @@
 
 - (void) render:(Isgl3dGLRenderer *)renderer {
 	// Set view/projection matrices
-	[renderer setProjectionMatrix:_projectionMatrix];
-	[renderer setViewMatrix:_viewMatrix];
+	[renderer setProjectionMatrix:&_projectionMatrix];
+	[renderer setViewMatrix:&_viewMatrix];
 	
 	// Update transformations
-	[_uiElements updateGlobalTransformation:nil];
+	[_uiElements updateWorldTransformation:nil];
 
 	// Render opaque elements
 	[_uiElements render:renderer opaque:true];
@@ -84,8 +80,8 @@
 - (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {
 
 	// Set view/projection matrices
-	[renderer setProjectionMatrix:_projectionMatrix];
-	[renderer setViewMatrix:_viewMatrix];
+	[renderer setProjectionMatrix:&_projectionMatrix];
+	[renderer setViewMatrix:&_viewMatrix];
 	
 	[_uiElements renderForEventCapture:renderer];
 }

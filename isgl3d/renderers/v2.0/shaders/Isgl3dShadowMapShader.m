@@ -27,7 +27,6 @@
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dGLVBOData.h"
-#import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dShadowMapShader
 
@@ -60,7 +59,7 @@
 	_boneMatrixArrayUniformLocation = [_glProgram getUniformLocation:@"u_boneMatrixArray[0]"];
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4D *)modelViewProjectionMatrix {
+- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	[self setUniformMatrix4:_mvpMatrixUniformLocation matrix:modelViewProjectionMatrix];
 }
 

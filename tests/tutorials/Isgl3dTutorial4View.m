@@ -102,7 +102,7 @@
 - (void) objectTouched:(Isgl3dEvent3D *)event {
 	
 	// Get the object associated with the 3D event.
-	Isgl3dGLObject3D * object = event.object;
+	Isgl3dNode * object = event.object;
 	
 	// Create a tween to move the object vertically (0.5s duration, callback to "tweenEnded" on completion).
 	[Isgl3dTweener addTween:object withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	[NSNumber numberWithFloat:0.5], TWEEN_DURATION, 

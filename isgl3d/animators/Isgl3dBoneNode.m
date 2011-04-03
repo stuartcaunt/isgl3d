@@ -26,7 +26,7 @@
 #import "Isgl3dBoneNode.h"
 #import "Isgl3dPrimitiveFactory.h"
 #import "Isgl3dColorMaterial.h"
-#import "Isgl3dMatrix4D.h"
+#import "Isgl3dMatrix.h"
 
 @implementation Isgl3dBoneNode
 
@@ -50,14 +50,14 @@
 }
 
 - (void) addFrameTransformationFromOpenGLMatrix:(float *)transformation {
-	Isgl3dMatrix4D * matrix = [[Isgl3dMatrix4D alloc] init];
-	[matrix setTransformationFromOpenGLMatrix:transformation];
-	[_frameTransformations addObject:[matrix autorelease]];
+	Isgl3dMatrix4 matrix;
+	im4SetTransformationFromOpenGLMatrix(&matrix, transformation);
+	[_frameTransformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:matrix]];
 }
 
 - (void) setFrame:(unsigned int)frameNumber {
-	Isgl3dMatrix4D * matrix = [_frameTransformations objectAtIndex:frameNumber];
-	[self setTransformation:matrix];
+	Isgl3dMatrix4Wrapper * matrixWrapper = [_frameTransformations objectAtIndex:frameNumber];
+	[self setTransformation:matrixWrapper.matrix];
 	
 	for (Isgl3dNode * node in _children) {
 		if ([node isKindOfClass:[Isgl3dBoneNode class]]) {

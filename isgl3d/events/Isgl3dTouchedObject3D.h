@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class Isgl3dGLObject3D;
+@class Isgl3dNode;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -34,17 +34,17 @@
 @interface Isgl3dTouchedObject3D : NSObject {
 	    
 @private
-	Isgl3dGLObject3D * _object;
+	Isgl3dNode * _object;
 	NSMutableSet * _previousLocations;
 	NSMutableSet * _newTouches;
 }
 
-- (id) initWithObject:(Isgl3dGLObject3D *)object;
+- (id) initWithObject:(Isgl3dNode *)object;
 - (void) addTouch:(UITouch *)touch;
 - (void) removeTouch:(UITouch *)touch;
 - (void) moveTouch:(UITouch *)touch;
 
-- (BOOL) respondsToObject:(Isgl3dGLObject3D *)object;
+- (BOOL) respondsToObject:(Isgl3dNode *)object;
 - (BOOL) respondsToLocation:(NSString *)location;
 - (BOOL) hasNoTouches;
 

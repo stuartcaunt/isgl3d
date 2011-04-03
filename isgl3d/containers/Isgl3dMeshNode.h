@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3dNode.h"
-#include "Isgl3dMiniVec.h"
 
 @class Isgl3dGLMesh;
 @class Isgl3dMaterial;
@@ -44,8 +43,8 @@
 
 	BOOL _doubleSided;
 	
-	Isgl3dMiniVec3D _eyeToModel;
-	Isgl3dMiniVec3D _eyeToModelNormal;
+	Isgl3dVector3 _eyeToModel;
+	Isgl3dVector3 _eyeToModelNormal;
 	
 	float _occlusionAlpha;
 	

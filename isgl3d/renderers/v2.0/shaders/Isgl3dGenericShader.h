@@ -40,8 +40,8 @@
 	Isgl3dShaderState * _currentState;
 	Isgl3dShaderState * _previousState;
 	
-	Isgl3dMatrix4D * _biasMatrix;
-	Isgl3dMatrix4D * _shadowMapTransformMatrix;
+	Isgl3dMatrix4 _biasMatrix;
+	Isgl3dMatrix4 _shadowMapTransformMatrix;
 
 	BOOL _planarShadowsActive;
 	float _shadowAlpha;

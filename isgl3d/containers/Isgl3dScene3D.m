@@ -25,7 +25,6 @@
 
 #import "Isgl3dScene3D.h"
 #import "Isgl3dNode.h"
-#import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dScene3D
 
@@ -45,7 +44,7 @@
 	[super dealloc];
 }
 
-- (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 
 	// Collect in array all transparent objects in the scene
 	[self collectAlphaObjects:_alphaNodes];

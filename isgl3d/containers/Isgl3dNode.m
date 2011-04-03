@@ -31,8 +31,6 @@
 #import "Isgl3dSkeletonNode.h"
 #import "Isgl3dCamera.h"
 #import "Isgl3dLight.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector3D.h"
 #import "Isgl3dGLRenderer.h"
 
 static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE;
@@ -40,6 +38,7 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 
 @implementation Isgl3dNode
 
+@synthesize worldTransformation = _worldTransformation;
 @synthesize parent = _parent;
 @synthesize children = _children;
 @synthesize enableShadowRendering = _enableShadowRendering;
@@ -54,6 +53,16 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 
 - (id) init {    
     if ((self = [super init])) {
+
+		_localTransformation = im4Identity();
+		_scaleTransformation = im4Identity();
+		_worldTransformation = im4Identity();
+    	
+		_scaling = false;
+    	
+		_transformationDirty = YES;
+
+
 
        	_children = [[NSMutableArray alloc] init];
 
@@ -78,10 +87,163 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (void) dealloc {
+
 	[_children release];
 	
 	[super dealloc];
 }
+
+
+
+#pragma mark translation rotation scaling
+
+- (float) x {
+	return _localTransformation.tx;
+}
+
+- (void) setX:(float)x {
+	_localTransformation.tx = x;
+	[self setTransformationDirty:YES];
+}
+
+- (float) y {
+	return _localTransformation.ty;
+}
+
+- (void) setY:(float)y {
+	_localTransformation.ty = y;
+	[self setTransformationDirty:YES];
+}
+
+- (float) z {
+	return  _localTransformation.tz;
+}
+
+- (void) setZ:(float)z {
+	_localTransformation.tz = z;
+	[self setTransformationDirty:YES];
+}
+
+- (Isgl3dVector3) translationVector {
+	return iv3(_localTransformation.tx, _localTransformation.ty, _localTransformation.tz);
+}
+
+- (void) setTranslationVector:(Isgl3dVector3)translation {
+	_localTransformation.tx = translation.x;
+	_localTransformation.ty = translation.y;
+	_localTransformation.tz = translation.z;
+	[self setTransformationDirty:YES];	
+}
+
+- (void) rotate:(float)angle x:(float)x y:(float)y z:(float)z {
+	im4Rotate(&_localTransformation, angle, x, y, z);
+	[self setTransformationDirty:YES];
+}
+
+- (void) setRotation:(float)angle x:(float)x y:(float)y z:(float)z {
+	im4SetRotation(&_localTransformation, angle, x, y, z);
+	[self setTransformationDirty:YES];
+}
+
+- (void) translate:(float)x y:(float)y z:(float)z {
+	im4Translate(&_localTransformation, x, y, z);
+	[self setTransformationDirty:YES];
+}
+
+- (void) setTranslation:(float)x y:(float)y z:(float)z {
+	im4SetTranslation(&_localTransformation, x, y, z);
+	[self setTransformationDirty:YES];
+}
+
+- (void) translateByVector:(Isgl3dVector3)vector {
+	im4TranslateByVector(&_localTransformation, &vector);
+	[self setTransformationDirty:YES];
+}
+
+- (void) translateAlongVector:(Isgl3dVector3)direction distance:(float)distance {
+	iv3Normalize(&direction);
+	Isgl3dVector3 transformedAxis = im4MultVector3x3(&_worldTransformation, &direction);
+	iv3Scale(&transformedAxis, distance);
+
+	im4TranslateByVector(&_localTransformation, &transformedAxis);
+}
+
+- (void) setTranslationByNode:(Isgl3dNode *)node {
+	[self setTranslationVector:node.translationVector];
+}
+
+- (void) setScale:(float)scale {
+	[self setScale:scale scaleY:scale scaleZ:scale];
+}
+
+- (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
+
+	if (scaleX != 1.0 || scaleY != 1.0 || scaleZ != 1.0) {
+		_scaleTransformation = im4CreateFromScales(scaleX, scaleY, scaleZ);
+		_scaling = YES;
+	} else {
+		_scaleTransformation = im4Identity();
+		_scaling = NO;
+	}
+	[self setTransformationDirty:YES];
+}
+
+- (void) resetTransformation {
+	_localTransformation = im4Identity();
+	[self setTransformationDirty:YES];
+}
+
+- (void) setTransformation:(Isgl3dMatrix4)transformation {
+	_localTransformation = transformation;
+	[self setTransformationDirty:YES];
+}
+
+- (void) setTransformationFromOpenGLMatrix:(float *)transformation {
+	im4SetTransformationFromOpenGLMatrix(&_localTransformation, transformation);
+	[self setTransformationDirty:YES];
+}
+
+- (void) getTransformationAsOpenGLMatrix:(float *)transformation {
+	im4GetTransformationAsOpenGLMatrix(&_localTransformation, transformation);
+}
+
+
+- (void) copyWorldPositionToArray:(float *)position {
+	position[0] = _worldTransformation.tx;
+	position[1] = _worldTransformation.ty;
+	position[2] = _worldTransformation.tz;
+	position[3] = _worldTransformation.tw;
+}
+
+- (Isgl3dVector3) worldPosition {
+	return iv3(_worldTransformation.tx, _worldTransformation.ty, _worldTransformation.tz);
+	
+}
+
+- (float) getZTransformation:(Isgl3dMatrix4 *)viewMatrix {
+	Isgl3dMatrix4 modelViewMatrix;
+	im4Copy(&modelViewMatrix, viewMatrix);
+	im4Multiply(&modelViewMatrix, &_worldTransformation);
+	
+	float z = modelViewMatrix.tz;
+	
+	return z;
+}
+
+- (Isgl3dVector4) asPlaneWithNormal:(Isgl3dVector3)normal {
+	
+	Isgl3dVector3 transformedNormal = im4MultVector3x3(&_worldTransformation, &normal); 
+	
+	float A = transformedNormal.x;
+	float B = transformedNormal.y;
+	float C = transformedNormal.z;
+	float D = -(A * _worldTransformation.tx + B * _worldTransformation.ty + C * _worldTransformation.tz);
+	
+	return iv4(A, B, C, D);
+}
+
+
+#pragma mark scene graph
 
 - (Isgl3dNode *) createNode {
 	return [[self addChild:[[Isgl3dNode alloc] init]] autorelease];
@@ -141,7 +303,8 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (void) setTransformationDirty:(BOOL)isDirty {
-	[super setTransformationDirty:isDirty];
+	_transformationDirty = isDirty;
+
 	if (_hasChildren) {
 		for (Isgl3dNode * node in _children) {
 			[node setTransformationDirty:isDirty];
@@ -149,12 +312,34 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 	}
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
-	[super updateGlobalTransformation:parentTransformation];
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+	// Update transformation matrices if needed
+	if (_transformationDirty) {
+		
+		if (parentTransformation) {
+			im4Copy(&_worldTransformation, parentTransformation);
+			im4Multiply(&_worldTransformation, &_localTransformation);
+			
+//			[_worldTransformation copyFrom:parentTransformation];
+//			[_worldTransformation multiply:_localTransformation];
+		
+		} else {
+//			[_worldTransformation copyFrom:_localTransformation];
+			im4Copy(&_worldTransformation, &_localTransformation);
+		}
+		
+		if (_scaling) {
+//			[_worldTransformation multiply:_scaleTransformation];
+			im4Multiply(&_worldTransformation, &_scaleTransformation);
+		}
+		_transformationDirty = NO;
+		
+	}
 	
+	// Update all children transformations
 	if (_hasChildren) {
 		for (Isgl3dNode * node in _children) {
-			[node updateGlobalTransformation:_transformation];
+			[node updateWorldTransformation:&_worldTransformation];
 	    }
 	}
 }
@@ -229,7 +414,7 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 	_alphaCullValue = value;
 }
 
-- (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
+- (void) occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
 			if (node.isVisible) {

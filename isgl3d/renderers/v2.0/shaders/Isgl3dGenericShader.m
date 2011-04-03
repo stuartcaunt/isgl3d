@@ -27,8 +27,6 @@
 #import "Isgl3dShaderState.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector3D.h"
 #import "Isgl3dLight.h"
 #import "Isgl3dColorUtil.h"
 #import "Isgl3dLog.h"
@@ -49,9 +47,8 @@
 		_currentState = [[Isgl3dShaderState alloc] init];
 		_previousState = [[Isgl3dShaderState alloc] init];
 	
-		float biasArray[16] = {0.5, 0, 0, 0.5, 0, 0.5, 0, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0, 1}; 
-		_biasMatrix = [[Isgl3dMatrix4D alloc] initFromFloatArray:biasArray size:16];
-		_shadowMapTransformMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
+		_biasMatrix = im4(0.5, 0, 0, 0.5, 0, 0.5, 0, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0, 1);
+		_shadowMapTransformMatrix = im4Identity();
 		
 		_sceneAmbient[0] = 0.0;
 		_sceneAmbient[1] = 0.0;
@@ -71,8 +68,6 @@
 
 	[_currentState release];
 	[_previousState release];
-	[_biasMatrix release];
-	[_shadowMapTransformMatrix release];
 
 	[super dealloc];
 }
@@ -148,29 +143,26 @@
 	_lightCount = 0;
 }
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4D *)modelViewMatrix {
+- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
 	[self setUniformMatrix3:_normalMatrixUniformLocation matrix:modelViewMatrix];
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4D *)modelViewProjectionMatrix {
+- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	[self setUniformMatrix4:_mvpMatrixUniformLocation matrix:modelViewProjectionMatrix];
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-//	if (_currentVBOData != vboData) {
-		[self bindVertexBuffer:vboData.vboIndex];
-		[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
-		[self setVertexAttribute:GL_FLOAT attributeLocation:_normalAttributeLocation size:VBO_NORMAL_SIZE strideBytes:vboData.stride offset:vboData.normalOffset];
-		if (_texCoordAttributeLocation != -1) {
-			[self setVertexAttribute:GL_FLOAT attributeLocation:_texCoordAttributeLocation size:VBO_UV_SIZE strideBytes:vboData.stride offset:vboData.uvOffset];
-		}
-		if (vboData.boneIndexOffset != -1) {
-			[self setVertexAttribute:GL_UNSIGNED_BYTE attributeLocation:_boneIndexAttributeLocation size:vboData.boneIndexSize strideBytes:vboData.stride offset:vboData.boneIndexOffset];
-			[self setVertexAttribute:GL_FLOAT attributeLocation:_boneWeightsAttributeLocation size:vboData.boneWeightSize strideBytes:vboData.stride offset:vboData.boneWeightOffset];
-		}
-//		_currentVBOData = vboData;
-//	}
+	[self bindVertexBuffer:vboData.vboIndex];
+	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
+	[self setVertexAttribute:GL_FLOAT attributeLocation:_normalAttributeLocation size:VBO_NORMAL_SIZE strideBytes:vboData.stride offset:vboData.normalOffset];
+	if (_texCoordAttributeLocation != -1) {
+		[self setVertexAttribute:GL_FLOAT attributeLocation:_texCoordAttributeLocation size:VBO_UV_SIZE strideBytes:vboData.stride offset:vboData.uvOffset];
+	}
+	if (vboData.boneIndexOffset != -1) {
+		[self setVertexAttribute:GL_UNSIGNED_BYTE attributeLocation:_boneIndexAttributeLocation size:vboData.boneIndexSize strideBytes:vboData.stride offset:vboData.boneIndexOffset];
+		[self setVertexAttribute:GL_FLOAT attributeLocation:_boneWeightsAttributeLocation size:vboData.boneWeightSize strideBytes:vboData.stride offset:vboData.boneWeightOffset];
+	}
 }
 
 - (void) setVertexBufferData:(GLuint)bufferId {
@@ -234,7 +226,7 @@
 	_currentState.textureEnabled = NO;
 }
 
-- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	[self setActive];
 	unsigned int lightIndex = _lightCount;
 	
@@ -255,8 +247,8 @@
 	
 	// set light position, take into account translation from viewer's position
 	float transformedLightPosition[4];
-	[light copyPositionTo:transformedLightPosition];
-	[viewMatrix multVec4:transformedLightPosition];
+	[light copyWorldPositionToArray:transformedLightPosition];
+	im4MultArray4(viewMatrix, transformedLightPosition);
 	[self setUniform4f:_lightPositionLocation[lightIndex] values:transformedLightPosition];
 	
 	// set attenuation factors
@@ -272,7 +264,7 @@
 		memcpy(spotDirection, [light spotDirection], sizeof(float) * 3);
 		spotDirection[3] = 0.;
 		
-		[viewMatrix multVec4:spotDirection];
+		im4MultArray4(viewMatrix, spotDirection);
 		[self setUniform3f:_lightSpotDirectionLocation[lightIndex] values:spotDirection];
 
 		[self setUniform1f:_lightSpotCutoffAngleLocation[lightIndex] value:light.spotCutoffAngle];
@@ -315,19 +307,19 @@
 }
 
 
-- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4D *)mvpMatrix {
+- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
 	if (_mcToLightMatrixUniformLocation != -1) {
-		[_shadowMapTransformMatrix copyFrom:_biasMatrix];
-		[_shadowMapTransformMatrix multiply:mvpMatrix];
+		im4Copy(&_shadowMapTransformMatrix, &_biasMatrix);
+		im4Multiply(&_shadowMapTransformMatrix, mvpMatrix);
 		
-		[self setUniformMatrix4:_mcToLightMatrixUniformLocation matrix:_shadowMapTransformMatrix];
+		[self setUniformMatrix4:_mcToLightMatrixUniformLocation matrix:&_shadowMapTransformMatrix];
 	}
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	// set light position, take into account translation from viewer's position
-	float transformedLightPosition[4] = {position.x, position.y, position.z, 1.0};
-	[viewMatrix multVec4:transformedLightPosition];
+	float transformedLightPosition[4] = {position->x, position->y, position->z, 1.0};
+	im4MultArray4(viewMatrix, transformedLightPosition);
 	[self setUniform4f:_shadowCastingLightPositionLocation values:transformedLightPosition];
 }
 

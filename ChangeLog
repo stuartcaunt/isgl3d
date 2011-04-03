@@ -1,4 +1,12 @@
 current SVN version
+	Isgl3dNode: added clarity to method names involving transformations
+	Isgl3dVector3, Isgl3dVector4, Isgl3dMatrix4: added and used in all internal calculations (performance gain)
+	Isgl3dMatrix4D: deprecated. Use Isgl3dMatrix4 structure with c methods to store/manipulate 4D matrices (performance gain)
+	Isgl3dVector4D: deprecated. Use Isgl3dVector4 structure with c methods to store/manipulate 3D vectors (performance gain)
+	Isgl3dVector3D: deprecated. Use Isgl3dVector3 structure with c methods to store/manipulate 3D vectors (performance gain)
+	Isgl3dMiniMat: deprecated. Functionality now in Isgl3dMatrix4
+	Isgl3dMiniVec: deprecated. Functionality now in Isgl3dVector3 and Isgl3dVector4
+	Isgl3dGLObject: removed - functionality added to Isgl3dNode (Isgl3dGLObject was a redundant internal class)
 	Isgl3dNode: added isVisible property to allow nodes not to be rendered but remain in scene
 	Added support for retina display
 

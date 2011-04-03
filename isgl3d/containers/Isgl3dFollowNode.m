@@ -24,8 +24,6 @@
  */
 
 #import "Isgl3dFollowNode.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector3D.h"
 #import "Isgl3dGLU.h"
 
 @implementation Isgl3dFollowNode
@@ -35,7 +33,7 @@
 - (id) initWithTarget:(Isgl3dNode *)target {
     if ((self = [super init])) {
     	_target = [target retain];
-		_targetMovementIT = [[Isgl3dMatrix4D identityMatrix] retain];
+		_isFirstUpdate = YES;
     }
 	
     return self;
@@ -43,43 +41,39 @@
 
 - (void) dealloc {
 	[_target release];
-	if (_oldTargetPosition) {
-		[_oldTargetPosition release];
-	}
-	[_targetMovementIT release];
 	
 	[super dealloc];
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)targetTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)targetTransformation {
 	// Get current position
-	Isgl3dVector3D * currentTargetPosition = [Isgl3dVector3D vectorFromVector:[_target position]];
+	Isgl3dVector3 currentTargetPosition = [_target worldPosition];
 
 	// Initialise old target position if necessary
-	if (!_oldTargetPosition) {
-		_oldTargetPosition = [[Isgl3dVector3D vectorFromVector:currentTargetPosition] retain];
+	if (_isFirstUpdate) {
+		_isFirstUpdate = NO;
+		iv3Copy(&_oldTargetPosition, &currentTargetPosition);
 	}
 
-	if ([[currentTargetPosition sub:_oldTargetPosition] length] > 0.01) {
+	if (iv3DistanceBetween(&currentTargetPosition, &_oldTargetPosition) > 0.01) {
 		// Calculate transformation matrix along line of movement of target
-		Isgl3dMatrix4D * targetMovementTransformation;
+		Isgl3dMatrix4 targetMovementTransformation;
 		if (_keepHorizontal) {
 			targetMovementTransformation = [Isgl3dGLU lookAt:currentTargetPosition.x eyey:currentTargetPosition.y eyez:currentTargetPosition.z centerx:(2 * currentTargetPosition.x) - _oldTargetPosition.x centery:currentTargetPosition.y centerz:(2 * currentTargetPosition.z) - _oldTargetPosition.z upx:0 upy:1 upz:0];
 		} else {
 			targetMovementTransformation = [Isgl3dGLU lookAt:currentTargetPosition.x eyey:currentTargetPosition.y eyez:currentTargetPosition.z centerx:(2 * currentTargetPosition.x) - _oldTargetPosition.x centery:(2 * currentTargetPosition.y) - _oldTargetPosition.y centerz:(2 * currentTargetPosition.z) - _oldTargetPosition.z upx:0 upy:1 upz:0];
 		}
-		[_targetMovementIT release];
-		_targetMovementIT = [[Isgl3dMatrix4D matrixFromMatrix:targetMovementTransformation] retain];
-		[_targetMovementIT invert];
+		
+		im4Copy(&_targetMovementIT, &targetMovementTransformation);
+		im4Invert(&_targetMovementIT);
 
 		[self setTransformation:_targetMovementIT];
 
 	}
 
-	[_oldTargetPosition release];	
-	_oldTargetPosition = [currentTargetPosition retain];
+	iv3Copy(&_oldTargetPosition, &currentTargetPosition);
 
-	[super updateGlobalTransformation:targetTransformation];
+	[super updateWorldTransformation:targetTransformation];
 }
 
 

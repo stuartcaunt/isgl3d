@@ -24,8 +24,6 @@
  */
 
 #import "Isgl3dCamera.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector3D.h"
 #import "Isgl3dGLU.h"
 #import "Isgl3dView3D.h"
 #import "Isgl3dLog.h"
@@ -74,9 +72,9 @@
 - (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
 	
 	if ((self = [super init])) {
-		mv3DFill(&_lookAt, lookAtX, lookAtY, lookAtZ);
-		mv3DFill(&_initialCameraPosition, x, y, z);
-		mv3DCopy(&_initialCameraLookAt, &_lookAt);
+		iv3Fill(&_lookAt, lookAtX, lookAtY, lookAtZ);
+		iv3Fill(&_initialCameraPosition, x, y, z);
+		iv3Copy(&_initialCameraLookAt, &_lookAt);
 		
 		_upX = upX;
 		_upY = upY;
@@ -89,22 +87,18 @@
 		_height = height;
 		
 		[self setTranslation:x y:y z:z];
-		
-		_viewMatrix = [[Isgl3dMatrix4D alloc] init];
 	}
 	
 	return self;
 }
 
 - (void) dealloc {
-	[_viewMatrix release];
-	[_projectionMatrix release];
 
 	[super dealloc];
 }
 
 - (void) reset {
-	mv3DCopy(&_lookAt, &_initialCameraLookAt);
+	iv3Copy(&_lookAt, &_initialCameraLookAt);
     [self setTranslation:_initialCameraPosition.x y:_initialCameraPosition.y z:_initialCameraPosition.z];	
 }
 
@@ -118,14 +112,9 @@
 		return;
 	}
 	
-	if (_projectionMatrix) {
-		[_projectionMatrix release];
-	}
-	
 	_aspect = _width / _height;
 	
 	_projectionMatrix = [Isgl3dGLU perspective:fovy aspect:_aspect near:near far:far zoom:_zoom orientation:orientation];
-	[_projectionMatrix retain];
 
 	_fov = fovy;
 	//Isgl3dLog(Info, @"Fov = %f", _fov);
@@ -153,12 +142,8 @@
 }
 
 - (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {
-	if (_projectionMatrix) {
-		[_projectionMatrix release];
-	}
 	
 	_projectionMatrix = [Isgl3dGLU ortho:left right:right bottom:bottom top:top near:near far:far zoom:_zoom orientation:orientation];
-	[_projectionMatrix retain];
 
 	_left = left;
 	_right = right;
@@ -243,24 +228,25 @@
 	return _zoom;
 }
 
-- (void) setLookAt:(Isgl3dMiniVec3D *)lookAt {
-	mv3DCopy(&_lookAt, lookAt);
+- (void) setLookAt:(Isgl3dVector3)lookAt {
+	iv3Copy(&_lookAt, &lookAt);
 	_transformationDirty = YES;
 }
 
 - (void) lookAt:(float)x y:(float)y z:(float)z {
-	mv3DFill(&_lookAt, x, y, z);
+	iv3Fill(&_lookAt, x, y, z);
 	_transformationDirty = YES;
 }
 
-- (void) getLookAt:(Isgl3dMiniVec3D *)lookAt {
-	mv3DCopy(lookAt, &_lookAt);
+- (Isgl3dVector3) getLookAt {
+	return _lookAt;
 }
 
-- (void) getEyeNormal:(Isgl3dMiniVec3D *)eyeNormal {
-	mv3DCopy(eyeNormal, &_lookAt);
-	[self positionAsMiniVec3D:&_tempVector];
-	mv3DSub(eyeNormal, &_tempVector);
+- (Isgl3dVector3) getEyeNormal {
+	Isgl3dVector3 eyeNormal = iv3(_lookAt.x, _lookAt.y, _lookAt.z);
+	Isgl3dVector3 position = [self worldPosition];
+	iv3Sub(&eyeNormal, &position);
+	return eyeNormal;
 }
 
 - (float) getLookAtX {
@@ -276,43 +262,41 @@
 }
 
 - (void) translateLookAt:(float)x y:(float)y z:(float)z {
-	mv3DTranslate(&_lookAt, x, y, z);
+	iv3Translate(&_lookAt, x, y, z);
 
 	_transformationDirty = YES;
 }
 
 - (void) rotateLookAtOnX:(float)angle centerY:(float)centerY centerZ:(float)centerZ {
-	mv3DRotateX(&_lookAt, angle, centerY, centerZ);
+	iv3RotateX(&_lookAt, angle, centerY, centerZ);
 
 	_transformationDirty = YES;
 }
 
 - (void) rotateLookAtOnY:(float)angle centerX:(float)centerX centerZ:(float)centerZ {
-	mv3DRotateY(&_lookAt, angle, centerX, centerZ);
+	iv3RotateY(&_lookAt, angle, centerX, centerZ);
 
 	_transformationDirty = YES;
 }
 
 - (void) rotateLookAtOnZ:(float)angle centerX:(float)centerX centerY:(float)centerY  {
-	mv3DRotateZ(&_lookAt, angle, centerX, centerY);
+	iv3RotateZ(&_lookAt, angle, centerX, centerY);
 
 	_transformationDirty = YES;
 }
 
 - (float) getDistanceToLookAt {
-	[self positionAsMiniVec3D:&_tempVector];
-	mv3DSub(&_tempVector, &_lookAt);
-	
-	return mv3DLength(&_tempVector);
+	Isgl3dVector3 position = [self worldPosition];
+	return iv3DistanceBetween(&position, &_lookAt);
 }
 
 - (void) setDistanceToLookAt:(float)distance {
-	[self positionAsMiniVec3D:&_tempVector];
-	mv3DSub(&_tempVector, &_lookAt);
-	mv3DNormalize(&_tempVector);
-	mv3DScale(&_tempVector, distance);
+	Isgl3dVector3 position = [self worldPosition];
+	iv3Sub(&position, &_lookAt);
+	iv3Normalize(&position);
+	iv3Scale(&position, distance);
 	
-	[self setTranslation:_lookAt.x + _tempVector.x y:_lookAt.y + _tempVector.y z:_lookAt.z + _tempVector.z];
+	[self setTranslation:_lookAt.x + position.x y:_lookAt.y + position.y z:_lookAt.z + position.z];
 }
 
 - (void) setUpX:(float)x y:(float)y z:(float)z {
@@ -322,10 +306,10 @@
 	_transformationDirty = YES;
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 
 	BOOL calculateViewMatrix = _transformationDirty;
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 
 	if (calculateViewMatrix) {
 		[self calculateViewMatrix];
@@ -334,11 +318,11 @@
 
 - (void) calculateViewMatrix {
 	
-	[self positionAsMiniVec3D:&_cameraPosition];
+	_cameraPosition = [self worldPosition];
 	
-	[Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
+	_viewMatrix = [Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
 				  centerx:_lookAt.x centery:_lookAt.y centerz:_lookAt.z 
-				  upx:_upX upy:_upY upz:_upZ inToMatrix:_viewMatrix];
+				  upx:_upX upy:_upY upz:_upZ];
 }
 
 @end

@@ -28,6 +28,11 @@
 
 /**
  * Simple structure to hold the values of a 4x4 matrix.
+ * 
+ * WARNING: This is deprecated and will be removed in v1.2
+ * The functionality of this class can be performed using the Isgl3dMatrix4 with c utilities. 
+ * 
+ * @deprecated Will be removed in v1.2
  */
 typedef struct {
 	float sxx;

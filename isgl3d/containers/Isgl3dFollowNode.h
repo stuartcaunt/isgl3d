@@ -24,9 +24,7 @@
  */
 
 #import "Isgl3dNode.h"
-
-@class Isgl3dVector3D;
-@class Isgl3dMatrix4D;
+#import "Isgl3dVector.h"
 
 /**
  * The Isgl3dFollowNode is a node designed to follow the movement of a target node.
@@ -43,8 +41,10 @@
 @private
 	Isgl3dNode * _target;
 
-	Isgl3dVector3D * _oldTargetPosition;
-	Isgl3dMatrix4D * _targetMovementIT;
+	Isgl3dVector3 _oldTargetPosition;
+	Isgl3dMatrix4 _targetMovementIT;
+	
+	BOOL _isFirstUpdate;
 	
 	BOOL _keepHorizontal;
 }

@@ -57,7 +57,7 @@
 
 /**
  * Adds a matrix transformation to the array of transformations (indexed by frame number).
- * Creates an Isgl3dMatrix4D from the raw float data (column-major as is the norm for OpenGL) and
+ * Creates a matrix from the raw float data (column-major as is the norm for OpenGL) and
  * adds this matrix to the array of matrices. Each array index corresponds to the transformation
  * for the same frame number.
  * @param transformation The column-major transformation matrix in raw float format for the frame.

@@ -26,8 +26,6 @@
 #import "Isgl3dFollowCamera.h"
 #import "Isgl3dNode.h"
 #import "Isgl3dGLU.h"
-#import "Isgl3dVector3D.h"
-#import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dFollowCamera
 
@@ -41,15 +39,13 @@
 
 - (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
 	
-	if (self = [self initWithView:view3D]) {
+	if ((self = [self initWithView:view3D])) {
 		
 		if (_target) {
 			_target = [target retain];
 		}
 		
-		_targetMovementIT = [[Isgl3dMatrix4D identityMatrix] retain];
-		
-		_desiredPosition = mv3DCreate(0, 5, 10);
+		_desiredPosition = iv3(0, 5, 10);
 		
 		_stiffness = 10;
 		_damping = 4;
@@ -73,8 +69,6 @@
 		[_time release];
 	}
 	
-	[_targetMovementIT release];
-
 	[super dealloc];
 }
 
@@ -93,18 +87,18 @@
 }
 
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 
 
 	if (_target) {
 		// Get current positions
-		[_target positionAsMiniVec3D:&_currentTargetPosition];
-		[self positionAsMiniVec3D:&_currentPosition];
+		_currentTargetPosition = [_target worldPosition];
+		_currentPosition = [self worldPosition];
 	
 		// Initialise old follower position if necessary
 		if (!_initialized) {
-			mv3DCopy(&_oldPosition, &_currentPosition);
-			mv3DCopy(&_oldTargetPosition, &_currentTargetPosition);
+			iv3Copy(&_oldPosition, &_currentPosition);
+			iv3Copy(&_oldTargetPosition, &_currentTargetPosition);
 			_initialized = YES;
 		}
 	
@@ -120,65 +114,64 @@
 			}
 		}
 		
-		if (mv3DDistanceBetween(&_currentTargetPosition, &_oldTargetPosition) > 0.01) {
+		if (iv3DistanceBetween(&_currentTargetPosition, &_oldTargetPosition) > 0.01) {
 			// Calculate transformation matrix along line of movement of target
-			Isgl3dMatrix4D * targetMovementTransformation = [Isgl3dGLU lookAt:_oldTargetPosition.x eyey:_oldTargetPosition.y eyez:_oldTargetPosition.z centerx:_currentTargetPosition.x centery:_currentTargetPosition.y centerz:_currentTargetPosition.z upx:0 upy:1 upz:0];
-			[_targetMovementIT release];
-			_targetMovementIT = [[Isgl3dMatrix4D matrixFromMatrix:targetMovementTransformation] retain];
-			[_targetMovementIT invert];
+			Isgl3dMatrix4 targetMovementTransformation = [Isgl3dGLU lookAt:_oldTargetPosition.x eyey:_oldTargetPosition.y eyez:_oldTargetPosition.z centerx:_currentTargetPosition.x centery:_currentTargetPosition.y centerz:_currentTargetPosition.z upx:0 upy:1 upz:0];
+			im4Copy(&_targetMovementIT, &targetMovementTransformation);
+			im4Invert(&_targetMovementIT);
 	
 			// Get desired position in real-world coordinates
-			[_targetMovementIT multMiniVec3D:&_desiredPosition inToResult:&_elasticForce];
+			_elasticForce = im4MultVector(&_targetMovementIT, &_desiredPosition);
 			
 			// Calculate elastic force from vector between current and desired position
-			mv3DSub(&_elasticForce, &_currentPosition);
-			mv3DScale(&_elasticForce, _stiffness);
+			iv3Sub(&_elasticForce, &_currentPosition);
+			iv3Scale(&_elasticForce, _stiffness);
 		
 			// Calculate resistance from current velocity
-			mv3DCopy(&_velocity, &_currentPosition);
-			mv3DSub(&_velocity, &_oldPosition);
-			mv3DScale(&_velocity, 1./dt);
+			iv3Copy(&_velocity, &_currentPosition);
+			iv3Sub(&_velocity, &_oldPosition);
+			iv3Scale(&_velocity, 1./dt);
 			
-			mv3DCopy(&_dampingForce, &_velocity);
-			mv3DScale(&_dampingForce, -_damping);
+			iv3Copy(&_dampingForce, &_velocity);
+			iv3Scale(&_dampingForce, -_damping);
 		
 			// Convert resulting position from forces
-			mv3DCopy(&_acceleration, &_elasticForce),
-			mv3DAdd(&_acceleration, &_dampingForce),
-			mv3DScale(&_acceleration, 1./_mass);
+			iv3Copy(&_acceleration, &_elasticForce),
+			iv3Add(&_acceleration, &_dampingForce),
+			iv3Scale(&_acceleration, 1./_mass);
 
-			mv3DCopy(&_newVelocity, &_acceleration);
-			mv3DScale(&_newVelocity, dt);
-			mv3DAdd(&_newVelocity, &_velocity);
+			iv3Copy(&_newVelocity, &_acceleration);
+			iv3Scale(&_newVelocity, dt);
+			iv3Add(&_newVelocity, &_velocity);
 			
-			mv3DCopy(&_newPosition, &_newVelocity);
-			mv3DScale(&_newPosition, dt);
-			mv3DAdd(&_newPosition, &_currentPosition);
+			iv3Copy(&_newPosition, &_newVelocity);
+			iv3Scale(&_newPosition, dt);
+			iv3Add(&_newPosition, &_currentPosition);
 			
 			
 			// Calculate lookAt along line between current position and target position
-			mv3DCopy(&_newPositionInPlane, &_newPosition);
+			iv3Copy(&_newPositionInPlane, &_newPosition);
 			_newPositionInPlane.y = 0;
-			mv3DCopy(&_targetPosition, &_currentPosition);
-			mv3DSub(&_targetPosition, &_newPositionInPlane);
-			mv3DNormalize(&_targetPosition),
-			mv3DScale(&_targetPosition, _lookAhead);
-			mv3DAdd(&_targetPosition, &_currentTargetPosition);
+			iv3Copy(&_targetPosition, &_currentPosition);
+			iv3Sub(&_targetPosition, &_newPositionInPlane);
+			iv3Normalize(&_targetPosition),
+			iv3Scale(&_targetPosition, _lookAhead);
+			iv3Add(&_targetPosition, &_currentTargetPosition);
 			
 			// Set translation and lookAt
-			[super setTranslationMiniVec3D:&_newPosition];
-			[super setLookAt:&_targetPosition];
+			[super setTranslationVector:_newPosition];
+			[super setLookAt:_targetPosition];
 		}
 	
-		mv3DCopy(&_oldTargetPosition, &_currentTargetPosition);
-		mv3DCopy(&_oldPosition, &_currentPosition);
+		iv3Copy(&_oldTargetPosition, &_currentTargetPosition);
+		iv3Copy(&_oldPosition, &_currentPosition);
 	}
 	
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 }
 
-- (void) setLookAt:(Isgl3dMiniVec3D *)lookAt {
-	_lookAhead = -lookAt->z;
+- (void) setLookAt:(Isgl3dVector3)lookAt {
+	_lookAhead = -lookAt.z;
 	[super setLookAt:lookAt];
 }
 
@@ -188,19 +181,15 @@
 }
 
 - (void) setTranslation:(float)x y:(float)y z:(float)z {
-	_desiredPosition = mv3DCreate(x, y, z);
+	_desiredPosition = iv3(x, y, z);
 	
 	[super setTranslation:x y:y z:z];
 }
 
-- (void) setTranslationVector:(Isgl3dVector3D *)translation {
-	_desiredPosition = translation.miniVec3D;
+- (void) setTranslationVector:(Isgl3dVector3)translation {
+	_desiredPosition = translation;
 	
 	[super setTranslationVector:translation];
-}
-
-- (void) setTranslationMiniVec3D:(Isgl3dMiniVec3D *)translation {
-	mv3DCopy(&_desiredPosition, translation);
 }
 
 

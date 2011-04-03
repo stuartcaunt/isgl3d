@@ -30,6 +30,11 @@
  * Simple structure to hold the components of a 3 dimensional vector.
  * This structure and the associated methods provide better performance than
  * the Objective-C class Isgl3dVector3D and should be used whenever possible.
+ * 
+ * WARNING: This is deprecated and will be removed in v1.2
+ * The functionality of this class can be performed using the Isgl3dVector3 with c utilities.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 typedef struct {
 	float x;

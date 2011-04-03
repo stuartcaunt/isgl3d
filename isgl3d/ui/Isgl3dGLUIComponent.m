@@ -103,7 +103,7 @@
 	_meshDirty = YES;
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	if (_meshDirty) {
 		float x;
 		float y;
@@ -134,7 +134,7 @@
 		_meshDirty = NO;
 	}
 	
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 }
 
 @end

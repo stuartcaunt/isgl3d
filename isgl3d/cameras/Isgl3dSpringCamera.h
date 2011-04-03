@@ -23,7 +23,7 @@
  *
  */
 
-#include "Isgl3dMiniVec.h"
+#import "Isgl3dVector.h"
 #import "Isgl3dCamera.h"
 
 /**
@@ -48,13 +48,13 @@
 
 	//Matrix4D * _targetTransformation;
 
-	Isgl3dMiniVec3D _positionOffset;
-	Isgl3dMiniVec3D _lookOffset;
-	Isgl3dMiniVec3D _velocity;
+	Isgl3dVector3 _positionOffset;
+	Isgl3dVector3 _lookOffset;
+	Isgl3dVector3 _velocity;
 
-	Isgl3dMiniVec3D _desiredPosition;
-	Isgl3dMiniVec3D _desiredLookAtPosition;
-	Isgl3dMiniVec3D _acceleration;
+	Isgl3dVector3 _desiredPosition;
+	Isgl3dVector3 _desiredLookAtPosition;
+	Isgl3dVector3 _acceleration;
 
 
 	float _stiffness;
@@ -63,18 +63,17 @@
 	
 	BOOL _initialized;
 	BOOL _useRealTime;
-	NSDate * _time;
 }
 
 /**
  * Specifies the desired position of camera relative to the target. 
  */
-@property (nonatomic) Isgl3dMiniVec3D positionOffset;
+@property (nonatomic) Isgl3dVector3 positionOffset;
 
 /**
  * Specifies the camera look-at position relative to the target. 
  */
-@property (nonatomic) Isgl3dMiniVec3D lookOffset;
+@property (nonatomic) Isgl3dVector3 lookOffset;
 
 /**
  * Modifies the stiffness of the spring. By default this is 10.

@@ -28,7 +28,6 @@
 #import "Isgl3dGLContext.h"
 
 @class Isgl3dGLProgram;
-@class Matrix4D;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework

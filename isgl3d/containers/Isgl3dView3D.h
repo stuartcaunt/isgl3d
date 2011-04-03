@@ -29,7 +29,7 @@
 
 
 #import "Isgl3dGLView.h"
-#import "Isgl3dMiniVec.h"
+#import "Isgl3dVector.h"
 
 @class Isgl3dGLRenderer;
 @class Isgl3dScene3D;
@@ -92,8 +92,8 @@
 	unsigned int _width;
 	unsigned int _height;
 	
-	Isgl3dMiniVec3D _eyeNormal;
-	Isgl3dMiniVec3D _cameraPosition;
+	Isgl3dVector3 _eyeNormal;
+	Isgl3dVector3 _cameraPosition;
 }
 
 /**

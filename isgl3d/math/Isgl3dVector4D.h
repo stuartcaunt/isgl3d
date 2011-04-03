@@ -29,6 +29,11 @@
  * The Isgl3DVector4D contains data representing a 4-dimensional vector.
  * 
  * A typical use of this is to store data representing a plane as used for planar shadows in iSGL3D.
+ * 
+ * WARNING: This class is deprecated and will be removed in v1.2
+ * The functionality of this class can be performed using the Isgl3dVector4 with c utilities. This can produce a significant performance gain.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 @interface Isgl3dVector4D : NSObject {
 	float _x;

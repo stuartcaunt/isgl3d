@@ -25,12 +25,12 @@
 
 #import <Foundation/Foundation.h>
 #import <OpenGLES/ES2/gl.h>
+#import "Isgl3dVector.h"
+#import "Isgl3dMatrix.h"
 
 @class Isgl3dGLProgram;
-@class Isgl3dMatrix4D;
 @class Isgl3dLight;
 @class Isgl3dGLVBOData;
-@class Isgl3dVector3D;
 
 #define TEXTURE0_INDEX 0
 #define SHADOWMAP_INDEX 1
@@ -56,8 +56,8 @@
 - (void) bindVertexBuffer:(GLuint)bufferIndex;
 - (void) setVertexAttribute:(GLenum)type attributeLocation:(GLuint)attributeLocation size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset;
 
-- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4D *)matrix;
-- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4D *)matrix;
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
+- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size;
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size;
 - (void) setUniform1i:(GLint)uniformIndex value:(GLint)value;
@@ -68,8 +68,8 @@
 
 - (void) bindTexture:(GLuint)textureIndex index:(GLuint)index;
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4D *)modelViewMatrix;
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4D *)modelViewProjectionMatrix;
+- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix;
+- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix;
 
 - (void) setActive;
 
@@ -99,11 +99,11 @@
 - (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset;
 
 
-- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4D *)viewMatrix;
+- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
 - (void) setSceneAmbient:(NSString *)ambient;
 
-- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4D *)mvpMatrix;
-- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position viewMatrix:(Isgl3dMatrix4D *)viewMatrix;
+- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix;
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
 - (void) setShadowMap:(unsigned int)textureId;
 - (void) setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha;
 

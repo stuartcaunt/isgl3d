@@ -25,8 +25,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Isgl3dMatrix.h"
+
 @class Isgl3dBoneNode;
-@class Isgl3dMatrix4D;
 @class Isgl3dGLRenderer;
 
 /**
@@ -107,6 +108,6 @@
  * 
  * Note that this is called internally in iSGL3D and should never be called explicitly.
  */
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation;
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation;
 
 @end

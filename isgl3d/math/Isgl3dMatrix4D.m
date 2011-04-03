@@ -24,8 +24,6 @@
  */
 
 #import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector4D.h"
-#import "Isgl3dVector3D.h"
 #import "Isgl3dLog.h"
 
 @interface Isgl3dMatrix4D (PrivateMethods) 
@@ -211,7 +209,7 @@
 	return [[[Isgl3dMatrix4D alloc] initWithScale:scaleX scaleY:scaleY scaleZ:scaleZ] autorelease];
 }
 
-+ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4D *)plane fromPosition:(Isgl3dVector3D *)position {
++ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4)plane fromPosition:(Isgl3dVector3)position {
 	
 	float dot = plane.x * position.x + plane.y * position.y + plane.z * position.z + plane.w;
 	
@@ -225,7 +223,7 @@
 	return [[[Isgl3dMatrix4D alloc] initFromFloatArray:array size:16] autorelease];
 }
 
-+ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4D *)plane fromDirection:(Isgl3dVector3D *)direction {
++ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4)plane fromDirection:(Isgl3dVector3)direction {
 	
 	float k = -1.0 / (plane.x * direction.x + plane.y * direction.y + plane.z * direction.z);
 	
@@ -239,7 +237,7 @@
 	return [[[Isgl3dMatrix4D alloc] initFromFloatArray:array size:16] autorelease];
 }
 
-
+/*
 - (NSString *) toString {
 	return [NSString stringWithFormat:@"\n[%f, %f, %f, %f]\n[%f, %f, %f, %f]\n[%f, %f, %f, %f]\n[%f, %f, %f, %f]",
 					_sxx, _sxy, _sxz, _tx,
@@ -247,6 +245,7 @@
 					_szx, _szy, _szz, _tz,
 					_swx, _swy, _swz, _tw];
 }
+*/
 
 - (void) convertTo3x3ColumnMajorFloatArray:(float *)array {
 	array[0] = _sxx;
@@ -588,16 +587,10 @@
 	_tz = z;
 }
 
-- (void) setTranslationVector:(Isgl3dVector3D *)translation {
+- (void) setTranslationVector:(Isgl3dVector3)translation {
 	_tx = translation.x;
 	_ty = translation.y;
 	_tz = translation.z;
-}
-
-- (void) setTranslationMiniVec3D:(Isgl3dMiniVec3D *)translation {
-	_tx = translation->x;
-	_ty = translation->y;
-	_tz = translation->z;
 }
 
 
@@ -787,13 +780,7 @@
 	vector[2] = vz;
 }
 
-- (void) multMiniVec3D:(Isgl3dMiniVec3D *)vector inToResult:(Isgl3dMiniVec3D *)result {
-	result->x = _sxx * vector->x + _sxy * vector->y + _sxz * vector->z + _tx;
-	result->y = _syx * vector->x + _syy * vector->y + _syz * vector->z + _ty;
-	result->z = _szx * vector->x + _szy * vector->y + _szz * vector->z + _tz;
-}
-
-- (Isgl3dVector4D *) multVector4D:(Isgl3dVector4D *)vector {
+- (Isgl3dVector4) multVector4D:(Isgl3dVector4)vector {
 	float ax = vector.x;
 	float ay = vector.y;
 	float az = vector.z;
@@ -804,10 +791,10 @@
 	float vz = _szx * ax + _szy * ay + _szz * az + _tz * aw;
 	float vw = _swx * ax + _swy * ay + _swz * az + _tw * aw;
 
-	return [Isgl3dVector4D vectorWithX:vx y:vy z:vz w:vw];	
+	return iv4(vx, vy, vz, vw);	
 }
 
-- (Isgl3dVector3D *) multVector3D:(Isgl3dVector3D *)vector {
+- (Isgl3dVector3) multVector:(Isgl3dVector3)vector {
 	float ax = vector.x;
 	float ay = vector.y;
 	float az = vector.z;
@@ -816,10 +803,11 @@
 	float vy = _syx * ax + _syy * ay + _syz * az + _ty;
 	float vz = _szx * ax + _szy * ay + _szz * az + _tz;
 
-	return [Isgl3dVector3D vectorWithX:vx y:vy z:vz];	
+	return iv3(vx, vy, vz);	
 }
 
-- (Isgl3dVector3D *) multVector3D3x3:(Isgl3dVector3D *)vector {
+
+- (Isgl3dVector3) multVector3x3:(Isgl3dVector3)vector {
 	float ax = vector.x;
 	float ay = vector.y;
 	float az = vector.z;
@@ -828,7 +816,7 @@
 	float vy = _syx * ax + _syy * ay + _syz * az;
 	float vz = _szx * ax + _szy * ay + _szz * az;
 
-	return [Isgl3dVector3D vectorWithX:vx y:vy z:vz];	
+	return iv3(vx, vy, vz);	
 }
 
 
@@ -870,7 +858,7 @@
 	 transformation[15] = _tw;
 }
 
-- (Isgl3dVector3D *) toEulerAngles {
+- (Isgl3dVector3) toEulerAngles {
 
 //	float roty = -asin(_szx);
 //	Isgl3dLog(Info, @"rotY = %f", -asin(_szx) * 180 / M_PI);
@@ -955,17 +943,17 @@
 		}
 	}
 
-	return [Isgl3dVector3D vectorWithX:-rotX * 180.0 / M_PI y:rotY * 180.0 / M_PI z:rotZ * 180.0 / M_PI];
+	return iv3(-rotX * 180.0 / M_PI, rotY * 180.0 / M_PI, rotZ * 180.0 / M_PI);
 	
 }
 
-- (Isgl3dVector3D *) toScaleValues {
+- (Isgl3dVector3) toScaleValues {
 
 	float scaleX = sqrt(_sxx*_sxx + _syx*_syx + _szx*_szx);
 	float scaleY = sqrt(_sxy*_sxy + _syy*_syy + _szy*_szy);
 	float scaleZ = sqrt(_sxz*_sxz + _syz*_syz + _szz*_szz);
 
-	return [Isgl3dVector3D vectorWithX:scaleX y:scaleY z:scaleZ];
+	return iv3(scaleX, scaleY, scaleZ);
 
 }
 

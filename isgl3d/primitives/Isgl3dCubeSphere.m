@@ -24,13 +24,12 @@
  */
 
 #import "Isgl3dCubeSphere.h"
-#import "Isgl3dVector3D.h"
-#import "Isgl3dVector4D.h"
 #import "Isgl3dFloatArray.h"
 #import "Isgl3dUShortArray.h"
+#import "Isgl3dVector.h"
 
 @interface Isgl3dCubeSphere (PrivateMethods)
-- (Isgl3dVector3D *) intersectionOfVector:(Isgl3dVector3D *)vector withPlane:(Isgl3dVector4D *)plane;
+- (Isgl3dVector3) intersectionOfVector:(Isgl3dVector3)vector withPlane:(Isgl3dVector4)plane;
 @end
 
 @implementation Isgl3dCubeSphere
@@ -70,14 +69,13 @@
 	int nPerFace = longs / 4;
 	float root2 = sqrt(2);
 	
-	Isgl3dVector4D * topPlane = [Isgl3dVector4D vectorWithX:0 y:1 z:0 w:-1];
-	Isgl3dVector4D * bottomPlane = [Isgl3dVector4D vectorWithX:0 y:1 z:0 w:1];
-	Isgl3dVector4D * sePlane = [Isgl3dVector4D vectorWithX:1 y:0 z:1 w:-root2];
-	Isgl3dVector4D * swPlane = [Isgl3dVector4D vectorWithX:1 y:0 z:-1 w:root2];
-	Isgl3dVector4D * nwPlane = [Isgl3dVector4D vectorWithX:1 y:0 z:1 w:root2];
-	Isgl3dVector4D * nePlane = [Isgl3dVector4D vectorWithX:1 y:0 z:-1 w:-root2];
+	Isgl3dVector4 topPlane = iv4(0, 1, 0, -1);
+	Isgl3dVector4 bottomPlane = iv4(0, 1, 0, 1);
+	Isgl3dVector4 sePlane = iv4(1, 0, 1, -root2);
+	Isgl3dVector4 swPlane = iv4(1, 0, -1, root2);
+	Isgl3dVector4 nwPlane = iv4(1, 0, 1, root2);
+	Isgl3dVector4 nePlane = iv4(1, 0, -1, -root2);
 
-	
 	float nx = 0;
 	float ny = 0;
 	float nz = 0;
@@ -96,8 +94,8 @@
 			float cosPhi = cos(phi);
 
 			// Find intersection of point with different planes making up sphere			
-			Isgl3dVector3D * ptOnSphere = [Isgl3dVector3D vectorWithX:cosPhi * sinTheta y:cosTheta z:sinPhi * sinTheta];
-			Isgl3dVector3D * intersection;			
+			Isgl3dVector3 ptOnSphere = iv3(cosPhi * sinTheta, cosTheta, sinPhi * sinTheta);
+			Isgl3dVector3 intersection;			
 
 			if (latNumber < lats / 4) {
 				intersection = [self intersectionOfVector:ptOnSphere withPlane:topPlane];
@@ -180,7 +178,7 @@
 
 }
 
-- (Isgl3dVector3D *) intersectionOfVector:(Isgl3dVector3D *)vector withPlane:(Isgl3dVector4D *)plane {
+- (Isgl3dVector3) intersectionOfVector:(Isgl3dVector3)vector withPlane:(Isgl3dVector4)plane {
 	float x = vector.x;
 	float y = vector.y;
 	float z = vector.z;
@@ -192,7 +190,7 @@
 	
 	float l = -d / (a*x + b*y + c*z);
 	
-	return [Isgl3dVector3D vectorWithX:l*x y:l*y z:l*z];
+	return iv3(l*x, l*y, l*z);
 }
 
 

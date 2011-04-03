@@ -28,8 +28,6 @@
 
 #import "Isgl3dLight.h";
 
-@class Isgl3dMatrix4D;
-@class Isgl3dVector4D;
 @class Isgl3dGLDepthRenderTexture;
 
 /**
@@ -46,22 +44,22 @@
 @private
 	Isgl3dGLDepthRenderTexture * _shadowRenderTexture;
 
-	Isgl3dMatrix4D * _viewMatrix;
+	Isgl3dMatrix4 _viewMatrix;
 	
 	Isgl3dNode * _planarShadowsNode;
-	Isgl3dVector4D * _planarShadowsNodeNormal;
+	Isgl3dVector3 _planarShadowsNodeNormal;
 }
 
 /**
  * For use with planar shadows only, this contains the node onto which shadows are rendered.
  */
-@property (retain) Isgl3dNode * planarShadowsNode;
+@property (nonatomic, retain) Isgl3dNode * planarShadowsNode;
 
 /**
  * For use with planar shadows only, this contains the vector representation of the plane on which shadows are rendered.
  * Even if the node is not a plane, shadows are generated only in a single plane.
  */
-@property (retain) Isgl3dVector4D * planarShadowsNodeNormal;
+@property (nonatomic) Isgl3dVector3 planarShadowsNodeNormal;
 
 /**
  * Initialises the light source with all color components and attenuation.

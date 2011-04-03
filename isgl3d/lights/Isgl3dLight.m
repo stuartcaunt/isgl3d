@@ -29,8 +29,6 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dColorMaterial.h"
 #import "Isgl3dSphere.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector3D.h"
 #import "Isgl3dLog.h"
 
 @implementation Isgl3dLight
@@ -96,10 +94,8 @@
 	return _specularLight;
 }
 
-- (void) directionAsMiniVec3D:(Isgl3dMiniVec3D *)direction {
-	direction->x = -self.x;
-	direction->y = -self.y;
-	direction->z = -self.z;
+- (Isgl3dVector3) directionAsVector {
+	return iv3(-self.x, -self.y, -self.z);
 }
 
 - (void) setDirection:(float)x y:(float)y z:(float)z {
@@ -172,17 +168,17 @@
 
 
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	// Directional lights are not subject to parent transformations:
 	//   their direction remains constant, but the direction is stored as a translation
 	//   so copy it from the local transformation
 	if (_lightType == DirectionalLight) {
-		_transformation.tx = self.x;
-		_transformation.ty = self.y;
-		_transformation.tz = self.z;
-		_transformation.tw = 0.0;
+		_worldTransformation.tx = self.x;
+		_worldTransformation.ty = self.y;
+		_worldTransformation.tz = self.z;
+		_worldTransformation.tw = 0.0;
 	} else {
-		[super updateGlobalTransformation:parentTransformation];
+		[super updateWorldTransformation:parentTransformation];
 	}
 }
 

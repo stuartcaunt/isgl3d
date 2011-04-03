@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class Isgl3dGLObject3D;
+@class Isgl3dNode;
 @class Isgl3dView3D;
 @class Isgl3dEvent3D;
 
@@ -37,7 +37,7 @@
 @interface Isgl3dSingleTouchFilter : NSObject {
 	    
 @private
-	Isgl3dGLObject3D * _object;
+	Isgl3dNode * _object;
 
 	NSString * _eventId;
 	
@@ -45,11 +45,11 @@
 }
 
 /**
- * Initialises the Isgl3dSingleTouchFilter with an Isgl3dGLObject3D (all nodes inherit from this) that we
+ * Initialises the Isgl3dSingleTouchFilter with an Isgl3dNode that we
  * wish to add an event listener to.
  * @param object The interactive object for which event listeners should be attached.
  */
-- (id) initWithObject:(Isgl3dGLObject3D *)object;
+- (id) initWithObject:(Isgl3dNode *)object;
 
 /**
  * Adds an event listener to the filter. A callback is sent to the specified object and method

@@ -29,10 +29,10 @@
 #import "Isgl3dTouchedObject3D.h"
 #import "Isgl3dView3D.h"
 #import "Isgl3dDirector.h"
-#import "Isgl3dGLObject3D.h"
+#import "Isgl3dNode.h"
 
 @interface Isgl3dEvent3DHandler (PrivateMethods)
-- (Isgl3dTouchedObject3D *)touchedObjectForObject:(Isgl3dGLObject3D *)object;
+- (Isgl3dTouchedObject3D *)touchedObjectForObject:(Isgl3dNode *)object;
 - (Isgl3dTouchedObject3D *)touchedObjectForLocation:(NSString *)location;
 @end
 
@@ -100,7 +100,7 @@
 		}
 		
 		// Get object associated with pixel colour (if one exists)
-		Isgl3dGLObject3D * object = [[Isgl3dObject3DGrabber sharedInstance] getObjectWithColorString:colorString];
+		Isgl3dNode * object = [[Isgl3dObject3DGrabber sharedInstance] getObjectWithColorString:colorString];
 		
 		// If object found then associate the touch with it
 		if (object) {
@@ -205,7 +205,7 @@
 /**
  * Get TouchedObject containing Object3D if it exists
  */
-- (Isgl3dTouchedObject3D *)touchedObjectForObject:(Isgl3dGLObject3D *)object {
+- (Isgl3dTouchedObject3D *)touchedObjectForObject:(Isgl3dNode *)object {
 	Isgl3dTouchedObject3D * touchedObject;
 	for (touchedObject in _touchedObjects) {
 		if ([touchedObject respondsToObject:object]) {

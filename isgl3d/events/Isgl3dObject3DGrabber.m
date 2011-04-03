@@ -25,7 +25,7 @@
 
 #import "Isgl3dObject3DGrabber.h"
 #import "Isgl3dColorUtil.h"
-#import "Isgl3dGLObject3D.h"
+#import "Isgl3dNode.h"
 
 @implementation Isgl3dObject3DGrabber
 
@@ -71,7 +71,7 @@ static Isgl3dObject3DGrabber * _instance;
 	
 }
 
-- (void) getCaptureColor:(float *)color forObject:(Isgl3dGLObject3D *)object {
+- (void) getCaptureColor:(float *)color forObject:(Isgl3dNode *)object {
 	_objectCount++;
 	
 	NSString * colorString = [NSString stringWithFormat:@"0x%06X", _objectCount];
@@ -86,7 +86,7 @@ static Isgl3dObject3DGrabber * _instance;
 	[_activeObjects setObject:object forKey:colorString];
 }
 
-- (Isgl3dGLObject3D *) getObjectWithColorString:(NSString *)colorString {
+- (Isgl3dNode *) getObjectWithColorString:(NSString *)colorString {
 	return [_activeObjects objectForKey:colorString];
 }
 

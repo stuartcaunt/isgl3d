@@ -82,7 +82,7 @@
 			[renderer setPointAttenuation:[_particle attenuation]];
 		
 			// Set the model matrix
-			[renderer setModelMatrix:_transformation];
+			[renderer setModelMatrix:&_worldTransformation];
 
 			// Renderer the particle
 			[renderer preRender];

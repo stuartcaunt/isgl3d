@@ -26,7 +26,6 @@
 #import "Isgl3dFpsRenderer.h"
 #import "Isgl3dGLUILabel.h"
 #import "Isgl3dGLU.h"
-#import "Isgl3dMatrix4D.h"
 #import "Isgl3dDirector.h"
 #import "Isgl3dGLRenderer.h"
 
@@ -53,8 +52,8 @@
 		_viewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
 		
 		// Create view and projection matrices
-		_viewMatrix = [[Isgl3dGLU lookAt:0 eyey:0 eyez:1 centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:1] retain];
-		_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation] retain];
+		_viewMatrix = [Isgl3dGLU lookAt:0 eyey:0 eyez:1 centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:1];
+		_projectionMatrix = [Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation];
 		
 	}
     return self;
@@ -62,8 +61,6 @@
 
 - (void) dealloc {
 	[_fpsLabel release];
-	[_viewMatrix release];
-	[_projectionMatrix release];
 
 	[super dealloc];
 }
@@ -76,8 +73,7 @@
 	
 	// Update projection matrix
 	_orientation = orientation;
-	[_projectionMatrix release];
-	_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation] retain];
+	_projectionMatrix = [Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation];
 }
 
 - (void) updateViewport {
@@ -85,8 +81,7 @@
 	_viewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
 	
 	// Update projection matrix
-	[_projectionMatrix release];
-	_projectionMatrix = [[Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:_orientation] retain];
+	_projectionMatrix = [Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:_orientation];
 }
 
 - (void) update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused {
@@ -125,7 +120,7 @@
 	}
 
 	// Update model transformation for label
-	[_fpsLabel updateGlobalTransformation:nil];
+	[_fpsLabel updateWorldTransformation:nil];
 	
 	// Clear the depth buffer
 	[renderer clear:(ISGL3D_DEPTH_BUFFER_BIT) viewport:_viewportInPixels];
@@ -134,8 +129,8 @@
 	[renderer clean];
 
 	// Set view and projection matrices
-	[renderer setProjectionMatrix:_projectionMatrix];
-	[renderer setViewMatrix:_viewMatrix];
+	[renderer setProjectionMatrix:&_projectionMatrix];
+	[renderer setViewMatrix:&_viewMatrix];
 
 	// Render label
 	[_fpsLabel render:renderer opaque:NO];

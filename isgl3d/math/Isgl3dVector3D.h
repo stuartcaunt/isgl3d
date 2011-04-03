@@ -26,6 +26,9 @@
 #include "Isgl3dMiniVec.h"
 
 #import <Foundation/Foundation.h>
+/**
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
+ */
 
 /**
  * The Isgl3DVector3D contains data representing a 3-dimensional vector.
@@ -39,6 +42,11 @@
  * you may suffer a noticable performance penalty.
  * 
  * For large amounts of vector algebra, the Isgl3dMiniVec3D and associated methods are highly recommended.  
+ * 
+ * WARNING: This class is deprecated and will be removed in v1.2
+ * The functionality of this class can be performed using the Isgl3dVector3 with c utilities. This can produce a significant performance gain.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 @interface Isgl3dVector3D : NSObject {
 	Isgl3dMiniVec3D _vector;

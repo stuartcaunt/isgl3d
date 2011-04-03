@@ -27,8 +27,6 @@
 #import <UIKit/UIKit.h>
 #import "isgl3dTypes.h"
 
-@class Matrix4D;
-
 #define ACCELEROMETER_CALIBRATION_MAX 20
 
 /**

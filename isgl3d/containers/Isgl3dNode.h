@@ -22,18 +22,18 @@
  * THE SOFTWARE.
  *
  */
-
-#import "Isgl3dGLObject3D.h"
-
 #define OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE 0
 #define OCCLUSION_MODE_DISTANCE_AND_ANGLE 1
 #define OCCLUSION_MODE_QUAD_DISTANCE 2
 #define OCCLUSION_MODE_DISTANCE 3
 #define OCCLUSION_MODE_ANGLE 4
 
+
+#import "Isgl3dEvent3DDispatcher.h"
+#import "Isgl3dVector.h"
+#import "Isgl3dMatrix.h"
+
 @class Isgl3dView3D;
-@class Isgl3dMatrix4D;
-@class Isgl3dVector3D;
 @class Isgl3dMeshNode;
 @class Isgl3dSkeletonNode;
 @class Isgl3dFollowNode;
@@ -48,6 +48,15 @@
 @class Isgl3dGLRenderer;
 
 /**
+ * The Isgl3dNode provides an interface to perform transformations on a node.
+ * It is used to calculated the transformation for a model given a parent transformation and is optimised
+ * to only recalculate transformations if necessary.
+ * 
+ * The Isgl3dNode contains two transformation matrices: the local transformation and the world
+ * transformation. The local transformation is the displacement/rotation of the object in its local
+ * frame of reference. The world transformation is the transformation of the object in world-space taking
+ * into account parent transformations.
+ * 
  * The Isgl3dNode is the root of all the different types of nodes in iSGL3D. All elements included
  * in the scene graph must inherit from this class.
  * 
@@ -57,9 +66,17 @@
  * the notion of "children" and "parent" nodes.
  * 
  */
-@interface Isgl3dNode : Isgl3dGLObject3D {
+@interface Isgl3dNode : Isgl3dEvent3DDispatcher {
 
 @protected
+
+	Isgl3dMatrix4 _localTransformation;
+	Isgl3dMatrix4 _worldTransformation;
+
+	BOOL _transformationDirty;
+
+
+
 	NSMutableArray * _children;
 
 	BOOL _enableShadowCasting;	
@@ -79,10 +96,40 @@
 	BOOL _isVisible;
 	
 @private
+	Isgl3dMatrix4 _scaleTransformation;
+	BOOL _scaling;
+
 	Isgl3dNode * _parent;
 
 	BOOL _hasChildren;
 }
+
+/**
+ * Returns the world transformation of the node.
+ */
+@property (readonly) Isgl3dMatrix4 worldTransformation;
+
+/**
+ * The local displacement along the x-axis in the objects frame of reference.
+ */
+@property (nonatomic) float x;
+
+/**
+ * The local displacement along the y-axis in the objects frame of reference.
+ */
+@property (nonatomic) float y;
+
+/**
+ * The local displacement along the z-axis in the objects frame of reference.
+ */
+@property (nonatomic) float z;
+
+/**
+ * The local translation in the objects frame of reference.
+ */
+@property (nonatomic) Isgl3dVector3 translationVector;
+
+
 
 /**
  * The children of this node. Returns an NSArray of Isgl3dNodes.
@@ -162,9 +209,155 @@
 @property (nonatomic) BOOL isVisible;
 
 /**
- * Initialises the node.
+ * Initialises the node (position at (0, 0, 0) and zero rotation
+ * and no scaling)..
  */
 - (id) init;
+
+
+#pragma mark translation rotation scaling
+
+
+/**
+ * Performs a general rotation of the object by a given angle about a vector defined
+ * as (x, y, z). The rotation is added to the current object's rotation.
+ * @param angle The angle in degrees.
+ * @param x The x component of the axis of rotation.
+ * @param y The y component of the axis of rotation.
+ * @param z The z component of the axis of rotation.
+ */
+- (void) rotate:(float)angle x:(float)x y:(float)y z:(float)z;
+
+/**
+ * Sets the rotation of the object by a given angle about a general vector defined
+ * as (x, y, z). 
+ * @param angle The angle in degrees.
+ * @param x The x component of the axis of rotation.
+ * @param y The y component of the axis of rotation.
+ * @param z The z component of the axis of rotation.
+ */
+- (void) setRotation:(float)angle x:(float)x y:(float)y z:(float)z;
+
+/**
+ * Translates the object by a given amount from its current position.
+ * @param x The displacement along the x axis in the object's local frame of reference.
+ * @param y The displacement along the y axis in the object's local frame of reference.
+ * @param z The displacement along the z axis in the object's local frame of reference.
+ */
+- (void) translate:(float)x y:(float)y z:(float)z;
+
+/**
+ * Sets the object's position to a given point in the object's frame of reference.
+ * @param x The position along the x axis in the object's local frame of reference.
+ * @param y The position along the y axis in the object's local frame of reference.
+ * @param z The position along the z axis in the object's local frame of reference.
+ */
+- (void) setTranslation:(float)x y:(float)y z:(float)z;
+
+/**
+ * Translates the object along a vector from its current position.
+ * @param vector The displacement in three dimensions in the object's local frame of reference.
+ */
+- (void) translateByVector:(Isgl3dVector3)vector;
+
+/**
+ * Translates the object along a given vector from its current position by a given distance.
+ * Note that this is useful for example to make a node move "left" or "right" with vector (-1, 0, 0) and (1, 0, 0)
+ * @param direction The direction of the displacement in the object's local frame of reference.
+ * @param distance The distance to move the object by.
+ */
+- (void) translateAlongVector:(Isgl3dVector3)direction distance:(float)distance;
+
+/**
+ * Takes the position directly from another Isgl3dNode object.
+ * @param node The object whose position is to be copied.
+ */
+- (void) setTranslationByNode:(Isgl3dNode *)node;
+
+/**
+ * Sets a global scaling factor for the object (identical in x-, y- and z-directions).
+ * @param scale The scaling factor.
+ */
+- (void) setScale:(float)scale;
+
+/**
+ * Sets scaling factors along each axis.
+ * @scaleX The scaling factor in the x-direction.
+ * @scaleY The scaling factor in the y-direction.
+ * @scaleZ The scaling factor in the z-direction.
+ */
+- (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
+
+/**
+ * Reset's the local transformation.
+ */
+- (void) resetTransformation;
+
+/**
+ * Set's the object's local transformation from a given transformation matrix.
+ * @param transformation The local transformation of the object.
+ */
+- (void) setTransformation:(Isgl3dMatrix4)transformation;
+
+/**
+ * Set's the object's local transformation from array of column-wise values representing
+ * a 4x4 matrix (same format as OpenGL).
+ * @param transformation The local transformation of the object as a column-wise array of values.
+ */
+- (void) setTransformationFromOpenGLMatrix:(float *)transformation;
+
+/**
+ * USed to obtain the local transformation as a column-wise array of values representing the 
+ * 4x4 matrix.
+ * @param transformation Current column-wise array of values for the local transformation is stored here.
+ */
+- (void) getTransformationAsOpenGLMatrix:(float *)transformation;
+
+/**
+ * Copies the current world position of the object into an array of 4 values representing the 4 translation elements of a 4x4 matrix (tx, ty, tz, tw).
+ * @param position The current world position (tx, ty, tz, tw) of the object is set into this float array.
+ */
+- (void) copyWorldPositionToArray:(float *)position;
+
+/**
+ * Returns the world position as an I3DVector.
+ */
+- (Isgl3dVector3) worldPosition;
+
+/**
+ * This is used to return the equation of a plane that passes through the object's world position
+ * given a normal to the plane in the object's local frame of reference.
+ * This is intended for use when generating planar shadows.
+ * @param normal The normal to the plane.
+ * @result Vector representation of the plane with transformed normal passing through the object's position. 
+ */
+- (Isgl3dVector4) asPlaneWithNormal:(Isgl3dVector3)normal;
+
+/*
+ * Indicates to the object that its transformation needs to be recalculated.
+ * Note that this intended to be called internally by iSGL3D.
+ * @param isDirty Indicates whether the transformation needs to be recalculated or not.
+ */
+- (void) setTransformationDirty:(BOOL)isDirty;
+
+/*
+ * Updates the world transformation of the object given the parent's world transformation.
+ * Note that this intended to be called internally by iSGL3D.
+ * @param parentTransformation The parent's world transformation matrix.
+ */
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation;
+
+/*
+ * Given a view matrix, this returns the distance along the observer's viewing direction to the object.
+ * Note that this intended to be called internally by iSGL3D, used for z-sorting of nodes.
+ * @param viewMatrix The view matrix to transform objects to the viewer's frame of reference.
+ * @return Distance along the z-axis of the viewer to the object.
+ */
+- (float) getZTransformation:(Isgl3dMatrix4 *)viewMatrix;
+
+
+#pragma mark scene graph
+
 
 /**
  * Utility method to create an Isgl3dNode and add it as a child.
@@ -341,7 +534,7 @@
  * @param targetDistance The distance from the observer to the target.
  * @param maxAngle The maximum angle for which occlusion should be considered. 
  */
-- (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle;
+- (void) occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle;
 
 /*
  * Creates the shadow map for the scene. The shadow rendering light is searched for in the node

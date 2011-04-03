@@ -93,7 +93,7 @@
 	// Take target into account if it exists
 	if (_target) {
 		float targetPosition[4];
-		[_target copyPositionTo:targetPosition];
+		[_target copyWorldPositionToArray:targetPosition];
 		
 		x += targetPosition[0];
 		y += targetPosition[1];

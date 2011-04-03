@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Isgl3dGLObject3D;
+@class Isgl3dNode;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -43,7 +43,7 @@
 - (id) init;
 
 - (void) startCapture;
-- (void) getCaptureColor:(float *)color forObject:(Isgl3dGLObject3D *)object;
-- (Isgl3dGLObject3D *) getObjectWithColorString:(NSString *)colorString;
+- (void) getCaptureColor:(float *)color forObject:(Isgl3dNode *)object;
+- (Isgl3dNode *) getObjectWithColorString:(NSString *)colorString;
 
 @end

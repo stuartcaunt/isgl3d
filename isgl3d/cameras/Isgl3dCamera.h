@@ -27,8 +27,8 @@
 
 #import "Isgl3dNode.h"
 #import "isgl3dTypes.h"
+#import "isgl3dMatrix.h"
 
-@class Isgl3dMatrix4D;
 @class Isgl3dView3D;
 
 /**
@@ -81,22 +81,17 @@
 @interface Isgl3dCamera : Isgl3dNode {
 	    
 @private
-	Isgl3dMatrix4D * _viewMatrix;
-	Isgl3dMatrix4D * _projectionMatrix;
+	Isgl3dMatrix4 _viewMatrix;
+	Isgl3dMatrix4 _projectionMatrix;
 	
-	Isgl3dMiniVec3D _lookAt;
+	Isgl3dVector3 _lookAt;
 	
 	float _upX;
 	float _upY;
 	float _upZ;
 	
-	Isgl3dMiniVec3D _initialCameraPosition;
-	Isgl3dMiniVec3D _initialCameraLookAt;
-	
-	/**
-	 * Vector used for temporary internal calculations.
-	 */
-	Isgl3dMiniVec3D _tempVector;
+	Isgl3dVector3 _initialCameraPosition;
+	Isgl3dVector3 _initialCameraLookAt;
 	
 	float _fov;
 	float _aspect;
@@ -115,30 +110,30 @@
 	float _focus;
 	float _zoom;
 	
-	Isgl3dMiniVec3D _cameraPosition;
+	Isgl3dVector3 _cameraPosition;
 }
 
 /**
  * The initial position of the camera as defined during its initialisation or set afterwards.
  * A call to reset on the camera will place the camera at this position.
  */
-@property (nonatomic) Isgl3dMiniVec3D initialCameraPosition;
+@property (nonatomic) Isgl3dVector3 initialCameraPosition;
 
 /**
  * The initial look-at position of the camera as defined during its initialistion or set afterwards. 
  * A call to reset on the camera will make the camera look-at this position.
  */
-@property (nonatomic) Isgl3dMiniVec3D initialCameraLookAt;
+@property (nonatomic) Isgl3dVector3 initialCameraLookAt;
 
 /**
  * The current view matrix.
  */
-@property (nonatomic, readonly) Isgl3dMatrix4D * viewMatrix;
+@property (nonatomic, readonly) Isgl3dMatrix4 viewMatrix;
 
 /**
  * The current projection matrix.
  */
-@property (nonatomic, retain) Isgl3dMatrix4D * projectionMatrix;
+@property (nonatomic) Isgl3dMatrix4 projectionMatrix;
 
 /**
  * Indicates whether the camera is in perspective mode.
@@ -353,9 +348,9 @@
 
 /**
  * Specifies the postion in space as a vector where the camera should look at.
- * param lookAt The vector containing the look-at position.
+ * @param lookAt The vector containing the look-at position.
  */
-- (void) setLookAt:(Isgl3dMiniVec3D *)lookAt;
+- (void) setLookAt:(Isgl3dVector3)lookAt;
 
 /**
  * Specifies the postion in space as separated components where the camera should look at.
@@ -367,16 +362,16 @@
 
 /**
  * Used to obtain the look-at position as a vector.
- * The Isgl3dMiniVec3D object is modified to contain the coordinates of the current look-at. 
+ * @return The look-at position as a vector
  */
-- (void) getLookAt:(Isgl3dMiniVec3D *)lookAt;
+- (Isgl3dVector3) getLookAt;
 
 /**
- * Used to obtain the vector along the direction of view from the observer's position.
- * The Isgl3dMiniVec3D object is modified to contain the vector along the direction of view (in essence the
+ * Used to obtain the vector along the direction of view from the observer's position (in essence the
  * current look-at position minus the camera position). 
+ * @return the vector along the direction of view from the observer's position.
  */
-- (void) getEyeNormal:(Isgl3dMiniVec3D *)eyeNormal;
+- (Isgl3dVector3) getEyeNormal;
 
 /**
  * Returns the x component of the look-at position.

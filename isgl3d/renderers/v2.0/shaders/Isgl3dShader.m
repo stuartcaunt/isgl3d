@@ -26,7 +26,6 @@
 #import "Isgl3dShader.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
-#import "Isgl3dMatrix4D.h"
 
 @interface Isgl3dShader (PrivateMethods)
 - (void) getAttributeAndUniformLocations;
@@ -111,23 +110,25 @@
 	glVertexAttribPointer(attributeLocation, size, type, GL_FALSE, strideBytes, (const void *)offset);
 }
 
-- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4D *)matrix {
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix {
 	float matrixArray[9];
-	[matrix convertTo3x3ColumnMajorFloatArray:matrixArray];
+	im4ConvertTo3x3ColumnMajorFloatArray(matrix, matrixArray);
 	glUniformMatrix3fv(uniformLocation, 1, GL_FALSE, matrixArray);
 }
 
-- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4D *)matrix {
+- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix {
 	float matrixArray[16];
-	[matrix convertToColumnMajorFloatArray:matrixArray];
+	im4ConvertToColumnMajorFloatArray(matrix, matrixArray);
 	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrixArray);
 }
 
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
 	float matrixArray[size * 9];
 	int offset = 0;
-	for (Isgl3dMatrix4D * matrix in matrices) {
-		[matrix convertTo3x3ColumnMajorFloatArray:&(matrixArray[offset])];
+	for (Isgl3dMatrix4Wrapper * matrixWrapper in matrices) {
+		Isgl3dMatrix4 matrix = matrixWrapper.matrix;
+
+		im4ConvertTo3x3ColumnMajorFloatArray(&matrix, &(matrixArray[offset]));
 		offset += 9;
 	}
 	glUniformMatrix3fv(uniformLocation, size, GL_FALSE, matrixArray);
@@ -136,8 +137,10 @@
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
 	float matrixArray[size * 16];
 	int offset = 0;
-	for (Isgl3dMatrix4D * matrix in matrices) {
-		[matrix convertToColumnMajorFloatArray:&(matrixArray[offset])];
+	for (Isgl3dMatrix4Wrapper * matrixWrapper in matrices) {
+		Isgl3dMatrix4 matrix = matrixWrapper.matrix;
+
+		im4ConvertToColumnMajorFloatArray(&matrix, &(matrixArray[offset]));
 		offset += 16;
 	}
 	
@@ -174,10 +177,10 @@
 	glBindTexture(GL_TEXTURE_2D, textureIndex);
 }
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4D *)modelViewMatrix {
+- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4D *)modelViewProjectionMatrix {
+- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 }
 
 - (void) setActive {
@@ -240,16 +243,16 @@
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 }
 
-- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 }
 
 - (void) setSceneAmbient:(NSString *)ambient {
 }
 
-- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4D *)mvpMatrix {
+- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position viewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 }
 
 - (void) setShadowMap:(unsigned int)textureId {

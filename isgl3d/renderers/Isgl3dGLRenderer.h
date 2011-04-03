@@ -27,6 +27,8 @@
 #import <UIKit/UIKit.h>
 
 #import "Isgl3dTypes.h"
+#import "Isgl3dVector.h"
+#import "Isgl3dMatrix.h"
 
 #define COLOR_RENDERING @"ColorRendering"
 #define GENERIC_RENDERING @"GenericRendering"
@@ -53,8 +55,6 @@ typedef enum {
 
 @class Isgl3dLight;
 @class Isgl3dGLVBOData;
-@class Isgl3dMatrix4D;
-@class Isgl3dVector3D;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -62,9 +62,9 @@ typedef enum {
 @interface Isgl3dGLRenderer : NSObject {
 
 @protected
-	Isgl3dMatrix4D * _viewMatrix;
-	Isgl3dMatrix4D * _modelMatrix;
-	Isgl3dMatrix4D * _projectionMatrix;
+	Isgl3dMatrix4 _viewMatrix;
+	Isgl3dMatrix4 _modelMatrix;
+	Isgl3dMatrix4 _projectionMatrix;
 	
 	float _black[4];
 	float _white[4];
@@ -73,7 +73,7 @@ typedef enum {
 	float _whiteAndAlpha[4];
 	
 	isgl3dShadowType _shadowRenderingMethod;
-	Isgl3dMatrix4D * _planarShadowsMatrix;
+	Isgl3dMatrix4 _planarShadowsMatrix;
 	BOOL _planarShadowsActive;
 	float _shadowAlpha;
 	
@@ -94,10 +94,10 @@ typedef enum {
 - (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport;
 - (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport;
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4D *)projectionMatrix;
-- (void) setViewMatrix:(Isgl3dMatrix4D *)viewMatrix;
-- (void) setModelMatrix:(Isgl3dMatrix4D *)modelMatrix;
-- (void) setPlanarShadowsMatrix:(Isgl3dMatrix4D *)planarShadowsMatrix;
+- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix;
+- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix;
+- (void) setPlanarShadowsMatrix:(Isgl3dMatrix4 *)planarShadowsMatrix;
 - (void) setupMatrices;
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData;
@@ -141,8 +141,8 @@ typedef enum {
 - (void) resetCaptureColor;
 
 - (void) initRenderForShadowMap;
-- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4D *)viewMatrix;
-- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position;
+- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position;
 - (void) setShadowMap:(unsigned int)textureId;
 - (BOOL) shadowMapActive;
 - (void) enableShadowStencil:(BOOL)shadowStencilEnabled;

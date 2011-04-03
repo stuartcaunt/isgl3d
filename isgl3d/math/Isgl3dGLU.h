@@ -26,8 +26,7 @@
 #import <Foundation/Foundation.h>
 
 #import "isgl3dTypes.h"
-
-@class Isgl3dMatrix4D;
+#import "isgl3dMatrix.h"
 
 /**
  * The Isgl3dGLU class provides some of the functionalities to the OpengGL Utility Library, essentially
@@ -51,23 +50,7 @@
  * @param upz The z componenent of the vector mapped to the y-direction of the view matrix.
  * @return the calculated view matrix.
  */
-+ (Isgl3dMatrix4D *) lookAt:(float)eyex eyey:(float)eyey eyez:(float)eyez centerx:(float)centerx centery:(float)centery centerz:(float)centerz upx:(float)upx upy:(float)upy upz:(float)upz;
-
-/**
- * Calculates a view matrix for a given eye position, a look-at position and an up vector and copies the values into the passed Isgl3dMatrix4D matrix.
- * This is used to improve the performance of an application as a new object is not created at each call.
- * @param eyex The x component of the eye position.
- * @param eyey The y component of the eye position.
- * @param eyez The z component of the eye position.
- * @param centerx The x componenent of the look-at position that is in the center of the view.
- * @param centery The y componenent of the look-at position that is in the center of the view.
- * @param centerz The z componenent of the look-at position that is in the center of the view.
- * @param upx The x componenent of the vector mapped to the y-direction of the view matrix.
- * @param upy The y componenent of the vector mapped to the y-direction of the view matrix.
- * @param upz The z componenent of the vector mapped to the y-direction of the view matrix.
- * @param matrix The matrix into which the calculated view matrix is stored.
- */
-+ (void) lookAt:(float)eyex eyey:(float)eyey eyez:(float)eyez centerx:(float)centerx centery:(float)centery centerz:(float)centerz upx:(float)upx upy:(float)upy upz:(float)upz inToMatrix:(Isgl3dMatrix4D *)matrix;
++ (Isgl3dMatrix4) lookAt:(float)eyex eyey:(float)eyey eyez:(float)eyez centerx:(float)centerx centery:(float)centery centerz:(float)centerz upx:(float)upx upy:(float)upy upz:(float)upz;
 
 /**
  * Calculates a projection matrix for a perspective view.
@@ -81,7 +64,7 @@
  * 
  * @deprecated Will be removed in v1.2
  */
-+ (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
++ (Isgl3dMatrix4) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
 
 /**
  * Calculates a projection matrix for a perspective view.
@@ -92,7 +75,7 @@
  * @param zoom The zoom factor.
  * @param orientation indicates the rotation (about z) for the projection. 
  */
-+ (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
++ (Isgl3dMatrix4) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
 
 /**
  * Calculates a projection matrix for an orthographic view.
@@ -108,7 +91,7 @@
  *  
  * @deprecated Will be removed in v1.2
  */
-+ (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
++ (Isgl3dMatrix4) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
 
 /**
  * Calculates a projection matrix for an orthographic view.
@@ -121,6 +104,6 @@
  * @param zoom The zoom factor.
  * @param orientation indicates the rotation (about z) for the projection. 
  */
-+ (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
++ (Isgl3dMatrix4) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
 
 @end

@@ -26,7 +26,7 @@
 #import "Isgl3dSingleTouchFilter.h"
 #import "Isgl3dEvent3D.h"
 #import "Isgl3dEvent3DListener.h"
-#import "Isgl3dGLObject3D.h"
+#import "Isgl3dNode.h"
 
 @interface Isgl3dSingleTouchFilter (PrivateMethods)
 - (void) touchesBegan:(Isgl3dEvent3D *)event;
@@ -39,7 +39,7 @@
 @implementation Isgl3dSingleTouchFilter
 
 
-- (id) initWithObject:(Isgl3dGLObject3D *)object {
+- (id) initWithObject:(Isgl3dNode *)object {
 
 	if ((self = [super init])) {
 		_object = object;

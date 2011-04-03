@@ -83,7 +83,7 @@
 	[_physicsObjects removeAllObjects];
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	// Get time since last step
 	NSDate * currentTime = [[NSDate alloc] init];
 	
@@ -102,7 +102,7 @@
 	//NSLog(@"N objects = %i", [_physicsObjects count]);
 
 	// Update all global matrices
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 }
 
 - (void) setGravity:(float)x y:(float)y z:(float)z {

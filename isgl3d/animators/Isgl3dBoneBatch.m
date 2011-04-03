@@ -25,7 +25,6 @@
 
 #import "Isgl3dBoneBatch.h"
 #import "Isgl3dBoneNode.h"
-#import "Isgl3dMatrix4D.h"
 #import "Isgl3dGLRenderer.h"
 
 @implementation Isgl3dBoneBatch
@@ -73,7 +72,7 @@
 	_transformationDirty = isDirty;
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	
 	if (_transformationDirty || _frameChanged) {
 		[_currentFrameGlobalTransformations removeAllObjects];
@@ -82,16 +81,18 @@
 		// Get the bone transformations for the current frame
 		NSArray * transformations = [_frameTransformations objectForKey:[NSNumber numberWithInt:_currentFrameNumber]];
 	
-		for (Isgl3dMatrix4D * transformation in transformations) {
+		for (Isgl3dMatrix4Wrapper * wrapper in transformations) {
+			Isgl3dMatrix4 transformation = wrapper.matrix;
 			
-			Isgl3dMatrix4D * globalTransformation = [Isgl3dMatrix4D matrixFromMatrix:parentTransformation];
-			[globalTransformation multiply:transformation];
-			[_currentFrameGlobalTransformations addObject:globalTransformation];
-			
-			Isgl3dMatrix4D * itMatrix = [Isgl3dMatrix4D matrixFromMatrix:globalTransformation];
-			[itMatrix invert];
-			[itMatrix transpose];
-			[_currentFrameGlobalInverseTransformations addObject:itMatrix];
+			Isgl3dMatrix4 globalTransformation;
+            im4Copy(&globalTransformation, parentTransformation);
+			im4Multiply(&globalTransformation, &transformation);
+			[_currentFrameGlobalTransformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:globalTransformation]];
+
+			Isgl3dMatrix4 itMatrix = globalTransformation;
+			im4Invert(&itMatrix);
+			im4Transpose(&itMatrix);
+			[_currentFrameGlobalInverseTransformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:itMatrix]];
 		}	
 		
 		_transformationDirty = NO;

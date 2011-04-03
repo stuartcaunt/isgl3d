@@ -25,8 +25,7 @@
 
 #import "Isgl3dSpringCamera.h"
 #import "Isgl3dNode.h"
-#import "Isgl3dVector3D.h"
-#import "Isgl3dMatrix4D.h"
+#import "Isgl3dDirector.h"
 
 @implementation Isgl3dSpringCamera
 
@@ -40,16 +39,16 @@
 
 - (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
 	
-	if (self = [self initWithView:view3D]) {
+	if ((self = [self initWithView:view3D])) {
 		
 		if (target) {
 			_target = [target retain];
 		}
 		
-		_positionOffset = mv3DCreate(0, 5, 10);
-		_lookOffset = mv3DCreate(0, 5, 10);
+		_positionOffset = iv3(0, 5, 10);
+		_lookOffset = iv3(0, 5, 10);
 		
-		_velocity = mv3DCreate(0, 0, 0);
+		_velocity = iv3(0, 0, 0);
 		
 		_stiffness = 10;
 		_damping = 4;
@@ -66,10 +65,6 @@
 - (void) dealloc {
 	if (_target) {
 		[_target release];
-	}
-	
-	if (_time) {
-		[_time release];
 	}
 	
 	[super dealloc];
@@ -90,73 +85,66 @@
 }
 
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 
 
 	if (_target) {
 		if (_initialized) {
 			
-			Isgl3dMiniVec3D * currentPos = self.position.miniVec3DPointer;
-			Isgl3dMatrix4D * targetTransformation = _target.transformation;
+			Isgl3dVector3 currentPos = [self worldPosition];
+			Isgl3dMatrix4 targetTransformation = _target.worldTransformation;
 			
-			[targetTransformation multMiniVec3D:&_positionOffset inToResult:&_acceleration];
-			[targetTransformation multMiniVec3D:&_lookOffset inToResult:&_desiredLookAtPosition];
-			
+			_acceleration = im4MultVector(&targetTransformation, &_positionOffset);
+			_desiredLookAtPosition = im4MultVector(&targetTransformation, &_lookOffset);
+
 			// Calculate elastic force from vector between current and desired position
-			mv3DSub(&_acceleration, currentPos);
-			mv3DScale(&_acceleration, _stiffness);
+			iv3Sub(&_acceleration, &currentPos);
+			iv3Scale(&_acceleration, _stiffness);
 	
-			Isgl3dMiniVec3D tmp = _velocity;
-			mv3DScale(&tmp, _damping);
+			Isgl3dVector3 tmp = _velocity;
+			iv3Scale(&tmp, _damping);
 			
-			mv3DSub(&_acceleration, &tmp);
-			mv3DScale(&_acceleration, 1./_mass);
+			iv3Sub(&_acceleration, &tmp);
+			iv3Scale(&_acceleration, 1./_mass);
 	
 			float dt = 1./60.;
 			if (_useRealTime) {
-				if (!_time) {
-					_time = [[NSDate alloc] init];
-				} else {
-					NSDate * currentTime = [[NSDate alloc] init];
-					dt = [currentTime timeIntervalSinceDate:_time];
-					[_time release];
-					_time = currentTime;
-				}
+				dt = [Isgl3dDirector sharedInstance].deltaTime;
 			}
 
-			mv3DScale(&_acceleration, dt);
-			mv3DAdd(&_velocity, &_acceleration);
+			iv3Scale(&_acceleration, dt);
+			iv3Add(&_velocity, &_acceleration);
 	
-			mv3DCopy(&_desiredPosition, &_velocity);
-			mv3DScale(&_desiredPosition, dt);
-			mv3DAdd(&_desiredPosition, currentPos);
+			iv3Copy(&_desiredPosition, &_velocity);
+			iv3Scale(&_desiredPosition, dt);
+			iv3Add(&_desiredPosition, &currentPos);
 	
 			// Set translation and lookAt
-			[super setTranslationMiniVec3D:&_desiredPosition];
-			[super setLookAt:&_desiredLookAtPosition];
+			[super setTranslationVector:_desiredPosition];
+			[super setLookAt:_desiredLookAtPosition];
 		
 		} else {
 			_initialized = YES;
 	
-			Isgl3dMiniVec3D * currentPos = self.position.miniVec3DPointer;
-			Isgl3dMatrix4D * targetTransformation = _target.transformation;
+			Isgl3dVector3 currentPos = [self worldPosition];
+			Isgl3dMatrix4 targetTransformation = _target.worldTransformation;
 
-			[targetTransformation multMiniVec3D:&_positionOffset inToResult:&_desiredPosition];
-			mv3DAdd(&_desiredPosition, currentPos);
+			_desiredPosition = im4MultVector(&targetTransformation, &_positionOffset);
+			iv3Add(&_desiredPosition, &currentPos);
 			
-			[targetTransformation multMiniVec3D:&_lookOffset inToResult:&_desiredLookAtPosition];
+			_desiredLookAtPosition = im4MultVector(&targetTransformation, &_lookOffset);
 			
 			// Set translation and lookAt
-			[super setTranslationMiniVec3D:&_desiredPosition];
-			[super setLookAt:&_desiredLookAtPosition];
+			[super setTranslationVector:_desiredPosition];
+			[super setLookAt:_desiredLookAtPosition];
 		}
 	}
 	
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 }
 
-- (void) setLookAt:(Isgl3dMiniVec3D *)lookAt {
-	mv3DCopy(&_lookOffset, lookAt);
+- (void) setLookAt:(Isgl3dVector3)lookAt {
+	iv3Copy(&_lookOffset, &lookAt);
 	[super setLookAt:lookAt];
 }
 
@@ -168,19 +156,15 @@
 }
 
 - (void) setTranslation:(float)x y:(float)y z:(float)z {
-	_positionOffset = mv3DCreate(x, y, z);
+	_positionOffset = iv3(x, y, z);
 	
 	[super setTranslation:x y:y z:z];
 }
 
-- (void) setTranslationVector:(Isgl3dVector3D *)translation {
-	_positionOffset = translation.miniVec3D;
+- (void) setTranslationVector:(Isgl3dVector3)translation {
+	_positionOffset = translation;
 	
 	[super setTranslationVector:translation];
-}
-
-- (void) setTranslationMiniVec3D:(Isgl3dMiniVec3D *)translation {
-	mv3DCopy(&_positionOffset, translation);
 }
 
 

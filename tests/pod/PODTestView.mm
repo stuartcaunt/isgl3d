@@ -58,7 +58,7 @@
 		_teapot.enableShadowCasting = YES;
 	
 		light.planarShadowsNode = [podImporter meshNodeWithName:@"Plane01"];
-		light.planarShadowsNodeNormal = [Isgl3dVector4D vectorWithX:0 y:1 z:0 w:0];
+		light.planarShadowsNodeNormal = iv3(0, 1, 0);
 	
 		// Set the camera up as it has been saved in the POD
 		// Remove camera created in super, added from POD later

@@ -32,6 +32,7 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dColorUtil.h"
+#import "Isgl3dMatrix.h"
 
 @interface Isgl3dView ()
 - (void) clearBuffers:(Isgl3dGLRenderer *)renderer;
@@ -194,11 +195,11 @@
 	// update model matrices
 	if (_cameraUpdateOnly) {
 		// Update only camera
-		[_camera updateGlobalTransformation:nil];
+		[_camera updateWorldTransformation:nil];
 	
 	} else {
 		// Update full scene
-		[_scene updateGlobalTransformation:nil];
+		[_scene updateWorldTransformation:nil];
 	}
 }
 
@@ -227,8 +228,10 @@
 		[renderer clean];
 	
 		// Set camera characteristics
-		[renderer setProjectionMatrix:[_camera projectionMatrix]];
-		[renderer setViewMatrix:[_camera viewMatrix]];
+		Isgl3dMatrix4 projectionMatrix = [_camera projectionMatrix];
+		Isgl3dMatrix4 viewMatrix = [_camera viewMatrix];
+		[renderer setProjectionMatrix:&projectionMatrix];
+		[renderer setViewMatrix:&viewMatrix];
 			
 		// Render any lights in the scene
 		[_scene renderLights:renderer];
@@ -238,10 +241,10 @@
 
 		// handle occlusion testing		
 		if (_occlusionTestingEnabled) {
-			[_camera getEyeNormal:&_eyeNormal];
-			float distance = mv3DLength(&_eyeNormal);
-			mv3DNormalize(&_eyeNormal);
-			[_camera positionAsMiniVec3D:&_cameraPosition];
+			_eyeNormal = [_camera getEyeNormal];
+			float distance = iv3Length(&_eyeNormal);
+			iv3Normalize(&_eyeNormal);
+			_cameraPosition = [_camera worldPosition];
 
 			[_scene occlusionTest:&_cameraPosition normal:&_eyeNormal targetDistance:distance maxAngle:_occlusionTestingAngle];
 		}
@@ -254,7 +257,7 @@
 	
 		// Render transparent objects
 		if (_zSortingEnabled) {
-			[_scene renderZSortedAlphaObjects:renderer viewMatrix:[_camera viewMatrix]];
+			[_scene renderZSortedAlphaObjects:renderer viewMatrix:&viewMatrix];
 			
 		} else {
 			[_scene render:renderer opaque:false];
@@ -293,8 +296,10 @@
 		[renderer clear:ISGL3D_DEPTH_BUFFER_BIT viewport:_viewportInPixels];
 		
 		// Set camera characteristics
-		[renderer setProjectionMatrix:[_camera projectionMatrix]];
-		[renderer setViewMatrix:[_camera viewMatrix]];
+		Isgl3dMatrix4 projectionMatrix = [_camera projectionMatrix];
+		Isgl3dMatrix4 viewMatrix = [_camera viewMatrix];
+		[renderer setProjectionMatrix:&projectionMatrix];
+		[renderer setViewMatrix:&viewMatrix];
 		
 		// Render the scene for event capture
 		[_scene renderForEventCapture:renderer];

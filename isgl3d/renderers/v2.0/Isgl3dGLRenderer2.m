@@ -30,7 +30,6 @@
 #import "Isgl3dCaptureShader.h"
 #import "Isgl3dShadowMapShader.h"
 #import "Isgl3dGLVBOData.h"
-#import "Isgl3dMatrix4D.h"
 #import "Isgl3dLog.h"
 
 
@@ -48,11 +47,11 @@
 - (id) init {
 	
 	if ((self = [super init])) {
-       	_mvMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
-       	_mvpMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
+       	_mvMatrix = im4Identity();
+       	_mvpMatrix = im4Identity();
        	
-		_lightViewProjectionMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
-		_lightModelViewProjectionMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
+		_lightViewProjectionMatrix = im4Identity();
+		_lightModelViewProjectionMatrix = im4Identity();
        	
 		_currentState = [[Isgl3dGLRenderer2State alloc] init];
 		_previousState = [[Isgl3dGLRenderer2State alloc] init];
@@ -74,11 +73,6 @@
 - (void) dealloc {
 	[_currentState release];
 	[_previousState release];
-
-	[_mvMatrix release];
-	[_mvpMatrix release];
-	[_lightViewProjectionMatrix release];
-	[_lightModelViewProjectionMatrix release];
 
 	[_shaders release];
 	
@@ -246,26 +240,26 @@
 - (void) setupMatrices {
 
 	// calculate model-view matrix
-	[_mvMatrix copyFrom:_viewMatrix];
+	im4Copy(&_mvMatrix, &_viewMatrix);
 	if (_planarShadowsActive) {
-		[_mvMatrix multiply:_planarShadowsMatrix];
+		im4Multiply(&_mvMatrix, &_planarShadowsMatrix);
 	}
-	[_mvMatrix multiply:_modelMatrix];
+	im4Multiply(&_mvMatrix, &_modelMatrix);
 	
 	
 	// calculate model-view-projection
-	[_mvpMatrix copyFrom:_projectionMatrix];
-	[_mvpMatrix multiply:_mvMatrix];
+	im4Copy(&_mvpMatrix, &_projectionMatrix);
+	im4Multiply(&_mvpMatrix, &_mvMatrix);
 
-	[_activeShader setModelViewMatrix:_mvMatrix];
-	[_activeShader setModelViewProjectionMatrix:_mvpMatrix];
+	[_activeShader setModelViewMatrix:&_mvMatrix];
+	[_activeShader setModelViewProjectionMatrix:&_mvpMatrix];
 
 
 	// Send light model-view-projection matrix to generic renderer (for shadows)
-	[_lightModelViewProjectionMatrix copyFrom:_lightViewProjectionMatrix];
-	[_lightModelViewProjectionMatrix multiply:_modelMatrix];
+	im4Copy(&_lightModelViewProjectionMatrix, &_lightViewProjectionMatrix);
+	im4Multiply(&_lightModelViewProjectionMatrix, &_modelMatrix);
 
-	[_activeShader setShadowCastingMVPMatrix:_lightModelViewProjectionMatrix];
+	[_activeShader setShadowCastingMVPMatrix:&_lightModelViewProjectionMatrix];
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
@@ -318,7 +312,7 @@
 	Isgl3dGenericShader * genericShader;
 	while ((genericShader = [enumerator nextObject])) {
 		[self setShaderActive:genericShader];
-		[genericShader addLight:light viewMatrix:_viewMatrix];
+		[genericShader addLight:light viewMatrix:&_viewMatrix];
 	}
 }
 
@@ -416,17 +410,17 @@
 	_currentState.alphaBlendEnabled = false;
 }
 
-- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4D *)viewMatrix {
-	[_lightViewProjectionMatrix copyFrom:_projectionMatrix];
-	[_lightViewProjectionMatrix multiply:viewMatrix];
+- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+	im4Copy(&_lightViewProjectionMatrix, &_projectionMatrix);
+	im4Multiply(&_lightViewProjectionMatrix, viewMatrix);
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position {
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {
 	NSEnumerator *enumerator = [_shaders objectEnumerator];
 	Isgl3dGenericShader * genericShader;
 	while ((genericShader = [enumerator nextObject])) {
 		[self setShaderActive:genericShader];
-		[genericShader setShadowCastingLightPosition:position viewMatrix:_viewMatrix];
+		[genericShader setShadowCastingLightPosition:position viewMatrix:&_viewMatrix];
 	}
 }
 

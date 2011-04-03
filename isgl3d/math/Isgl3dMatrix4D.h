@@ -24,10 +24,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Isgl3dVector3D.h"
+#import "Isgl3dVector.h"
 #include "Isgl3dMiniMat.h"
-
-@class Isgl3dVector4D;
 
 /**
  * The Isgl3dMatrix4D is used to contain data for a 4x4 matrix used for all transformations in iSGL3D.
@@ -42,6 +40,11 @@
  * 
  * | swx, swy, swz,  tw |
  * 
+ * 
+ * WARNING: This class is deprecated and will be removed in v1.2
+ * The functionality of this class can be performed using the Isgl3dMatrix4 with c utilities. This can produce a significant performance gain.
+ * 
+ * @deprecated Will be removed in v1.2
  */
 @interface Isgl3dMatrix4D : NSObject {
 	    
@@ -192,7 +195,7 @@
  * @param position Vector position from which the projection occurs.
  * @result (autorelease) A matrix to flatten vertices onto a plane as projected from a position.
  */
-+ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4D *)plane fromPosition:(Isgl3dVector3D *)position;
++ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4)plane fromPosition:(Isgl3dVector3)position;
 
 /**
  * Constructs a matrix to project all vertices onto a plane along a given direction.
@@ -200,7 +203,7 @@
  * @param position Vector direction along which the projection occurs.
  * @result (autorelease) A matrix to flatten vertices onto a plane as projected along a direction.
  */
-+ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4D *)plane fromDirection:(Isgl3dVector3D *)direction;
++ (Isgl3dMatrix4D *) planarProjectionMatrix:(Isgl3dVector4)plane fromDirection:(Isgl3dVector3)direction;
 
 /**
  * Constructs a matrix used to scale vertices.
@@ -256,7 +259,7 @@
  * Returns the matrix components as a string (used for debugging).
  * @return The NSString representation of the matrix.
  */
-- (NSString *) toString;
+//- (NSString *) toString;
 
 /**
  * Resets the matrix as an identity matrix.
@@ -347,18 +350,11 @@
 - (void) setTranslation:(float)x y:(float)y z:(float)z;
 
 /**
- * Sets the translation components of the matrix using an Isgl3dVector3D. The rotational components
+ * Sets the translation components of the matrix stored in a vector. The rotational components
  * are not affected.
  * @param translation The translation.
  */
-- (void) setTranslationVector:(Isgl3dVector3D *)translation;
-
-/**
- * Sets the translation components of the matrix using an Isgl3dMiniVec3D. The rotational components
- * are not affected.
- * @param translation The translation.
- */
-- (void) setTranslationMiniVec3D:(Isgl3dMiniVec3D *)translation;
+- (void) setTranslationVector:(Isgl3dVector3)translation;
 
 /**
  * Returns the length of the current translation.
@@ -389,28 +385,27 @@
 - (void) multiplyOnLeft3x3:(Isgl3dMatrix4D *)matrix;
 - (void) multVec3:(float *)vector;
 - (void) multVec4:(float *)vector;
-- (void) multMiniVec3D:(Isgl3dMiniVec3D *)vector inToResult:(Isgl3dMiniVec3D *)result;
 
 /**
  * Performs a multiplication on the given 4-component vector.
  * @param vector The vector to be multiplied.
- * @result (autorelease) The result of the multiplication on given vector
+ * @result The result of the multiplication on given vector
  */
-- (Isgl3dVector4D *) multVector4D:(Isgl3dVector4D *)vector;
+- (Isgl3dVector4) multVector4D:(Isgl3dVector4)vector;
 
 /**
  * Performs a multiplication on the given 3-component vector with the translational components of the matrix included.
  * @param vector The vector to be multiplied.
- * @result (autorelease) The result of the multiplication on given vector
+ * @result The result of the multiplication on given vector
  */
-- (Isgl3dVector3D *) multVector3D:(Isgl3dVector3D *)vector;
+- (Isgl3dVector3) multVector:(Isgl3dVector3)vector;
 
 /**
  * Performs a multiplication on the given 3-component vector with the only the 3x3 part of the matrix.
  * @param vector The vector to be multiplied.
- * @result (autorelease) The result of the multiplication on given vector
+ * @result The result of the multiplication on given vector
  */
-- (Isgl3dVector3D *) multVector3D3x3:(Isgl3dVector3D *)vector;
+- (Isgl3dVector3) multVector3x3:(Isgl3dVector3)vector;
 
 /**
  * Returns the 3x3 part of the matrix as a column-major float array.
@@ -438,15 +433,15 @@
 
 /**
  * Returns the equivalent Euler angles of the current rotational components of the matrix.
- * @result (autorelease) Isgl3dVector3D containing the rotations about x, y and z (in degrees)
+ * @result Vector containing the rotations about x, y and z (in degrees)
  */
-- (Isgl3dVector3D *) toEulerAngles;
+- (Isgl3dVector3) toEulerAngles;
 
 /**
  * Returns the equivalet scaling values of the matrix.
- * @result (autorelease) Isgl3dVector3D containing the scalex in x, y and z
+ * @result Vector containing the scalex in x, y and z
  */
-- (Isgl3dVector3D *) toScaleValues;
+- (Isgl3dVector3) toScaleValues;
 
 
 @end

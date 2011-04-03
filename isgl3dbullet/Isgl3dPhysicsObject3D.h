@@ -25,8 +25,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Isgl3dVector.h"
+
 @class Isgl3dNode;
-@class Isgl3dVector3D;
 class btRigidBody;
 
 /**
@@ -67,6 +68,6 @@ class btRigidBody;
  * @param force The force to be applied.
  * @param position The position at which the force is applied.
  */
-- (void) applyForce:(Isgl3dVector3D *)force withPosition:(Isgl3dVector3D *)position;
+- (void) applyForce:(Isgl3dVector3)force withPosition:(Isgl3dVector3)position;
 
 @end

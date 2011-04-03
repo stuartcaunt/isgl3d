@@ -28,9 +28,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "isgl3dTypes.h"
+#import "isgl3dMatrix.h"
 
 @class Isgl3dGLUILabel;
-@class Isgl3dMatrix4D;
 @class Isgl3dGLRenderer;
 
 /**
@@ -52,8 +52,8 @@
 	float _deltaTimes[ISGL3D_FPS_N_TICKS];
 	float _fps;
 	unsigned long _tickIndex;
-	Isgl3dMatrix4D * _projectionMatrix;
-	Isgl3dMatrix4D * _viewMatrix;
+	Isgl3dMatrix4 _projectionMatrix;
+	Isgl3dMatrix4 _viewMatrix;
 	CGRect _viewportInPixels;
 	isgl3dOrientation _orientation;
 }

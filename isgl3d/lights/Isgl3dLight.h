@@ -24,8 +24,7 @@
  */
 
 #import "Isgl3dNode.h"
-
-@class Isgl3dVector3D;
+#import "Isgl3dVector.h"
 
 /**
  * The different types of lighting available.
@@ -170,11 +169,10 @@ typedef enum {
 - (float *) specularLight;
 
 /**
- * For directional lights only, fills the passed Isgl3dMiniVec3D structure with
- * the light direction.
- * @param direction Isgl3dMiniVec3D struture that contains the light direction after the call.
+ * For directional lights only, returns the light direction as a vector.
+ * @return the light direction.
  */
-- (void) directionAsMiniVec3D:(Isgl3dMiniVec3D *)direction;
+- (Isgl3dVector3) directionAsVector;
 
 /**
  * For directional lights only, sets the direction of the light.

@@ -25,7 +25,7 @@
 
 #import "Isgl3dTouchedObject3D.h"
 #import "Isgl3dEvent3DDispatcher.h"
-#import "Isgl3dGLObject3D.h"
+#import "Isgl3dNode.h"
 
 @interface Isgl3dTouchedObject3D (PrivateMethods)
 - (BOOL) areTheSamePoints:(CGPoint)point1 point2:(NSString *)point2;
@@ -34,7 +34,7 @@
 @implementation Isgl3dTouchedObject3D
 
 
-- (id) initWithObject:(Isgl3dGLObject3D *)object {
+- (id) initWithObject:(Isgl3dNode *)object {
 	if ((self = [super init])) {
 		_object = [object retain];
 		
@@ -103,7 +103,7 @@
 	
 }
 
-- (BOOL) respondsToObject:(Isgl3dGLObject3D *)object {
+- (BOOL) respondsToObject:(Isgl3dNode *)object {
 	return (object == _object);
 }
 

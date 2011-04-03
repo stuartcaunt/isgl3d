@@ -28,7 +28,6 @@
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dMaterial.h"
 #import "Isgl3dLight.h"
-#import "Isgl3dMatrix4D.h"
 #import "Isgl3dColorUtil.h"
 #import "Isgl3dLog.h"
 
@@ -166,26 +165,26 @@
 }
 
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4D *)projectionMatrix {
+- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
 	[super setProjectionMatrix:projectionMatrix];
 
     glMatrixMode(GL_PROJECTION);
 	float matrixArray[16];
-	[_projectionMatrix convertToColumnMajorFloatArray:matrixArray];
+	im4ConvertToColumnMajorFloatArray(&_projectionMatrix, matrixArray);
     glLoadMatrixf(matrixArray);
 }
 
-- (void) setViewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	[super setViewMatrix:viewMatrix];
 
     glMatrixMode(GL_MODELVIEW);
 
 	float matrixArray[16];
-	[_viewMatrix convertToColumnMajorFloatArray:matrixArray];
+	im4ConvertToColumnMajorFloatArray(&_viewMatrix, matrixArray);
     glLoadMatrixf(matrixArray);
 }
 
-- (void) setModelMatrix:(Isgl3dMatrix4D *)modelMatrix {
+- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
 	[super setModelMatrix:modelMatrix];
     glMatrixMode(GL_MODELVIEW);
 
@@ -193,11 +192,11 @@
 	float matrixArray[16];
 
 	if (_planarShadowsActive) {
-		[_planarShadowsMatrix convertToColumnMajorFloatArray:matrixArray];
+		im4ConvertToColumnMajorFloatArray(&_planarShadowsMatrix, matrixArray);
     	glMultMatrixf(matrixArray);
 	}
 
-	[_modelMatrix convertToColumnMajorFloatArray:matrixArray];
+	im4ConvertToColumnMajorFloatArray(&_modelMatrix, matrixArray);
     glMultMatrixf(matrixArray);
 }
 
@@ -397,7 +396,7 @@
 	glLightf(_glLight[lightIndex], GL_QUADRATIC_ATTENUATION, light.quadraticAttenuation);
 	
 	float lightPosition[4];
-	[light copyPositionTo:lightPosition];
+	[light copyWorldPositionToArray:lightPosition];
 	glLightfv(_glLight[lightIndex], GL_POSITION, lightPosition);
 	
 	if (light.lightType == SpotLight) {
@@ -453,19 +452,21 @@
 - (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
 	glMatrixMode(GL_MATRIX_PALETTE_OES);
 	unsigned int iMatrix = 0;
-	for (Isgl3dMatrix4D * boneWorldTransformation in transformations) {
+	for (Isgl3dMatrix4Wrapper * boneWorldTransformationWrapper in transformations) {
+		Isgl3dMatrix4 boneWorldTransformation = boneWorldTransformationWrapper.matrix;
+		
 		glCurrentPaletteMatrixOES(iMatrix);
 		
 		iMatrix++;
-		Isgl3dMatrix4D * boneViewMatrix = [Isgl3dMatrix4D matrixFromMatrix:_viewMatrix];
+		Isgl3dMatrix4 boneViewMatrix = _viewMatrix;
 		if (_planarShadowsActive) {
-			[boneViewMatrix multiply:_planarShadowsMatrix];
+			im4Multiply(&boneViewMatrix, &_planarShadowsMatrix);
 		}
 
-		[boneViewMatrix multiply:boneWorldTransformation];
+		im4Multiply(&boneViewMatrix, &boneWorldTransformation);
 
 		float matrixArray[16];
-		[boneViewMatrix convertToColumnMajorFloatArray:matrixArray];
+		im4ConvertToColumnMajorFloatArray(&boneViewMatrix, matrixArray);
 	    glLoadMatrixf(matrixArray);
 	}
 	glMatrixMode(GL_MODELVIEW);

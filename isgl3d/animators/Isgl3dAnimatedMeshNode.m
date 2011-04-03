@@ -28,7 +28,6 @@
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dMaterial.h"
 #import "Isgl3dGLRenderer.h"
-#import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dAnimatedMeshNode
 
@@ -72,18 +71,18 @@
 	}
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	BOOL transformationDirty = _transformationDirty;
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 	
 	// Need to reset the current node transformation: the "model" matrices 
 	// Are included in the bone matrices.
 	if (transformationDirty) {
-		[_transformation makeIdentity];
+		_worldTransformation = im4Identity();
 	}
 	
 	for (Isgl3dBoneBatch * boneBatch in _boneBatches) {
-		[boneBatch updateGlobalTransformation:parentTransformation];
+		[boneBatch updateWorldTransformation:parentTransformation];
 	}
 
 }

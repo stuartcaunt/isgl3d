@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3dCamera.h"
-#import "Isgl3dMiniVec.h"
 
 /**
  * The Isgl3dFollowCamera is used to follow the movement (translations) of a target node.
@@ -44,23 +43,23 @@
 @private
 	Isgl3dNode * _target;
 
-	Isgl3dMatrix4D * _targetMovementIT;
+	Isgl3dMatrix4 _targetMovementIT;
 
-	Isgl3dMiniVec3D _currentTargetPosition;
-	Isgl3dMiniVec3D _currentPosition;
+	Isgl3dVector3 _currentTargetPosition;
+	Isgl3dVector3 _currentPosition;
 	
-	Isgl3dMiniVec3D _oldTargetPosition;
-	Isgl3dMiniVec3D _oldPosition;
+	Isgl3dVector3 _oldTargetPosition;
+	Isgl3dVector3 _oldPosition;
 	
-	Isgl3dMiniVec3D _desiredPosition;
-	Isgl3dMiniVec3D _elasticForce;
-	Isgl3dMiniVec3D _dampingForce;
-	Isgl3dMiniVec3D _velocity;
-	Isgl3dMiniVec3D _acceleration;
-	Isgl3dMiniVec3D _newVelocity;
-	Isgl3dMiniVec3D _newPosition;
-	Isgl3dMiniVec3D _newPositionInPlane;
-	Isgl3dMiniVec3D _targetPosition;
+	Isgl3dVector3 _desiredPosition;
+	Isgl3dVector3 _elasticForce;
+	Isgl3dVector3 _dampingForce;
+	Isgl3dVector3 _velocity;
+	Isgl3dVector3 _acceleration;
+	Isgl3dVector3 _newVelocity;
+	Isgl3dVector3 _newPosition;
+	Isgl3dVector3 _newPositionInPlane;
+	Isgl3dVector3 _targetPosition;
 
 	float _stiffness;
 	float _damping;
@@ -76,7 +75,7 @@
 /**
  * The desired position of the camera, relative to the target node.
  */
-@property (nonatomic) Isgl3dMiniVec3D desiredPosition;
+@property (nonatomic) Isgl3dVector3 desiredPosition;
 
 /**
  * The stiffness of the spring attaching the camera to the target node.

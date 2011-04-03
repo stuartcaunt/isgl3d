@@ -26,7 +26,6 @@
 #import "Isgl3dNode.h"
 
 @class Isgl3dGLRenderer;
-@class Isgl3dMatrix4D;
 
 /**
  * The Isgl3dScene3D is the root node for a scene. It is associated closely to the Isgl3dView3D: the
@@ -61,7 +60,7 @@
  * @param renderer The Renderer.
  * @param viewMatrix The view matrix.
  */
-- (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4D *)viewMatrix;
+- (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
 
 @end
 

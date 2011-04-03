@@ -26,7 +26,6 @@
 #import "Isgl3dPODImporter.h"
 #import "PVRTModelPOD.h"
 #import "Isgl3dGLMesh.h"
-#import "Isgl3dMatrix4D.h"
 #import "Isgl3dBoneNode.h"
 #import "Isgl3dBoneBatch.h"
 #import "Isgl3dAnimatedMeshNode.h"
@@ -611,8 +610,8 @@
 				// Set the bone transformation
 				PVRTMat4 boneTransformation;
 				_podScene->GetBoneWorldMatrix(boneTransformation, meshNodeInfo, boneNodeInfo);
-				Isgl3dMatrix4D * matrix = [Isgl3dMatrix4D matrixFromOpenGLMatrix:boneTransformation.f];
-				[transformations addObject:matrix];
+				Isgl3dMatrix4 matrix = im4CreateFromOpenGL(boneTransformation.f);
+				[transformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:matrix]];
 			}
 			
 			// Add bone transformations to BoneBatch for given frame

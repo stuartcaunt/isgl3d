@@ -27,9 +27,8 @@
 #import <UIKit/UIKit.h>
 
 #import "isgl3dTypes.h"
-#import "Isgl3dMiniVec.h"
+#import "Isgl3dVector.h"
 
-@class Isgl3dMatrix4D;
 @class Isgl3dScene3D;
 @class Isgl3dCamera;
 @class Isgl3dGLRenderer;
@@ -74,8 +73,8 @@
 
 	BOOL _occlusionTestingEnabled;
 	float _occlusionTestingAngle;
-	Isgl3dMiniVec3D _eyeNormal;
-	Isgl3dMiniVec3D _cameraPosition;
+	Isgl3dVector3 _eyeNormal;
+	Isgl3dVector3 _cameraPosition;
 	
 	CGRect _viewport;
 	CGRect _viewportInPixels;

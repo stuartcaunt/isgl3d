@@ -26,7 +26,6 @@
 #import <Foundation/Foundation.h>
 
 @class Isgl3dView3D;
-@class Isgl3dMatrix4D;
 @class Isgl3dGLUIComponent;
 @class Isgl3dNode;
 @class Isgl3dGLRenderer;
@@ -53,13 +52,16 @@
  * 
  * @deprecated Will be removed in v1.2
  */
+ 
+#import "Isgl3dMatrix.h"
+ 
 @interface Isgl3dGLUI : NSObject {
 	
 @private
 	Isgl3dView3D * _view;
 	
-	Isgl3dMatrix4D * _projectionMatrix;
-	Isgl3dMatrix4D * _viewMatrix;
+	Isgl3dMatrix4 _projectionMatrix;
+	Isgl3dMatrix4 _viewMatrix;
 	
 	Isgl3dNode * _uiElements;
 }

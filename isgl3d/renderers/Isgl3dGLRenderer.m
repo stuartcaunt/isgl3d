@@ -25,7 +25,6 @@
 
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dPrimitive.h"
-#import "Isgl3dMatrix4D.h"
 
 @implementation Isgl3dGLRenderer
 
@@ -36,9 +35,9 @@
 	
 	if ((self = [super init])) {
 		
-       	_modelMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
-        _viewMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
-        _projectionMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
+       	_modelMatrix = im4Identity();
+       	_viewMatrix = im4Identity();
+       	_projectionMatrix = im4Identity();
        	
 		_black[0] = 0.0;	
 		_black[1] = 0.0;	
@@ -59,7 +58,7 @@
 		_whiteAndAlpha[3] = 1.0;
 
 		_shadowRenderingMethod = Isgl3dShadowNone;
-		_planarShadowsMatrix = [[Isgl3dMatrix4D alloc] initWithIdentity];
+       	_planarShadowsMatrix = im4Identity();
 		_planarShadowsActive = NO;
 		_shadowAlpha = 1.0;
 	}
@@ -68,10 +67,6 @@
 }
 
 - (void) dealloc {
-	[_modelMatrix release];
-	[_viewMatrix release];
-	[_projectionMatrix release];
-	[_planarShadowsMatrix release];
 
 	[super dealloc];
 }
@@ -95,22 +90,20 @@
 	// OpenGL version specific
 }
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4D *)projectionMatrix {
-	[_projectionMatrix copyFrom:projectionMatrix];
+- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
+	im4Copy(&_projectionMatrix, projectionMatrix);
 }
 
-- (void) setViewMatrix:(Isgl3dMatrix4D *)viewMatrix {
-	[_viewMatrix copyFrom:viewMatrix];
+- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+	im4Copy(&_viewMatrix, viewMatrix);
 }
 
-- (void) setPlanarShadowsMatrix:(Isgl3dMatrix4D *)planarShadowsMatrix {
-	[_planarShadowsMatrix copyFrom:planarShadowsMatrix];
-	
+- (void) setPlanarShadowsMatrix:(Isgl3dMatrix4 *)planarShadowsMatrix {
+	im4Copy(&_planarShadowsMatrix, planarShadowsMatrix);
 }
 
-
-- (void) setModelMatrix:(Isgl3dMatrix4D *)modelMatrix {
-	[_modelMatrix copyFrom:modelMatrix];
+- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
+	im4Copy(&_modelMatrix, modelMatrix);
 	
 	[self setupMatrices];
 }
@@ -214,10 +207,10 @@
 	return _shadowRenderingMethod;
 }
 
-- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4D *)viewMatrix {
+- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3D *)position {
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {
 }
 
 - (void) setShadowMap:(unsigned int)textureId {

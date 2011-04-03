@@ -36,8 +36,6 @@
 #import "Isgl3dGLTextureFactory.h"
 #import "Isgl3dGLContext.h"
 #import "Isgl3dGLUI.h"
-#import "Isgl3dVector3D.h"
-#import "Isgl3dVector4D.h"
 #import "Isgl3dLog.h"
 
 @interface Isgl3dView3D (PrivateMethods)
@@ -75,7 +73,7 @@
 
 		[self initView];
 		[self initScene];
-		[_activeScene updateGlobalTransformation:nil];
+		[_activeScene updateWorldTransformation:nil];
 		
 		return YES;
 
@@ -161,13 +159,13 @@
 			_activeCamera = nil;
 		}
 		
-		if (camera) {
+/*		if (camera) {
 			_activeCamera = [camera retain];
 			// Set up with default projection matrix if necessary
 			if (_activeCamera.projectionMatrix == nil) {
 				[_activeCamera setPerspectiveProjection:60 near:1 far:10000 landscape:_isLandscape];
 			}
-		}
+		}*/
 	}
 }
 
@@ -233,10 +231,10 @@
 
 	if (!_skipUpdates) {
 		// Pass 1: update model matrices
-		[_activeScene updateGlobalTransformation:nil];
+		[_activeScene updateWorldTransformation:nil];
 	} else {
 		// update only camera
-		[_activeCamera updateGlobalTransformation:nil];
+		[_activeCamera updateWorldTransformation:nil];
 	}
 }
 
@@ -244,18 +242,20 @@
 	if (_activeScene && _activeCamera) {
 	
 		// Set camera characteristics
-		[_renderer setProjectionMatrix:[_activeCamera projectionMatrix]];
-		[_renderer setViewMatrix:[_activeCamera viewMatrix]];
+		Isgl3dMatrix4 projectionMatrix = [_activeCamera projectionMatrix];
+		[_renderer setProjectionMatrix:&projectionMatrix];
+		Isgl3dMatrix4 viewMatrix = [_activeCamera viewMatrix];
+		[_renderer setViewMatrix:&viewMatrix];
 			
 		// Pass 2: add lights to scene
 		[_activeScene renderLights:_renderer];
 		
 		// Pass 3: test occlusion of objects
 		if (_occlusionTestingEnabled) {
-			[_activeCamera getEyeNormal:&_eyeNormal];
-			float distance = mv3DLength(&_eyeNormal);
-			mv3DNormalize(&_eyeNormal);
-			[_activeCamera positionAsMiniVec3D:&_cameraPosition];
+			_eyeNormal = [_activeCamera getEyeNormal];
+			float distance = iv3Length(&_eyeNormal);
+			iv3Normalize(&_eyeNormal);
+			_cameraPosition = [_activeCamera worldPosition];
 
 			[_activeScene occlusionTest:&_cameraPosition normal:&_eyeNormal targetDistance:distance maxAngle:_occlusionTestingAngle];
 		}
@@ -267,7 +267,7 @@
 	
 		// Pass 5: render the transparent meshes
 		if (_zSortingEnabled) {
-			[_activeScene renderZSortedAlphaObjects:_renderer viewMatrix:[_activeCamera viewMatrix]];
+			[_activeScene renderZSortedAlphaObjects:_renderer viewMatrix:&viewMatrix];
 			
 		} else {
 			[_activeScene render:_renderer opaque:false];
@@ -296,8 +296,10 @@
 	if ((_renderer.shadowRenderingMethod == Isgl3dShadowPlanar) && _activeScene && _activeCamera) {
 
 		// Set camera characteristics
-		[_renderer setProjectionMatrix:[_activeCamera projectionMatrix]];
-		[_renderer setViewMatrix:[_activeCamera viewMatrix]];
+		Isgl3dMatrix4 projectionMatrix = [_activeCamera projectionMatrix];
+		[_renderer setProjectionMatrix:&projectionMatrix];
+		Isgl3dMatrix4 viewMatrix = [_activeCamera viewMatrix];
+		[_renderer setViewMatrix:&viewMatrix];
 		
 		// Initialise renderer for shadow projection
 		[_renderer initRenderForPlanarShadows];
@@ -322,8 +324,10 @@
 		[_renderer clean];
 		
 		// Set camera characteristics
-		[_renderer setProjectionMatrix:[_activeCamera projectionMatrix]];
-		[_renderer setViewMatrix:[_activeCamera viewMatrix]];
+		Isgl3dMatrix4 projectionMatrix = [_activeCamera projectionMatrix];
+		[_renderer setProjectionMatrix:&projectionMatrix];
+		Isgl3dMatrix4 viewMatrix = [_activeCamera viewMatrix];
+		[_renderer setViewMatrix:&viewMatrix];
 		
 		if (!_uiEventsOnly) {
 			[_activeScene renderForEventCapture:_renderer];

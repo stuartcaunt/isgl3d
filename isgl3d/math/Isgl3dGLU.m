@@ -24,27 +24,10 @@
  */
 
 #import "Isgl3dGLU.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dMiniMat.h"
 
 @implementation Isgl3dGLU
 
-- (id) init {    
-    if ((self = [super init])) {
-    }
-	
-    return self;
-}
-
-+ (Isgl3dMatrix4D *) lookAt:(float)eyex eyey:(float)eyey eyez:(float)eyez centerx:(float)centerx centery:(float)centery centerz:(float)centerz upx:(float)upx upy:(float)upy upz:(float)upz {
-	Isgl3dMatrix4D * matrix = [Isgl3dMatrix4D matrix];
-	
-	[Isgl3dGLU lookAt:eyex eyey:eyey eyez:eyez centerx:centerx centery:centery centerz:centerz upx:upx upy:upy upz:upz inToMatrix:matrix];
-
-	return matrix;	
-}
-
-+ (void) lookAt:(float)eyex eyey:(float)eyey eyez:(float)eyez centerx:(float)centerx centery:(float)centery centerz:(float)centerz upx:(float)upx upy:(float)upy upz:(float)upz inToMatrix:(Isgl3dMatrix4D *)matrix {
++ (Isgl3dMatrix4) lookAt:(float)eyex eyey:(float)eyey eyez:(float)eyez centerx:(float)centerx centery:(float)centery centerz:(float)centerz upx:(float)upx upy:(float)upy upz:(float)upz {
 	
 	// remember: z out of screen
 	float zx = eyex - centerx;
@@ -75,22 +58,22 @@
 	float yz =  zx * xy - zy * xx;
 
 	// Create rotation matrix from new coorinate system
-	Isgl3dMiniMat4D lookat = {xx, xy, xz, 0, yx, yy, yz, 0, zx, zy, zz, 0, 0, 0, 0, 1}; 
+	Isgl3dMatrix4 lookat = im4(xx, xy, xz, 0, yx, yy, yz, 0, zx, zy, zz, 0, 0, 0, 0, 1); 
 	
 	// create translation matrix
-	Isgl3dMiniMat4D translation = {1, 0, 0, -eyex, 0, 1, 0, -eyey, 0, 0, 1, -eyez, 0, 0, 0, 1}; 
+	Isgl3dMatrix4 translation = im4(1, 0, 0, -eyex, 0, 1, 0, -eyey, 0, 0, 1, -eyez, 0, 0, 0, 1); 
 	
 	// calculate final lookat (projection) matrix from combination of both rotation and translation
-	mm4DMultiply(&lookat, &translation);
+	im4Multiply(&lookat, &translation);
 	
-	[matrix copyFromMiniMat4D:&lookat];
+	return lookat;
 }
 
-+ (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape {
++ (Isgl3dMatrix4) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape {
 	return [Isgl3dGLU perspective:fovy aspect:aspect near:near far:far zoom:zoom orientation:landscape ? Isgl3dOrientation90CounterClockwise : Isgl3dOrientation0];
 }
 
-+ (Isgl3dMatrix4D *) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation {
++ (Isgl3dMatrix4) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation {
 	
 	if (orientation == Isgl3dOrientation90Clockwise || orientation == Isgl3dOrientation90CounterClockwise) {
 		aspect = 1. / aspect;
@@ -106,7 +89,8 @@
 	float C = -(far + near) / (far - near);
 	float D = -(2 * far * near) / (far - near);
 	
-	Isgl3dMatrix4D* matrix = [Isgl3dMatrix4D matrix];
+	Isgl3dMatrix4  matrix;
+	
 	matrix.sxx = (2 * near) / (right - left);
 	matrix.syx = 0;
 	matrix.szx = 0;
@@ -128,38 +112,37 @@
 	matrix.tw = 0;
 	
 	if (orientation == Isgl3dOrientation90Clockwise) {
-		float landscapeArray[9] = {0, -1, 0, 1, 0, 0, 0, 0, 1}; 
-		Isgl3dMatrix4D * landscapeMatrix = [Isgl3dMatrix4D matrixFromFloatArray:landscapeArray size:9];
+		float orientationArray[9] = {0, -1, 0, 1, 0, 0, 0, 0, 1}; 
+		Isgl3dMatrix4 orientationMatrix = im4CreateFromArray9(orientationArray);
 		
-		[matrix multiplyOnLeft3x3:landscapeMatrix];
+		im4MultiplyOnLeft3x3(&matrix, &orientationMatrix);
 		
 	} else if (orientation == Isgl3dOrientation180) {
-		float landscapeArray[9] = {-1, 0, 0, 0, -1, 0, 0, 0, 1}; 
-		Isgl3dMatrix4D * landscapeMatrix = [Isgl3dMatrix4D matrixFromFloatArray:landscapeArray size:9];
+		float orientationArray[9] = {-1, 0, 0, 0, -1, 0, 0, 0, 1}; 
+		Isgl3dMatrix4 orientationMatrix = im4CreateFromArray9(orientationArray);
 		
-		[matrix multiplyOnLeft3x3:landscapeMatrix];
+		im4MultiplyOnLeft3x3(&matrix, &orientationMatrix);
 		
 	} else if (orientation == Isgl3dOrientation90CounterClockwise) {
-		float landscapeArray[9] = {0, 1, 0, -1, 0, 0, 0, 0, 1}; 
-		Isgl3dMatrix4D * landscapeMatrix = [Isgl3dMatrix4D matrixFromFloatArray:landscapeArray size:9];
+		float orientationArray[9] = {0, 1, 0, -1, 0, 0, 0, 0, 1}; 
+		Isgl3dMatrix4 orientationMatrix = im4CreateFromArray9(orientationArray);
 		
-		[matrix multiplyOnLeft3x3:landscapeMatrix];
+		im4MultiplyOnLeft3x3(&matrix, &orientationMatrix);
 	} 
 	
 	return matrix;	
 }
 
-+ (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape {
++ (Isgl3dMatrix4) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape {
 	return [Isgl3dGLU ortho:left right:right bottom:bottom top:top near:near far:far zoom:zoom orientation:landscape ? Isgl3dOrientation90CounterClockwise : Isgl3dOrientation0];
 }
 
-+ (Isgl3dMatrix4D *) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation {
++ (Isgl3dMatrix4) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation {
 	float tx = (left + right) / ((right - left) * zoom);
 	float ty = (top + bottom) / ((top - bottom) * zoom);
 	float tz = (far + near) / (far - near);
 	
-	Isgl3dMatrix4D* matrix = [Isgl3dMatrix4D matrix];
-
+	Isgl3dMatrix4  matrix;
 
 	if (orientation == Isgl3dOrientation0) {
 		matrix.sxx = 2 / (right - left);

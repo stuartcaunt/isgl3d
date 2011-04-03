@@ -30,8 +30,6 @@
 #import "Isgl3dColorMaterial.h"
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dObject3DGrabber.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector3D.h"
 
 @interface Isgl3dMeshNode (PrivateMethods)
 - (void) renderMesh:(Isgl3dGLRenderer *)renderer;
@@ -105,15 +103,15 @@
 	}
 }
 
-- (void) occlusionTest:(Isgl3dMiniVec3D *)eye normal:(Isgl3dMiniVec3D *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
+- (void) occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
 	// Test for occlusion
-	mv3DFill(&_eyeToModel, _transformation.tx, _transformation.ty, _transformation.tz);
-	mv3DSub(&_eyeToModel, eye);
+	iv3Fill(&_eyeToModel, _worldTransformation.tx, _worldTransformation.ty, _worldTransformation.tz);
+	iv3Sub(&_eyeToModel, eye);
 
-	mv3DCopy(&_eyeToModelNormal, &_eyeToModel);
-	mv3DNormalize(&_eyeToModelNormal);
+	iv3Copy(&_eyeToModelNormal, &_eyeToModel);
+	iv3Normalize(&_eyeToModelNormal);
 	
-	float dot = mv3DDot(normal, &_eyeToModelNormal);
+	float dot = iv3Dot(normal, &_eyeToModelNormal);
 	float angle = acos(dot) * 180 / M_PI;
 	
 	
@@ -123,7 +121,7 @@
 	//            1 => at target
 	//        f > 1 => object behind target		
 	//        f < 0 => object behind camera		
-	float occlusionDistanceFactor = mv3DDot(normal, &_eyeToModel) / targetDistance;
+	float occlusionDistanceFactor = iv3Dot(normal, &_eyeToModel) / targetDistance;
 	
 	// Calculate occlusion angle factor: 
 	//    0 < f < 1 => object between target and max angle
@@ -220,7 +218,7 @@
 		}
 		
 		// Set the model matrix
-		[renderer setModelMatrix:_transformation];
+		[renderer setModelMatrix:&_worldTransformation];
 		
 		// Renderer the mesh
 		[self renderMesh:renderer];
@@ -262,7 +260,7 @@
 		[renderer enableCulling:YES backFace:YES];
 		
 		// Set the model matrix
-		[renderer setModelMatrix:_transformation];
+		[renderer setModelMatrix:&_worldTransformation];
 	
 		// Renderer the mesh
 		[self renderMesh:renderer];
@@ -299,7 +297,7 @@
 		[renderer enableCulling:YES backFace:NO];
 		
 		// Set the model matrix
-		[renderer setModelMatrix:_transformation];
+		[renderer setModelMatrix:&_worldTransformation];
 
 		// Set alpha culling value
 		[renderer setAlphaCullingValue:_alphaCullValue];
@@ -344,7 +342,7 @@
 		[renderer setAlphaCullingValue:_alphaCullValue];
 		
 		// Set the model matrix
-		[renderer setModelMatrix:_transformation];
+		[renderer setModelMatrix:&_worldTransformation];
 		
 		// Renderer the mesh
 		[self renderMesh:renderer];

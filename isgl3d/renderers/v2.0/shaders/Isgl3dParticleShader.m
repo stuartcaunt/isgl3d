@@ -27,7 +27,6 @@
 #import "Isgl3dShaderState.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
-#import "Isgl3dMatrix4D.h"
 
 @interface Isgl3dParticleShader (PrivateMethods)
 - (void) handleStates;
@@ -94,11 +93,11 @@
 	
 }
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4D *)modelViewMatrix {
+- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4D *)modelViewProjectionMatrix {
+- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	[self setUniformMatrix4:_mvpMatrixUniformLocation matrix:modelViewProjectionMatrix];
 }
 

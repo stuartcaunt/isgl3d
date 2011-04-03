@@ -29,8 +29,6 @@
 #import "Isgl3dGLTextureFactory.h"
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dGLU.h"
-#import "Isgl3dMatrix4D.h"
-#import "Isgl3dVector4D.h"
 #import "Isgl3dTypes.h"
 
 @interface Isgl3dShadowCastingLight (PrivateMethods)
@@ -39,14 +37,13 @@
 
 @implementation Isgl3dShadowCastingLight
 
-@synthesize planarShadowsNode = _planarShadowsNode;
 @synthesize planarShadowsNodeNormal = _planarShadowsNodeNormal;
 
 - (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
 	
 	if ((self = [super initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation])) {
 
-		_planarShadowsNodeNormal = [[Isgl3dVector4D alloc] init:0 y:0 z:1 w:0];
+		_planarShadowsNodeNormal = iv3(0, 0, 1);
 	}
 	
 	return self;
@@ -61,9 +58,6 @@
 		[_planarShadowsNode release];
 	}
 
-	[_viewMatrix release];
-	[_planarShadowsNodeNormal release];
-
 	[super dealloc];
 }
 
@@ -75,9 +69,10 @@
 		
 		[renderer setShadowMap:_shadowRenderTexture.textureId];
 		
-		[renderer setShadowCastingLightViewMatrix:_viewMatrix];
+		[renderer setShadowCastingLightViewMatrix:&_viewMatrix];
 		
-		[renderer setShadowCastingLightPosition:[self position]];
+		Isgl3dVector3 worldPosition = [self worldPosition];
+		[renderer setShadowCastingLightPosition:&worldPosition];
 	}
 }
 
@@ -93,7 +88,7 @@
 	[_shadowRenderTexture clear];
 	
 	// Set view and projection matrices from light position
-	[renderer setViewMatrix:_viewMatrix];
+	[renderer setViewMatrix:&_viewMatrix];
 		
 	[renderer initRenderForShadowMap];
 	
@@ -104,27 +99,32 @@
 
 - (void) createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
 
-	Isgl3dVector4D * plane;
+	Isgl3dVector4 plane;
 	if (_planarShadowsNode != nil) {
 		plane = [_planarShadowsNode asPlaneWithNormal:_planarShadowsNodeNormal];
 	} else {
-		plane = [Isgl3dVector4D vectorWithX:0 y:1 z:0 w:0];
+		plane = iv4(0, 1, 0, 0);
 	}
 
 	// Create projection matrix
-	Isgl3dMatrix4D * planarShadowsMatrix;
+	Isgl3dMatrix4 planarShadowsMatrix;
+	Isgl3dVector3 worldPosition = [self worldPosition];
 	if (self.lightType == DirectionalLight) {
-		planarShadowsMatrix = [Isgl3dMatrix4D planarProjectionMatrix:plane fromDirection:[self position]];
+		planarShadowsMatrix = im4PlanarProjectionMatrixFromDirection(&plane, &worldPosition);
 	} else {
-		planarShadowsMatrix = [Isgl3dMatrix4D planarProjectionMatrix:plane fromPosition:[self position]];
+		planarShadowsMatrix = im4PlanarProjectionMatrixFromPosition(&plane, &worldPosition);
 	}
 		
 	// set shadow projection matrix
-	[renderer setPlanarShadowsMatrix:planarShadowsMatrix];
+	[renderer setPlanarShadowsMatrix:&planarShadowsMatrix];
 
 	// Render the scene
 	[scene renderForPlanarShadows:renderer];
 
+}
+
+- (Isgl3dNode *) planarShadowsNode {
+	return _planarShadowsNode;
 }
 
 - (void) setPlanarShadowsNode:(Isgl3dNode *)node {
@@ -156,10 +156,10 @@
 	[self setTranslation:0 y:0 z:10];
 }
 
-- (void) updateGlobalTransformation:(Isgl3dMatrix4D *)parentTransformation {
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	
 	BOOL calculateViewMatrix = _transformationDirty;
-	[super updateGlobalTransformation:parentTransformation];
+	[super updateWorldTransformation:parentTransformation];
 
 	if (calculateViewMatrix) {
 		[self calculateViewMatrix];
@@ -167,15 +167,11 @@
 }
 
 - (void) calculateViewMatrix {
-	if (_viewMatrix) {
-		[_viewMatrix release];
-	}
 	
 	float lightPosition[4];
-	[self copyPositionTo:lightPosition];
+	[self copyWorldPositionToArray:lightPosition];
 	
 	_viewMatrix = [Isgl3dGLU lookAt:lightPosition[0] eyey:lightPosition[1] eyez:lightPosition[2] centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:0];
-	[_viewMatrix retain];
 }
 
 
