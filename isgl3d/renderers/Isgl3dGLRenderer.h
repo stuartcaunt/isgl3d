@@ -23,13 +23,6 @@
  *
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
-#import "Isgl3dTypes.h"
-#import "Isgl3dVector.h"
-#import "Isgl3dMatrix.h"
-
 #define COLOR_RENDERING @"ColorRendering"
 #define GENERIC_RENDERING @"GenericRendering"
 #define PARTICLE_RENDERING @"ParticleRendering"
@@ -52,9 +45,16 @@ typedef enum {
 	Points
 } Isgl3dRenderType;
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+#import "Isgl3dTypes.h"
+#import "Isgl3dVector.h"
+#import "Isgl3dMatrix.h"
 
 @class Isgl3dLight;
 @class Isgl3dGLVBOData;
+@class Isgl3dArray;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -130,7 +130,7 @@ typedef enum {
 - (void) enableNormalization:(BOOL)nomalizationEnabled;
 
 - (void) enableSkinning:(BOOL)skinningEnabled;
-- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations;
+- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations;
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
 
 - (void) preRender;

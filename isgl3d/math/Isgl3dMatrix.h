@@ -51,14 +51,6 @@ typedef struct {
 	float tw;
 } Isgl3dMatrix4;
 
-@interface Isgl3dMatrix4Wrapper : NSObject {
-@private
-	Isgl3dMatrix4 _matrix;	
-}
-@property (nonatomic) Isgl3dMatrix4 matrix;
-+ (id) matrixWrapperWithMatrix:(Isgl3dMatrix4)matrix;
-- (id) initWithMatrix:(Isgl3dMatrix4)matrix;
-@end
 
 /**
  * Creates an Isgl3dMatrix4 structure from given values.

@@ -26,6 +26,7 @@
 #import "Isgl3dShader.h"
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
+#import "Isgl3dArray.h"
 
 @interface Isgl3dShader (PrivateMethods)
 - (void) getAttributeAndUniformLocations;
@@ -122,25 +123,23 @@
 	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrixArray);
 }
 
-- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
 	float matrixArray[size * 9];
 	int offset = 0;
-	for (Isgl3dMatrix4Wrapper * matrixWrapper in matrices) {
-		Isgl3dMatrix4 matrix = matrixWrapper.matrix;
+	IA_FOREACH_PTR(Isgl3dMatrix4 *, matrix, matrices) {
 
-		im4ConvertTo3x3ColumnMajorFloatArray(&matrix, &(matrixArray[offset]));
+		im4ConvertTo3x3ColumnMajorFloatArray(matrix, &(matrixArray[offset]));
 		offset += 9;
 	}
 	glUniformMatrix3fv(uniformLocation, size, GL_FALSE, matrixArray);
 }
 
-- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size {
+- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
 	float matrixArray[size * 16];
 	int offset = 0;
-	for (Isgl3dMatrix4Wrapper * matrixWrapper in matrices) {
-		Isgl3dMatrix4 matrix = matrixWrapper.matrix;
+	IA_FOREACH_PTR(Isgl3dMatrix4 *, matrix, matrices) {
 
-		im4ConvertToColumnMajorFloatArray(&matrix, &(matrixArray[offset]));
+		im4ConvertToColumnMajorFloatArray(matrix, &(matrixArray[offset]));
 		offset += 16;
 	}
 	
@@ -237,7 +236,8 @@
 - (void) setPointAttenuation:(float *)attenuation {
 }
 
-- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
+- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
+//- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
 }
 
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {

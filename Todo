@@ -13,6 +13,12 @@ or via the user group at http://groups.google.com/group/isgl3d
 
 Priority
 --------
+	- Redo transformations - store local position, rotation, scale ?
+	- static autorelease constructors
+	- templates Xcode 4
+	- output version number
+	- remove deprecated
+	
 
 Desirable
 ---------
@@ -33,6 +39,7 @@ Desirable
   - Extended UI features (or integration of cocos2d)
     - [update 07/03/11 Cocos2d difficult to integrate due to different architectures, handling of renderer states, plus only ES 1.1 compatible]
   - Shadows: shadow mapping + antialiasing
+     - Fix current shadow mapping
      - Control of shadow map generation with ShadowCastingLight view matrix properties (fov etc)
      - or shadow map generation on cube map
      - or shadow volume

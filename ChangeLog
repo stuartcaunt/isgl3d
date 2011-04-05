@@ -1,4 +1,5 @@
 current SVN version
+	Isgl3dArray: added as container for any data type not just objective c objects (eg structs).
 	Isgl3dNode: added clarity to method names involving transformations
 	Isgl3dVector3, Isgl3dVector4, Isgl3dMatrix4: added and used in all internal calculations (performance gain)
 	Isgl3dMatrix4D: deprecated. Use Isgl3dMatrix4 structure with c methods to store/manipulate 4D matrices (performance gain)

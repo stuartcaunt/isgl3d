@@ -173,7 +173,7 @@
 - (void) enableSkinning:(BOOL)skinningEnabled {
 }
 
-- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
+- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 }
 
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {

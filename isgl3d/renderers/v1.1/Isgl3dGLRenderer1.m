@@ -30,6 +30,7 @@
 #import "Isgl3dLight.h"
 #import "Isgl3dColorUtil.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dArray.h"
 
 @interface Isgl3dGLRenderer1 (PrivateMethods)
 - (void) removeModelMatrix;
@@ -449,11 +450,10 @@
 	_currentState.matrixPaletteEnabled = skinningEnabled;
 }
 
-- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
+- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 	glMatrixMode(GL_MATRIX_PALETTE_OES);
 	unsigned int iMatrix = 0;
-	for (Isgl3dMatrix4Wrapper * boneWorldTransformationWrapper in transformations) {
-		Isgl3dMatrix4 boneWorldTransformation = boneWorldTransformationWrapper.matrix;
+	IA_FOREACH_PTR(Isgl3dMatrix4 *, boneWorldTransformation, transformations) {
 		
 		glCurrentPaletteMatrixOES(iMatrix);
 		
@@ -463,7 +463,7 @@
 			im4Multiply(&boneViewMatrix, &_planarShadowsMatrix);
 		}
 
-		im4Multiply(&boneViewMatrix, &boneWorldTransformation);
+		im4Multiply(&boneViewMatrix, boneWorldTransformation);
 
 		float matrixArray[16];
 		im4ConvertToColumnMajorFloatArray(&boneViewMatrix, matrixArray);

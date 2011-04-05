@@ -130,6 +130,8 @@
 #import "ui/Isgl3dGLUIImage.h"
 #import "ui/Isgl3dGLUILabel.h"
 #import "ui/Isgl3dGLUIProgressBar.h"
+#import "utils/Isgl3dArray.h"
+#import "utils/Isgl3dCArray.h"
 #import "utils/Isgl3dColorUtil.h"
 #import "utils/Isgl3dFloatArray.h"
 #import "utils/Isgl3dFpsDisplay.h"

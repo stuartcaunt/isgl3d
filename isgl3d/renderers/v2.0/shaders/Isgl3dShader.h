@@ -31,6 +31,7 @@
 @class Isgl3dGLProgram;
 @class Isgl3dLight;
 @class Isgl3dGLVBOData;
+@class Isgl3dArray;
 
 #define TEXTURE0_INDEX 0
 #define SHADOWMAP_INDEX 1
@@ -58,8 +59,8 @@
 
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
-- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size;
-- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(NSArray *)matrices size:(unsigned int)size;
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size;
+- (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size;
 - (void) setUniform1i:(GLint)uniformIndex value:(GLint)value;
 - (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value;
 - (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values;
@@ -90,7 +91,8 @@
 - (void) setAlphaCullingValue:(float)cullValue;
 - (void) setPointAttenuation:(float *)attenuation;
 
-- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations;
+//- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations;
+- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations;
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
 
 

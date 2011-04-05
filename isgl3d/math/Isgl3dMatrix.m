@@ -27,19 +27,6 @@
 #import "math.h"
 #import "Isgl3dLog.h"
 
-@implementation Isgl3dMatrix4Wrapper
-@synthesize matrix = _matrix;
-+ (id) matrixWrapperWithMatrix:(Isgl3dMatrix4)matrix {
-	return [[[self alloc] initWithMatrix:matrix] autorelease];
-}
-- (id) initWithMatrix:(Isgl3dMatrix4)matrix {
-	if ((self = [super init])) {
-		_matrix = matrix;
-	}
-	return self;
-}
-@end
-
 Isgl3dMatrix4 im4PlanarProjectionMatrixFromPosition(Isgl3dVector4 * plane, Isgl3dVector3 * position) {
 	float dot = plane->x * position->x + plane->y * position->y + plane->z * position->z + plane->w;
 	

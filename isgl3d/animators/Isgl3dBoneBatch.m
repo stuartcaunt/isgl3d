@@ -26,6 +26,7 @@
 #import "Isgl3dBoneBatch.h"
 #import "Isgl3dBoneNode.h"
 #import "Isgl3dGLRenderer.h"
+#import "Isgl3dArray.h"
 
 @implementation Isgl3dBoneBatch
 
@@ -38,8 +39,8 @@
 		_frameTransformations = [[NSMutableDictionary alloc] init];
 		_currentFrameNumber = 0;
 		
-		_currentFrameGlobalTransformations = [[NSMutableArray alloc] init];
-		_currentFrameGlobalInverseTransformations = [[NSMutableArray alloc] init];
+		_currentFrameGlobalTransformations = IA_ALLOC_INIT_WITH_CAPACITY(Isgl3dMatrix4, 8);
+		_currentFrameGlobalInverseTransformations = IA_ALLOC_INIT_WITH_CAPACITY(Isgl3dMatrix4, 8);
 		
 		_frameChanged = YES;
     }
@@ -55,7 +56,7 @@
 	[super dealloc];
 }
 
-- (void) addBoneTransformations:(NSArray *)transformations forFrame:(unsigned int)frame {
+- (void) addBoneTransformations:(Isgl3dArray *)transformations forFrame:(unsigned int)frame {
 	[_frameTransformations setObject:transformations forKey:[NSNumber numberWithInt:frame]];
 }
 
@@ -75,24 +76,22 @@
 - (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	
 	if (_transformationDirty || _frameChanged) {
-		[_currentFrameGlobalTransformations removeAllObjects];
-		[_currentFrameGlobalInverseTransformations removeAllObjects];
+		[_currentFrameGlobalTransformations clear];
+		[_currentFrameGlobalInverseTransformations clear];
 		
 		// Get the bone transformations for the current frame
-		NSArray * transformations = [_frameTransformations objectForKey:[NSNumber numberWithInt:_currentFrameNumber]];
-	
-		for (Isgl3dMatrix4Wrapper * wrapper in transformations) {
-			Isgl3dMatrix4 transformation = wrapper.matrix;
+		Isgl3dArray * transformations = [_frameTransformations objectForKey:[NSNumber numberWithInt:_currentFrameNumber]];
+		IA_FOREACH_PTR(Isgl3dMatrix4 *, transformation, transformations) {
 			
 			Isgl3dMatrix4 globalTransformation;
             im4Copy(&globalTransformation, parentTransformation);
-			im4Multiply(&globalTransformation, &transformation);
-			[_currentFrameGlobalTransformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:globalTransformation]];
+			im4Multiply(&globalTransformation, transformation);
+			IA_ADD(_currentFrameGlobalTransformations, globalTransformation);
 
 			Isgl3dMatrix4 itMatrix = globalTransformation;
 			im4Invert(&itMatrix);
 			im4Transpose(&itMatrix);
-			[_currentFrameGlobalInverseTransformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:itMatrix]];
+			IA_ADD(_currentFrameGlobalInverseTransformations, itMatrix);
 		}	
 		
 		_transformationDirty = NO;

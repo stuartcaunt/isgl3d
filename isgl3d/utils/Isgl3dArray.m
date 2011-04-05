@@ -23,48 +23,55 @@
  *
  */
 
-#import "Isgl3dBoneNode.h"
-#import "Isgl3dPrimitiveFactory.h"
-#import "Isgl3dColorMaterial.h"
-#import "Isgl3dMatrix.h"
 #import "Isgl3dArray.h"
 
-@implementation Isgl3dBoneNode
+@implementation Isgl3dArray
 
+- (id) initForSizeType:(size_t)sizeType {
+	if ((self = [super init])) {
+		_cArray = iaCreateForTypeSize(sizeType);
+	}
+	return self;
+}
 
-- (id) init {
-    if ((self = [super initWithMesh:[[Isgl3dPrimitiveFactory sharedInstance] boneMesh] andMaterial:[[[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0] autorelease]])) {
-		_frameTransformations = IA_ALLOC_INIT(Isgl3dMatrix4);
-    }
-	
-    return self;
+- (id) initForSizeType:(size_t)sizeType withCapacity:(unsigned int)capacity {
+	if ((self = [super init])) {
+		_cArray = iaCreateForTypeSizeWithCapacity(sizeType, capacity);
+	}
+	return self;
+}
+
+- (id) initForSizeType:(size_t)sizeType withArray:(void *)array count:(unsigned int)count {
+	if ((self = [super init])) {
+		_cArray = iaCreateForTypeSizeWithArray(sizeType, array, count);
+	}
+	return self;
 }
 
 - (void) dealloc {
-	[_frameTransformations release];
+	ICA_DELETE(_cArray);
 	
 	[super dealloc];
 }
 
-- (Isgl3dBoneNode *) createBoneNode {
-	return (Isgl3dBoneNode *)[[self addChild:[[Isgl3dBoneNode alloc] init]] autorelease];
+- (void) add:(const void *)value {
+	iaAdd(_cArray, value);
 }
 
-- (void) addFrameTransformationFromOpenGLMatrix:(float *)transformation {
-	Isgl3dMatrix4 matrix;
-	im4SetTransformationFromOpenGLMatrix(&matrix, transformation);
-	IA_ADD(_frameTransformations, matrix);
+- (unsigned char *) get:(unsigned int)index {
+	return iaGet(_cArray, index);
 }
 
-- (void) setFrame:(unsigned int)frameNumber {
-	Isgl3dMatrix4 * matrix = IA_GET_PTR(Isgl3dMatrix4 *, _frameTransformations, frameNumber);
-	[self setTransformation:*matrix];
-	
-	for (Isgl3dNode * node in _children) {
-		if ([node isKindOfClass:[Isgl3dBoneNode class]]) {
-			[(Isgl3dBoneNode *)node setFrame:frameNumber];
-		}
-	}
+- (void) clear {
+	iaClear(_cArray);
+}
+
+- (unsigned char *) array {
+	return _cArray->array;
+}
+
+- (unsigned int) count {
+	return _cArray->count;
 }
 
 @end

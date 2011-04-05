@@ -24,6 +24,7 @@
  */
 
 #import "Isgl3dMeshNode.h"
+@class Isgl3dArray;
 
 /**
  * The Isgl3dBoneNode is used to render the bones (or rather the joints) of a skeleton coming from an imported 3D model.
@@ -40,7 +41,7 @@
 @interface Isgl3dBoneNode : Isgl3dMeshNode {
 
 @private
-	NSMutableArray * _frameTransformations;
+	Isgl3dArray * _frameTransformations;
 }
 
 

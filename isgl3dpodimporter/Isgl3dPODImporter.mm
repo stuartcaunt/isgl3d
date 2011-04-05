@@ -37,6 +37,7 @@
 #import "Isgl3dCamera.h"
 #import "Isgl3dDirector.h"
 #import "isgl3dTypes.h"
+#import "isgl3dArray.h"
 
 @interface Isgl3dPODImporter (PrivateMethods)
 
@@ -600,7 +601,7 @@
 		// Iterate over frames and get transformations for all bones 
 		for (int iFrame = 0; iFrame < _podScene->nNumFrame; iFrame++) {
 			_podScene->SetFrame(iFrame);
-			NSMutableArray * transformations = [[NSMutableArray alloc] init];
+			Isgl3dArray * transformations = IA_ALLOC_INIT_AR(Isgl3dMatrix4);
 
 			// Iterate over all bones, get transformation for each
 			for (int iBone = 0; iBone < numberOfBatchBones; iBone++) {
@@ -611,12 +612,12 @@
 				PVRTMat4 boneTransformation;
 				_podScene->GetBoneWorldMatrix(boneTransformation, meshNodeInfo, boneNodeInfo);
 				Isgl3dMatrix4 matrix = im4CreateFromOpenGL(boneTransformation.f);
-				[transformations addObject:[Isgl3dMatrix4Wrapper matrixWrapperWithMatrix:matrix]];
+				
+				IA_ADD(transformations, matrix);
 			}
 			
 			// Add bone transformations to BoneBatch for given frame
 			[boneBatch addBoneTransformations:transformations forFrame:iFrame];
-			[transformations release];
 		}
 		
 	}

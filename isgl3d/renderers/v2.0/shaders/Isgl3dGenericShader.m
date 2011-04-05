@@ -297,7 +297,7 @@
 	}
 }
 
-- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
+- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 	[self setUniformMatrix4:_boneMatrixArrayUniformLocation matrix:transformations size:8];
 	[self setUniformMatrix3:_boneMatrixArrayITUniformLocation matrix:inverseTransformations size:8];
 }

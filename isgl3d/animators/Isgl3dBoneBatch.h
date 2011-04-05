@@ -27,6 +27,7 @@
 
 #import "Isgl3dMatrix.h"
 
+@class Isgl3dArray;
 @class Isgl3dBoneNode;
 @class Isgl3dGLRenderer;
 
@@ -50,8 +51,8 @@
 @private
 	NSMutableDictionary * _frameTransformations;
 
-	NSMutableArray * _currentFrameGlobalTransformations;
-	NSMutableArray * _currentFrameGlobalInverseTransformations;
+	Isgl3dArray * _currentFrameGlobalTransformations;
+	Isgl3dArray * _currentFrameGlobalInverseTransformations;
 
 	unsigned int _numberOfElements;
 	unsigned int _elementOffset;
@@ -72,10 +73,10 @@
 /**
  * Adds the bone transformations for a given frame number.
  * The order of the transformations in the array needs to correspond to the bone indices in the mesh data.
- * @param transformations The NSArray of transformations for each of the bones associated with the bone batch.
+ * @param transformations The Isgl3dArray of transformations (Isgl3dMatrix4 structure) for each of the bones associated with the bone batch.
  * @param frame The corresponding frame number.
  */
-- (void) addBoneTransformations:(NSArray *)transformations forFrame:(unsigned int)frame;
+- (void) addBoneTransformations:(Isgl3dArray *)transformations forFrame:(unsigned int)frame;
 
 /*
  * Sets the frame number and accordingly the transformation for each bone.
