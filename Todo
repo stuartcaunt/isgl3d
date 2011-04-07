@@ -18,6 +18,7 @@ Priority
 	- templates Xcode 4
 	- output version number
 	- remove deprecated
+	- NSCopying protocol
 	
 
 Desirable

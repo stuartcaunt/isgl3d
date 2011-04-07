@@ -27,6 +27,7 @@
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dArray.h"
+#import "Isgl3dLog.h"
 
 @interface Isgl3dShader (PrivateMethods)
 - (void) getAttributeAndUniformLocations;
@@ -48,7 +49,16 @@
 		
        	
    		NSString * vertexShaderFileName = [[NSBundle mainBundle] pathForResource:vertexName ofType:vertexExtension];
+   		if (!vertexShaderFileName) {
+			Isgl3dLog(Error, @"Isgl3dShader: cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
+			return nil;
+   		}
+   		
 		NSString * fragmentShaderFileName = [[NSBundle mainBundle] pathForResource:fragmentName ofType:fragmentExtension];
+   		if (!fragmentShaderFileName) {
+			Isgl3dLog(Error, @"Isgl3dShader: cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
+			return nil;
+   		}
 	
    		if (![_glProgram loadShaderFile:GL_VERTEX_SHADER file:vertexShaderFileName withPreProcessorHeader:vsPreProcHeader]) {
    			[self release];

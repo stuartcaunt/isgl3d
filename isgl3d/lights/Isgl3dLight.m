@@ -30,6 +30,7 @@
 #import "Isgl3dColorMaterial.h"
 #import "Isgl3dSphere.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dColorUtil.h"
 
 @implementation Isgl3dLight
 
@@ -46,7 +47,7 @@
 
 - (id) initWithColorArray:(float *)color {
 	
-	NSString  * colorString = [NSString stringWithFormat:@"%02x%02x%02x", color[0], color[1], color[2]];
+	NSString  * colorString = [Isgl3dColorUtil rgbString:color];
 	return [self initWithHexColor:@"000000" diffuseColor:colorString specularColor:colorString attenuation:0];
 }
 

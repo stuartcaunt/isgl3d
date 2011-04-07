@@ -80,15 +80,15 @@
 }
 
 + (NSString *) randomHexColor {
-	return [NSString stringWithFormat:@"%02x%02x%02x", (int)(255.0 * random() / RAND_MAX), (int)(255.0 * random() / RAND_MAX), (int)(255.0 * random() / RAND_MAX)];
+	return [NSString stringWithFormat:@"%02x%02x%02x", lroundf(255.0 * random() / RAND_MAX), lroundf(255.0 * random() / RAND_MAX), lroundf(255.0 * random() / RAND_MAX)];
 }
 
 + (NSString *) rgbString:(float *)color {
-	return [NSString stringWithFormat:@"%02x%02x%02x",  (int)(255.0 * color[0]), (int)(255.0 * color[1]), (int)(255.0 * color[2])];
+	return [NSString stringWithFormat:@"%02x%02x%02x", lroundf(255.0 * color[0]), lroundf(255.0 * color[1]), lroundf(255.0 * color[2])];
 }
 
 + (NSString *) rgbaString:(float *)color {
-	return [NSString stringWithFormat:@"%02x%02x%02x%02x", (int)(255.0 * color[0]), (int)(255.0 * color[1]), (int)(255.0 * color[2]), (int)(255.0 * color[3])];
+	return [NSString stringWithFormat:@"%02x%02x%02x%02x", lroundf(255.0 * color[0]), lroundf(255.0 * color[1]), lroundf(255.0 * color[2]), lroundf(255.0 * color[3])];
 }
 
 - (void) dealloc {

@@ -56,6 +56,7 @@ class CPVRTModelPOD;
 	Isgl3dView3D * _view3D;
 
 	CPVRTModelPOD * _podScene;
+	NSString * _podPath;
 	
 	NSMutableArray * _meshes;
 	NSMutableDictionary * _meshNodes;

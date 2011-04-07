@@ -38,6 +38,7 @@
 #import "Isgl3dDirector.h"
 #import "isgl3dTypes.h"
 #import "isgl3dArray.h"
+#import "Isgl3dLog.h"
 
 @interface Isgl3dPODImporter (PrivateMethods)
 
@@ -82,11 +83,17 @@
 		NSString * extension = [path pathExtension];
 		NSString * fileName = [path stringByDeletingPathExtension];
 		
+		if (![[NSBundle mainBundle] pathForResource:fileName ofType:extension]) {
+			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD file %@ does not exist.", path);
+		}
+		
 		if (_podScene->ReadFromFile([[[NSBundle mainBundle] pathForResource:fileName ofType:extension] UTF8String]) != PVR_SUCCESS) {
-			NSLog(@"Unable to parse POD file %@", fileName);
+			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : Unable to parse POD file %@", path);
 			delete _podScene;
 			return nil;
 		}
+		
+		_podPath = path;
 
 		_meshes = [[NSMutableArray alloc] init];
 		_meshNodes = [[NSMutableDictionary alloc] init];
@@ -365,6 +372,13 @@
 		if ([_textureMods objectForKey:textureFileName] != nil) {
 			textureFileName = [_textureMods objectForKey:textureFileName];
 		}
+		
+		NSString * extension = [textureFileName pathExtension];
+		// Image formats supported by UIImage and pvr
+		static NSArray * acceptedFormats = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"tiff", @"tif", @"gif", @"bmp", @"BMPf", @"ico", @"cur", @"xbm", @"pvr", nil];
+		if (![acceptedFormats containsObject:extension]) {
+			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD %@ contains texture image with format that is not supported : %@", _podPath, textureFileName);
+		} 
 		
 		NSLog(@"Creating texture from %@:", textureFileName);
 		[_textures addObject:textureFileName];

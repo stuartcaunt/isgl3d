@@ -1,4 +1,7 @@
 current SVN version
+	Isgl3dShader: output error message when shader files not found
+	Isgl3dLight: Fix bug in initWithColorArray
+	Isgl3dColorUtil: Fix rounding problem when creating NSString from rgb/rgba colors
 	Isgl3dArray: added as container for any data type not just objective c objects (eg structs).
 	Isgl3dNode: added clarity to method names involving transformations
 	Isgl3dVector3, Isgl3dVector4, Isgl3dMatrix4: added and used in all internal calculations (performance gain)
