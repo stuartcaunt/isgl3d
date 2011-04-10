@@ -57,6 +57,13 @@
 
 @implementation Isgl3dGLUILabel
 
++ (id) labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize {
+	return [[[self alloc] initWithText:text fontName:fontName fontSize:fontSize] autorelease];
+}
+
++ (id) labelWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
+	return [[[self alloc] initWithTextCharacterSet:text fontName:fontName fontSize:fontSize] autorelease];
+}
 
 - (id) initWithText:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	if ((self = [super initWithMesh:nil andMaterial:nil])) {
@@ -73,7 +80,7 @@
 	_useCharacterSet = YES;
 	_characters = [[NSMutableDictionary alloc] init];
 	_characterNodes = [[NSMutableArray alloc] init];
-	if (self = [self initWithText:text fontName:fontName fontSize:fontSize]) {
+	if ((self = [self initWithText:text fontName:fontName fontSize:fontSize])) {
 		
 //	} else{
 //		[_characters release];
@@ -115,7 +122,7 @@
 				// See if character mesh and texture exist already, create if not
 				Isgl3dGLCharacter * glCharacter = [_characters objectForKey:character];
 				if (!glCharacter) {
-					Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithText:character fontName:_fontName fontSize:_size];
+					Isgl3dTextureMaterial * textureMaterial = [Isgl3dTextureMaterial materialWithText:character fontName:_fontName fontSize:_size];
 					Isgl3dGLMesh * mesh = [[Isgl3dPrimitiveFactory sharedInstance] UILabelMeshWithWidth:textureMaterial.width height:textureMaterial.height contentSize:textureMaterial.contentSize];
 					
 					glCharacter = [[Isgl3dGLCharacter alloc] init];
@@ -129,9 +136,9 @@
 				// Re-use mesh node if enough exist, otherwise create a new one
 				Isgl3dMeshNode * characterNode;
 				if ([_characterNodes count] <= i) {
-					characterNode = [[Isgl3dMeshNode alloc] initWithMesh:nil andMaterial:nil];
+					characterNode = [Isgl3dMeshNode nodeWithMesh:nil andMaterial:nil];
 					characterNode.lightingEnabled = NO;
-					[_characterNodes addObject:[characterNode autorelease]];
+					[_characterNodes addObject:characterNode];
 				}
 				characterNode = [_characterNodes objectAtIndex:i];
 				
@@ -163,11 +170,11 @@
 			[self setWidth:width andHeight:height];
 			
 		} else {
-			Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithText:_text fontName:_fontName fontSize:_size];
+			Isgl3dTextureMaterial * textureMaterial = [Isgl3dTextureMaterial materialWithText:_text fontName:_fontName fontSize:_size];
 			Isgl3dGLMesh * mesh = [[Isgl3dPrimitiveFactory sharedInstance] UILabelMeshWithWidth:textureMaterial.width height:textureMaterial.height contentSize:textureMaterial.contentSize];
 		
 			[self setMesh:mesh];
-			[self setMaterial:[textureMaterial autorelease]];
+			[self setMaterial:textureMaterial];
 			[self setWidth:textureMaterial.contentSize.width andHeight:textureMaterial.contentSize.height];
 		}
 		

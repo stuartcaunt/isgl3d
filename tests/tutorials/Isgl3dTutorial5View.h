@@ -34,11 +34,6 @@
 	NSMutableArray * _ufos;
 	Isgl3dMeshNode * _spaceStation;
 
-	Isgl3dMaterial * _ufoHullMaterial;
-	Isgl3dMaterial * _ufoShellMaterial;
-	Isgl3dGLMesh * _ufoHullMesh;
-	Isgl3dGLMesh * _ufoShellMesh;
-	
 	Isgl3dDemoCameraController * _cameraController;
 }
 

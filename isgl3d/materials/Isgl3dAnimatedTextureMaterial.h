@@ -74,18 +74,52 @@
 
 
 /**
+ * Allocates and initialises (autorelease) material with an array of texture file names, each file producing a new frame in the animation.
+ * Note that all texture files for this animation must have the same format (compression, shininess and precision, etc).
+ *
+ * @param textureFilenameList List of texture file names for each animation frame (NSString instances).
+ * @param animationName The name for the animation.
+ * @param shininess The shiness of the material.
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
+ */
++ (id) materialWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
+			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Allocates and initialises (autorelease) material with a format for the file names and a start and end index, each file produces a new frame in the animation.
+ * The file names are generated automatically given the format and indices for example a format of "bird-animation-%2d.pvr" with first index 0 
+ * and last index 2 produces the following file names: bird-animation-00.pvr, bird-animation-01.pvr and bird-animation-02.pvr.
+ * Note that all texture files for this animation must have the same format (compression, shininess and precision, etc).
+ *
+ * @param textureFilenameFormat The format for the file names.
+ * @param textureFirstID The first index of the file names.
+ * @param textureLastID The last index of the file names.
+ * @param animationName The name for the animation.
+ * @param shininess The shiness of the material.
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
+ * 
+ */
++ (id) materialWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
+						   animationName:(NSString *)animationName 
+						  shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
  * Initialises the material with an array of texture file names, each file producing a new frame in the animation.
  * Note that all texture files for this animation must have the same format (compression, shininess and precision, etc).
  *
  * @param textureFilenameList List of texture file names for each animation frame (NSString instances).
  * @param animationName The name for the animation.
  * @param shininess The shiness of the material.
- * @param precision The precision of the texture material being one of TEXTURE_MATERIAL_LOW_PRECISION, TEXTURE_MATERIAL_MERDIUM_PRECISION and TEXTURE_MATERIAL_HIGH_PRECISION
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
  * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  */
 - (id) initWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
-			 shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * Initialises the material with a format for the file names and a start and end index, each file produces a new frame in the animation.
@@ -98,14 +132,14 @@
  * @param textureLastID The last index of the file names.
  * @param animationName The name for the animation.
  * @param shininess The shiness of the material.
- * @param precision The precision of the texture material being one of TEXTURE_MATERIAL_LOW_PRECISION, TEXTURE_MATERIAL_MERDIUM_PRECISION and TEXTURE_MATERIAL_HIGH_PRECISION
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
  * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  * 
  */
 - (id) initWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
 						   animationName:(NSString *)animationName 
-						  shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+						  shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 #pragma mark Animation control methods
 

@@ -49,6 +49,18 @@
 @synthesize bottom = _bottom;
 @synthesize top = _top;
 
++ (id) camera {
+	return [[[self alloc] init] autorelease];
+}
+
++ (id) cameraWithWidth:(float)width andHeight:(float)height {
+	return [[[self alloc] initWithWidth:width andHeight:height] autorelease];
+}
+
++ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
+	return [[[self alloc] initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ] autorelease];
+}
+
 
 - (id) init {
 	return [self initWithWidth:0 height:0 andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f];

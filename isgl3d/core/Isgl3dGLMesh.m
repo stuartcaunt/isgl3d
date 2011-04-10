@@ -32,6 +32,10 @@
 @synthesize vboData = _vboData;
 @synthesize normalizationEnabled = _normalizationEnabled;
 
++ (id) mesh {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {    
     if ((self = [super init])) {
 		

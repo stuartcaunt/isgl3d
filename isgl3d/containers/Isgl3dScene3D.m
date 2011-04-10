@@ -28,6 +28,10 @@
 
 @implementation Isgl3dScene3D
 
++ (id) scene {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {
     if ((self = [super init])) {
 		_alphaNodes = [[NSMutableArray alloc] init];

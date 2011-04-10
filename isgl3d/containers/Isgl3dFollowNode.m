@@ -30,6 +30,10 @@
 
 @synthesize keepHorizontal = _keepHorizontal;
 
++ (id) nodeWithTarget:(Isgl3dNode *)target {
+	return [[[self alloc] initWithTarget:target] autorelease];
+}
+
 - (id) initWithTarget:(Isgl3dNode *)target {
     if ((self = [super init])) {
     	_target = [target retain];

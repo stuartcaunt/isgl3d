@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 
 @class Isgl3dGLParticle;
+@class Isgl3dArray;
 
 /**
  * The Isgl3dParticlePath contains discrete points along the path the associated particle is to follow during its animation.
@@ -36,7 +37,7 @@
 	
 @private
 	Isgl3dGLParticle * _particle;
-	NSArray * _path;
+	Isgl3dArray * _path;
 	float _duration;
 	
 	float _lastTime;
@@ -56,13 +57,22 @@
 @property (readonly) BOOL isCompleted;
 
 /**
+ * Allocates and initialises (autorelease) particle path with an Isgl3dGLParticle, an array of points that make up the path and a duration the 
+ * particle is to take to reach the final point.
+ * @param particle The particle.
+ * @param path An array of position coordinates of the positions along the path.
+ * @param duration The duration to move from the first to last point in the path.
+ */
++ (id) pathWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration;
+
+/**
  * Initialises the particle path with an Isgl3dGLParticle, an array of points that make up the path and a duration the 
  * particle is to take to reach the final point.
  * @param particle The particle.
- * @para path An NSArray of Isgl3dParticlePathData giving the coordinates of the positions along the path.
+ * @param path An array of position coordinates of the positions along the path.
  * @param duration The duration to move from the first to last point in the path.
  */
-- (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(NSArray *)path forDuration:(float)duration;
+- (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration;
 
 /**
  * Called internally by iSGL3D to update the position of the particle.

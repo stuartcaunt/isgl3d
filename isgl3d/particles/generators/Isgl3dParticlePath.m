@@ -24,15 +24,20 @@
  */
 
 #import "Isgl3dParticlePath.h"
-#import "Isgl3dParticlePathData.h"
 #import "Isgl3dGLParticle.h"
+#import "Isgl3dArray.h"
+#import "Isgl3dVector.h"
 
 @implementation Isgl3dParticlePath
 
 @synthesize particle = _particle;
 @synthesize isCompleted = _isCompleted;
 
-- (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(NSArray *)path forDuration:(float)duration {
++ (id) pathWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration {
+	return [[[self alloc] initWithParticle:particle andPath:path forDuration:duration] autorelease];
+}
+
+- (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration {
 	
 	if ((self = [super init])) {
 		_particle = particle;
@@ -76,19 +81,22 @@
 		int step = floor(progress / _delta);
 		float innerProgress = (progress - (step * _delta)) / _delta;
 		
-		Isgl3dParticlePathData * data1 = [_path objectAtIndex:step];
-		Isgl3dParticlePathData * data2 = [_path objectAtIndex:step + 1];
+		Isgl3dVector3 * data1 = IA_GET_PTR(Isgl3dVector3 *, _path, step);
+		Isgl3dVector3 * data2 = IA_GET_PTR(Isgl3dVector3 *, _path, step);
+//		Isgl3dParticlePathData * data1 = [_path objectAtIndex:step + 1];
+//		Isgl3dParticlePathData * data2 = [_path objectAtIndex:step + 1];
 		
-		_particle.x = data1.x + (data2.x - data1.x) * innerProgress;
-		_particle.y = data1.y + (data2.y - data1.y) * innerProgress;
-		_particle.z = data1.z + (data2.z - data1.z) * innerProgress;
+		_particle.x = data1->x + (data2->x - data1->x) * innerProgress;
+		_particle.y = data1->y + (data2->y - data1->y) * innerProgress;
+		_particle.z = data1->z + (data2->z - data1->z) * innerProgress;
 
 	} else {
-		Isgl3dParticlePathData * data = [_path objectAtIndex:[_path count] - 1];
+		Isgl3dVector3 * data = IA_GET_PTR(Isgl3dVector3 *, _path, [_path count] - 1);
+//		Isgl3dParticlePathData * data = [_path objectAtIndex:[_path count] - 1];
 		
-		_particle.x = data.x;
-		_particle.y = data.y;
-		_particle.z = data.z;
+		_particle.x = data->x;
+		_particle.y = data->y;
+		_particle.z = data->z;
 	}
 }
 

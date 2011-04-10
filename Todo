@@ -14,7 +14,6 @@ or via the user group at http://groups.google.com/group/isgl3d
 Priority
 --------
 	- Redo transformations - store local position, rotation, scale ?
-	- static autorelease constructors
 	- templates Xcode 4
 	- output version number
 	- remove deprecated

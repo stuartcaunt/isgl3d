@@ -40,13 +40,13 @@
 		_moving = NO;	
 
 
-		Isgl3dColorMaterial * redMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FF0000" diffuse:@"FF0000" specular:@"FF0000" shininess:0];
-		Isgl3dColorMaterial * greenMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"00FF00" diffuse:@"00FF00" specular:@"00FF00" shininess:0];
-		Isgl3dColorMaterial * blueMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"0000FF" diffuse:@"0000FF" specular:@"0000FF" shininess:0];
-		Isgl3dColorMaterial * yellowMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0];
+		Isgl3dColorMaterial * redMaterial = [Isgl3dColorMaterial materialWithHexColors:@"FF0000" diffuse:@"FF0000" specular:@"FF0000" shininess:0];
+		Isgl3dColorMaterial * greenMaterial = [Isgl3dColorMaterial materialWithHexColors:@"00FF00" diffuse:@"00FF00" specular:@"00FF00" shininess:0];
+		Isgl3dColorMaterial * blueMaterial = [Isgl3dColorMaterial materialWithHexColors:@"0000FF" diffuse:@"0000FF" specular:@"0000FF" shininess:0];
+		Isgl3dColorMaterial * yellowMaterial = [Isgl3dColorMaterial materialWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0];
 		
-		Isgl3dPlane * sidePlane = [[Isgl3dPlane alloc] initWithGeometry:150 height:350 nx:10 ny:10];
-		Isgl3dPlane * horizontalPlane = [[Isgl3dPlane alloc] initWithGeometry:850 height:150 nx:10 ny:10];
+		Isgl3dPlane * sidePlane = [Isgl3dPlane meshWithGeometry:150 height:350 nx:10 ny:10];
+		Isgl3dPlane * horizontalPlane = [Isgl3dPlane meshWithGeometry:850 height:150 nx:10 ny:10];
 		
 		for (int i = 0; i < 3; i++) {
 	
@@ -71,16 +71,8 @@
 			leftNode.doubleSided = YES;
 		}
 		
-		[redMaterial release];
-		[greenMaterial release];
-		[blueMaterial release];
-		[yellowMaterial release];
-		
-		[sidePlane release];
-		[horizontalPlane release];
-		
 		// Add shadow casting light
-		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
+		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
 		[light setTranslation:400 y:1000 z:400];
 		[self.scene addChild:light];
 	

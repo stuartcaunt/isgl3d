@@ -57,6 +57,13 @@ class btRigidBody;
 @property (readonly) btRigidBody * rigidBody;
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dPhysicsObject3D with an Isgl3dNode and a btRigidBody.
+ * @param node The Isgl3dNode.
+ * @param rigidBody The btRigidBody.
+ */
++ (id) physicsObjectWithNode:(Isgl3dNode *)node andRigidBody:(btRigidBody *)rigidBody;
+
+/**
  * Initialises the Isgl3dPhysicsObject3D with an Isgl3dNode and a btRigidBody.
  * @param node The Isgl3dNode.
  * @param rigidBody The btRigidBody.

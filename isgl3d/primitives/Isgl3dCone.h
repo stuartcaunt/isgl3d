@@ -61,6 +61,17 @@
 @property (readonly) float height;
 
 /**
+ * Allocates and initialises (autorelease) cone with a given geometry.
+ * @param height The total height of the cone.
+ * @param topRadius The radius of the top of the cone.
+ * @param bottomRadius The radius of the bottom of the cone.
+ * @param ns The number of segments radially around the cone.
+ * @param nt The number of segments vertically along the cone.
+ * @param openEnded Indicates if the cone is open-ended or not.
+ */
++ (id) meshWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded;
+
+/**
  * Initialises the cone with a given geometry.
  * @param height The total height of the cone.
  * @param topRadius The radius of the top of the cone.
@@ -69,6 +80,6 @@
  * @param nt The number of segments vertically along the cone.
  * @param openEnded Indicates if the cone is open-ended or not.
  */
-- (id)initWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded;
+- (id) initWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded;
 
 @end

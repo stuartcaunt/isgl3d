@@ -36,26 +36,26 @@
 		[self.camera setTranslation:2 y:8 z:10];
 
 		// Create a white color material (with grey ambient color)
-		Isgl3dColorMaterial * colorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:@"444444" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
+		Isgl3dColorMaterial * colorMaterial = [Isgl3dColorMaterial materialWithHexColors:@"444444" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
 		
 		// Create a torus primitive
-		Isgl3dTorus * torus = [[Isgl3dTorus alloc] initWithGeometry:3.0 tubeRadius:1.0 ns:32 nt:20];
+		Isgl3dTorus * torus = [Isgl3dTorus meshWithGeometry:3.0 tubeRadius:1.0 ns:32 nt:20];
 		
 		// Create a mesh node in the scene using torus primitive and color material
-		_torusNode = [self.scene createNodeWithMesh:[torus autorelease] andMaterial:[colorMaterial autorelease]];
+		_torusNode = [self.scene createNodeWithMesh:torus andMaterial:colorMaterial];
 	
 		// Create red light (producing white specular light), with rendering, and add to scene
-		_redLight = [[Isgl3dLight alloc] initWithHexColor:@"FF0000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.02];
+		_redLight = [Isgl3dLight lightWithHexColor:@"FF0000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.02];
 		_redLight.renderLight = YES;
 		[self.scene addChild:_redLight];
 		
 		// Create green light (producing white specular light), with rendering, and add to scene
-		_greenLight = [[Isgl3dLight alloc] initWithHexColor:@"00FF00" diffuseColor:@"00FF00" specularColor:@"FFFFFF" attenuation:0.02];
+		_greenLight = [Isgl3dLight lightWithHexColor:@"00FF00" diffuseColor:@"00FF00" specularColor:@"FFFFFF" attenuation:0.02];
 		_greenLight.renderLight = YES;
 		[self.scene addChild:_greenLight];
 	
 		// Create blue light (producing white specular light), with rendering, and add to scene
-		_blueLight = [[Isgl3dLight alloc] initWithHexColor:@"0000FF" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.02];
+		_blueLight = [Isgl3dLight lightWithHexColor:@"0000FF" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.02];
 		_blueLight.renderLight = YES;
 		[self.scene addChild:_blueLight];
 		
@@ -71,11 +71,6 @@
 }
 
 - (void) dealloc {
-	// Release the lights
-	[_blueLight release];
-	[_redLight release];
-	[_greenLight release];
-
 	[super dealloc];
 }
 

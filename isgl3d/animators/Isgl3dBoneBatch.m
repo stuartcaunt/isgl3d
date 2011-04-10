@@ -30,6 +30,9 @@
 
 @implementation Isgl3dBoneBatch
 
++ (id) boneBatchWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset {
+	return [[[self alloc] initWithNumberOfElements:numberOfElements andElementOffset:elementOffset] autorelease];
+}
 
 - (id) initWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset {
     if ((self = [super init])) {

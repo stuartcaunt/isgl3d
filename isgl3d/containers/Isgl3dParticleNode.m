@@ -30,6 +30,10 @@
 
 @implementation Isgl3dParticleNode
 
++ (id) nodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
+	return [[[self alloc] initWithParticle:particle andMaterial:material] autorelease];
+}
+
 - (id) initWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
     if ((self = [super init])) {
 

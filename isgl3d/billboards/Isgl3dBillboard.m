@@ -27,6 +27,10 @@
 
 @implementation Isgl3dBillboard
 
++ (id) billboard {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {
 	
 	if ((self = [super init])) {

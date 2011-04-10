@@ -40,7 +40,7 @@
 		_cameraController.doubleTapEnabled = NO;
 
 		// Create an Isgl3dMultiMaterialCube with random colors.
-		_cube = [[Isgl3dMultiMaterialCube alloc] initWithDimensionsAndRandomColors:3 height:3 depth:3 nSegmentWidth:2 nSegmentHeight:2 nSegmentDepth:2];
+		_cube = [Isgl3dMultiMaterialCube cubeWithDimensionsAndRandomColors:3 height:3 depth:3 nSegmentWidth:2 nSegmentHeight:2 nSegmentDepth:2];
 		
 		// Add the cube to the scene.
 		[self.scene addChild:_cube];
@@ -53,7 +53,6 @@
 
 - (void) dealloc {
 	[_cameraController release];
-	[_cube release];
 
 	[super dealloc];
 }

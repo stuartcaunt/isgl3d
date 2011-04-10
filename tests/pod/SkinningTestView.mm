@@ -44,7 +44,7 @@
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.4;
 
-		Isgl3dPODImporter * podImporter = [[Isgl3dPODImporter alloc] initWithFile:@"man.pod"];
+		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithFile:@"man.pod"];
 		
 		// Modify texture files
 		[podImporter modifyTexture:@"body.bmp" withTexture:@"Body.pvr"];
@@ -66,19 +66,17 @@
 		[_animationController start];
 	
 		// Create a simple plane
-		Isgl3dTextureMaterial * groundMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ground.png" shininess:0.9 precision:TEXTURE_MATERIAL_LOW_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:800.0 height:800.0 nx:2 ny:2];
-		Isgl3dMeshNode * ground = [self.scene createNodeWithMesh:[plane autorelease] andMaterial:[groundMaterial autorelease]];
+		Isgl3dTextureMaterial * groundMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ground.png" shininess:0.9 precision:Isgl3dTexturePrecisionLow repeatX:NO repeatY:NO];
+		Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometry:800.0 height:800.0 nx:2 ny:2];
+		Isgl3dMeshNode * ground = [self.scene createNodeWithMesh:plane andMaterial:groundMaterial];
 		[ground setRotation:-90 x:1 y:0 z:0];
 		[ground setTranslation:0 y:-130 z:-100];
 	
 		// Add light to scene and fix the Sphere01 mesh to it
-		Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
+		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
 		[light setTranslation:300 y:600 z:300];
-		[self.scene addChild:[light autorelease]];
+		[self.scene addChild:light];
 		light.planarShadowsNode = ground;
-		
-		[podImporter release];	
 
 		
 		// Schedule updates

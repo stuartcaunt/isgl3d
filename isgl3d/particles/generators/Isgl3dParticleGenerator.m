@@ -45,6 +45,11 @@
 @synthesize randomizeSize = _randomizeSize;
 @synthesize nPathSteps = _nPathSteps;
 
+
++ (id) generatorWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
+	return [[[self alloc] initWithParticleSystem:particleSystem andNode:node] autorelease];
+}
+
 - (id) initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
 	
 	if ((self = [super init])) {

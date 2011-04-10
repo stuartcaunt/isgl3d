@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
+#import "isgl3dTypes.h"
 
 @class Isgl3dGLTexture;
 @class Isgl3dGLDepthRenderTexture;
@@ -53,7 +54,7 @@
 /**
  * @result (autorelease) Isgl3dGLTexture created from image file
  */
-- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * @result (autorelease) Isgl3dGLTexture created from text
@@ -68,7 +69,7 @@
 /**
  * @result (autorelease) Isgl3dGLTexture for cubemap created from image files
  */
-- (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * @result (autorelease) Isgl3dGLDepthRenderTexture depending on OpenGL version

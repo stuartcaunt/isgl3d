@@ -42,4 +42,9 @@
 	
 }
 
+/**
+ * Allocates and initialises (autorelease) the billboard with default values: position (0, 0, 0), attenuation (1, 0, 0), color (1, 1, 1, 1), size 32. 
+ */
++ (id) billboard;
+
 @end

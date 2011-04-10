@@ -130,6 +130,27 @@ typedef enum {
 @property (nonatomic) float spotFalloffExponent;
 
 /**
+ * Allocates and initialises (autorelease) light source with default values: white diffuse and specular, no ambient and no attenuation.
+ */
++ (id) light;
+
+/**
+ * Allocates and initialises (autorelease) light source with a float array (r, g, b) used for both diffuse and specular light colors. The ambient color is black
+ * and no attenuation is used.
+ * @param color Float array of colors (three values: red, green and blue) used for diffuse and specular light colors.
+ */
++ (id) lightWithColorArray:(float *)color;
+
+/**
+ * Allocates and initialises (autorelease) light source with all color components and attenuation.
+ * @param ambientColor Hex string containing ambient component of the light source.
+ * @param diffuseColor Hex string containing diffuse component of the light source.
+ * @param specularColor Hex string containing specular component of the light source.
+ *  
+ */
++ (id) lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
+
+/**
  * Initialises the light source with default values: white diffuse and specular, no ambient and no attenuation.
  */
 - (id) init;

@@ -27,6 +27,10 @@
 #import "Isgl3dNode.h"
 #import "Isgl3dDirector.h"
 
+@interface Isgl3dSpringCamera ()
+- (void) initialiseTarget:(Isgl3dNode *)target;
+@end
+
 @implementation Isgl3dSpringCamera
 
 @synthesize positionOffset = _positionOffset;
@@ -37,30 +41,41 @@
 @synthesize target = _target;
 @synthesize useRealTime = _useRealTime;
 
-- (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
+- (id) initWithTarget:(Isgl3dNode *)target {
 	
-	if ((self = [self initWithView:view3D])) {
-		
-		if (target) {
-			_target = [target retain];
-		}
-		
-		_positionOffset = iv3(0, 5, 10);
-		_lookOffset = iv3(0, 5, 10);
-		
-		_velocity = iv3(0, 0, 0);
-		
-		_stiffness = 10;
-		_damping = 4;
-		_mass = 1.;
-	
-		_initialized = NO;	
-		_useRealTime = NO;
+	if ((self = [super init])) {
+		[self initialiseTarget:target];
 	}
 	
 	return self;
 }
 
+- (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
+	
+	if ((self = [super initWithView:view3D])) {
+		[self initialiseTarget:target];
+	}
+	
+	return self;
+}
+
+- (id) initWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target {
+	
+	if ((self = [super initWithWidth:width andHeight:height])) {
+		[self initialiseTarget:target];
+	}
+	
+	return self;
+}
+
+- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target {
+	
+	if ((self = [super initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ])) {
+		[self initialiseTarget:target];
+	}
+	
+	return self;
+}
 
 - (void) dealloc {
 	if (_target) {
@@ -68,6 +83,25 @@
 	}
 	
 	[super dealloc];
+}
+
+- (void) initialiseTarget:(Isgl3dNode *)target {
+		
+	if (target) {
+		_target = [target retain];
+	}
+	
+	_positionOffset = iv3(0, 5, 10);
+	_lookOffset = iv3(0, 5, 10);
+	
+	_velocity = iv3(0, 0, 0);
+	
+	_stiffness = 10;
+	_damping = 4;
+	_mass = 1.;
+
+	_initialized = NO;	
+	_useRealTime = NO;
 }
 
 - (void) setTarget:(Isgl3dNode *)target {

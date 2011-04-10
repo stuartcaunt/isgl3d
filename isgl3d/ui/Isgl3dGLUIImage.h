@@ -36,6 +36,24 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dGLUIImage with a material (typically an Isgl3dTextureMaterial) to be rendered.
+ * All the image of the texture is displayed.
+ * @param material The material to be rendered as an image on the user interface.
+ * @param width The desired width of the component in pixels.
+ * @param height The desired height of the component in pixels.
+ */
++ (id) imageWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height;
+
+/**
+ * Allocates and initialises (autorelease) Isgl3dGLUIImage with a material (typically an Isgl3dTextureMaterial) to be rendered for which only a specified rectangle will be displayed.
+ * @param material The material to be rendered as an image on the user interface.
+ * @param rectangle The CGRect coordinates of the part of the image that is to be displayed.
+ * @param width The desired width of the component in pixels.
+ * @param height The desired height of the component in pixels.
+ */
++ (id) imageWithMaterial:(Isgl3dMaterial *)material andRectangle:(CGRect)rectangle width:(unsigned int)width height:(unsigned int)height;
+
+/**
  * Initialises the Isgl3dGLUIImage with a material (typically an Isgl3dTextureMaterial) to be rendered.
  * All the image of the texture is displayed.
  * @param material The material to be rendered as an image on the user interface.

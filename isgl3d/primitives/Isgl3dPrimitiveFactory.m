@@ -78,8 +78,8 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 - (Isgl3dGLMesh *) boneMesh {
 	Isgl3dGLMesh * boneMesh = [_primitives objectForKey:BONE_MESH];
 	if (!boneMesh) {
-		boneMesh = [[Isgl3dSphere alloc] initWithGeometry:3 longs:4 lats:4];
-		[_primitives setObject:[boneMesh autorelease] forKey:BONE_MESH];
+		boneMesh = [Isgl3dSphere meshWithGeometry:3 longs:4 lats:4];
+		[_primitives setObject:boneMesh forKey:BONE_MESH];
 	}
 	return boneMesh;	
 }
@@ -87,8 +87,8 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 - (Isgl3dGLMesh *) UIButtonMesh {
 	Isgl3dGLMesh * buttonMesh = [_primitives objectForKey:GLUIBUTTON_MESH];
 	if (!buttonMesh) {
-		buttonMesh = [[Isgl3dPlane alloc] initWithGeometry:GLUIBUTTON_WIDTH * [Isgl3dDirector sharedInstance].contentScaleFactor height:GLUIBUTTON_HEIGHT * [Isgl3dDirector sharedInstance].contentScaleFactor nx:2 ny:2];
-		[_primitives setObject:[buttonMesh autorelease] forKey:GLUIBUTTON_MESH];
+		buttonMesh = [Isgl3dPlane meshWithGeometry:GLUIBUTTON_WIDTH * [Isgl3dDirector sharedInstance].contentScaleFactor height:GLUIBUTTON_HEIGHT * [Isgl3dDirector sharedInstance].contentScaleFactor nx:2 ny:2];
+		[_primitives setObject:buttonMesh forKey:GLUIBUTTON_MESH];
 	}
 	return buttonMesh;	
 }
@@ -97,9 +97,9 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 	float uMax = contentSize.width / width;
 	float vMax = contentSize.height / height;
 	
-	Isgl3dGLMesh * labelMesh = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:contentSize.width height:contentSize.height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
+	Isgl3dGLMesh * labelMesh = [Isgl3dPlane meshWithGeometryAndUVMap:contentSize.width height:contentSize.height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
 //	GLMesh * labelMesh = [[Plane alloc] initWithGeometryAndUVMap:width height:height nx:2 ny:2 uvMap:[UVMap uvMapWithUA:0 vA:0 uB:0.5 vB:0 uC:0 vC:0.5]];
-	return [labelMesh autorelease];	
+	return labelMesh;	
 }
 
 - (unsigned int) UIButtonWidth {

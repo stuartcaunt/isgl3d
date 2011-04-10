@@ -23,11 +23,16 @@
  *
  */
 
-#define TEXTURE_MATERIAL_LOW_PRECISION 0
-#define TEXTURE_MATERIAL_MEDIUM_PRECISION 1
-#define TEXTURE_MATERIAL_HIGH_PRECISION 2
+
+// @deprecated: will be removed in v1.2
+#define TEXTURE_MATERIAL_LOW_PRECISION Isgl3dTexturePrecisionLow
+// @deprecated: will be removed in v1.2
+#define TEXTURE_MATERIAL_MEDIUM_PRECISION Isgl3dTexturePrecisionMedium
+// @deprecated: will be removed in v1.2
+#define TEXTURE_MATERIAL_HIGH_PRECISION Isgl3dTexturePrecisionHigh
 
 #import "Isgl3dColorMaterial.h"
+#import "isgl3dTypes.h"
 #import <CoreGraphics/CoreGraphics.h>
 
 @class Isgl3dGLTexture;
@@ -78,14 +83,32 @@
 @property (nonatomic) BOOL isHighDefinition;
 
 /**
- * Initialises the texture material from an image file.
+ * Allocates and initialises (autorelease) texture material from an image file.
  * @param fileName The name of the image file.
  * @param shininess The shiness of the material.
- * @param precision The precision of the texture material being one of TEXTURE_MATERIAL_LOW_PRECISION, TEXTURE_MATERIAL_MERDIUM_PRECISION and TEXTURE_MATERIAL_HIGH_PRECISION
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
  * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  */
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
++ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Allocates and initialises (autorelease) texture material with text to be rendered.
+ * @param text The text to be rendered.
+ * @param fontName The name of the font.
+ * @param fontSize The size of the font. 
+ */
++ (id) materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
+
+/**
+ * Initialises the texture material from an image file.
+ * @param fileName The name of the image file.
+ * @param shininess The shiness of the material.
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
+ */
+- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * Initialises the texture material with text to be rendered.

@@ -33,6 +33,10 @@
 
 @synthesize particles = _particles;
 
++ (id) particleSystem {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {
 	
 	if ((self = [super init])) {

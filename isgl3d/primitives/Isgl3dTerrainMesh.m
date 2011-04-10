@@ -38,7 +38,11 @@
 
 @implementation Isgl3dTerrainMesh
 
-- (id)initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
++ (id) meshWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
+	return [[[self alloc] initWithTerrainDataFile:terrainDataFile channel:channel width:width depth:depth height:height nx:nx nz:nz] autorelease];
+}
+
+- (id) initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
 	if ((self = [super init])) {
 		_terrainDataFile = [terrainDataFile retain];
 		_channel = channel;

@@ -48,7 +48,10 @@
 @synthesize height = _height;
 @synthesize depth = _depth;
 
-	
++ (id) meshWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny {
+	return [[[self alloc] initWithGeometry:width height:height depth:depth nx:nx ny:ny] autorelease];
+}
+
 - (id)initWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny {
 	
 	if ((self = [super init])) {

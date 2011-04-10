@@ -38,23 +38,23 @@
 		_cameraController.phi = 10;
 		_cameraController.doubleTapEnabled = NO;
 		
-		_container = [[self.scene createNode] retain];
+		_container = [self.scene createNode];
 		
 		// Create the primitive
-		Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"RaceTrack1Terrain_1024.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dTextureMaterial * dataMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"RaceTrack1Path_512.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * textureMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"RaceTrack1Terrain_1024.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * dataMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"RaceTrack1Path_512.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 	
-		Isgl3dPlane * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:32 height:32 nx:4 ny:4];
-		_plane = [_container createNodeWithMesh:[planeMesh autorelease] andMaterial:[dataMaterial autorelease]];
+		Isgl3dPlane * planeMesh = [Isgl3dPlane meshWithGeometry:32 height:32 nx:4 ny:4];
+		_plane = [_container createNodeWithMesh:planeMesh andMaterial:dataMaterial];
 		[_plane rotate:-90 x:1 y:0 z:0];
 		[_plane setTranslation:0 y:-5 z:0];
 		_plane.lightingEnabled = NO;
 	
-		Isgl3dTerrainMesh * terrainMesh = [[Isgl3dTerrainMesh alloc] initWithTerrainDataFile:@"RaceTrack1Path_512.png" channel:2 width:32 depth:32 height:10 nx:32 nz:32];
-		_terrain = [_container createNodeWithMesh:[terrainMesh autorelease] andMaterial:[textureMaterial autorelease]];
+		Isgl3dTerrainMesh * terrainMesh = [Isgl3dTerrainMesh meshWithTerrainDataFile:@"RaceTrack1Path_512.png" channel:2 width:32 depth:32 height:10 nx:32 nz:32];
+		_terrain = [_container createNodeWithMesh:terrainMesh andMaterial:textureMaterial];
 	
 		// Add light
-		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
 		[light setTranslation:5 y:10 z:10];
 		[self.scene addChild:light];	
 
@@ -67,8 +67,6 @@
 
 - (void) dealloc {
 	[_cameraController release];
-
-	[_container release];
 
 	[super dealloc];
 }

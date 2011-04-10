@@ -25,8 +25,9 @@
 
 #import "Isgl3dExplosionParticleGenerator.h"
 #import "Isgl3dParticlePath.h"
-#import "Isgl3dParticlePathData.h"
 #import "Isgl3dGLParticle.h"
+#import "Isgl3dArray.h"
+#import "Isgl3dVector.h"
 #import <stdlib.h>
 #import <time.h>
 
@@ -65,19 +66,18 @@
 		float xEnd = r * cos(theta);
 		float zEnd = r * sin(theta);
 		
-		NSMutableArray * path = [[NSMutableArray alloc] init];
+		Isgl3dArray * path = IA_ALLOC_INIT_WITH_CAPACITY_AR(Isgl3dVector3, self.nPathSteps);
 		for (int i = 0; i < self.nPathSteps; i++) {
 			float x = xEnd * sin(i / (self.nPathSteps - 1.0));
 			float y = yEnd * sin(i / (self.nPathSteps - 1.0));
 			float z = zEnd * sin(i / (self.nPathSteps - 1.0));
-			
-			Isgl3dParticlePathData * pathData = [[Isgl3dParticlePathData alloc] initWithX:x y:y z:z];
-			[path addObject:[pathData autorelease]];
+
+			Isgl3dVector3 pathData = iv3(x, y, z);
+			IA_ADD(path, pathData);
 		}
 		
-		Isgl3dParticlePath * particlePath = [[Isgl3dParticlePath alloc] initWithParticle:particle andPath:[path autorelease] forDuration:_time];
-		[particlePaths addObject:[particlePath autorelease]];
-		
+		Isgl3dParticlePath * particlePath = [Isgl3dParticlePath pathWithParticle:particle andPath:path forDuration:_time];
+		[particlePaths addObject:particlePath];
 	}
 	
 	return particlePaths;

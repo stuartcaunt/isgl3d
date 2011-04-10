@@ -42,7 +42,6 @@
 		_moving = NO;	
 
 		_container = [self.scene createNode];
-		[_container retain];
 		
 		Isgl3dNode * container1 = [_container createNode];
 		[container1 setTranslation:-2 y:0 z:0];
@@ -51,13 +50,13 @@
 		[container2 setTranslation:2 y:0 z:0];
 		
 		// Create a texture material
-		Isgl3dTextureMaterial * textureMaterial1 = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"checker.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * textureMaterial1 = [Isgl3dTextureMaterial materialWithTextureFile:@"checker.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		
 		// Create a sphere mesh
-		Isgl3dGLMesh * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:25 lats:25];
+		Isgl3dGLMesh * sphereMesh = [Isgl3dSphere meshWithGeometry:1.0 longs:25 lats:25];
 	
 		// Create an interactive mesh node, transparent for correct z sorting
-		_sphere1 = [[container1 createNodeWithMesh:sphereMesh andMaterial:textureMaterial1] retain];
+		_sphere1 = [container1 createNodeWithMesh:sphereMesh andMaterial:textureMaterial1];
 		_sphere1.interactive = YES;
 		_sphere1.transparent = YES;
 		
@@ -68,7 +67,7 @@
 		[_eventFilter addEvent3DListener:self method:@selector(objectReleased:) forEventType:RELEASE_EVENT];
 	
 		// Create a sphere, double sided and culled so that inside of sphere is visible
-		_sphere2 = [[container2 createNodeWithMesh:[sphereMesh autorelease] andMaterial:[textureMaterial1 autorelease]] retain];
+		_sphere2 = [container2 createNodeWithMesh:sphereMesh andMaterial:textureMaterial1];
 		_sphere2.interactive = YES;
 		_sphere2.transparent = YES;
 		_sphere2.doubleSided = YES;
@@ -76,17 +75,17 @@
 		[_sphere2 addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 		
 		// Create the lights
-		Isgl3dLight * light1 = [[Isgl3dLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		Isgl3dLight * light1 = [Isgl3dLight lightWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
 		[light1 setTranslation:0 y:2 z:5];
-		[self.scene addChild:[light1 autorelease]];
+		[self.scene addChild:light1];
 		
-		Isgl3dLight * light2 = [[Isgl3dLight alloc] initWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.001];
+		Isgl3dLight * light2 = [Isgl3dLight lightWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.001];
 		[light2 setTranslation:-2 y:0 z:0];
-		[container1 addChild:[light2 autorelease]];
+		[container1 addChild:light2];
 		
-		Isgl3dLight * light3 = [[Isgl3dLight alloc] initWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.001];
+		Isgl3dLight * light3 = [Isgl3dLight lightWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.001];
 		[light3 setTranslation:2 y:0 z:0];
-		[container2 addChild:[light3 autorelease]];
+		[container2 addChild:light3];
 		
 		// Set the scene ambient color
 		[self setSceneAmbient:@"111111"];	
@@ -101,9 +100,6 @@
 
 - (void) dealloc {
 	[_eventFilter release];
-	[_sphere1 release];
-	[_sphere2 release];
-	[_container release];
 
 	[super dealloc];
 }

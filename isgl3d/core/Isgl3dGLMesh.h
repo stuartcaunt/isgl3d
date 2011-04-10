@@ -89,6 +89,11 @@
 @property (nonatomic) BOOL normalizationEnabled;
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dGLMesh.
+ */
++ (id) mesh;
+
+/**
  * Initialises the Isgl3dGLMesh.
  */
 - (id) init;

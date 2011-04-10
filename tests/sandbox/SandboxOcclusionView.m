@@ -45,11 +45,10 @@
 		_cameraController.doubleTapEnabled = NO;
 
 		// Construct scene
-		Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"mars.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dSphere * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1.0 longs:10 lats:10];
+		Isgl3dTextureMaterial * textureMaterial Isgl3dTextureMaterial materialWithTextureFile:@"mars.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dSphere * sphereMesh = [Isgl3dSphere meshWithGeometry:1.0 longs:10 lats:10];
 	
 		_container = [self.scene createNode];
-		[_container retain];
 	
 		float containerWidth = 10;
 		float containerLength = 10;
@@ -64,15 +63,10 @@
 			}
 		}
 	
-		[textureMaterial release];
-		[sphereMesh release];
-	
 		// Create the lights
-		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"444444" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
+		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"444444" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
 		[light setTranslation:2 y:6 z:4];
 		[self.scene addChild:light];
-		
-		[light release];
 	
 		[self setSceneAmbient:@"444444"];
 
@@ -84,8 +78,6 @@
 
 - (void) dealloc {
 	[_cameraController release];
-
-	[_container release];
 
 	[super dealloc];
 }

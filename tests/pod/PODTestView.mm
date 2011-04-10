@@ -36,19 +36,19 @@
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
 
-		Isgl3dPODImporter * podImporter = [[Isgl3dPODImporter alloc] initWithFile:@"Scene_float.pod"];
+		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithFile:@"Scene_float.pod"];
 //		[podImporter printPODInfo];
 		
 		// Add all meshes in POD to scene
 		[podImporter addMeshesToScene:self.scene];
 	
 		// Add light to scene and fix the Sphere01 mesh to it
-		Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
-		[self.scene addChild:[light autorelease]];
+		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
+		[self.scene addChild:light];
 		[podImporter configureLight:light fromNode:@"Sphere01"];
 		
 		// Get the teapot for later use
-		_teapot = [[podImporter meshNodeWithName:@"Teapot01"] retain];
+		_teapot = [podImporter meshNodeWithName:@"Teapot01"];
 		
 		// POD data has non-normalised normals
 		_teapot.mesh.normalizationEnabled = YES;
@@ -68,9 +68,6 @@
 		
 		[self setSceneAmbient:[Isgl3dColorUtil rgbString:[podImporter ambientColor]]];
 		
-		[podImporter release];	
-
-		
 		// Schedule updates
 		[self schedule:@selector(tick:)];
 	}
@@ -79,8 +76,6 @@
 }
 
 - (void) dealloc {
-	[_teapot release];	
-
 	[super dealloc];
 }
 

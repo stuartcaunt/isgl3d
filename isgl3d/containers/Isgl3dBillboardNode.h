@@ -40,7 +40,14 @@
 }
 
 /**
- * Initialises the node with a billoard and material.
+ * Allocates and initialises (autorelease) billboard node with a billboard and material.
+ * @param billboard The billboard to be rendered.
+ * @param material The material used to render the particle.
+ */
++ (id) nodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material;
+
+/**
+ * Initialises the node with a billboard and material.
  * @param billboard The billboard to be rendered.
  * @param material The material used to render the particle.
  */

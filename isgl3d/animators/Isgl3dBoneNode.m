@@ -31,6 +31,9 @@
 
 @implementation Isgl3dBoneNode
 
++ (id) boneNode {
+	return [[[self alloc] init] autorelease];
+}
 
 - (id) init {
     if ((self = [super initWithMesh:[[Isgl3dPrimitiveFactory sharedInstance] boneMesh] andMaterial:[[[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0] autorelease]])) {
@@ -47,7 +50,7 @@
 }
 
 - (Isgl3dBoneNode *) createBoneNode {
-	return (Isgl3dBoneNode *)[[self addChild:[[Isgl3dBoneNode alloc] init]] autorelease];
+	return (Isgl3dBoneNode *)[self addChild:[Isgl3dBoneNode boneNode]];
 }
 
 - (void) addFrameTransformationFromOpenGLMatrix:(float *)transformation {

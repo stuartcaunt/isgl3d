@@ -38,6 +38,24 @@
 
 @implementation Isgl3dMultiMaterialCube 
 
++ (id) cubeWithDimensions:(float)width height:(float)height depth:(float)depth 
+		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
+	return [[[self alloc] initWithDimensions:width height:height depth:depth 
+		nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth] autorelease];
+}
+
++ (id) cubeWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
+		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
+	return [[[self alloc] initWithDimensionsAndMaterials:materialArray uvMapArray:uvMapArray width:width height:height depth:depth 
+		nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth] autorelease];
+}
+
++ (id) cubeWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
+		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
+	return [[[self alloc] initWithDimensionsAndRandomColors:width height:height depth:depth 
+		nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth] autorelease];
+}
+
 
 - (id) initWithDimensions:(float)width height:(float)height depth:(float)depth 
 		 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
@@ -58,9 +76,9 @@
 
 
 - (id) initWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
-					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
+		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 
-	if (self = [self initWithDimensions:width height:height depth:depth nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth]) {
+	if ((self = [self initWithDimensions:width height:height depth:depth nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth])) {
 		[self buildAllFaces:materialArray uvMapArray:uvMapArray];
     }
 	
@@ -68,9 +86,9 @@
 }
 
 - (id) initWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
-					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
+		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 
-	if (self = [self initWithDimensions:width height:height depth:depth nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth]) {
+	if ((self = [self initWithDimensions:width height:height depth:depth nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth])) {
 
 		[self addFace:FaceIdFront material:nil uvMap:nil];
 		[self addFace:FaceIdBack material:nil uvMap:nil];
@@ -111,22 +129,22 @@
 	// First, create the plane
 	switch (faceId) {
 		case FaceIdFront:
-			plane = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:_width height:_height nx:_nSegmentWidth ny:_nSegmentHeight uvMap:uvMap];
+			plane = [Isgl3dPlane meshWithGeometryAndUVMap:_width height:_height nx:_nSegmentWidth ny:_nSegmentHeight uvMap:uvMap];
 			break;
 		case FaceIdBack:
-			plane = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:_width height:_height nx:_nSegmentWidth ny:_nSegmentHeight uvMap:uvMap];
+			plane = [Isgl3dPlane meshWithGeometryAndUVMap:_width height:_height nx:_nSegmentWidth ny:_nSegmentHeight uvMap:uvMap];
 			break;
 		case FaceIdRight:
-			plane = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:_height height:_depth nx:_nSegmentHeight ny:_nSegmentDepth uvMap:uvMap];
+			plane = [Isgl3dPlane meshWithGeometryAndUVMap:_height height:_depth nx:_nSegmentHeight ny:_nSegmentDepth uvMap:uvMap];
 			break;
 		case FaceIdLeft:
-			plane = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:_height height:_depth nx:_nSegmentHeight ny:_nSegmentDepth uvMap:uvMap];
+			plane = [Isgl3dPlane meshWithGeometryAndUVMap:_height height:_depth nx:_nSegmentHeight ny:_nSegmentDepth uvMap:uvMap];
 			break;
 		case FaceIdTop:
-			plane = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:_width height:_depth nx:_nSegmentWidth ny:_nSegmentDepth uvMap:uvMap];
+			plane = [Isgl3dPlane meshWithGeometryAndUVMap:_width height:_depth nx:_nSegmentWidth ny:_nSegmentDepth uvMap:uvMap];
 			break;
 		case FaceIdBottom:
-			plane = [[Isgl3dPlane alloc] initWithGeometryAndUVMap:_width height:_depth nx:_nSegmentWidth ny:_nSegmentDepth uvMap:uvMap];
+			plane = [Isgl3dPlane meshWithGeometryAndUVMap:_width height:_depth nx:_nSegmentWidth ny:_nSegmentDepth uvMap:uvMap];
 			break;
 		default:
 			@throw [NSException exceptionWithName:@"NSException" 

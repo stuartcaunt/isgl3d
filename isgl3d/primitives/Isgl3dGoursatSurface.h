@@ -94,6 +94,19 @@
 @property (readonly) int lats;
 
 /**
+ * Allocates and initialises (autorelease) goursat surface with the specified geometry.
+ * @param a The value of a in Goursat's surface equation.
+ * @param b The value of b in Goursat's surface equation.
+ * @param c The value of c in Goursat's surface equation.
+ * @param width The x-coordinates on the surface are multiplied by this factor.
+ * @param height The y-coordinates on the surface are multiplied by this factor.
+ * @param depth The z-coordinates on the surface are multiplied by this factor.
+ * @param longs The number of longitudinal segments.
+ * @param lats The number of latitudinal segments.
+ */
++ (id) meshWithGeometry:(float)a b:(float)b c:(float)c width:(float)width height:(float)height depth:(float)depth longs:(int)longs lats:(int)lats;
+
+/**
  * Initialises the goursat surface with the specified geometry.
  * @param a The value of a in Goursat's surface equation.
  * @param b The value of b in Goursat's surface equation.
@@ -104,6 +117,6 @@
  * @param longs The number of longitudinal segments.
  * @param lats The number of latitudinal segments.
  */
-- (id)initWithGeometry:(float)a b:(float)b c:(float)c width:(float)width height:(float)height depth:(float)depth longs:(int)longs lats:(int)lats;
+- (id) initWithGeometry:(float)a b:(float)b c:(float)c width:(float)width height:(float)height depth:(float)depth longs:(int)longs lats:(int)lats;
 
 @end

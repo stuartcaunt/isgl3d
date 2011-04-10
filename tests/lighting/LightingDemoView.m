@@ -43,8 +43,8 @@
 		_sphereAngle = 0;
 		_lightAngle = 0;
 
-		Isgl3dTextureMaterial *  textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"mars.png" shininess:0.7 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dSphere * primitive = [[Isgl3dSphere alloc] initWithGeometry:1.3 longs:15 lats:15];
+		Isgl3dTextureMaterial *  textureMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"mars.png" shininess:0.7 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dSphere * primitive = [Isgl3dSphere meshWithGeometry:1.3 longs:15 lats:15];
 		
 		// Create the spheres with texture materials
 		for (int k = 0; k < 3; k++) {
@@ -60,28 +60,25 @@
 		
 		
 		// Create the lights
-		_blueLight = [[Isgl3dLight alloc] initWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.02];
+		_blueLight = [Isgl3dLight lightWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.02];
 		[self.scene addChild:_blueLight];
 		_blueLight.renderLight = YES;
 		
-		_redLight = [[Isgl3dLight alloc] initWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.02];
+		_redLight = [Isgl3dLight lightWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.02];
 		[self.scene addChild:_redLight];
 		_redLight.renderLight = YES;
 		
-		_greenLight = [[Isgl3dLight alloc] initWithHexColor:@"001100" diffuseColor:@"00FF00" specularColor:@"FFFFFF" attenuation:0.02];
+		_greenLight = [Isgl3dLight lightWithHexColor:@"001100" diffuseColor:@"00FF00" specularColor:@"FFFFFF" attenuation:0.02];
 		[self.scene addChild:_greenLight];
 		_greenLight.renderLight = YES;
 		
-		_whiteLight = [[Isgl3dLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
+		_whiteLight = [Isgl3dLight lightWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
 		[self.scene addChild:_whiteLight];
 		_whiteLight.renderLight = YES;
 		[_whiteLight setTranslation:7 y:7 z:4];
 	
 		// Set the scene ambient color
 		[self setSceneAmbient:@"444444"];
-		
-		[primitive release];	
-		[textureMaterial release];	
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];
@@ -95,11 +92,6 @@
 
 	[_sceneObjects release];
 	
-	[_blueLight release];
-	[_redLight release];
-	[_greenLight release];
-	[_whiteLight release];
-
 	[super dealloc];
 }
 

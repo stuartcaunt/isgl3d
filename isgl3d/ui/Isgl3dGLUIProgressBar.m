@@ -39,6 +39,10 @@
 @synthesize progressStepSize = _progressStepSize;
 @synthesize isSwapped = _isSwapped;
 
++ (id) progressBarWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical {
+	return [[[self alloc] initWithMaterial:material width:width height:height vertical:isVertical] autorelease];
+}
+
 - (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical {
 	
 	if ((self = [super initWithMesh:nil andMaterial:material])) {
@@ -110,15 +114,15 @@
 	float reduc = progress * 0.01;
 	if (isVertical) {
 		if (_isSwapped) {
-			return [[[Isgl3dPlane alloc] initWithGeometryAndUVMap:width height:height*reduc nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:reduc uB:1 vB:reduc uC:0 vC:0]] autorelease];
+			return [Isgl3dPlane meshWithGeometryAndUVMap:width height:height*reduc nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:reduc uB:1 vB:reduc uC:0 vC:0]];
 		} else {
-			return [[[Isgl3dPlane alloc] initWithGeometryAndUVMap:width height:height*reduc nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:1 vB:0 uC:0 vC:reduc]] autorelease];
+			return [Isgl3dPlane meshWithGeometryAndUVMap:width height:height*reduc nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:1 vB:0 uC:0 vC:reduc]];
 		}
 	} else {
 		if (_isSwapped) {
-			return [[[Isgl3dPlane alloc] initWithGeometryAndUVMap:width*reduc height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:reduc vA:0 uB:0 vB:0 uC:reduc vC:1]] autorelease];
+			return [Isgl3dPlane meshWithGeometryAndUVMap:width*reduc height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:reduc vA:0 uB:0 vB:0 uC:reduc vC:1]];
 		} else {
-			return [[[Isgl3dPlane alloc] initWithGeometryAndUVMap:width*reduc height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:reduc vB:0 uC:0 vC:1]] autorelease];
+			return [Isgl3dPlane meshWithGeometryAndUVMap:width*reduc height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:reduc vB:0 uC:0 vC:1]];
 		}
 	}
 }

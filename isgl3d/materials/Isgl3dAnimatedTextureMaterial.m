@@ -37,9 +37,22 @@
 @synthesize currentFrameID = _currentFrameID;
 @synthesize frameRate = _frameRate;
 
++ (id) materialWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
+					shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [[[self alloc] initWithTextureFiles:textureFilenameList animationName:animationName shininess:shininess 
+					precision:precision repeatX:repeatX repeatY:repeatY] autorelease];	
+}
+
++ (id) materialWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
+					animationName:(NSString *)animationName 
+					shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [[[self alloc] initWithTextureFilenameFormat:textureFilenameFormat textureFirstID:textureFirstID textureLastID:textureLastID
+	  				animationName:animationName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];	
+}
+
 
 - (id) initWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
-			 shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	if ([textureFilenameList count] > 0 &&
 		(self = [super initWithTextureFile:[textureFilenameList objectAtIndex:0] shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY])) {
@@ -58,7 +71,7 @@
 
 		NSEnumerator *enumerator = [_textureFilenameList objectEnumerator];
 		NSString *textureFilename;
-		while (textureFilename = [enumerator nextObject]) {
+		while ((textureFilename = [enumerator nextObject])) {
 			_texture = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:textureFilename precision:precision repeatX:repeatX repeatY:repeatY] retain];
 			if (_texture == nil) {
 				@throw [NSException exceptionWithName:@"NSException" 
@@ -81,7 +94,7 @@
 
 - (id) initWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
 			  animationName:(NSString *)animationName 
-			 shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	NSMutableArray *textureFileNameList = [NSMutableArray array];
 	NSString *fileName;

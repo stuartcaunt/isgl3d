@@ -66,6 +66,17 @@
 @property (readonly) float headHeight;
 
 /**
+ * Allocates and initialises (autorelease) arrow with a given geometry.
+ * @param height The total height of the arrow.
+ * @param radius The radius of the base of the arrow.
+ * @param headHeight The height of the head of the arrow.
+ * @param headRadius The radius of the head of the arrow.
+ * @param ns The number of segments radially around the base of the arrow
+ * @param nt The number of segments vertically along the base of the arrow.
+ */
++ (id) meshWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt;
+
+/**
  * Initialises the arrow with a given geometry.
  * @param height The total height of the arrow.
  * @param radius The radius of the base of the arrow.
@@ -74,6 +85,6 @@
  * @param ns The number of segments radially around the base of the arrow
  * @param nt The number of segments vertically along the base of the arrow.
  */
-- (id)initWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt;
+- (id) initWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt;
 
 @end

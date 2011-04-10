@@ -377,11 +377,11 @@
 - (id) init {
 
 	if ((self = [super init])) {
-		self.scene = [[[Isgl3dScene3D alloc] init] autorelease];
+		self.scene = [Isgl3dScene3D scene];
 		Isgl3dLog(Info, @"Isgl3dBasic3DView : creating default scene.");
 		
 		CGSize viewSize = self.viewport.size;
-		self.camera = [[[Isgl3dCamera alloc] initWithWidth:viewSize.width andHeight:viewSize.height] autorelease];
+		self.camera = [Isgl3dCamera cameraWithWidth:viewSize.width andHeight:viewSize.height];
 		[self.camera setPerspectiveProjection:45 near:1 far:10000 orientation:self.deviceViewOrientation];
 		Isgl3dLog(Info, @"Isgl3dBasic3DView : creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewSize));
 
@@ -409,11 +409,11 @@
 - (id) init {
 
 	if ((self = [super init])) {
-		self.scene = [[[Isgl3dScene3D alloc] init] autorelease];
+		self.scene = [Isgl3dScene3D scene];
 		Isgl3dLog(Info, @"Isgl3dBasic2DView : creating default scene.");
 
 		CGSize viewSize = self.viewportInPixels.size;
-		self.camera = [[[Isgl3dCamera alloc] initWithWidth:viewSize.width andHeight:viewSize.height] autorelease];
+		self.camera = [Isgl3dCamera cameraWithWidth:viewSize.width andHeight:viewSize.height];
 		[self.camera setOrthoProjection:0 right:viewSize.width bottom:0 top:viewSize.height near:1 far:1000 orientation:self.deviceViewOrientation];
 		Isgl3dLog(Info, @"Isgl3dBasic2DView : creating default camera with ortho projection. Viewport size = %@", NSStringFromCGSize(viewSize));
 

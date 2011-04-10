@@ -42,12 +42,12 @@
 		_moving = NO;	
 
 		// Create the sphere
-		Isgl3dTextureMaterial * material = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"isgl3d_logo.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dCube * cubeMesh = [[Isgl3dCube alloc] initWithGeometry:2 height:2 depth:2 nx:2 ny:2];
-		[self.scene createNodeWithMesh:[cubeMesh autorelease] andMaterial:[material autorelease]];
+		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"isgl3d_logo.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dCube * cubeMesh = [Isgl3dCube meshWithGeometry:2 height:2 depth:2 nx:2 ny:2];
+		[self.scene createNodeWithMesh:cubeMesh andMaterial:material];
 		
 		// Add shadow casting light
-		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
 		[light setTranslation:5 y:10 z:10];
 		[self.scene addChild:light];
 	

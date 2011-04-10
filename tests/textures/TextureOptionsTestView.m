@@ -34,20 +34,18 @@
 		_planeAngle = 0;
 		_cameraDistanceAngle = 0;
 
-		Isgl3dTextureMaterial *  textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:TEXTURE_MATERIAL_HIGH_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dTextureMaterial *  textureMaterial2 = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:TEXTURE_MATERIAL_LOW_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial *  textureMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:Isgl3dTexturePrecisionHigh repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial *  textureMaterial2 = [Isgl3dTextureMaterial materialWithTextureFile:@"rock_mipmap_4.pvr" shininess:0 precision:Isgl3dTexturePrecisionLow repeatX:NO repeatY:NO];
 	
-		Isgl3dGLMesh * planeMesh = [[Isgl3dPlane alloc] initWithGeometry:10.0 height:10.0 nx:10 ny:10]; 
+		Isgl3dGLMesh * planeMesh = [Isgl3dPlane meshWithGeometry:10.0 height:10.0 nx:10 ny:10]; 
 		
-		_plane1 = [[self.scene createNodeWithMesh:planeMesh andMaterial:[textureMaterial autorelease]] retain];
+		_plane1 = [self.scene createNodeWithMesh:planeMesh andMaterial:textureMaterial];
 		[_plane1 setRotation:-90 x:1 y:0 z:0];
 		[_plane1 setTranslation:0 y:-0.5 z:0];
 	
-		_plane2 = [[self.scene createNodeWithMesh:planeMesh andMaterial:[textureMaterial2 autorelease]] retain];
+		_plane2 = [self.scene createNodeWithMesh:planeMesh andMaterial:textureMaterial2];
 		[_plane2 setRotation:90 x:1 y:0 z:0];
 		[_plane2 setTranslation:0 y:0.5 z:0];
-				   
-		[planeMesh release];
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];
@@ -57,8 +55,6 @@
 }
 
 - (void) dealloc {
-	[_plane1 release];
-	[_plane2 release];
 
 	[super dealloc];
 }

@@ -67,6 +67,16 @@
 @property (readonly) int lats;
 
 /**
+ * Allocates and initialises (autorelease) ellipsoid with a specific geometry.
+ * @param radiusX The radius along the x-axis.
+ * @param radiusY The radius along the y-axis.
+ * @param radiusZ The radius along the z-axis.
+ * @param longs The number of longitudinal segments.
+ * @param lats The number of latitudinal segments.
+ */
++ (id) meshWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats;
+
+/**
  * Initialises the ellipsoid with a specific geometry.
  * @param radiusX The radius along the x-axis.
  * @param radiusY The radius along the y-axis.
@@ -74,6 +84,6 @@
  * @param longs The number of longitudinal segments.
  * @param lats The number of latitudinal segments.
  */
-- (id)initWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats;
+- (id) initWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats;
 
 @end

@@ -43,6 +43,20 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) button with a material and a button width and height in pixels.
+ * @param material The material to be rendered on the button.
+ * @param width The width of the button.
+ * @param height The height of the button.
+ */
++ (id) buttonWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height;
+
+/**
+ * Allocates and initialises (autorelease) button with a material and uses a default width and height (32 x 32 pixels).
+ * @param material The material to be rendered on the button.
+ */
++ (id) buttonWithMaterial:(Isgl3dMaterial *)material;
+
+/**
  * Initialises the button with a material and a button width and height in pixels.
  * @param material The material to be rendered on the button.
  * @param width The width of the button.

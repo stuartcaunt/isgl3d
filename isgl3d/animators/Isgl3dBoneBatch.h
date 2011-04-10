@@ -64,6 +64,13 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) bone batch with a portion of the mesh to be animated.
+ * @param numberOfElements The number of elements (vertices) concerned with this bone batch.
+ * @param elementOffset The starting offset of the original mesh for this bone batch.
+ */
++ (id) boneBatchWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset;
+
+/**
  * Initialises the bone batch with a portion of the mesh to be animated.
  * @param numberOfElements The number of elements (vertices) concerned with this bone batch.
  * @param elementOffset The starting offset of the original mesh for this bone batch.

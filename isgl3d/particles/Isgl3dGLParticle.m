@@ -38,6 +38,10 @@
 @synthesize dirty = _dirty;
 @synthesize distanceFromPoint = _distanceFromPoint;
 
++ (id) particle {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {
 	
 	if ((self = [super init])) {

@@ -32,7 +32,11 @@
 @synthesize radius = _radius;
 @synthesize tubeRadius = _tubeRadius;
 
-- (id)initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
++ (id) meshWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
+	return [[[self alloc] initWithGeometry:radius tubeRadius:tubeRadius ns:ns nt:nt] autorelease];
+}
+
+- (id) initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
 	
 	if ((self = [super init])) {
 		_radius = radius;

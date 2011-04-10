@@ -42,6 +42,11 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dScene3D node.
+ */
++ (id) scene;
+
+/**
  * Initialises the Isgl3dScene3D node.
  */
 - (id) init;

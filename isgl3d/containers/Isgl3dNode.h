@@ -209,6 +209,12 @@
 @property (nonatomic) BOOL isVisible;
 
 /**
+ * Allocates and initialises (autorelease) node (position at (0, 0, 0) and zero rotation
+ * and no scaling)..
+ */
++ (id) node;
+
+/**
  * Initialises the node (position at (0, 0, 0) and zero rotation
  * and no scaling)..
  */

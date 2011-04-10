@@ -23,7 +23,6 @@
  *
  */
 
-
 #import "Isgl3dNode.h"
 
 @class Isgl3dMaterial;
@@ -67,6 +66,45 @@ typedef enum {
 	
 }
 
+
+/**
+ * Allocates and initialises (autorelease) geometry of the cube but does not construct any of the faces (Isgl3dMeshNodes) which are added separately with
+ * the addFace method.
+ * @param width The width of the cube along the x-axis.
+ * @param height The height of the cube along the y-axis.
+ * @param depth The depth of the cube along the z-axis.
+ * @param nSegmentWidth The number of segments along the x-axis.
+ * @param nSegmentHeight The number of segments along the y-axis.
+ * @param nSegmentDepth The number of segments along the z-axis.
+ */
++ (id) cubeWithDimensions:(float)width height:(float)height depth:(float)depth 
+		 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
+
+/** 
+ * Allocates and initialises (autorelease) geometry of the cube and constructs all the faces. All 6 faces must be included in the array of materials and uv maps.
+ * @param materialArray NSArray of Isgl3dMaterial for each face material (array indices are referring to FaceId).
+ * @param uvMapArray NSArray of Isgl3dUVMap for each face (array indices are referring to FaceId). If an uv map is nil, the standard uv map is used.
+ * @param width The width of the cube along the x-axis.
+ * @param height The height of the cube along the y-axis.
+ * @param depth The depth of the cube along the z-axis.
+ * @param nSegmentWidth The number of segments along the x-axis.
+ * @param nSegmentHeight The number of segments along the y-axis.
+ * @param nSegmentDepth The number of segments along the z-axis.
+ */
++ (id) cubeWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
+					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
+
+/** 
+ * Allocates and initialises (autorelease) geometry of the cube and constructs all the faces. The 6 faces are covered with color materials of random color.
+ * @param width The width of the cube along the x-axis.
+ * @param height The height of the cube along the y-axis.
+ * @param depth The depth of the cube along the z-axis.
+ * @param nSegmentWidth The number of segments along the x-axis.
+ * @param nSegmentHeight The number of segments along the y-axis.
+ * @param nSegmentDepth The number of segments along the z-axis.
+ */
++ (id) cubeWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
+					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /**
  * Initialises the geometry of the cube but does not construct any of the faces (Isgl3dMeshNodes) which are added separately with

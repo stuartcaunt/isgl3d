@@ -31,9 +31,9 @@
 #import <OpenGLES/ES2/glext.h>
 
 @interface Isgl3dGLTextureFactoryState2 (PrivateMethods)
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 - (unsigned int) createTextureForDepthRender:(int)width height:(int)height;
-- (void) handleParameters:(GLenum)target precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
 
 @implementation Isgl3dGLTextureFactoryState2
@@ -51,7 +51,7 @@
 	[super dealloc];
 }
 
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -74,7 +74,7 @@
 	return textureIndex;
 }
 
-- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -108,7 +108,7 @@
 }
 
 
-- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -146,7 +146,7 @@
 - (Isgl3dGLDepthRenderTexture *) createDepthRenderTexture:(int)width height:(int)height {
 	unsigned int textureIndex = [self createTextureForDepthRender:width height:height];
 	
-	return [[[Isgl3dGLDepthRenderTexture2 alloc] initWithId:textureIndex width:width height:height] autorelease];
+	return [Isgl3dGLDepthRenderTexture2 textureWithId:textureIndex width:width height:height];
 }
 
 - (void) deleteTextureId:(unsigned int)textureId {
@@ -186,12 +186,12 @@
 	return textureIndex;
 }
 
-- (void) handleParameters:(GLenum)target precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
-	if (precision == GLTEXTURE_HIGH_PRECISION) {
+- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	if (precision == Isgl3dTexturePrecisionHigh) {
 		glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		
-	} else if (precision == GLTEXTURE_MEDIUM_PRECISION) {
+	} else if (precision == Isgl3dTexturePrecisionMedium) {
 		glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 		glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		

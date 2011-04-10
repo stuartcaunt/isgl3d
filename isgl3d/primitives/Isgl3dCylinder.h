@@ -36,6 +36,16 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) cylinder with the specified geometry.
+ * @param height The total height of the cylinder.
+ * @param radisu The radius of the cylinder.
+ * @param ns The number of segments radially around the cylinder.
+ * @param nt The number of segments vertically along the cylinder.
+ * @param openEnded Indicates if the cylinder is open-ended or not.
+ */
++ (id) meshWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded;
+
+/**
  * Initialises the cylinder with the specified geometry.
  * @param height The total height of the cylinder.
  * @param radisu The radius of the cylinder.
@@ -43,6 +53,6 @@
  * @param nt The number of segments vertically along the cylinder.
  * @param openEnded Indicates if the cylinder is open-ended or not.
  */
-- (id)initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded;
+- (id) initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded;
 
 @end

@@ -66,9 +66,9 @@
 		[self.scene addChild:_physicsWorld];
 	
 		// Create the sphere
-		Isgl3dTextureMaterial * beachBallMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"BeachBall.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dSphere * sphereMesh = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:16];
-		Isgl3dMeshNode * sphereNode = [self.scene createNodeWithMesh:[sphereMesh autorelease] andMaterial:[beachBallMaterial autorelease]];
+		Isgl3dTextureMaterial * beachBallMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"BeachBall.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dSphere * sphereMesh = [Isgl3dSphere meshWithGeometry:1 longs:16 lats:16];
+		Isgl3dMeshNode * sphereNode = [self.scene createNodeWithMesh:sphereMesh andMaterial:beachBallMaterial];
 		[sphereNode setTranslation:0 y:3 z:0];
 		sphereNode.enableShadowCasting = YES;
 	
@@ -76,9 +76,9 @@
 		[self createPhysicsObject:sphereNode shape:sphereShape mass:1.0 restitution:0.9]; 
 	
 		// Create the ground surface
-		Isgl3dTextureMaterial * woodMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"wood.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:100.0 height:100.0 nx:10 ny:10];
-		Isgl3dMeshNode * groundNode = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
+		Isgl3dTextureMaterial * woodMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"wood.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometry:100.0 height:100.0 nx:10 ny:10];
+		Isgl3dMeshNode * groundNode = [_physicsWorld createNodeWithMesh:plane andMaterial:woodMaterial];
 		[groundNode setRotation:-90 x:1 y:0 z:0];
 		[groundNode setTranslation:0 y:-2 z:0];
 	
@@ -86,7 +86,7 @@
 		[self createPhysicsObject:groundNode shape:groundShape mass:0 restitution:0.6];
 		
 		// Add shadow casting light
-		Isgl3dShadowCastingLight * light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.001];
+		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.001];
 		[light setTranslation:10 y:20 z:10];
 		light.planarShadowsNode = groundNode;
 		[self.scene addChild:light];
@@ -190,10 +190,10 @@
 	rigidBody->setActivationState(DISABLE_DEACTIVATION);
 
 	// Create a physics object and add it to the physics world
-	Isgl3dPhysicsObject3D * physicsObject = [[Isgl3dPhysicsObject3D alloc] initWithNode:node andRigidBody:rigidBody];
+	Isgl3dPhysicsObject3D * physicsObject = [Isgl3dPhysicsObject3D physicsObjectWithNode:node andRigidBody:rigidBody];
 	[_physicsWorld addPhysicsObject:physicsObject];
 	
-	return [physicsObject autorelease];
+	return physicsObject;
 }
 
 @end
@@ -212,23 +212,23 @@
 	if ((self = [super init])) {
 
 		// Create a button to calibrate the accelerometer
-		Isgl3dTextureMaterial * calibrateButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"angle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		_calibrateButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[calibrateButtonMaterial autorelease]];
-		[self.scene addChild:[_calibrateButton autorelease]];
+		Isgl3dTextureMaterial * calibrateButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"angle.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		_calibrateButton = [Isgl3dGLUIButton buttonWithMaterial:calibrateButtonMaterial];
+		[self.scene addChild:_calibrateButton];
 		[_calibrateButton setX:8 andY:264];
 		_calibrateButton.alpha = 0.7;
 	
 		// Create a button to pause the scene
-		Isgl3dTextureMaterial * pauseButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pause.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		_pauseButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[pauseButtonMaterial autorelease]];
-		[self.scene addChild:[_pauseButton autorelease]];
+		Isgl3dTextureMaterial * pauseButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"pause.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		_pauseButton = [Isgl3dGLUIButton buttonWithMaterial:pauseButtonMaterial];
+		[self.scene addChild:_pauseButton];
 		[_pauseButton setX:424 andY:264];
 		_pauseButton.alpha = 0.7;
 	
 		// Create a button to allow movement of the camera
-		Isgl3dTextureMaterial * cameraButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"camera.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		_cameraButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[cameraButtonMaterial autorelease]];
-		[self.scene addChild:[_cameraButton autorelease]];
+		Isgl3dTextureMaterial * cameraButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"camera.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		_cameraButton = [Isgl3dGLUIButton buttonWithMaterial:cameraButtonMaterial];
+		[self.scene addChild:_cameraButton];
 		[_cameraButton setX:8 andY:8];
 		_cameraButton.alpha = 0.7;
 

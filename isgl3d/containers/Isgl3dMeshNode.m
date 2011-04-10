@@ -40,6 +40,10 @@
 
 @synthesize doubleSided = _doubleSided;
 
++ (id) nodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
+	return [[[self alloc] initWithMesh:mesh andMaterial:material] autorelease];
+}
+
 - (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
     if ((self = [super init])) {
 

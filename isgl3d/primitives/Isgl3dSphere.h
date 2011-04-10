@@ -54,11 +54,19 @@
 @property (readonly) int lats;
 
 /**
+ * Allocates and initialises (autorelease) sphere with a specific geometry.
+ * @param radius The radius of the sphere.
+ * @param longs The number of longitudinal segments.
+ * @param lats The number of latitudinal segments.
+ */
++ (id) meshWithGeometry:(float)radius longs:(int)longs lats:(int)lats;
+
+/**
  * Initialises the sphere with a specific geometry.
  * @param radius The radius of the sphere.
  * @param longs The number of longitudinal segments.
  * @param lats The number of latitudinal segments.
  */
-- (id)initWithGeometry:(float)radius longs:(int)longs lats:(int)lats;
+- (id) initWithGeometry:(float)radius longs:(int)longs lats:(int)lats;
 
 @end

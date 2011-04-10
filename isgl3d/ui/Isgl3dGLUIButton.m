@@ -31,6 +31,14 @@
 @implementation Isgl3dGLUIButton
 
 
++ (id) buttonWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
+	return [[[self alloc] initWithMaterial:material width:width height:height] autorelease];
+}
+
++ (id) buttonWithMaterial:(Isgl3dMaterial *)material {
+	return [[[self alloc] initWithMaterial:material] autorelease];
+}
+
 - (id) initWithMaterial:(Isgl3dMaterial *)material {
 	
 	if ((self = [super initWithMesh:[[Isgl3dPrimitiveFactory sharedInstance] UIButtonMesh] andMaterial:material])) {
@@ -43,7 +51,7 @@
 
 - (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 	
-	if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometry:width height:height nx:2 ny:2] autorelease] andMaterial:material])) {
+	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:width height:height nx:2 ny:2] andMaterial:material])) {
 		[self setWidth:width andHeight:height];
 		self.interactive = YES;
 	}

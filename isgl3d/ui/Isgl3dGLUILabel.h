@@ -42,6 +42,28 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) label with text, a font and a font size.
+ * @param string The text to be displayed.
+ * @param fontName The name of the font.
+ * @param fontSize The size of the font.
+ */
++ (id) labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
+
+/**
+ * Allocates and initialises (autorelease) label with text, a font and a font size.
+ * Intialising the label in this way aims to improve the performance of an application for which the label
+ * has rapidly changing text. Using a character set, the label maintains a dictionary of characters that can
+ * be re-rendered multiple times. Each character has an associated texture material and a mesh. A full string
+ * is created by rendering each character next to each other.
+ * 
+ * Note: this is very experimental.
+ * @param string The text to be displayed.
+ * @param fontName The name of the font.
+ * @param fontSize The size of the font.
+ */
++ (id) labelWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
+
+/**
  * Initialises the label with text, a font and a font size.
  * @param string The text to be displayed.
  * @param fontName The name of the font.

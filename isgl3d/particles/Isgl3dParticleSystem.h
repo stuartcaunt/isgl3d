@@ -51,6 +51,11 @@
 @property (readonly) NSArray * particles;
 
 /**
+ * Allocates and initialises (autorelease) particle system.
+ */
++ (id) particleSystem;
+
+/**
  * Initialises the particle system.
  */
 - (id) init;

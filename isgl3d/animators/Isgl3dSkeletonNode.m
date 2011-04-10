@@ -30,6 +30,9 @@
 
 @implementation Isgl3dSkeletonNode
 
++ (id) skeletonNode {
+	return [[[self alloc] init] autorelease];
+}
 
 - (id) init {
     if ((self = [super init])) {
@@ -44,7 +47,7 @@
 }
 
 - (Isgl3dBoneNode *) createBoneNode {
-	return (Isgl3dBoneNode *)[[self addChild:[[Isgl3dBoneNode alloc] init]] autorelease];
+	return (Isgl3dBoneNode *)[self addChild:[Isgl3dBoneNode boneNode]];
 }
 
 - (void) setFrame:(unsigned int)frameNumber {

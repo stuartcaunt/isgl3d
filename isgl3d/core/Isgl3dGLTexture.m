@@ -34,6 +34,14 @@
 @synthesize contentSize = _contentSize;
 @synthesize isHighDefinition = _isHighDefinition;
 
++ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
+	return [[[self alloc] initWithId:textureId width:width height:height] autorelease];
+}
+
++ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize {
+	return [[[self alloc] initWithId:textureId width:width height:height contentSize:contentSize] autorelease];
+}
+
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
 	return [self initWithId:textureId width:width height:height contentSize:CGSizeMake(_width, _height)];
 }

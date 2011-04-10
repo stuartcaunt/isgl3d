@@ -39,8 +39,8 @@
 		_cameraController.doubleTapEnabled = NO;
 
 		// Create billboards
-		Isgl3dTextureMaterial * textureMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"billboard.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dBillboard * billboard = [[Isgl3dBillboard alloc] init];
+		Isgl3dTextureMaterial * textureMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"billboard.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dBillboard * billboard = [Isgl3dBillboard billboard];
 		billboard.size = 64;
 		[billboard setAttenuation:0 linear:0 quadratic:0.01];
 		
@@ -52,9 +52,6 @@
 				}
 			}		
 		}		
-		
-		[billboard release];	
-		[textureMaterial release];	
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];

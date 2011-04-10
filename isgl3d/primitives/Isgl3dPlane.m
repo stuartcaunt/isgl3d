@@ -37,16 +37,24 @@
 @implementation Isgl3dPlane
 
 
-- (id)initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny {
++ (id) meshWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny {
+	return [[[self alloc] initWithGeometry:width height:height nx:nx ny:ny] autorelease];
+}
+
++ (id) meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap {
+	return [[[self alloc] initWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:uvMap] autorelease];
+}
+
+- (id) initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny {
 	
-	if (self = [self initWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:nil]) {
+	if ((self = [self initWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:nil])) {
 		// Empty.
 	}
 	
 	return self;
 }
 
-- (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap {
+- (id) initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap {
 	if ((self = [super init])) {
 		_width = width;
 		_height = height;

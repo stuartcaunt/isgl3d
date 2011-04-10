@@ -42,10 +42,10 @@
 		_cameraController.phi = 30;
 		_cameraController.doubleTapEnabled = NO;
 
-		Isgl3dTextureMaterial *  spriteMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"particle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial *  spriteMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"particle.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 	
-		Isgl3dParticleSystem * particleSystem = [[Isgl3dParticleSystem alloc] init];
-		Isgl3dParticleNode * particleNode =  [self.scene createNodeWithParticle:particleSystem andMaterial:[spriteMaterial autorelease]];
+		Isgl3dParticleSystem * particleSystem = [Isgl3dParticleSystem particleSystem];
+		Isgl3dParticleNode * particleNode =  [self.scene createNodeWithParticle:particleSystem andMaterial:spriteMaterial];
 		particleNode.transparent = YES;
 		[particleNode enableAlphaCullingWithValue:0.5];
 		[particleSystem setAttenuation:0.01 linear:0.02 quadratic:0.007];
@@ -60,9 +60,6 @@
 		_fountainParticleGenerator.size = 10;
 		[_fountainParticleGenerator startAnimation];
 		_fountainParticleGenerator.time = 2;
-		
-		[particleSystem release];
-
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];

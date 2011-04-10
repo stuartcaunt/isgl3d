@@ -31,13 +31,20 @@
 
 @implementation Isgl3dGLUIImage
 
++ (id) imageWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
+	return [[[self alloc] initWithMaterial:material width:width height:height] autorelease];
+}
+
++ (id) imageWithMaterial:(Isgl3dMaterial *)material andRectangle:(CGRect)rectangle width:(unsigned int)width height:(unsigned int)height {
+	return [[[self alloc] initWithMaterial:material andRectangle:rectangle width:width height:height] autorelease];
+}
 
 
 - (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 
 	float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
 	float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
-	if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometry:widthInPixels height:heightInPixels nx:2 ny:2] autorelease] andMaterial:material])) {
+	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:widthInPixels height:heightInPixels nx:2 ny:2] andMaterial:material])) {
 		[self setWidth:width andHeight:height];
 	}
 	
@@ -69,7 +76,7 @@
 		
 		float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
 		float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
-		if ((self = [super initWithMesh:[[[Isgl3dPlane alloc] initWithGeometryAndUVMap:widthInPixels height:heightInPixels nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:ua vA:va uB:ub vB:vb uC:uc vC:vc]] autorelease] andMaterial:material])) {
+		if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometryAndUVMap:widthInPixels height:heightInPixels nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:ua vA:va uB:ub vB:vb uC:uc vC:vc]] andMaterial:material])) {
 			[self setWidth:width andHeight:height];
 		}
 		

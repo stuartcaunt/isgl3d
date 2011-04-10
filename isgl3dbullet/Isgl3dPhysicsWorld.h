@@ -47,6 +47,11 @@ class btCollisionShape;
 }
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dPhysicsWorld;
+ */
++ (id) physicsWorld;
+
+/**
  * Initialises the Isgl3dPhysicsWorld;
  */
 - (id) init;

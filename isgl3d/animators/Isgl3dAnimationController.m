@@ -31,6 +31,10 @@
 @synthesize repeat = _repeat;
 @synthesize frameRate = _frameRate;
 
++ (id) controllerWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
+	return [[[self alloc] initWithSkeleton:skeleton andNumberOfFrames:numberOfFrames] autorelease];
+}
+
 - (id) initWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
     if ((self = [super init])) {
 		_skeleton = [skeleton retain];

@@ -33,19 +33,19 @@
 	if ((self = [super init])) {
 
 		// Create the primitive
-		Isgl3dTextureMaterial * material = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"red_checker.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 	
-		Isgl3dTorus * torusMesh = [[Isgl3dTorus alloc] initWithGeometry:2 tubeRadius:1 ns:32 nt:32];
-		_torus = [self.scene createNodeWithMesh:[torusMesh autorelease] andMaterial:[material autorelease]];
+		Isgl3dTorus * torusMesh = [Isgl3dTorus meshWithGeometry:2 tubeRadius:1 ns:32 nt:32];
+		_torus = [self.scene createNodeWithMesh:torusMesh andMaterial:material];
 		[_torus addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 		[_torus addEvent3DListener:self method:@selector(objectMoved:) forEventType:MOVE_EVENT];
 		[_torus addEvent3DListener:self method:@selector(objectReleased:) forEventType:RELEASE_EVENT];
 		_torus.interactive = YES;
 	
 		// Add light
-		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
 		[light setTranslation:5 y:15 z:15];
-		[self.scene addChild:[light autorelease]];
+		[self.scene addChild:light];
 
 //		Isgl3dPlane * planeMesh =  [[Isgl3dPlane alloc] initWithGeometry:150 height:150 nx:2 ny:2];
 //		Isgl3dMeshNode * node = [self.activeScene createNodeWithMesh:[planeMesh autorelease] andMaterial:[material autorelease]];

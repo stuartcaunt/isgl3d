@@ -74,6 +74,16 @@
 @property (readonly) int lats;
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dOvoid with the specified geometry.
+ * @param a The radius in the x-direction of the ovoid when k = 0.
+ * @param b The radius in the y-direction.
+ * @param k A factor to modify the shape of the curve. 0 produces an ellipsoid, 0.1 produces a typical egg shape.
+ * @param longs The number of longitudinal segments.
+ * @param lats The number of latitudinal segments.
+ */
++ (id) meshWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats;
+
+/**
  * Initialises the Isgl3dOvoid with the specified geometry.
  * @param a The radius in the x-direction of the ovoid when k = 0.
  * @param b The radius in the y-direction.
@@ -81,6 +91,6 @@
  * @param longs The number of longitudinal segments.
  * @param lats The number of latitudinal segments.
  */
-- (id)initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats;
+- (id) initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats;
 
 @end

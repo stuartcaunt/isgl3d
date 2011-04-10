@@ -41,6 +41,18 @@
 @synthesize spotCutoffAngle = _spotCutoffAngle;
 @synthesize spotFalloffExponent = _spotFalloffExponent;
 
++ (id) light {
+	return [[[self alloc] init] autorelease];
+}
+
++ (id) lightWithColorArray:(float *)color {
+	return [[[self alloc] initWithColorArray:color] autorelease];
+}
+
++ (id) lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
+	return [[[self alloc] initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation] autorelease];
+}
+
 - (id) init {
 	return [self initWithHexColor:@"000000" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
 }
@@ -136,10 +148,10 @@
 		_renderLight = renderLight;
 		
 		if (_renderLight) {
-			Isgl3dColorMaterial * lightColorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:_color diffuse:_color specular:_color shininess:0.0];
-			Isgl3dGLMesh * mesh = [[Isgl3dSphere alloc] initWithGeometry:0.1 longs:4 lats:2];
+			Isgl3dColorMaterial * lightColorMaterial = [Isgl3dColorMaterial materialWithHexColors:_color diffuse:_color specular:_color shininess:0.0];
+			Isgl3dGLMesh * mesh = [Isgl3dSphere meshWithGeometry:0.1 longs:4 lats:2];
 			
-			_renderedLight = [self createNodeWithMesh:[mesh autorelease] andMaterial:[lightColorMaterial autorelease]];
+			_renderedLight = [self createNodeWithMesh:mesh andMaterial:lightColorMaterial];
 			_renderedLight.enableShadowRendering = NO;
 		}
 	}
@@ -160,8 +172,8 @@
 		[self removeChild:_renderedLight];
 	}
 
-	Isgl3dColorMaterial * lightColorMaterial = [[Isgl3dColorMaterial alloc] initWithHexColors:_color diffuse:_color specular:_color shininess:0.0];
-	_renderedLight = [self createNodeWithMesh:mesh andMaterial:[lightColorMaterial autorelease]];
+	Isgl3dColorMaterial * lightColorMaterial = [Isgl3dColorMaterial materialWithHexColors:_color diffuse:_color specular:_color shininess:0.0];
+	_renderedLight = [self createNodeWithMesh:mesh andMaterial:lightColorMaterial];
 	_renderedLight.enableShadowRendering = NO;
 
 	_renderLight = YES;

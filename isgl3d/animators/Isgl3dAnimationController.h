@@ -66,6 +66,13 @@
 
 
 /**
+ * Allocates and initialises (autorelease) animation controller with a given skeleton and specifies the number of frames.
+ * @param skeleton The skeleton to be animated (containing Isgl3dBoneNodes and/or Isgl3dAnimatedMeshes).
+ * @param numberOfFrames The number of frames contained in the animation sequence.
+ */
++ (id) controllerWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames;
+
+/**
  * Initialises the animation controller with a given skeleton and specifies the number of frames.
  * @param skeleton The skeleton to be animated (containing Isgl3dBoneNodes and/or Isgl3dAnimatedMeshes).
  * @param numberOfFrames The number of frames contained in the animation sequence.

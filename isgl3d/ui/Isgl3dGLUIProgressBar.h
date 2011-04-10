@@ -69,6 +69,15 @@
 @property (nonatomic) BOOL isSwapped;
 
 /**
+ * Allocates and initialises (autorelease) progress bar with a material and specified geometrical properties.
+ * @param material The material to be rendered.
+ * @param width The width of the progress bar in pixels.
+ * @param height The height of the progress bar in pixels.
+ * @param isVertical Specified whether the progress bar is oriented vertically or not.
+ */
++ (id) progressBarWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical;
+
+/**
  * Initialises the progress bar with a material and specified geometrical properties.
  * @param material The material to be rendered.
  * @param width The width of the progress bar in pixels.

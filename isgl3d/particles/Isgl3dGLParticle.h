@@ -127,6 +127,11 @@
 @property (readonly) float distanceFromPoint;
 
 /**
+ * Allocates and initialises (autorelease) the particle with default values: position (0, 0, 0), attenuation (1, 0, 0), color (1, 1, 1, 1), size 32. 
+ */
++ (id) particle;
+
+/**
  * Initialises the particle with default values: position (0, 0, 0), attenuation (1, 0, 0), color (1, 1, 1, 1), size 32. 
  */
 - (id) init;

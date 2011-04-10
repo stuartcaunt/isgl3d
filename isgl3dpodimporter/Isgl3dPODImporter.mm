@@ -65,6 +65,10 @@
 @implementation Isgl3dPODImporter
 
 
++ (id) podImporterWithFile:(NSString *)path {
+	return [[[self alloc] initWithFile:path] autorelease];
+}
+
 - (id) initWithFile:(NSString *)path andView3D:(Isgl3dView3D *)view3D {
 	if ((self = [self initWithFile:path])) {
 		_view3D = [view3D retain];
@@ -393,10 +397,10 @@
 		if (materialInfo.nIdxTexDiffuse >= 0 && materialInfo.nIdxTexDiffuse < [_textures count]) {
 			NSString * textureFileName = [_textures objectAtIndex:materialInfo.nIdxTexDiffuse];
 
-			material = [[Isgl3dTextureMaterial alloc] initWithTextureFile:textureFileName shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:YES repeatY:YES];
+			material = [Isgl3dTextureMaterial materialWithTextureFile:textureFileName shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:YES repeatY:YES];
 		
 		} else {
-			material = [[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0];
+			material = [Isgl3dColorMaterial materialWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0];
 		}
 		
 		// ignore other material types for the time being (ambient, specular, bump, ...)
@@ -406,7 +410,7 @@
 		[material setSpecularColor:materialInfo.pfMatSpecular];
 		[material setShininess:materialInfo.fMatShininess];
 		
-		[_materials addObject:[material autorelease]];
+		[_materials addObject:material];
 	}	
 	
 	// Create array of meshes
@@ -452,7 +456,7 @@
 		PVRTVECTOR3 dirn;
 		_podScene->GetLight(pos, dirn, i);
 		
-		Isgl3dLight * light = [[Isgl3dLight alloc] initWithColorArray:lightInfo.pfColour];
+		Isgl3dLight * light = [Isgl3dLight lightWithColorArray:lightInfo.pfColour];
 		
 		light.constantAttenuation = lightInfo.fConstantAttenuation;
 		light.linearAttenuation = lightInfo.fLinearAttenuation;
@@ -473,7 +477,7 @@
 			[light setSpotDirection:dirn.x y:dirn.y z:dirn.z];
 		}
 		
-		[_lights addObject:[light autorelease]];
+		[_lights addObject:light];
 	}
 	
 	
@@ -503,9 +507,8 @@
 		} else {
 		
 			NSLog(@"Bulding mesh node: %s:", meshNodeInfo.pszName);
-			node = [[Isgl3dMeshNode alloc] initWithMesh:mesh andMaterial:material];
+			node = [Isgl3dMeshNode nodeWithMesh:mesh andMaterial:material];
 			[_meshNodes setObject:node forKey:[NSString stringWithUTF8String:meshNodeInfo.pszName]];
-			[node autorelease];
 		}			
 
 		[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:meshNodeInfo.nIdx]];
@@ -583,7 +586,7 @@
 	//NSLog(@"Bulding animated mesh node: %s:", meshNodeInfo.pszName);
 	
 	// Create new animted mesh node with default mesh and material
-	Isgl3dAnimatedMeshNode * animatedMeshNode = [[Isgl3dAnimatedMeshNode alloc] initWithMesh:mesh andMaterial:material];
+	Isgl3dAnimatedMeshNode * animatedMeshNode = [Isgl3dAnimatedMeshNode nodeWithMesh:mesh andMaterial:material];
 	
 	//NSLog(@"Number of bones per vertex = %i", meshInfo.sBoneIdx.n);
 	[animatedMeshNode setNumberOfBonesPerVertex:meshInfo.sBoneIdx.n];
@@ -606,7 +609,7 @@
 		unsigned int elementOffset = boneBatches.pnBatchOffset[iBatch] * 3;
 
 		// Create BoneBatch
-		Isgl3dBoneBatch * boneBatch = [[Isgl3dBoneBatch alloc] initWithNumberOfElements:numberOfElements andElementOffset:elementOffset];
+		Isgl3dBoneBatch * boneBatch = [Isgl3dBoneBatch boneBatchWithNumberOfElements:numberOfElements andElementOffset:elementOffset];
 		[animatedMeshNode addBoneBatch:boneBatch];
 		
 		int numberOfBatchBones = boneBatches.pnBatchBoneCnt[iBatch];
@@ -636,11 +639,11 @@
 		
 	}
 
-	return [animatedMeshNode autorelease];	
+	return animatedMeshNode;	
 }
 
 - (Isgl3dGLMesh *)createMeshFromPODData:(SPODMesh *)podData {
-	Isgl3dGLMesh * mesh = [[Isgl3dGLMesh alloc] init];
+	Isgl3dGLMesh * mesh = [Isgl3dGLMesh mesh];
 	
 	// Check if POD mesh is interleaved or not
 	if (podData->pInterleaved == 0) {
@@ -676,7 +679,7 @@
 					andNumberOfElements:numberOfElements andVBOData:[vboData autorelease]];
 	}
 	
-	return [mesh autorelease];
+	return mesh;
 }
 
 - (Isgl3dBoneNode *) createBoneNode:(unsigned int)nodeId {
@@ -688,7 +691,7 @@
 	SPODNode & nodeInfo = _podScene->pNode[nodeId];
 	NSLog(@"Building bone %s (%i)", nodeInfo.pszName, nodeId);
 
-	boneNode = [[Isgl3dBoneNode alloc] init];
+	boneNode = [Isgl3dBoneNode boneNode];
 	[_indexedNodes setObject:boneNode forKey:[NSNumber numberWithInteger:nodeId]];
 	[_boneNodes setObject:boneNode forKey:[NSString stringWithUTF8String:nodeInfo.pszName]];
 
@@ -706,7 +709,7 @@
 		[boneNode addFrameTransformationFromOpenGLMatrix:podTransformation.f];
 	}	
 
-	return [boneNode autorelease];
+	return boneNode;
 }
 
 @end

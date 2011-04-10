@@ -31,14 +31,21 @@
 #import "Isgl3dGLTextureFactory.h"
 
 @interface Isgl3dTextureMaterial (PrivateMethods)
-- (id) initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
-- (int) convertPrecision:(int)materialPrecision;
+- (id) initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
 
 @implementation Isgl3dTextureMaterial
 
++ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
+}
 
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
++ (id) materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
+	return [[[self alloc] initWithText:text fontName:fontName fontSize:fontSize] autorelease];
+}
+
+
+- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 	
@@ -50,7 +57,7 @@
 	return self;
 }
 
-- (id) initWithCubemapTextureFiles:(NSArray *)texturePathArray shininess:(float)shininess precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (id) initWithCubemapTextureFiles:(NSArray *)texturePathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 	
@@ -107,20 +114,6 @@
 
 - (void) setIsHighDefinition:(BOOL)isHighDefinition {
 	_texture.isHighDefinition = isHighDefinition;
-}
-
-- (int) convertPrecision:(int)materialPrecision {
-	if (materialPrecision == TEXTURE_MATERIAL_LOW_PRECISION) {
-		return GLTEXTURE_LOW_PRECISION;
-	}
-	if (materialPrecision == TEXTURE_MATERIAL_MEDIUM_PRECISION) {
-		return GLTEXTURE_MEDIUM_PRECISION;
-	}
-	if (materialPrecision == TEXTURE_MATERIAL_HIGH_PRECISION) {
-		return GLTEXTURE_HIGH_PRECISION;
-	}
-	
-	return GLTEXTURE_MEDIUM_PRECISION;
 }
 
 

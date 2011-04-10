@@ -927,8 +927,6 @@
 		17F1D7D112F87EC5008D39E8 /* Isgl3dParticleGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D6ED12F87EC5008D39E8 /* Isgl3dParticleGenerator.m */; };
 		17F1D7D212F87EC5008D39E8 /* Isgl3dParticlePath.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6EE12F87EC5008D39E8 /* Isgl3dParticlePath.h */; };
 		17F1D7D312F87EC5008D39E8 /* Isgl3dParticlePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D6EF12F87EC5008D39E8 /* Isgl3dParticlePath.m */; };
-		17F1D7D412F87EC5008D39E8 /* Isgl3dParticlePathData.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6F012F87EC5008D39E8 /* Isgl3dParticlePathData.h */; };
-		17F1D7D512F87EC5008D39E8 /* Isgl3dParticlePathData.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D6F112F87EC5008D39E8 /* Isgl3dParticlePathData.m */; };
 		17F1D7D612F87EC5008D39E8 /* Isgl3dGLParticle.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6F212F87EC5008D39E8 /* Isgl3dGLParticle.h */; };
 		17F1D7D712F87EC5008D39E8 /* Isgl3dGLParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D6F312F87EC5008D39E8 /* Isgl3dGLParticle.m */; };
 		17F1D7D812F87EC5008D39E8 /* Isgl3dParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6F412F87EC5008D39E8 /* Isgl3dParticleSystem.h */; };
@@ -1993,8 +1991,6 @@
 		17F1D6ED12F87EC5008D39E8 /* Isgl3dParticleGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dParticleGenerator.m; sourceTree = "<group>"; };
 		17F1D6EE12F87EC5008D39E8 /* Isgl3dParticlePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dParticlePath.h; sourceTree = "<group>"; };
 		17F1D6EF12F87EC5008D39E8 /* Isgl3dParticlePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dParticlePath.m; sourceTree = "<group>"; };
-		17F1D6F012F87EC5008D39E8 /* Isgl3dParticlePathData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dParticlePathData.h; sourceTree = "<group>"; };
-		17F1D6F112F87EC5008D39E8 /* Isgl3dParticlePathData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dParticlePathData.m; sourceTree = "<group>"; };
 		17F1D6F212F87EC5008D39E8 /* Isgl3dGLParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGLParticle.h; sourceTree = "<group>"; };
 		17F1D6F312F87EC5008D39E8 /* Isgl3dGLParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGLParticle.m; sourceTree = "<group>"; };
 		17F1D6F412F87EC5008D39E8 /* Isgl3dParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dParticleSystem.h; sourceTree = "<group>"; };
@@ -3412,8 +3408,6 @@
 				17F1D6ED12F87EC5008D39E8 /* Isgl3dParticleGenerator.m */,
 				17F1D6EE12F87EC5008D39E8 /* Isgl3dParticlePath.h */,
 				17F1D6EF12F87EC5008D39E8 /* Isgl3dParticlePath.m */,
-				17F1D6F012F87EC5008D39E8 /* Isgl3dParticlePathData.h */,
-				17F1D6F112F87EC5008D39E8 /* Isgl3dParticlePathData.m */,
 			);
 			path = generators;
 			sourceTree = "<group>";
@@ -4018,7 +4012,6 @@
 				17F1D7CE12F87EC5008D39E8 /* Isgl3dFountainParticleGenerator.h in Headers */,
 				17F1D7D012F87EC5008D39E8 /* Isgl3dParticleGenerator.h in Headers */,
 				17F1D7D212F87EC5008D39E8 /* Isgl3dParticlePath.h in Headers */,
-				17F1D7D412F87EC5008D39E8 /* Isgl3dParticlePathData.h in Headers */,
 				17F1D7D612F87EC5008D39E8 /* Isgl3dGLParticle.h in Headers */,
 				17F1D7D812F87EC5008D39E8 /* Isgl3dParticleSystem.h in Headers */,
 				17F1D7E012F87EC5008D39E8 /* Isgl3dArrow.h in Headers */,
@@ -5559,7 +5552,6 @@
 				17F1D7CF12F87EC5008D39E8 /* Isgl3dFountainParticleGenerator.m in Sources */,
 				17F1D7D112F87EC5008D39E8 /* Isgl3dParticleGenerator.m in Sources */,
 				17F1D7D312F87EC5008D39E8 /* Isgl3dParticlePath.m in Sources */,
-				17F1D7D512F87EC5008D39E8 /* Isgl3dParticlePathData.m in Sources */,
 				17F1D7D712F87EC5008D39E8 /* Isgl3dGLParticle.m in Sources */,
 				17F1D7D912F87EC5008D39E8 /* Isgl3dParticleSystem.m in Sources */,
 				17F1D7E112F87EC5008D39E8 /* Isgl3dArrow.m in Sources */,

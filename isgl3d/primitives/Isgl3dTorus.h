@@ -55,12 +55,21 @@
 @property (readonly) float tubeRadius;
 
 /**
+ * Allocates and initialises (autorelease) torus with the specified geometry.
+ * @param radius The radius from the origin to the tube center.
+ * @param tubeRadius The radius of the tube.
+ * @param ns The number of segments around the torus.
+ * @param nt The number of segments around the tube.
+ */
++ (id) meshWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt;
+
+/**
  * Initialises the torus with the specified geometry.
  * @param radius The radius from the origin to the tube center.
  * @param tubeRadius The radius of the tube.
  * @param ns The number of segments around the torus.
  * @param nt The number of segments around the tube.
  */
-- (id)initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt;
+- (id) initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt;
 
 @end

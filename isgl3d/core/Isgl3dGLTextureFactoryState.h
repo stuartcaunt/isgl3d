@@ -24,6 +24,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "isgl3dTypes.h"
 
 @class Isgl3dGLDepthRenderTexture;
 
@@ -38,9 +39,9 @@
 
 - (id) init;
 
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
-- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
-- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 - (void) deleteTextureId:(unsigned int)textureId;
 - (Isgl3dGLDepthRenderTexture *) createDepthRenderTexture:(int)width height:(int)height;
 - (unsigned int) compressionFormatFromString:(NSString *)format;

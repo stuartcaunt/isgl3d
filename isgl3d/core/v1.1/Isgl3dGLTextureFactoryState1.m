@@ -31,7 +31,7 @@
 #import <OpenGLES/ES1/glext.h>
 
 @interface Isgl3dGLTextureFactoryState1 (PrivateMethods)
-- (void) handleParameters:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (void) handleParameters:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 - (unsigned int) createTextureForDepthRender:(int)width height:(int)height;
 @end
 
@@ -51,7 +51,7 @@
 
 
 
-- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -84,7 +84,7 @@
 	return textureIndex;
 }
 
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -106,7 +106,7 @@
 	return textureIndex;
 }
 
-- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	Isgl3dLog(Error, @"Isgl3dGLTextureFactory1.createCubemapTextureFromRawData not available for OpenGL ES 1.1");
 	return 0;
 }
@@ -115,7 +115,7 @@
 - (Isgl3dGLDepthRenderTexture *) createDepthRenderTexture:(int)width height:(int)height {
 	unsigned int textureIndex = [self createTextureForDepthRender:width height:height];
 	
-	return [[[Isgl3dGLDepthRenderTexture1 alloc] initWithId:textureIndex width:width height:height] autorelease];
+	return [Isgl3dGLDepthRenderTexture1 textureWithId:textureIndex width:width height:height];
 }
 
 
@@ -135,12 +135,12 @@
 	return 0;
 }
 
-- (void) handleParameters:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
-	if (precision == GLTEXTURE_HIGH_PRECISION) {
+- (void) handleParameters:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	if (precision == Isgl3dTexturePrecisionHigh) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		
-	} else if (precision == GLTEXTURE_MEDIUM_PRECISION) {
+	} else if (precision == Isgl3dTexturePrecisionMedium) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		

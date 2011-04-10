@@ -45,6 +45,13 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dSingleTouchFilter with an Isgl3dNode that we
+ * wish to add an event listener to.
+ * @param object The interactive object for which event listeners should be attached.
+ */
++ (id) filterWithObject:(Isgl3dNode *)object;
+
+/**
  * Initialises the Isgl3dSingleTouchFilter with an Isgl3dNode that we
  * wish to add an event listener to.
  * @param object The interactive object for which event listeners should be attached.

@@ -51,6 +51,10 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 @synthesize interactive = _interactive;
 @synthesize isVisible = _isVisible;
 
++ (id) node {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {    
     if ((self = [super init])) {
 
@@ -246,27 +250,27 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 #pragma mark scene graph
 
 - (Isgl3dNode *) createNode {
-	return [[self addChild:[[Isgl3dNode alloc] init]] autorelease];
+	return [self addChild:[Isgl3dNode node]];
 }
 
 - (Isgl3dMeshNode *) createNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
-	return (Isgl3dMeshNode *)[[self addChild:[[Isgl3dMeshNode alloc] initWithMesh:mesh andMaterial:material]] autorelease];
+	return (Isgl3dMeshNode *)[self addChild:[Isgl3dMeshNode nodeWithMesh:mesh andMaterial:material]];
 }
 
 - (Isgl3dParticleNode *) createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
-	return (Isgl3dParticleNode *)[[self addChild:[[Isgl3dParticleNode alloc] initWithParticle:particle andMaterial:material]] autorelease];
+	return (Isgl3dParticleNode *)[self addChild:[Isgl3dParticleNode nodeWithParticle:particle andMaterial:material]];
 }
 
 - (Isgl3dBillboardNode *) createNodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
-	return (Isgl3dBillboardNode *)[[self addChild:[[Isgl3dBillboardNode alloc] initWithBillboard:billboard andMaterial:material]] autorelease];
+	return (Isgl3dBillboardNode *)[self addChild:[Isgl3dBillboardNode nodeWithBillboard:billboard andMaterial:material]];
 }
 
 - (Isgl3dSkeletonNode *) createSkeletonNode {
-	return (Isgl3dSkeletonNode *)[[self addChild:[[Isgl3dSkeletonNode alloc] init]] autorelease];
+	return (Isgl3dSkeletonNode *)[self addChild:[Isgl3dSkeletonNode skeletonNode]];
 }
 
 - (Isgl3dFollowNode *) createFollowNodeWithTarget:(Isgl3dNode *)target {
-	return (Isgl3dFollowNode *)[[self addChild:[[Isgl3dFollowNode alloc] initWithTarget:target]] autorelease];
+	return (Isgl3dFollowNode *)[self addChild:[Isgl3dFollowNode nodeWithTarget:target]];
 }
 
 - (Isgl3dCamera *) createCameraNodeWithView:(Isgl3dView3D *)view {
@@ -274,7 +278,7 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (Isgl3dLight *) createLightNode {
-	return (Isgl3dLight *)[[self addChild:[[Isgl3dLight alloc] init]] autorelease];
+	return (Isgl3dLight *)[self addChild:[Isgl3dLight light]];
 }
 
 - (Isgl3dNode *) addChild:(Isgl3dNode *)child {

@@ -46,3 +46,14 @@ typedef enum {
 	Isgl3dShadowPlanar,
 	Isgl3dShadowMaps
 } isgl3dShadowType;
+
+
+/**
+ * Texture precision
+ */
+typedef enum {
+	Isgl3dTexturePrecisionLow = 0,
+	Isgl3dTexturePrecisionMedium,
+	Isgl3dTexturePrecisionHigh
+} Isgl3dTexturePrecision;
+

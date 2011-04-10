@@ -35,7 +35,11 @@
 @synthesize longs = _longs;
 @synthesize lats = _lats;
 
-- (id)initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
++ (id) meshWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
+	return [[[self alloc] initWithGeometry:a b:b k:k longs:longs lats:lats] autorelease];
+}
+
+- (id) initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
 	
 	if ((self = [super init])) {
 		_a = a;

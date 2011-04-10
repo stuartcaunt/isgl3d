@@ -31,6 +31,10 @@
 
 @implementation Isgl3dPhysicsWorld
 
++ (id) physicsWorld {
+	return [[[self alloc] init] autorelease];
+}
+
 - (id) init {
     if ((self = [super init])) {
     	

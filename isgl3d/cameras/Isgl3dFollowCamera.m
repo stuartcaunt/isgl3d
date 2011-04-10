@@ -26,6 +26,11 @@
 #import "Isgl3dFollowCamera.h"
 #import "Isgl3dNode.h"
 #import "Isgl3dGLU.h"
+#import "Isgl3dDirector.h"
+
+@interface Isgl3dFollowCamera ()
+- (void) initialiseTarget:(Isgl3dNode *)target;
+@end
 
 @implementation Isgl3dFollowCamera
 
@@ -37,39 +42,65 @@
 @synthesize target = _target;
 @synthesize useRealTime = _useRealTime;
 
-- (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
+- (id) initWithTarget:(Isgl3dNode *)target {
 	
-	if ((self = [self initWithView:view3D])) {
-		
-		if (_target) {
-			_target = [target retain];
-		}
-		
-		_desiredPosition = iv3(0, 5, 10);
-		
-		_stiffness = 10;
-		_damping = 4;
-		_mass = 1.;
-		_lookAhead = 10;
-		_useRealTime = NO;
-		
-		_initialized = NO;
+	if ((self = [super init])) {
+		[self initialiseTarget:target];
 	}
 	
 	return self;
 }
 
+- (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
+	
+	if ((self = [super initWithView:view3D])) {
+		[self initialiseTarget:target];
+	}
+	
+	return self;
+}
+
+- (id) initWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target {
+	
+	if ((self = [super initWithWidth:width andHeight:height])) {
+		[self initialiseTarget:target];
+	}
+	
+	return self;
+}
+
+- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target {
+	
+	if ((self = [super initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ])) {
+		[self initialiseTarget:target];
+	}
+	
+	return self;
+}
 
 - (void) dealloc {
 	if (_target) {
 		[_target release];
 	}
 
-	if (_time) {
-		[_time release];
+	[super dealloc];
+}
+
+- (void) initialiseTarget:(Isgl3dNode *)target {
+		
+	if (_target) {
+		_target = [target retain];
 	}
 	
-	[super dealloc];
+	_desiredPosition = iv3(0, 5, 10);
+	
+	_stiffness = 10;
+	_damping = 4;
+	_mass = 1.;
+	_lookAhead = 10;
+	_useRealTime = NO;
+	
+	_initialized = NO;
 }
 
 - (void) setTarget:(Isgl3dNode *)target {
@@ -104,14 +135,7 @@
 	
 		float dt = 1./60.;
 		if (_useRealTime) {
-			if (!_time) {
-				_time = [[NSDate alloc] init];
-			} else {
-				NSDate * currentTime = [[NSDate alloc] init];
-				dt = [currentTime timeIntervalSinceDate:_time];
-				[_time release];
-				_time = currentTime;
-			}
+			dt = [Isgl3dDirector sharedInstance].deltaTime;
 		}
 		
 		if (iv3DistanceBetween(&_currentTargetPosition, &_oldTargetPosition) > 0.01) {

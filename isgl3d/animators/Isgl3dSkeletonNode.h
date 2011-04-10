@@ -43,6 +43,11 @@
 }
 
 /*
+ * Allocates and initialises (autorelease) Isgl3dSkeletonNode.
+ */
++ (id) skeletonNode;
+
+/*
  * Initialises the Isgl3dSkeletonNode.
  */
 - (id) init;

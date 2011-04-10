@@ -52,6 +52,18 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dTerrainMesh with a specified geometry and terrain data file.
+ * @param terrainDataFile The file name of the image containing the terrain data.
+ * @param channel The color channel of the image to use to obtain the data.
+ * @param width The width of the resulting terrain in the x-direction.
+ * @param depth The depth of the resulting terrain in the z-direction.
+ * @param height The maximum height of the resulting terrain in the y-direction. All color values coming from the image file are scaled between 0 and this value.
+ * @param nx The number of segments along the x-axis.
+ * @param ny The number of segments along the z-axis.
+ */
++ (id) meshWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz;
+
+/**
  * Initialises the Isgl3dTerrainMesh with a specified geometry and terrain data file.
  * @param terrainDataFile The file name of the image containing the terrain data.
  * @param channel The color channel of the image to use to obtain the data.
@@ -61,6 +73,6 @@
  * @param nx The number of segments along the x-axis.
  * @param ny The number of segments along the z-axis.
  */
-- (id)initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz;
+- (id) initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz;
 
 @end

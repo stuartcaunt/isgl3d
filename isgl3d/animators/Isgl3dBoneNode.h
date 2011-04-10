@@ -46,6 +46,11 @@
 
 
 /**
+ * Allocates and initialises (autorelease) bone node.
+ */
++ (id) boneNode;
+
+/**
  * Intialises the bone node.
  */
 - (id) init;

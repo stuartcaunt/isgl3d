@@ -29,6 +29,11 @@
 
 @implementation Isgl3dBillboardNode
 
++ (id) nodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
+	return [[[self alloc] initWithBillboard:billboard andMaterial:material] autorelease];
+}
+
+
 - (id) initWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
     if ((self = [super initWithParticle:billboard andMaterial:material])) {
     }

@@ -33,7 +33,11 @@
 @synthesize bottomRadius = _bottomRadius;
 @synthesize height = _height;
 
-- (id)initWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
++ (id) meshWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
+	return [[[self alloc] initWithGeometry:height topRadius:topRadius bottomRadius:bottomRadius ns:ns nt:nt openEnded:openEnded] autorelease];
+}
+
+- (id) initWithGeometry:(float)height topRadius:(float)topRadius bottomRadius:(float)bottomRadius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
 	
 	if ((self = [super init])) {
 		_height = height;

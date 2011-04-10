@@ -62,11 +62,19 @@
 @property (readonly) int lats;
 
 /**
+ * Allocates and initialises (autorelease) cube with the given geometry.
+ * @param radius The radius of the inner-sphere, equivalent to the distance from the center of a face to the origin.
+ * @param longs The number of longitudinal segments.
+ * @param lats The number of latitudinal segments.
+ */
++ (id) meshWithGeometry:(float)radius longs:(int)longs lats:(int)lats;
+
+/**
  * Initialises the cube with the given geometry.
  * @param radius The radius of the inner-sphere, equivalent to the distance from the center of a face to the origin.
  * @param longs The number of longitudinal segments.
  * @param lats The number of latitudinal segments.
  */
-- (id)initWithGeometry:(float)radius longs:(int)longs lats:(int)lats;
+- (id) initWithGeometry:(float)radius longs:(int)longs lats:(int)lats;
 
 @end

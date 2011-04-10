@@ -54,6 +54,21 @@
 @property (nonatomic) float shininess;
 
 /**
+ * Allocates and initialises (autorelease) material with a random color. The same color is used for all three material properties. The material has
+ * zero shininess.
+ */
++ (id) material;
+
+/**
+ * Allocates and initialises (autorelease) material with user-defined values.
+ * @param ambient The ambient color property of the material specified as a hex color value.
+ * @param diffuse The diffuse color property of the material specified as a hex color value.
+ * @param specular The specular color property of the material specified as a hex color value.
+ * @param shininess The shiness of the material.
+ */
++ (id) materialWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess;
+
+/**
  * Initialises the material with a random color. The same color is used for all three material properties. The material has
  * zero shininess.
  */

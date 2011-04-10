@@ -35,6 +35,15 @@
 	srandom(time(NULL));
 }
 
++ (id) material {
+	return [[[self alloc] init] autorelease];
+}
+
++ (id) materialWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess {
+	return [[[self alloc] initWithHexColors:ambient diffuse:diffuse specular:specular shininess:shininess] autorelease];
+}
+
+
 - (id) init {
 	if ((self = [super init])) {
 

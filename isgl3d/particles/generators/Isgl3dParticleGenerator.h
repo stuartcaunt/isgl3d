@@ -116,6 +116,14 @@
  */
 @property (nonatomic) int nPathSteps;
 
+
+/*
+ * Allocates and initialises (autorelease) generator with a particle system and a particle node.
+ * @param particleSystem The particle system.
+ * @param node The particle node.
+ */
++ (id) generatorWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node;
+
 /*
  * Initialises the generator with a particle system and a particle node.
  * @param particleSystem The particle system.

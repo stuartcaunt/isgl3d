@@ -33,7 +33,11 @@
 @synthesize longs = _longs;
 @synthesize lats = _lats;
 
-- (id)initWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
++ (id) meshWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
+	return [[[self alloc] initWithGeometry:radius longs:longs lats:lats] autorelease];
+}
+
+- (id) initWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
 	
 	if ((self = [super init])) {
 		_radius = radius;

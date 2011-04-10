@@ -38,6 +38,9 @@
 
 @implementation Isgl3dSingleTouchFilter
 
++ (id) filterWithObject:(Isgl3dNode *)object {
+	return [[[self alloc] initWithObject:object] autorelease];
+}
 
 - (id) initWithObject:(Isgl3dNode *)object {
 
@@ -70,7 +73,7 @@
 - (void) touchesBegan:(Isgl3dEvent3D *)event {
 	if (_eventId == nil) {
 		UITouch * touch = [[event.touches allObjects] objectAtIndex:0];
-		_eventId = [[NSString alloc] initWithString:NSStringFromCGPoint([touch locationInView:touch.view])];
+		_eventId = NSStringFromCGPoint([touch locationInView:touch.view]);
 		
 		[self handleEvent:touch forEventType:TOUCH_EVENT];
 	}
@@ -82,7 +85,7 @@
 		for (UITouch * touch in event.touches) {
 
 			if ([_eventId isEqualToString:NSStringFromCGPoint([touch previousLocationInView:touch.view])]) {
-				_eventId = [[NSString alloc] initWithString:NSStringFromCGPoint([touch locationInView:touch.view])];
+				_eventId = NSStringFromCGPoint([touch locationInView:touch.view]);
 		
 				[self handleEvent:touch forEventType:MOVE_EVENT];
 				return;

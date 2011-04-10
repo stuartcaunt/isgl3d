@@ -214,6 +214,41 @@
 @property (nonatomic) float zoom;
 
 /**
+ * Allocates and initialises (autorelease) camera.
+ * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
+ * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
+ * Note: For perspective projections the camera can only be used if the width and height are set 
+ * @param view The view to be used by the camera (provides width and height).
+ */
++ (id) camera;
+
+/**
+ * Allocates and initialises (autorelease) camera with a specified width and height.
+ * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
+ * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ */
++ (id) cameraWithWidth:(float)width andHeight:(float)height;
+
+/**
+ * Allocates and initialises (autorelease) camera with user-defined geometry.
+ * Perspective projection is used as default.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ * @param x The x position of the camera.
+ * @param y The y position of the camera.
+ * @param z The z position of the camera.
+ * @param upX The x component of the up vector.
+ * @param upY The y component of the up vector.
+ * @param upZ The z component of the up vector.
+ * @param lookAtX The x position where the camera will look at.
+ * @param lookAtY The y position where the camera will look at.
+ * @param lookAtZ The z position where the camera will look at.
+ */
++ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ;
+
+/**
  * Initialises the camera.
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.

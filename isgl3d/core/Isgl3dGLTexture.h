@@ -26,9 +26,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define GLTEXTURE_LOW_PRECISION 0
-#define GLTEXTURE_MEDIUM_PRECISION 1
-#define GLTEXTURE_HIGH_PRECISION 2
+// @deprecated : will be removed in v1.2
+#define GLTEXTURE_LOW_PRECISION Isgl3dTexturePrecisionLow
+// @deprecated : will be removed in v1.2
+#define GLTEXTURE_MEDIUM_PRECISION Isgl3dTexturePrecisionMedium
+// @deprecated : will be removed in v1.2
+#define GLTEXTURE_HIGH_PRECISION Isgl3dTexturePrecisionHigh
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -45,8 +48,11 @@
 	BOOL _isHighDefinition;
 }
 
-- (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
-- (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
++ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
++ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
+
+- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
+- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
 @property (nonatomic, readonly) unsigned int textureId;
 @property (nonatomic, readonly) unsigned int width;

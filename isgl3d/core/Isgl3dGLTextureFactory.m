@@ -60,7 +60,7 @@ typedef struct _PVRTexHeader {
 /**
  * @result (autorelease) GLTexture created from compressed image file
  */
-- (Isgl3dGLTexture *) createTextureFromCompressedFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (Isgl3dGLTexture *) createTextureFromCompressedFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * @result (autorelease) UIImage from specified path
@@ -77,7 +77,7 @@ typedef struct _PVRTexHeader {
 /**
  * @result (autorelease) NSString with texture key
  */
-- (NSString *) textureKeyForFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (NSString *) textureKeyForFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
 
 
@@ -139,7 +139,7 @@ typedef struct _PVRTexHeader {
 	[_textures removeAllObjects];
 }
 
-- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	NSString * extension = [file pathExtension];
 	if ([extension isEqualToString:@"pvr"]) {
 		return [self createTextureFromCompressedFile:file precision:precision repeatX:repeatX repeatY:repeatY];
@@ -168,14 +168,14 @@ typedef struct _PVRTexHeader {
 		free(data);
 		
 		// Create texture and store in dictionary
-		texture = [[Isgl3dGLTexture alloc] initWithId:textureId width:width height:height];
+		texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height];
 		
 		BOOL isHD = [self imageIsHD:file];
 		texture.isHighDefinition = isHD;
 		
 		[_textures setObject:texture forKey:textureKey];
 		
-		return [texture autorelease];		
+		return texture;		
 	}
 
 	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createTextureFromFile: not initialised with factory state");
@@ -233,12 +233,12 @@ typedef struct _PVRTexHeader {
 		}
 		UIGraphicsPopContext();
 		
-		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:GLTEXTURE_MEDIUM_PRECISION repeatX:repeatX repeatY:repeatY];
+		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:Isgl3dTexturePrecisionMedium repeatX:repeatX repeatY:repeatY];
 		
 		CGContextRelease(context);
 		free(data);
 
-		return [[[Isgl3dGLTexture alloc] initWithId:textureId width:width height:height contentSize:contentSize] autorelease];		
+		return [Isgl3dGLTexture textureWithId:textureId width:width height:height contentSize:contentSize];		
 
 	}
 
@@ -251,7 +251,7 @@ typedef struct _PVRTexHeader {
 }
 
 
-- (Isgl3dGLTexture *) createTextureFromCompressedFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (Isgl3dGLTexture *) createTextureFromCompressedFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	if (_state) {
 		NSString * textureKey = [self textureKeyForFile:file precision:precision repeatX:repeatX repeatY:repeatY];
 		Isgl3dGLTexture * texture = [_textures objectForKey:textureKey];
@@ -322,11 +322,11 @@ typedef struct _PVRTexHeader {
 				unsigned int textureId = [_state createTextureFromCompressedTexImageData:imageData format:internalFormat width:width height:height precision:precision repeatX:repeatX repeatY:repeatY];
 
 				// Create texture and store in dictionary
-				texture = [[Isgl3dGLTexture alloc] initWithId:textureId width:width height:height];
+				texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height];
 				texture.isHighDefinition = isHD;
 				[_textures setObject:texture forKey:textureKey];
 				
-				return [texture autorelease];		
+				return texture;		
 			
 			} else {
 				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : PVR file%@.%@ contains no image data", fileName, extension);
@@ -344,7 +344,7 @@ typedef struct _PVRTexHeader {
 }
 
 
-- (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 
 	if (_state) {
 		NSMutableArray * images = [[NSMutableArray alloc] init];
@@ -426,7 +426,7 @@ typedef struct _PVRTexHeader {
 		free(data);
 		[images release];
 		
-		return [[[Isgl3dGLTexture alloc] initWithId:textureId width:width height:height] autorelease];		
+		return [Isgl3dGLTexture textureWithId:textureId width:width height:height];		
 	}
 
 	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createCubemapTextureFromFiles: not initialised with factory state");
@@ -550,7 +550,7 @@ typedef struct _PVRTexHeader {
 	uint32_t flags = CFSwapInt32LittleToHost(header->flags);
 	uint32_t formatFlags = flags & PVR_TEXTURE_FLAG_TYPE_MASK;
 	
-	NSMutableArray * imageData = [[NSMutableArray alloc] initWithCapacity:10];
+	NSMutableArray * imageData = [NSMutableArray arrayWithCapacity:10];
 		
 	dataLength = CFSwapInt32LittleToHost(header->dataLength);
 	
@@ -589,11 +589,11 @@ typedef struct _PVRTexHeader {
 	}
 				  
 	
-	return [imageData autorelease];
+	return imageData;
 }
 
 
-- (NSString *) textureKeyForFile:(NSString *)file precision:(int)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (NSString *) textureKeyForFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [NSString stringWithFormat:@"%@%i%i%i", file, precision, repeatX, repeatY];
 }
 

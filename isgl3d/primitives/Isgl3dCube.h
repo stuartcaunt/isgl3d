@@ -64,6 +64,16 @@
 @property (readonly) float depth;
 
 /**
+ * Allocates and initialises (autorelease) cube with the the specified geometry.
+ * @param width The width of the cube (along the x-axis).
+ * @param height The height of the cube (along the y-axis).
+ * @param depth The depth of the cube (along the z-axis).
+ * @param nx the number of segments horizontally of a face.
+ * @param ny the number of segments vertically of a face.
+ */
++ (id) meshWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
+
+/**
  * Initialises the cube with the the specified geometry.
  * @param width The width of the cube (along the x-axis).
  * @param height The height of the cube (along the y-axis).
@@ -71,7 +81,7 @@
  * @param nx the number of segments horizontally of a face.
  * @param ny the number of segments vertically of a face.
  */
-- (id)initWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
+- (id) initWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
 
 
 @end

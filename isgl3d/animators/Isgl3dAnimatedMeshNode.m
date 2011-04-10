@@ -31,6 +31,10 @@
 
 @implementation Isgl3dAnimatedMeshNode
 
++ (id) nodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
+	return [[[self alloc] initWithMesh:mesh andMaterial:material] autorelease];
+}
+
 
 - (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
     if ((self = [super initWithMesh:mesh andMaterial:material])) {

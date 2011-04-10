@@ -35,21 +35,21 @@
 		[self.camera setTranslation:7 y:4 z:10];
 
 		// Create texture material for the ball with darker ambient color.
-		Isgl3dTextureMaterial * ballMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"ball.png" shininess:0.7 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * ballMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ball.png" shininess:0.7 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		[ballMaterial setAmbientColorAsString:@"444444"];
 		
 		// Create texture material for the pitch.
-		Isgl3dTextureMaterial * pitchMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pitch.png" shininess:0 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
+		Isgl3dTextureMaterial * pitchMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"pitch.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 	
 		// Create the primitive meshes: a sphere and a plane.
-		Isgl3dSphere * sphere = [[Isgl3dSphere alloc] initWithGeometry:1 longs:16 lats:8];
-		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:24 height:16 nx:2 ny:2];
+		Isgl3dSphere * sphere = [Isgl3dSphere meshWithGeometry:1 longs:16 lats:8];
+		Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometry:24 height:16 nx:2 ny:2];
 		
 		// Create a container node as a parent for all scene objects.
 		_container = [self.scene createNode];
 		
 		// Create the pitch node from plane mesh and pitch material with container as parent. Rotate and translate it. Disable lighting effects.
-		Isgl3dMeshNode * pitch = [_container createNodeWithMesh:[plane autorelease] andMaterial:[pitchMaterial autorelease]];
+		Isgl3dMeshNode * pitch = [_container createNodeWithMesh:plane andMaterial:pitchMaterial];
 		[pitch setRotation:-90 x:1 y:0 z:0];
 		[pitch setTranslation:0 y:-1 z:0];
 		pitch.lightingEnabled = NO;
@@ -69,15 +69,11 @@
 			} 
 		} 
 		
-		// Release sphere mesh and ball material.
-		[sphere autorelease];
-		[ballMaterial autorelease];
-	
 		// Create directional white light and add to scene (will not move with container).
-		Isgl3dLight * light = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
+		Isgl3dLight * light = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
 		light.lightType = DirectionalLight;
 		[light setDirection:-1 y:-1 z:1];
-		[self.scene addChild:[light autorelease]];
+		[self.scene addChild:light];
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];

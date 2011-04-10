@@ -33,23 +33,23 @@
 		self.isOpaque = NO;
 
 		// Create a button to calibrate the accelerometer
-		Isgl3dTextureMaterial * calibrateButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"angle.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dGLUIButton * calibrateButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[calibrateButtonMaterial autorelease]];
-		[self.scene addChild:[calibrateButton autorelease]];
+		Isgl3dTextureMaterial * calibrateButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"angle.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dGLUIButton * calibrateButton = [Isgl3dGLUIButton buttonWithMaterial:calibrateButtonMaterial];
+		[self.scene addChild:calibrateButton];
 		[calibrateButton setX:8 andY:264];
 		[calibrateButton addEvent3DListener:self method:@selector(calibrateButtonPressed:) forEventType:TOUCH_EVENT];
 	
 		// Create a button to pause the scene
-		Isgl3dTextureMaterial * pauseButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"pause.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dGLUIButton * pauseButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[pauseButtonMaterial autorelease]];
-		[self.scene addChild:[pauseButton autorelease]];
+		Isgl3dTextureMaterial * pauseButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"pause.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dGLUIButton * pauseButton = [Isgl3dGLUIButton buttonWithMaterial:pauseButtonMaterial];
+		[self.scene addChild:pauseButton];
 		[pauseButton setX:424 andY:264];
 		[pauseButton addEvent3DListener:self method:@selector(pauseButtonPressed:) forEventType:TOUCH_EVENT];
 	
 		// Create a button to allow movement of the camera
-		Isgl3dTextureMaterial * cameraButtonMaterial = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"camera.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dGLUIButton * cameraButton = [[Isgl3dGLUIButton alloc] initWithMaterial:[cameraButtonMaterial autorelease]];
-		[self.scene addChild:[cameraButton autorelease]];
+		Isgl3dTextureMaterial * cameraButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"camera.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dGLUIButton * cameraButton = [Isgl3dGLUIButton buttonWithMaterial:cameraButtonMaterial];
+		[self.scene addChild:cameraButton];
 		[cameraButton setX:8 andY:8];
 		[cameraButton addEvent3DListener:self method:@selector(cameraButtonPressed:) forEventType:TOUCH_EVENT];
 
@@ -97,14 +97,14 @@
 		self.isOpaque = NO;
 
 		// Create the primitive
-		Isgl3dTextureMaterial * material = [[Isgl3dTextureMaterial alloc] initWithTextureFile:@"red_checker.png" shininess:0.9 precision:TEXTURE_MATERIAL_MEDIUM_PRECISION repeatX:NO repeatY:NO];
-		Isgl3dTorus * torusMesh = [[Isgl3dTorus alloc] initWithGeometry:2 tubeRadius:1 ns:32 nt:32];
-		_torus = [self.scene createNodeWithMesh:[torusMesh autorelease] andMaterial:[material autorelease]];
+		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dTorus * torusMesh = [Isgl3dTorus meshWithGeometry:2 tubeRadius:1 ns:32 nt:32];
+		_torus = [self.scene createNodeWithMesh:torusMesh andMaterial:material];
 	
 		// Add light
-		Isgl3dLight * light  = [[Isgl3dLight alloc] initWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
+		Isgl3dLight * light  = [[Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
 		[light setTranslation:5 y:15 z:15];
-		[self.scene addChild:[light autorelease]];
+		[self.scene addChild:light];
 
 		// Create camera controller
 		_cameraController = [[SandboxCameraController alloc] initWithCamera:self.camera andView:self];

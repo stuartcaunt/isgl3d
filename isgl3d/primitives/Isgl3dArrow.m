@@ -34,7 +34,11 @@
 @synthesize headRadius = _headRadius;
 @synthesize headHeight = _headHeight;
 
-- (id)initWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt {
++ (id) meshWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt {
+	return [[[self alloc] initWithGeometry:height radius:radius headHeight:headHeight headRadius:headRadius ns:ns nt:nt] autorelease];
+}
+
+- (id) initWithGeometry:(float)height radius:(float)radius headHeight:(float)headHeight headRadius:(float)headRadius ns:(int)ns nt:(int)nt {
 	
 	if ((self = [super init])) {
 		_height = height;

@@ -92,7 +92,6 @@
 #import "particles/generators/Isgl3dFountainParticleGenerator.h"
 #import "particles/generators/Isgl3dParticleGenerator.h"
 #import "particles/generators/Isgl3dParticlePath.h"
-#import "particles/generators/Isgl3dParticlePathData.h"
 #import "particles/Isgl3dGLParticle.h"
 #import "particles/Isgl3dParticleSystem.h"
 #import "primitives/Isgl3dArrow.h"

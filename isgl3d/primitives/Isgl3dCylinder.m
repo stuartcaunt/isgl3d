@@ -27,7 +27,11 @@
 
 @implementation Isgl3dCylinder
 
-- (id)initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
++ (id) meshWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
+	return [[[self alloc] initWithGeometry:height radius:radius ns:ns nt:nt openEnded:openEnded] autorelease];
+}
+
+- (id) initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
 	
 	if ((self = [super initWithGeometry:height topRadius:radius bottomRadius:radius ns:ns nt:nt openEnded:openEnded])) {
 	}

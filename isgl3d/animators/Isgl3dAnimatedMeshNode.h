@@ -44,7 +44,14 @@
 	unsigned int _numberOfBonesPerVertex;
 }
 
- 
+
+/**
+ * Allocates and initialises (autorelease) node with a mesh to be animated and a material.
+ * @param mesh The mesh to be animated.
+ * @param material The material associated with the mesh
+ */
++ (id) nodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
+
 /**
  * Initialises the node with a mesh to be animated and a material.
  * @param mesh The mesh to be animated.

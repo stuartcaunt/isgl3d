@@ -56,6 +56,12 @@
 @property (nonatomic) BOOL keepHorizontal;
 
 /**
+ * Allocates and initialises (autorelease) Isgl3dFollowNode with a target node.
+ * @param target The target node.
+ */
++ (id) nodeWithTarget:(Isgl3dNode *)target;
+
+/**
  * Initialises the Isgl3dFollowNode with a target node.
  * @param target The target node.
  */

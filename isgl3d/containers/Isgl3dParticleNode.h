@@ -40,6 +40,13 @@
 }
 
 /**
+ * Allocates and initialises (autorelease) node with a particle and material.
+ * @param particle The particle to be rendered.
+ * @param material The material used to render the particle.
+ */
++ (id) nodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
+
+/**
  * Initialises the node with a particle and material.
  * @param particle The particle to be rendered.
  * @param material The material used to render the particle.
