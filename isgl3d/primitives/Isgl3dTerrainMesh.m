@@ -101,7 +101,7 @@
 				pixelX = imageWidth - 1;
 			}
 						
-			float pixelValue = pixelData[(pixelY * imageWidth + pixelX) * 4 + 2] / 255.0;
+			float pixelValue = pixelData[(pixelY * imageWidth + pixelX) * 4 + _channel] / 255.0;
 			terrainHeightData[j * heightDataNx + i] = pixelValue * _height;
 		}
 	}		
