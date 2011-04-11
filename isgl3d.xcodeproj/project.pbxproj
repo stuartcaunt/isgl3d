@@ -818,6 +818,7 @@
 		17C15BF11347AABB004EF5C3 /* Isgl3dMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */; };
 		17C15BF31347AAF8004EF5C3 /* Isgl3dVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C15BF21347AAF8004EF5C3 /* Isgl3dVector.m */; };
 		17C15C7E1348F4A5004EF5C3 /* Isgl3dArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C15C7D1348F4A5004EF5C3 /* Isgl3dArray.h */; };
+		17D39451135373B700D50A60 /* isgl3d.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D39450135373B700D50A60 /* isgl3d.m */; };
 		17F1D75512F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */; };
 		17F1D75612F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */; };
 		17F1D75712F87EC5008D39E8 /* Isgl3dAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */; };
@@ -1882,6 +1883,7 @@
 		17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix.m; sourceTree = "<group>"; };
 		17C15BF21347AAF8004EF5C3 /* Isgl3dVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector.m; sourceTree = "<group>"; };
 		17C15C7D1348F4A5004EF5C3 /* Isgl3dArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dArray.h; sourceTree = "<group>"; };
+		17D39450135373B700D50A60 /* isgl3d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = isgl3d.m; sourceTree = "<group>"; };
 		17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimatedMeshNode.h; sourceTree = "<group>"; };
 		17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAnimatedMeshNode.m; sourceTree = "<group>"; };
 		17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimationController.h; sourceTree = "<group>"; };
@@ -3187,6 +3189,7 @@
 				179F86EF133E67CA007F4671 /* view */,
 				179F86E2133E6746007F4671 /* isgl3dTypes.h */,
 				17F1D6C812F87EC5008D39E8 /* isgl3d.h */,
+				17D39450135373B700D50A60 /* isgl3d.m */,
 			);
 			path = isgl3d;
 			sourceTree = "<group>";
@@ -5605,6 +5608,7 @@
 				17C15BF11347AABB004EF5C3 /* Isgl3dMatrix.m in Sources */,
 				17C15BF31347AAF8004EF5C3 /* Isgl3dVector.m in Sources */,
 				172792EC134A3E5C0043956C /* Isgl3dArray.m in Sources */,
+				17D39451135373B700D50A60 /* isgl3d.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

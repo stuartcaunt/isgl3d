@@ -40,6 +40,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
 
+extern NSString * isgl3dVersion();
+
 static Isgl3dDirector * _instance = nil;
 
 @interface Isgl3dDirector ()
@@ -71,6 +73,9 @@ static Isgl3dDirector * _instance = nil;
 - (id) initSingleton {
 	
 	if ((self = [super init])) {
+		Isgl3dLog(Info, @"%@", isgl3dVersion());
+
+
 		// Initialise timing method
 		_isAnimating = NO;
 		_isPaused = NO;

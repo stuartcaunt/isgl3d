@@ -101,12 +101,13 @@
 	Isgl3dNode * object = event.object;
 	
 	// Create a tween to move the object vertically (0.5s duration, callback to "tweenEnded" on completion).
-	[Isgl3dTweener addTween:object withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	[NSNumber numberWithFloat:0.5], TWEEN_DURATION, 
-																								TWEEN_FUNC_EASEOUTSINE, TWEEN_TRANSITION, 
-																								[NSNumber numberWithFloat:object.y + 5.0], @"y", 
-																								self, TWEEN_ON_COMPLETE_TARGET, 
-																								@"tweenEnded:", TWEEN_ON_COMPLETE_SELECTOR, 
-																								nil]];
+	[Isgl3dTweener addTween:object withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	
+			[NSNumber numberWithFloat:0.5], TWEEN_DURATION, 
+			TWEEN_FUNC_EASEOUTSINE, TWEEN_TRANSITION, 
+			[NSNumber numberWithFloat:object.y + 5.0], @"y", 
+			self, TWEEN_ON_COMPLETE_TARGET, 
+			@"tweenEnded:", TWEEN_ON_COMPLETE_SELECTOR, 
+			nil]];
 }
 
 /*
@@ -114,10 +115,11 @@
  */
 - (void) tweenEnded:(id)sender {
 	// Create a new tween to move the object back to original position (duration 1.5s).
-	[Isgl3dTweener addTween:sender withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	[NSNumber numberWithFloat:1.5], TWEEN_DURATION, 
-																								TWEEN_FUNC_EASEOUTBOUNCE, TWEEN_TRANSITION, 
-																								[NSNumber numberWithFloat:0], @"y", 
-																								nil]];
+	[Isgl3dTweener addTween:sender withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	
+			[NSNumber numberWithFloat:1.5], TWEEN_DURATION, 
+			TWEEN_FUNC_EASEOUTBOUNCE, TWEEN_TRANSITION, 
+			[NSNumber numberWithFloat:0], @"y", 
+			nil]];
 }
 
 @end

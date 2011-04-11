@@ -1,4 +1,6 @@
 current SVN version
+
+version 1.1.5 (2011-04-11)
 	Isgl3dTexturePrecision enum added to replace #defines (int) - other to become deprecated in v1.2
 	Static methods for allocation (autorelease) and initialisation in all framework classes. Modifications accordingly internally and to tests
 	Isgl3dShader: output error message when shader files not found
