@@ -77,6 +77,12 @@
 
 	
 	NSString * isglOptionsPath = [[NSBundle mainBundle] pathForResource:@"isgl3d" ofType:@"plist"];
+
+	if (!isglOptionsPath) {
+		Isgl3dLog(Error, @"Isgl3dGLView : Failed to load %@", @"isgl3d.plist");
+		return NO;
+	}
+	
 	NSDictionary * isglOptions = [NSDictionary dictionaryWithContentsOfFile:isglOptionsPath];
 	
 	NSNumber * glContextVersionNumber = [isglOptions objectForKey:@"glContextVersion"];

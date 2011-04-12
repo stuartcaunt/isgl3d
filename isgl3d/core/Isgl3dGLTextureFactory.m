@@ -272,7 +272,7 @@ typedef struct _PVRTexHeader {
 		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
 		
 		BOOL isHD = [Isgl3dDirector sharedInstance].retinaDisplayEnabled;
-		if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+		if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file not found %@.%@", fileName, extension);
 
 			if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
@@ -282,7 +282,7 @@ typedef struct _PVRTexHeader {
 				Isgl3dLog(Info, @"Isgl3dGLTextureFactor : Trying %@...", file);
 	
 				isHD = NO;
-				if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+				if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 					Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file not found %@.%@", fileName, extension);
 					return nil;
 				}
@@ -466,7 +466,7 @@ typedef struct _PVRTexHeader {
 	}
 	
 	NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
-	if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+	if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : image file not found %@.%@", fileName, extension);
 
 		if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
@@ -475,7 +475,7 @@ typedef struct _PVRTexHeader {
 
 			Isgl3dLog(Info, @"Isgl3dGLTextureFactor : Trying %@...", path);
 
-			if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+			if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Image file not found %@.%@", fileName, extension);
 				return nil;
 			}
@@ -487,7 +487,14 @@ typedef struct _PVRTexHeader {
 	}
 	
 	
-	NSData *texData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:extension]];
+	filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+
+	if (!filePath) {
+		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Failed to load %@.%@", fileName, extension);
+		return nil;
+	}
+	
+	NSData *texData = [[NSData alloc] initWithContentsOfFile:filePath];
     UIImage *image = [[UIImage alloc] initWithData:texData];
    	[texData release];
 
@@ -508,7 +515,7 @@ typedef struct _PVRTexHeader {
 		fileName = [origFileName stringByAppendingString:@"-hd"];
 		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
 		
-		if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+		if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
 			
 			return YES;
 		}

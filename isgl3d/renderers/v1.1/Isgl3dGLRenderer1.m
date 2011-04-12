@@ -170,8 +170,7 @@
 	[super setProjectionMatrix:projectionMatrix];
 
     glMatrixMode(GL_PROJECTION);
-	float matrixArray[16];
-	im4ConvertToColumnMajorFloatArray(&_projectionMatrix, matrixArray);
+	float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(&_projectionMatrix);
     glLoadMatrixf(matrixArray);
 }
 
@@ -180,8 +179,7 @@
 
     glMatrixMode(GL_MODELVIEW);
 
-	float matrixArray[16];
-	im4ConvertToColumnMajorFloatArray(&_viewMatrix, matrixArray);
+	float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(&_viewMatrix);
     glLoadMatrixf(matrixArray);
 }
 
@@ -190,14 +188,14 @@
     glMatrixMode(GL_MODELVIEW);
 
 	glPushMatrix();
-	float matrixArray[16];
+	float *matrixArray;
 
 	if (_planarShadowsActive) {
-		im4ConvertToColumnMajorFloatArray(&_planarShadowsMatrix, matrixArray);
+		matrixArray = im4ColumnMajorFloatArrayFromMatrix(&_planarShadowsMatrix);
     	glMultMatrixf(matrixArray);
 	}
 
-	im4ConvertToColumnMajorFloatArray(&_modelMatrix, matrixArray);
+	matrixArray = im4ColumnMajorFloatArrayFromMatrix(&_modelMatrix);
     glMultMatrixf(matrixArray);
 }
 
@@ -465,8 +463,7 @@
 
 		im4Multiply(&boneViewMatrix, boneWorldTransformation);
 
-		float matrixArray[16];
-		im4ConvertToColumnMajorFloatArray(&boneViewMatrix, matrixArray);
+		float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(&boneViewMatrix);
 	    glLoadMatrixf(matrixArray);
 	}
 	glMatrixMode(GL_MODELVIEW);

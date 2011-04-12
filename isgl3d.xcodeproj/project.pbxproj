@@ -1104,6 +1104,14 @@
 		17F7A88012FA0D6100C7BB82 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17F7A88A12FA0D7F00C7BB82 /* LightingDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F7A88912FA0D7F00C7BB82 /* LightingDemoView.m */; };
 		17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
+		8BCAFD4A135513BE005FA453 /* neon_matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD41135513BE005FA453 /* neon_matrix_impl.h */; };
+		8BCAFD4B135513BE005FA453 /* neon_matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCAFD42135513BE005FA453 /* neon_matrix_impl.m */; };
+		8BCAFD4C135513BE005FA453 /* common_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD44135513BE005FA453 /* common_macros.h */; };
+		8BCAFD4D135513BE005FA453 /* matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD45135513BE005FA453 /* matrix_impl.h */; };
+		8BCAFD4E135513BE005FA453 /* matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCAFD46135513BE005FA453 /* matrix_impl.m */; };
+		8BCAFD4F135513BE005FA453 /* utility_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD47135513BE005FA453 /* utility_impl.h */; };
+		8BCAFD50135513BE005FA453 /* utility_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCAFD48135513BE005FA453 /* utility_impl.m */; };
+		8BCAFD51135513BE005FA453 /* vfp_clobbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD49135513BE005FA453 /* vfp_clobbers.h */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -2178,6 +2186,14 @@
 		17F7A8A512FA0EB800C7BB82 /* particle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vsh; sourceTree = "<group>"; };
 		17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.fsh; sourceTree = "<group>"; };
 		17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
+		8BCAFD41135513BE005FA453 /* neon_matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neon_matrix_impl.h; sourceTree = "<group>"; };
+		8BCAFD42135513BE005FA453 /* neon_matrix_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = neon_matrix_impl.m; sourceTree = "<group>"; };
+		8BCAFD44135513BE005FA453 /* common_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_macros.h; sourceTree = "<group>"; };
+		8BCAFD45135513BE005FA453 /* matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix_impl.h; sourceTree = "<group>"; };
+		8BCAFD46135513BE005FA453 /* matrix_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = matrix_impl.m; sourceTree = "<group>"; };
+		8BCAFD47135513BE005FA453 /* utility_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility_impl.h; sourceTree = "<group>"; };
+		8BCAFD48135513BE005FA453 /* utility_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utility_impl.m; sourceTree = "<group>"; };
+		8BCAFD49135513BE005FA453 /* vfp_clobbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vfp_clobbers.h; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libisgl3d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -3418,6 +3434,8 @@
 		17F1D6D712F87EC5008D39E8 /* math */ = {
 			isa = PBXGroup;
 			children = (
+				8BCAFD40135513BE005FA453 /* neon */,
+				8BCAFD43135513BE005FA453 /* vfp */,
 				17F1D6D812F87EC5008D39E8 /* Isgl3dGLU.h */,
 				17F1D6D912F87EC5008D39E8 /* Isgl3dGLU.m */,
 				1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */,
@@ -3771,6 +3789,28 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
+		8BCAFD40135513BE005FA453 /* neon */ = {
+			isa = PBXGroup;
+			children = (
+				8BCAFD41135513BE005FA453 /* neon_matrix_impl.h */,
+				8BCAFD42135513BE005FA453 /* neon_matrix_impl.m */,
+			);
+			path = neon;
+			sourceTree = "<group>";
+		};
+		8BCAFD43135513BE005FA453 /* vfp */ = {
+			isa = PBXGroup;
+			children = (
+				8BCAFD44135513BE005FA453 /* common_macros.h */,
+				8BCAFD45135513BE005FA453 /* matrix_impl.h */,
+				8BCAFD46135513BE005FA453 /* matrix_impl.m */,
+				8BCAFD47135513BE005FA453 /* utility_impl.h */,
+				8BCAFD48135513BE005FA453 /* utility_impl.m */,
+				8BCAFD49135513BE005FA453 /* vfp_clobbers.h */,
+			);
+			path = vfp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -4111,6 +4151,11 @@
 				1756F5441347A5AD00205D76 /* Isgl3dMatrix.h in Headers */,
 				17C15C7E1348F4A5004EF5C3 /* Isgl3dArray.h in Headers */,
 				172792ED134A3E5C0043956C /* Isgl3dCArray.h in Headers */,
+				8BCAFD4A135513BE005FA453 /* neon_matrix_impl.h in Headers */,
+				8BCAFD4C135513BE005FA453 /* common_macros.h in Headers */,
+				8BCAFD4D135513BE005FA453 /* matrix_impl.h in Headers */,
+				8BCAFD4F135513BE005FA453 /* utility_impl.h in Headers */,
+				8BCAFD51135513BE005FA453 /* vfp_clobbers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5698,6 +5743,9 @@
 				17C15BF31347AAF8004EF5C3 /* Isgl3dVector.m in Sources */,
 				172792EC134A3E5C0043956C /* Isgl3dArray.m in Sources */,
 				17D39451135373B700D50A60 /* isgl3d.m in Sources */,
+				8BCAFD4B135513BE005FA453 /* neon_matrix_impl.m in Sources */,
+				8BCAFD4E135513BE005FA453 /* matrix_impl.m in Sources */,
+				8BCAFD50135513BE005FA453 /* utility_impl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7241,6 +7289,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_THUMB_SUPPORT = NO;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = isgl3d;
 			};
@@ -7255,6 +7304,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = isgl3d_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = isgl3d;
 			};

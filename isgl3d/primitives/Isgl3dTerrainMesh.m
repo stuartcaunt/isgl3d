@@ -207,7 +207,13 @@
 	NSString * extension = [path pathExtension];
 	NSString * fileName = [path stringByDeletingPathExtension];
 	
-	NSData * imageData = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:extension]];
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+	if (!filePath) {
+		Isgl3dLog(Error, @"Failed to load %@", path);
+		return nil;
+	}
+	
+	NSData * imageData = [[NSData alloc] initWithContentsOfFile:filePath];
     UIImage * image = [[UIImage alloc] initWithData:imageData];
    	[imageData release];
     

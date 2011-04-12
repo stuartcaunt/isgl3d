@@ -26,15 +26,39 @@
 #import "Isgl3dMatrix.h"
 #import "math.h"
 #import "Isgl3dLog.h"
+#import <TargetConditionals.h>
+
+#if (TARGET_IPHONE_SIMULATOR == 0) && (TARGET_OS_IPHONE == 1)
+#define USE_ACC_MATH
+
+#ifdef _ARM_ARCH_7
+#define USE_NEON_MATH
+#else
+#define USE_VFP_MATH
+#endif
+#endif
+
+#ifdef USE_NEON_MATH
+#import "neon/neon_matrix_impl.h"
+#endif
+
+#ifdef USE_VFP_MATH
+#import "vfp/matrix_impl.h"
+#endif
+
+#ifdef USE_VDSP_MATH
+#import <Accelerate/Accelerate.h>
+#endif
+
 
 Isgl3dMatrix4 im4PlanarProjectionMatrixFromPosition(Isgl3dVector4 * plane, Isgl3dVector3 * position) {
 	float dot = plane->x * position->x + plane->y * position->y + plane->z * position->z + plane->w;
 	
 	Isgl3dMatrix4 matrix = {
-		dot - plane->x * position->x,			 -plane->y * position->x,			- plane->z * position->x,			- plane->w * position->x,
-			- plane->x * position->y,		dot - plane->y * position->y,			- plane->z * position->y,			- plane->w * position->y,
-			- plane->x * position->z,			- plane->y * position->z,		dot - plane->z * position->z,			- plane->w * position->z,
-			- plane->x,							- plane->	y,						- plane->z,						dot - plane->w
+		dot - plane->x * position->x,  - plane->x * position->y,      - plane->x * position->z,      - plane->x,
+		    - plane->y * position->x,  dot - plane->y * position->y,  - plane->y * position->z,      - plane->y,
+		    - plane->z * position->x,  - plane->z * position->y,      dot - plane->z * position->z,  - plane->z,
+		    - plane->w * position->x,  - plane->w * position->y,      - plane->w * position->z,      dot - plane->w
 	};
 	
 	return matrix;
@@ -44,10 +68,10 @@ Isgl3dMatrix4 im4PlanarProjectionMatrixFromDirection(Isgl3dVector4 * plane, Isgl
 	float k = -1.0 / (plane->x * direction->x + plane->y * direction->y + plane->z * direction->z);
 	
 	Isgl3dMatrix4 matrix = {
-		1 + k * plane->x * direction->x,		    k * plane->y * direction->x,		    k * plane->z * direction->x,			k * plane->w * direction->x,
-			k * plane->x * direction->y,		1 + k * plane->y * direction->y,		    k * plane->z * direction->y,			k * plane->w * direction->y,
-			k * plane->x * direction->z,		    k * plane->y * direction->z,		1 + k * plane->z * direction->z,			k * plane->w * direction->z,
-			0,										0,										0,										1
+		1 + k * plane->x * direction->x,      k * plane->x * direction->y,      k * plane->x * direction->z, 0,
+		    k * plane->y * direction->x,  1 + k * plane->y * direction->y,      k * plane->y * direction->z, 0,
+		    k * plane->z * direction->x,      k * plane->z * direction->y,  1 + k * plane->z * direction->z, 0,
+		    k * plane->w * direction->x,      k * plane->w * direction->y,      k * plane->w * direction->z, 1
 	};
 	
 	return matrix;	
@@ -305,8 +329,24 @@ void im4SetRotation(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
 
 
 
-void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
+void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
+{
+#ifdef USE_ACC_MATH	
+	float *mA = im4ColumnMajorFloatArrayFromMatrix(a);
+	float *mB = im4ColumnMajorFloatArrayFromMatrix(b);
 	
+#if defined(USE_NEON_MATH)
+	NEON_Matrix4Mul(mB, mA, mA);
+#elif defined(USE_VDSP_MATH)
+	Isgl3dMatrix4 res = im4CreateEmpty();
+	float *mRes = im4ColumnMajorFloatArrayFromMatrix(&res);
+	vDSP_mmul(mB, 1, mA, 1, mRes, 1, 4, 4, 4);
+	im4Copy(a, &res);
+#else
+	Matrix4Mul(mB, mA, mA);
+#endif
+
+#else
 	float m111 = a->sxx;
 	float m112 = a->sxy;
 	float m113 = a->sxz;
@@ -357,9 +397,27 @@ void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
 	a->swy = m141 * m212 + m142 * m222 + m143 * m232 + m144 * m242;
 	a->swz = m141 * m213 + m142 * m223 + m143 * m233 + m144 * m243;
 	a->tw  = m141 * m214 + m142 * m224 + m143 * m234 + m144 * m244;
+#endif	
 }
 
-void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
+void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
+{
+#ifdef USE_ACC_MATH	
+	float *mA = im4ColumnMajorFloatArrayFromMatrix(b);
+	float *mB = im4ColumnMajorFloatArrayFromMatrix(a);
+	
+#if defined(USE_NEON_MATH)
+	NEON_Matrix4Mul(mA, mB, mA);
+#elif defined(USE_VDSP_MATH)
+	Isgl3dMatrix4 res = im4CreateEmpty();
+	float *mRes = im4ColumnMajorFloatArrayFromMatrix(&res);
+	vDSP_mmul(mA, 1, mB, 1, mRes, 1, 4, 4, 4);
+	im4Copy(a, &res);
+#else
+	Matrix4Mul(mA, mB, mA);
+#endif
+	
+#else
 	float m111 = b->sxx;
 	float m112 = b->sxy;
 	float m113 = b->sxz;
@@ -410,7 +468,7 @@ void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
 	a->swy = m141 * m212 + m142 * m222 + m143 * m232 + m144 * m242;
 	a->swz = m141 * m213 + m142 * m223 + m143 * m233 + m144 * m243;
 	a->tw  = m141 * m214 + m142 * m224 + m143 * m234 + m144 * m244;
-	
+#endif
 }
 
 void im4MultiplyOnLeft3x3(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
@@ -445,7 +503,18 @@ void im4MultiplyOnLeft3x3(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
 	a->szz = m131 * m213 + m132 * m223 + m133 * m233;
 }	
 
-Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector) {
+Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector)
+{
+	Isgl3dVector4 result;
+
+#ifdef USE_ACC_MATH
+	float *mA = im4ColumnMajorFloatArrayFromMatrix(m);
+#if defined(USE_NEON_MATH)
+	NEON_Matrix4Vector4Mul(mA, &vector->x, &result.x);
+#else
+	Matrix4Vector4Mul(mA, &vector->x, &result.x);
+#endif
+#else
 	float ax = vector->x;
 	float ay = vector->y;
 	float az = vector->z;
@@ -455,8 +524,10 @@ Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector) {
 	float vy = m->syx * ax + m->syy * ay + m->syz * az + m->ty * aw;
 	float vz = m->szx * ax + m->szy * ay + m->szz * az + m->tz * aw;
 	float vw = m->swx * ax + m->swy * ay + m->swz * az + m->tw * aw;
-
-	return iv4(vx, vy, vz, vw);		
+	
+	iv4Fill(&result, vx, vy, vz, vw);
+#endif
+	return result;
 }
 
 

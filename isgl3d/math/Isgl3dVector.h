@@ -33,7 +33,7 @@
  * Simple structure to hold the components of a 3 dimensional vector.
  */
 typedef struct {
-	float x;
+	float x __attribute__ ((aligned));
 	float y;
 	float z;
 } Isgl3dVector3;
@@ -42,7 +42,7 @@ typedef struct {
  * Simple structure to hold the components of a 4 dimensional vector.
  */
 typedef struct {
-	float x;
+	float x __attribute__ ((aligned));
 	float y;
 	float z;
 	float w;
@@ -65,7 +65,8 @@ extern Isgl3dVector3 DOWN;
  * @param y The y component.
  * @param z The z component.
  */
-static inline Isgl3dVector3 iv3Create(float x, float y, float z) {
+static inline Isgl3dVector3 iv3Create(float x, float y, float z)
+{
 	Isgl3dVector3 v = {x, y, z};
 	return v;
 }
@@ -75,7 +76,8 @@ static inline Isgl3dVector3 iv3Create(float x, float y, float z) {
  * Resets all the vector components to 0.
  * @param a The vector to be modified.
  */
-static inline void iv3Reset(Isgl3dVector3 * a) {
+static inline void iv3Reset(Isgl3dVector3 * a)
+{
 	a->x = 0;
 	a->y = 0;
 	a->z = 0;
@@ -86,7 +88,8 @@ static inline void iv3Reset(Isgl3dVector3 * a) {
  * @param a The destination vector.
  * @param b The source vector.
  */
-static inline void iv3Copy(Isgl3dVector3 * a, Isgl3dVector3 * b) {
+static inline void iv3Copy(Isgl3dVector3 * a, Isgl3dVector3 * b)
+{
 	a->x = b->x;
 	a->y = b->y;
 	a->z = b->z;
@@ -99,7 +102,8 @@ static inline void iv3Copy(Isgl3dVector3 * a, Isgl3dVector3 * b) {
  * @param y The y component.
  * @param z The z component.
  */
-static inline void iv3Fill(Isgl3dVector3 * a, float x, float y, float z) {
+static inline void iv3Fill(Isgl3dVector3 * a, float x, float y, float z)
+{
 	a->x = x;
 	a->y = y;
 	a->z = z;
@@ -110,7 +114,8 @@ static inline void iv3Fill(Isgl3dVector3 * a, float x, float y, float z) {
  * @param a The first vector.
  * @param b The second vector.
  */
-static inline void iv3Add(Isgl3dVector3 * a, Isgl3dVector3 * b) {
+static inline void iv3Add(Isgl3dVector3 * a, Isgl3dVector3 * b)
+{
 	a->x += b->x;
 	a->y += b->y;
 	a->z += b->z;
@@ -123,7 +128,8 @@ static inline void iv3Add(Isgl3dVector3 * a, Isgl3dVector3 * b) {
  * @param y The y component to be added.
  * @param z The z component to be added.
  */
-static inline void iv3AddComponents(Isgl3dVector3 * a, float x, float y, float z) {
+static inline void iv3AddComponents(Isgl3dVector3 * a, float x, float y, float z)
+{
 	a->x += x;
 	a->y += y;
 	a->z += z;
@@ -134,7 +140,8 @@ static inline void iv3AddComponents(Isgl3dVector3 * a, float x, float y, float z
  * @param a The first vector.
  * @param b The second vector.
  */
-static inline void iv3Sub(Isgl3dVector3 * a, Isgl3dVector3 * b) {
+static inline void iv3Sub(Isgl3dVector3 * a, Isgl3dVector3 * b)
+{
 	a->x -= b->x;
 	a->y -= b->y;
 	a->z -= b->z;
@@ -147,7 +154,8 @@ static inline void iv3Sub(Isgl3dVector3 * a, Isgl3dVector3 * b) {
  * @param y The y translation.
  * @param z The z translation.
  */
-static inline void iv3Translate(Isgl3dVector3 * a, float x, float y, float z) {
+static inline void iv3Translate(Isgl3dVector3 * a, float x, float y, float z)
+{
 	a->x += x;
 	a->y += y;
 	a->z += z;
@@ -158,7 +166,8 @@ static inline void iv3Translate(Isgl3dVector3 * a, float x, float y, float z) {
  * @param a The vector.
  * @param s The scale factor.
  */
-static inline void iv3Scale(Isgl3dVector3 * a, float scale) {
+static inline void iv3Scale(Isgl3dVector3 * a, float scale) 
+{
 	a->x *= scale;
 	a->y *= scale;
 	a->z *= scale;
@@ -169,7 +178,8 @@ static inline void iv3Scale(Isgl3dVector3 * a, float scale) {
  * @param a The first vector.
  * @param b The second vector.
  */
-static inline float iv3Dot(Isgl3dVector3 * a, Isgl3dVector3 * b) {
+static inline float iv3Dot(Isgl3dVector3 * a, Isgl3dVector3 * b)
+{
 	return a->x * b->x + a->y * b->y + a->z * b->z;
 }
 
@@ -185,7 +195,8 @@ Isgl3dVector3 iv3Cross(Isgl3dVector3 * a, Isgl3dVector3 * b);
  * @param a The vector.
  * @result The length from the origin.
  */
-static inline float iv3Length(Isgl3dVector3 * a) {
+static inline float iv3Length(Isgl3dVector3 * a)
+{
 	return sqrt(a->x * a->x + a->y * a->y + a->z * a->z);
 }
 
@@ -210,7 +221,8 @@ void iv3Normalize(Isgl3dVector3 * a);
  * @param precision The distances between each component must be less than this for the vectors to be considered equal.
  * @result 1 if the vectors are equal.
  */
-static inline int iv3Equals(Isgl3dVector3 * a, Isgl3dVector3 * b, float precision) {
+static inline int iv3Equals(Isgl3dVector3 * a, Isgl3dVector3 * b, float precision)
+{
 	return (fabs(a->x - b->x) < precision) && (fabs(a->y - b->y) < precision) && (fabs(a->z - b->z) < precision);
 }
 
@@ -259,7 +271,8 @@ void iv3RotateZ(Isgl3dVector3 * a, float angle, float centerX, float centerY);
  * @param z The z component.
  * @param w The w component.
  */
-static inline Isgl3dVector4 iv4Create(float x, float y, float z, float w) {
+static inline Isgl3dVector4 iv4Create(float x, float y, float z, float w)
+{
 	Isgl3dVector4 v = {x, y, z, w};
 	return v;
 }
@@ -269,7 +282,8 @@ static inline Isgl3dVector4 iv4Create(float x, float y, float z, float w) {
  * Resets all the vector components to 0.
  * @param a The vector to be modified.
  */
-static inline void iv4Reset(Isgl3dVector4 * a) {
+static inline void iv4Reset(Isgl3dVector4 * a)
+{
 	a->x = 0;
 	a->y = 0;
 	a->z = 0;
@@ -281,7 +295,8 @@ static inline void iv4Reset(Isgl3dVector4 * a) {
  * @param a The destination vector.
  * @param b The source vector.
  */
-static inline void iv4Copy(Isgl3dVector4 * a, Isgl3dVector4 * b) {
+static inline void iv4Copy(Isgl3dVector4 * a, Isgl3dVector4 * b)
+{
 	a->x = b->x;
 	a->y = b->y;
 	a->z = b->z;
@@ -296,7 +311,8 @@ static inline void iv4Copy(Isgl3dVector4 * a, Isgl3dVector4 * b) {
  * @param z The z component.
  * @param w The w component.
  */
-static inline void iv4Fill(Isgl3dVector4 * a, float x, float y, float z, float w) {
+static inline void iv4Fill(Isgl3dVector4 * a, float x, float y, float z, float w)
+{
 	a->x = x;
 	a->y = y;
 	a->z = z;
@@ -308,7 +324,8 @@ static inline void iv4Fill(Isgl3dVector4 * a, float x, float y, float z, float w
  * @param a The first vector.
  * @param b The second vector.
  */
-static inline void iv4Add(Isgl3dVector4 * a, Isgl3dVector4 * b) {
+static inline void iv4Add(Isgl3dVector4 * a, Isgl3dVector4 * b)
+{
 	a->x += b->x;
 	a->y += b->y;
 	a->z += b->z;
@@ -323,7 +340,8 @@ static inline void iv4Add(Isgl3dVector4 * a, Isgl3dVector4 * b) {
  * @param z The z component to be added.
  * @param w The w component to be added.
  */
-static inline void iv4AddComponents(Isgl3dVector4 * a, float x, float y, float z, float w) {
+static inline void iv4AddComponents(Isgl3dVector4 * a, float x, float y, float z, float w)
+{
 	a->x += x;
 	a->y += y;
 	a->z += z;
@@ -335,7 +353,8 @@ static inline void iv4AddComponents(Isgl3dVector4 * a, float x, float y, float z
  * @param a The first vector.
  * @param b The second vector.
  */
-static inline void iv4Sub(Isgl3dVector4 * a, Isgl3dVector4 * b) {
+static inline void iv4Sub(Isgl3dVector4 * a, Isgl3dVector4 * b)
+{
 	a->x -= b->x;
 	a->y -= b->y;
 	a->z -= b->z;
@@ -347,7 +366,8 @@ static inline void iv4Sub(Isgl3dVector4 * a, Isgl3dVector4 * b) {
  * @param a The vector.
  * @param s The scale factor.
  */
-static inline void iv4Scale(Isgl3dVector4 * a, float scale) {
+static inline void iv4Scale(Isgl3dVector4 * a, float scale)
+{
 	a->x *= scale;
 	a->y *= scale;
 	a->z *= scale;
@@ -359,7 +379,8 @@ static inline void iv4Scale(Isgl3dVector4 * a, float scale) {
  * @param a The first vector.
  * @param b The second vector.
  */
-static inline float iv4Dot(Isgl3dVector4 * a, Isgl3dVector4 * b) {
+static inline float iv4Dot(Isgl3dVector4 * a, Isgl3dVector4 * b)
+{
 	return a->x * b->x + a->y * b->y + a->z * b->z + a->w * b->w;
 }
 
@@ -368,7 +389,8 @@ static inline float iv4Dot(Isgl3dVector4 * a, Isgl3dVector4 * b) {
  * @param a The vector.
  * @result The length from the origin.
  */
-static inline float iv4Length(Isgl3dVector4 * a) {
+static inline float iv4Length(Isgl3dVector4 * a)
+{
 	return sqrt(a->x * a->x + a->y * a->y + a->z * a->z + a->w * a->w);
 }
 
@@ -385,7 +407,8 @@ void iv4Normalize(Isgl3dVector4 * a);
  * @param precision The distances between each component must be less than this for the vectors to be considered equal.
  * @result 1 if the vectors are equal.
  */
-static inline int iv4Equals(Isgl3dVector4 * a, Isgl3dVector4 * b, float precision) {
+static inline int iv4Equals(Isgl3dVector4 * a, Isgl3dVector4 * b, float precision)
+{
 	return (fabs(a->x - b->x) < precision) && (fabs(a->y - b->y) < precision) && (fabs(a->z - b->z) < precision) && (fabs(a->w - b->w) < precision);
 }
 

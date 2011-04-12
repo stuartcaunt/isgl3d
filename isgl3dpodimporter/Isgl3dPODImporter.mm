@@ -394,23 +394,28 @@
 	
 		Isgl3dColorMaterial * material;
 		NSLog(@"Creating material: %s:", materialInfo.pszName);
-		if (materialInfo.nIdxTexDiffuse >= 0 && materialInfo.nIdxTexDiffuse < [_textures count]) {
-			NSString * textureFileName = [_textures objectAtIndex:materialInfo.nIdxTexDiffuse];
-
-			material = [Isgl3dTextureMaterial materialWithTextureFile:textureFileName shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:YES repeatY:YES];
 		
+		if (!materialInfo.pszEffectFile) {
+			if (materialInfo.nIdxTexDiffuse >= 0 && materialInfo.nIdxTexDiffuse < [_textures count]) {
+				NSString * textureFileName = [_textures objectAtIndex:materialInfo.nIdxTexDiffuse];
+				
+				material = [Isgl3dTextureMaterial materialWithTextureFile:textureFileName shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:YES repeatY:YES];
+				
+			} else {
+				material = [Isgl3dColorMaterial materialWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0];
+			}
+			
+			// ignore other material types for the time being (ambient, specular, bump, ...)
+			
+			[material setAmbientColor:materialInfo.pfMatAmbient];
+			[material setDiffuseColor:materialInfo.pfMatDiffuse];
+			[material setSpecularColor:materialInfo.pfMatSpecular];
+			[material setShininess:materialInfo.fMatShininess];
+			
+			[_materials addObject:material];
 		} else {
-			material = [Isgl3dColorMaterial materialWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0];
+			NSLog(@"Material has effect file and is currently not supported: %s", materialInfo.pszEffectFile);
 		}
-		
-		// ignore other material types for the time being (ambient, specular, bump, ...)
-		
-		[material setAmbientColor:materialInfo.pfMatAmbient];
-		[material setDiffuseColor:materialInfo.pfMatDiffuse];
-		[material setSpecularColor:materialInfo.pfMatSpecular];
-		[material setShininess:materialInfo.fMatShininess];
-		
-		[_materials addObject:material];
 	}	
 	
 	// Create array of meshes
