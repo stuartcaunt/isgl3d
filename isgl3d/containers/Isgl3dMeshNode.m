@@ -73,6 +73,18 @@
 	[super dealloc];
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+	Isgl3dMeshNode * copy = [super copyWithZone:zone];
+	
+	copy.mesh = _mesh;
+	copy.material = _material;
+	copy->_doubleSided = _doubleSided;
+	copy->_occlusionAlpha = _occlusionAlpha;
+	
+	return copy;
+}
+
+
 - (Isgl3dGLMesh *) mesh {
 	return _mesh;
 }
@@ -109,13 +121,17 @@
 
 - (void) occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
 	// Test for occlusion
-	iv3Fill(&_eyeToModel, _worldTransformation.tx, _worldTransformation.ty, _worldTransformation.tz);
-	iv3Sub(&_eyeToModel, eye);
-
-	iv3Copy(&_eyeToModelNormal, &_eyeToModel);
-	iv3Normalize(&_eyeToModelNormal);
 	
-	float dot = iv3Dot(normal, &_eyeToModelNormal);
+	Isgl3dVector3 eyeToModel;
+	Isgl3dVector3 eyeToModelNormal;
+
+	iv3Fill(&eyeToModel, _worldTransformation.tx, _worldTransformation.ty, _worldTransformation.tz);
+	iv3Sub(&eyeToModel, eye);
+
+	iv3Copy(&eyeToModelNormal, &eyeToModel);
+	iv3Normalize(&eyeToModelNormal);
+	
+	float dot = iv3Dot(normal, &eyeToModelNormal);
 	float angle = acos(dot) * 180 / M_PI;
 	
 	
@@ -125,7 +141,7 @@
 	//            1 => at target
 	//        f > 1 => object behind target		
 	//        f < 0 => object behind camera		
-	float occlusionDistanceFactor = iv3Dot(normal, &_eyeToModel) / targetDistance;
+	float occlusionDistanceFactor = iv3Dot(normal, &eyeToModel) / targetDistance;
 	
 	// Calculate occlusion angle factor: 
 	//    0 < f < 1 => object between target and max angle

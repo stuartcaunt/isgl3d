@@ -49,6 +49,19 @@
 	[super dealloc];
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+	Isgl3dFollowNode * copy = [super copyWithZone:zone];
+	
+	copy->_target = [_target retain];
+	copy->_oldTargetPosition = _oldTargetPosition;
+	copy->_targetMovementIT = _targetMovementIT;
+	copy->_isFirstUpdate = _isFirstUpdate;
+	copy->_keepHorizontal = _keepHorizontal;
+	
+	return copy;
+}
+
+
 - (void) updateWorldTransformation:(Isgl3dMatrix4 *)targetTransformation {
 	// Get current position
 	Isgl3dVector3 currentTargetPosition = [_target worldPosition];

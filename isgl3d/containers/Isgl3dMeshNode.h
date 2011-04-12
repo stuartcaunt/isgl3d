@@ -43,9 +43,6 @@
 
 	BOOL _doubleSided;
 	
-	Isgl3dVector3 _eyeToModel;
-	Isgl3dVector3 _eyeToModelNormal;
-	
 	float _occlusionAlpha;
 	
 }

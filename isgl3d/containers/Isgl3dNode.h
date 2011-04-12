@@ -66,7 +66,7 @@
  * the notion of "children" and "parent" nodes.
  * 
  */
-@interface Isgl3dNode : Isgl3dEvent3DDispatcher {
+@interface Isgl3dNode : Isgl3dEvent3DDispatcher <NSCopying> {
 
 @protected
 

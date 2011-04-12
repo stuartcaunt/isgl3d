@@ -51,6 +51,15 @@
 	[super dealloc];
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+	Isgl3dParticleNode * copy = [super copyWithZone:zone];
+	
+	copy->_particle = [_particle retain];
+	copy->_material = [_material retain];
+	
+	return copy;
+}
+
 - (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
 
 	if (_material) {

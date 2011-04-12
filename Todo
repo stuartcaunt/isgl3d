@@ -15,9 +15,7 @@ Priority
 --------
 	- Redo transformations - store local position, rotation, scale ?
 	- templates Xcode 4
-	- output version number
 	- remove deprecated
-	- NSCopying protocol
 	
 
 Desirable

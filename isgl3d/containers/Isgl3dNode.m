@@ -91,13 +91,39 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (void) dealloc {
-
+	NSLog(@"DEALLOC");
 	[_children release];
 	
 	[super dealloc];
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+    Isgl3dNode * copy = [[[self class] allocWithZone:zone] init];
+    
+    copy->_worldTransformation = _worldTransformation;
+    copy->_localTransformation = _localTransformation;
+    copy->_transformationDirty = _transformationDirty;
 
+    copy->_lightingEnabled = _lightingEnabled;
+    copy->_enableShadowCasting = _enableShadowCasting;
+    copy->_enableShadowRendering = _enableShadowRendering;
+    copy->_isPlanarShadowsNode = _isPlanarShadowsNode;
+    copy->_alpha = _alpha;
+    copy->_transparent = _transparent;
+    copy->_alphaCulling = _alphaCulling;
+    copy->_alphaCullValue = _alphaCullValue;
+    copy->_lightingEnabled = _lightingEnabled;
+    copy->_interactive = _interactive;
+    copy->_isVisible = _isVisible;
+    copy->_scaleTransformation = _scaleTransformation;
+    copy->_scaling = _scaling;
+
+	for (Isgl3dNode * child in _children) {
+		[copy addChild:[[child copy] autorelease]];
+	}
+	
+    return copy;
+}
 
 #pragma mark translation rotation scaling
 
