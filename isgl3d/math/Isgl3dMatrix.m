@@ -403,8 +403,8 @@ void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
 void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
 {
 #ifdef USE_ACC_MATH	
-	float *mA = im4ColumnMajorFloatArrayFromMatrix(b);
-	float *mB = im4ColumnMajorFloatArrayFromMatrix(a);
+	float *mA = im4ColumnMajorFloatArrayFromMatrix(a);
+	float *mB = im4ColumnMajorFloatArrayFromMatrix(b);
 	
 #if defined(USE_NEON_MATH)
 	NEON_Matrix4Mul(mA, mB, mA);
