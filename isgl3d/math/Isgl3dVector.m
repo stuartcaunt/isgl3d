@@ -29,12 +29,12 @@ static float DEG_TO_RAD = M_PI / 180.0f;
 
 #pragma mark Isgl3dVector3
 
-Isgl3dVector3 FORWARD = {0, 0, -1};
-Isgl3dVector3 BACKWARD = {0, 0, 1};
-Isgl3dVector3 LEFT = {-1, 0, 0};
-Isgl3dVector3 RIGHT = {1, 0, 0};
-Isgl3dVector3 UP = {0, 1, 0};
-Isgl3dVector3 DOWN = {0, -1, 0};
+Isgl3dVector3 Isgl3dVector3Forward = {0, 0, -1};
+Isgl3dVector3 Isgl3dVector3Backward = {0, 0, 1};
+Isgl3dVector3 Isgl3dVector3Left = {-1, 0, 0};
+Isgl3dVector3 Isgl3dVector3Right = {1, 0, 0};
+Isgl3dVector3 Isgl3dVector3Up = {0, 1, 0};
+Isgl3dVector3 Isgl3dVector3Down = {0, -1, 0};
 
 float iv3DistanceBetween(Isgl3dVector3 * a, Isgl3dVector3 * b) {
 	float lx = b->x - a->x;

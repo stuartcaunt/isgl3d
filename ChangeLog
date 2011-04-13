@@ -1,4 +1,14 @@
 current SVN version
+	Isgl3dQuaternion: added
+	Isgl3dNode: optimising recalculation of matrices
+	Isgl3dNode: added pitch, yaw and roll to facilitate rotation of object about its local coordinate system
+	Isgl3dNode: added properties for rotation, scale and position. Rotation can now be set independently along different axes
+	Isgl3dNode: translate deprecated (will be removed in v1.2). Use setTranslateByValues
+	Isgl3dNode: setTranslation deprecated (will be removed in v1.2). Use setPosition
+	Isgl3dNode: remove ambiguity from method names involving translation: 
+		"translate" is along is in the frame of reference of the object
+		"position" is the coordinate position of the object ignoring rotational effects
+	Hardware accelerated matrix operations using VFPmathLibrary (ARMv6) and math-neon library (ARMv7) added (implemented by Holger Wiedemann)
 	NSCopying protocol implemented for principal node types
 	
 version 1.1.5 (2011-04-11)

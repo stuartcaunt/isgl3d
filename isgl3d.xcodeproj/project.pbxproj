@@ -622,6 +622,8 @@
 		1762383312F9CEDD008CDB4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		1762383412F9CEDD008CDB4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		1762384C12F9CFCF008CDB4B /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
+		1769034A1355E2890010B4CB /* Isgl3dQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 176903481355E2890010B4CB /* Isgl3dQuaternion.h */; };
+		1769034B1355E2890010B4CB /* Isgl3dQuaternion.m in Sources */ = {isa = PBXBuildFile; fileRef = 176903491355E2890010B4CB /* Isgl3dQuaternion.m */; };
 		17801A4A131A955A0045803F /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17801A4B131A955A0045803F /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		17801A4C131A955A0045803F /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
@@ -1874,6 +1876,8 @@
 		1762371812F9CE06008CDB4B /* CameraZoomAndFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraZoomAndFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1762372212F9CE31008CDB4B /* CameraZoomAndFocusDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraZoomAndFocusDemoView.h; sourceTree = "<group>"; };
 		1762372312F9CE31008CDB4B /* CameraZoomAndFocusDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraZoomAndFocusDemoView.m; sourceTree = "<group>"; };
+		176903481355E2890010B4CB /* Isgl3dQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dQuaternion.h; sourceTree = "<group>"; };
+		176903491355E2890010B4CB /* Isgl3dQuaternion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dQuaternion.m; sourceTree = "<group>"; };
 		17801A5F131A955A0045803F /* Occlusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Occlusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17801A63131A959D0045803F /* OcclusionDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OcclusionDemoView.h; sourceTree = "<group>"; };
 		17801A64131A959D0045803F /* OcclusionDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OcclusionDemoView.m; sourceTree = "<group>"; };
@@ -3438,6 +3442,8 @@
 				8BCAFD43135513BE005FA453 /* vfp */,
 				17F1D6D812F87EC5008D39E8 /* Isgl3dGLU.h */,
 				17F1D6D912F87EC5008D39E8 /* Isgl3dGLU.m */,
+				176903481355E2890010B4CB /* Isgl3dQuaternion.h */,
+				176903491355E2890010B4CB /* Isgl3dQuaternion.m */,
 				1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */,
 				17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */,
 				1756F4DA1347874000205D76 /* Isgl3dVector.h */,
@@ -4156,6 +4162,7 @@
 				8BCAFD4D135513BE005FA453 /* matrix_impl.h in Headers */,
 				8BCAFD4F135513BE005FA453 /* utility_impl.h in Headers */,
 				8BCAFD51135513BE005FA453 /* vfp_clobbers.h in Headers */,
+				1769034A1355E2890010B4CB /* Isgl3dQuaternion.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5746,6 +5753,7 @@
 				8BCAFD4B135513BE005FA453 /* neon_matrix_impl.m in Sources */,
 				8BCAFD4E135513BE005FA453 /* matrix_impl.m in Sources */,
 				8BCAFD50135513BE005FA453 /* utility_impl.m in Sources */,
+				1769034B1355E2890010B4CB /* Isgl3dQuaternion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

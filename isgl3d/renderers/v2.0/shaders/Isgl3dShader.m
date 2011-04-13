@@ -128,8 +128,7 @@
 }
 
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix {
-	float matrixArray[16];
-	im4ConvertToColumnMajorFloatArray(matrix, matrixArray);
+	float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(matrix);
 	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrixArray);
 }
 
@@ -145,13 +144,16 @@
 }
 
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
-	float matrixArray[size * 16];
+/*	float matrixArray[size * 16];
 	int offset = 0;
 	IA_FOREACH_PTR(Isgl3dMatrix4 *, matrix, matrices) {
 
 		im4ConvertToColumnMajorFloatArray(matrix, &(matrixArray[offset]));
 		offset += 16;
 	}
+*/
+	Isgl3dMatrix4 * firstMatrix = IA_GET_PTR(Isgl3dMatrix4 *, matrices, 0);
+	float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(firstMatrix);
 	
 	glUniformMatrix4fv(uniformLocation, size, GL_FALSE, matrixArray);
 }

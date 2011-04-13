@@ -183,7 +183,7 @@
 			iv3Add(&_targetPosition, &_currentTargetPosition);
 			
 			// Set translation and lookAt
-			[super setTranslationVector:_newPosition];
+			[super setPosition:_newPosition];
 			[super setLookAt:_targetPosition];
 		}
 	
@@ -204,16 +204,16 @@
 	[super lookAt:x y:y z:z];
 }
 
-- (void) setTranslation:(float)x y:(float)y z:(float)z {
+- (void) setPositionValues:(float)x y:(float)y z:(float)z {
 	_desiredPosition = iv3(x, y, z);
 	
-	[super setTranslation:x y:y z:z];
+	[super setPositionValues:x y:y z:z];
 }
 
-- (void) setTranslationVector:(Isgl3dVector3)translation {
+- (void) setPosition:(Isgl3dVector3)translation {
 	_desiredPosition = translation;
 	
-	[super setTranslationVector:translation];
+	[super setPosition:translation];
 }
 
 

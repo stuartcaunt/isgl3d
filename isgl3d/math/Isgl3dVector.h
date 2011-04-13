@@ -51,12 +51,12 @@ typedef struct {
 
 #pragma mark Isgl3dVector3
 
-extern Isgl3dVector3 FORWARD;
-extern Isgl3dVector3 BACKWARD;
-extern Isgl3dVector3 LEFT;
-extern Isgl3dVector3 RIGHT;
-extern Isgl3dVector3 UP;
-extern Isgl3dVector3 DOWN;
+extern Isgl3dVector3 Isgl3dVector3Forward;
+extern Isgl3dVector3 Isgl3dVector3Backward;
+extern Isgl3dVector3 Isgl3dVector3Left;
+extern Isgl3dVector3 Isgl3dVector3Right;
+extern Isgl3dVector3 Isgl3dVector3Up;
+extern Isgl3dVector3 Isgl3dVector3Down;
 
 
 /**

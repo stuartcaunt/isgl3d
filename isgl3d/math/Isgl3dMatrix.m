@@ -251,23 +251,20 @@ void im4Rotate(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
 }
 
 void im4Translate(Isgl3dMatrix4 * m, float x, float y, float z) {
-	Isgl3dMatrix4 matrix = im4Identity();
+	Isgl3dVector3 v = iv3(x, y, z);
+	Isgl3dVector3 tv = im4MultVector3x3(m, &v);
 
-	matrix.tx = x;
-	matrix.ty = y;
-	matrix.tz = z;
-
-	im4MultiplyOnLeft(m, &matrix);
+	m->tx += tv.x;
+	m->ty += tv.y;
+	m->tz += tv.z;
 }
 
 void im4TranslateByVector(Isgl3dMatrix4 * m, Isgl3dVector3 * v) {
-	Isgl3dMatrix4 matrix = im4Identity();
+	Isgl3dVector3 tv = im4MultVector3x3(m, v);
 
-	matrix.tx = v->x;
-	matrix.ty = v->y;
-	matrix.tz = v->z;
-
-	im4MultiplyOnLeft(m, &matrix);
+	m->tx += tv.x;
+	m->ty += tv.y;
+	m->tz += tv.z;
 }
 
 void im4Scale(Isgl3dMatrix4 * m, float x, float y, float z) {
@@ -326,7 +323,42 @@ void im4SetRotation(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
 	m->szz = matrix.szz;
 }
 
+void im4SetRotationFromEuler(Isgl3dMatrix4 * m, float ax, float ay, float az) {
+	Isgl3dQuaternion q = iqnCreateFromEuler(ax, ay, az);
+//	Isgl3dQuaternion q = iqnCreateFromEuler(ay, az, ax);
+	
+	im4SetRotationFromQuaternion(m, &q);
+}
 
+void im4SetRotationFromQuaternion(Isgl3dMatrix4 * m, Isgl3dQuaternion * q) {
+	float x = q->x;
+	float y = q->y;
+	float z = q->z;
+	float w = q->w;
+	
+	float xy = x * y;
+	float xz = x * z;
+	float xw = x * w;
+	
+	float yy = y * y;
+	float yz = y * z;
+	float yw = y * w;
+	
+	float zz = z * z;
+	float zw = z * w;
+
+	float ww = w * w;
+	
+	m->sxx = 1 - 2 * (zz + ww);
+	m->sxy =     2 * (yz - xw);
+	m->sxz =     2 * (xz + yw);
+	m->syx =     2 * (yz + xw);
+	m->syy = 1 - 2 * (yy + ww);
+	m->syz =     2 * (zw - xy);
+	m->szx =     2 * (yw - xz);
+	m->szy =     2 * (xy + zw);
+	m->szz = 1 - 2 * (yy + zz);
+}
 
 
 void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)

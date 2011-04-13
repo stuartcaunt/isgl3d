@@ -162,6 +162,10 @@
 
 - (void) activate {
 	_isRunning = YES;
+
+	// Initialise all transformations in the scene
+	[_scene updateWorldTransformation:nil];
+
 	[[Isgl3dScheduler sharedInstance] resume:self];
 	
 	[self onActivated];

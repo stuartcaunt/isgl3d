@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Isgl3dVector.h"
+#import "Isgl3dQuaternion.h"
 
 #define im4(sxx, sxy, sxz, tx, syx, syy, syz, ty, szx, szy, szz, tz, swx, swy, swz, tw) im4Create(sxx, sxy, sxz, tx, syx, syy, syz, ty, szx, szy, szz, tz, swx, swy, swz, tw)
 #define im4Identity() im4CreateIdentity()
@@ -286,6 +287,24 @@ void im4Transpose(Isgl3dMatrix4 * m);
 void im4SetRotation(Isgl3dMatrix4 * m, float angle, float x, float y, float z);
 
 /**
+ * Calculates the rotational component of the matrix from euler angles.
+ * The translation components of the matrix are not affected.
+ * @param m The matrix.
+ * @param ax The rotation about the x axis.
+ * @param ay The rotation about the y axis.
+ * @param az The rotation about the z axis.
+ */
+void im4SetRotationFromEuler(Isgl3dMatrix4 * m, float ax, float ay, float az);
+
+/**
+ * Calculates the rotational component of the matrix from a quaternion.
+ * The translation components of the matrix are not affected.
+ * @param m The matrix.
+ * @param q The quaternion.
+ */
+void im4SetRotationFromQuaternion(Isgl3dMatrix4 * m, Isgl3dQuaternion * q);
+
+/**
  * Sets the translation components of a matrix. The rotational components
  * are not affected.
  * @param m The matrix.
@@ -453,3 +472,12 @@ Isgl3dVector3 im4ToEulerAngles(Isgl3dMatrix4 * m);
  */
 Isgl3dVector3 im4ToScaleValues(Isgl3dMatrix4 * m);
 
+
+/**
+ * Returns the equivalent scaling values of a matrix.
+ * @result Vector containing the scalex in x, y and z
+ */
+static inline Isgl3dVector3 im4ToPosition(Isgl3dMatrix4 * m) 
+{
+	return iv3(m->tx, m->ty, m->tz);
+}

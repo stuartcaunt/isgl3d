@@ -70,10 +70,20 @@
 
 @protected
 
+	float _rotationX;
+	float _rotationY;
+	float _rotationZ;
+	float _scaleX;
+	float _scaleY;
+	float _scaleZ;
+
 	Isgl3dMatrix4 _localTransformation;
 	Isgl3dMatrix4 _worldTransformation;
 
 	BOOL _transformationDirty;
+	BOOL _localTransformationDirty;
+	BOOL _eulerAnglesDirty;
+	BOOL _rotationMatrixDirty;
 
 
 
@@ -96,8 +106,6 @@
 	BOOL _isVisible;
 	
 @private
-	Isgl3dMatrix4 _scaleTransformation;
-	BOOL _scaling;
 
 	Isgl3dNode * _parent;
 
@@ -125,9 +133,40 @@
 @property (nonatomic) float z;
 
 /**
- * The local translation in the objects frame of reference.
+ * The position of the object in the local frame of reference.
  */
-@property (nonatomic) Isgl3dVector3 translationVector;
+@property (nonatomic) Isgl3dVector3 position;
+
+/**
+ * The rotation about the x-axis in the objects frame of reference.
+ */
+@property (nonatomic) float rotationX;
+
+/**
+ * The rotation about the y-axis in the objects frame of reference.
+ */
+@property (nonatomic) float rotationY;
+
+/**
+ * The rotation about the z-axis in the objects frame of reference.
+ */
+@property (nonatomic) float rotationZ;
+
+/**
+ * The scale of the object in the x direction
+ */
+@property (nonatomic) float scaleX;
+
+/**
+ * The scale of the object in the y direction
+ */
+@property (nonatomic) float scaleY;
+
+/**
+ * The scale of the object in the z direction
+ */
+@property (nonatomic) float scaleZ;
+
 
 
 
@@ -225,6 +264,70 @@
 
 
 /**
+ * Sets the object's position to a given point.
+ * @param x The position along the x axis in the object's local frame of reference.
+ * @param y The position along the y axis in the object's local frame of reference.
+ * @param z The position along the z axis in the object's local frame of reference.
+ */
+- (void) setPositionValues:(float)x y:(float)y z:(float)z;
+
+/**
+ * Sets the object's position to a given point.
+ * @param x The position along the x axis in the object's local frame of reference.
+ * @param y The position along the y axis in the object's local frame of reference.
+ * @param z The position along the z axis in the object's local frame of reference.
+ * WARNING: This method is deprecated and will be removed in v1.2. Use setPositionValues instead
+ * 
+ * @deprecated Will be removed in v1.2
+ */
+- (void) setTranslation:(float)x y:(float)y z:(float)z;
+
+/**
+ * Translates the object by a given amount from its current position in the objects local frame of reference.
+ * Note that this is useful for example to make a node move "left" or "right" with vector (-1, 0, 0) and (1, 0, 0)
+ * @param x The displacement along the x axis in the object's local frame of reference.
+ * @param y The displacement along the y axis in the object's local frame of reference.
+ * @param z The displacement along the z axis in the object's local frame of reference.
+ * WARNING: This method is deprecated and will be removed in v1.2. Use translateByValues instead
+ * 
+ * @deprecated Will be removed in v1.2
+ */
+- (void) translate:(float)x y:(float)y z:(float)z;
+
+/**
+ * Translates the object by a given amount from its current position in the objects local frame of reference.
+ * Note that this is useful for example to make a node move "left" or "right" with vector (-1, 0, 0) and (1, 0, 0)
+ * @param x The displacement along the x axis in the object's local frame of reference.
+ * @param y The displacement along the y axis in the object's local frame of reference.
+ * @param z The displacement along the z axis in the object's local frame of reference.
+ */
+- (void) translateByValues:(float)x y:(float)y z:(float)z;
+
+/**
+ * Translates the object along a vector from its current position.
+ * @param vector The displacement in three dimensions in the object's local frame of reference.
+ */
+- (void) translateByVector:(Isgl3dVector3)vector;
+
+/**
+ * Rotates the object about its local x axis by given angle
+ * @param angle The angle of rotation in degrees
+ */
+- (void) pitch:(float)angle;
+
+/**
+ * Rotates the object about its local y axis by given angle
+ * @param angle The angle of rotation in degrees
+ */
+- (void) yaw:(float)angle;
+
+/**
+ * Rotates the object about its local z axis by given angle
+ * @param angle The angle of rotation in degrees
+ */
+- (void) roll:(float)angle;
+
+/**
  * Performs a general rotation of the object by a given angle about a vector defined
  * as (x, y, z). The rotation is added to the current object's rotation.
  * @param angle The angle in degrees.
@@ -245,42 +348,6 @@
 - (void) setRotation:(float)angle x:(float)x y:(float)y z:(float)z;
 
 /**
- * Translates the object by a given amount from its current position.
- * @param x The displacement along the x axis in the object's local frame of reference.
- * @param y The displacement along the y axis in the object's local frame of reference.
- * @param z The displacement along the z axis in the object's local frame of reference.
- */
-- (void) translate:(float)x y:(float)y z:(float)z;
-
-/**
- * Sets the object's position to a given point in the object's frame of reference.
- * @param x The position along the x axis in the object's local frame of reference.
- * @param y The position along the y axis in the object's local frame of reference.
- * @param z The position along the z axis in the object's local frame of reference.
- */
-- (void) setTranslation:(float)x y:(float)y z:(float)z;
-
-/**
- * Translates the object along a vector from its current position.
- * @param vector The displacement in three dimensions in the object's local frame of reference.
- */
-- (void) translateByVector:(Isgl3dVector3)vector;
-
-/**
- * Translates the object along a given vector from its current position by a given distance.
- * Note that this is useful for example to make a node move "left" or "right" with vector (-1, 0, 0) and (1, 0, 0)
- * @param direction The direction of the displacement in the object's local frame of reference.
- * @param distance The distance to move the object by.
- */
-- (void) translateAlongVector:(Isgl3dVector3)direction distance:(float)distance;
-
-/**
- * Takes the position directly from another Isgl3dNode object.
- * @param node The object whose position is to be copied.
- */
-- (void) setTranslationByNode:(Isgl3dNode *)node;
-
-/**
  * Sets a global scaling factor for the object (identical in x-, y- and z-directions).
  * @param scale The scaling factor.
  */
@@ -293,6 +360,8 @@
  * @scaleZ The scaling factor in the z-direction.
  */
 - (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
+
+
 
 /**
  * Reset's the local transformation.
