@@ -23,54 +23,33 @@
  *
  */
 
-#import "Isgl3dFpsTracer.h"
+#import "isgl3d.h"
 
-@implementation Isgl3dFpsTracer
-
-
-- (id) init {
-	if ((self = [super init])) {
-		
-		_lastTime = [[NSDate alloc] init];
-		_tickIndex = 0;
-		for (int i = 0; i < FPS_TIMES_LENGTH; i++) {
-			_times[i] = 0;
-		}
-	}
-	return self;
-}
-
-- (void) dealloc {
-	[_lastTime dealloc];
+@interface SpringCameraTestView : Isgl3dBasic3DView <Isgl3dTouchScreenResponder> {
+	Isgl3dNode * _container;
+	Isgl3dMeshNode * _sphere;
 	
-	[super dealloc];
-}
- 
-- (Isgl3dFpsTracingInfo) tick {
-	Isgl3dFpsTracingInfo result;
+	Isgl3dCamera * _staticCamera;
+	Isgl3dSpringCamera * _springCamera;
 	
-	NSDate * currentTime = [[NSDate alloc] init];
-	NSTimeInterval timeInterval = [currentTime timeIntervalSinceDate:_lastTime];
-	[_lastTime release];
-	_lastTime = currentTime;
-	
-	_times[_tickIndex++] = timeInterval;
-	
-	if (_tickIndex >= FPS_TIMES_LENGTH) {
-		_tickIndex = 0;
-	}
-	
-	// Calculate average time
-	float totalTime = 0;
-	for (int i = 0; i < FPS_TIMES_LENGTH; i++) {
-		totalTime += _times[i];
-	}
-	totalTime /= FPS_TIMES_LENGTH;
-	result.time = totalTime * 1000.0;
-	
-	result.fps = 1.0 / totalTime;
-	
-	return result;	
+	float _angle;
 }
 
 @end
+
+
+#pragma mark SimpleUIView
+
+
+@interface SimpleUIView : Isgl3dBasic2DView
+@end
+
+/*
+ * Principal class to be instantiated in main.h. 
+ */
+#import "Isgl3dAppDelegate.h"
+@interface AppDelegate : Isgl3dAppDelegate
+- (void) createViews;
+@end
+
+

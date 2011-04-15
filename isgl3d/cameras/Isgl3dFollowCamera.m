@@ -42,18 +42,22 @@
 @synthesize target = _target;
 @synthesize useRealTime = _useRealTime;
 
++ (id) cameraWithTarget:(Isgl3dNode *)target {
+	return [[[self alloc] initWithTarget:target] autorelease];
+}
+
++ (id) cameraWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target {
+	return [[[self alloc] initWithWidth:width andHeight:height andTarget:target] autorelease];
+}
+
++ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target {
+	return [[[self alloc] initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ andTarget:target] autorelease];
+}
+
+
 - (id) initWithTarget:(Isgl3dNode *)target {
 	
 	if ((self = [super init])) {
-		[self initialiseTarget:target];
-	}
-	
-	return self;
-}
-
-- (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target {
-	
-	if ((self = [super initWithView:view3D])) {
 		[self initialiseTarget:target];
 	}
 	
@@ -88,7 +92,7 @@
 
 - (void) initialiseTarget:(Isgl3dNode *)target {
 		
-	if (_target) {
+	if (target) {
 		_target = [target retain];
 	}
 	

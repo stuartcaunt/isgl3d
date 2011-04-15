@@ -27,7 +27,6 @@
 
 @class Isgl3dMaterial;
 @class Isgl3dNode;
-@class Isgl3dView3D;
 @class Isgl3dMeshNode;
 @class Isgl3dSkeletonNode;
 @class Isgl3dCamera;
@@ -53,7 +52,6 @@
 class CPVRTModelPOD;
 
 @private
-	Isgl3dView3D * _view3D;
 
 	CPVRTModelPOD * _podScene;
 	NSString * _podPath;
@@ -79,15 +77,6 @@ class CPVRTModelPOD;
  * @param path The path to the POD data file.
  */
 + (id) podImporterWithFile:(NSString *)path;
-
-/**
- * Initialises the importer with the POD data file path and the view3D.
- * @param path The path to the POD data file.
- * @param view3D the Isgl3dView3D.
- * 
- * @deprecated Will be removed in v1.2
- */
-- (id) initWithFile:(NSString *)path andView3D:(Isgl3dView3D *)view3D;
 
 /**
  * Initialises the importer with the POD data file path.

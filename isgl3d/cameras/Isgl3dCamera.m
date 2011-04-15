@@ -25,7 +25,6 @@
 
 #import "Isgl3dCamera.h"
 #import "Isgl3dGLU.h"
-#import "Isgl3dView3D.h"
 #import "Isgl3dLog.h"
 
 @interface Isgl3dCamera (PrivateMethods)
@@ -66,19 +65,9 @@
 	return [self initWithWidth:0 height:0 andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f];
 }
 
-- (id) initWithView:(Isgl3dView3D *)view {
-	
-	return [self initWithWidth:view.width andHeight:view.height];
-}
-
 - (id) initWithWidth:(float)width andHeight:(float)height {
 	
 	return [self initWithWidth:width height:height andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f];
-}
-
-- (id) initWithView:(Isgl3dView3D *)view andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
-	
-	return [self initWithWidth:view.width height:view.height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ];
 }
 
 - (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
@@ -114,10 +103,6 @@
     [self setTranslation:_initialCameraPosition.x y:_initialCameraPosition.y z:_initialCameraPosition.z];	
 }
 
-- (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far landscape:(BOOL)landscape {
-	[self setPerspectiveProjection:fovy near:near far:far orientation:Isgl3dOrientation90CounterClockwise];
-}
-
 - (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {
 	if (_width == 0 || _height == 0) {
 		Isgl3dLog(Error, @"Isgl3dCamera : cannot set perspective projection because width and height of view are unknown.");
@@ -147,10 +132,6 @@
 	}
 	
 	_isPerspective = YES;	
-}
-
-- (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far landscape:(BOOL)landscape {
-	[self setOrthoProjection:left right:right bottom:bottom top:top near:near far:far orientation:Isgl3dOrientation90CounterClockwise];
 }
 
 - (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {

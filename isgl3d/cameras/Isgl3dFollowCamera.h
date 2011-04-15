@@ -109,23 +109,45 @@
 @property (nonatomic) BOOL useRealTime;
 
 /**
+ * Allocates and initialises (autorelease) camera with a target node.
+ * Note: For perspective projections the camera can only be used if the width and height are set 
+ * @param view The view to be used by the camera (provides width and height).
+ * @param target The target node.
+ */
++ (id) cameraWithTarget:(Isgl3dNode *)target;
+
+/**
+ * Allocates and initialises (autorelease) camera with a specified width and height and a target.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ * @param target The target node.
+ */
++ (id) cameraWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target;
+
+/**
+ * Allocates and initialises (autorelease) camera with user-defined geometry and a target node.
+ * @param width The width of the view.
+ * @param height The height of the view.
+ * @param x The x position of the camera.
+ * @param y The y position of the camera.
+ * @param z The z position of the camera.
+ * @param upX The x component of the up vector.
+ * @param upY The y component of the up vector.
+ * @param upZ The z component of the up vector.
+ * @param lookAtX The x position where the camera will look at.
+ * @param lookAtY The y position where the camera will look at.
+ * @param lookAtZ The z position where the camera will look at.
+ * @param target The target node.
+ */
++ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target;
+
+/**
  * Initialises the camera with a target node.
  * Note: For perspective projections the camera can only be used if the width and height are set 
  * @param view The view to be used by the camera (provides width and height).
  * @param target The target node.
  */
 - (id) initWithTarget:(Isgl3dNode *)target;
-
-/**
- * Initialises the Isgl3dFollowCamera with the view and target node
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param view The view to be used by the camera (provides width and height).
- * @param view3D The Isgl3dView3D in use.
- * @param target The target node.
- * 
- * @deprecated Will be removed in v1.2
- */
-- (id) initWithView:(Isgl3dView3D *)view3D andTarget:(Isgl3dNode *)target;
 
 /**
  * Initialises the camera with a specified width and height and a target.

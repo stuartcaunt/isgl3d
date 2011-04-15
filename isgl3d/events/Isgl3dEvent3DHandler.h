@@ -25,7 +25,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@class Isgl3dView3D;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -33,17 +32,10 @@
 @interface Isgl3dEvent3DHandler : NSObject {
 	    
 @private
-	Isgl3dView3D * _view3D;
 	NSMutableArray * _touchedObjects;
-	BOOL _useDirector;
 }
 
 - (id) init;
-
-/**
- * @deprecated Will be removed in v1.2
- */
-- (id) initWithView3D:(Isgl3dView3D *)view3D;
 
 - (BOOL) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

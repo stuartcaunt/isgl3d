@@ -54,20 +54,6 @@
 
 /**
  * Calculates a projection matrix for a perspective view.
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param fovy The field of view in the y direction.
- * @param aspect The aspect ratio of the display.
- * @param near The nearest distance along the z-axis for which elements are rendered.
- * @param far the furthest distance along the z-axis for which elements are rendered.
- * @param zoom The zoom factor.
- * @param landscape indicates whether the device is in landscape more or not. 
- * 
- * @deprecated Will be removed in v1.2
- */
-+ (Isgl3dMatrix4) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
-
-/**
- * Calculates a projection matrix for a perspective view.
  * @param fovy The field of view in the y direction.
  * @param aspect The aspect ratio of the display.
  * @param near The nearest distance along the z-axis for which elements are rendered.
@@ -76,22 +62,6 @@
  * @param orientation indicates the rotation (about z) for the projection. 
  */
 + (Isgl3dMatrix4) perspective:(float)fovy aspect:(float)aspect near:(float)near far:(float)far zoom:(float)zoom orientation:(isgl3dOrientation)orientation;
-
-/**
- * Calculates a projection matrix for an orthographic view.
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param left The left-most position along the x-axis for which elements are rendered. 
- * @param right The right-most position along the x-axis for which elements are rendered. 
- * @param bottom The bottom-most position along the y-axis for which elements are rendered. 
- * @param top The top-most position along the y-axis for which elements are rendered. 
- * @param near The nearest distance along the z-axis for which elements are rendered.
- * @param far the furthest distance along the z-axis for which elements are rendered.
- * @param zoom The zoom factor.
- * @param landscape indicates whether the device is in landscape more or not.
- *  
- * @deprecated Will be removed in v1.2
- */
-+ (Isgl3dMatrix4) ortho:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far zoom:(float)zoom landscape:(BOOL)landscape;
 
 /**
  * Calculates a projection matrix for an orthographic view.

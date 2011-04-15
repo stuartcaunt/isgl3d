@@ -29,8 +29,6 @@
 #import "isgl3dTypes.h"
 #import "isgl3dMatrix.h"
 
-@class Isgl3dView3D;
-
 /**
  * The Isgl3dCamera is the principal form of camera used in iSGL3D. It behaves as a traditional camera and is 
  * used to provide a projection of the scene as viewed from an observer.
@@ -258,17 +256,6 @@
 - (id) init;
 
 /**
- * Initialises the camera with an Isgl3dView3D object.
- * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
- * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param view The view to be used by the camera (provides width and height).
- * 
- * @deprecated Will be removed in v1.2
- */
-- (id) initWithView:(Isgl3dView3D *)view;
-
-/**
  * Initialises the camera with a specified width and height.
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
@@ -276,25 +263,6 @@
  * @param height The height of the view.
  */
 - (id) initWithWidth:(float)width andHeight:(float)height;
-
-/**
- * Initialises the camera with user-defined geometry.
- * Perspective projection is used as default.
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param view The view to be used by the camera (provides width and height).
- * @param x The x position of the camera.
- * @param y The y position of the camera.
- * @param z The z position of the camera.
- * @param upX The x component of the up vector.
- * @param upY The y component of the up vector.
- * @param upZ The z component of the up vector.
- * @param lookAtX The x position where the camera will look at.
- * @param lookAtY The y position where the camera will look at.
- * @param lookAtZ The z position where the camera will look at.
- * 
- * @deprecated Will be removed in v1.2
- */
-- (id) initWithView:(Isgl3dView3D *)view andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ;
 
 /**
  * Initialises the camera with user-defined geometry.
@@ -321,39 +289,12 @@
 
 /**
  * Sets the camera in projective projection mode with the given parameters.
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param fovy The field of view in the y direction.
- * @param near The near value (closer than this an objects won't be rendered).
- * @param far The far value (further than this an objects won't be rendered).
- * @param Indicates whether the camera should assume that the device is oriented in landscape mode.
- * 
- * @deprecated Will be removed in v1.2
- */
-- (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far landscape:(BOOL)landscape;
-
-/**
- * Sets the camera in projective projection mode with the given parameters.
  * @param fovy The field of view in the y direction.
  * @param near The near value (closer than this an objects won't be rendered).
  * @param far The far value (further than this an objects won't be rendered).
  * @param orientation indicates the rotation (about z) for the projection. 
  */
 - (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation;
-
-/**
- * Sets the camera in orthographics projection mode.
- * WARNING: This method is deprecated and will be removed in v1.2.
- * @param left The left value (Objects to the left of this won't be rendered).
- * @param right The right value (Objects to the right of this won't be rendered).
- * @param bottom The bottom value (Objects below this won't be rendered).
- * @param top The top value (Objects above this won't be rendered).
- * @param near The near value (closer than this an objects won't be rendered).
- * @param far The far value (further than this an objects won't be rendered).
- * @param Indicates whether the camera should assume that the device is oriented in landscape mode.
- * 
- * @deprecated Will be removed in v1.2
- */
-- (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far landscape:(BOOL)landscape;
 
 /**
  * Sets the camera in orthographics projection mode.

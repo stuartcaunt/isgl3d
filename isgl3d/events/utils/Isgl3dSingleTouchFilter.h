@@ -27,7 +27,6 @@
 #import <UIKit/UIKit.h>
 
 @class Isgl3dNode;
-@class Isgl3dView3D;
 @class Isgl3dEvent3D;
 
 /**

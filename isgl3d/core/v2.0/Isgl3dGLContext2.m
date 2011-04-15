@@ -173,50 +173,11 @@
 	glUseProgram([program glProgram]);
 }
 
-- (void) prepare:(GLfloat *)clearColor {
-	_clearColor[0] = clearColor[0];
-	_clearColor[1] = clearColor[1];
-	_clearColor[2] = clearColor[2];
-	_clearColor[3] = clearColor[3];
-
-	glViewport(0, 0, _backingWidth, _backingHeight);
-
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	glClearColor(clearColor[0], clearColor[1], clearColor[2], clearColor[3]);
-	glEnable(GL_DEPTH_TEST);
-	glClearDepthf(1.0f);
-}
-
-
-- (void) clearBuffer {
-	glViewport(0, 0, _backingWidth, _backingHeight);
-
-	glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-}
-
-- (void) clearBufferForEventCapture {
-	glClearColor(0, 0, 0, 1);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-- (void) clearDepthBuffer {
-	glClear(GL_DEPTH_BUFFER_BIT);
-}
-
-
 - (Isgl3dGLRenderer *) createRenderer {
 	_currentRenderer = [[Isgl3dGLRenderer2 alloc] init];
 	_currentRenderer.stencilBufferAvailable = self.stencilBufferAvailable;
 
 	return [_currentRenderer autorelease];
-}
-
-- (void) initializeRender {
-//	[EAGLContext setCurrentContext:_context];
-	
-//	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
 }
 
 - (void) finalizeRender {

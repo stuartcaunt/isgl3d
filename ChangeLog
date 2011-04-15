@@ -1,4 +1,7 @@
 current SVN version
+	Added demos for spring and follow cameras
+	Isgl3dFollowCamera: fix bug in Isgl3dFollowCamera (Issue #2)
+	Remove deprecated methods
 	Isgl3dQuaternion: added
 	Isgl3dNode: optimising recalculation of matrices
 	Isgl3dNode: added pitch, yaw and roll to facilitate rotation of object about its local coordinate system

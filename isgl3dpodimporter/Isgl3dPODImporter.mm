@@ -31,7 +31,6 @@
 #import "Isgl3dAnimatedMeshNode.h"
 #import "Isgl3dColorMaterial.h"
 #import "Isgl3dTextureMaterial.h"
-#import "Isgl3dView3D.h"
 #import "Isgl3dLight.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dCamera.h"
@@ -69,20 +68,10 @@
 	return [[[self alloc] initWithFile:path] autorelease];
 }
 
-- (id) initWithFile:(NSString *)path andView3D:(Isgl3dView3D *)view3D {
-	if ((self = [self initWithFile:path])) {
-		_view3D = [view3D retain];
-	}
-	
-	return self;
-}
-
 - (id) initWithFile:(NSString *)path {
 	if ((self = [super init])) {
 		_podScene = new CPVRTModelPOD();
 
-		_view3D = nil;
-		
 		// cut filename into name and extension
 		NSString * extension = [path pathExtension];
 		NSString * fileName = [path stringByDeletingPathExtension];
@@ -131,10 +120,6 @@
 	[_lights release];
 	[_textureMods release];
 
-	if (_view3D) {
-		[_view3D release];
-	}
-		
 	delete _podScene;
 
 	[super dealloc];
@@ -438,16 +423,9 @@
 		
 		NSLog(@"Creating camera: pos = [%f, %f, %f], lookAt = [%f, %f, %f], fov = %f, near = %f, far = %f", pos.x, pos.y, pos.z, lookAt.x, lookAt.y, lookAt.z, fov, fNear, fFar);
 	
-		Isgl3dCamera * camera;
-		if (_view3D) {
-			camera = [[Isgl3dCamera alloc] initWithView:_view3D andCoordinates:pos.x y:pos.y z:pos.z upX:0 upY:1 upZ:0 lookAtX:lookAt.x lookAtY:lookAt.y lookAtZ:lookAt.z];
-			[camera setPerspectiveProjection:fov near:fNear far:fFar landscape:_view3D.isLandscape];
-			
-		} else {
-			CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
-			camera = [[Isgl3dCamera alloc] initWithWidth:windowSize.width height:windowSize.height andCoordinates:pos.x y:pos.y z:pos.z upX:0 upY:1 upZ:0 lookAtX:lookAt.x lookAtY:lookAt.y lookAtZ:lookAt.z];
-			[camera setPerspectiveProjection:fov near:fNear far:fFar orientation:[Isgl3dDirector sharedInstance].deviceOrientation];
-		}
+		CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
+		Isgl3dCamera * camera = [[Isgl3dCamera alloc] initWithWidth:windowSize.width height:windowSize.height andCoordinates:pos.x y:pos.y z:pos.z upX:0 upY:1 upZ:0 lookAtX:lookAt.x lookAtY:lookAt.y lookAtZ:lookAt.z];
+		[camera setPerspectiveProjection:fov near:fNear far:fFar orientation:[Isgl3dDirector sharedInstance].deviceOrientation];
 		
 
 		[_cameras addObject:[camera autorelease]];

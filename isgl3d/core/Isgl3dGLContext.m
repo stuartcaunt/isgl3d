@@ -46,28 +46,12 @@
 	[super dealloc];
 }
 
-- (void) prepare:(float *)clearColor {
-}
-
-- (void) clearBuffer {
-}
-
-- (void) clearBufferForEventCapture {
-}
-
-- (void) clearDepthBuffer {
-}
-
-
 - (Isgl3dGLRenderer *) createRenderer {
 	return nil;
 }
 
 - (BOOL) resizeFromLayer:(CAEAGLLayer *)layer {
 	return true;
-}
-
-- (void) initializeRender {
 }
 
 - (void) finalizeRender {

@@ -33,7 +33,6 @@
 #import "Isgl3dVector.h"
 #import "Isgl3dMatrix.h"
 
-@class Isgl3dView3D;
 @class Isgl3dMeshNode;
 @class Isgl3dSkeletonNode;
 @class Isgl3dFollowNode;
@@ -476,13 +475,6 @@
  * @return (autorelease) The created node.
  */
 - (Isgl3dFollowNode *) createFollowNodeWithTarget:(Isgl3dNode *)target;
-
-/**
- * Utility method to create an Isgl3dCamera and add it as a child.
- * @param view The Isgl3dView3D.
- * @return (autorelease) The created node.
- */
-- (Isgl3dCamera *) createCameraNodeWithView:(Isgl3dView3D *)view;
 
 /**
  * Utility method to create an Isgl3dLight and add it as a child.

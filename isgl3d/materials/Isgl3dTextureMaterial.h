@@ -24,13 +24,6 @@
  */
 
 
-// @deprecated: will be removed in v1.2
-#define TEXTURE_MATERIAL_LOW_PRECISION Isgl3dTexturePrecisionLow
-// @deprecated: will be removed in v1.2
-#define TEXTURE_MATERIAL_MEDIUM_PRECISION Isgl3dTexturePrecisionMedium
-// @deprecated: will be removed in v1.2
-#define TEXTURE_MATERIAL_HIGH_PRECISION Isgl3dTexturePrecisionHigh
-
 #import "Isgl3dColorMaterial.h"
 #import "isgl3dTypes.h"
 #import <CoreGraphics/CoreGraphics.h>

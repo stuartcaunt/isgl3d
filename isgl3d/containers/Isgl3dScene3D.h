@@ -28,7 +28,7 @@
 @class Isgl3dGLRenderer;
 
 /**
- * The Isgl3dScene3D is the root node for a scene. It is associated closely to the Isgl3dView3D: the
+ * The Isgl3dScene3D is the root node for a scene. It is associated closely to the Isgl3dView: the
  * view renders a single "active" scene.
  * 
  * The scene inherits from an Isgl3dNode implying that it is contains a number of child nodes: effectively

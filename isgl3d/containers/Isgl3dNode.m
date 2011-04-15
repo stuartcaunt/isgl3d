@@ -502,10 +502,6 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 	return (Isgl3dFollowNode *)[self addChild:[Isgl3dFollowNode nodeWithTarget:target]];
 }
 
-- (Isgl3dCamera *) createCameraNodeWithView:(Isgl3dView3D *)view {
-	return (Isgl3dCamera *)[[self addChild:[[Isgl3dCamera alloc] initWithView:view]] autorelease];
-}
-
 - (Isgl3dLight *) createLightNode {
 	return (Isgl3dLight *)[self addChild:[Isgl3dLight light]];
 }

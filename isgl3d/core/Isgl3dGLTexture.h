@@ -26,13 +26,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-// @deprecated : will be removed in v1.2
-#define GLTEXTURE_LOW_PRECISION Isgl3dTexturePrecisionLow
-// @deprecated : will be removed in v1.2
-#define GLTEXTURE_MEDIUM_PRECISION Isgl3dTexturePrecisionMedium
-// @deprecated : will be removed in v1.2
-#define GLTEXTURE_HIGH_PRECISION Isgl3dTexturePrecisionHigh
-
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
