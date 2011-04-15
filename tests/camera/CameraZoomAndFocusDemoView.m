@@ -31,7 +31,7 @@
 	
 	if ((self = [super init])) {
 
-		[self.camera setTranslation:0 y:0 z:1000];
+		self.camera.position = iv3(0, 0, 1000);
 		self.camera.focus = 4;
 		self.camera.zoom = 10;
 		_zoom = self.camera.zoom;
@@ -51,29 +51,29 @@
 		for (int i = 0; i < 3; i++) {
 	
 			Isgl3dMeshNode * bottomNode = [self.scene createNodeWithMesh:horizontalPlane andMaterial:blueMaterial];
-			[bottomNode rotate:-90 x:1 y:0 z:0];
-			[bottomNode translate:0 y:-200 z:-(i - 1) * 1000];
+			bottomNode.rotationX = -90;
+			bottomNode.position = iv3(0, -200, -(i - 1) * 1000);
 			bottomNode.doubleSided = YES;
 	
 			Isgl3dMeshNode * topNode = [self.scene createNodeWithMesh:horizontalPlane andMaterial:greenMaterial];
-			[topNode rotate:90 x:1 y:0 z:0];
-			[topNode translate:0 y:200 z:-(i - 1) * 1000];
+			topNode.rotationX = 90;
+			topNode.position = iv3(0, 200, -(i - 1) * 1000);
 			topNode.doubleSided = YES;
 	
 			Isgl3dMeshNode * rightNode = [self.scene createNodeWithMesh:sidePlane andMaterial:redMaterial];
-			[rightNode rotate:-90 x:0 y:1 z:0];
-			[rightNode translate:450 y:0 z:-(i - 1) * 1000];
+			rightNode.rotationY = -90;
+			rightNode.position = iv3(450, 0, -(i - 1) * 1000);
 			rightNode.doubleSided = YES;
 			
 			Isgl3dMeshNode * leftNode = [self.scene createNodeWithMesh:sidePlane andMaterial:yellowMaterial];
-			[leftNode rotate:90 x:0 y:1 z:0];
-			[leftNode translate:-450 y:0 z:-(i - 1) * 1000];
+			leftNode.rotationY = 90;
+			leftNode.position = iv3(-450, 0, -(i - 1) * 1000);
 			leftNode.doubleSided = YES;
 		}
 		
 		// Add shadow casting light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
-		[light setTranslation:400 y:1000 z:400];
+		light.position = iv3(400, 1000, 400);
 		[self.scene addChild:light];
 	
 		// Initialise accelerometer
@@ -111,7 +111,7 @@
 	_theta += 0.05 * [[Isgl3dAccelerometer sharedInstance] rotationAngle];
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	[self.camera setTranslation:x y:y z:z];
+	self.camera.position = iv3(x, y, z);
 
 	if (_moving) {
 		_focus += _dFocus;

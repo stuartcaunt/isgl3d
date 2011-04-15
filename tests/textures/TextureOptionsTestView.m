@@ -40,12 +40,12 @@
 		Isgl3dGLMesh * planeMesh = [Isgl3dPlane meshWithGeometry:10.0 height:10.0 nx:10 ny:10]; 
 		
 		_plane1 = [self.scene createNodeWithMesh:planeMesh andMaterial:textureMaterial];
-		[_plane1 setRotation:-90 x:1 y:0 z:0];
-		[_plane1 setTranslation:0 y:-0.5 z:0];
+		_plane1.rotationX = -90;
+		_plane1.position = iv3(0, -0.5, 0);
 	
 		_plane2 = [self.scene createNodeWithMesh:planeMesh andMaterial:textureMaterial2];
-		[_plane2 setRotation:90 x:1 y:0 z:0];
-		[_plane2 setTranslation:0 y:0.5 z:0];
+		_plane2.rotationX = 90;
+		_plane2.position = iv3(0, 0.5, 0);
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];
@@ -72,8 +72,8 @@
 	}
 
 	[_plane1 rotate:0.3 x:0 y:1 z:0];	
-	[_plane2 rotate:0.3 x:0 y:1 z:0];	
-	[self.camera setTranslation:0 y:0.15 * sin(_cameraDistanceAngle * M_PI / 90) z:2 + 1.9 * sin(_cameraDistanceAngle * M_PI / 180)];
+	[_plane2 rotate:0.3 x:0 y:1 z:0];
+	[self.camera setPositionValues:0 y:0.15 * sin(_cameraDistanceAngle * M_PI / 90) z:2 + 1.9 * sin(_cameraDistanceAngle * M_PI / 180)];
 	
 }
 

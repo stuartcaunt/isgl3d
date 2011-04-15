@@ -32,7 +32,7 @@
 	if ((self = [super init])) {
 	
 		// Translate the camera and modify the look-at position (used to center the torus in the screen).
-		[self.camera setTranslation:2 y:9 z:10];
+		self.camera.position = iv3(2, 9, 10);
 		[self.camera lookAt:0.5 y:0 z:1];
 		
 		// Create the torus texture material, with darker ambient color
@@ -54,8 +54,8 @@
 		
 		// Create a mesh node in the scene using plane primitive and plane material, then rotate and translate it.
 		Isgl3dMeshNode * planeNode = [self.scene createNodeWithMesh:plane andMaterial:planeMaterial];
-		[planeNode setRotation:-90 x:1 y:0 z:0];
-		[planeNode setTranslation:0 y:-10 z:0];
+		planeNode.rotationX = -90;
+		planeNode.position = iv3(0, -10, 0);
 	
 		// Create directional white light and add to scene
 		Isgl3dLight * light = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
@@ -77,7 +77,7 @@
 
 - (void) tick:(float)dt {
 	// Rotate the torus
-	[_torusNode rotate:1 x:0 y:1 z:0];
+	_torusNode.rotationY += 1;
 }
 
 

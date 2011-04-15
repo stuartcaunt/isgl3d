@@ -69,7 +69,7 @@
 		Isgl3dTextureMaterial * beachBallMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"BeachBall.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		Isgl3dSphere * sphereMesh = [Isgl3dSphere meshWithGeometry:1 longs:16 lats:16];
 		Isgl3dMeshNode * sphereNode = [self.scene createNodeWithMesh:sphereMesh andMaterial:beachBallMaterial];
-		[sphereNode setTranslation:0 y:3 z:0];
+		sphereNode.position = iv3(0, 3, 0);
 		sphereNode.enableShadowCasting = YES;
 	
 		btCollisionShape * sphereShape = new btSphereShape(sphereMesh.radius);
@@ -80,14 +80,14 @@
 		Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometry:100.0 height:100.0 nx:10 ny:10];
 		Isgl3dMeshNode * groundNode = [_physicsWorld createNodeWithMesh:plane andMaterial:woodMaterial];
 		[groundNode setRotation:-90 x:1 y:0 z:0];
-		[groundNode setTranslation:0 y:-2 z:0];
+		groundNode.position = iv3(0, -2, 0);
 	
 		btCollisionShape* groundShape = new btBox2dShape(btVector3(50, 50, 0));
 		[self createPhysicsObject:groundNode shape:groundShape mass:0 restitution:0.6];
 		
 		// Add shadow casting light
 		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.001];
-		[light setTranslation:10 y:20 z:10];
+		light.position = iv3(10, 20, 10);
 		light.planarShadowsNode = groundNode;
 		[self.scene addChild:light];
 	
@@ -175,7 +175,7 @@
 	float radius = _orbitalDistance * sin(phi);
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	[self.camera setTranslation:x y:y z:z];
+	self.camera.position = iv3(x, y, z);
 }
 
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution {

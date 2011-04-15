@@ -261,21 +261,10 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 	_localTransformationDirty = YES;
 }
 
-
-// Deprecated
-- (void) setTranslation:(float)x y:(float)y z:(float)z {
-	[self setPositionValues:x y:y z:z];
-}
-
 - (void) setPositionValues:(float)x y:(float)y z:(float)z {
 	im4SetTranslation(&_localTransformation, x, y, z);
 	
 	_transformationDirty = YES;
-}
-
-// Deprecated
-- (void) translate:(float)x y:(float)y z:(float)z {
-	[self translateByValues:x y:y z:z];
 }
 
 - (void) translateByValues:(float)x y:(float)y z:(float)z {

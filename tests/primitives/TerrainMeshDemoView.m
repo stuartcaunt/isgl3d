@@ -46,8 +46,8 @@
 	
 		Isgl3dPlane * planeMesh = [Isgl3dPlane meshWithGeometry:32 height:32 nx:4 ny:4];
 		_plane = [_container createNodeWithMesh:planeMesh andMaterial:dataMaterial];
-		[_plane rotate:-90 x:1 y:0 z:0];
-		[_plane setTranslation:0 y:-5 z:0];
+		_plane.rotationX = -90;
+		_plane.position = iv3(0, -5, 0);
 		_plane.lightingEnabled = NO;
 	
 		Isgl3dTerrainMesh * terrainMesh = [Isgl3dTerrainMesh meshWithTerrainDataFile:@"RaceTrack1Path_512.png" channel:2 width:32 depth:32 height:10 nx:32 nz:32];
@@ -55,7 +55,7 @@
 	
 		// Add light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		[light setTranslation:5 y:10 z:10];
+		light.position = iv3(5, 10, 10);
 		[self.scene addChild:light];	
 
 		// Schedule updates

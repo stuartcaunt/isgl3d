@@ -51,7 +51,7 @@
 			for (int j = 0; j < 3; j++) {
 				for (int i = 0; i < 3; i++) {
 					Isgl3dMeshNode * node = [self.scene createNodeWithMesh:primitive andMaterial:textureMaterial];
-	                [node setTranslation:((i - 1.0) * 4) y:((j - 1.0) * 4) z:((k - 1.0) * 4)];
+					node.position = iv3(((i - 1.0) * 4), ((j - 1.0) * 4), ((k - 1.0) * 4));
 	
 					[_sceneObjects addObject:node];
 				}
@@ -75,7 +75,7 @@
 		_whiteLight = [Isgl3dLight lightWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
 		[self.scene addChild:_whiteLight];
 		_whiteLight.renderLight = YES;
-		[_whiteLight setTranslation:7 y:7 z:4];
+		_whiteLight.position = iv3(7, 7, 4);
 	
 		// Set the scene ambient color
 		[self setSceneAmbient:@"444444"];
@@ -116,9 +116,9 @@
 	float blueAngle = _lightAngle;
 	float redAngle = -(blueAngle + 120);
 	float greenAngle = redAngle + 12;
-	[_blueLight setTranslation:7 * sin(blueAngle * M_PI / 90) y:7 * cos(blueAngle * M_PI / 90) z:7 * cos(blueAngle * M_PI / 180)];
-	[_redLight setTranslation:7 * sin(redAngle * M_PI / 145) y:7 * cos(redAngle * M_PI / 145) z:7 * cos(redAngle * M_PI / 180)];
-	[_greenLight setTranslation:7 * sin(greenAngle * M_PI / 60) y:7 * cos(greenAngle * M_PI / 60) z:7 * cos(greenAngle * M_PI / 180)];
+	_blueLight.position = iv3(7 * sin(blueAngle * M_PI / 90), 7 * cos(blueAngle * M_PI / 90), 7 * cos(blueAngle * M_PI / 180));
+	_redLight.position = iv3(7 * sin(redAngle * M_PI / 145), 7 * cos(redAngle * M_PI / 145), 7 * cos(redAngle * M_PI / 180));
+	_greenLight.position = iv3(7 * sin(greenAngle * M_PI / 60), 7 * cos(greenAngle * M_PI / 60), 7 * cos(greenAngle * M_PI / 180));
 
 	_sphereAngle = (_sphereAngle + 2);
 	_lightAngle = _lightAngle + 2;

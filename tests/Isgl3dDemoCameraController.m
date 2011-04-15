@@ -102,7 +102,7 @@
 	}
 
 	// Translate camera
-	[_camera setTranslation:x y:y z:z];
+	_camera.position = iv3(x, y, z);
 	
 	// Add damping to camera velocities
 	_vTheta *= 0.99;

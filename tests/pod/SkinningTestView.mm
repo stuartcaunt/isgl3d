@@ -53,7 +53,7 @@
 	
 		// Create skeleton node	
 		Isgl3dSkeletonNode * skeleton = [self.scene createSkeletonNode];
-		[skeleton setTranslation:0 y:-130 z:0];
+		skeleton.position = iv3(0, -130, 0);
 		
 		// Add meshes to skeleton
 		[podImporter addMeshesToScene:skeleton];
@@ -69,12 +69,12 @@
 		Isgl3dTextureMaterial * groundMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ground.png" shininess:0.9 precision:Isgl3dTexturePrecisionLow repeatX:NO repeatY:NO];
 		Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometry:800.0 height:800.0 nx:2 ny:2];
 		Isgl3dMeshNode * ground = [self.scene createNodeWithMesh:plane andMaterial:groundMaterial];
-		[ground setRotation:-90 x:1 y:0 z:0];
-		[ground setTranslation:0 y:-130 z:-100];
+		ground.position = iv3(0, -130, -100);
+		ground.rotationX = -90;
 	
 		// Add light to scene and fix the Sphere01 mesh to it
 		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.00];
-		[light setTranslation:300 y:600 z:300];
+		light.position = iv3(300, 600, 300);
 		[self.scene addChild:light];
 		light.planarShadowsNode = ground;
 

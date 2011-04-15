@@ -60,13 +60,13 @@
 			for (int k = 0; k < nZ; k++) {
 				
 				Isgl3dMeshNode * sphere = [_container createNodeWithMesh:sphereMesh andMaterial:textureMaterial];
-				[sphere setTranslation:i * containerWidth / (nX - 1) - 0.5 * containerWidth y:0 z:k * containerLength / (nZ - 1) - 0.5 *containerLength];
+				sphere.position = iv3(i * containerWidth / (nX - 1) - 0.5 * containerWidth, 0, k * containerLength / (nZ - 1) - 0.5 *containerLength);
 			}
 		}
 	
 		// Create the lights
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"444444" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.02];
-		[light setTranslation:2 y:6 z:4];
+		light.position = iv3(2, 6, 4);
 		[self.scene addChild:light];
 		
 		[self setSceneAmbient:@"444444"];

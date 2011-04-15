@@ -72,7 +72,7 @@
 		
 		// Add light
 		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		[light setTranslation:5 y:15 z:5];
+		light.position = iv3(5, 15, 5);
 		light.planarShadowsNode = plane;
 		[self.scene addChild:light];
 		

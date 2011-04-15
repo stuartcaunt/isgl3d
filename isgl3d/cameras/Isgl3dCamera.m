@@ -87,7 +87,7 @@
 		_width = width;
 		_height = height;
 		
-		[self setTranslation:x y:y z:z];
+		[self setPositionValues:x y:y z:z];
 	}
 	
 	return self;
@@ -100,7 +100,7 @@
 
 - (void) reset {
 	iv3Copy(&_lookAt, &_initialCameraLookAt);
-    [self setTranslation:_initialCameraPosition.x y:_initialCameraPosition.y z:_initialCameraPosition.z];	
+    [self setPositionValues:_initialCameraPosition.x y:_initialCameraPosition.y z:_initialCameraPosition.z];
 }
 
 - (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {
@@ -289,7 +289,7 @@
 	iv3Normalize(&position);
 	iv3Scale(&position, distance);
 	
-	[self setTranslation:_lookAt.x + position.x y:_lookAt.y + position.y z:_lookAt.z + position.z];
+	[self setPositionValues:_lookAt.x + position.x y:_lookAt.y + position.y z:_lookAt.z + position.z];
 }
 
 - (void) setUpX:(float)x y:(float)y z:(float)z {

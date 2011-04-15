@@ -127,7 +127,7 @@
 			}
 		}
 				
-		[self setTranslation:x y:y z:self.z];
+		[self setPositionValues:x y:y z:self.z];
 //		NSLog(@"setting x = %f y = %f z = %f", x, y, self.z);
 //		[self setTranslation:x y:y z:-0.1];
 		

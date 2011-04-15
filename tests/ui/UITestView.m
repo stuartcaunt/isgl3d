@@ -117,7 +117,7 @@
 	
 		// Add light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		[light setTranslation:5 y:15 z:15];
+		light.position = iv3(5, 15, 15);
 		[self.scene addChild:light];
 
 		// Create camera controller

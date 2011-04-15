@@ -446,7 +446,7 @@
 		light.quadraticAttenuation = lightInfo.fQuadraticAttenuation;
 		if (lightInfo.eType == ePODPoint) {
 			light.lightType = PointLight;
-			[light setTranslation:pos.x y:pos.y z:pos.z];
+			light.position = iv3(pos.x, pos.y, pos.z);
 
 		} else if (lightInfo.eType == ePODDirectional) {
 			light.lightType = DirectionalLight;
@@ -454,7 +454,7 @@
 
 		} else {
 			light.lightType = SpotLight;
-			[light setTranslation:pos.x y:pos.y z:pos.z];
+			light.position = iv3(pos.x, pos.y, pos.z);
 			light.spotCutoffAngle = lightInfo.fFalloffAngle * 180 / M_PI;
 			light.spotFalloffExponent = lightInfo.fFalloffExponent;
 			[light setSpotDirection:dirn.x y:dirn.y z:dirn.z];

@@ -31,8 +31,8 @@
 	
 	if ((self = [super init])) {
 		
-		// Translate the camera.
-		[self.camera setTranslation:0 y:3 z:8];
+		// Translate the camera
+		self.camera.position = iv3(0, 3, 8);
 
 		// Create an Isgl3dMultiMaterialCube with random colors.
 		_cube = [Isgl3dMultiMaterialCube cubeWithDimensionsAndRandomColors:3 height:3 depth:3 nSegmentWidth:2 nSegmentHeight:2 nSegmentDepth:2];

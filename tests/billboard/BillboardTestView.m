@@ -48,7 +48,7 @@
 			for (int j = 0; j < 3; j++) {
 				for (int i = 0; i < 3; i++) {
 					Isgl3dBillboardNode * node = [self.scene createNodeWithBillboard:billboard andMaterial:textureMaterial];
-	                [node setTranslation:((i - 1.0) * 4) y:((j - 1.0) * 4) z:((k - 1.0) * 4)];
+					node.position = iv3(((i - 1.0) * 4), ((j - 1.0) * 4), ((k - 1.0) * 4));
 				}
 			}		
 		}		

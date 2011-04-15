@@ -31,7 +31,7 @@
 	
 	if ((self = [super init])) {
 
-		[self.camera setTranslation:0 y:5 z:15];
+		self.camera.position = iv3(0, 5, 15);
 			
 		self.camera.focus = 4;
 		self.camera.zoom = 10;
@@ -48,7 +48,7 @@
 		
 		// Add shadow casting light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		[light setTranslation:5 y:10 z:10];
+		light.position = iv3(5, 10, 10);
 		[self.scene addChild:light];
 	
 		// Initialise accelerometer
@@ -84,7 +84,7 @@
 	_theta += 0.05 * [[Isgl3dAccelerometer sharedInstance] rotationAngle];
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	[self.camera setTranslation:x y:y z:z];
+	self.camera.position = iv3(x, y, z);
 
 	if (_moving) {
 		_focus += _dFocus;

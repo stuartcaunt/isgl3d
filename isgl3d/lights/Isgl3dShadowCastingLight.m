@@ -138,14 +138,14 @@
 }
 
 
-- (void) translate:(float)x y:(float)y z:(float)z {
-	[super translate:x y:y z:z];
+- (void) translateByValues:(float)x y:(float)y z:(float)z {
+	[super translateByValues:x y:y z:z];
 	
 	[self calculateViewMatrix];
 }
 
-- (void) setTranslation:(float)x y:(float)y z:(float)z {
-	[super setTranslation:x y:y z:z];
+- (void) setPositionValues:(float)x y:(float)y z:(float)z {
+	[super setPositionValues:x y:y z:z];
 	
 	[self calculateViewMatrix];
 }
@@ -153,7 +153,7 @@
 - (void) resetTransformation {
 	[super resetTransformation];
 
-	[self setTranslation:0 y:0 z:10];
+	[self setPositionValues:0 y:0 z:10];
 }
 
 - (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {

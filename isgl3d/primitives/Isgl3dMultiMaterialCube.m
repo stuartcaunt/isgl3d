@@ -158,28 +158,28 @@
 	// Add transformation to each node
 	switch (faceId) {
 		case FaceIdFront:
-			[node setTranslation:0.0 y:0.0 z:_depth * 0.5];
+			[node setPositionValues:0.0 y:0.0 z:_depth * 0.5];
 			break;
 		case FaceIdBack:
-			[node setTranslation:0.0 y:0.0 z:- _depth * 0.5];
+			[node setPositionValues:0.0 y:0.0 z:- _depth * 0.5];
 			[node setRotation:180.0 x:0.0 y:1.0 z:0.0];
 			break;
 		case FaceIdRight:
-			[node setTranslation:_width * 0.5 y:0.0 z:0.0];
+			[node setPositionValues:_width * 0.5 y:0.0 z:0.0];
 			[node setRotation:90.0 x:0.0 y:1.0 z:0.0];
 			[node rotate:90.0 x:1.0 y:0.0 z:0.0];
 			break;
 		case FaceIdLeft:
-			[node setTranslation:- _width * 0.5 y:0.0 z:0.0];
+			[node setPositionValues:- _width * 0.5 y:0.0 z:0.0];
 			[node setRotation:-90.0 x:0.0 y:1.0 z:0.0];
 			[node rotate:90.0 x:1.0 y:0.0 z:0.0];
 			break;
 		case FaceIdTop:
-			[node setTranslation:0.0 y:_height * 0.5 z:0.0];
+			[node setPositionValues:0.0 y:_height * 0.5 z:0.0];
 			[node setRotation:- 90.0 x:1.0 y:0.0 z:0.0];
 			break;
 		case FaceIdBottom:
-			[node setTranslation:0.0 y:- _height * 0.5 z:0.0];
+			[node setPositionValues:0.0 y:- _height * 0.5 z:0.0];
 			[node setRotation:90.0 x:1.0 y:0.0 z:0.0];
 			break;
 		default:

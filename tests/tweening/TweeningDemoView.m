@@ -31,7 +31,7 @@
 	
 	if ((self = [super init])) {
 		
-		[self.camera setTranslation:0 y:2 z:7];
+		self.camera.position = iv3(0, 2, 7);
 		[self.camera lookAt:0 y:0 z:-2];
 
 		// Enable zsorting
@@ -44,10 +44,10 @@
 		_container = [self.scene createNode];
 		
 		Isgl3dNode * container1 = [_container createNode];
-		[container1 setTranslation:-2 y:0 z:0];
+		container1.position = iv3(-2, 0, 0);
 	
 		Isgl3dNode * container2 = [_container createNode];
-		[container2 setTranslation:2 y:0 z:0];
+		container2.position = iv3(2, 0, 0);
 		
 		// Create a texture material
 		Isgl3dTextureMaterial * textureMaterial1 = [Isgl3dTextureMaterial materialWithTextureFile:@"checker.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
@@ -76,15 +76,15 @@
 		
 		// Create the lights
 		Isgl3dLight * light1 = [Isgl3dLight lightWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		[light1 setTranslation:0 y:2 z:5];
+		light1.position = iv3(0, 2, 5);
 		[self.scene addChild:light1];
 		
 		Isgl3dLight * light2 = [Isgl3dLight lightWithHexColor:@"110000" diffuseColor:@"FF0000" specularColor:@"FFFFFF" attenuation:0.001];
-		[light2 setTranslation:-2 y:0 z:0];
+		light2.position = iv3(-2, 0, 0);
 		[container1 addChild:light2];
 		
 		Isgl3dLight * light3 = [Isgl3dLight lightWithHexColor:@"000011" diffuseColor:@"0000FF" specularColor:@"FFFFFF" attenuation:0.001];
-		[light3 setTranslation:2 y:0 z:0];
+		light3.position = iv3(2, 0, 0);
 		[container2 addChild:light3];
 		
 		// Set the scene ambient color
@@ -105,10 +105,10 @@
 }
 
 - (void) tick:(float)dt {
-	[_container setRotation:_containerAngle x:0 y:1 z:0];
+	_container.rotationY = _containerAngle;
 
-	[_sphere1 setRotation:_sphereAngle x:0 y:1 z:0];
-	[_sphere2 setRotation:_sphereAngle x:0 y:1 z:0];
+	_sphere1.rotationY = _sphereAngle;
+	_sphere2.rotationY = _sphereAngle;
 
 	_sphereAngle = _sphereAngle + 1;
 	_containerAngle = _containerAngle + 1;

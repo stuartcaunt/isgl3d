@@ -32,7 +32,7 @@
 	if ((self = [super init])) {
 		
 		// Translate the camera.
-		[self.camera setTranslation:7 y:4 z:10];
+		self.camera.position = iv3(7, 4, 10);
 
 		// Create texture material for the ball with darker ambient color.
 		Isgl3dTextureMaterial * ballMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ball.png" shininess:0.7 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
@@ -50,8 +50,8 @@
 		
 		// Create the pitch node from plane mesh and pitch material with container as parent. Rotate and translate it. Disable lighting effects.
 		Isgl3dMeshNode * pitch = [_container createNodeWithMesh:plane andMaterial:pitchMaterial];
-		[pitch setRotation:-90 x:1 y:0 z:0];
-		[pitch setTranslation:0 y:-1 z:0];
+		pitch.rotationX = -90;
+		pitch.position = iv3(0, -1, 0);
 		pitch.lightingEnabled = NO;
 		
 		// Create a number of ball nodes.
@@ -60,7 +60,7 @@
 				
 				// Create ball node from sphere mesh and ball material with container as parent. Translate it.
 				Isgl3dMeshNode * ballNode = [_container createNodeWithMesh:sphere andMaterial:ballMaterial];
-				[ballNode setTranslation:i * 4 - 6 y:0 z:j * 4 - 4];
+				ballNode.position = iv3(i * 4 - 6, 0, j * 4 - 4);
 				
 				// Set the ball as interactive and add an event listener for the touch event.
 				ballNode.interactive = YES;
@@ -89,7 +89,7 @@
 
 - (void) tick:(float)dt {
 	// Rotate the container.
-	[_container rotate:0.3 x:0 y:1 z:0];
+	_container.rotationY += 0.3;
 }
 
 /*

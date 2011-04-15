@@ -33,7 +33,7 @@
 	if ((self = [super init])) {
 
 		// Translate the camera.
-		[self.camera setTranslation:2 y:8 z:10];
+		self.camera.position = iv3(2, 8, 10);
 
 		// Create a white color material (with grey ambient color)
 		Isgl3dColorMaterial * colorMaterial = [Isgl3dColorMaterial materialWithHexColors:@"444444" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
@@ -76,12 +76,12 @@
 
 - (void) tick:(float)dt {
 	// Rotate the torus
-	[_torusNode rotate:1 x:0 y:0 z:1];
+	_torusNode.rotationZ += 1;
 	
 	// Move the lights
-	[_redLight setTranslation:LIGHT_RADIUS * sin(_lightAngle * M_PI / 30) y:LIGHT_RADIUS * cos(_lightAngle * M_PI / 30) z:0];
-	[_greenLight setTranslation:LIGHT_RADIUS * -cos(_lightAngle * M_PI / 60) y:LIGHT_RADIUS * sin(_lightAngle * M_PI / 60) z:LIGHT_RADIUS * cos(_lightAngle * M_PI / 60)];
-	[_blueLight setTranslation:LIGHT_RADIUS * sin(_lightAngle * M_PI / 45) y:LIGHT_RADIUS * cos(_lightAngle * M_PI / 45) z:LIGHT_RADIUS * sin(_lightAngle * M_PI / 45)];
+	_redLight.position = iv3(LIGHT_RADIUS * sin(_lightAngle * M_PI / 30), LIGHT_RADIUS * cos(_lightAngle * M_PI / 30), 0);
+	_greenLight.position = iv3(LIGHT_RADIUS * -cos(_lightAngle * M_PI / 60), LIGHT_RADIUS * sin(_lightAngle * M_PI / 60), LIGHT_RADIUS * cos(_lightAngle * M_PI / 60));
+	_blueLight.position = iv3(LIGHT_RADIUS * sin(_lightAngle * M_PI / 45), LIGHT_RADIUS * cos(_lightAngle * M_PI / 45), LIGHT_RADIUS * sin(_lightAngle * M_PI / 45));
 
 	// Update the light angle
 	_lightAngle = _lightAngle + 0.5;

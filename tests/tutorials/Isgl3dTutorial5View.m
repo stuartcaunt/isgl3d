@@ -52,7 +52,7 @@
 		Isgl3dTorus * torus = [Isgl3dTorus meshWithGeometry:10 tubeRadius:1.5 ns:32 nt:16];
 		Isgl3dTextureMaterial * torusMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"SpaceStation.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		_spaceStation = [self.scene createNodeWithMesh:torus andMaterial:torusMaterial];
-		[_spaceStation setRotation:90 x:1 y:0 z:0];
+		_spaceStation.rotationX = 90;
 		
 		// Add a touch event listener to the space station
 		_spaceStation.interactive = YES;
@@ -120,11 +120,11 @@
 	
 	// Rotate all UFOs
 	for (Isgl3dMeshNode * ufo in _ufos) {
-		[ufo rotate:1 x:0 y:1 z:0];
+		ufo.rotationY += 1;
 	}
 	
 	// Rotate space station
-	[_spaceStation rotate:0.5 x:0 y:0 z:1];
+	_spaceStation.rotationZ += 0.5;
 	
 	// update camera
 	[_cameraController update];
@@ -148,13 +148,13 @@
 			shellMesh:(Isgl3dGLMesh *)shellMesh shellMaterial:(Isgl3dMaterial *)shellMaterial {
 	// Create mesh node for main hull of UFO: translate and set interactive to be able to target camera on it
 	Isgl3dMeshNode * ufo = [self.scene createNodeWithMesh:hullMesh andMaterial:hullMaterial];
-	[ufo setTranslation:x y:y z:z];
+	ufo.position = iv3(x, y, z);
 	ufo.interactive = YES;
 	[ufo addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 
 	// Create UFO shell (child of hull node)
 	Isgl3dMeshNode * ufoShell = [ufo createNodeWithMesh:shellMesh andMaterial:shellMaterial];
-	[ufoShell setTranslation:0 y:0.6 z:0];
+	ufoShell.position = iv3(0, 0.6, 0);
 	
 	// Make shell transparent
 	ufoShell.alpha = 0.7;

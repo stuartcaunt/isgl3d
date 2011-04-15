@@ -31,7 +31,7 @@
  * Simple structure to hold the components of a quaternion
  */
 typedef struct {
-	float x;
+	float x __attribute__ ((aligned));
 	float y;
 	float z;
 	float w;

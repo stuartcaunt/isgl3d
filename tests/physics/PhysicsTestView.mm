@@ -97,13 +97,13 @@
 		btCollisionShape* groundShape = new btBox2dShape(btVector3(5, 5, 0));
 		Isgl3dMeshNode * node = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
 		[node setRotation:-90 x:1 y:0 z:0];
-		[node setTranslation:0 y:-2 z:0];
+		node.position = iv3(0, -2, 0);
 		Isgl3dPhysicsObject3D * physicsObject = [self createPhysicsObject:node shape:groundShape mass:0 restitution:0.6 isFalling:NO];
 		
 	
 		_light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.003];
 		[self.scene addChild:_light];
-		[_light setTranslation:10 y:20 z:10];
+		_light.position = iv3(10, 20, 10);
 	
 		_light.planarShadowsNode = physicsObject.node;
 	
@@ -217,7 +217,7 @@
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution isFalling:(BOOL)isFalling {
 
 	if (isFalling) {
-		[node setTranslation:1.5 - (3.0 * random() / RAND_MAX) y:10 + (10.0 * random() / RAND_MAX) z:1.5 - (3.0 * random() / RAND_MAX)];
+		[node setPositionValues:1.5 - (3.0 * random() / RAND_MAX) y:10 + (10.0 * random() / RAND_MAX) z:1.5 - (3.0 * random() / RAND_MAX)];
 	}
 
 	Isgl3dMotionState * motionState = new Isgl3dMotionState(node);

@@ -54,6 +54,14 @@
 		1713BAFC1358AFF6002C3288 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		1713BB041358B014002C3288 /* SpringCameraTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB021358B014002C3288 /* SpringCameraTestView.h */; };
 		1713BB061358B06E002C3288 /* SpringCameraTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB031358B014002C3288 /* SpringCameraTestView.m */; };
+		1713BB491358D6F7002C3288 /* neon_matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB401358D6F7002C3288 /* neon_matrix_impl.h */; };
+		1713BB4A1358D6F7002C3288 /* neon_matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB411358D6F7002C3288 /* neon_matrix_impl.m */; };
+		1713BB4B1358D6F7002C3288 /* common_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB431358D6F7002C3288 /* common_macros.h */; };
+		1713BB4C1358D6F7002C3288 /* matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB441358D6F7002C3288 /* matrix_impl.h */; };
+		1713BB4D1358D6F7002C3288 /* matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB451358D6F7002C3288 /* matrix_impl.m */; };
+		1713BB4E1358D6F7002C3288 /* utility_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB461358D6F7002C3288 /* utility_impl.h */; };
+		1713BB4F1358D6F7002C3288 /* utility_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB471358D6F7002C3288 /* utility_impl.m */; };
+		1713BB501358D6F7002C3288 /* vfp_clobbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB481358D6F7002C3288 /* vfp_clobbers.h */; };
 		171CB84F13195C65003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB85813195C65003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -1119,14 +1127,6 @@
 		17F7A88012FA0D6100C7BB82 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17F7A88A12FA0D7F00C7BB82 /* LightingDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F7A88912FA0D7F00C7BB82 /* LightingDemoView.m */; };
 		17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
-		8BCAFD4A135513BE005FA453 /* neon_matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD41135513BE005FA453 /* neon_matrix_impl.h */; };
-		8BCAFD4B135513BE005FA453 /* neon_matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCAFD42135513BE005FA453 /* neon_matrix_impl.m */; };
-		8BCAFD4C135513BE005FA453 /* common_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD44135513BE005FA453 /* common_macros.h */; };
-		8BCAFD4D135513BE005FA453 /* matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD45135513BE005FA453 /* matrix_impl.h */; };
-		8BCAFD4E135513BE005FA453 /* matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCAFD46135513BE005FA453 /* matrix_impl.m */; };
-		8BCAFD4F135513BE005FA453 /* utility_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD47135513BE005FA453 /* utility_impl.h */; };
-		8BCAFD50135513BE005FA453 /* utility_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCAFD48135513BE005FA453 /* utility_impl.m */; };
-		8BCAFD51135513BE005FA453 /* vfp_clobbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BCAFD49135513BE005FA453 /* vfp_clobbers.h */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -1144,6 +1144,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
+		};
+		1713BB071358B649002C3288 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1713BABD1357979B002C3288;
+			remoteInfo = FollowCamera;
+		};
+		1713BB091358B649002C3288 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1713BAE21358AFF6002C3288;
+			remoteInfo = SpringCamera;
 		};
 		171CB84D13195C65003712F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1509,6 +1523,14 @@
 		1713BB001358AFF6002C3288 /* FollowCamera copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FollowCamera copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1713BB021358B014002C3288 /* SpringCameraTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringCameraTestView.h; sourceTree = "<group>"; };
 		1713BB031358B014002C3288 /* SpringCameraTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringCameraTestView.m; sourceTree = "<group>"; };
+		1713BB401358D6F7002C3288 /* neon_matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neon_matrix_impl.h; sourceTree = "<group>"; };
+		1713BB411358D6F7002C3288 /* neon_matrix_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = neon_matrix_impl.m; sourceTree = "<group>"; };
+		1713BB431358D6F7002C3288 /* common_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_macros.h; sourceTree = "<group>"; };
+		1713BB441358D6F7002C3288 /* matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix_impl.h; sourceTree = "<group>"; };
+		1713BB451358D6F7002C3288 /* matrix_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = matrix_impl.m; sourceTree = "<group>"; };
+		1713BB461358D6F7002C3288 /* utility_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility_impl.h; sourceTree = "<group>"; };
+		1713BB471358D6F7002C3288 /* utility_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utility_impl.m; sourceTree = "<group>"; };
+		1713BB481358D6F7002C3288 /* vfp_clobbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vfp_clobbers.h; sourceTree = "<group>"; };
 		171CB86713195C65003712F4 /* CubeOverCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeOverCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		171CB86C13195D0C003712F4 /* CubeAndCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeAndCameraView.h; sourceTree = "<group>"; };
 		171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubeAndCameraView.mm; sourceTree = "<group>"; };
@@ -2205,14 +2227,6 @@
 		17F7A8A512FA0EB800C7BB82 /* particle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vsh; sourceTree = "<group>"; };
 		17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.fsh; sourceTree = "<group>"; };
 		17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
-		8BCAFD41135513BE005FA453 /* neon_matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neon_matrix_impl.h; sourceTree = "<group>"; };
-		8BCAFD42135513BE005FA453 /* neon_matrix_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = neon_matrix_impl.m; sourceTree = "<group>"; };
-		8BCAFD44135513BE005FA453 /* common_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common_macros.h; sourceTree = "<group>"; };
-		8BCAFD45135513BE005FA453 /* matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix_impl.h; sourceTree = "<group>"; };
-		8BCAFD46135513BE005FA453 /* matrix_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = matrix_impl.m; sourceTree = "<group>"; };
-		8BCAFD47135513BE005FA453 /* utility_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility_impl.h; sourceTree = "<group>"; };
-		8BCAFD48135513BE005FA453 /* utility_impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utility_impl.m; sourceTree = "<group>"; };
-		8BCAFD49135513BE005FA453 /* vfp_clobbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vfp_clobbers.h; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libisgl3d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2645,6 +2659,28 @@
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1713BB3F1358D6F7002C3288 /* neon */ = {
+			isa = PBXGroup;
+			children = (
+				1713BB401358D6F7002C3288 /* neon_matrix_impl.h */,
+				1713BB411358D6F7002C3288 /* neon_matrix_impl.m */,
+			);
+			path = neon;
+			sourceTree = "<group>";
+		};
+		1713BB421358D6F7002C3288 /* vfp */ = {
+			isa = PBXGroup;
+			children = (
+				1713BB431358D6F7002C3288 /* common_macros.h */,
+				1713BB441358D6F7002C3288 /* matrix_impl.h */,
+				1713BB451358D6F7002C3288 /* matrix_impl.m */,
+				1713BB461358D6F7002C3288 /* utility_impl.h */,
+				1713BB471358D6F7002C3288 /* utility_impl.m */,
+				1713BB481358D6F7002C3288 /* vfp_clobbers.h */,
+			);
+			path = vfp;
 			sourceTree = "<group>";
 		};
 		171CB86B13195D0C003712F4 /* augmentedreality */ = {
@@ -3467,8 +3503,8 @@
 		17F1D6D712F87EC5008D39E8 /* math */ = {
 			isa = PBXGroup;
 			children = (
-				8BCAFD40135513BE005FA453 /* neon */,
-				8BCAFD43135513BE005FA453 /* vfp */,
+				1713BB3F1358D6F7002C3288 /* neon */,
+				1713BB421358D6F7002C3288 /* vfp */,
 				17F1D6D812F87EC5008D39E8 /* Isgl3dGLU.h */,
 				17F1D6D912F87EC5008D39E8 /* Isgl3dGLU.m */,
 				1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */,
@@ -3818,28 +3854,6 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
-		8BCAFD40135513BE005FA453 /* neon */ = {
-			isa = PBXGroup;
-			children = (
-				8BCAFD41135513BE005FA453 /* neon_matrix_impl.h */,
-				8BCAFD42135513BE005FA453 /* neon_matrix_impl.m */,
-			);
-			path = neon;
-			sourceTree = "<group>";
-		};
-		8BCAFD43135513BE005FA453 /* vfp */ = {
-			isa = PBXGroup;
-			children = (
-				8BCAFD44135513BE005FA453 /* common_macros.h */,
-				8BCAFD45135513BE005FA453 /* matrix_impl.h */,
-				8BCAFD46135513BE005FA453 /* matrix_impl.m */,
-				8BCAFD47135513BE005FA453 /* utility_impl.h */,
-				8BCAFD48135513BE005FA453 /* utility_impl.m */,
-				8BCAFD49135513BE005FA453 /* vfp_clobbers.h */,
-			);
-			path = vfp;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -4175,13 +4189,13 @@
 				1756F5441347A5AD00205D76 /* Isgl3dMatrix.h in Headers */,
 				17C15C7E1348F4A5004EF5C3 /* Isgl3dArray.h in Headers */,
 				172792ED134A3E5C0043956C /* Isgl3dCArray.h in Headers */,
-				8BCAFD4A135513BE005FA453 /* neon_matrix_impl.h in Headers */,
-				8BCAFD4C135513BE005FA453 /* common_macros.h in Headers */,
-				8BCAFD4D135513BE005FA453 /* matrix_impl.h in Headers */,
-				8BCAFD4F135513BE005FA453 /* utility_impl.h in Headers */,
-				8BCAFD51135513BE005FA453 /* vfp_clobbers.h in Headers */,
 				1769034A1355E2890010B4CB /* Isgl3dQuaternion.h in Headers */,
 				1713BB041358B014002C3288 /* SpringCameraTestView.h in Headers */,
+				1713BB491358D6F7002C3288 /* neon_matrix_impl.h in Headers */,
+				1713BB4B1358D6F7002C3288 /* common_macros.h in Headers */,
+				1713BB4C1358D6F7002C3288 /* matrix_impl.h in Headers */,
+				1713BB4E1358D6F7002C3288 /* utility_impl.h in Headers */,
+				1713BB501358D6F7002C3288 /* vfp_clobbers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4598,6 +4612,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				1713BB081358B649002C3288 /* PBXTargetDependency */,
+				1713BB0A1358B649002C3288 /* PBXTargetDependency */,
 				17C04FDB1326BAB4001C96CF /* PBXTargetDependency */,
 				17C04FDD1326BAB4001C96CF /* PBXTargetDependency */,
 				17C04FDF1326BAB4001C96CF /* PBXTargetDependency */,
@@ -5813,10 +5829,10 @@
 				17C15BF31347AAF8004EF5C3 /* Isgl3dVector.m in Sources */,
 				172792EC134A3E5C0043956C /* Isgl3dArray.m in Sources */,
 				17D39451135373B700D50A60 /* isgl3d.m in Sources */,
-				8BCAFD4B135513BE005FA453 /* neon_matrix_impl.m in Sources */,
-				8BCAFD4E135513BE005FA453 /* matrix_impl.m in Sources */,
-				8BCAFD50135513BE005FA453 /* utility_impl.m in Sources */,
 				1769034B1355E2890010B4CB /* Isgl3dQuaternion.m in Sources */,
+				1713BB4A1358D6F7002C3288 /* neon_matrix_impl.m in Sources */,
+				1713BB4D1358D6F7002C3288 /* matrix_impl.m in Sources */,
+				1713BB4F1358D6F7002C3288 /* utility_impl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5832,6 +5848,16 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 1713BAE41358AFF6002C3288 /* PBXContainerItemProxy */;
+		};
+		1713BB081358B649002C3288 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1713BABD1357979B002C3288 /* FollowCamera */;
+			targetProxy = 1713BB071358B649002C3288 /* PBXContainerItemProxy */;
+		};
+		1713BB0A1358B649002C3288 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1713BAE21358AFF6002C3288 /* SpringCamera */;
+			targetProxy = 1713BB091358B649002C3288 /* PBXContainerItemProxy */;
 		};
 		171CB84C13195C65003712F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
