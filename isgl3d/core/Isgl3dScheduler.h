@@ -106,7 +106,7 @@
 	id _target;
 	SEL _selector;
 	BOOL _isPaused;
-	IMP _method;
+	void (*_method)(id, SEL, float);
 }
 
 @property (nonatomic, readonly) id target;

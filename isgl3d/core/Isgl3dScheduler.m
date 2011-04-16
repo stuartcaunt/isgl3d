@@ -147,7 +147,7 @@ static Isgl3dScheduler * _instance = nil;
 		_target = target;
 		_selector = selector;
 		_isPaused = isPaused;
-		_method = [_target methodForSelector:_selector];
+		_method = (void (*)(id, SEL, float))[_target methodForSelector:_selector];
 	}
 	return self;
 }
