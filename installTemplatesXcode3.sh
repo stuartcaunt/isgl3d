@@ -8,7 +8,7 @@
 
 echo 'iSGL3D template installer'
 
-ISGL3D_VERSION='iSGL3D 1.1.2'
+ISGL3D_VERSION=$(echo iSGL3D v`cat Version`)
 BASE_TEMPLATE_DIR="/Library/Application Support/Developer/Shared/Xcode"
 BASE_TEMPLATE_USER_DIR="$HOME/Library/Application Support/Developer/Shared/Xcode"
 
@@ -106,7 +106,7 @@ copy_project_templates(){
 		mkdir -p "$TEMPLATE_DIR"
 	fi
 
-	print_template_banner "Installing iSGL3D template"
+	print_template_banner "Installing iSGL3D templates for Xcode 3"
 
 	DST_DIR="$TEMPLATE_DIR""iSGL3D Application/"
 	LIBS_DIR="$DST_DIR"libs
@@ -114,7 +114,7 @@ copy_project_templates(){
 	check_dst_dir
 
 	echo ...copying template files
-	copy_files templates/isgl3d_app/ "$DST_DIR"
+	copy_files templates/xcode3/isgl3d_app/ "$DST_DIR"
 
 	copy_base_files
 

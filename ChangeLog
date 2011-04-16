@@ -1,4 +1,5 @@
 current SVN version
+	Added Xcode 4 templates, updated Xcode 3 templates
 	Added demos for spring and follow cameras
 	Isgl3dFollowCamera: fix bug in Isgl3dFollowCamera (Issue #2)
 	Remove deprecated methods

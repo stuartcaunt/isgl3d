@@ -13,9 +13,7 @@ or via the user group at http://groups.google.com/group/isgl3d
 
 Priority
 --------
-	- Redo transformations - store local position, rotation, scale ?
-	- templates Xcode 4
-	- remove deprecated
+	- move POD importer to main isgl3d library
 	
 
 Desirable

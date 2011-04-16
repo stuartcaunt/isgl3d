@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Ancestors</key>
+	<array>
+		<string>com.isgl3d.base</string>
+		<string>com.isgl3d.library</string>
+	</array>
+	<key>Identifier</key>
+	<string>com.isgl3d.isgl3dTemplate</string>
+	<key>Description</key>
+	<string>This template can be used as a starting point to creating iSGL3D applications.</string>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Concrete</key>
+	<true/>
+	<key>Definitions</key>
+	<dict>
+		<key>Prefix.pch</key>
+		<dict>
+			<key>Group</key>
+			<string>Supporting Files</string>
+			<key>Path</key>
+			<string>Prefix.pch</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>main.m</key>
+		<dict>
+			<key>Group</key>
+			<string>Supporting Files</string>
+			<key>Path</key>
+			<string>main.m</string>
+		</dict>	
+		<key>HelloWorldView.h</key>
+		<dict>
+			<key>Path</key>
+			<string>HelloWorldView.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>HelloWorldView.m</key>
+		<dict>
+			<key>Path</key>
+			<string>HelloWorldView.m</string>
+		</dict>
+		<key>Isgl3dViewController.h</key>
+		<dict>
+			<key>Path</key>
+			<string>Isgl3dViewController.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>Isgl3dViewController.m</key>
+		<dict>
+			<key>Path</key>
+			<string>Isgl3dViewController.m</string>
+		</dict>
+		<key>___PACKAGENAMEASIDENTIFIER___AppDelegate.h</key>
+		<dict>
+			<key>Path</key>
+			<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>___PACKAGENAMEASIDENTIFIER___AppDelegate.m</key>
+		<dict>
+			<key>Path</key>
+			<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.m</string>
+		</dict>
+	</dict>
+	<key>Nodes</key>
+	<array>
+		<string>Prefix.pch</string>
+		<string>main.m</string>
+		<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.h</string>
+		<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.m</string>
+		<string>Isgl3dViewController.h</string>
+		<string>Isgl3dViewController.m</string>
+		<string>HelloWorldView.h</string>
+		<string>HelloWorldView.m</string>
+	</array>
+	<key>Targets</key>
+	<array>
+		<dict>
+			<key>SharedSettings</key>
+			<dict>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>___PACKAGENAME___/Prefix.pch</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

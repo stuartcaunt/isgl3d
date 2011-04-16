@@ -8,17 +8,11 @@
 
 #import "isgl3d.h"
 
-@interface HelloWorldView : Isgl3dView3D {
+@interface HelloWorldView : Isgl3dBasic3DView {
 
 @private
-	// The root scene node. 
-	Isgl3dScene3D * _scene;
-	
 	// The rendered text
 	Isgl3dMeshNode * _3dText;
-
-	// The fps display
-	Isgl3dFpsDisplay * _fpsDisplay;
 }
 
 @end

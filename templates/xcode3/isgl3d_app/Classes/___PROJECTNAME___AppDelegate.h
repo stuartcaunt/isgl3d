@@ -6,8 +6,6 @@
 //  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @class Isgl3dViewController;
 
 @interface ___PROJECTNAME___AppDelegate : NSObject <UIApplicationDelegate> {
@@ -18,6 +16,7 @@
 }
 
 @property (readonly, nonatomic) UIWindow * window; 
-@property (readonly, nonatomic) Isgl3dViewController * viewController; 
+
+- (void) createViews;
 
 @end
