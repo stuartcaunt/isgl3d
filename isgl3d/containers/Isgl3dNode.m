@@ -354,6 +354,10 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 - (void) getTransformationAsOpenGLMatrix:(float *)transformation {
+	if (_localTransformationDirty) {
+		[self updateLocalTransformation];
+	}
+	
 	im4GetTransformationAsOpenGLMatrix(&_localTransformation, transformation);
 }
 

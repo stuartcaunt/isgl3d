@@ -79,7 +79,7 @@
 		Isgl3dTextureMaterial * woodMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"wood.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometry:100.0 height:100.0 nx:10 ny:10];
 		Isgl3dMeshNode * groundNode = [_physicsWorld createNodeWithMesh:plane andMaterial:woodMaterial];
-		[groundNode setRotation:-90 x:1 y:0 z:0];
+		groundNode.rotationX = -90;
 		groundNode.position = iv3(0, -2, 0);
 	
 		btCollisionShape* groundShape = new btBox2dShape(btVector3(50, 50, 0));

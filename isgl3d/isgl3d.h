@@ -134,5 +134,3 @@
 #import "utils/Isgl3dLog.h"
 #import "utils/Isgl3dUShortArray.h"
 #import "view/Isgl3dView.h"
-
-NSString * isgl3dVersion();
