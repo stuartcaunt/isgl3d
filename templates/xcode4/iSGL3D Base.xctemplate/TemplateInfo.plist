@@ -108,6 +108,11 @@
 			<key>Path</key>
 			<string>LICENSE.isgl3d</string>
 		</dict>
+		<key>LICENSE.IMGTEC</key>
+		<dict>
+			<key>Path</key>
+			<string>LICENSE.IMGTEC</string>
+		</dict>
 	</dict>
 	<key>Nodes</key>
 	<array>
@@ -121,6 +126,7 @@
 		<string>Resources/Shaders/shadowMap.vsh</string>
 		<string>Resources/Info.plist</string>
 		<string>LICENSE.isgl3d</string>
+		<string>LICENSE.IMGTEC</string>
 	</array>
 
 	<key>Options</key>

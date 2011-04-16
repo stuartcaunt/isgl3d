@@ -477,7 +477,6 @@
 		173121C312FB58A000861D84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		173121C412FB58A000861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		173121CE12FB58F600861D84 /* PODTestView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 173121CD12FB58F600861D84 /* PODTestView.mm */; };
-		173121D512FB593400861D84 /* libisgl3dpodimporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17F1D85412F88A14008D39E8 /* libisgl3dpodimporter.a */; };
 		1731223712FB597700861D84 /* Scene_float.pod in Resources */ = {isa = PBXBuildFile; fileRef = 1731223612FB597700861D84 /* Scene_float.pod */; };
 		1731223F12FB59BE00861D84 /* kettle.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 1731223D12FB59BE00861D84 /* kettle.bmp */; };
 		1731224012FB59BE00861D84 /* TableCover.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 1731223E12FB59BE00861D84 /* TableCover.bmp */; };
@@ -515,7 +514,6 @@
 		173122E912FC7B9300861D84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		173122EA12FC7B9300861D84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		173122EB12FC7B9300861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
-		173122EC12FC7B9300861D84 /* libisgl3dpodimporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17F1D85412F88A14008D39E8 /* libisgl3dpodimporter.a */; };
 		173122F812FC7BD500861D84 /* man.pod in Resources */ = {isa = PBXBuildFile; fileRef = 173122F712FC7BD500861D84 /* man.pod */; };
 		173122FD12FC7BE000861D84 /* Belt.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122F912FC7BE000861D84 /* Belt.pvr */; };
 		173122FE12FC7BE000861D84 /* Body.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FA12FC7BE000861D84 /* Body.pvr */; };
@@ -679,6 +677,53 @@
 		179F876C133FC65A007F4671 /* Isgl3dGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 179F876A133FC65A007F4671 /* Isgl3dGLProgram.m */; };
 		179F876F133FC68E007F4671 /* Isgl3dFpsRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F876D133FC68E007F4671 /* Isgl3dFpsRenderer.h */; };
 		179F8770133FC68E007F4671 /* Isgl3dFpsRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 179F876E133FC68E007F4671 /* Isgl3dFpsRenderer.m */; };
+		17A3E611135A18B90022BAD8 /* Isgl3dPODImporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */; };
+		17A3E612135A18B90022BAD8 /* Isgl3dPODImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */; };
+		17A3EA93135A25D80022BAD8 /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA66135A25D80022BAD8 /* PVRTBackground.h */; };
+		17A3EA94135A25D80022BAD8 /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA67135A25D80022BAD8 /* PVRTBoneBatch.cpp */; };
+		17A3EA95135A25D80022BAD8 /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA68135A25D80022BAD8 /* PVRTBoneBatch.h */; };
+		17A3EA96135A25D80022BAD8 /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA69135A25D80022BAD8 /* PVRTContext.h */; };
+		17A3EA97135A25D80022BAD8 /* PVRTDecompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA6A135A25D80022BAD8 /* PVRTDecompress.cpp */; };
+		17A3EA98135A25D80022BAD8 /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA6B135A25D80022BAD8 /* PVRTDecompress.h */; };
+		17A3EA99135A25D80022BAD8 /* PVRTError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA6C135A25D80022BAD8 /* PVRTError.cpp */; };
+		17A3EA9A135A25D80022BAD8 /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA6D135A25D80022BAD8 /* PVRTError.h */; };
+		17A3EA9B135A25D80022BAD8 /* PVRTFixedPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA6E135A25D80022BAD8 /* PVRTFixedPoint.cpp */; };
+		17A3EA9C135A25D80022BAD8 /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA6F135A25D80022BAD8 /* PVRTFixedPoint.h */; };
+		17A3EA9D135A25D80022BAD8 /* PVRTGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA70135A25D80022BAD8 /* PVRTGeometry.cpp */; };
+		17A3EA9E135A25D80022BAD8 /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA71135A25D80022BAD8 /* PVRTGeometry.h */; };
+		17A3EA9F135A25D80022BAD8 /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA72135A25D80022BAD8 /* PVRTGlobal.h */; };
+		17A3EAA0135A25D80022BAD8 /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA73135A25D80022BAD8 /* PVRTMathTable.h */; };
+		17A3EAA1135A25D80022BAD8 /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA74135A25D80022BAD8 /* PVRTMatrix.h */; };
+		17A3EAA2135A25D80022BAD8 /* PVRTMatrixF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA75135A25D80022BAD8 /* PVRTMatrixF.cpp */; };
+		17A3EAA3135A25D80022BAD8 /* PVRTMatrixX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA76135A25D80022BAD8 /* PVRTMatrixX.cpp */; };
+		17A3EAA4135A25D80022BAD8 /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA77135A25D80022BAD8 /* PVRTMemoryFileSystem.h */; };
+		17A3EAA5135A25D80022BAD8 /* PVRTMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA78135A25D80022BAD8 /* PVRTMisc.cpp */; };
+		17A3EAA6135A25D80022BAD8 /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA79135A25D80022BAD8 /* PVRTMisc.h */; };
+		17A3EAA7135A25D80022BAD8 /* PVRTModelPOD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA7A135A25D80022BAD8 /* PVRTModelPOD.cpp */; };
+		17A3EAA8135A25D80022BAD8 /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA7B135A25D80022BAD8 /* PVRTModelPOD.h */; };
+		17A3EAA9135A25D80022BAD8 /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA7C135A25D80022BAD8 /* PVRTools.h */; };
+		17A3EAAA135A25D80022BAD8 /* PVRTPFXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA7D135A25D80022BAD8 /* PVRTPFXParser.cpp */; };
+		17A3EAAB135A25D80022BAD8 /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA7E135A25D80022BAD8 /* PVRTPFXParser.h */; };
+		17A3EAAC135A25D80022BAD8 /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA7F135A25D80022BAD8 /* PVRTQuaternion.h */; };
+		17A3EAAD135A25D80022BAD8 /* PVRTQuaternionF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA80135A25D80022BAD8 /* PVRTQuaternionF.cpp */; };
+		17A3EAAE135A25D80022BAD8 /* PVRTQuaternionX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA81135A25D80022BAD8 /* PVRTQuaternionX.cpp */; };
+		17A3EAAF135A25D80022BAD8 /* PVRTResourceFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA82135A25D80022BAD8 /* PVRTResourceFile.cpp */; };
+		17A3EAB0135A25D80022BAD8 /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA83135A25D80022BAD8 /* PVRTResourceFile.h */; };
+		17A3EAB1135A25D80022BAD8 /* PVRTShadowVol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA84135A25D80022BAD8 /* PVRTShadowVol.cpp */; };
+		17A3EAB2135A25D80022BAD8 /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA85135A25D80022BAD8 /* PVRTShadowVol.h */; };
+		17A3EAB3135A25D80022BAD8 /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA86135A25D80022BAD8 /* PVRTSingleton.h */; };
+		17A3EAB4135A25D80022BAD8 /* PVRTString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA87135A25D80022BAD8 /* PVRTString.cpp */; };
+		17A3EAB5135A25D80022BAD8 /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA88135A25D80022BAD8 /* PVRTString.h */; };
+		17A3EAB6135A25D80022BAD8 /* PVRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA89135A25D80022BAD8 /* PVRTTexture.cpp */; };
+		17A3EAB7135A25D80022BAD8 /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA8A135A25D80022BAD8 /* PVRTTexture.h */; };
+		17A3EAB8135A25D80022BAD8 /* PVRTTrans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA8B135A25D80022BAD8 /* PVRTTrans.cpp */; };
+		17A3EAB9135A25D80022BAD8 /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA8C135A25D80022BAD8 /* PVRTTrans.h */; };
+		17A3EABA135A25D80022BAD8 /* PVRTTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA8D135A25D80022BAD8 /* PVRTTriStrip.cpp */; };
+		17A3EABB135A25D80022BAD8 /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA8E135A25D80022BAD8 /* PVRTTriStrip.h */; };
+		17A3EABC135A25D80022BAD8 /* PVRTVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA8F135A25D80022BAD8 /* PVRTVector.cpp */; };
+		17A3EABD135A25D80022BAD8 /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA90135A25D80022BAD8 /* PVRTVector.h */; };
+		17A3EABE135A25D80022BAD8 /* PVRTVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17A3EA91135A25D80022BAD8 /* PVRTVertex.cpp */; };
+		17A3EABF135A25D80022BAD8 /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3EA92135A25D80022BAD8 /* PVRTVertex.h */; };
 		17A95E9F1325752500D06694 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
 		17A95EA01325752500D06694 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
 		17A95EA11325752500D06694 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
@@ -1053,59 +1098,12 @@
 		17F1D82B12F87EC5008D39E8 /* Isgl3dLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D75212F87EC5008D39E8 /* Isgl3dLog.m */; };
 		17F1D82C12F87EC5008D39E8 /* Isgl3dUShortArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D75312F87EC5008D39E8 /* Isgl3dUShortArray.h */; };
 		17F1D82D12F87EC5008D39E8 /* Isgl3dUShortArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D75412F87EC5008D39E8 /* Isgl3dUShortArray.m */; };
-		17F1D85B12F88A2F008D39E8 /* Isgl3dPODImporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D85812F88A2F008D39E8 /* Isgl3dPODImporter.h */; };
-		17F1D85C12F88A2F008D39E8 /* Isgl3dPODImporter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D85912F88A2F008D39E8 /* Isgl3dPODImporter.mm */; };
 		17F1D86D12F88A5A008D39E8 /* Isgl3dMotionState.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D86612F88A5A008D39E8 /* Isgl3dMotionState.h */; };
 		17F1D86E12F88A5A008D39E8 /* Isgl3dMotionState.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D86712F88A5A008D39E8 /* Isgl3dMotionState.mm */; };
 		17F1D86F12F88A5A008D39E8 /* Isgl3dPhysicsObject3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D86812F88A5A008D39E8 /* Isgl3dPhysicsObject3D.h */; };
 		17F1D87012F88A5A008D39E8 /* Isgl3dPhysicsObject3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D86912F88A5A008D39E8 /* Isgl3dPhysicsObject3D.mm */; };
 		17F1D87112F88A5A008D39E8 /* Isgl3dPhysicsWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D86A12F88A5A008D39E8 /* Isgl3dPhysicsWorld.h */; };
 		17F1D87212F88A5A008D39E8 /* Isgl3dPhysicsWorld.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D86B12F88A5A008D39E8 /* Isgl3dPhysicsWorld.mm */; };
-		17F1D8B612F88AD8008D39E8 /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D88912F88AD8008D39E8 /* PVRTBackground.h */; };
-		17F1D8B712F88AD8008D39E8 /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D88A12F88AD8008D39E8 /* PVRTBoneBatch.cpp */; };
-		17F1D8B812F88AD8008D39E8 /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D88B12F88AD8008D39E8 /* PVRTBoneBatch.h */; };
-		17F1D8B912F88AD8008D39E8 /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D88C12F88AD8008D39E8 /* PVRTContext.h */; };
-		17F1D8BA12F88AD8008D39E8 /* PVRTDecompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D88D12F88AD8008D39E8 /* PVRTDecompress.cpp */; };
-		17F1D8BB12F88AD8008D39E8 /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D88E12F88AD8008D39E8 /* PVRTDecompress.h */; };
-		17F1D8BC12F88AD8008D39E8 /* PVRTError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D88F12F88AD8008D39E8 /* PVRTError.cpp */; };
-		17F1D8BD12F88AD8008D39E8 /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89012F88AD8008D39E8 /* PVRTError.h */; };
-		17F1D8BE12F88AD8008D39E8 /* PVRTFixedPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D89112F88AD8008D39E8 /* PVRTFixedPoint.cpp */; };
-		17F1D8BF12F88AD8008D39E8 /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89212F88AD8008D39E8 /* PVRTFixedPoint.h */; };
-		17F1D8C012F88AD8008D39E8 /* PVRTGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D89312F88AD8008D39E8 /* PVRTGeometry.cpp */; };
-		17F1D8C112F88AD8008D39E8 /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89412F88AD8008D39E8 /* PVRTGeometry.h */; };
-		17F1D8C212F88AD8008D39E8 /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89512F88AD8008D39E8 /* PVRTGlobal.h */; };
-		17F1D8C312F88AD8008D39E8 /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89612F88AD8008D39E8 /* PVRTMathTable.h */; };
-		17F1D8C412F88AD8008D39E8 /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89712F88AD8008D39E8 /* PVRTMatrix.h */; };
-		17F1D8C512F88AD8008D39E8 /* PVRTMatrixF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D89812F88AD8008D39E8 /* PVRTMatrixF.cpp */; };
-		17F1D8C612F88AD8008D39E8 /* PVRTMatrixX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D89912F88AD8008D39E8 /* PVRTMatrixX.cpp */; };
-		17F1D8C712F88AD8008D39E8 /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89A12F88AD8008D39E8 /* PVRTMemoryFileSystem.h */; };
-		17F1D8C812F88AD8008D39E8 /* PVRTMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D89B12F88AD8008D39E8 /* PVRTMisc.cpp */; };
-		17F1D8C912F88AD8008D39E8 /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89C12F88AD8008D39E8 /* PVRTMisc.h */; };
-		17F1D8CA12F88AD8008D39E8 /* PVRTModelPOD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D89D12F88AD8008D39E8 /* PVRTModelPOD.cpp */; };
-		17F1D8CB12F88AD8008D39E8 /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89E12F88AD8008D39E8 /* PVRTModelPOD.h */; };
-		17F1D8CC12F88AD8008D39E8 /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D89F12F88AD8008D39E8 /* PVRTools.h */; };
-		17F1D8CD12F88AD8008D39E8 /* PVRTPFXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8A012F88AD8008D39E8 /* PVRTPFXParser.cpp */; };
-		17F1D8CE12F88AD8008D39E8 /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8A112F88AD8008D39E8 /* PVRTPFXParser.h */; };
-		17F1D8CF12F88AD8008D39E8 /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8A212F88AD8008D39E8 /* PVRTQuaternion.h */; };
-		17F1D8D012F88AD8008D39E8 /* PVRTQuaternionF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8A312F88AD8008D39E8 /* PVRTQuaternionF.cpp */; };
-		17F1D8D112F88AD8008D39E8 /* PVRTQuaternionX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8A412F88AD8008D39E8 /* PVRTQuaternionX.cpp */; };
-		17F1D8D212F88AD8008D39E8 /* PVRTResourceFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8A512F88AD8008D39E8 /* PVRTResourceFile.cpp */; };
-		17F1D8D312F88AD8008D39E8 /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8A612F88AD8008D39E8 /* PVRTResourceFile.h */; };
-		17F1D8D412F88AD8008D39E8 /* PVRTShadowVol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8A712F88AD8008D39E8 /* PVRTShadowVol.cpp */; };
-		17F1D8D512F88AD8008D39E8 /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8A812F88AD8008D39E8 /* PVRTShadowVol.h */; };
-		17F1D8D612F88AD8008D39E8 /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8A912F88AD8008D39E8 /* PVRTSingleton.h */; };
-		17F1D8D712F88AD8008D39E8 /* PVRTString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8AA12F88AD8008D39E8 /* PVRTString.cpp */; };
-		17F1D8D812F88AD8008D39E8 /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8AB12F88AD8008D39E8 /* PVRTString.h */; };
-		17F1D8D912F88AD8008D39E8 /* PVRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8AC12F88AD8008D39E8 /* PVRTTexture.cpp */; };
-		17F1D8DA12F88AD8008D39E8 /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8AD12F88AD8008D39E8 /* PVRTTexture.h */; };
-		17F1D8DB12F88AD8008D39E8 /* PVRTTrans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8AE12F88AD8008D39E8 /* PVRTTrans.cpp */; };
-		17F1D8DC12F88AD8008D39E8 /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8AF12F88AD8008D39E8 /* PVRTTrans.h */; };
-		17F1D8DD12F88AD8008D39E8 /* PVRTTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8B012F88AD8008D39E8 /* PVRTTriStrip.cpp */; };
-		17F1D8DE12F88AD8008D39E8 /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8B112F88AD8008D39E8 /* PVRTTriStrip.h */; };
-		17F1D8DF12F88AD8008D39E8 /* PVRTVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8B212F88AD8008D39E8 /* PVRTVector.cpp */; };
-		17F1D8E012F88AD8008D39E8 /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8B312F88AD8008D39E8 /* PVRTVector.h */; };
-		17F1D8E112F88AD8008D39E8 /* PVRTVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D8B412F88AD8008D39E8 /* PVRTVertex.cpp */; };
-		17F1D8E212F88AD8008D39E8 /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D8B512F88AD8008D39E8 /* PVRTVertex.h */; };
 		17F7A84012FA0BB000C7BB82 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17F7A84312FA0BB000C7BB82 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		17F7A84412FA0BB000C7BB82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -1144,20 +1142,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
-		};
-		1713BB071358B649002C3288 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1713BABD1357979B002C3288;
-			remoteInfo = FollowCamera;
-		};
-		1713BB091358B649002C3288 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1713BAE21358AFF6002C3288;
-			remoteInfo = SpringCamera;
 		};
 		171CB84D13195C65003712F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1229,13 +1213,6 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
-		173121D312FB592900861D84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17F1D85312F88A14008D39E8;
-			remoteInfo = isgl3dpodimporter;
-		};
 		1731225A12FC764100861D84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -1249,13 +1226,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
-		};
-		173122D812FC7B9300861D84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17F1D85312F88A14008D39E8;
-			remoteInfo = isgl3dpodimporter;
 		};
 		173122DA12FC7B9300861D84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1313,6 +1283,181 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
+		17A3E64C135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F1E06A12F89091008D39E8;
+			remoteInfo = Accelerometer;
+		};
+		17A3E64E135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F7A83C12FA0BB000C7BB82;
+			remoteInfo = CameraMovement;
+		};
+		17A3E650135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1762371712F9CE06008CDB4B;
+			remoteInfo = CameraZoomAndFocus;
+		};
+		17A3E652135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F7A87012FA0D6100C7BB82;
+			remoteInfo = Lighting;
+		};
+		17A3E654135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17801A46131A955A0045803F;
+			remoteInfo = Occlusion;
+		};
+		17A3E656135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731213D12FB3D6500861D84;
+			remoteInfo = ParticleSystem;
+		};
+		17A3E658135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731217812FB562900861D84;
+			remoteInfo = PhysicsTest;
+		};
+		17A3E65A135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173121B312FB58A000861D84;
+			remoteInfo = PODTest;
+		};
+		17A3E65C135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731225812FC764100861D84;
+			remoteInfo = PrimitivesDemo;
+		};
+		17A3E65E135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731229B12FC797300861D84;
+			remoteInfo = ShadowMappingTest;
+		};
+		17A3E660135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173122D612FC7B9300861D84;
+			remoteInfo = SkinningTest;
+		};
+		17A3E662135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731232012FC7DFA00861D84;
+			remoteInfo = TerrainMeshTest;
+		};
+		17A3E664135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1731237412FC82BD00861D84;
+			remoteInfo = TextureOptionsTest;
+		};
+		17A3E666135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173123A212FC841000861D84;
+			remoteInfo = TweeningDemo;
+		};
+		17A3E668135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 173123EC12FD627B00861D84;
+			remoteInfo = UIDemo;
+		};
+		17A3E66A135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB84913195C65003712F4;
+			remoteInfo = CubeOverCamera;
+		};
+		17A3E66C135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB8D713196403003712F4;
+			remoteInfo = Tutorial1;
+		};
+		17A3E66E135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB90913196613003712F4;
+			remoteInfo = Tutorial2;
+		};
+		17A3E670135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB92F131966E7003712F4;
+			remoteInfo = Tutorial3;
+		};
+		17A3E672135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB951131967C1003712F4;
+			remoteInfo = Tutorial4;
+		};
+		17A3E674135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 171CB97C13196880003712F4;
+			remoteInfo = Tutorial5;
+		};
+		17A3E676135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17BE1746132E94E400D053BA;
+			remoteInfo = BillboardTest;
+		};
+		17A3E678135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17AD09D113434FD7005F5F7F;
+			remoteInfo = ViewportTest;
+		};
+		17A3E67A135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1713BABD1357979B002C3288;
+			remoteInfo = FollowCamera;
+		};
+		17A3E67C135A1C540022BAD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1713BAE21358AFF6002C3288;
+			remoteInfo = SpringCamera;
+		};
 		17AD09D313434FD7005F5F7F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -1320,173 +1465,12 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
-		17AD09F5134352BF005F5F7F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17AD09D113434FD7005F5F7F;
-			remoteInfo = ViewportTest;
-		};
 		17BE1748132E94E400D053BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
-		};
-		17BE178E132E98B000D053BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17BE1746132E94E400D053BA;
-			remoteInfo = BillboardTest;
-		};
-		17C04FDA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17F1E06A12F89091008D39E8;
-			remoteInfo = Accelerometer;
-		};
-		17C04FDC1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17F7A83C12FA0BB000C7BB82;
-			remoteInfo = CameraMovement;
-		};
-		17C04FDE1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1762371712F9CE06008CDB4B;
-			remoteInfo = CameraZoomAndFocus;
-		};
-		17C04FE01326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17F7A87012FA0D6100C7BB82;
-			remoteInfo = Lighting;
-		};
-		17C04FE21326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 17801A46131A955A0045803F;
-			remoteInfo = Occlusion;
-		};
-		17C04FE41326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1731213D12FB3D6500861D84;
-			remoteInfo = ParticleSystem;
-		};
-		17C04FE61326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1731217812FB562900861D84;
-			remoteInfo = PhysicsTest;
-		};
-		17C04FE81326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 173121B312FB58A000861D84;
-			remoteInfo = PODTest;
-		};
-		17C04FEA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1731225812FC764100861D84;
-			remoteInfo = PrimitivesDemo;
-		};
-		17C04FEC1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1731229B12FC797300861D84;
-			remoteInfo = ShadowMappingTest;
-		};
-		17C04FEE1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 173122D612FC7B9300861D84;
-			remoteInfo = SkinningTest;
-		};
-		17C04FF01326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1731232012FC7DFA00861D84;
-			remoteInfo = TerrainMeshTest;
-		};
-		17C04FF21326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1731237412FC82BD00861D84;
-			remoteInfo = TextureOptionsTest;
-		};
-		17C04FF41326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 173123A212FC841000861D84;
-			remoteInfo = TweeningDemo;
-		};
-		17C04FF61326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 173123EC12FD627B00861D84;
-			remoteInfo = UIDemo;
-		};
-		17C04FF81326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 171CB84913195C65003712F4;
-			remoteInfo = CubeOverCamera;
-		};
-		17C04FFA1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 171CB8D713196403003712F4;
-			remoteInfo = Tutorial1;
-		};
-		17C04FFC1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 171CB90913196613003712F4;
-			remoteInfo = Tutorial2;
-		};
-		17C04FFE1326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 171CB92F131966E7003712F4;
-			remoteInfo = Tutorial3;
-		};
-		17C050001326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 171CB951131967C1003712F4;
-			remoteInfo = Tutorial4;
-		};
-		17C050021326BAB4001C96CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 171CB97C13196880003712F4;
-			remoteInfo = Tutorial5;
 		};
 		17F1E07D12F89333008D39E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1942,6 +1926,56 @@
 		179F876A133FC65A007F4671 /* Isgl3dGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGLProgram.m; sourceTree = "<group>"; };
 		179F876D133FC68E007F4671 /* Isgl3dFpsRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dFpsRenderer.h; sourceTree = "<group>"; };
 		179F876E133FC68E007F4671 /* Isgl3dFpsRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dFpsRenderer.m; sourceTree = "<group>"; };
+		17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPODImporter.h; sourceTree = "<group>"; };
+		17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPODImporter.mm; sourceTree = "<group>"; };
+		17A3E610135A18B90022BAD8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		17A3E644135A1C380022BAD8 /* libbuild all.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libbuild all.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17A3E648135A1C380022BAD8 /* build all-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "build all-Prefix.pch"; sourceTree = "<group>"; };
+		17A3EA66135A25D80022BAD8 /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
+		17A3EA67135A25D80022BAD8 /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
+		17A3EA68135A25D80022BAD8 /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
+		17A3EA69135A25D80022BAD8 /* PVRTContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTContext.h; sourceTree = "<group>"; };
+		17A3EA6A135A25D80022BAD8 /* PVRTDecompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTDecompress.cpp; sourceTree = "<group>"; };
+		17A3EA6B135A25D80022BAD8 /* PVRTDecompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTDecompress.h; sourceTree = "<group>"; };
+		17A3EA6C135A25D80022BAD8 /* PVRTError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTError.cpp; sourceTree = "<group>"; };
+		17A3EA6D135A25D80022BAD8 /* PVRTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTError.h; sourceTree = "<group>"; };
+		17A3EA6E135A25D80022BAD8 /* PVRTFixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTFixedPoint.cpp; sourceTree = "<group>"; };
+		17A3EA6F135A25D80022BAD8 /* PVRTFixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTFixedPoint.h; sourceTree = "<group>"; };
+		17A3EA70135A25D80022BAD8 /* PVRTGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTGeometry.cpp; sourceTree = "<group>"; };
+		17A3EA71135A25D80022BAD8 /* PVRTGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGeometry.h; sourceTree = "<group>"; };
+		17A3EA72135A25D80022BAD8 /* PVRTGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGlobal.h; sourceTree = "<group>"; };
+		17A3EA73135A25D80022BAD8 /* PVRTMathTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMathTable.h; sourceTree = "<group>"; };
+		17A3EA74135A25D80022BAD8 /* PVRTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMatrix.h; sourceTree = "<group>"; };
+		17A3EA75135A25D80022BAD8 /* PVRTMatrixF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixF.cpp; sourceTree = "<group>"; };
+		17A3EA76135A25D80022BAD8 /* PVRTMatrixX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixX.cpp; sourceTree = "<group>"; };
+		17A3EA77135A25D80022BAD8 /* PVRTMemoryFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMemoryFileSystem.h; sourceTree = "<group>"; };
+		17A3EA78135A25D80022BAD8 /* PVRTMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMisc.cpp; sourceTree = "<group>"; };
+		17A3EA79135A25D80022BAD8 /* PVRTMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMisc.h; sourceTree = "<group>"; };
+		17A3EA7A135A25D80022BAD8 /* PVRTModelPOD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTModelPOD.cpp; sourceTree = "<group>"; };
+		17A3EA7B135A25D80022BAD8 /* PVRTModelPOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTModelPOD.h; sourceTree = "<group>"; };
+		17A3EA7C135A25D80022BAD8 /* PVRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTools.h; sourceTree = "<group>"; };
+		17A3EA7D135A25D80022BAD8 /* PVRTPFXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParser.cpp; sourceTree = "<group>"; };
+		17A3EA7E135A25D80022BAD8 /* PVRTPFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParser.h; sourceTree = "<group>"; };
+		17A3EA7F135A25D80022BAD8 /* PVRTQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTQuaternion.h; sourceTree = "<group>"; };
+		17A3EA80135A25D80022BAD8 /* PVRTQuaternionF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionF.cpp; sourceTree = "<group>"; };
+		17A3EA81135A25D80022BAD8 /* PVRTQuaternionX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionX.cpp; sourceTree = "<group>"; };
+		17A3EA82135A25D80022BAD8 /* PVRTResourceFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTResourceFile.cpp; sourceTree = "<group>"; };
+		17A3EA83135A25D80022BAD8 /* PVRTResourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTResourceFile.h; sourceTree = "<group>"; };
+		17A3EA84135A25D80022BAD8 /* PVRTShadowVol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShadowVol.cpp; sourceTree = "<group>"; };
+		17A3EA85135A25D80022BAD8 /* PVRTShadowVol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShadowVol.h; sourceTree = "<group>"; };
+		17A3EA86135A25D80022BAD8 /* PVRTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSingleton.h; sourceTree = "<group>"; };
+		17A3EA87135A25D80022BAD8 /* PVRTString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTString.cpp; sourceTree = "<group>"; };
+		17A3EA88135A25D80022BAD8 /* PVRTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTString.h; sourceTree = "<group>"; };
+		17A3EA89135A25D80022BAD8 /* PVRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTexture.cpp; sourceTree = "<group>"; };
+		17A3EA8A135A25D80022BAD8 /* PVRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTexture.h; sourceTree = "<group>"; };
+		17A3EA8B135A25D80022BAD8 /* PVRTTrans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTrans.cpp; sourceTree = "<group>"; };
+		17A3EA8C135A25D80022BAD8 /* PVRTTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTrans.h; sourceTree = "<group>"; };
+		17A3EA8D135A25D80022BAD8 /* PVRTTriStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTriStrip.cpp; sourceTree = "<group>"; };
+		17A3EA8E135A25D80022BAD8 /* PVRTTriStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTriStrip.h; sourceTree = "<group>"; };
+		17A3EA8F135A25D80022BAD8 /* PVRTVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVector.cpp; sourceTree = "<group>"; };
+		17A3EA90135A25D80022BAD8 /* PVRTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVector.h; sourceTree = "<group>"; };
+		17A3EA91135A25D80022BAD8 /* PVRTVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVertex.cpp; sourceTree = "<group>"; };
+		17A3EA92135A25D80022BAD8 /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
 		17AD09EF13434FD7005F5F7F /* ViewportTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewportTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AD09F213435013005F5F7F /* ViewportTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewportTestView.h; path = viewport/ViewportTestView.h; sourceTree = "<group>"; };
 		17AD09F313435013005F5F7F /* ViewportTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewportTestView.m; path = viewport/ViewportTestView.m; sourceTree = "<group>"; };
@@ -1964,7 +1998,6 @@
 		17BE1790132E98B100D053BA /* BillboardTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillboardTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BE17A1132E99E000D053BA /* isgl3d_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = isgl3d_logo.png; sourceTree = "<group>"; };
 		17BE17AC132E9C8400D053BA /* billboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = billboard.png; sourceTree = "<group>"; };
-		17C04FD71326BA9D001C96CF /* libbuild all.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libbuild all.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix.m; sourceTree = "<group>"; };
 		17C15BF21347AAF8004EF5C3 /* Isgl3dVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector.m; sourceTree = "<group>"; };
 		17C15C7D1348F4A5004EF5C3 /* Isgl3dArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dArray.h; sourceTree = "<group>"; };
@@ -2152,10 +2185,6 @@
 		17F1D75212F87EC5008D39E8 /* Isgl3dLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dLog.m; sourceTree = "<group>"; };
 		17F1D75312F87EC5008D39E8 /* Isgl3dUShortArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dUShortArray.h; sourceTree = "<group>"; };
 		17F1D75412F87EC5008D39E8 /* Isgl3dUShortArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dUShortArray.m; sourceTree = "<group>"; };
-		17F1D85412F88A14008D39E8 /* libisgl3dpodimporter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3dpodimporter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		17F1D85812F88A2F008D39E8 /* Isgl3dPODImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPODImporter.h; sourceTree = "<group>"; };
-		17F1D85912F88A2F008D39E8 /* Isgl3dPODImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPODImporter.mm; sourceTree = "<group>"; };
-		17F1D85A12F88A2F008D39E8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		17F1D86212F88A4A008D39E8 /* libisgl3dbullet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3dbullet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F1D86612F88A5A008D39E8 /* Isgl3dMotionState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMotionState.h; sourceTree = "<group>"; };
 		17F1D86712F88A5A008D39E8 /* Isgl3dMotionState.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dMotionState.mm; sourceTree = "<group>"; };
@@ -2164,52 +2193,6 @@
 		17F1D86A12F88A5A008D39E8 /* Isgl3dPhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPhysicsWorld.h; sourceTree = "<group>"; };
 		17F1D86B12F88A5A008D39E8 /* Isgl3dPhysicsWorld.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPhysicsWorld.mm; sourceTree = "<group>"; };
 		17F1D86C12F88A5A008D39E8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		17F1D88712F88AD8008D39E8 /* LICENSE.IMGTEC */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.IMGTEC; sourceTree = "<group>"; };
-		17F1D88912F88AD8008D39E8 /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
-		17F1D88A12F88AD8008D39E8 /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
-		17F1D88B12F88AD8008D39E8 /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
-		17F1D88C12F88AD8008D39E8 /* PVRTContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTContext.h; sourceTree = "<group>"; };
-		17F1D88D12F88AD8008D39E8 /* PVRTDecompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTDecompress.cpp; sourceTree = "<group>"; };
-		17F1D88E12F88AD8008D39E8 /* PVRTDecompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTDecompress.h; sourceTree = "<group>"; };
-		17F1D88F12F88AD8008D39E8 /* PVRTError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTError.cpp; sourceTree = "<group>"; };
-		17F1D89012F88AD8008D39E8 /* PVRTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTError.h; sourceTree = "<group>"; };
-		17F1D89112F88AD8008D39E8 /* PVRTFixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTFixedPoint.cpp; sourceTree = "<group>"; };
-		17F1D89212F88AD8008D39E8 /* PVRTFixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTFixedPoint.h; sourceTree = "<group>"; };
-		17F1D89312F88AD8008D39E8 /* PVRTGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTGeometry.cpp; sourceTree = "<group>"; };
-		17F1D89412F88AD8008D39E8 /* PVRTGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGeometry.h; sourceTree = "<group>"; };
-		17F1D89512F88AD8008D39E8 /* PVRTGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGlobal.h; sourceTree = "<group>"; };
-		17F1D89612F88AD8008D39E8 /* PVRTMathTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMathTable.h; sourceTree = "<group>"; };
-		17F1D89712F88AD8008D39E8 /* PVRTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMatrix.h; sourceTree = "<group>"; };
-		17F1D89812F88AD8008D39E8 /* PVRTMatrixF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixF.cpp; sourceTree = "<group>"; };
-		17F1D89912F88AD8008D39E8 /* PVRTMatrixX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixX.cpp; sourceTree = "<group>"; };
-		17F1D89A12F88AD8008D39E8 /* PVRTMemoryFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMemoryFileSystem.h; sourceTree = "<group>"; };
-		17F1D89B12F88AD8008D39E8 /* PVRTMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMisc.cpp; sourceTree = "<group>"; };
-		17F1D89C12F88AD8008D39E8 /* PVRTMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMisc.h; sourceTree = "<group>"; };
-		17F1D89D12F88AD8008D39E8 /* PVRTModelPOD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTModelPOD.cpp; sourceTree = "<group>"; };
-		17F1D89E12F88AD8008D39E8 /* PVRTModelPOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTModelPOD.h; sourceTree = "<group>"; };
-		17F1D89F12F88AD8008D39E8 /* PVRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTools.h; sourceTree = "<group>"; };
-		17F1D8A012F88AD8008D39E8 /* PVRTPFXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParser.cpp; sourceTree = "<group>"; };
-		17F1D8A112F88AD8008D39E8 /* PVRTPFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParser.h; sourceTree = "<group>"; };
-		17F1D8A212F88AD8008D39E8 /* PVRTQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTQuaternion.h; sourceTree = "<group>"; };
-		17F1D8A312F88AD8008D39E8 /* PVRTQuaternionF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionF.cpp; sourceTree = "<group>"; };
-		17F1D8A412F88AD8008D39E8 /* PVRTQuaternionX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionX.cpp; sourceTree = "<group>"; };
-		17F1D8A512F88AD8008D39E8 /* PVRTResourceFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTResourceFile.cpp; sourceTree = "<group>"; };
-		17F1D8A612F88AD8008D39E8 /* PVRTResourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTResourceFile.h; sourceTree = "<group>"; };
-		17F1D8A712F88AD8008D39E8 /* PVRTShadowVol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShadowVol.cpp; sourceTree = "<group>"; };
-		17F1D8A812F88AD8008D39E8 /* PVRTShadowVol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShadowVol.h; sourceTree = "<group>"; };
-		17F1D8A912F88AD8008D39E8 /* PVRTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSingleton.h; sourceTree = "<group>"; };
-		17F1D8AA12F88AD8008D39E8 /* PVRTString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTString.cpp; sourceTree = "<group>"; };
-		17F1D8AB12F88AD8008D39E8 /* PVRTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTString.h; sourceTree = "<group>"; };
-		17F1D8AC12F88AD8008D39E8 /* PVRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTexture.cpp; sourceTree = "<group>"; };
-		17F1D8AD12F88AD8008D39E8 /* PVRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTexture.h; sourceTree = "<group>"; };
-		17F1D8AE12F88AD8008D39E8 /* PVRTTrans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTrans.cpp; sourceTree = "<group>"; };
-		17F1D8AF12F88AD8008D39E8 /* PVRTTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTrans.h; sourceTree = "<group>"; };
-		17F1D8B012F88AD8008D39E8 /* PVRTTriStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTriStrip.cpp; sourceTree = "<group>"; };
-		17F1D8B112F88AD8008D39E8 /* PVRTTriStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTriStrip.h; sourceTree = "<group>"; };
-		17F1D8B212F88AD8008D39E8 /* PVRTVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVector.cpp; sourceTree = "<group>"; };
-		17F1D8B312F88AD8008D39E8 /* PVRTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVector.h; sourceTree = "<group>"; };
-		17F1D8B412F88AD8008D39E8 /* PVRTVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVertex.cpp; sourceTree = "<group>"; };
-		17F1D8B512F88AD8008D39E8 /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
 		17F1E06B12F89091008D39E8 /* Accelerometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accelerometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17F1E0EA12F89568008D39E8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17F7A85012FA0BB000C7BB82 /* CameraMovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraMovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2373,7 +2356,6 @@
 				173121C212FB58A000861D84 /* UIKit.framework in Frameworks */,
 				173121C312FB58A000861D84 /* Foundation.framework in Frameworks */,
 				173121C412FB58A000861D84 /* libisgl3d.a in Frameworks */,
-				173121D512FB593400861D84 /* libisgl3dpodimporter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2413,7 +2395,6 @@
 				173122E912FC7B9300861D84 /* UIKit.framework in Frameworks */,
 				173122EA12FC7B9300861D84 /* Foundation.framework in Frameworks */,
 				173122EB12FC7B9300861D84 /* libisgl3d.a in Frameworks */,
-				173122EC12FC7B9300861D84 /* libisgl3dpodimporter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2495,6 +2476,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17A3E641135A1C380022BAD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17AD09E513434FD7005F5F7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2518,20 +2506,6 @@
 				17BE175F132E94E400D053BA /* UIKit.framework in Frameworks */,
 				17BE1760132E94E400D053BA /* Foundation.framework in Frameworks */,
 				17BE1761132E94E400D053BA /* libisgl3d.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17C04FD51326BA9D001C96CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17F1D85212F88A14008D39E8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2597,7 +2571,6 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libisgl3d.a */,
-				17F1D85412F88A14008D39E8 /* libisgl3dpodimporter.a */,
 				17F1D86212F88A4A008D39E8 /* libisgl3dbullet.a */,
 				17F1E06B12F89091008D39E8 /* Accelerometer.app */,
 				1762371812F9CE06008CDB4B /* CameraZoomAndFocus.app */,
@@ -2620,11 +2593,11 @@
 				171CB967131967C1003712F4 /* Tutorial4.app */,
 				171CB99413196880003712F4 /* Tutorial5.app */,
 				17801A5F131A955A0045803F /* Occlusion.app */,
-				17C04FD71326BA9D001C96CF /* libbuild all.a */,
 				17BE1790132E98B100D053BA /* BillboardTest.app */,
 				17AD09EF13434FD7005F5F7F /* ViewportTest.app */,
 				1713BADB1357979B002C3288 /* FollowCamera.app */,
 				1713BB001358AFF6002C3288 /* FollowCamera copy.app */,
+				17A3E644135A1C380022BAD8 /* libbuild all.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2634,10 +2607,10 @@
 			children = (
 				17F1D66112F87EC5008D39E8 /* isgl3d */,
 				17F1D86512F88A5A008D39E8 /* isgl3dbullet */,
-				17F1D85712F88A2F008D39E8 /* isgl3dpodimporter */,
 				17F1D88512F88AD8008D39E8 /* external */,
 				17F1E05A12F88FFA008D39E8 /* Resources */,
 				17F1E05B12F88FFA008D39E8 /* tests */,
+				17A3E646135A1C380022BAD8 /* build all */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				17116C1812FF1D9500C4BC65 /* LICENSE.bullet */,
@@ -3281,6 +3254,92 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		17A3E60D135A18B90022BAD8 /* importers */ = {
+			isa = PBXGroup;
+			children = (
+				17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */,
+				17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */,
+				17A3E610135A18B90022BAD8 /* README */,
+			);
+			path = importers;
+			sourceTree = "<group>";
+		};
+		17A3E646135A1C380022BAD8 /* build all */ = {
+			isa = PBXGroup;
+			children = (
+				17A3E647135A1C380022BAD8 /* Supporting Files */,
+			);
+			path = "build all";
+			sourceTree = "<group>";
+		};
+		17A3E647135A1C380022BAD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17A3E648135A1C380022BAD8 /* build all-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		17A3EA64135A25D80022BAD8 /* PowerVR */ = {
+			isa = PBXGroup;
+			children = (
+				17A3EA65135A25D80022BAD8 /* Tools */,
+			);
+			path = PowerVR;
+			sourceTree = "<group>";
+		};
+		17A3EA65135A25D80022BAD8 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				17A3EA66135A25D80022BAD8 /* PVRTBackground.h */,
+				17A3EA67135A25D80022BAD8 /* PVRTBoneBatch.cpp */,
+				17A3EA68135A25D80022BAD8 /* PVRTBoneBatch.h */,
+				17A3EA69135A25D80022BAD8 /* PVRTContext.h */,
+				17A3EA6A135A25D80022BAD8 /* PVRTDecompress.cpp */,
+				17A3EA6B135A25D80022BAD8 /* PVRTDecompress.h */,
+				17A3EA6C135A25D80022BAD8 /* PVRTError.cpp */,
+				17A3EA6D135A25D80022BAD8 /* PVRTError.h */,
+				17A3EA6E135A25D80022BAD8 /* PVRTFixedPoint.cpp */,
+				17A3EA6F135A25D80022BAD8 /* PVRTFixedPoint.h */,
+				17A3EA70135A25D80022BAD8 /* PVRTGeometry.cpp */,
+				17A3EA71135A25D80022BAD8 /* PVRTGeometry.h */,
+				17A3EA72135A25D80022BAD8 /* PVRTGlobal.h */,
+				17A3EA73135A25D80022BAD8 /* PVRTMathTable.h */,
+				17A3EA74135A25D80022BAD8 /* PVRTMatrix.h */,
+				17A3EA75135A25D80022BAD8 /* PVRTMatrixF.cpp */,
+				17A3EA76135A25D80022BAD8 /* PVRTMatrixX.cpp */,
+				17A3EA77135A25D80022BAD8 /* PVRTMemoryFileSystem.h */,
+				17A3EA78135A25D80022BAD8 /* PVRTMisc.cpp */,
+				17A3EA79135A25D80022BAD8 /* PVRTMisc.h */,
+				17A3EA7A135A25D80022BAD8 /* PVRTModelPOD.cpp */,
+				17A3EA7B135A25D80022BAD8 /* PVRTModelPOD.h */,
+				17A3EA7C135A25D80022BAD8 /* PVRTools.h */,
+				17A3EA7D135A25D80022BAD8 /* PVRTPFXParser.cpp */,
+				17A3EA7E135A25D80022BAD8 /* PVRTPFXParser.h */,
+				17A3EA7F135A25D80022BAD8 /* PVRTQuaternion.h */,
+				17A3EA80135A25D80022BAD8 /* PVRTQuaternionF.cpp */,
+				17A3EA81135A25D80022BAD8 /* PVRTQuaternionX.cpp */,
+				17A3EA82135A25D80022BAD8 /* PVRTResourceFile.cpp */,
+				17A3EA83135A25D80022BAD8 /* PVRTResourceFile.h */,
+				17A3EA84135A25D80022BAD8 /* PVRTShadowVol.cpp */,
+				17A3EA85135A25D80022BAD8 /* PVRTShadowVol.h */,
+				17A3EA86135A25D80022BAD8 /* PVRTSingleton.h */,
+				17A3EA87135A25D80022BAD8 /* PVRTString.cpp */,
+				17A3EA88135A25D80022BAD8 /* PVRTString.h */,
+				17A3EA89135A25D80022BAD8 /* PVRTTexture.cpp */,
+				17A3EA8A135A25D80022BAD8 /* PVRTTexture.h */,
+				17A3EA8B135A25D80022BAD8 /* PVRTTrans.cpp */,
+				17A3EA8C135A25D80022BAD8 /* PVRTTrans.h */,
+				17A3EA8D135A25D80022BAD8 /* PVRTTriStrip.cpp */,
+				17A3EA8E135A25D80022BAD8 /* PVRTTriStrip.h */,
+				17A3EA8F135A25D80022BAD8 /* PVRTVector.cpp */,
+				17A3EA90135A25D80022BAD8 /* PVRTVector.h */,
+				17A3EA91135A25D80022BAD8 /* PVRTVertex.cpp */,
+				17A3EA92135A25D80022BAD8 /* PVRTVertex.h */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		17BE172F132E92A100D053BA /* billboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -3308,6 +3367,7 @@
 				17F1D67412F87EC5008D39E8 /* containers */,
 				17F1D68312F87EC5008D39E8 /* core */,
 				17F1D6AE12F87EC5008D39E8 /* events */,
+				17A3E60D135A18B90022BAD8 /* importers */,
 				17F1D6C912F87EC5008D39E8 /* lights */,
 				17F1D6CE12F87EC5008D39E8 /* materials */,
 				17F1D6D712F87EC5008D39E8 /* math */,
@@ -3684,16 +3744,6 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		17F1D85712F88A2F008D39E8 /* isgl3dpodimporter */ = {
-			isa = PBXGroup;
-			children = (
-				17F1D85812F88A2F008D39E8 /* Isgl3dPODImporter.h */,
-				17F1D85912F88A2F008D39E8 /* Isgl3dPODImporter.mm */,
-				17F1D85A12F88A2F008D39E8 /* README */,
-			);
-			path = isgl3dpodimporter;
-			sourceTree = "<group>";
-		};
 		17F1D86512F88A5A008D39E8 /* isgl3dbullet */ = {
 			isa = PBXGroup;
 			children = (
@@ -3711,71 +3761,10 @@
 		17F1D88512F88AD8008D39E8 /* external */ = {
 			isa = PBXGroup;
 			children = (
+				17A3EA64135A25D80022BAD8 /* PowerVR */,
 				171CB9D513196FE7003712F4 /* bullet */,
-				17F1D88612F88AD8008D39E8 /* PowerVR */,
 			);
 			path = external;
-			sourceTree = "<group>";
-		};
-		17F1D88612F88AD8008D39E8 /* PowerVR */ = {
-			isa = PBXGroup;
-			children = (
-				17F1D88712F88AD8008D39E8 /* LICENSE.IMGTEC */,
-				17F1D88812F88AD8008D39E8 /* Tools */,
-			);
-			path = PowerVR;
-			sourceTree = "<group>";
-		};
-		17F1D88812F88AD8008D39E8 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				17F1D88912F88AD8008D39E8 /* PVRTBackground.h */,
-				17F1D88A12F88AD8008D39E8 /* PVRTBoneBatch.cpp */,
-				17F1D88B12F88AD8008D39E8 /* PVRTBoneBatch.h */,
-				17F1D88C12F88AD8008D39E8 /* PVRTContext.h */,
-				17F1D88D12F88AD8008D39E8 /* PVRTDecompress.cpp */,
-				17F1D88E12F88AD8008D39E8 /* PVRTDecompress.h */,
-				17F1D88F12F88AD8008D39E8 /* PVRTError.cpp */,
-				17F1D89012F88AD8008D39E8 /* PVRTError.h */,
-				17F1D89112F88AD8008D39E8 /* PVRTFixedPoint.cpp */,
-				17F1D89212F88AD8008D39E8 /* PVRTFixedPoint.h */,
-				17F1D89312F88AD8008D39E8 /* PVRTGeometry.cpp */,
-				17F1D89412F88AD8008D39E8 /* PVRTGeometry.h */,
-				17F1D89512F88AD8008D39E8 /* PVRTGlobal.h */,
-				17F1D89612F88AD8008D39E8 /* PVRTMathTable.h */,
-				17F1D89712F88AD8008D39E8 /* PVRTMatrix.h */,
-				17F1D89812F88AD8008D39E8 /* PVRTMatrixF.cpp */,
-				17F1D89912F88AD8008D39E8 /* PVRTMatrixX.cpp */,
-				17F1D89A12F88AD8008D39E8 /* PVRTMemoryFileSystem.h */,
-				17F1D89B12F88AD8008D39E8 /* PVRTMisc.cpp */,
-				17F1D89C12F88AD8008D39E8 /* PVRTMisc.h */,
-				17F1D89D12F88AD8008D39E8 /* PVRTModelPOD.cpp */,
-				17F1D89E12F88AD8008D39E8 /* PVRTModelPOD.h */,
-				17F1D89F12F88AD8008D39E8 /* PVRTools.h */,
-				17F1D8A012F88AD8008D39E8 /* PVRTPFXParser.cpp */,
-				17F1D8A112F88AD8008D39E8 /* PVRTPFXParser.h */,
-				17F1D8A212F88AD8008D39E8 /* PVRTQuaternion.h */,
-				17F1D8A312F88AD8008D39E8 /* PVRTQuaternionF.cpp */,
-				17F1D8A412F88AD8008D39E8 /* PVRTQuaternionX.cpp */,
-				17F1D8A512F88AD8008D39E8 /* PVRTResourceFile.cpp */,
-				17F1D8A612F88AD8008D39E8 /* PVRTResourceFile.h */,
-				17F1D8A712F88AD8008D39E8 /* PVRTShadowVol.cpp */,
-				17F1D8A812F88AD8008D39E8 /* PVRTShadowVol.h */,
-				17F1D8A912F88AD8008D39E8 /* PVRTSingleton.h */,
-				17F1D8AA12F88AD8008D39E8 /* PVRTString.cpp */,
-				17F1D8AB12F88AD8008D39E8 /* PVRTString.h */,
-				17F1D8AC12F88AD8008D39E8 /* PVRTTexture.cpp */,
-				17F1D8AD12F88AD8008D39E8 /* PVRTTexture.h */,
-				17F1D8AE12F88AD8008D39E8 /* PVRTTrans.cpp */,
-				17F1D8AF12F88AD8008D39E8 /* PVRTTrans.h */,
-				17F1D8B012F88AD8008D39E8 /* PVRTTriStrip.cpp */,
-				17F1D8B112F88AD8008D39E8 /* PVRTTriStrip.h */,
-				17F1D8B212F88AD8008D39E8 /* PVRTVector.cpp */,
-				17F1D8B312F88AD8008D39E8 /* PVRTVector.h */,
-				17F1D8B412F88AD8008D39E8 /* PVRTVertex.cpp */,
-				17F1D8B512F88AD8008D39E8 /* PVRTVertex.h */,
-			);
-			path = Tools;
 			sourceTree = "<group>";
 		};
 		17F1E05A12F88FFA008D39E8 /* Resources */ = {
@@ -3857,43 +3846,10 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		17C04FD31326BA9D001C96CF /* Headers */ = {
+		17A3E642135A1C380022BAD8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17F1D85012F88A14008D39E8 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17F1D85B12F88A2F008D39E8 /* Isgl3dPODImporter.h in Headers */,
-				17F1D8B612F88AD8008D39E8 /* PVRTBackground.h in Headers */,
-				17F1D8B812F88AD8008D39E8 /* PVRTBoneBatch.h in Headers */,
-				17F1D8B912F88AD8008D39E8 /* PVRTContext.h in Headers */,
-				17F1D8BB12F88AD8008D39E8 /* PVRTDecompress.h in Headers */,
-				17F1D8BD12F88AD8008D39E8 /* PVRTError.h in Headers */,
-				17F1D8BF12F88AD8008D39E8 /* PVRTFixedPoint.h in Headers */,
-				17F1D8C112F88AD8008D39E8 /* PVRTGeometry.h in Headers */,
-				17F1D8C212F88AD8008D39E8 /* PVRTGlobal.h in Headers */,
-				17F1D8C312F88AD8008D39E8 /* PVRTMathTable.h in Headers */,
-				17F1D8C412F88AD8008D39E8 /* PVRTMatrix.h in Headers */,
-				17F1D8C712F88AD8008D39E8 /* PVRTMemoryFileSystem.h in Headers */,
-				17F1D8C912F88AD8008D39E8 /* PVRTMisc.h in Headers */,
-				17F1D8CB12F88AD8008D39E8 /* PVRTModelPOD.h in Headers */,
-				17F1D8CC12F88AD8008D39E8 /* PVRTools.h in Headers */,
-				17F1D8CE12F88AD8008D39E8 /* PVRTPFXParser.h in Headers */,
-				17F1D8CF12F88AD8008D39E8 /* PVRTQuaternion.h in Headers */,
-				17F1D8D312F88AD8008D39E8 /* PVRTResourceFile.h in Headers */,
-				17F1D8D512F88AD8008D39E8 /* PVRTShadowVol.h in Headers */,
-				17F1D8D612F88AD8008D39E8 /* PVRTSingleton.h in Headers */,
-				17F1D8D812F88AD8008D39E8 /* PVRTString.h in Headers */,
-				17F1D8DA12F88AD8008D39E8 /* PVRTTexture.h in Headers */,
-				17F1D8DC12F88AD8008D39E8 /* PVRTTrans.h in Headers */,
-				17F1D8DE12F88AD8008D39E8 /* PVRTTriStrip.h in Headers */,
-				17F1D8E012F88AD8008D39E8 /* PVRTVector.h in Headers */,
-				17F1D8E212F88AD8008D39E8 /* PVRTVertex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4196,6 +4152,32 @@
 				1713BB4C1358D6F7002C3288 /* matrix_impl.h in Headers */,
 				1713BB4E1358D6F7002C3288 /* utility_impl.h in Headers */,
 				1713BB501358D6F7002C3288 /* vfp_clobbers.h in Headers */,
+				17A3E611135A18B90022BAD8 /* Isgl3dPODImporter.h in Headers */,
+				17A3EA93135A25D80022BAD8 /* PVRTBackground.h in Headers */,
+				17A3EA95135A25D80022BAD8 /* PVRTBoneBatch.h in Headers */,
+				17A3EA96135A25D80022BAD8 /* PVRTContext.h in Headers */,
+				17A3EA98135A25D80022BAD8 /* PVRTDecompress.h in Headers */,
+				17A3EA9A135A25D80022BAD8 /* PVRTError.h in Headers */,
+				17A3EA9C135A25D80022BAD8 /* PVRTFixedPoint.h in Headers */,
+				17A3EA9E135A25D80022BAD8 /* PVRTGeometry.h in Headers */,
+				17A3EA9F135A25D80022BAD8 /* PVRTGlobal.h in Headers */,
+				17A3EAA0135A25D80022BAD8 /* PVRTMathTable.h in Headers */,
+				17A3EAA1135A25D80022BAD8 /* PVRTMatrix.h in Headers */,
+				17A3EAA4135A25D80022BAD8 /* PVRTMemoryFileSystem.h in Headers */,
+				17A3EAA6135A25D80022BAD8 /* PVRTMisc.h in Headers */,
+				17A3EAA8135A25D80022BAD8 /* PVRTModelPOD.h in Headers */,
+				17A3EAA9135A25D80022BAD8 /* PVRTools.h in Headers */,
+				17A3EAAB135A25D80022BAD8 /* PVRTPFXParser.h in Headers */,
+				17A3EAAC135A25D80022BAD8 /* PVRTQuaternion.h in Headers */,
+				17A3EAB0135A25D80022BAD8 /* PVRTResourceFile.h in Headers */,
+				17A3EAB2135A25D80022BAD8 /* PVRTShadowVol.h in Headers */,
+				17A3EAB3135A25D80022BAD8 /* PVRTSingleton.h in Headers */,
+				17A3EAB5135A25D80022BAD8 /* PVRTString.h in Headers */,
+				17A3EAB7135A25D80022BAD8 /* PVRTTexture.h in Headers */,
+				17A3EAB9135A25D80022BAD8 /* PVRTTrans.h in Headers */,
+				17A3EABB135A25D80022BAD8 /* PVRTTriStrip.h in Headers */,
+				17A3EABD135A25D80022BAD8 /* PVRTVector.h in Headers */,
+				17A3EABF135A25D80022BAD8 /* PVRTVertex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4394,7 +4376,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				173121D412FB592900861D84 /* PBXTargetDependency */,
 				173121B412FB58A000861D84 /* PBXTargetDependency */,
 			);
 			name = PODTest;
@@ -4449,7 +4430,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				173122D712FC7B9300861D84 /* PBXTargetDependency */,
 				173122D912FC7B9300861D84 /* PBXTargetDependency */,
 			);
 			name = SkinningTest;
@@ -4565,6 +4545,48 @@
 			productReference = 17801A5F131A955A0045803F /* Occlusion.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17A3E643135A1C380022BAD8 /* build all */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17A3E649135A1C380022BAD8 /* Build configuration list for PBXNativeTarget "build all" */;
+			buildPhases = (
+				17A3E640135A1C380022BAD8 /* Sources */,
+				17A3E641135A1C380022BAD8 /* Frameworks */,
+				17A3E642135A1C380022BAD8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17A3E64D135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E64F135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E651135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E653135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E655135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E657135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E659135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E65B135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E65D135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E65F135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E661135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E663135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E665135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E667135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E669135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E66B135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E66D135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E66F135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E671135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E673135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E675135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E677135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E679135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E67B135A1C540022BAD8 /* PBXTargetDependency */,
+				17A3E67D135A1C540022BAD8 /* PBXTargetDependency */,
+			);
+			name = "build all";
+			productName = "build all";
+			productReference = 17A3E644135A1C380022BAD8 /* libbuild all.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		17AD09D113434FD7005F5F7F /* ViewportTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17AD09EC13434FD7005F5F7F /* Build configuration list for PBXNativeTarget "ViewportTest" */;
@@ -4600,65 +4622,6 @@
 			productName = CameraZoomAndFocus;
 			productReference = 17BE1790132E98B100D053BA /* BillboardTest.app */;
 			productType = "com.apple.product-type.application";
-		};
-		17C04FD61326BA9D001C96CF /* build all */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 17C050081326BAE6001C96CF /* Build configuration list for PBXNativeTarget "build all" */;
-			buildPhases = (
-				17C04FD31326BA9D001C96CF /* Headers */,
-				17C04FD41326BA9D001C96CF /* Sources */,
-				17C04FD51326BA9D001C96CF /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1713BB081358B649002C3288 /* PBXTargetDependency */,
-				1713BB0A1358B649002C3288 /* PBXTargetDependency */,
-				17C04FDB1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FDD1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FDF1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FE11326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FE31326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FE51326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FE71326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FE91326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FEB1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FED1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FEF1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FF11326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FF31326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FF51326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FF71326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FF91326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FFB1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FFD1326BAB4001C96CF /* PBXTargetDependency */,
-				17C04FFF1326BAB4001C96CF /* PBXTargetDependency */,
-				17C050011326BAB4001C96CF /* PBXTargetDependency */,
-				17C050031326BAB4001C96CF /* PBXTargetDependency */,
-				17BE178F132E98B000D053BA /* PBXTargetDependency */,
-				17AD09F6134352BF005F5F7F /* PBXTargetDependency */,
-			);
-			name = "build all";
-			productName = "build all";
-			productReference = 17C04FD71326BA9D001C96CF /* libbuild all.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		17F1D85312F88A14008D39E8 /* isgl3dpodimporter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 17F1D85D12F88A2F008D39E8 /* Build configuration list for PBXNativeTarget "isgl3dpodimporter" */;
-			buildPhases = (
-				17F1D85012F88A14008D39E8 /* Headers */,
-				17F1D85112F88A14008D39E8 /* Sources */,
-				17F1D85212F88A14008D39E8 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = isgl3dpodimporter;
-			productName = isgl3dpodimporter;
-			productReference = 17F1D85412F88A14008D39E8 /* libisgl3dpodimporter.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 		17F1D86112F88A4A008D39E8 /* isgl3dbullet */ = {
 			isa = PBXNativeTarget;
@@ -4769,9 +4732,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17C04FD61326BA9D001C96CF /* build all */,
+				17A3E643135A1C380022BAD8 /* build all */,
 				D2AAC07D0554694100DB518D /* isgl3d */,
-				17F1D85312F88A14008D39E8 /* isgl3dpodimporter */,
 				17F1D86112F88A4A008D39E8 /* isgl3dbullet */,
 				17F1E06A12F89091008D39E8 /* Accelerometer */,
 				17F7A83C12FA0BB000C7BB82 /* CameraMovement */,
@@ -5505,6 +5467,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17A3E640135A1C380022BAD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17AD09DF13434FD7005F5F7F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5526,41 +5495,6 @@
 				17BE1759132E94E400D053BA /* main.m in Sources */,
 				17BE176B132E95BD00D053BA /* BillboardTestView.m in Sources */,
 				1733548513408C38000F26F0 /* Isgl3dAppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17C04FD41326BA9D001C96CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17F1D85112F88A14008D39E8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17F1D85C12F88A2F008D39E8 /* Isgl3dPODImporter.mm in Sources */,
-				17F1D8B712F88AD8008D39E8 /* PVRTBoneBatch.cpp in Sources */,
-				17F1D8BA12F88AD8008D39E8 /* PVRTDecompress.cpp in Sources */,
-				17F1D8BC12F88AD8008D39E8 /* PVRTError.cpp in Sources */,
-				17F1D8BE12F88AD8008D39E8 /* PVRTFixedPoint.cpp in Sources */,
-				17F1D8C012F88AD8008D39E8 /* PVRTGeometry.cpp in Sources */,
-				17F1D8C512F88AD8008D39E8 /* PVRTMatrixF.cpp in Sources */,
-				17F1D8C612F88AD8008D39E8 /* PVRTMatrixX.cpp in Sources */,
-				17F1D8C812F88AD8008D39E8 /* PVRTMisc.cpp in Sources */,
-				17F1D8CA12F88AD8008D39E8 /* PVRTModelPOD.cpp in Sources */,
-				17F1D8CD12F88AD8008D39E8 /* PVRTPFXParser.cpp in Sources */,
-				17F1D8D012F88AD8008D39E8 /* PVRTQuaternionF.cpp in Sources */,
-				17F1D8D112F88AD8008D39E8 /* PVRTQuaternionX.cpp in Sources */,
-				17F1D8D212F88AD8008D39E8 /* PVRTResourceFile.cpp in Sources */,
-				17F1D8D412F88AD8008D39E8 /* PVRTShadowVol.cpp in Sources */,
-				17F1D8D712F88AD8008D39E8 /* PVRTString.cpp in Sources */,
-				17F1D8D912F88AD8008D39E8 /* PVRTTexture.cpp in Sources */,
-				17F1D8DB12F88AD8008D39E8 /* PVRTTrans.cpp in Sources */,
-				17F1D8DD12F88AD8008D39E8 /* PVRTTriStrip.cpp in Sources */,
-				17F1D8DF12F88AD8008D39E8 /* PVRTVector.cpp in Sources */,
-				17F1D8E112F88AD8008D39E8 /* PVRTVertex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5833,6 +5767,27 @@
 				1713BB4A1358D6F7002C3288 /* neon_matrix_impl.m in Sources */,
 				1713BB4D1358D6F7002C3288 /* matrix_impl.m in Sources */,
 				1713BB4F1358D6F7002C3288 /* utility_impl.m in Sources */,
+				17A3E612135A18B90022BAD8 /* Isgl3dPODImporter.mm in Sources */,
+				17A3EA94135A25D80022BAD8 /* PVRTBoneBatch.cpp in Sources */,
+				17A3EA97135A25D80022BAD8 /* PVRTDecompress.cpp in Sources */,
+				17A3EA99135A25D80022BAD8 /* PVRTError.cpp in Sources */,
+				17A3EA9B135A25D80022BAD8 /* PVRTFixedPoint.cpp in Sources */,
+				17A3EA9D135A25D80022BAD8 /* PVRTGeometry.cpp in Sources */,
+				17A3EAA2135A25D80022BAD8 /* PVRTMatrixF.cpp in Sources */,
+				17A3EAA3135A25D80022BAD8 /* PVRTMatrixX.cpp in Sources */,
+				17A3EAA5135A25D80022BAD8 /* PVRTMisc.cpp in Sources */,
+				17A3EAA7135A25D80022BAD8 /* PVRTModelPOD.cpp in Sources */,
+				17A3EAAA135A25D80022BAD8 /* PVRTPFXParser.cpp in Sources */,
+				17A3EAAD135A25D80022BAD8 /* PVRTQuaternionF.cpp in Sources */,
+				17A3EAAE135A25D80022BAD8 /* PVRTQuaternionX.cpp in Sources */,
+				17A3EAAF135A25D80022BAD8 /* PVRTResourceFile.cpp in Sources */,
+				17A3EAB1135A25D80022BAD8 /* PVRTShadowVol.cpp in Sources */,
+				17A3EAB4135A25D80022BAD8 /* PVRTString.cpp in Sources */,
+				17A3EAB6135A25D80022BAD8 /* PVRTTexture.cpp in Sources */,
+				17A3EAB8135A25D80022BAD8 /* PVRTTrans.cpp in Sources */,
+				17A3EABA135A25D80022BAD8 /* PVRTTriStrip.cpp in Sources */,
+				17A3EABC135A25D80022BAD8 /* PVRTVector.cpp in Sources */,
+				17A3EABE135A25D80022BAD8 /* PVRTVertex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5848,16 +5803,6 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 1713BAE41358AFF6002C3288 /* PBXContainerItemProxy */;
-		};
-		1713BB081358B649002C3288 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1713BABD1357979B002C3288 /* FollowCamera */;
-			targetProxy = 1713BB071358B649002C3288 /* PBXContainerItemProxy */;
-		};
-		1713BB0A1358B649002C3288 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1713BAE21358AFF6002C3288 /* SpringCamera */;
-			targetProxy = 1713BB091358B649002C3288 /* PBXContainerItemProxy */;
 		};
 		171CB84C13195C65003712F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5909,11 +5854,6 @@
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 173121B512FB58A000861D84 /* PBXContainerItemProxy */;
 		};
-		173121D412FB592900861D84 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17F1D85312F88A14008D39E8 /* isgl3dpodimporter */;
-			targetProxy = 173121D312FB592900861D84 /* PBXContainerItemProxy */;
-		};
 		1731225912FC764100861D84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
@@ -5923,11 +5863,6 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 1731229D12FC797300861D84 /* PBXContainerItemProxy */;
-		};
-		173122D712FC7B9300861D84 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17F1D85312F88A14008D39E8 /* isgl3dpodimporter */;
-			targetProxy = 173122D812FC7B9300861D84 /* PBXContainerItemProxy */;
 		};
 		173122D912FC7B9300861D84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5969,130 +5904,140 @@
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17801A48131A955A0045803F /* PBXContainerItemProxy */;
 		};
+		17A3E64D135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F1E06A12F89091008D39E8 /* Accelerometer */;
+			targetProxy = 17A3E64C135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E64F135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F7A83C12FA0BB000C7BB82 /* CameraMovement */;
+			targetProxy = 17A3E64E135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E651135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1762371712F9CE06008CDB4B /* CameraZoomAndFocus */;
+			targetProxy = 17A3E650135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E653135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F7A87012FA0D6100C7BB82 /* Lighting */;
+			targetProxy = 17A3E652135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E655135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17801A46131A955A0045803F /* Occlusion */;
+			targetProxy = 17A3E654135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E657135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731213D12FB3D6500861D84 /* ParticleSystem */;
+			targetProxy = 17A3E656135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E659135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731217812FB562900861D84 /* PhysicsTest */;
+			targetProxy = 17A3E658135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E65B135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173121B312FB58A000861D84 /* PODTest */;
+			targetProxy = 17A3E65A135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E65D135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731225812FC764100861D84 /* PrimitivesDemo */;
+			targetProxy = 17A3E65C135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E65F135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731229B12FC797300861D84 /* ShadowMappingTest */;
+			targetProxy = 17A3E65E135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E661135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173122D612FC7B9300861D84 /* SkinningTest */;
+			targetProxy = 17A3E660135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E663135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731232012FC7DFA00861D84 /* TerrainMeshTest */;
+			targetProxy = 17A3E662135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E665135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1731237412FC82BD00861D84 /* TextureOptionsTest */;
+			targetProxy = 17A3E664135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E667135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173123A212FC841000861D84 /* TweeningDemo */;
+			targetProxy = 17A3E666135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E669135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 173123EC12FD627B00861D84 /* UIDemo */;
+			targetProxy = 17A3E668135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E66B135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB84913195C65003712F4 /* CubeOverCamera */;
+			targetProxy = 17A3E66A135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E66D135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB8D713196403003712F4 /* Tutorial1 */;
+			targetProxy = 17A3E66C135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E66F135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB90913196613003712F4 /* Tutorial2 */;
+			targetProxy = 17A3E66E135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E671135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB92F131966E7003712F4 /* Tutorial3 */;
+			targetProxy = 17A3E670135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E673135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB951131967C1003712F4 /* Tutorial4 */;
+			targetProxy = 17A3E672135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E675135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 171CB97C13196880003712F4 /* Tutorial5 */;
+			targetProxy = 17A3E674135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E677135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17BE1746132E94E400D053BA /* BillboardTest */;
+			targetProxy = 17A3E676135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E679135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17AD09D113434FD7005F5F7F /* ViewportTest */;
+			targetProxy = 17A3E678135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E67B135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1713BABD1357979B002C3288 /* FollowCamera */;
+			targetProxy = 17A3E67A135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
+		17A3E67D135A1C540022BAD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1713BAE21358AFF6002C3288 /* SpringCamera */;
+			targetProxy = 17A3E67C135A1C540022BAD8 /* PBXContainerItemProxy */;
+		};
 		17AD09D213434FD7005F5F7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17AD09D313434FD7005F5F7F /* PBXContainerItemProxy */;
 		};
-		17AD09F6134352BF005F5F7F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17AD09D113434FD7005F5F7F /* ViewportTest */;
-			targetProxy = 17AD09F5134352BF005F5F7F /* PBXContainerItemProxy */;
-		};
 		17BE1747132E94E400D053BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17BE1748132E94E400D053BA /* PBXContainerItemProxy */;
-		};
-		17BE178F132E98B000D053BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17BE1746132E94E400D053BA /* BillboardTest */;
-			targetProxy = 17BE178E132E98B000D053BA /* PBXContainerItemProxy */;
-		};
-		17C04FDB1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17F1E06A12F89091008D39E8 /* Accelerometer */;
-			targetProxy = 17C04FDA1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FDD1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17F7A83C12FA0BB000C7BB82 /* CameraMovement */;
-			targetProxy = 17C04FDC1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FDF1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1762371712F9CE06008CDB4B /* CameraZoomAndFocus */;
-			targetProxy = 17C04FDE1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FE11326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17F7A87012FA0D6100C7BB82 /* Lighting */;
-			targetProxy = 17C04FE01326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FE31326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 17801A46131A955A0045803F /* Occlusion */;
-			targetProxy = 17C04FE21326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FE51326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1731213D12FB3D6500861D84 /* ParticleSystem */;
-			targetProxy = 17C04FE41326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FE71326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1731217812FB562900861D84 /* PhysicsTest */;
-			targetProxy = 17C04FE61326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FE91326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 173121B312FB58A000861D84 /* PODTest */;
-			targetProxy = 17C04FE81326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FEB1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1731225812FC764100861D84 /* PrimitivesDemo */;
-			targetProxy = 17C04FEA1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FED1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1731229B12FC797300861D84 /* ShadowMappingTest */;
-			targetProxy = 17C04FEC1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FEF1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 173122D612FC7B9300861D84 /* SkinningTest */;
-			targetProxy = 17C04FEE1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FF11326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1731232012FC7DFA00861D84 /* TerrainMeshTest */;
-			targetProxy = 17C04FF01326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FF31326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1731237412FC82BD00861D84 /* TextureOptionsTest */;
-			targetProxy = 17C04FF21326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FF51326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 173123A212FC841000861D84 /* TweeningDemo */;
-			targetProxy = 17C04FF41326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FF71326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 173123EC12FD627B00861D84 /* UIDemo */;
-			targetProxy = 17C04FF61326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FF91326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 171CB84913195C65003712F4 /* CubeOverCamera */;
-			targetProxy = 17C04FF81326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FFB1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 171CB8D713196403003712F4 /* Tutorial1 */;
-			targetProxy = 17C04FFA1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FFD1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 171CB90913196613003712F4 /* Tutorial2 */;
-			targetProxy = 17C04FFC1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C04FFF1326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 171CB92F131966E7003712F4 /* Tutorial3 */;
-			targetProxy = 17C04FFE1326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C050011326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 171CB951131967C1003712F4 /* Tutorial4 */;
-			targetProxy = 17C050001326BAB4001C96CF /* PBXContainerItemProxy */;
-		};
-		17C050031326BAB4001C96CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 171CB97C13196880003712F4 /* Tutorial5 */;
-			targetProxy = 17C050021326BAB4001C96CF /* PBXContainerItemProxy */;
 		};
 		17F1E07E12F89333008D39E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7095,6 +7040,38 @@
 			};
 			name = Release;
 		};
+		17A3E64A135A1C380022BAD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/build_all.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "build all/build all-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		17A3E64B135A1C380022BAD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/build_all.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "build all/build all-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		17AD09ED13434FD7005F5F7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -7189,60 +7166,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = BillboardTest;
 				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
-				SDKROOT = iphoneos;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		17C04FD81326BA9D001C96CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PREBINDING = NO;
-				PRODUCT_NAME = "build all";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		17C04FD91326BA9D001C96CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PREBINDING = NO;
-				PRODUCT_NAME = "build all";
-				SDKROOT = iphoneos;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		17F1D85512F88A14008D39E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PREBINDING = NO;
-				PRODUCT_NAME = isgl3dpodimporter;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		17F1D85612F88A14008D39E8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PREBINDING = NO;
-				PRODUCT_NAME = isgl3dpodimporter;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -7671,6 +7594,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		17A3E649135A1C380022BAD8 /* Build configuration list for PBXNativeTarget "build all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17A3E64A135A1C380022BAD8 /* Debug */,
+				17A3E64B135A1C380022BAD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		17AD09EC13434FD7005F5F7F /* Build configuration list for PBXNativeTarget "ViewportTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -7685,24 +7616,6 @@
 			buildConfigurations = (
 				17BE1763132E94E400D053BA /* Debug */,
 				17BE1764132E94E400D053BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		17C050081326BAE6001C96CF /* Build configuration list for PBXNativeTarget "build all" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				17C04FD81326BA9D001C96CF /* Debug */,
-				17C04FD91326BA9D001C96CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		17F1D85D12F88A2F008D39E8 /* Build configuration list for PBXNativeTarget "isgl3dpodimporter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				17F1D85512F88A14008D39E8 /* Debug */,
-				17F1D85612F88A14008D39E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

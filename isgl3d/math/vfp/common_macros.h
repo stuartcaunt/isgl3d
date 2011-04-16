@@ -44,12 +44,6 @@ not be misrepresented as being the original software.
 
 #define NO_THUMB
 
-#ifndef NO_THUMB
-#warning "Compiling in Thumb Mode. Mode switches activated."
-#else
-#warning "Compiling in ARM mode. Mode switches deactivated."
-#endif
-
 // Switches to from THUMB to ARM mode.
 #ifndef NO_THUMB
   #define VFP_SWITCH_TO_ARM ".align 4               \n\t" \

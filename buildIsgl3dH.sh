@@ -34,82 +34,13 @@ echoHeader() {
 	echo "" >> $1
 }
 
-
-generate_library_plist() {
-	TEMPLATES_DIR_SRC=templates/xcode4
-	LIBRARY_TEMPLATE_DIR=iSGL3D\ Library.xctemplate
-	LIBRARY_TEMPLATE_PLIST=$TEMPLATES_DIR_SRC/$LIBRARY_TEMPLATE_DIR/TemplateInfo.plist
-	LIBS_DIR=libs
-
-	echo "<?xml version="1.0" encoding="UTF-8"?>" > "$LIBRARY_TEMPLATE_PLIST"
-	echo "<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "<plist version="1.0">" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "<dict>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<key>Identifier</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<string>com.isgl3d.library</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<key>Kind</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<key>Definitions</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<dict>" >> "$LIBRARY_TEMPLATE_PLIST"
-	
-	
-	for file in $(find $BASE_DIR -name *.h -or -name *.m -or -name *.c -or -name *.mm)
-	do
-		echo "		<key>$LIBS_DIR/$file</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "		<dict>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "			<key>Group</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "			<array>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "				<string>$LIBS_DIR</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-		
-		path=`dirname $file`
-		directory=${path%%/*}
-		while [ $directory != $path ]
-		do
-			echo "				<string>$directory</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-			path=${path#*/}
-			directory=${path%%/*}
-		done
-		
-		echo "				<string>$path</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "			</array>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "			<key>Path</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-		echo "			<string>$LIBS_DIR/$file</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-		
-		extension=${file##*.}
-		hExt="h"	
-		if [ $extension == $hExt ];
-		then
-			echo "			<key>TargetIndices</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-			echo "			<array/>" >> "$LIBRARY_TEMPLATE_PLIST"
-		fi
-		
-		echo "		</dict>" >> "$LIBRARY_TEMPLATE_PLIST"
-	done
-	
-	echo "	</dict>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<key>Nodes</key>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "	<array>" >> "$LIBRARY_TEMPLATE_PLIST"
-	
-	for file in $(find $BASE_DIR -name *.h -or -name *.m -or -name *.c -or -name *.mm)
-	do
-		echo "		<string>$LIBS_DIR/$file</string>" >> "$LIBRARY_TEMPLATE_PLIST"
-	done
-	
-	echo "	</array>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "</dict>" >> "$LIBRARY_TEMPLATE_PLIST"
-	echo "</plist>" >> "$LIBRARY_TEMPLATE_PLIST"
-}
-
-
 rm $BASE_DIR/isgl3d.h
 rm $BASE_DIR/isgl3d.m
 rm $FRAMEWORK_DIR/isgl3d.h
 
 # header 
 echoHeader $BASE_DIR/isgl3d.h
-for file in $(find $BASE_DIR -name *.h -not -name isgl3d.h)
+for file in $(find $BASE_DIR -name *.h -not -name isgl3d.h -not -name Isgl3dPODImporter.h)
 do
 
 	newFile=$(echo $file | sed 's/isgl3d\///g')
@@ -130,13 +61,12 @@ echo "" >> $BASE_DIR/isgl3d.m
 
 # framework isgl3d.h
 echoHeader $FRAMEWORK_DIR/isgl3d.h
-for file in $(find $BASE_DIR -name Isgl3d*.h -not -name isgl3d.h)
+for file in $(find $BASE_DIR -name Isgl3d*.h -not -name isgl3d.h -not -name Isgl3dPODImporter.h)
 do
 
 	newFile=$(echo $file | sed 's!.*/!!')
 	echo "#import <isgl3d/$newFile>" >> $FRAMEWORK_DIR/isgl3d.h
 done
 
-
 # Generate Xcode4 template library plist
-generate_library_plist
+./buildTemplatePlist.sh

@@ -3,6 +3,7 @@
 ISGL3D_VERSION="iSGL3D v`cat Version`"
 
 BASE_DIR=isgl3d
+POWERVR_DIR=external/PowerVR
 LIBS_DIR=libs
 
 TEMPLATES_DIR_SRC=templates/xcode4
@@ -80,5 +81,9 @@ copy_files Resources/Shaders "$TEMPLATES_DIR_DEST/$BASE_TEMPLATE_DIR/Resources"
 # copy library files
 echo ...copying library files
 copy_files $BASE_DIR "$TEMPLATES_DIR_DEST/$LIBRARY_TEMPLATE_DIR/$LIBS_DIR"
+
+# copy library files
+echo ...copying external files
+copy_files $POWERVR_DIR "$TEMPLATES_DIR_DEST/$LIBRARY_TEMPLATE_DIR"/external
 
 echo done!
