@@ -1928,7 +1928,6 @@
 		179F876E133FC68E007F4671 /* Isgl3dFpsRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dFpsRenderer.m; sourceTree = "<group>"; };
 		17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPODImporter.h; sourceTree = "<group>"; };
 		17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPODImporter.mm; sourceTree = "<group>"; };
-		17A3E610135A18B90022BAD8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		17A3E644135A1C380022BAD8 /* libbuild all.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libbuild all.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A3E648135A1C380022BAD8 /* build all-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "build all-Prefix.pch"; sourceTree = "<group>"; };
 		17A3EA66135A25D80022BAD8 /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
@@ -3259,7 +3258,6 @@
 			children = (
 				17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */,
 				17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */,
-				17A3E610135A18B90022BAD8 /* README */,
 			);
 			path = importers;
 			sourceTree = "<group>";

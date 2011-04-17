@@ -34,7 +34,7 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dQuaternion.h"
 
-static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE;
+static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
 @interface Isgl3dNode ()
 - (void) updateEulerAngles;
@@ -605,11 +605,11 @@ static unsigned int Isgl3dNode_OcclusionMode = OCCLUSION_MODE_QUAD_DISTANCE_AND_
 }
 
 
-+ (void) setOcclusionMode:(unsigned int)mode {
++ (void) setOcclusionMode:(Isgl3dOcclusionMode)mode {
 	Isgl3dNode_OcclusionMode = mode;
 }
 
-+ (unsigned int) occlusionMode {
++ (Isgl3dOcclusionMode) occlusionMode {
 	return Isgl3dNode_OcclusionMode;
 }
 

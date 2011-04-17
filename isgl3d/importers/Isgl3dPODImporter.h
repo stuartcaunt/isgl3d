@@ -33,19 +33,32 @@
 @class Isgl3dLight;
 
 /**
- * The Isgl3dPODImporter provides an example of how to import POWERVR POD data into iSGL3D.
+ * The Isgl3dPODImporter provides an example of how to obtain data from a POWERVR POD
+ * scene data file and convert the data into iSGL3D objects.
  * 
  * Essentially, the Isgl3dPODImporter provides an interface to the POWERVR POD importer tools available from
  * the Imagination Technologies Limited, POWERVR SDK (http://www.imgtec.com/powervr/insider/powervr-sdk.asp),
  * of which some of the C++ tools classes are contained here in the pvrtools directory with kind permission 
  * of Imagination Technologies Limited.
  * 
- * With this importer, full scene details can be retrieved and reproduced in iSGL3D (including meshes and
- * materials, cameras and lighting).
+ * With this importer, full scene details can be retrieved and reproduced in iSGL3D including:
+ * <ul>
+ * <li>Simple non-animated meshes</li>
+ * <li>Animated (skinned) meshes</li>
+ * <li>Bones forming a skeleton</li>
+ * <li>Texture and color materials</li>
+ * <li>Lights</li>
+ * <li>Cameras</li>
+ * </ul>
  * 
  * For meshes and materials, skinning data is obtained from the pod as are bones. Both animated meshes and
- * bones (or rather joints) can be rendered. Texture names contained in the POD data can be overridden
- * to use user-defined textures.
+ * bones (or rather joints) can be rendered. 
+ * 
+ * Texture names contained in the POD data can be overridden to use user-defined textures.
+ * 
+ * Note, Isgl3dPODImporter.h is not included in the main isgl3d.h file to avoid compilation errors arising
+ * from the use of C++ classes.
+ *  
  */
 @interface Isgl3dPODImporter : NSObject {
 	

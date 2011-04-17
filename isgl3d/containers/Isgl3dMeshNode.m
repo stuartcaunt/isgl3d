@@ -154,19 +154,19 @@
 	if (occlusionAngleFactor < 1 && occlusionAngleFactor >= 0 && occlusionDistanceFactor < 0.999 && occlusionDistanceFactor > 0.0001) {
 		float occlusionEffect = 0.0;
 		
-		if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE) {
+		if ([Isgl3dNode occlusionMode] == Isgl3dOcclusionQuadDistanceAndAngle) {
 			occlusionEffect = (1.0 - occlusionDistanceFactor * occlusionDistanceFactor) * (1.0 - occlusionAngleFactor);
 			
-		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_DISTANCE_AND_ANGLE) {
+		} else if ([Isgl3dNode occlusionMode] == Isgl3dOcclusionDistanceAndAngle) {
 			occlusionEffect = (1.0 - occlusionDistanceFactor) * (1.0 - occlusionAngleFactor);
 			
-		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_QUAD_DISTANCE) {
+		} else if ([Isgl3dNode occlusionMode] == Isgl3dOcclusionQuadDistance) {
 			occlusionEffect = 1.0 - occlusionDistanceFactor * occlusionDistanceFactor;
 			
-		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_DISTANCE) {
+		} else if ([Isgl3dNode occlusionMode] == Isgl3dOcclusionDistance) {
 			occlusionEffect = 1.0 - occlusionDistanceFactor;
 			
-		} else if ([Isgl3dNode occlusionMode] == OCCLUSION_MODE_ANGLE) {
+		} else if ([Isgl3dNode occlusionMode] == Isgl3dOcclusionAngle) {
 			occlusionEffect = 1.0 - occlusionAngleFactor;
 		} 
 

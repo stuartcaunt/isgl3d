@@ -53,7 +53,7 @@
 
 - (void) tick:(float)dt {
 	// Rotate the cube by 1 degree about its y-axis
-	[_cube rotate:1 x:0 y:1 z:0];
+	_cube.rotationY += 1;
 }
 
 @end

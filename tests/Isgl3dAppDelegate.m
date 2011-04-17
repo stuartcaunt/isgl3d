@@ -62,7 +62,7 @@
 	_viewController.view = glView;
 
 	// Add view to window and make visible
-	[_window addSubview:_viewController.view];
+	[_window addSubview:glView];
 	[_window makeKeyAndVisible];
 
 	// Creates the view(s) and adds them to the director

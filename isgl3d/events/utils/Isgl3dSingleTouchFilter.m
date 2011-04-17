@@ -58,7 +58,6 @@
 }
 
 - (void) dealloc {
-	
 	[_listeners release];
 	
     [super dealloc];
@@ -73,7 +72,8 @@
 - (void) touchesBegan:(Isgl3dEvent3D *)event {
 	if (_eventId == nil) {
 		UITouch * touch = [[event.touches allObjects] objectAtIndex:0];
-		_eventId = NSStringFromCGPoint([touch locationInView:touch.view]);
+		// do not remove retain : _eventId released otherwise
+		_eventId = [NSStringFromCGPoint([touch locationInView:touch.view]) retain];
 		
 		[self handleEvent:touch forEventType:TOUCH_EVENT];
 	}
@@ -85,7 +85,9 @@
 		for (UITouch * touch in event.touches) {
 
 			if ([_eventId isEqualToString:NSStringFromCGPoint([touch previousLocationInView:touch.view])]) {
-				_eventId = NSStringFromCGPoint([touch locationInView:touch.view]);
+                [_eventId release];
+				// do not remove retain : _eventId released otherwise
+				_eventId = [NSStringFromCGPoint([touch locationInView:touch.view]) retain];
 		
 				[self handleEvent:touch forEventType:MOVE_EVENT];
 				return;
@@ -97,7 +99,6 @@
 - (void) touchesEnded:(Isgl3dEvent3D *)event {
 	if (_eventId != nil) {
 		for (UITouch * touch in event.touches) {
-			
 			if ([_eventId isEqualToString:NSStringFromCGPoint([touch previousLocationInView:touch.view])]) {
 				// Try previous location
 				[_eventId release];

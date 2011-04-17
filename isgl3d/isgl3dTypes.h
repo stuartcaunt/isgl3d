@@ -57,3 +57,14 @@ typedef enum {
 	Isgl3dTexturePrecisionHigh
 } Isgl3dTexturePrecision;
 
+/**
+ * Occlusion modes
+ */
+typedef enum {
+	Isgl3dOcclusionQuadDistanceAndAngle = 0,
+	Isgl3dOcclusionDistanceAndAngle,
+	Isgl3dOcclusionQuadDistance,
+	Isgl3dOcclusionDistance,
+	Isgl3dOcclusionAngle
+} Isgl3dOcclusionMode;
+

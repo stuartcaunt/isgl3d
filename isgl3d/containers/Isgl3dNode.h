@@ -22,16 +22,11 @@
  * THE SOFTWARE.
  *
  */
-#define OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE 0
-#define OCCLUSION_MODE_DISTANCE_AND_ANGLE 1
-#define OCCLUSION_MODE_QUAD_DISTANCE 2
-#define OCCLUSION_MODE_DISTANCE 3
-#define OCCLUSION_MODE_ANGLE 4
-
 
 #import "Isgl3dEvent3DDispatcher.h"
 #import "Isgl3dVector.h"
 #import "Isgl3dMatrix.h"
+#import "isgl3dTypes.h"
 
 @class Isgl3dMeshNode;
 @class Isgl3dSkeletonNode;
@@ -486,22 +481,22 @@
  * Sets the mode of occlusion. The mode determines how the alpha value is calculated, relating to the distance
  * to the target and the angle from the vector between the observer and the target. the following modes are available
  * <ul>
- * <li>OCCLUSION_MODE_QUAD_DISTANCE_AND_ANGLE: Occlusion alpha calculated from quadratic distance and angle.</li>
- * <li>OCCLUSION_MODE_DISTANCE_AND_ANGLE: Occlusion alpha calculated from linear distance and angle.</li>
- * <li>OCCLUSION_MODE_QUAD_DISTANCE: Occlusion alpha calculated from quadratic distance only.</li>
- * <li>OCCLUSION_MODE_DISTANCE: Occlusion alpha calculated from linear distance only.</li>
- * <li>OCCLUSION_MODE_ANGLE: Occlusion alpha calculated from angle only.</li>
+ * <li>Isgl3dOcclusionQuadDistanceAndAngle: Occlusion alpha calculated from quadratic distance and angle.</li>
+ * <li>Isgl3dOcclusionDistanceAndAngle: Occlusion alpha calculated from linear distance and angle.</li>
+ * <li>Isgl3dOcclusionQuadDistance: Occlusion alpha calculated from quadratic distance only.</li>
+ * <li>Isgl3dOcclusionDistance: Occlusion alpha calculated from linear distance only.</li>
+ * <li>Isgl3dOcclusionAngle: Occlusion alpha calculated from angle only.</li>
  * </ul>
  * The occlusion mode is static, therefore the same for all nodes in the scene.
  * @param mode The mode of occlusion.
  */
-+ (void) setOcclusionMode:(unsigned int)mode;
++ (void) setOcclusionMode:(Isgl3dOcclusionMode)mode;
 
 /**
  * Returns the current occlusion mode.
  * @return the occlusion mode. 
  */
-+ (unsigned int) occlusionMode;
++ (Isgl3dOcclusionMode) occlusionMode;
 
 /**
  * Sets whether the node casts shadows and iterates over children with the same value.

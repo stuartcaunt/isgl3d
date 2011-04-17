@@ -1,4 +1,6 @@
 current SVN version
+	Isgl3dNode: use enums for occlusion mode
+	Isgl3dSingleTouchFilter: fix bug in eventIds being released too early
 	Isgl3dPODImporter: moved into main isgl3d target (keep .h from isgl3d.h to remove objective-m compilation errors)
 	Added Xcode 4 templates, updated Xcode 3 templates
 	Added demos for spring and follow cameras
