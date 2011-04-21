@@ -633,6 +633,29 @@
 		173D5D2C132421E30092D2EE /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
 		173D5D2D132421E30092D2EE /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
 		173D5D2E132421E30092D2EE /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		175535921360B4B700C593E3 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		175535931360B4B700C593E3 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		175535941360B4B700C593E3 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		175535951360B4B700C593E3 /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		175535961360B4B700C593E3 /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		175535971360B4B700C593E3 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		175535981360B4B700C593E3 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		175535991360B4B700C593E3 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		1755359A1360B4B700C593E3 /* BeachBall.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F112F9CA87008CDB4B /* BeachBall.png */; };
+		1755359F1360B4B700C593E3 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		175535A01360B4B700C593E3 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		175535A11360B4B700C593E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		175535A31360B4B700C593E3 /* Isgl3dAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.m */; };
+		175535A51360B4B700C593E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		175535A61360B4B700C593E3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		175535A71360B4B700C593E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		175535A81360B4B700C593E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		175535A91360B4B700C593E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		175535AA1360B4B700C593E3 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		175535AB1360B4B700C593E3 /* libisgl3dbullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17F1D86212F88A4A008D39E8 /* libisgl3dbullet.a */; };
+		175535B81360B53C00C593E3 /* TerrainPhysicsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 175535B71360B53C00C593E3 /* TerrainPhysicsView.mm */; };
+		175535B91360B59A00C593E3 /* RaceTrack1Path_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731235B12FC7EEC00861D84 /* RaceTrack1Path_512.png */; };
+		175535BA1360B59C00C593E3 /* RaceTrack1Terrain_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731233D12FC7E5200861D84 /* RaceTrack1Terrain_1024.png */; };
 		1756F4DC1347874000205D76 /* Isgl3dVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 1756F4DA1347874000205D76 /* Isgl3dVector.h */; };
 		1756F5441347A5AD00205D76 /* Isgl3dMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */; };
 		176236CF12F9C92F008CDB4B /* libisgl3dbullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17F1D86212F88A4A008D39E8 /* libisgl3dbullet.a */; };
@@ -1256,6 +1279,20 @@
 			remoteInfo = isgl3d;
 		};
 		173123EE12FD627B00861D84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		1755358E1360B4B700C593E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F1D86112F88A4A008D39E8;
+			remoteInfo = isgl3dbullet;
+		};
+		175535901360B4B700C593E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -1897,6 +1934,9 @@
 		1733548713408D34000F26F0 /* Isgl3dAppDelegateWithCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAppDelegateWithCamera.m; sourceTree = "<group>"; };
 		173354981340B82F000F26F0 /* Isgl3dEAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dEAGLView.h; sourceTree = "<group>"; };
 		173354991340B82F000F26F0 /* Isgl3dEAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dEAGLView.m; sourceTree = "<group>"; };
+		175535AF1360B4B700C593E3 /* TerrainPhysics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrainPhysics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		175535B61360B53C00C593E3 /* TerrainPhysicsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainPhysicsView.h; sourceTree = "<group>"; };
+		175535B71360B53C00C593E3 /* TerrainPhysicsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TerrainPhysicsView.mm; sourceTree = "<group>"; };
 		1756F4DA1347874000205D76 /* Isgl3dVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dVector.h; sourceTree = "<group>"; };
 		1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix.h; sourceTree = "<group>"; };
 		176236F012F9CA87008CDB4B /* angle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angle.png; sourceTree = "<group>"; };
@@ -2449,6 +2489,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		175535A41360B4B700C593E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				175535A51360B4B700C593E3 /* CoreGraphics.framework in Frameworks */,
+				175535A61360B4B700C593E3 /* OpenGLES.framework in Frameworks */,
+				175535A71360B4B700C593E3 /* QuartzCore.framework in Frameworks */,
+				175535A81360B4B700C593E3 /* UIKit.framework in Frameworks */,
+				175535A91360B4B700C593E3 /* Foundation.framework in Frameworks */,
+				175535AA1360B4B700C593E3 /* libisgl3d.a in Frameworks */,
+				175535AB1360B4B700C593E3 /* libisgl3dbullet.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1762371612F9CE06008CDB4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2597,6 +2651,7 @@
 				1713BADB1357979B002C3288 /* FollowCamera.app */,
 				1713BB001358AFF6002C3288 /* FollowCamera copy.app */,
 				17A3E644135A1C380022BAD8 /* libbuild all.a */,
+				175535AF1360B4B700C593E3 /* TerrainPhysics.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3086,6 +3141,8 @@
 		1731219012FB566A00861D84 /* physics */ = {
 			isa = PBXGroup;
 			children = (
+				175535B61360B53C00C593E3 /* TerrainPhysicsView.h */,
+				175535B71360B53C00C593E3 /* TerrainPhysicsView.mm */,
 				1731219112FB566A00861D84 /* PhysicsTestView.h */,
 				1731219212FB566A00861D84 /* PhysicsTestView.mm */,
 			);
@@ -4507,6 +4564,25 @@
 			productReference = 1731240112FD627B00861D84 /* UIDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1755358C1360B4B700C593E3 /* TerrainPhysics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 175535AC1360B4B700C593E3 /* Build configuration list for PBXNativeTarget "TerrainPhysics" */;
+			buildPhases = (
+				175535911360B4B700C593E3 /* Resources */,
+				1755359E1360B4B700C593E3 /* Sources */,
+				175535A41360B4B700C593E3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1755358D1360B4B700C593E3 /* PBXTargetDependency */,
+				1755358F1360B4B700C593E3 /* PBXTargetDependency */,
+			);
+			name = TerrainPhysics;
+			productName = CameraZoomAndFocus;
+			productReference = 175535AF1360B4B700C593E3 /* TerrainPhysics.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1762371712F9CE06008CDB4B /* CameraZoomAndFocus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1762371D12F9CE07008CDB4B /* Build configuration list for PBXNativeTarget "CameraZoomAndFocus" */;
@@ -4758,6 +4834,7 @@
 				17AD09D113434FD7005F5F7F /* ViewportTest */,
 				1713BABD1357979B002C3288 /* FollowCamera */,
 				1713BAE21358AFF6002C3288 /* SpringCamera */,
+				1755358C1360B4B700C593E3 /* TerrainPhysics */,
 			);
 		};
 /* End PBXProject section */
@@ -5108,6 +5185,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		175535911360B4B700C593E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				175535921360B4B700C593E3 /* capture.fsh in Resources */,
+				175535931360B4B700C593E3 /* capture.vsh in Resources */,
+				175535941360B4B700C593E3 /* generic.fsh in Resources */,
+				175535951360B4B700C593E3 /* generic.vsh in Resources */,
+				175535961360B4B700C593E3 /* particle.fsh in Resources */,
+				175535971360B4B700C593E3 /* particle.vsh in Resources */,
+				175535981360B4B700C593E3 /* shadowMap.fsh in Resources */,
+				175535991360B4B700C593E3 /* shadowMap.vsh in Resources */,
+				175535B91360B59A00C593E3 /* RaceTrack1Path_512.png in Resources */,
+				175535BA1360B59C00C593E3 /* RaceTrack1Terrain_1024.png in Resources */,
+				1755359A1360B4B700C593E3 /* BeachBall.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1762371412F9CE06008CDB4B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5439,6 +5534,18 @@
 				1731240712FD62B200861D84 /* UITestView.m in Sources */,
 				17AD09BF13426EFA005F5F7F /* Isgl3dDemoCameraController.m in Sources */,
 				1733547E13408C38000F26F0 /* Isgl3dAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1755359E1360B4B700C593E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1755359F1360B4B700C593E3 /* Isgl3dDemoCameraController.m in Sources */,
+				175535A01360B4B700C593E3 /* Isgl3dViewController.m in Sources */,
+				175535A11360B4B700C593E3 /* main.m in Sources */,
+				175535A31360B4B700C593E3 /* Isgl3dAppDelegate.m in Sources */,
+				175535B81360B53C00C593E3 /* TerrainPhysicsView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5886,6 +5993,16 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 173123EE12FD627B00861D84 /* PBXContainerItemProxy */;
+		};
+		1755358D1360B4B700C593E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17F1D86112F88A4A008D39E8 /* isgl3dbullet */;
+			targetProxy = 1755358E1360B4B700C593E3 /* PBXContainerItemProxy */;
+		};
+		1755358F1360B4B700C593E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 175535901360B4B700C593E3 /* PBXContainerItemProxy */;
 		};
 		176236E712F9C9FB008CDB4B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6940,6 +7057,56 @@
 			};
 			name = Release;
 		};
+		175535AD1360B4B700C593E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "external/bullet/**";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TerrainPhysics;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		175535AE1360B4B700C593E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TerrainPhysics;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		1762371B12F9CE07008CDB4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -7574,6 +7741,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		175535AC1360B4B700C593E3 /* Build configuration list for PBXNativeTarget "TerrainPhysics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				175535AD1360B4B700C593E3 /* Debug */,
+				175535AE1360B4B700C593E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1762371D12F9CE07008CDB4B /* Build configuration list for PBXNativeTarget "CameraZoomAndFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -7599,6 +7775,7 @@
 				17A3E64B135A1C380022BAD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17AD09EC13434FD7005F5F7F /* Build configuration list for PBXNativeTarget "ViewportTest" */ = {
 			isa = XCConfigurationList;
