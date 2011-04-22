@@ -36,7 +36,7 @@
 @interface TerrainPhysicsView ()
 - (void) createSphere;
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution isFalling:(BOOL)isFalling;
-- (btCollisionShape *) createTerrainShapeFromFile:(NSString *)terrainDataFile nx:(unsigned int)nx ny:(unsigned int)ny channel:(unsigned int)channel height:(float)height;
+- (btCollisionShape *) createTerrainShapeFromFile:(NSString *)terrainDataFile width:(float)width depth:(float)depth nx:(unsigned int)nx ny:(unsigned int)ny channel:(unsigned int)channel height:(float)height;
 - (UIImage *) loadImage:(NSString *)path;
 @end
 
@@ -73,7 +73,7 @@
 		_terrain = [_physicsWorld createNodeWithMesh:terrainMesh andMaterial:textureMaterial];
 
 		// Create terrain physics object
-		btCollisionShape * terrainShape = [self createTerrainShapeFromFile:@"RaceTrack1Path_512.png" nx:32 ny:32 channel:2 height:10];
+		btCollisionShape * terrainShape = [self createTerrainShapeFromFile:@"RaceTrack1Path_512.png" width:32 depth:32 nx:64 ny:64 channel:2 height:10];
 		[self createPhysicsObject:_terrain shape:terrainShape mass:0 restitution:0.6 isFalling:NO];
 
 		// Create elements for falling spheres
@@ -152,7 +152,7 @@
 	[_cameraController update];
 }
 
-- (btCollisionShape *) createTerrainShapeFromFile:(NSString *)terrainDataFile nx:(unsigned int)nx ny:(unsigned int)ny channel:(unsigned int)channel height:(float)height {
+- (btCollisionShape *) createTerrainShapeFromFile:(NSString *)terrainDataFile width:(float)width depth:(float)depth nx:(unsigned int)nx ny:(unsigned int)ny channel:(unsigned int)channel height:(float)height {
 	// Create UIImage
 	UIImage * terrainDataImage = [self loadImage:terrainDataFile];
 	
@@ -193,8 +193,11 @@
 	}		
 	
 
-	btHeightfieldTerrainShape * groundShape = new btHeightfieldTerrainShape(heightDataNx, heightDataNy, _terrainHeightData, 1.0, -0.5 * height, 0.5 * height, 1, PHY_FLOAT, false);
-	groundShape->setUseDiamondSubdivision(true);
+	// Create height field shape:
+	//  Use identical min and max values to align zero of physics object with rendered zero
+	//  Use margin in max height to ensure all terrain data is rendered up to max value
+	btHeightfieldTerrainShape * groundShape = new btHeightfieldTerrainShape(heightDataNx, heightDataNy, _terrainHeightData, 1.0, -1.0 * height, 1.0 * height, 1, PHY_FLOAT, false);
+	groundShape->setLocalScaling(btVector3(width / nx, 1.f, depth / ny));
 	free (pixelData);
 	
 	return groundShape;	
