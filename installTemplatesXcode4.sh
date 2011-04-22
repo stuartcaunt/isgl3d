@@ -7,7 +7,7 @@ POWERVR_DIR=external/PowerVR
 LIBS_DIR=libs
 
 TEMPLATES_DIR_SRC=templates/xcode4
-TEMPLATES_DIR_DEST=~/Library/Developer/Xcode/Templates
+TEMPLATES_DIR_DEST=~/Library/Developer/Xcode/Templates/$ISGL3D_VERSION
 
 BASE_TEMPLATE_DIR=iSGL3D\ Base.xctemplate
 APPLICATION_TEMPLATE_DIR=iSGL3D\ Application.xctemplate
