@@ -38,7 +38,6 @@
 @class Isgl3dMaterial;
 @class Isgl3dGLMesh;
 @class Isgl3dGLParticle;
-@class Isgl3dBillboard;
 @class Isgl3dGLRenderer;
 
 /**
@@ -332,8 +331,6 @@
  */
 - (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 
-
-
 /**
  * Reset's the local transformation.
  */
@@ -429,11 +426,11 @@
 
 /**
  * Utility method to create an Isgl3dBillboardNode and add it as a child.
- * @param billboard The billboard to be rendered.
- * @param material The material to be displayed on the particle.
+ * @param billboard The mesh to be rendered.
+ * @param material The material to be displayed on the mesh.
  * @return (autorelease) The created node.
  */
-- (Isgl3dBillboardNode *) createNodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material;
+- (Isgl3dBillboardNode *) createBillboardNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Utility method to create an Isgl3dSkeletonNode and add it as a child.

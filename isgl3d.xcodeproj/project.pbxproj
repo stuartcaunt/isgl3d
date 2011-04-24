@@ -908,8 +908,6 @@
 		17B7228212F8C8C000F80DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
 		17B7228412F8C8C000F80DFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		17B7228F12F8C9E000F80DFD /* AccelerometerDemoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */; };
-		17BE1732132E92A100D053BA /* Isgl3dBillboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BE1730132E92A100D053BA /* Isgl3dBillboard.h */; };
-		17BE1733132E92A100D053BA /* Isgl3dBillboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE1731132E92A100D053BA /* Isgl3dBillboard.m */; };
 		17BE1736132E92AF00D053BA /* Isgl3dBillboardNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */; };
 		17BE1737132E92AF00D053BA /* Isgl3dBillboardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */; };
 		17BE174A132E94E400D053BA /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
@@ -2028,8 +2026,6 @@
 		17B7228312F8C8C000F80DFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		17B7228D12F8C9E000F80DFD /* AccelerometerDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerDemoView.h; sourceTree = "<group>"; };
 		17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AccelerometerDemoView.mm; sourceTree = "<group>"; };
-		17BE1730132E92A100D053BA /* Isgl3dBillboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dBillboard.h; sourceTree = "<group>"; };
-		17BE1731132E92A100D053BA /* Isgl3dBillboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dBillboard.m; sourceTree = "<group>"; };
 		17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dBillboardNode.h; sourceTree = "<group>"; };
 		17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dBillboardNode.m; sourceTree = "<group>"; };
 		17BE1769132E95BD00D053BA /* BillboardTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillboardTestView.h; sourceTree = "<group>"; };
@@ -3395,15 +3391,6 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		17BE172F132E92A100D053BA /* billboards */ = {
-			isa = PBXGroup;
-			children = (
-				17BE1730132E92A100D053BA /* Isgl3dBillboard.h */,
-				17BE1731132E92A100D053BA /* Isgl3dBillboard.m */,
-			);
-			path = billboards;
-			sourceTree = "<group>";
-		};
 		17BE1768132E95BD00D053BA /* billboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -3417,7 +3404,6 @@
 			isa = PBXGroup;
 			children = (
 				17F1D66212F87EC5008D39E8 /* animators */,
-				17BE172F132E92A100D053BA /* billboards */,
 				17F1D66D12F87EC5008D39E8 /* cameras */,
 				17F1D67412F87EC5008D39E8 /* containers */,
 				17F1D68312F87EC5008D39E8 /* core */,
@@ -4188,7 +4174,6 @@
 				17F1D82612F87EC5008D39E8 /* Isgl3dFloatArray.h in Headers */,
 				17F1D82A12F87EC5008D39E8 /* Isgl3dLog.h in Headers */,
 				17F1D82C12F87EC5008D39E8 /* Isgl3dUShortArray.h in Headers */,
-				17BE1732132E92A100D053BA /* Isgl3dBillboard.h in Headers */,
 				17BE1736132E92AF00D053BA /* Isgl3dBillboardNode.h in Headers */,
 				179F86E5133E67A5007F4671 /* Isgl3dDirector.h in Headers */,
 				179F86EB133E67BB007F4671 /* Isgl3dScheduler.h in Headers */,
@@ -5856,7 +5841,6 @@
 				17F1D82712F87EC5008D39E8 /* Isgl3dFloatArray.m in Sources */,
 				17F1D82B12F87EC5008D39E8 /* Isgl3dLog.m in Sources */,
 				17F1D82D12F87EC5008D39E8 /* Isgl3dUShortArray.m in Sources */,
-				17BE1733132E92A100D053BA /* Isgl3dBillboard.m in Sources */,
 				17BE1737132E92AF00D053BA /* Isgl3dBillboardNode.m in Sources */,
 				179F86E6133E67A5007F4671 /* Isgl3dDirector.m in Sources */,
 				179F86EC133E67BB007F4671 /* Isgl3dScheduler.m in Sources */,

@@ -286,16 +286,28 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 - (void) pitch:(float)angle {
+	if (_rotationMatrixDirty) {
+		[self updateRotationMatrix];
+	}
+
 	Isgl3dVector3 axis = im4MultVector3x3(&_localTransformation, &Isgl3dVector3Right);
 	[self rotate:angle x:axis.x y:axis.y z:axis.z];
 }
 
 - (void) yaw:(float)angle {
+	if (_rotationMatrixDirty) {
+		[self updateRotationMatrix];
+	}
+
 	Isgl3dVector3 axis = im4MultVector3x3(&_localTransformation, &Isgl3dVector3Up);
 	[self rotate:angle x:axis.x y:axis.y z:axis.z];
 }
 
 - (void) roll:(float)angle {
+	if (_rotationMatrixDirty) {
+		[self updateRotationMatrix];
+	}
+
 	Isgl3dVector3 axis = im4MultVector3x3(&_localTransformation, &Isgl3dVector3Backward);
 	[self rotate:angle x:axis.x y:axis.y z:axis.z];
 }
@@ -483,8 +495,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	return (Isgl3dParticleNode *)[self addChild:[Isgl3dParticleNode nodeWithParticle:particle andMaterial:material]];
 }
 
-- (Isgl3dBillboardNode *) createNodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
-	return (Isgl3dBillboardNode *)[self addChild:[Isgl3dBillboardNode nodeWithBillboard:billboard andMaterial:material]];
+- (Isgl3dBillboardNode *) createBillboardNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
+	return (Isgl3dBillboardNode *)[self addChild:[Isgl3dBillboardNode nodeWithMesh:mesh andMaterial:material]];
 }
 
 - (Isgl3dSkeletonNode *) createSkeletonNode {

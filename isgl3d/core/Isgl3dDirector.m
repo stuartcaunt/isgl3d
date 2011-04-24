@@ -63,6 +63,7 @@ static Isgl3dDirector * _instance = nil;
 @synthesize contentScaleFactor = _contentScaleFactor;
 @synthesize retinaDisplayEnabled = _retinaDisplayEnabled;
 @synthesize deltaTime = _dt;
+@synthesize activeCamera = _activeCamera;
 
 - (id) init {
 	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
@@ -497,11 +498,6 @@ static Isgl3dDirector * _instance = nil;
 	// Update all timers
 	if (!_isPaused) {
 		[[Isgl3dScheduler sharedInstance] tick:_dt];	
-
-		// Update model transformations in all view
-		for (Isgl3dView * view in _views) {
-			[view updateModelMatrices];
-		}
 	}
 	
 	// Render all views
@@ -540,6 +536,14 @@ static Isgl3dDirector * _instance = nil;
 
 	// Render scenes in all views
 	for (Isgl3dView * view in _views) {
+		// Set active camera
+		_activeCamera = view.camera;
+		
+		// Update model transformations of view
+		if (!_isPaused) {
+			[view updateModelMatrices];
+		}
+		
 		// Render view scene
 		[view render:_renderer];
 	}

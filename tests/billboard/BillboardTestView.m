@@ -33,22 +33,20 @@
 	if ((self = [super init])) {
 		// Create and configure touch-screen camera controller
 		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
-		_cameraController.orbit = 17;
+		_cameraController.orbit = 30;
 		_cameraController.theta = 30;
 		_cameraController.phi = 10;
 		_cameraController.doubleTapEnabled = NO;
 
 		// Create billboards
 		Isgl3dTextureMaterial * textureMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"billboard.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
-		Isgl3dBillboard * billboard = [Isgl3dBillboard billboard];
-		billboard.size = 64;
-		[billboard setAttenuation:0 linear:0 quadratic:0.01];
+		Isgl3dGLMesh * billboardMesh = [Isgl3dPlane meshWithGeometry:4 height:3 nx:2 ny:2];
 		
 		for (int k = 0; k < 3; k++) {
 			for (int j = 0; j < 3; j++) {
 				for (int i = 0; i < 3; i++) {
-					Isgl3dBillboardNode * node = [self.scene createNodeWithBillboard:billboard andMaterial:textureMaterial];
-					node.position = iv3(((i - 1.0) * 4), ((j - 1.0) * 4), ((k - 1.0) * 4));
+					Isgl3dBillboardNode * node = [self.scene createBillboardNodeWithMesh:billboardMesh andMaterial:textureMaterial];
+					node.position = iv3(((i - 1.0) * 8), ((j - 1.0) * 8), ((k - 1.0) * 8));
 				}
 			}		
 		}		

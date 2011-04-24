@@ -28,7 +28,6 @@
 #import "animators/Isgl3dBoneBatch.h"
 #import "animators/Isgl3dBoneNode.h"
 #import "animators/Isgl3dSkeletonNode.h"
-#import "billboards/Isgl3dBillboard.h"
 #import "cameras/Isgl3dCamera.h"
 #import "cameras/Isgl3dFollowCamera.h"
 #import "cameras/Isgl3dSpringCamera.h"

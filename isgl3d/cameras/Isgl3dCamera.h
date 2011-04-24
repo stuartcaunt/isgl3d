@@ -84,10 +84,7 @@
 	
 	Isgl3dVector3 _lookAt;
 	
-	float _upX;
-	float _upY;
-	float _upZ;
-	
+	Isgl3dVector3 _up;
 	Isgl3dVector3 _initialCameraPosition;
 	Isgl3dVector3 _initialCameraLookAt;
 	
@@ -122,6 +119,12 @@
  * A call to reset on the camera will make the camera look-at this position.
  */
 @property (nonatomic) Isgl3dVector3 initialCameraLookAt;
+
+/**
+ * The up vector of the camera. 
+ * A call to reset on the camera will make the camera have this up vector.
+ */
+@property (nonatomic) Isgl3dVector3 up;
 
 /**
  * The current view matrix.

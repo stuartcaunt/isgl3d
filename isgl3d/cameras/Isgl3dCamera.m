@@ -37,6 +37,7 @@
 @synthesize projectionMatrix = _projectionMatrix;
 @synthesize initialCameraPosition = _initialCameraPosition;
 @synthesize initialCameraLookAt = _initialCameraLookAt;
+@synthesize up = _up;
 @synthesize isPerspective = _isPerspective;
 @synthesize aspect = _aspect;
 @synthesize width = _width;
@@ -76,10 +77,7 @@
 		iv3Fill(&_lookAt, lookAtX, lookAtY, lookAtZ);
 		iv3Fill(&_initialCameraPosition, x, y, z);
 		iv3Copy(&_initialCameraLookAt, &_lookAt);
-		
-		_upX = upX;
-		_upY = upY;
-		_upZ = upZ;
+		iv3Fill(&_up, upX, upY, upZ);		
 		
 		_zoom = 1;
 		_isPerspective = YES;
@@ -223,12 +221,12 @@
 
 - (void) setLookAt:(Isgl3dVector3)lookAt {
 	iv3Copy(&_lookAt, &lookAt);
-	_transformationDirty = YES;
+	_localTransformationDirty = YES;
 }
 
 - (void) lookAt:(float)x y:(float)y z:(float)z {
 	iv3Fill(&_lookAt, x, y, z);
-	_transformationDirty = YES;
+	_localTransformationDirty = YES;
 }
 
 - (Isgl3dVector3) getLookAt {
@@ -257,25 +255,25 @@
 - (void) translateLookAt:(float)x y:(float)y z:(float)z {
 	iv3Translate(&_lookAt, x, y, z);
 
-	_transformationDirty = YES;
+	_localTransformationDirty = YES;
 }
 
 - (void) rotateLookAtOnX:(float)angle centerY:(float)centerY centerZ:(float)centerZ {
 	iv3RotateX(&_lookAt, angle, centerY, centerZ);
 
-	_transformationDirty = YES;
+	_localTransformationDirty = YES;
 }
 
 - (void) rotateLookAtOnY:(float)angle centerX:(float)centerX centerZ:(float)centerZ {
 	iv3RotateY(&_lookAt, angle, centerX, centerZ);
 
-	_transformationDirty = YES;
+	_localTransformationDirty = YES;
 }
 
 - (void) rotateLookAtOnZ:(float)angle centerX:(float)centerX centerY:(float)centerY  {
 	iv3RotateZ(&_lookAt, angle, centerX, centerY);
 
-	_transformationDirty = YES;
+	_localTransformationDirty = YES;
 }
 
 - (float) getDistanceToLookAt {
@@ -293,15 +291,13 @@
 }
 
 - (void) setUpX:(float)x y:(float)y z:(float)z {
-	_upX = x;
-	_upY = y;
-	_upZ = z;
-	_transformationDirty = YES;
+	iv3Fill(&_up, x, y, z);		
+	_localTransformationDirty = YES;
 }
 
 - (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 
-	BOOL calculateViewMatrix = _transformationDirty;
+	BOOL calculateViewMatrix = (_localTransformationDirty || _transformationDirty);
 	[super updateWorldTransformation:parentTransformation];
 
 	if (calculateViewMatrix) {
@@ -315,7 +311,7 @@
 	
 	_viewMatrix = [Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
 				  centerx:_lookAt.x centery:_lookAt.y centerz:_lookAt.z 
-				  upx:_upX upy:_upY upz:_upZ];
+				  upx:_up.x upy:_up.y upz:_up.z];
 }
 
 @end

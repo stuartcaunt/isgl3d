@@ -24,26 +24,32 @@
  */
 
 #import "Isgl3dBillboardNode.h"
-#import "Isgl3dMaterial.h"
-#import "Isgl3dBillboard.h"
+#import "Isgl3dDirector.h"
+#import "Isgl3dCamera.h"
 
 @implementation Isgl3dBillboardNode
 
-+ (id) nodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
-	return [[[self alloc] initWithBillboard:billboard andMaterial:material] autorelease];
-}
-
-
-- (id) initWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material {
-    if ((self = [super initWithParticle:billboard andMaterial:material])) {
-    }
+- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+	// Modify rotation to face camera : use inverted view matrix
+	Isgl3dCamera * camera = [Isgl3dDirector sharedInstance].activeCamera;
+	Isgl3dMatrix4 viewMatrix = camera.viewMatrix;
+	im4Invert3x3(&viewMatrix);
 	
-    return self;
-}
+	_localTransformation.sxx = viewMatrix.sxx * _scaleX;
+	_localTransformation.sxy = viewMatrix.sxy * _scaleX;
+	_localTransformation.sxz = viewMatrix.sxz * _scaleX;
+	_localTransformation.syx = viewMatrix.syx * _scaleY;
+	_localTransformation.syy = viewMatrix.syy * _scaleY;
+	_localTransformation.syz = viewMatrix.syz * _scaleY;
+	_localTransformation.szx = viewMatrix.szx * _scaleZ;
+	_localTransformation.szy = viewMatrix.szy * _scaleZ;
+	_localTransformation.szz = viewMatrix.szz * _scaleZ;
 
-- (void) dealloc {
+	_localTransformationDirty = YES;
+	_rotationMatrixDirty = NO;
+	_eulerAnglesDirty = YES;
 	
-	[super dealloc];
+	[super updateWorldTransformation:parentTransformation];
 }
 
 @end

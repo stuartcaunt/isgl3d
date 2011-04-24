@@ -129,30 +129,6 @@
 			<key>Path</key>
 			<string>libs/isgl3d/animators/Isgl3dSkeletonNode.m</string>
 		</dict>
-		<key>libs/isgl3d/billboards/Isgl3dBillboard.h</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>libs</string>
-				<string>isgl3d</string>
-				<string>billboards</string>
-			</array>
-			<key>Path</key>
-			<string>libs/isgl3d/billboards/Isgl3dBillboard.h</string>
-			<key>TargetIndices</key>
-			<array/>
-		</dict>
-		<key>libs/isgl3d/billboards/Isgl3dBillboard.m</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>libs</string>
-				<string>isgl3d</string>
-				<string>billboards</string>
-			</array>
-			<key>Path</key>
-			<string>libs/isgl3d/billboards/Isgl3dBillboard.m</string>
-		</dict>
 		<key>libs/isgl3d/cameras/Isgl3dCamera.h</key>
 		<dict>
 			<key>Group</key>
@@ -3283,8 +3259,6 @@
 		<string>libs/isgl3d/animators/Isgl3dBoneNode.m</string>
 		<string>libs/isgl3d/animators/Isgl3dSkeletonNode.h</string>
 		<string>libs/isgl3d/animators/Isgl3dSkeletonNode.m</string>
-		<string>libs/isgl3d/billboards/Isgl3dBillboard.h</string>
-		<string>libs/isgl3d/billboards/Isgl3dBillboard.m</string>
 		<string>libs/isgl3d/cameras/Isgl3dCamera.h</string>
 		<string>libs/isgl3d/cameras/Isgl3dCamera.m</string>
 		<string>libs/isgl3d/cameras/Isgl3dFollowCamera.h</string>

@@ -1,4 +1,7 @@
 current SVN version
+	Isgl3dBillboardNode: modified to use meshes instead of particles. Use Isgl3dParticleNode for previous functionality.
+	Isgl3dBillboard: removed. Use Isgl3dBillboardNode with any mesh
+	TerrainPhysicsView: added demo of using a bullet height field terrain
 	Isgl3dNode: use enums for occlusion mode
 	Isgl3dSingleTouchFilter: fix bug in eventIds being released too early
 	Isgl3dPODImporter: moved into main isgl3d target (keep .h from isgl3d.h to remove objective-m compilation errors)

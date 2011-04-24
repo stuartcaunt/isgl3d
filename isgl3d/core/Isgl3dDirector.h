@@ -33,6 +33,7 @@
 @class Isgl3dGLRenderer;
 @class Isgl3dEvent3DHandler;
 @class Isgl3dFpsRenderer;
+@class Isgl3dCamera;
 
 /**
  * The Isgl3dDirector singleton provides the control for the iSGL3D application. All animation, rendering and event handling is handled 
@@ -71,6 +72,9 @@
 	CGRect _windowRectInPixels;
 	
 	NSMutableArray * _views;
+	
+	// Active camera, used during rendering, represents camera used for each view
+	Isgl3dCamera * _activeCamera; 
 	
 	Isgl3dGLRenderer * _renderer;
 	
@@ -187,6 +191,11 @@
  * Returns true if the retina display is enabled.
  */
 @property (nonatomic, readonly) BOOL retinaDisplayEnabled;
+
+/**
+ * Returns the currently active camera during the render phase.
+ */
+@property (nonatomic, readonly) Isgl3dCamera * activeCamera;
 
 
 /**

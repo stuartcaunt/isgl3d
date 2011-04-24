@@ -23,35 +23,19 @@
  *
  */
 
-#import "Isgl3dParticleNode.h"
-
-@class Isgl3dMaterial;
-@class Isgl3dBillboard;
+#import "Isgl3dMeshNode.h"
 
 /**
- * The Isgl3dBillboardNode is used to render a billboard (using an Isgl3dBillboard) in the scene. A billboard,
+ * The Isgl3dBillboardNode is used to render a billboard (typically using an Isgl3dPlane) in the scene. A billboard,
  * to be rendered, requires a material.
  * 
- * This class is a simple wrapper to Isgl3dParticleNode which offers identical functionality.
+ * The Isgl3dBillboardNode modifies the rotational matrix of the node automatically so that the mesh is always
+ * rendered facing the camera. Typically this is used to render planes so that they are always face on to the camera
+ * but it can be used for any type of mesh.
  * 
  */
-@interface Isgl3dBillboardNode : Isgl3dParticleNode {
+@interface Isgl3dBillboardNode : Isgl3dMeshNode {
 
 }
-
-/**
- * Allocates and initialises (autorelease) billboard node with a billboard and material.
- * @param billboard The billboard to be rendered.
- * @param material The material used to render the particle.
- */
-+ (id) nodeWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material;
-
-/**
- * Initialises the node with a billboard and material.
- * @param billboard The billboard to be rendered.
- * @param material The material used to render the particle.
- */
-- (id) initWithBillboard:(Isgl3dBillboard *)billboard andMaterial:(Isgl3dMaterial *)material;
-
 
 @end
