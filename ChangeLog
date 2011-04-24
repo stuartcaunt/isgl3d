@@ -1,4 +1,5 @@
 current SVN version
+	Added touch event handling to particles (implementation with help from Massimiliano Rossi) 
 	Isgl3dBillboardNode: modified to use meshes instead of particles. Use Isgl3dParticleNode for previous functionality.
 	Isgl3dBillboard: removed. Use Isgl3dBillboardNode with any mesh
 	TerrainPhysicsView: added demo of using a bullet height field terrain

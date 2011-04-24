@@ -101,5 +101,19 @@
 	[_particles sortUsingSelector:@selector(compareDistances:)];
 }
 
+- (void) prepareForEventCapture:(float)r g:(float)g b:(float)b {
+	for (Isgl3dGLParticle * particle in _particles) {
+		[particle prepareForEventCapture:r g:g b:b];
+	}	
+	[self buildArrays];
+}
+
+- (void) restoreRenderColor {
+	for (Isgl3dGLParticle * particle in _particles) {
+		[particle restoreRenderColor];
+	}	
+	_dirty = YES;
+}
+
 
 @end

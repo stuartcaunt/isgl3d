@@ -76,6 +76,7 @@
 	float _size;
 	float _color[4];
 	float _attenuation[3];
+	float _renderColor[4];
 	
 	float _x;
 	float _y;
@@ -213,5 +214,22 @@
  * @param z The z coordinate of the point;
  */
 - (void) calculateDistanceFromX:(float)x y:(float)y z:(float)z;
+
+/**
+ * Sets the color of the particle to the desired capture color.
+ * The original color is stored for after the event capture.
+ * Note: This is called internally by iSGL3D and should not be called manually.
+ * 
+ * @param r red
+ * @param g green
+ * @param b blue
+ */
+- (void) prepareForEventCapture:(float)r g:(float)g b:(float)b;
+
+/**
+ * Restores the original color of the particle after the event capture has taken place.
+ * Note: This is called internally by iSGL3D and should not be called manually.
+ */
+- (void) restoreRenderColor;
 
 @end

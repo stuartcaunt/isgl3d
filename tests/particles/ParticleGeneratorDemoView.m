@@ -61,6 +61,9 @@
 		[_fountainParticleGenerator startAnimation];
 		_fountainParticleGenerator.time = 2;
 		
+		//particleNode.interactive = YES;
+		//[particleNode addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
+		
 		// Schedule updates
 		[self schedule:@selector(tick:)];
 	}
@@ -76,6 +79,11 @@
 
 	[super dealloc];
 }
+
+- (void) objectTouched:(Isgl3dEvent3D *)event {
+	NSLog(@"particles touched %i", [event.touches count]);
+}
+
 
 - (void) onActivated {
 	// Add camera controller to touch-screen manager

@@ -59,6 +59,11 @@
 		_color[2] = 1.0;
 		_color[3] = 1.0;
 		
+		_renderColor[0] = 1.0;
+		_renderColor[1] = 1.0;
+		_renderColor[2] = 1.0;
+		_renderColor[3] = 1.0;
+		
 		_attenuation[0] = 1.0;
 		_attenuation[1] = 0.0;
 		_attenuation[2] = 0.0;
@@ -131,6 +136,9 @@
 	_color[0] = r;
 	_color[1] = g;
 	_color[2] = b;
+	_renderColor[0] = r;
+	_renderColor[1] = g;
+	_renderColor[2] = b;
 	_dirty = YES;
 }
 
@@ -139,6 +147,10 @@
 	_color[1] = g;
 	_color[2] = b;
 	_color[3] = a;
+	_renderColor[0] = r;
+	_renderColor[1] = g;
+	_renderColor[2] = b;
+	_renderColor[3] = a;
 	_dirty = YES;
 }
 
@@ -229,6 +241,22 @@
 	[_vertexData add:_size];
 
 	[_indices add:0];
+}
+
+- (void) prepareForEventCapture:(float)r g:(float)g b:(float)b {
+	_color[0] = r;
+	_color[1] = g;
+	_color[2] = b;
+	_color[3] = 1.0f;
+	[self buildArrays];
+}
+
+- (void) restoreRenderColor {
+	_color[0] = _renderColor[0];
+	_color[1] = _renderColor[1];
+	_color[2] = _renderColor[2];
+	_color[3] = _renderColor[3];
+	_dirty = YES;
 }
 
 
