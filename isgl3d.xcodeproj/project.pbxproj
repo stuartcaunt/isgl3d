@@ -19,7 +19,6 @@
 		1713BAC61357979B002C3288 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
 		1713BAC71357979B002C3288 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
 		1713BAC91357979B002C3288 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
-		1713BACA1357979B002C3288 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1713BACD1357979B002C3288 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1713BACE1357979B002C3288 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		1713BACF1357979B002C3288 /* Isgl3dAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.m */; };
@@ -42,7 +41,6 @@
 		1713BAED1358AFF6002C3288 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
 		1713BAEE1358AFF6002C3288 /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F412F9CA87008CDB4B /* wood.png */; };
 		1713BAEF1358AFF6002C3288 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731227B12FC76D100861D84 /* red_checker.png */; };
-		1713BAF01358AFF6002C3288 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1713BAF21358AFF6002C3288 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1713BAF31358AFF6002C3288 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		1713BAF41358AFF6002C3288 /* Isgl3dAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.m */; };
@@ -62,7 +60,6 @@
 		1713BB4E1358D6F7002C3288 /* utility_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB461358D6F7002C3288 /* utility_impl.h */; };
 		1713BB4F1358D6F7002C3288 /* utility_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB471358D6F7002C3288 /* utility_impl.m */; };
 		1713BB501358D6F7002C3288 /* vfp_clobbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB481358D6F7002C3288 /* vfp_clobbers.h */; };
-		171CB84F13195C65003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB85813195C65003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		171CB85E13195C65003712F4 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
@@ -73,7 +70,6 @@
 		171CB86313195C65003712F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		171CB86A13195CF8003712F4 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		171CB87013195D0C003712F4 /* CubeAndCameraView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */; };
-		171CB8DB13196403003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB8E113196403003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		171CB8E213196403003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB8E513196403003712F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -83,7 +79,6 @@
 		171CB8E913196403003712F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		171CB8EA13196403003712F4 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		171CB8F4131964F1003712F4 /* Isgl3dTutorial1View.m in Sources */ = {isa = PBXBuildFile; fileRef = 171CB8F3131964F1003712F4 /* Isgl3dTutorial1View.m */; };
-		171CB90D13196613003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB91013196613003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		171CB91113196613003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB91413196613003712F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -93,7 +88,6 @@
 		171CB91813196613003712F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		171CB91913196613003712F4 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		171CB9221319664C003712F4 /* Isgl3dTutorial2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 171CB9211319664C003712F4 /* Isgl3dTutorial2View.m */; };
-		171CB933131966E7003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB936131966E7003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		171CB937131966E7003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB93A131966E7003712F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -105,7 +99,6 @@
 		171CB94813196718003712F4 /* Isgl3dTutorial3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 171CB94713196718003712F4 /* Isgl3dTutorial3View.m */; };
 		171CB94D1319672F003712F4 /* cloth.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB94B1319672F003712F4 /* cloth.png */; };
 		171CB94E1319672F003712F4 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB94C1319672F003712F4 /* donut.png */; };
-		171CB955131967C1003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB956131967C1003712F4 /* cloth.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB94B1319672F003712F4 /* cloth.png */; };
 		171CB957131967C1003712F4 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB94C1319672F003712F4 /* donut.png */; };
 		171CB95A131967C1003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -119,7 +112,6 @@
 		171CB96C131967EE003712F4 /* Isgl3dTutorial4View.m in Sources */ = {isa = PBXBuildFile; fileRef = 171CB96B131967EE003712F4 /* Isgl3dTutorial4View.m */; };
 		171CB96F131967FF003712F4 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB96D131967FF003712F4 /* ball.png */; };
 		171CB970131967FF003712F4 /* pitch.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB96E131967FF003712F4 /* pitch.png */; };
-		171CB98013196880003712F4 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		171CB98113196880003712F4 /* cloth.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB94B1319672F003712F4 /* cloth.png */; };
 		171CB98213196880003712F4 /* donut.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB94C1319672F003712F4 /* donut.png */; };
 		171CB98313196880003712F4 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 171CB96D131967FF003712F4 /* ball.png */; };
@@ -442,7 +434,6 @@
 		171CBC4A13196FE8003712F4 /* btVector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 171CBB1613196FE8003712F4 /* btVector3.h */; };
 		172792EC134A3E5C0043956C /* Isgl3dArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 172792EA134A3E5C0043956C /* Isgl3dArray.m */; };
 		172792ED134A3E5C0043956C /* Isgl3dCArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 172792EB134A3E5C0043956C /* Isgl3dCArray.h */; };
-		1731214112FB3D6500861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731214612FB3D6500861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1731214712FB3D6500861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		1731214A12FB3D6500861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -453,7 +444,6 @@
 		1731214F12FB3D6500861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		1731215A12FB3DB000861D84 /* ParticleGeneratorDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731215812FB3D9B00861D84 /* ParticleGeneratorDemoView.m */; };
 		1731216912FB3E0400861D84 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
-		1731217D12FB562900861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731218112FB562900861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1731218212FB562900861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		1731218412FB562900861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -467,7 +457,6 @@
 		173121A512FB570200861D84 /* cardboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 173121A412FB570200861D84 /* cardboard.jpg */; };
 		173121A612FB571900861D84 /* BeachBall.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F112F9CA87008CDB4B /* BeachBall.png */; };
 		173121A712FB571900861D84 /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = 176236F412F9CA87008CDB4B /* wood.png */; };
-		173121B812FB58A000861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		173121BC12FB58A000861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		173121BD12FB58A000861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		173121BF12FB58A000861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -480,7 +469,6 @@
 		1731223712FB597700861D84 /* Scene_float.pod in Resources */ = {isa = PBXBuildFile; fileRef = 1731223612FB597700861D84 /* Scene_float.pod */; };
 		1731223F12FB59BE00861D84 /* kettle.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 1731223D12FB59BE00861D84 /* kettle.bmp */; };
 		1731224012FB59BE00861D84 /* TableCover.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 1731223E12FB59BE00861D84 /* TableCover.bmp */; };
-		1731225C12FC764100861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731226012FC764100861D84 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		1731226212FC764100861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1731226312FC764100861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -492,7 +480,6 @@
 		1731226B12FC764100861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		1731227512FC768700861D84 /* PrimitivesDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731227412FC768700861D84 /* PrimitivesDemoView.m */; };
 		1731227D12FC76D100861D84 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731227B12FC76D100861D84 /* red_checker.png */; };
-		1731229F12FC797300861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		173122A012FC797300861D84 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		173122A412FC797300861D84 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		173122A612FC797300861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
@@ -505,7 +492,6 @@
 		173122AF12FC797300861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		173122B912FC79A600861D84 /* ShadowMappingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 173122B812FC79A600861D84 /* ShadowMappingTestView.m */; };
 		173122BB12FC79BF00861D84 /* hostel.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122BA12FC79BF00861D84 /* hostel.png */; };
-		173122DC12FC7B9300861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		173122E212FC7B9300861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		173122E312FC7B9300861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		173122E612FC7B9300861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -519,7 +505,6 @@
 		173122FE12FC7BE000861D84 /* Body.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FA12FC7BE000861D84 /* Body.pvr */; };
 		173122FF12FC7BE000861D84 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122FB12FC7BE000861D84 /* ground.png */; };
 		1731230012FC7BE000861D84 /* Legs.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FC12FC7BE000861D84 /* Legs.pvr */; };
-		1731232412FC7DFA00861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731232712FC7DFA00861D84 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		1731232912FC7DFA00861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1731232A12FC7DFA00861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -533,7 +518,6 @@
 		1731233F12FC7E5200861D84 /* RaceTrack1Terrain_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731233D12FC7E5200861D84 /* RaceTrack1Terrain_1024.png */; };
 		1731235C12FC7EEC00861D84 /* RaceTrack1Path_512.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731235B12FC7EEC00861D84 /* RaceTrack1Path_512.png */; };
 		1731236B12FC803100861D84 /* SkinningTestView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1731236A12FC803100861D84 /* SkinningTestView.mm */; };
-		1731237812FC82BD00861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1731237D12FC82BD00861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1731237E12FC82BD00861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		1731238112FC82BD00861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -544,7 +528,6 @@
 		1731238612FC82BD00861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		1731239812FC830C00861D84 /* TextureOptionsTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1731239712FC830C00861D84 /* TextureOptionsTestView.m */; };
 		1731239A12FC831700861D84 /* rock_mipmap_4.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 1731239912FC831700861D84 /* rock_mipmap_4.pvr */; };
-		173123A612FC841000861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		173123AA12FC841000861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		173123AB12FC841000861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		173123AE12FC841000861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -555,7 +538,6 @@
 		173123B312FC841000861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		173123BD12FC845700861D84 /* TweeningDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 173123BC12FC845700861D84 /* TweeningDemoView.m */; };
 		173123BF12FC847500861D84 /* checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 173123BE12FC847500861D84 /* checker.png */; };
-		173123F012FD627B00861D84 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		173123F412FD627B00861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		173123F512FD627B00861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		173123F812FD627B00861D84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -673,10 +655,8 @@
 		1762383212F9CEDD008CDB4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
 		1762383312F9CEDD008CDB4B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		1762383412F9CEDD008CDB4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		1762384C12F9CFCF008CDB4B /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		1769034A1355E2890010B4CB /* Isgl3dQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 176903481355E2890010B4CB /* Isgl3dQuaternion.h */; };
 		1769034B1355E2890010B4CB /* Isgl3dQuaternion.m in Sources */ = {isa = PBXBuildFile; fileRef = 176903491355E2890010B4CB /* Isgl3dQuaternion.m */; };
-		17801A4A131A955A0045803F /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17801A4B131A955A0045803F /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		17801A4C131A955A0045803F /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731216512FB3DEC00861D84 /* particle.png */; };
 		17801A50131A955A0045803F /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
@@ -909,7 +889,6 @@
 		17AD09DA13434FD7005F5F7F /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
 		17AD09DB13434FD7005F5F7F /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
 		17AD09DC13434FD7005F5F7F /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
-		17AD09DD13434FD7005F5F7F /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17AD09E013434FD7005F5F7F /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17AD09E113434FD7005F5F7F /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		17AD09E213434FD7005F5F7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -926,7 +905,6 @@
 		17B7209812F8B9A100F80DFD /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17B7209D12F8B9D600F80DFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		17B720C012F8BD7100F80DFD /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
-		17B7211012F8C58D00F80DFD /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17B7227E12F8C8C000F80DFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
 		17B7228012F8C8C000F80DFD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
 		17B7228212F8C8C000F80DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
@@ -942,7 +920,6 @@
 		17BE174F132E94E400D053BA /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
 		17BE1750132E94E400D053BA /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
 		17BE1751132E94E400D053BA /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
-		17BE1752132E94E400D053BA /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17BE1755132E94E400D053BA /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17BE1758132E94E400D053BA /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		17BE1759132E94E400D053BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -1171,7 +1148,6 @@
 		17F1D87012F88A5A008D39E8 /* Isgl3dPhysicsObject3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D86912F88A5A008D39E8 /* Isgl3dPhysicsObject3D.mm */; };
 		17F1D87112F88A5A008D39E8 /* Isgl3dPhysicsWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D86A12F88A5A008D39E8 /* Isgl3dPhysicsWorld.h */; };
 		17F1D87212F88A5A008D39E8 /* Isgl3dPhysicsWorld.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D86B12F88A5A008D39E8 /* Isgl3dPhysicsWorld.mm */; };
-		17F7A84012FA0BB000C7BB82 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17F7A84312FA0BB000C7BB82 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		17F7A84412FA0BB000C7BB82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		17F7A84712FA0BB000C7BB82 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -1181,7 +1157,6 @@
 		17F7A84B12FA0BB000C7BB82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		17F7A84C12FA0BB000C7BB82 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17F7A85512FA0BD300C7BB82 /* CameraMovementTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F7A85412FA0BD300C7BB82 /* CameraMovementTestView.m */; };
-		17F7A87412FA0D6100C7BB82 /* isgl3d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B7210F12F8C58D00F80DFD /* isgl3d.plist */; };
 		17F7A87712FA0D6100C7BB82 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		17F7A87812FA0D6100C7BB82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		17F7A87B12FA0D6100C7BB82 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -1370,6 +1345,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
+		};
+		178A63091368783300BEFD2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1755358C1360B4B700C593E3;
+			remoteInfo = TerrainPhysics;
+		};
+		178A630B1368783700BEFD2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17CDF5AE136753FA00893070;
+			remoteInfo = KeyframeMeshAnimationTest;
+		};
+		178A630D1368783F00BEFD2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 178A62E31368558A00BEFD2C;
+			remoteInfo = KeyframePODAnimationTest;
 		};
 		17A3E64C135A1C540022BAD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2084,7 +2080,6 @@
 		17B71FE112F8B8F400F80DFD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17B720BE12F8BD7100F80DFD /* Isgl3dViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dViewController.h; sourceTree = "<group>"; };
 		17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dViewController.m; sourceTree = "<group>"; };
-		17B7210F12F8C58D00F80DFD /* isgl3d.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = isgl3d.plist; sourceTree = "<group>"; };
 		17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		17B7227F12F8C8C000F80DFD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		17B7228112F8C8C000F80DFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -3927,7 +3922,6 @@
 				176236EF12F9CA87008CDB4B /* images */,
 				1731223512FB597700861D84 /* pods */,
 				17F7A89F12FA0EB800C7BB82 /* Shaders */,
-				17B7210F12F8C58D00F80DFD /* isgl3d.plist */,
 				17F1E0EA12F89568008D39E8 /* Info.plist */,
 			);
 			path = Resources;
@@ -4773,6 +4767,9 @@
 				17A3E679135A1C540022BAD8 /* PBXTargetDependency */,
 				17A3E67B135A1C540022BAD8 /* PBXTargetDependency */,
 				17A3E67D135A1C540022BAD8 /* PBXTargetDependency */,
+				178A630A1368783300BEFD2C /* PBXTargetDependency */,
+				178A630C1368783700BEFD2C /* PBXTargetDependency */,
+				178A630E1368783F00BEFD2C /* PBXTargetDependency */,
 			);
 			name = "build all";
 			productName = "build all";
@@ -4992,7 +4989,6 @@
 				1713BAC91357979B002C3288 /* shadowMap.vsh in Resources */,
 				1713BAE013579801002C3288 /* wood.png in Resources */,
 				1713BAE113579907002C3288 /* red_checker.png in Resources */,
-				1713BACA1357979B002C3288 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5010,7 +5006,6 @@
 				1713BAED1358AFF6002C3288 /* shadowMap.vsh in Resources */,
 				1713BAEE1358AFF6002C3288 /* wood.png in Resources */,
 				1713BAEF1358AFF6002C3288 /* red_checker.png in Resources */,
-				1713BAF01358AFF6002C3288 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5026,7 +5021,6 @@
 				17A95F04132575AE00D06694 /* particle.vsh in Resources */,
 				17A95F05132575AE00D06694 /* shadowMap.fsh in Resources */,
 				17A95F06132575AE00D06694 /* shadowMap.vsh in Resources */,
-				171CB84F13195C65003712F4 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5042,7 +5036,6 @@
 				17A95F0C132575B300D06694 /* particle.vsh in Resources */,
 				17A95F0D132575B300D06694 /* shadowMap.fsh in Resources */,
 				17A95F0E132575B300D06694 /* shadowMap.vsh in Resources */,
-				171CB8DB13196403003712F4 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5058,7 +5051,6 @@
 				17A95F14132575BA00D06694 /* particle.vsh in Resources */,
 				17A95F15132575BA00D06694 /* shadowMap.fsh in Resources */,
 				17A95F16132575BA00D06694 /* shadowMap.vsh in Resources */,
-				171CB90D13196613003712F4 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5074,7 +5066,6 @@
 				17A95F1C132575C300D06694 /* particle.vsh in Resources */,
 				17A95F1D132575C300D06694 /* shadowMap.fsh in Resources */,
 				17A95F1E132575C300D06694 /* shadowMap.vsh in Resources */,
-				171CB933131966E7003712F4 /* isgl3d.plist in Resources */,
 				171CB94D1319672F003712F4 /* cloth.png in Resources */,
 				171CB94E1319672F003712F4 /* donut.png in Resources */,
 			);
@@ -5092,7 +5083,6 @@
 				173D5CF013241DC10092D2EE /* particle.vsh in Resources */,
 				173D5CF113241DC10092D2EE /* shadowMap.fsh in Resources */,
 				173D5CF213241DC10092D2EE /* shadowMap.vsh in Resources */,
-				171CB955131967C1003712F4 /* isgl3d.plist in Resources */,
 				171CB956131967C1003712F4 /* cloth.png in Resources */,
 				171CB957131967C1003712F4 /* donut.png in Resources */,
 				171CB96F131967FF003712F4 /* ball.png in Resources */,
@@ -5112,7 +5102,6 @@
 				173D5CFA13241E060092D2EE /* particle.vsh in Resources */,
 				173D5CFB13241E060092D2EE /* shadowMap.fsh in Resources */,
 				173D5CFC13241E060092D2EE /* shadowMap.vsh in Resources */,
-				171CB98013196880003712F4 /* isgl3d.plist in Resources */,
 				171CB98113196880003712F4 /* cloth.png in Resources */,
 				171CB98213196880003712F4 /* donut.png in Resources */,
 				171CB98313196880003712F4 /* ball.png in Resources */,
@@ -5151,7 +5140,6 @@
 				17A95EC51325754F00D06694 /* shadowMap.fsh in Resources */,
 				17A95EC61325754F00D06694 /* shadowMap.vsh in Resources */,
 				1731216912FB3E0400861D84 /* particle.png in Resources */,
-				1731214112FB3D6500861D84 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5169,7 +5157,6 @@
 				17A95ECE1325755C00D06694 /* shadowMap.vsh in Resources */,
 				173121A612FB571900861D84 /* BeachBall.png in Resources */,
 				173121A712FB571900861D84 /* wood.png in Resources */,
-				1731217D12FB562900861D84 /* isgl3d.plist in Resources */,
 				173121A512FB570200861D84 /* cardboard.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5186,7 +5173,6 @@
 				17A95ED41325756900D06694 /* particle.vsh in Resources */,
 				17A95ED51325756900D06694 /* shadowMap.fsh in Resources */,
 				17A95ED61325756900D06694 /* shadowMap.vsh in Resources */,
-				173121B812FB58A000861D84 /* isgl3d.plist in Resources */,
 				1731223712FB597700861D84 /* Scene_float.pod in Resources */,
 				1731223F12FB59BE00861D84 /* kettle.bmp in Resources */,
 				1731224012FB59BE00861D84 /* TableCover.bmp in Resources */,
@@ -5205,7 +5191,6 @@
 				17A95EDC1325757400D06694 /* particle.vsh in Resources */,
 				17A95EDD1325757400D06694 /* shadowMap.fsh in Resources */,
 				17A95EDE1325757400D06694 /* shadowMap.vsh in Resources */,
-				1731225C12FC764100861D84 /* isgl3d.plist in Resources */,
 				1731227D12FC76D100861D84 /* red_checker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5223,7 +5208,6 @@
 				17A95EE41325757C00D06694 /* particle.vsh in Resources */,
 				17A95EE51325757C00D06694 /* shadowMap.fsh in Resources */,
 				17A95EE61325757C00D06694 /* shadowMap.vsh in Resources */,
-				1731229F12FC797300861D84 /* isgl3d.plist in Resources */,
 				173122A012FC797300861D84 /* mars.png in Resources */,
 				173122BB12FC79BF00861D84 /* hostel.png in Resources */,
 			);
@@ -5241,7 +5225,6 @@
 				173D5D1613241EAE0092D2EE /* particle.vsh in Resources */,
 				173D5D1713241EAE0092D2EE /* shadowMap.fsh in Resources */,
 				173D5D1813241EAE0092D2EE /* shadowMap.vsh in Resources */,
-				173122DC12FC7B9300861D84 /* isgl3d.plist in Resources */,
 				173122F812FC7BD500861D84 /* man.pod in Resources */,
 				173122FD12FC7BE000861D84 /* Belt.pvr in Resources */,
 				173122FE12FC7BE000861D84 /* Body.pvr in Resources */,
@@ -5262,7 +5245,6 @@
 				17A95EEC1325759800D06694 /* particle.vsh in Resources */,
 				17A95EED1325759800D06694 /* shadowMap.fsh in Resources */,
 				17A95EEE1325759800D06694 /* shadowMap.vsh in Resources */,
-				1731232412FC7DFA00861D84 /* isgl3d.plist in Resources */,
 				1731233F12FC7E5200861D84 /* RaceTrack1Terrain_1024.png in Resources */,
 				1731235C12FC7EEC00861D84 /* RaceTrack1Path_512.png in Resources */,
 			);
@@ -5280,7 +5262,6 @@
 				17A95EF4132575A000D06694 /* particle.vsh in Resources */,
 				17A95EF5132575A000D06694 /* shadowMap.fsh in Resources */,
 				17A95EF6132575A000D06694 /* shadowMap.vsh in Resources */,
-				1731237812FC82BD00861D84 /* isgl3d.plist in Resources */,
 				1731239A12FC831700861D84 /* rock_mipmap_4.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5297,7 +5278,6 @@
 				173D5D0913241E610092D2EE /* particle.vsh in Resources */,
 				173D5D0A13241E610092D2EE /* shadowMap.fsh in Resources */,
 				173D5D0B13241E610092D2EE /* shadowMap.vsh in Resources */,
-				173123A612FC841000861D84 /* isgl3d.plist in Resources */,
 				173123BF12FC847500861D84 /* checker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5318,7 +5298,6 @@
 				1731240912FD62CE00861D84 /* camera.png in Resources */,
 				17AD09D0134270E2005F5F7F /* red_checker.png in Resources */,
 				1731240A12FD62CE00861D84 /* pause.png in Resources */,
-				173123F012FD627B00861D84 /* isgl3d.plist in Resources */,
 				178C2D7F13472AFC003679AB /* ui_bg.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5353,7 +5332,6 @@
 				17A95EB41325753C00D06694 /* particle.vsh in Resources */,
 				17A95EB51325753C00D06694 /* shadowMap.fsh in Resources */,
 				17A95EB61325753C00D06694 /* shadowMap.vsh in Resources */,
-				1762384C12F9CFCF008CDB4B /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5369,7 +5347,6 @@
 				17A95EBC1325754800D06694 /* particle.vsh in Resources */,
 				17A95EBD1325754800D06694 /* shadowMap.fsh in Resources */,
 				17A95EBE1325754800D06694 /* shadowMap.vsh in Resources */,
-				17801A4A131A955A0045803F /* isgl3d.plist in Resources */,
 				17801A4B131A955A0045803F /* mars.png in Resources */,
 				17801A4C131A955A0045803F /* particle.png in Resources */,
 			);
@@ -5407,7 +5384,6 @@
 				17AD09DB13434FD7005F5F7F /* shadowMap.fsh in Resources */,
 				17AD09F113434FF6005F5F7F /* red_checker.png in Resources */,
 				17AD09DC13434FD7005F5F7F /* shadowMap.vsh in Resources */,
-				17AD09DD13434FD7005F5F7F /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5423,7 +5399,6 @@
 				17BE174F132E94E400D053BA /* particle.vsh in Resources */,
 				17BE1750132E94E400D053BA /* shadowMap.fsh in Resources */,
 				17BE1751132E94E400D053BA /* shadowMap.vsh in Resources */,
-				17BE1752132E94E400D053BA /* isgl3d.plist in Resources */,
 				17BE17AD132E9C8400D053BA /* billboard.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5456,7 +5431,6 @@
 				17A95EA41325752500D06694 /* particle.vsh in Resources */,
 				17A95EA51325752500D06694 /* shadowMap.fsh in Resources */,
 				17A95EA61325752500D06694 /* shadowMap.vsh in Resources */,
-				17B7211012F8C58D00F80DFD /* isgl3d.plist in Resources */,
 				176236F512F9CA87008CDB4B /* angle.png in Resources */,
 				176236F612F9CA87008CDB4B /* BeachBall.png in Resources */,
 				176236F712F9CA87008CDB4B /* camera.png in Resources */,
@@ -5478,7 +5452,6 @@
 				17A95EAC1325753200D06694 /* particle.vsh in Resources */,
 				17A95EAD1325753200D06694 /* shadowMap.fsh in Resources */,
 				17A95EAE1325753200D06694 /* shadowMap.vsh in Resources */,
-				17F7A84012FA0BB000C7BB82 /* isgl3d.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5494,7 +5467,6 @@
 				173D5D2C132421E30092D2EE /* particle.vsh in Resources */,
 				173D5D2D132421E30092D2EE /* shadowMap.fsh in Resources */,
 				173D5D2E132421E30092D2EE /* shadowMap.vsh in Resources */,
-				17F7A87412FA0D6100C7BB82 /* isgl3d.plist in Resources */,
 				17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6221,6 +6193,21 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 178A62E51368558A00BEFD2C /* PBXContainerItemProxy */;
+		};
+		178A630A1368783300BEFD2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1755358C1360B4B700C593E3 /* TerrainPhysics */;
+			targetProxy = 178A63091368783300BEFD2C /* PBXContainerItemProxy */;
+		};
+		178A630C1368783700BEFD2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */;
+			targetProxy = 178A630B1368783700BEFD2C /* PBXContainerItemProxy */;
+		};
+		178A630E1368783F00BEFD2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */;
+			targetProxy = 178A630D1368783F00BEFD2C /* PBXContainerItemProxy */;
 		};
 		17A3E64D135A1C540022BAD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
