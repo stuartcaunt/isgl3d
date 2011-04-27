@@ -27,6 +27,7 @@
 #import "animators/Isgl3dAnimationController.h"
 #import "animators/Isgl3dBoneBatch.h"
 #import "animators/Isgl3dBoneNode.h"
+#import "animators/Isgl3dKeyframeMesh.h"
 #import "animators/Isgl3dSkeletonNode.h"
 #import "cameras/Isgl3dCamera.h"
 #import "cameras/Isgl3dFollowCamera.h"

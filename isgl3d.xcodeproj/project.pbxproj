@@ -689,6 +689,30 @@
 		17801A5A131A955A0045803F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		17801A5B131A955A0045803F /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17801A65131A959D0045803F /* OcclusionDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801A64131A959D0045803F /* OcclusionDemoView.m */; };
+		178A62E2136851FC00BEFD2C /* TestMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 178A62E1136851FC00BEFD2C /* TestMesh.m */; };
+		178A62E71368558A00BEFD2C /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		178A62E81368558A00BEFD2C /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		178A62E91368558A00BEFD2C /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		178A62EA1368558A00BEFD2C /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		178A62EB1368558A00BEFD2C /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		178A62EC1368558A00BEFD2C /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		178A62ED1368558A00BEFD2C /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		178A62EE1368558A00BEFD2C /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		178A62EF1368558A00BEFD2C /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122FB12FC7BE000861D84 /* ground.png */; };
+		178A62F11368558A00BEFD2C /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		178A62F21368558A00BEFD2C /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		178A62F31368558A00BEFD2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		178A62F41368558A00BEFD2C /* Isgl3dAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.m */; };
+		178A62F81368558A00BEFD2C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		178A62F91368558A00BEFD2C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		178A62FA1368558A00BEFD2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		178A62FB1368558A00BEFD2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		178A62FC1368558A00BEFD2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		178A62FD1368558A00BEFD2C /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		178A6305136855C200BEFD2C /* KeyframePODAnimationTestView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 178A6304136855C200BEFD2C /* KeyframePODAnimationTestView.mm */; };
+		178A6306136855D200BEFD2C /* Scene_float.pod in Resources */ = {isa = PBXBuildFile; fileRef = 1731223612FB597700861D84 /* Scene_float.pod */; };
+		178A630713685FA800BEFD2C /* kettle.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 1731223D12FB59BE00861D84 /* kettle.bmp */; };
+		178A6308136864D600BEFD2C /* TableCover.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 1731223E12FB59BE00861D84 /* TableCover.bmp */; };
 		178C2D7F13472AFC003679AB /* ui_bg.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 178C2D7E13472AFC003679AB /* ui_bg.pvr */; };
 		179F86E5133E67A5007F4671 /* Isgl3dDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F86E3133E67A5007F4671 /* Isgl3dDirector.h */; };
 		179F86E6133E67A5007F4671 /* Isgl3dDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 179F86E4133E67A5007F4671 /* Isgl3dDirector.m */; };
@@ -935,6 +959,28 @@
 		17C15BF11347AABB004EF5C3 /* Isgl3dMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */; };
 		17C15BF31347AAF8004EF5C3 /* Isgl3dVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C15BF21347AAF8004EF5C3 /* Isgl3dVector.m */; };
 		17C15C7E1348F4A5004EF5C3 /* Isgl3dArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C15C7D1348F4A5004EF5C3 /* Isgl3dArray.h */; };
+		17CDF5AB13674DB500893070 /* Isgl3dKeyframeMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CDF5A913674DB500893070 /* Isgl3dKeyframeMesh.h */; };
+		17CDF5AC13674DB500893070 /* Isgl3dKeyframeMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CDF5AA13674DB500893070 /* Isgl3dKeyframeMesh.m */; };
+		17CDF5B2136753FA00893070 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		17CDF5B3136753FA00893070 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		17CDF5B4136753FA00893070 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		17CDF5B5136753FA00893070 /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		17CDF5B6136753FA00893070 /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		17CDF5B7136753FA00893070 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		17CDF5B8136753FA00893070 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		17CDF5B9136753FA00893070 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		17CDF5BD136753FA00893070 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		17CDF5BE136753FA00893070 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		17CDF5C0136753FA00893070 /* Isgl3dAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.m */; };
+		17CDF5C2136753FA00893070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		17CDF5C3136753FA00893070 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		17CDF5C4136753FA00893070 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		17CDF5C5136753FA00893070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		17CDF5C6136753FA00893070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		17CDF5C7136753FA00893070 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		17CDF5D21367544500893070 /* KeyframeMeshAnimationTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CDF5CF1367544500893070 /* KeyframeMeshAnimationTestView.m */; };
+		17CDF5D413675B1600893070 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122FB12FC7BE000861D84 /* ground.png */; };
+		17CDF5D513675B7E00893070 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17D39451135373B700D50A60 /* isgl3d.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D39450135373B700D50A60 /* isgl3d.m */; };
 		17F1D75512F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */; };
 		17F1D75612F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */; };
@@ -1318,6 +1364,13 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
+		178A62E51368558A00BEFD2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
 		17A3E64C135A1C540022BAD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -1501,6 +1554,13 @@
 			remoteInfo = isgl3d;
 		};
 		17BE1748132E94E400D053BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		17CDF5B0136753FA00893070 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -1952,6 +2012,11 @@
 		17801A64131A959D0045803F /* OcclusionDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OcclusionDemoView.m; sourceTree = "<group>"; };
 		178963B712FB3AA500E6272F /* Isgl3dDemoCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDemoCameraController.h; sourceTree = "<group>"; };
 		178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dDemoCameraController.m; sourceTree = "<group>"; };
+		178A62E0136851FC00BEFD2C /* TestMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMesh.h; sourceTree = "<group>"; };
+		178A62E1136851FC00BEFD2C /* TestMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMesh.m; sourceTree = "<group>"; };
+		178A63011368558A00BEFD2C /* KeyframePODAnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyframePODAnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		178A6303136855C200BEFD2C /* KeyframePODAnimationTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframePODAnimationTestView.h; sourceTree = "<group>"; };
+		178A6304136855C200BEFD2C /* KeyframePODAnimationTestView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KeyframePODAnimationTestView.mm; sourceTree = "<group>"; };
 		178C2D7E13472AFC003679AB /* ui_bg.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_bg.pvr; sourceTree = "<group>"; };
 		179F86E2133E6746007F4671 /* isgl3dTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isgl3dTypes.h; sourceTree = "<group>"; };
 		179F86E3133E67A5007F4671 /* Isgl3dDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDirector.h; sourceTree = "<group>"; };
@@ -2036,6 +2101,11 @@
 		17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix.m; sourceTree = "<group>"; };
 		17C15BF21347AAF8004EF5C3 /* Isgl3dVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector.m; sourceTree = "<group>"; };
 		17C15C7D1348F4A5004EF5C3 /* Isgl3dArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dArray.h; sourceTree = "<group>"; };
+		17CDF5A913674DB500893070 /* Isgl3dKeyframeMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dKeyframeMesh.h; sourceTree = "<group>"; };
+		17CDF5AA13674DB500893070 /* Isgl3dKeyframeMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dKeyframeMesh.m; sourceTree = "<group>"; };
+		17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyframeMeshAnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17CDF5CE1367544500893070 /* KeyframeMeshAnimationTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframeMeshAnimationTestView.h; sourceTree = "<group>"; };
+		17CDF5CF1367544500893070 /* KeyframeMeshAnimationTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyframeMeshAnimationTestView.m; sourceTree = "<group>"; };
 		17D39450135373B700D50A60 /* isgl3d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = isgl3d.m; sourceTree = "<group>"; };
 		17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimatedMeshNode.h; sourceTree = "<group>"; };
 		17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAnimatedMeshNode.m; sourceTree = "<group>"; };
@@ -2525,6 +2595,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		178A62F71368558A00BEFD2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				178A62F81368558A00BEFD2C /* CoreGraphics.framework in Frameworks */,
+				178A62F91368558A00BEFD2C /* OpenGLES.framework in Frameworks */,
+				178A62FA1368558A00BEFD2C /* QuartzCore.framework in Frameworks */,
+				178A62FB1368558A00BEFD2C /* UIKit.framework in Frameworks */,
+				178A62FC1368558A00BEFD2C /* Foundation.framework in Frameworks */,
+				178A62FD1368558A00BEFD2C /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17A3E641135A1C380022BAD8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2555,6 +2638,19 @@
 				17BE175F132E94E400D053BA /* UIKit.framework in Frameworks */,
 				17BE1760132E94E400D053BA /* Foundation.framework in Frameworks */,
 				17BE1761132E94E400D053BA /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17CDF5C1136753FA00893070 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CDF5C2136753FA00893070 /* CoreGraphics.framework in Frameworks */,
+				17CDF5C3136753FA00893070 /* OpenGLES.framework in Frameworks */,
+				17CDF5C4136753FA00893070 /* QuartzCore.framework in Frameworks */,
+				17CDF5C5136753FA00893070 /* UIKit.framework in Frameworks */,
+				17CDF5C6136753FA00893070 /* Foundation.framework in Frameworks */,
+				17CDF5C7136753FA00893070 /* libisgl3d.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2648,6 +2744,8 @@
 				1713BB001358AFF6002C3288 /* FollowCamera copy.app */,
 				17A3E644135A1C380022BAD8 /* libbuild all.a */,
 				175535AF1360B4B700C593E3 /* TerrainPhysics.app */,
+				17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */,
+				178A63011368558A00BEFD2C /* KeyframePODAnimationTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3400,6 +3498,19 @@
 			path = billboard;
 			sourceTree = "<group>";
 		};
+		17CDF5CD1367544500893070 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				178A62E0136851FC00BEFD2C /* TestMesh.h */,
+				178A62E1136851FC00BEFD2C /* TestMesh.m */,
+				17CDF5CE1367544500893070 /* KeyframeMeshAnimationTestView.h */,
+				17CDF5CF1367544500893070 /* KeyframeMeshAnimationTestView.m */,
+				178A6303136855C200BEFD2C /* KeyframePODAnimationTestView.h */,
+				178A6304136855C200BEFD2C /* KeyframePODAnimationTestView.mm */,
+			);
+			path = animation;
+			sourceTree = "<group>";
+		};
 		17F1D66112F87EC5008D39E8 /* isgl3d */ = {
 			isa = PBXGroup;
 			children = (
@@ -3429,6 +3540,8 @@
 		17F1D66212F87EC5008D39E8 /* animators */ = {
 			isa = PBXGroup;
 			children = (
+				17CDF5A913674DB500893070 /* Isgl3dKeyframeMesh.h */,
+				17CDF5AA13674DB500893070 /* Isgl3dKeyframeMesh.m */,
 				17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */,
 				17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */,
 				17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */,
@@ -3824,6 +3937,7 @@
 			isa = PBXGroup;
 			children = (
 				17F1E07812F89324008D39E8 /* accelerometer */,
+				17CDF5CD1367544500893070 /* animation */,
 				171CB86B13195D0C003712F4 /* augmentedreality */,
 				17BE1768132E95BD00D053BA /* billboard */,
 				1762372112F9CE31008CDB4B /* camera */,
@@ -4218,6 +4332,7 @@
 				17A3EABB135A25D80022BAD8 /* PVRTTriStrip.h in Headers */,
 				17A3EABD135A25D80022BAD8 /* PVRTVector.h in Headers */,
 				17A3EABF135A25D80022BAD8 /* PVRTVertex.h in Headers */,
+				17CDF5AB13674DB500893070 /* Isgl3dKeyframeMesh.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4604,6 +4719,24 @@
 			productReference = 17801A5F131A955A0045803F /* Occlusion.app */;
 			productType = "com.apple.product-type.application";
 		};
+		178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 178A62FE1368558A00BEFD2C /* Build configuration list for PBXNativeTarget "KeyframePODAnimationTest" */;
+			buildPhases = (
+				178A62E61368558A00BEFD2C /* Resources */,
+				178A62F01368558A00BEFD2C /* Sources */,
+				178A62F71368558A00BEFD2C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				178A62E41368558A00BEFD2C /* PBXTargetDependency */,
+			);
+			name = KeyframePODAnimationTest;
+			productName = CameraZoomAndFocus;
+			productReference = 178A63011368558A00BEFD2C /* KeyframePODAnimationTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 		17A3E643135A1C380022BAD8 /* build all */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17A3E649135A1C380022BAD8 /* Build configuration list for PBXNativeTarget "build all" */;
@@ -4680,6 +4813,24 @@
 			name = BillboardTest;
 			productName = CameraZoomAndFocus;
 			productReference = 17BE1790132E98B100D053BA /* BillboardTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17CDF5C8136753FA00893070 /* Build configuration list for PBXNativeTarget "KeyframeMeshAnimationTest" */;
+			buildPhases = (
+				17CDF5B1136753FA00893070 /* Resources */,
+				17CDF5BC136753FA00893070 /* Sources */,
+				17CDF5C1136753FA00893070 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17CDF5AF136753FA00893070 /* PBXTargetDependency */,
+			);
+			name = KeyframeMeshAnimationTest;
+			productName = CameraZoomAndFocus;
+			productReference = 17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17F1D86112F88A4A008D39E8 /* isgl3dbullet */ = {
@@ -4820,6 +4971,8 @@
 				1713BABD1357979B002C3288 /* FollowCamera */,
 				1713BAE21358AFF6002C3288 /* SpringCamera */,
 				1755358C1360B4B700C593E3 /* TerrainPhysics */,
+				17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */,
+				178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */,
 			);
 		};
 /* End PBXProject section */
@@ -5222,6 +5375,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		178A62E61368558A00BEFD2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				178A62E71368558A00BEFD2C /* capture.fsh in Resources */,
+				178A62E81368558A00BEFD2C /* capture.vsh in Resources */,
+				178A62E91368558A00BEFD2C /* generic.fsh in Resources */,
+				178A62EA1368558A00BEFD2C /* generic.vsh in Resources */,
+				178A62EB1368558A00BEFD2C /* particle.fsh in Resources */,
+				178A62EC1368558A00BEFD2C /* particle.vsh in Resources */,
+				178A62ED1368558A00BEFD2C /* shadowMap.fsh in Resources */,
+				178A62EE1368558A00BEFD2C /* shadowMap.vsh in Resources */,
+				178A6306136855D200BEFD2C /* Scene_float.pod in Resources */,
+				178A630713685FA800BEFD2C /* kettle.bmp in Resources */,
+				178A6308136864D600BEFD2C /* TableCover.bmp in Resources */,
+				178A62EF1368558A00BEFD2C /* ground.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17AD09D413434FD7005F5F7F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5253,6 +5425,22 @@
 				17BE1751132E94E400D053BA /* shadowMap.vsh in Resources */,
 				17BE1752132E94E400D053BA /* isgl3d.plist in Resources */,
 				17BE17AD132E9C8400D053BA /* billboard.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17CDF5B1136753FA00893070 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CDF5B2136753FA00893070 /* capture.fsh in Resources */,
+				17CDF5B3136753FA00893070 /* capture.vsh in Resources */,
+				17CDF5B4136753FA00893070 /* generic.fsh in Resources */,
+				17CDF5B5136753FA00893070 /* generic.vsh in Resources */,
+				17CDF5B6136753FA00893070 /* particle.fsh in Resources */,
+				17CDF5B7136753FA00893070 /* particle.vsh in Resources */,
+				17CDF5B8136753FA00893070 /* shadowMap.fsh in Resources */,
+				17CDF5B9136753FA00893070 /* shadowMap.vsh in Resources */,
+				17CDF5D413675B1600893070 /* ground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5557,6 +5745,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		178A62F01368558A00BEFD2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				178A62F11368558A00BEFD2C /* Isgl3dViewController.m in Sources */,
+				178A62F21368558A00BEFD2C /* Isgl3dDemoCameraController.m in Sources */,
+				178A62F31368558A00BEFD2C /* main.m in Sources */,
+				178A62F41368558A00BEFD2C /* Isgl3dAppDelegate.m in Sources */,
+				178A6305136855C200BEFD2C /* KeyframePODAnimationTestView.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17A3E640135A1C380022BAD8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5585,6 +5785,19 @@
 				17BE1759132E94E400D053BA /* main.m in Sources */,
 				17BE176B132E95BD00D053BA /* BillboardTestView.m in Sources */,
 				1733548513408C38000F26F0 /* Isgl3dAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17CDF5BC136753FA00893070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17CDF5BD136753FA00893070 /* Isgl3dViewController.m in Sources */,
+				17CDF5D513675B7E00893070 /* Isgl3dDemoCameraController.m in Sources */,
+				17CDF5BE136753FA00893070 /* main.m in Sources */,
+				17CDF5C0136753FA00893070 /* Isgl3dAppDelegate.m in Sources */,
+				17CDF5D21367544500893070 /* KeyframeMeshAnimationTestView.m in Sources */,
+				178A62E2136851FC00BEFD2C /* TestMesh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5877,6 +6090,7 @@
 				17A3EABA135A25D80022BAD8 /* PVRTTriStrip.cpp in Sources */,
 				17A3EABC135A25D80022BAD8 /* PVRTVector.cpp in Sources */,
 				17A3EABE135A25D80022BAD8 /* PVRTVertex.cpp in Sources */,
+				17CDF5AC13674DB500893070 /* Isgl3dKeyframeMesh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6002,6 +6216,11 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17801A48131A955A0045803F /* PBXContainerItemProxy */;
+		};
+		178A62E41368558A00BEFD2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 178A62E51368558A00BEFD2C /* PBXContainerItemProxy */;
 		};
 		17A3E64D135A1C540022BAD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6137,6 +6356,11 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17BE1748132E94E400D053BA /* PBXContainerItemProxy */;
+		};
+		17CDF5AF136753FA00893070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 17CDF5B0136753FA00893070 /* PBXContainerItemProxy */;
 		};
 		17F1E07E12F89333008D39E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7189,6 +7413,57 @@
 			};
 			name = Release;
 		};
+		178A62FF1368558A00BEFD2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = KeyframePODAnimationTest;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		178A63001368558A00BEFD2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = KeyframePODAnimationTest;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		17A3E64A135A1C380022BAD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -7314,6 +7589,57 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = BillboardTest;
+				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		17CDF5C9136753FA00893070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = KeyframeMeshAnimationTest;
+				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17CDF5CA136753FA00893070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = KeyframeMeshAnimationTest;
 				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7752,6 +8078,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		178A62FE1368558A00BEFD2C /* Build configuration list for PBXNativeTarget "KeyframePODAnimationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				178A62FF1368558A00BEFD2C /* Debug */,
+				178A63001368558A00BEFD2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		17A3E649135A1C380022BAD8 /* Build configuration list for PBXNativeTarget "build all" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -7775,6 +8110,15 @@
 			buildConfigurations = (
 				17BE1763132E94E400D053BA /* Debug */,
 				17BE1764132E94E400D053BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17CDF5C8136753FA00893070 /* Build configuration list for PBXNativeTarget "KeyframeMeshAnimationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17CDF5C9136753FA00893070 /* Debug */,
+				17CDF5CA136753FA00893070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

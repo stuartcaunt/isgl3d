@@ -118,11 +118,11 @@
 
 }
 
-- (int) vertexDataSize {
+- (unsigned int) estimatedVertexSize {
 	return (_lats + 1) * (_longs + 1) * 8;
 }
 
-- (int) indicesSize {
+- (unsigned int) estimatedIndicesSize {
 	return _lats * _longs * 6;
 }
 

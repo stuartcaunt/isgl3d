@@ -31,6 +31,9 @@
 
 @synthesize vboData = _vboData;
 @synthesize normalizationEnabled = _normalizationEnabled;
+@synthesize vertexDataSize = _vertexDataSize;
+@synthesize indexDataSize = _indexDataSize;
+@synthesize numberOfElements = _numberOfElements;
 
 + (id) mesh {
 	return [[[self alloc] init] autorelease];
@@ -92,8 +95,8 @@
 	// Overload
 }
 
-- (int) numberOfElements {
-	return _numberOfElements;
+- (unsigned int) numberOfVertices {
+	return _vertexDataSize / _vboData.stride;
 }
 
 - (unsigned char *) vertexData {

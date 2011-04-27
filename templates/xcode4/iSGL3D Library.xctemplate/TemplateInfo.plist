@@ -105,6 +105,30 @@
 			<key>Path</key>
 			<string>libs/isgl3d/animators/Isgl3dBoneNode.m</string>
 		</dict>
+		<key>libs/isgl3d/animators/Isgl3dKeyframeMesh.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>animators</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/animators/Isgl3dKeyframeMesh.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/animators/Isgl3dKeyframeMesh.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>animators</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/animators/Isgl3dKeyframeMesh.m</string>
+		</dict>
 		<key>libs/isgl3d/animators/Isgl3dSkeletonNode.h</key>
 		<dict>
 			<key>Group</key>
@@ -3257,6 +3281,8 @@
 		<string>libs/isgl3d/animators/Isgl3dBoneBatch.m</string>
 		<string>libs/isgl3d/animators/Isgl3dBoneNode.h</string>
 		<string>libs/isgl3d/animators/Isgl3dBoneNode.m</string>
+		<string>libs/isgl3d/animators/Isgl3dKeyframeMesh.h</string>
+		<string>libs/isgl3d/animators/Isgl3dKeyframeMesh.m</string>
 		<string>libs/isgl3d/animators/Isgl3dSkeletonNode.h</string>
 		<string>libs/isgl3d/animators/Isgl3dSkeletonNode.m</string>
 		<string>libs/isgl3d/cameras/Isgl3dCamera.h</string>

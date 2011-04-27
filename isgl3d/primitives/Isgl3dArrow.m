@@ -150,11 +150,11 @@
 	}
 }
 
-- (int) vertexDataSize {
+- (unsigned int) estimatedVertexSize {
 	return (_nt + 4) * (_ns + 1) * 8;
 }
 
-- (int) indicesSize {
+- (unsigned int) estimatedIndicesSize {
 	return (_nt + 3) * _ns * 6;
 }
 

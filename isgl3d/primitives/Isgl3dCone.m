@@ -155,7 +155,7 @@
 	}
 }
 
-- (int) vertexDataSize {
+- (unsigned int) estimatedVertexSize {
 	if (_openEnded) {
 		return (_nt + 1) * (_ns + 1) * 8;
 	} else {
@@ -163,7 +163,7 @@
 	}
 }
 
-- (int) indicesSize {
+- (unsigned int) estimatedIndicesSize {
 	if (_openEnded) {
 		return _nt * _ns * 8;
 	} else {

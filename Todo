@@ -19,7 +19,6 @@ Desirable
 ---------
   - OpenGL ES 2.0 render problems: generic shader not working since iOS4.2?
     - [update 07/03/11] problems now rests in spotlighting only.  
-    - bug with tweener demo (different shaders ?)
   - Shaders in ES 2.0:
     - Ambient occlusion
     - Bump mapping

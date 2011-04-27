@@ -62,7 +62,7 @@
  */
 @interface Isgl3dGLMesh : NSObject {
 
-@private
+@protected
 	unsigned int _indicesBufferId;
 
 	unsigned char * _vertexData;
@@ -87,6 +87,36 @@
  * For better performance, the data should already be normalized when creating the mesh.
  */
 @property (nonatomic) BOOL normalizationEnabled;
+
+/**
+ * Returns the raw vertex data for the mesh.
+ */
+@property (nonatomic, readonly) unsigned char * vertexData;
+
+/**
+ * Returns the raw index data for the mesh.
+ */
+@property (nonatomic, readonly) unsigned char * indices;
+
+/**
+ * Returns the vertex data size in bytes.
+ */
+@property (nonatomic, readonly) unsigned int vertexDataSize;
+
+/**
+ * Returns the index data size in bytes.
+ */
+@property (nonatomic, readonly) unsigned int indexDataSize;
+
+/**
+ * Returns the number of elements (indices) used to construct the mesh.
+ */
+@property (nonatomic, readonly) unsigned int numberOfElements;
+
+/**
+ * Returns the number of vertices contained in the mesh data.
+ */
+@property (nonatomic, readonly) unsigned int numberOfVertices;
 
 /**
  * Allocates and initialises (autorelease) Isgl3dGLMesh.
@@ -154,11 +184,6 @@
  * This is called internally by iSGL3D.
  */
 - (unsigned int) indicesBufferId;
-
-/**
- * Returns the number of elements (indices) used to construct the mesh.
- */
-- (int) numberOfElements;
 
 /**
  * Sets the raw, interlaced vertex data.

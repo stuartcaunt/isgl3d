@@ -29,9 +29,9 @@
 #import "Isgl3dFloatArray.h"
 #import "Isgl3dUShortArray.h"
 
-@interface Isgl3dPrimitive (PrivateMethods)
-- (int) vertexDataSize;
-- (int) indicesSize;
+@interface Isgl3dPrimitive ()
+- (unsigned int) estimatedVertexDataSize;
+- (unsigned int) estimatedIndicesSize;
 @end
 
 @implementation Isgl3dPrimitive
@@ -50,20 +50,20 @@
 }
 
 - (void) constructMeshData {
-	int vertexDataSize = [self vertexDataSize];
-	int indicesSize = [self indicesSize];
+	unsigned int vertexDataSize = [self estimatedVertexDataSize];
+	unsigned int indicesSize = [self estimatedIndicesSize];
 	
 
 	Isgl3dFloatArray * vertexData;
 	Isgl3dUShortArray * indices;
 	
-	if (vertexDataSize == -1) {
+	if (vertexDataSize == 0) {
 		vertexData = [[Isgl3dFloatArray alloc] init];
 	} else {
 		vertexData = [[Isgl3dFloatArray alloc] initWithSize:vertexDataSize];
 	}
 	
-	if (indicesSize == -1) {
+	if (indicesSize == 0) {
 		indices = [[Isgl3dUShortArray alloc] init];
 	} else {
 		indices = [[Isgl3dUShortArray alloc] initWithSize:indicesSize];
@@ -88,14 +88,14 @@
 	// overload
 }
 
-- (int) vertexDataSize {
+- (unsigned int) estimatedVertexDataSize {
 	// overload
-	return -1;
+	return 0;
 }
 
-- (int) indicesSize {
+- (unsigned int) estimatedIndicesSize {
 	// overload
-	return -1;
+	return 0;
 }
 
 @end

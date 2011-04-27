@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Isgl3dGLMesh;
 @class Isgl3dMaterial;
 @class Isgl3dNode;
 @class Isgl3dMeshNode;
@@ -127,6 +128,13 @@ class CPVRTModelPOD;
 - (unsigned int) numberOfFrames;
 
 /**
+ * Builds all the scene objects in the POD file without adding them to the scene. The POD objects can
+ * then be used afterwards by retreiving them with the necessary accessors.
+ * Note: A call to this method is not required if using addMeshesToScene.
+ */
+- (void) buildSceneObjects;
+
+/**
  * Adds Isgl3dMeshNodes containing the meshes and relevant materaisl to the scene (or any other Isgl3dNode)
  * from the data in the POD file.
  * This creates a number of Isgl3dMeshNodes taking both material and mesh data, along with
@@ -143,6 +151,22 @@ class CPVRTModelPOD;
  * @param skeleton The Isgl3dSkeletonNode to which the bones are added.
  */
 - (void) addBonesToSkeleton:(Isgl3dSkeletonNode *)skeleton;
+
+/**
+ * Returns the Isgl3dGLMesh corresponding to a mesh node name (as defined in the POD file).
+ * All mesh names can be obtained via printPODInfo.
+ * @param meshName the name of the mesh as defined in the POD file.
+ * @return The Corresponding Isgl3dGLMesh.
+ */
+- (Isgl3dGLMesh *) meshFromNodeWithName:(NSString *)meshName;
+
+/**
+ * Returns the Isgl3dGLMesh corresponding to a mesh index (as defined in the POD file).
+ * All mesh indices can be obtained via printPODInfo.
+ * @param meshIndex the index of the mesh as defined in the POD file.
+ * @return The Corresponding Isgl3dGLMesh.
+ */
+- (Isgl3dGLMesh *) meshAtIndex:(unsigned int)meshIndex;
 
 /**
  * Returns the Isgl3dMeshNode corresponding to a node name (as defined in the POD file).

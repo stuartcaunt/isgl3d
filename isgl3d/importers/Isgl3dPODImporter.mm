@@ -56,7 +56,6 @@
  */
 - (Isgl3dAnimatedMeshNode *) createAnimatedMeshNode:(unsigned int)nodeId meshId:(unsigned int)meshId mesh:(Isgl3dGLMesh *)mesh material:(Isgl3dMaterial *)material;
 
-- (void) buildSceneObjects;
 - (void) buildBones;
 
 @end
@@ -245,6 +244,24 @@
 		NSLog(@"Unable to find mesh node with name %@", nodeName);
 	}
 	return node;
+}
+
+- (Isgl3dGLMesh *) meshFromNodeWithName:(NSString *)nodeName {
+	Isgl3dMeshNode * meshNode = [self meshNodeWithName:nodeName];
+	if (meshNode) {
+		return meshNode.mesh;
+	}
+	
+	return nil;
+}
+
+- (Isgl3dGLMesh *) meshAtIndex:(unsigned int)meshIndex {
+	if (meshIndex >= _podScene->nNumMesh) {
+		NSLog(@"Mesh at index %i not available: POD scene contains %i meshses", meshIndex, _podScene->nNumMesh);
+		return nil;
+	}
+	
+	return [_meshes objectAtIndex:meshIndex];
 }
 
 - (Isgl3dMaterial *) materialWithName:(NSString *)materialName {

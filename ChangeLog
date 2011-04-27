@@ -1,4 +1,6 @@
 current SVN version
+	Tests added for keyframe mesh with primitive data and imported pod data
+	Isgl3dKeyframeMesh: added to provide keyframe vertex animation of meshes
 	Added touch event handling to particles (implementation with help from Massimiliano Rossi) 
 	Isgl3dBillboardNode: modified to use meshes instead of particles. Use Isgl3dParticleNode for previous functionality.
 	Isgl3dBillboard: removed. Use Isgl3dBillboardNode with any mesh

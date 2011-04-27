@@ -206,11 +206,11 @@
 }
 
 
-- (int) vertexDataSize {
+- (unsigned int) estimatedVertexSize {
 	return (_nx + 1) * (_ny + 1) * 6 * 8;
 }
 
-- (int) indicesSize {
+- (unsigned int) estimatedIndicesSize {
 	return _nx * _ny * 6 * 6;
 }
 

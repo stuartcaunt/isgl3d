@@ -23,94 +23,103 @@
  *
  */
 
-#import "Isgl3dSphere.h"
-#import "Isgl3dFloatArray.h"
-#import "Isgl3dUShortArray.h"
+#import "TestMesh.h"
 
-@implementation Isgl3dSphere
+@implementation TestMesh
 
-@synthesize radius = _radius;
-@synthesize longs = _longs;
-@synthesize lats = _lats;
-
-+ (id) meshWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
-	return [[[self alloc] initWithGeometry:radius longs:longs lats:lats] autorelease];
-}
-
-- (id) initWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
+- (id) initWithGeometry:(float)width length:(float)length height:(float)height nx:(int)nx ny:(int)ny factor:(float)factor {
 	
 	if ((self = [super init])) {
-		_radius = radius;
-		_longs = longs;
-		_lats = lats;
+		_width = width;
+		_length = length;
+		_height = height;
+		_nx = nx;
+		_ny = ny;
+		_factor = factor;
 		
 		[self constructVBOData];
+		
 	}
-	
-	return self;
+    return self;
 }
 
 - (void) dealloc {
-    [super dealloc];
+
+	[super dealloc];
 }
 
 - (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
-	
-	for (int latNumber = 0; latNumber <= _lats; ++latNumber) {
-		for (int longNumber = 0; longNumber <= _longs; ++longNumber) {
-			float theta = latNumber * M_PI / _lats;
-			float phi = longNumber * 2 * M_PI / _longs;
+
+	float uXY, vXY;
+	float x, y, z;
+	float nx, ny, nz;
+	float u, v;
+	float normalLength;
+
+	for (int i = 0; i <= _nx; i++) {
+		uXY = (float)i / _nx;
+ 		x = -(_width / 2) + i * (_width / _nx);
+			 
+		for (int j = 0; j <= _ny; j++) {
+			vXY = 1. - (float)j / _ny;
+			z = -(_length / 2) + j * (_length / _ny);
+			u = 2.0 * (2.0 * M_PI * i) / _nx;
+			v = 2.0 * (2.0 * M_PI * j) / _ny;
+			y = sin(u) * sin(v) * _height;
+			nx = -cos(u)*sin(v) * _height;
+			ny = 1.0f;
+			nz = -sin(u)*cos(v) * _height;
+
+			y = y * _factor;
+			nx = nx * _factor;
+			nz = nz * _factor;
 			
-			float sinTheta = sin(theta);
-			float sinPhi = sin(phi);
-			float cosTheta = cos(theta);
-			float cosPhi = cos(phi);
-			
-			float x = cosPhi * sinTheta;
-			float y = cosTheta;
-			float z = sinPhi * sinTheta;
-			float u = 1.0 - (1.0 * longNumber / _longs);
-			float v = 1.0 * latNumber / _lats;
-		
-			[vertexData add:_radius * x];
-			[vertexData add:_radius * y];
-			[vertexData add:_radius * z];
+			normalLength = sqrt(nx*nx + ny*ny + nz*nz);
+			nx = nx / normalLength;
+			ny = ny / normalLength;
+			nz = nz / normalLength;
 			
 			[vertexData add:x];
 			[vertexData add:y];
 			[vertexData add:z];
+			
+			[vertexData add:nx];
+			[vertexData add:ny];
+			[vertexData add:nz];
 
-			[vertexData add:u];
-			[vertexData add:v];
+			[vertexData add:uXY];
+			[vertexData add:vXY];
 		}
 	}
-
-	for (int latNumber = 0; latNumber < _lats; latNumber++) {
-		for (int longNumber = 0; longNumber < _longs; longNumber++) {
+	
+	for (int i = 0; i < _nx; i++) {
+		for (int j = 0; j < _ny; j++) {
 			
-			int first = (latNumber * (_longs + 1)) + longNumber;
-			int second = first + (_longs + 1);
+			int first = i * (_ny + 1) + j;			
+			int second = first + (_ny + 1);
 			int third = first + 1;
 			int fourth = second + 1;
 			
 			[indices add:first];
 			[indices add:third];
 			[indices add:second];
-
-			[indices add:second];
+				
 			[indices add:third];
 			[indices add:fourth];
+			[indices add:second];
 		}
 	}
 
 }
 
 - (unsigned int) estimatedVertexSize {
-	return (_lats + 4) * (_longs + 1) * 8;
+	return (_nx + 1) * (_ny + 1) * 8;
 }
 
 - (unsigned int) estimatedIndicesSize {
-	return _lats * _longs * 6;
+	return _nx * _ny * 6;
 }
 
 @end
+
+

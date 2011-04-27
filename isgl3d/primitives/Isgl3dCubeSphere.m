@@ -198,7 +198,7 @@
 }
 
 
-- (int) vertexDataSize {
+- (unsigned int) estimatedVertexSize {
 	int lats = _lats;
 	if (lats % 4 != 0) {
 		lats = lats + 4 - lats % 4;
@@ -211,7 +211,7 @@
 	return (lats + 1) * (longs + 1) * 8;
 }
 
-- (int) indicesSize {
+- (unsigned int) estimatedIndicesSize {
 	int lats = _lats;
 	if (lats % 4 != 0) {
 		lats = lats + 4 - lats % 4;
