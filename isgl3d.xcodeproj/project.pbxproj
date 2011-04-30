@@ -2028,7 +2028,6 @@
 		17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPODImporter.h; sourceTree = "<group>"; };
 		17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPODImporter.mm; sourceTree = "<group>"; };
 		17A3E644135A1C380022BAD8 /* libbuild all.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libbuild all.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		17A3E648135A1C380022BAD8 /* build all-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "build all-Prefix.pch"; sourceTree = "<group>"; };
 		17A3EA66135A25D80022BAD8 /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
 		17A3EA67135A25D80022BAD8 /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
 		17A3EA68135A25D80022BAD8 /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
@@ -2753,7 +2752,6 @@
 				17F1D88512F88AD8008D39E8 /* external */,
 				17F1E05A12F88FFA008D39E8 /* Resources */,
 				17F1E05B12F88FFA008D39E8 /* tests */,
-				17A3E646135A1C380022BAD8 /* build all */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				17116C1812FF1D9500C4BC65 /* LICENSE.bullet */,
@@ -3406,22 +3404,6 @@
 				17A3E60F135A18B90022BAD8 /* Isgl3dPODImporter.mm */,
 			);
 			path = importers;
-			sourceTree = "<group>";
-		};
-		17A3E646135A1C380022BAD8 /* build all */ = {
-			isa = PBXGroup;
-			children = (
-				17A3E647135A1C380022BAD8 /* Supporting Files */,
-			);
-			path = "build all";
-			sourceTree = "<group>";
-		};
-		17A3E647135A1C380022BAD8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				17A3E648135A1C380022BAD8 /* build all-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		17A3EA64135A25D80022BAD8 /* PowerVR */ = {
@@ -7457,8 +7439,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DSTROOT = /tmp/build_all.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "build all/build all-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -7474,8 +7456,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DSTROOT = /tmp/build_all.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "build all/build all-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";

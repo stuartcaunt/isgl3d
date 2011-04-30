@@ -32,7 +32,6 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dColorUtil.h"
-#import "Isgl3dMatrix.h"
 
 @interface Isgl3dView ()
 - (void) clearBuffers:(Isgl3dGLRenderer *)renderer;
@@ -205,6 +204,7 @@
 		// Update full scene
 		[_scene updateWorldTransformation:nil];
 	}
+	_vpMatrixCoherent = NO;
 }
 
 - (void) clearBuffers:(Isgl3dGLRenderer *)renderer {
@@ -232,8 +232,9 @@
 		[renderer clean];
 	
 		// Set camera characteristics
-		Isgl3dMatrix4 projectionMatrix = [_camera projectionMatrix];
-		Isgl3dMatrix4 viewMatrix = [_camera viewMatrix];
+		Isgl3dMatrix4 viewMatrix = _camera.viewMatrix;
+		Isgl3dMatrix4 projectionMatrix = _camera.projectionMatrix;
+		
 		[renderer setProjectionMatrix:&projectionMatrix];
 		[renderer setViewMatrix:&viewMatrix];
 			
@@ -370,6 +371,47 @@
 		return NO;
 	}
 	return YES;
+}
+
+- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition {
+
+	if (!_vpMatrixCoherent) {
+		// calculate view-projection
+		Isgl3dMatrix4 viewMatrix = _camera.viewMatrix;
+		Isgl3dMatrix4 projectionMatrix = _camera.projectionMatrix;
+		im4Copy(&_vpMatrix, &projectionMatrix);
+		im4Multiply(&_vpMatrix, &viewMatrix);
+
+		_vpMatrixCoherent = YES;
+	}
+
+	Isgl3dVector3 projectedPosition = im4MultVector(&_vpMatrix, &worldPosition);
+	CGPoint viewPoint = CGPointZero;
+	CGSize viewportSize = _viewport.size;
+
+	switch (_deviceViewOrientation) {
+		case Isgl3dOrientation0:
+			viewPoint.x = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / _vpMatrix.tw);
+			viewPoint.y = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / _vpMatrix.tw);
+			break;
+
+		case Isgl3dOrientation180:
+			viewPoint.x = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / _vpMatrix.tw);
+			viewPoint.y = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / _vpMatrix.tw);
+			break;
+
+		case Isgl3dOrientation90Clockwise:
+			viewPoint.x = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / _vpMatrix.tw);
+			viewPoint.y = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / _vpMatrix.tw);
+			break;
+
+		case Isgl3dOrientation90CounterClockwise:
+			viewPoint.x = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / _vpMatrix.tw);
+			viewPoint.y = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / _vpMatrix.tw);
+			break;
+	}
+
+	return viewPoint;
 }
 
 @end

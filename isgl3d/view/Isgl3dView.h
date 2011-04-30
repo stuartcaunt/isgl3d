@@ -28,6 +28,7 @@
 
 #import "isgl3dTypes.h"
 #import "Isgl3dVector.h"
+#import "Isgl3dMatrix.h"
 
 @class Isgl3dScene3D;
 @class Isgl3dCamera;
@@ -86,6 +87,9 @@
 	NSString * _sceneAmbient;
 	
 	BOOL _cameraUpdateOnly;
+	
+	Isgl3dMatrix4 _vpMatrix;
+	BOOL _vpMatrixCoherent;
 }
 
 /**
@@ -292,7 +296,7 @@
  * retina and non-retina enabled devices.
  * 
  * @param uiPoint A CGPoint relative to the main window. Note that (0, 0) is top left
- * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
+ * @return A CGPoint relative to the viewport with (0, 0) at the bottom left in pixels.
  */
 - (CGPoint) convertUIPointToViewInPixels:(CGPoint)uiPoint;
 
@@ -302,6 +306,19 @@
  * @return true if the point is inside the Isgl3dView viewport.
  */
 - (BOOL) isUIPointInView:(CGPoint)uiPoint;
+
+/**
+ * Converts a 3D world position to a 2D position in the viewport equivalent to where the position is rendered
+ * in it. The viewport coordinate system has (0, 0) at the bottom left, taking into account device and
+ * viewport rotations.
+ * 
+ * Note that this returns a CGPoint containing the <em>point</em> position in the view which is identical for
+ * retina and non-retina enabled devices.
+ * 
+ * @param worldPosition an Isgl3dVector3 containing the 3D world position to be translated to 2D viewport point.
+ * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
+ */
+- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition;
 
 @end
 
