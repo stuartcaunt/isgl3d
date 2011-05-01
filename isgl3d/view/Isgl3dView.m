@@ -404,6 +404,14 @@
 	return viewPoint;
 }
 
+
+- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition {
+	CGPoint pixelPoint = [self convertWorldPositionToViewInPixels:worldPosition];
+	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
+	
+	return CGPointMake(pixelPoint.x * s, pixelPoint.y * s);
+}
+
 @end
 
 #pragma mark Isgl3dBasic3DView

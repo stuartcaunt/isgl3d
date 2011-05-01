@@ -317,6 +317,19 @@
  */
 - (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition;
 
+/**
+ * Converts a 3D world position to a 2D position in the viewport equivalent to where the position is rendered
+ * in it. The viewport coordinate system has (0, 0) at the bottom left, taking into account device and
+ * viewport rotations.
+ * 
+ * Note that this returns a CGPoint containing the pixel position in the view which differs for
+ * retina and non-retina enabled devices.
+ * 
+ * @param worldPosition an Isgl3dVector3 containing the 3D world position to be translated to 2D viewport point.
+ * @return A CGPoint relative to the viewport with (0, 0) at the bottom left in pixels.
+ */
+- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition;
+
 @end
 
 
