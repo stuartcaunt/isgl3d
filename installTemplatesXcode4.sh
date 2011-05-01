@@ -63,6 +63,12 @@ echo "Installing ${ISGL3D_VERSION} templates for Xcode 4"
 echo "----------------------------------------------"
 echo ""
 
+#verify that Templates directory exists
+if [[ ! -d "$TEMPLATES_DIR_DEST" ]]; then
+	echo ...creating templates folder
+	mkdir -p "$TEMPLATES_DIR_DEST"
+fi
+
 # Delete all previous iSGL3D templates
 check_rm_dir "$TEMPLATES_DIR_DEST/$BASE_TEMPLATE_DIR"
 check_rm_dir "$TEMPLATES_DIR_DEST/$APPLICATION_TEMPLATE_DIR"

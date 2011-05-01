@@ -25,7 +25,9 @@ Desirable
     - User-defined shaders incorporated into materials (kind of Isgl3dFXMaterial)
     - Improve generic vertex shader perf for lighting using #defines for lights enabled?
   - Actions for animations
+  - Bezier surfaces
   - Collada import
+  - Inverse kinematics
   - Tweens
     - phase events
     - delay
