@@ -87,9 +87,6 @@
 	NSString * _sceneAmbient;
 	
 	BOOL _cameraUpdateOnly;
-	
-	Isgl3dMatrix4 _vpMatrix;
-	BOOL _vpMatrixCoherent;
 }
 
 /**

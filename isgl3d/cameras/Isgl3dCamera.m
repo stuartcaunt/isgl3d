@@ -29,6 +29,7 @@
 
 @interface Isgl3dCamera (PrivateMethods)
 - (void) calculateViewMatrix;
+- (void) calculateViewProjectionMatrix;
 @end
 
 @implementation Isgl3dCamera
@@ -82,6 +83,8 @@
 		_zoom = 1;
 		_isPerspective = YES;
 		
+		_viewProjectionMatrixDirty = YES;
+		
 		_width = width;
 		_height = height;
 		
@@ -129,7 +132,9 @@
 		_focus = 0.5 * _height / (_zoom * tan(_fov * M_PI / 360.0));
 	}
 	
-	_isPerspective = YES;	
+	_isPerspective = YES;
+	
+	_viewProjectionMatrixDirty = YES;
 }
 
 - (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {
@@ -146,6 +151,8 @@
 	_orientation = orientation;
 
 	_isPerspective = NO;
+
+	_viewProjectionMatrixDirty = YES;
 }
 
 - (void) setWidth:(float)width andHeight:(float)height {
@@ -312,6 +319,17 @@
 	_viewMatrix = [Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
 				  centerx:_lookAt.x centery:_lookAt.y centerz:_lookAt.z 
 				  upx:_up.x upy:_up.y upz:_up.z];
+
+	_viewProjectionMatrixDirty = YES;
+}
+
+- (Isgl3dMatrix4) viewProjectionMatrix {
+	if (_viewProjectionMatrixDirty) {
+		im4Copy(&_viewProjectionMatrix, &_projectionMatrix);
+		im4Multiply(&_viewProjectionMatrix, &_viewMatrix);
+		_viewProjectionMatrixDirty = NO;
+	}
+	return _viewProjectionMatrix;
 }
 
 @end

@@ -81,6 +81,8 @@
 @private
 	Isgl3dMatrix4 _viewMatrix;
 	Isgl3dMatrix4 _projectionMatrix;
+	Isgl3dMatrix4 _viewProjectionMatrix;
+	BOOL _viewProjectionMatrixDirty;
 	
 	Isgl3dVector3 _lookAt;
 	
@@ -135,6 +137,11 @@
  * The current projection matrix.
  */
 @property (nonatomic) Isgl3dMatrix4 projectionMatrix;
+
+/**
+ * The combined view and projection matrices.
+ */
+@property (nonatomic, readonly) Isgl3dMatrix4 viewProjectionMatrix;
 
 /**
  * Indicates whether the camera is in perspective mode.
