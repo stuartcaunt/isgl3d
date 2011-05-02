@@ -226,7 +226,6 @@
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
  * Note: For perspective projections the camera can only be used if the width and height are set 
- * @param view The view to be used by the camera (provides width and height).
  */
 + (id) camera;
 
@@ -261,7 +260,6 @@
  * Default initialisation of the camera: The camera is position at (0, 0, 10) looking directly towards the origin
  * with its y-axis parallel to the world-space y-axis. Perspective projection is used as default.
  * Note: For perspective projections the camera can only be used if the width and height are set 
- * @param view The view to be used by the camera (provides width and height).
  */
 - (id) init;
 

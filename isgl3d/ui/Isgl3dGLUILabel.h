@@ -43,7 +43,7 @@
 
 /**
  * Allocates and initialises (autorelease) label with text, a font and a font size.
- * @param string The text to be displayed.
+ * @param text The text to be displayed.
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
@@ -57,7 +57,7 @@
  * is created by rendering each character next to each other.
  * 
  * Note: this is very experimental.
- * @param string The text to be displayed.
+ * @param text The text to be displayed.
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
@@ -65,11 +65,11 @@
 
 /**
  * Initialises the label with text, a font and a font size.
- * @param string The text to be displayed.
+ * @param text The text to be displayed.
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
-- (id) initWithText:(NSString *)string fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
+- (id) initWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
 
 /**
  * Initialises the label with text, a font and a font size.
@@ -79,7 +79,7 @@
  * is created by rendering each character next to each other.
  * 
  * Note: this is very experimental.
- * @param string The text to be displayed.
+ * @param text The text to be displayed.
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */

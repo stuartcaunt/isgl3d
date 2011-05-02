@@ -146,7 +146,7 @@ typedef enum {
  * @param ambientColor Hex string containing ambient component of the light source.
  * @param diffuseColor Hex string containing diffuse component of the light source.
  * @param specularColor Hex string containing specular component of the light source.
- *  
+ * @param attenuation The attenuation of the light source.
  */
 + (id) lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
 
@@ -167,7 +167,7 @@ typedef enum {
  * @param ambientColor Hex string containing ambient component of the light source.
  * @param diffuseColor Hex string containing diffuse component of the light source.
  * @param specularColor Hex string containing specular component of the light source.
- *  
+ * @param attenuation The attenuation of the light source.
  */
 - (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
 

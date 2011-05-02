@@ -103,7 +103,7 @@
 /**
  * Compares distances between another node and this node.
  * @param node The node to be compared with.
- * @reult the comparison result.
+ * @result the comparison result.
  */
 - (NSComparisonResult) compareDistances:(Isgl3dSortableNode *)node;
 

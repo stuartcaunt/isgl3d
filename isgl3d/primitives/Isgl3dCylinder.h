@@ -38,7 +38,7 @@
 /**
  * Allocates and initialises (autorelease) cylinder with the specified geometry.
  * @param height The total height of the cylinder.
- * @param radisu The radius of the cylinder.
+ * @param radius The radius of the cylinder.
  * @param ns The number of segments radially around the cylinder.
  * @param nt The number of segments vertically along the cylinder.
  * @param openEnded Indicates if the cylinder is open-ended or not.
@@ -48,7 +48,7 @@
 /**
  * Initialises the cylinder with the specified geometry.
  * @param height The total height of the cylinder.
- * @param radisu The radius of the cylinder.
+ * @param radius The radius of the cylinder.
  * @param ns The number of segments radially around the cylinder.
  * @param nt The number of segments vertically along the cylinder.
  * @param openEnded Indicates if the cylinder is open-ended or not.

@@ -111,7 +111,6 @@
 /**
  * Allocates and initialises (autorelease) camera with a target node.
  * Note: For perspective projections the camera can only be used if the width and height are set 
- * @param view The view to be used by the camera (provides width and height).
  * @param target The target node.
  */
 + (id) cameraWithTarget:(Isgl3dNode *)target;
@@ -144,7 +143,6 @@
 /**
  * Initialises the camera with a target node.
  * Note: For perspective projections the camera can only be used if the width and height are set 
- * @param view The view to be used by the camera (provides width and height).
  * @param target The target node.
  */
 - (id) initWithTarget:(Isgl3dNode *)target;

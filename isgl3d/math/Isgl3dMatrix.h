@@ -98,7 +98,7 @@ static inline Isgl3dMatrix4 im4CreateIdentity()
 
 /**
  * Creates a matrix structure from a row-major array of 9 values.
- * @param array The row-major array of 9 values.
+ * @param a The row-major array of 9 values.
  * @result A matrix created from the 16 value row-major array.
  */
 static inline Isgl3dMatrix4 im4CreateFromArray9(float * a)
@@ -113,7 +113,7 @@ static inline Isgl3dMatrix4 im4CreateFromArray9(float * a)
 
 /**
  * Creates a matrix structure from a row-major array of 16 values.
- * @param array The row-major array of 16 values.
+ * @param a The row-major array of 16 values.
  * @result A matrix created from the 16 value row-major array.
  */
 static inline Isgl3dMatrix4 im4CreateFromArray16(float * a)
@@ -129,7 +129,7 @@ static inline Isgl3dMatrix4 im4CreateFromArray16(float * a)
 /**
  * Constructs a matrix with values from a column-major float array.
  * The array must contain 16 values.
- * @param The array of column-major matrix values.
+ * @param a The array of column-major matrix values.
  * @result A matrix created from given OpenGL (column-major) array.
  */
 static inline Isgl3dMatrix4 im4CreateFromOpenGL(float * a)
@@ -170,7 +170,7 @@ Isgl3dMatrix4 im4PlanarProjectionMatrixFromPosition(Isgl3dVector4 * plane, Isgl3
 /**
  * Constructs a matrix to project all vertices onto a plane along a given direction.
  * @param plane Vector representation of the plane.
- * @param position Vector direction along which the projection occurs.
+ * @param direction Vector direction along which the projection occurs.
  * @result A matrix to flatten vertices onto a plane as projected along a direction.
  */
 Isgl3dMatrix4 im4PlanarProjectionMatrixFromDirection(Isgl3dVector4 * plane, Isgl3dVector3 * direction);
@@ -360,7 +360,6 @@ void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b);
  * Performs a multiplication on a given matrix with it being on the left, using only the 3x3 part of the matrix.
  * The resulting matrix is stored in "a".
  * The translation components of the matrix are not affected.
- * @param matrix The matrix to be multiplied. 
  * @param a The matrix to be multiplied on the left, result stored in this matrix. 
  * @param b The matrix to be multiplied on the right. 
  */
@@ -368,7 +367,7 @@ void im4MultiplyOnLeft3x3(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b);
 
 /**
  * Performs a multiplication by the matrix on the given 4-component vector.
- * @param matrix The matrix multiplier. 
+ * @param m The matrix multiplier. 
  * @param vector The vector to be multiplied.
  * @result The result of the multiplication on given vector
  */
@@ -376,7 +375,7 @@ Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector);
 
 /**
  * Performs a multiplication by the matrix on the given 3-component vector with the translational components of the matrix included.
- * @param matrix The matrix multiplier. 
+ * @param m The matrix multiplier. 
  * @param vector The vector to be multiplied.
  * @result The result of the multiplication on given vector
  */
@@ -384,7 +383,7 @@ Isgl3dVector3 im4MultVector(Isgl3dMatrix4 * m, Isgl3dVector3 * vector);
 
 /**
  * Performs a multiplication on the given 3-component vector with the only the 3x3 part of the matrix.
- * @param matrix The matrix multiplier. 
+ * @param m The matrix multiplier. 
  * @param vector The vector to be multiplied.
  * @result The result of the multiplication on given vector
  */
@@ -392,7 +391,7 @@ Isgl3dVector3 im4MultVector3x3(Isgl3dMatrix4 * m, Isgl3dVector3 * vector);
 
 /**
  * Performs a multiplication by the matrix on the array equivalent of a 4-component vector.
- * @param matrix The matrix multiplier. 
+ * @param m The matrix multiplier. 
  * @param array The array to be multiplied. Result is stored in the same array.
  */
 void im4MultArray4(Isgl3dMatrix4 * m, float * array); 
@@ -400,7 +399,7 @@ void im4MultArray4(Isgl3dMatrix4 * m, float * array);
 
 /**
  * Returns the 3x3 part of a matrix as a column-major float array.
- * @param matrix The matrix. 
+ * @param m The matrix. 
  * @param array The float array into which the column-major representation of the matrix is set.
  */
 static inline void im4ConvertTo3x3ColumnMajorFloatArray(Isgl3dMatrix4 * m, float * array)
@@ -412,7 +411,7 @@ static inline void im4ConvertTo3x3ColumnMajorFloatArray(Isgl3dMatrix4 * m, float
 
 /**
  * Returns the full matrix as a column-major float array.
- * @param matrix The matrix. 
+ * @param m The matrix. 
  * @param array The float array into which the column-major representation of the matrix is set.
  */
 static inline void im4ConvertToColumnMajorFloatArray(Isgl3dMatrix4 * m, float * array)
@@ -426,7 +425,7 @@ static inline void im4ConvertToColumnMajorFloatArray(Isgl3dMatrix4 * m, float * 
 
 /**
  * Returns the full matrix as a column-major float array.
- * @param matrix The matrix. 
+ * @param m The matrix. 
  */
 static inline float* im4ColumnMajorFloatArrayFromMatrix(Isgl3dMatrix4 * m)
 {
@@ -436,8 +435,8 @@ static inline float* im4ColumnMajorFloatArrayFromMatrix(Isgl3dMatrix4 * m)
 
 /**
  * Copies data from a column-major (OpenGL standard) transformation in to a matrix.
- * @param matrix The matrix. 
- * @param transformation The column-major transformation as a 16 value float array to be copied.
+ * @param m The matrix. 
+ * @param t The column-major transformation as a 16 value float array to be copied.
  */
 static inline void im4SetTransformationFromOpenGLMatrix(Isgl3dMatrix4 * m, float * t)
 {
@@ -449,8 +448,8 @@ static inline void im4SetTransformationFromOpenGLMatrix(Isgl3dMatrix4 * m, float
 
 /**
  * Copies a matrix into a column-major (OpenGL standard) float array.
- * @param matrix The matrix. 
- * @param transformation The column-major transformation as a 16 value float array that will hold the values of this matrix after the call.
+ * @param m The matrix. 
+ * @param t The column-major transformation as a 16 value float array that will hold the values of this matrix after the call.
  */
 static inline void im4GetTransformationAsOpenGLMatrix(Isgl3dMatrix4 * m, float * t)
 {
@@ -462,12 +461,14 @@ static inline void im4GetTransformationAsOpenGLMatrix(Isgl3dMatrix4 * m, float *
 
 /**
  * Returns the equivalent Euler angles of the rotational components of a matrix.
+ * @param m The matrix. 
  * @result Vector containing the rotations about x, y and z (in degrees)
  */
 Isgl3dVector3 im4ToEulerAngles(Isgl3dMatrix4 * m);
 
 /**
  * Returns the equivalent scaling values of a matrix.
+ * @param m The matrix. 
  * @result Vector containing the scalex in x, y and z
  */
 Isgl3dVector3 im4ToScaleValues(Isgl3dMatrix4 * m);
@@ -475,6 +476,7 @@ Isgl3dVector3 im4ToScaleValues(Isgl3dMatrix4 * m);
 
 /**
  * Returns the equivalent scaling values of a matrix.
+ * @param m The matrix. 
  * @result Vector containing the scalex in x, y and z
  */
 static inline Isgl3dVector3 im4ToPosition(Isgl3dMatrix4 * m) 

@@ -51,7 +51,7 @@
  * Creates and adds a new Isgl3dTween to the array of active tweens. The tween is started immediately, updated automatically and
  * destroyed when it has completed.
  * @param object The id of the object to be tweened.
- * @parameters An NSDictionary of parameters that characterise the tween. See the relevant discussion in Isgl3dTween for more information. 
+ * @param parameters An NSDictionary of parameters that characterise the tween. See the relevant discussion in Isgl3dTween for more information. 
  */
 + (void) addTween:(id)object withParameters:(NSDictionary *)parameters;
 

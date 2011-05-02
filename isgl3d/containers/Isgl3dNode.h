@@ -241,14 +241,12 @@
 @property (nonatomic) BOOL isVisible;
 
 /**
- * Allocates and initialises (autorelease) node (position at (0, 0, 0) and zero rotation
- * and no scaling)..
+ * Allocates and initialises (autorelease) node (position at (0, 0, 0) and zero rotation and no scaling).
  */
 + (id) node;
 
 /**
- * Initialises the node (position at (0, 0, 0) and zero rotation
- * and no scaling)..
+ * Initialises the node (position at (0, 0, 0) and zero rotation and no scaling).
  */
 - (id) init;
 
@@ -325,9 +323,9 @@
 
 /**
  * Sets scaling factors along each axis.
- * @scaleX The scaling factor in the x-direction.
- * @scaleY The scaling factor in the y-direction.
- * @scaleZ The scaling factor in the z-direction.
+ * @param scaleX The scaling factor in the x-direction.
+ * @param scaleY The scaling factor in the y-direction.
+ * @param scaleZ The scaling factor in the z-direction.
  */
 - (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 
@@ -426,7 +424,7 @@
 
 /**
  * Utility method to create an Isgl3dBillboardNode and add it as a child.
- * @param billboard The mesh to be rendered.
+ * @param mesh The mesh to be rendered.
  * @param material The material to be displayed on the mesh.
  * @return (autorelease) The created node.
  */

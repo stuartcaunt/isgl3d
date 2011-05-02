@@ -57,7 +57,7 @@
  * Constructs all vertex and index data to be passed to the GPU. This is unimplemented in the Isgl3dPrimitive
  * and must be implemented in all classes extending this.
  * @param vertexData An array of floating point values for the vertex data.
- * @param indicies An array of unsigned short values for the index data.
+ * @param indices An array of unsigned short values for the index data.
  */
 - (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices;
 

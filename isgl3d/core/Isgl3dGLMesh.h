@@ -170,7 +170,7 @@
  * and registered.
  * @param vertexData the raw vertex data cast as an unsigned char pointer.
  * @param vertexDataSize the vertex data size in bytes.
- * @param indexData the raw index data cast as an unsigned char pointer.
+ * @param indices the raw index data cast as an unsigned char pointer.
  * @param indexDataSize the index data size in bytes.
  * @param numberOfElements the true number of indices contained in the array (for ushort data for example, this equals indexDataSize / sizeof(ushort)).
  * @param vboData An Isgl3dGLVBOData object containing information on the structure of the raw vertex data.
@@ -196,7 +196,7 @@
 /**
  * Sets the index data.
  * The index data is copied internally: the original needs to be released.
- * @param indexData the raw index data cast as an unsigned char pointer.
+ * @param indices the raw index data cast as an unsigned char pointer.
  * @param indexDataSize the index data size in bytes.
  * @param numberOfElements the true number of indices contained in the array (for ushort data for example, this equals indexDataSize / sizeof(ushort)).
  */

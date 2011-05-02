@@ -145,21 +145,19 @@
  * Initialises an Isgl3CArray for a given size_t object, initialised with the data from a standard c array.
  * Note the c array is assumed to have the same types of objects as the Isgl3dArray.
  * @param sizeType the size in bytes for the objects to be stored.
- * @param a the c array of data to be copied into the Isgl3dCArray.
+ * @param array the c array of data to be copied into the Isgl3dCArray.
  * @param count the number of elements to be copied.
  */
 - (id) initForSizeType:(size_t)sizeType withArray:(void *)array count:(unsigned int)count;
 
 /**
  * Adds a new value to the array. The value must be of the original size_t given to the Isgl3dArray at initialisation.
- * @param array The array to be added to.
  * @param value The value to be added (copied into) the array.
  */
 - (void) add:(const void *)value;
 
 /**
  * Returns a pointer to an element in the array at a given index.
- * @param array The array to get the element from.
  * @param index The index of the element.
  * @return pointer to the element
  */
@@ -168,7 +166,6 @@
 /**
  * Clears the array. Note that this does not delete the allocated memory for the data, simply
  * initialises the count to zero.
- * @param array The array to be cleared.
  */
 - (void) clear;
 

@@ -62,6 +62,7 @@
 		// Set up animation data (1 second no animation, 2 seconds shrink to sphere, 2 seconds return to teapot)
 		[_mesh addKeyframeAnimationData:0 duration:1.0f];
 		[_mesh addKeyframeAnimationData:0 duration:2.0f];
+		[_mesh addKeyframeAnimationData:1 duration:1.0f];
 		[_mesh addKeyframeAnimationData:1 duration:2.0f];
 		
 		// Start the automatic mesh animation

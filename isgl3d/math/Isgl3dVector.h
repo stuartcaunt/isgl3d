@@ -164,7 +164,7 @@ static inline void iv3Translate(Isgl3dVector3 * a, float x, float y, float z)
 /**
  * Scales a vector by a given amount.
  * @param a The vector.
- * @param s The scale factor.
+ * @param scale The scale factor.
  */
 static inline void iv3Scale(Isgl3dVector3 * a, float scale) 
 {
@@ -177,6 +177,7 @@ static inline void iv3Scale(Isgl3dVector3 * a, float scale)
  * Performs dot product of two vectors. Produces a = a . b.
  * @param a The first vector.
  * @param b The second vector.
+ * @result the dot product of the two vectors.
  */
 static inline float iv3Dot(Isgl3dVector3 * a, Isgl3dVector3 * b)
 {
@@ -187,6 +188,7 @@ static inline float iv3Dot(Isgl3dVector3 * a, Isgl3dVector3 * b)
  * Performs cross product of two vectors. Produces a = a x b.
  * @param a The first vector.
  * @param b The second vector.
+ * @result The cross product of the two vectors.
  */
 Isgl3dVector3 iv3Cross(Isgl3dVector3 * a, Isgl3dVector3 * b);
 
@@ -364,7 +366,7 @@ static inline void iv4Sub(Isgl3dVector4 * a, Isgl3dVector4 * b)
 /**
  * Scales a vector by a given amount.
  * @param a The vector.
- * @param s The scale factor.
+ * @param scale The scale factor.
  */
 static inline void iv4Scale(Isgl3dVector4 * a, float scale)
 {
