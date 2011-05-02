@@ -588,7 +588,7 @@
 		17BC4429136DE0A90064FF49 /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
 		17E4A657136DED5C0093B7E0 /* LICENSE.IMGTEC */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.IMGTEC; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* __PROJECTNAME__.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = __PROJECTNAME__.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* ___PROJECTNAME___.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "___PROJECTNAME___.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1163,7 +1163,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* __PROJECTNAME__.app */,
+				1D6058910D05DD3D006BFB54 /* ___PROJECTNAME___.app */,
 				17801B05131AB1370045803F /* libisgl3d.a */,
 			);
 			name = Products;
@@ -1389,7 +1389,7 @@
 			);
 			name = "___PROJECTNAME___";
 			productName = "___PROJECTNAME___";
-			productReference = 1D6058910D05DD3D006BFB54 /* __PROJECTNAME__.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* ___PROJECTNAME___.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1642,7 +1642,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_CFLAGS = "";
-				PRODUCT_NAME = __PROJECTNAME__;
+				PRODUCT_NAME = "___PROJECTNAME___";
 				PROVISIONING_PROFILE = "2E0D79B3-5945-43F2-944B-DFECB4839C2C";
 			};
 			name = Debug;
