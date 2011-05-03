@@ -381,7 +381,7 @@
 		
 		NSString * extension = [textureFileName pathExtension];
 		// Image formats supported by UIImage and pvr
-		static NSArray * acceptedFormats = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"tiff", @"tif", @"gif", @"bmp", @"BMPf", @"ico", @"cur", @"xbm", @"pvr", nil];
+		NSArray * acceptedFormats = [NSArray arrayWithObjects:@"png", @"jpg", @"jpeg", @"tiff", @"tif", @"gif", @"bmp", @"BMPf", @"ico", @"cur", @"xbm", @"pvr", nil];
 		if (![acceptedFormats containsObject:extension]) {
 			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD %@ contains texture image with format that is not supported : %@", _podPath, textureFileName);
 		} 
