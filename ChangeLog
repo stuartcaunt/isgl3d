@@ -1,4 +1,6 @@
 current SVN version
+
+version 1.2.0 (2011-05-04)
 	Isgl3dPODImporter: fix bug in Isgl3dPODImporter (Issue #3)
 	Isgl3dView: add method to convert 3D world position to 2D viewport point
 	Tests added for keyframe mesh with primitive data and imported pod data
