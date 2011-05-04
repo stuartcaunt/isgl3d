@@ -103,6 +103,27 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
+		<key>Resources/Default.png</key>
+		<dict>
+			<key>Group</key>
+			<string>Resources</string>
+			<key>Path</key>
+			<string>Resources/Default.png</string>
+		</dict>
+		<key>Resources/Icon.png</key>
+		<dict>
+			<key>Group</key>
+			<string>Resources</string>
+			<key>Path</key>
+			<string>Resources/Icon.png</string>
+		</dict>
+		<key>Resources/Icon@2x.png</key>
+		<dict>
+			<key>Group</key>
+			<string>Resources</string>
+			<key>Path</key>
+			<string>Resources/Icon@2x.png</string>
+		</dict>
 		<key>LICENSE.isgl3d</key>
 		<dict>
 			<key>Path</key>
@@ -125,6 +146,9 @@
 		<string>Resources/Shaders/shadowMap.fsh</string>
 		<string>Resources/Shaders/shadowMap.vsh</string>
 		<string>Resources/Info.plist</string>
+		<string>Resources/Default.png</string>
+		<string>Resources/Icon.png</string>
+		<string>Resources/Icon@2x.png</string>
 		<string>LICENSE.isgl3d</string>
 		<string>LICENSE.IMGTEC</string>
 	</array>
