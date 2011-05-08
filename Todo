@@ -26,6 +26,7 @@ Desirable
     - Improve generic vertex shader perf for lighting using #defines for lights enabled?
   - Actions for animations
   - Bezier surfaces
+  - Composite materials with blending functions
   - Collada import
   - Inverse kinematics
   - Tweens

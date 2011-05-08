@@ -633,6 +633,19 @@
 			<key>Path</key>
 			<string>libs/isgl3d/core/Isgl3dGLVBOFactory.m</string>
 		</dict>
+		<key>libs/isgl3d/core/Isgl3dGLView.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>core</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/core/Isgl3dGLView.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
 		<key>libs/isgl3d/core/Isgl3dScheduler.h</key>
 		<dict>
 			<key>Group</key>
@@ -3325,6 +3338,7 @@
 		<string>libs/isgl3d/core/Isgl3dGLVBOData.m</string>
 		<string>libs/isgl3d/core/Isgl3dGLVBOFactory.h</string>
 		<string>libs/isgl3d/core/Isgl3dGLVBOFactory.m</string>
+		<string>libs/isgl3d/core/Isgl3dGLView.h</string>
 		<string>libs/isgl3d/core/Isgl3dScheduler.h</string>
 		<string>libs/isgl3d/core/Isgl3dScheduler.m</string>
 		<string>libs/isgl3d/core/Isgl3dUVMap.h</string>

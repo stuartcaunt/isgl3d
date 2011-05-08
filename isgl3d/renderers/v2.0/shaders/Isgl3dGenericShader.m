@@ -371,6 +371,8 @@
 	} else if (_currentState.lightingEnabled && !_previousState.lightingEnabled) {
 		if (_lightCount > 0) {
 			[self setUniform1i:_lightingEnabledUniformLocation value:1];
+		} else {
+			_currentState.lightingEnabled = NO;
 		}
 	}
 	

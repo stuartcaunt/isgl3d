@@ -29,6 +29,7 @@
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dUVMap.h"
 #import "Isgl3dDirector.h"
+#import "Isgl3dTextureMaterial.h"
 
 #define BONE_MESH @"__boneMesh"
 #define GLUIBUTTON_MESH @"__glUIButtonMesh"
@@ -100,6 +101,14 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 	Isgl3dGLMesh * labelMesh = [Isgl3dPlane meshWithGeometryAndUVMap:contentSize.width height:contentSize.height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
 //	GLMesh * labelMesh = [[Plane alloc] initWithGeometryAndUVMap:width height:height nx:2 ny:2 uvMap:[UVMap uvMapWithUA:0 vA:0 uB:0.5 vB:0 uC:0 vC:0.5]];
 	return labelMesh;	
+}
+
+- (Isgl3dPlane *) planeWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny forMaterial:(Isgl3dTextureMaterial *)material {
+	float uMax = material.contentSize.width / material.width;
+	float vMax = material.contentSize.height / material.height;
+	
+	Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
+	return plane;	
 }
 
 - (unsigned int) UIButtonWidth {

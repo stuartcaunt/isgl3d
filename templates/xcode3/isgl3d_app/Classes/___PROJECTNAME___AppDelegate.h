@@ -17,6 +17,4 @@
 
 @property (readonly, nonatomic) UIWindow * window; 
 
-- (void) createViews;
-
 @end

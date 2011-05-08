@@ -38,7 +38,7 @@
 
 @implementation Isgl3dEAGLView
 
-@synthesize touchDelegate = _touchDelegate;
+@synthesize isgl3dTouchDelegate = _touchDelegate;
 
 + (Class) layerClass {
     return [CAEAGLLayer class];
@@ -149,7 +149,7 @@
 	if (_glContext) {
 		[self setMultipleTouchEnabled:YES];
 		
-		Isgl3dLog(Info, @"Isgl3dUIView : GLContext for OpenGL ES 1.X used.");
+		Isgl3dLog(Info, @"Isgl3dEAGLView : GLContext for OpenGL ES 1.X used.");
 		return YES;
 	}
 	return NO;
@@ -169,7 +169,7 @@
 	if (_glContext) {
 		[self setMultipleTouchEnabled:YES];
 
-		Isgl3dLog(Info, @"Isgl3dUIView : GLContext for OpenGL ES 2.X used.");
+		Isgl3dLog(Info, @"Isgl3dEAGLView : GLContext for OpenGL ES 2.X used.");
 		return YES;
 	}
 	return NO;
@@ -199,12 +199,12 @@
 			return [self initContextForOpenGLES2];
 
 		} else {
-			Isgl3dLog(Warn, @"Isgl3dUIView : Got glcontextversion %i, which is not valid. Reverting to glContext1", glContextVersion);
+			Isgl3dLog(Warn, @"Isgl3dEAGLView : Got glcontextversion %i, which is not valid. Reverting to glContext1", glContextVersion);
 			return [self initContextForOpenGLES1];
 		}
 	}
 	
-	Isgl3dLog(Warn, @"Isgl3dUIView : glcontextversion not found in isgl3d.plist");
+	Isgl3dLog(Warn, @"Isgl3dEAGLView : glcontextversion not found in isgl3d.plist");
 	return [self initContextForLatestOpenGLES];
 	
 }

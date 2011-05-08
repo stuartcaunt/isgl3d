@@ -33,7 +33,7 @@
  * Simple structure to hold the components of a 3 dimensional vector.
  */
 typedef struct {
-	float x __attribute__ ((aligned));
+	float x; // Note: removed __attribute__ ((aligned) to compile with LLVM GCC, crashes at run-time otherwise
 	float y;
 	float z;
 } Isgl3dVector3;
@@ -42,7 +42,7 @@ typedef struct {
  * Simple structure to hold the components of a 4 dimensional vector.
  */
 typedef struct {
-	float x __attribute__ ((aligned));
+	float x; // Note: removed __attribute__ ((aligned) to compile with LLVM GCC, crashes at run-time otherwise
 	float y;
 	float z;
 	float w;

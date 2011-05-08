@@ -27,13 +27,18 @@
 #import <UIKit/UIKit.h>
 
 #import "isgl3dTypes.h"
-#import "Isgl3dEAGLView.h"
+#import "Isgl3dGLView.h"
 
 @class Isgl3dView;
 @class Isgl3dGLRenderer;
 @class Isgl3dEvent3DHandler;
 @class Isgl3dFpsRenderer;
 @class Isgl3dCamera;
+
+@protocol Isgl3dRenderPhaseCallback
+- (void) preRender;
+- (void) postRender;
+@end
 
 /**
  * The Isgl3dDirector singleton provides the control for the iSGL3D application. All animation, rendering and event handling is handled 
@@ -67,7 +72,7 @@
 	
 	isgl3dOrientation _deviceOrientation;
 	
-	Isgl3dEAGLView * _glView;
+	UIView<Isgl3dGLView> * _glView;
 	CGRect _windowRect;
 	CGRect _windowRectInPixels;
 	
@@ -92,6 +97,8 @@
 	
 	BOOL _retinaDisplayEnabled;
 	float _contentScaleFactor;
+	
+	id<Isgl3dRenderPhaseCallback> _renderPhaseCallback;
 }
 
 /**
@@ -140,7 +147,7 @@
 /**
  * The Isgl3dEAGLView with OpenGL-specific contexts.
  */
-@property (nonatomic, retain) Isgl3dEAGLView * openGLView;
+@property (nonatomic, retain) UIView<Isgl3dGLView> * openGLView;
 
 /**
  * Returns the change in time since the last frame.
@@ -196,6 +203,11 @@
  * Returns the currently active camera during the render phase.
  */
 @property (nonatomic, readonly) Isgl3dCamera * activeCamera;
+
+/**
+ * The render phase callback allows for user operations to occur during the main laop.
+ */
+@property (nonatomic, assign) id<Isgl3dRenderPhaseCallback> renderPhaseCallback;
 
 
 /**
@@ -271,13 +283,13 @@
  * From the Isgl3dEAGLView the Isgl3dDirector determines the size of the window and creates the renderers.
  * @param glView The Isgl3dEAGLView containing the OpenGL buffers. 
  */
-- (void) setOpenGLView:(Isgl3dEAGLView *)glView;
+- (void) setOpenGLView:(UIView<Isgl3dGLView> *)glView;
 
 /**
  * Returns the Isgl3dEAGLView currently in use.
  * @return The Isgl3dEAGLView currently in use.
  */
-- (Isgl3dEAGLView *)openGLView;
+- (UIView<Isgl3dGLView> *)openGLView;
 
 /**
  * Adds an Isgl3dView to the array of views to be rendered. Each view is rendered in the order of addition

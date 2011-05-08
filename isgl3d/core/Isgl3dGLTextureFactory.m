@@ -66,7 +66,7 @@ typedef struct _PVRTexHeader {
  * @result (autorelease) UIImage from specified path
  */
 - (UIImage *) loadImage:(NSString *)path;
-- (void) copyImage:(UIImage *)image toRawData:(void *)data;
+- (void) copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height;
 - (BOOL) imageIsHD:(NSString *)path;
 
 /**
@@ -78,6 +78,8 @@ typedef struct _PVRTexHeader {
  * @result (autorelease) NSString with texture key
  */
 - (NSString *) textureKeyForFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+- (unsigned int) nearestPowerOf2:(unsigned int)value;
 @end
 
 
@@ -159,16 +161,18 @@ typedef struct _PVRTexHeader {
 			return nil;
 		}
 		
-		unsigned int width = CGImageGetWidth(image.CGImage);
-		unsigned int height = CGImageGetHeight(image.CGImage);
+		// Get nearest power of 2 dimensions
+		unsigned int width = [self nearestPowerOf2:CGImageGetWidth(image.CGImage)];
+		unsigned int height = [self nearestPowerOf2:CGImageGetHeight(image.CGImage)];
 	
 		void * data = malloc(width * height * 4);
-		[self copyImage:image toRawData:data];
+		[self copyImage:image toRawData:data width:width height:height];
 		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
 		free(data);
 		
 		// Create texture and store in dictionary
-		texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height];
+		CGSize contentSize = CGSizeMake(CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage));
+		texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height contentSize:contentSize];
 		
 		BOOL isHD = [self imageIsHD:file];
 		texture.isHighDefinition = isHD;
@@ -194,23 +198,8 @@ typedef struct _PVRTexHeader {
 		
 		UITextAlignment alignment = UITextAlignmentCenter;
 		
-		unsigned int i;
-		unsigned int width = dimensions.width;
-		if ((width != 1) && (width & (width - 1))) {
-			i = 1;
-			while (i < width) {
-				i *= 2;
-			}
-			width = i;
-		}
-		unsigned int height = dimensions.height;
-		if ((height != 1) && (height & (height - 1))) {
-			i = 1;
-			while (i < height) {
-				i *= 2;
-			}
-			height = i;
-		}
+		unsigned int width = [self nearestPowerOf2:dimensions.width];
+		unsigned int height = [self nearestPowerOf2:dimensions.height];
 		
 		void * data = malloc(width * height * 4);
 		memset(data, 0, (int)(width * height * 4));
@@ -380,25 +369,28 @@ typedef struct _PVRTexHeader {
 		UIImage * posZImage = [images objectAtIndex:4];
 		UIImage * negZImage = [images objectAtIndex:5];
 	
-		unsigned int width = CGImageGetWidth(posXImage.CGImage);
-		unsigned int height = CGImageGetHeight(posXImage.CGImage);
+		unsigned int imageWidth = CGImageGetWidth(posXImage.CGImage);
+		unsigned int imageHeight = CGImageGetHeight(posXImage.CGImage);
+		// Get nearest power of 2 dimensions
+		unsigned int width = [self nearestPowerOf2:imageWidth];
+		unsigned int height = [self nearestPowerOf2:imageHeight];
 		
-		if (height != width) {
+		if (imageHeight != imageWidth) {
 			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires images of equal width and height");
 			[images release];
 			return nil;
 		}
 		
-		if (CGImageGetWidth(negXImage.CGImage) != width ||
-			CGImageGetHeight(negXImage.CGImage) != width ||
-			CGImageGetWidth(posYImage.CGImage) != width ||
-			CGImageGetHeight(posYImage.CGImage) != width ||
-			CGImageGetWidth(negYImage.CGImage) != width ||
-			CGImageGetHeight(negYImage.CGImage) != width ||
-			CGImageGetWidth(posZImage.CGImage) != width ||
-			CGImageGetHeight(posZImage.CGImage) != width ||
-			CGImageGetWidth(negZImage.CGImage) != width ||
-			CGImageGetHeight(negZImage.CGImage) != width) {
+		if (CGImageGetWidth(negXImage.CGImage) != imageWidth ||
+			CGImageGetHeight(negXImage.CGImage) != imageWidth ||
+			CGImageGetWidth(posYImage.CGImage) != imageWidth ||
+			CGImageGetHeight(posYImage.CGImage) != imageWidth ||
+			CGImageGetWidth(negYImage.CGImage) != imageWidth ||
+			CGImageGetHeight(negYImage.CGImage) != imageWidth ||
+			CGImageGetWidth(posZImage.CGImage) != imageWidth ||
+			CGImageGetHeight(posZImage.CGImage) != imageWidth ||
+			CGImageGetWidth(negZImage.CGImage) != imageWidth ||
+			CGImageGetHeight(negZImage.CGImage) != imageWidth) {
 			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires all images to be the same size");
 			[images release];
 			return nil;
@@ -409,17 +401,17 @@ typedef struct _PVRTexHeader {
 		void * data = malloc(stride * 6);
 		unsigned int offset = 0;
 	
-		[self copyImage:posXImage toRawData:data + offset];
+		[self copyImage:posXImage toRawData:data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:negXImage toRawData:data + offset];
+		[self copyImage:negXImage toRawData:data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:posYImage toRawData:data + offset];
+		[self copyImage:posYImage toRawData:data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:negYImage toRawData:data + offset];
+		[self copyImage:negYImage toRawData:data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:posZImage toRawData:data + offset];
+		[self copyImage:posZImage toRawData:data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:negZImage toRawData:data + offset];
+		[self copyImage:negZImage toRawData:data + offset width:width height:height];
 	
 		unsigned int textureId = [_state createCubemapTextureFromRawData:data width:width mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
 		
@@ -524,16 +516,16 @@ typedef struct _PVRTexHeader {
 	return NO;	
 }
 
-- (void) copyImage:(UIImage *)image toRawData:(void *)data {
-	int width = CGImageGetWidth(image.CGImage);
-	int height = CGImageGetHeight(image.CGImage);
+- (void) copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height {
+	unsigned int imageWidth = CGImageGetWidth(image.CGImage);
+	unsigned int imageHeight = CGImageGetHeight(image.CGImage);
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 
 	CGContextRef context = CGBitmapContextCreate(data, width, height, 8, width * 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
 	CGColorSpaceRelease(colorSpace);
 	CGContextClearRect(context, CGRectMake(0, 0, width, height));
-	CGContextTranslateCTM(context, 0, height - height);
-	CGContextDrawImage(context, CGRectMake(0, 0, width, height), image.CGImage);
+	CGContextTranslateCTM(context, 0, height - imageHeight);
+	CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), image.CGImage);
 	CGContextRelease(context);
 }
 
@@ -602,6 +594,19 @@ typedef struct _PVRTexHeader {
 
 - (NSString *) textureKeyForFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [NSString stringWithFormat:@"%@%i%i%i", file, precision, repeatX, repeatY];
+}
+
+- (unsigned int) nearestPowerOf2:(unsigned int)value {
+	unsigned int i;
+	unsigned int po2Value = value;
+	if ((po2Value != 1) && (po2Value & (po2Value - 1))) {
+		i = 1;
+		while (i < po2Value) {
+			i *= 2;
+		}
+		po2Value = i;
+	}
+	return po2Value;
 }
 
 

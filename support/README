@@ -1,0 +1,13 @@
+The files included in this folder are not part of the main iSGL3D library but can be used
+to extend the functionality of iSGL3D or provide other utility functions.
+
+
+Contents:
+
+ - ccBridge
+   Allows iSGL3D and Cocos2d to be be combined in a single iOS application. iSGL3D uses the OpenGL frame and
+   render buffers created by Cocos2d. The Isgl3dDirector provides the application main loop and an 
+   Isgl3dRenderPhaseCallback is added to Isgl3dDirector to listen to the postRender phase at which point 
+   drawSceneForIsgl3d needs to be called on the CCDirector+Isgl3d category. An example AppDelegate is included
+   to show how to initialise both libraries and use the classes mentioned above.
+   Note that the this is experimental. The current version does not support isgl3d shadows.

@@ -71,10 +71,6 @@
 	[super dealloc];
 }
 
-- (void) createViews {
-	// Implement in sub-classes
-}
-
 - (void) applicationWillResignActive:(UIApplication *)application {
 	[[Isgl3dDirector sharedInstance] pause];
 }

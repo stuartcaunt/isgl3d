@@ -99,11 +99,13 @@
 
 	glDisable(GL_TEXTURE_2D);
 	glDisable(GL_BLEND);
-	glEnable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 	glDisable(GL_ALPHA_TEST);
 	glDisable(GL_LIGHTING);
 	glDisable(GL_POINT_SPRITE_OES);
 	glDisable(GL_MATRIX_PALETTE_OES);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	_currentVBOId = 0;
 	_currentVertexBufferId = 0;
@@ -115,6 +117,11 @@
 	_currentBoneIndexBufferId = 0;
 	_currentBoneWeightBufferId = 0;
 	_currentElementBufferId = 0;
+
+	[_previousState release];
+	_previousState = [[Isgl3dGLRenderer1State alloc] init];
+	[_currentState release];
+	_currentState = [[Isgl3dGLRenderer1State alloc] init];
 
 }
 
@@ -528,6 +535,8 @@
 	} else if (_currentState.lightingEnabled && !_previousState.lightingEnabled) {
 		if (_lightCount > 0) {
 			glEnable(GL_LIGHTING);
+		} else {
+			_currentState.lightingEnabled = NO;
 		}
 	}
 	

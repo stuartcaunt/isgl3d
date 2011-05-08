@@ -17,6 +17,4 @@
 
 @property (nonatomic, readonly) UIWindow * window;
 
-- (void) createViews;
-
 @end

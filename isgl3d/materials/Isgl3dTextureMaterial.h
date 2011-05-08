@@ -86,6 +86,19 @@
 + (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
+ * Allocates and initialises (autorelease) texture material from an image file using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param fileName The name of the image file.
+ */
++ (id) materialWithTextureFile:(NSString *)fileName;
+
+/**
+ * Allocates and initialises (autorelease) texture material from an image file and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param fileName The name of the image file.
+ * @param shininess The shiness of the material.
+ */
++ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess;
+
+/**
  * Allocates and initialises (autorelease) texture material with text to be rendered.
  * @param text The text to be rendered.
  * @param fontName The name of the font.
@@ -102,6 +115,19 @@
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  */
 - (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Initialises the texture material from an image file using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param fileName The name of the image file.
+ */
+- (id) initWithTextureFile:(NSString *)fileName;
+
+/**
+ * Initialises the texture material from an image file and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param fileName The name of the image file.
+ * @param shininess The shiness of the material.
+ */
+- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess;
 
 /**
  * Initialises the texture material with text to be rendered.

@@ -24,7 +24,6 @@
  */
 
 #import "Isgl3dDirector.h"
-#import "Isgl3dEAGLView.h"
 #import "Isgl3dView.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dScheduler.h"
@@ -36,6 +35,7 @@
 #import "Isgl3dAccelerometer.h"
 #import "Isgl3dTweener.h"
 #import "Isgl3dFpsRenderer.h"
+#import "Isgl3dMatrix.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
@@ -64,6 +64,7 @@ static Isgl3dDirector * _instance = nil;
 @synthesize retinaDisplayEnabled = _retinaDisplayEnabled;
 @synthesize deltaTime = _dt;
 @synthesize activeCamera = _activeCamera;
+@synthesize renderPhaseCallback = _renderPhaseCallback;
 
 - (id) init {
 	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
@@ -117,6 +118,12 @@ static Isgl3dDirector * _instance = nil;
 		
 		_retinaDisplayEnabled = NO;
 		_contentScaleFactor = 1.0f;
+		
+		_renderPhaseCallback = 0;
+
+#ifdef ISGL3D_MATRIX_MATH_ACCEL
+		Isgl3dLog(Info, @"Isgl3dDirector : hardware accelerated matrix operations using %@ library", ISGL3D_MATRIX_MATH_ACCEL);
+#endif
 	}
 
 	return self;
@@ -231,7 +238,7 @@ static Isgl3dDirector * _instance = nil;
 	
 }
 
-- (void) setOpenGLView:(Isgl3dEAGLView *)glView {
+- (void) setOpenGLView:(UIView<Isgl3dGLView> *)glView {
 	if (glView != _glView) {
 		if (_glView) {
 			
@@ -257,7 +264,7 @@ static Isgl3dDirector * _instance = nil;
 			_renderer = [[_glView createRenderer] retain];
 
 			// Add touch delegate
-			_glView.touchDelegate = self;
+			_glView.isgl3dTouchDelegate = self;
 			
 			// Create fps renderer
 			_fpsRenderer = [[Isgl3dFpsRenderer alloc] initWithOrientation:_deviceOrientation];
@@ -266,7 +273,7 @@ static Isgl3dDirector * _instance = nil;
 	}
 }
 
-- (Isgl3dEAGLView *)openGLView {
+- (UIView<Isgl3dGLView> *)openGLView {
 	return _glView;
 }
 
@@ -500,11 +507,24 @@ static Isgl3dDirector * _instance = nil;
 		[[Isgl3dScheduler sharedInstance] tick:_dt];	
 	}
 	
+	// Callback before rendering
+	if (_renderPhaseCallback) {
+		[_renderPhaseCallback preRender];
+	}
+	
 	// Render all views
 	[self render];
 
 	// Uncomment to view event capture render
 	//[self renderForEventCapture];
+
+	// Reset render after rendering
+	[_renderer reset];
+
+	// Callback after rendering
+	if (_renderPhaseCallback) {
+		[_renderPhaseCallback postRender];
+	}
 
 	// Finalize OpenGL buffers
 	[_glView finalizeRender];

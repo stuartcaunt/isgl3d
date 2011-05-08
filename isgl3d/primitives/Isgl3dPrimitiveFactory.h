@@ -27,6 +27,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @class Isgl3dGLMesh;
+@class Isgl3dPlane;
+@class Isgl3dTextureMaterial;
 
 /**
  * The Isgl3dPrimitiveFactory is a utility class for creating certain meshes.
@@ -82,5 +84,16 @@
  * @result (autorelease) The Isgl3dGLMesh for the label for given size with UVs automatically calculated.
  */
 - (Isgl3dGLMesh *) UILabelMeshWithWidth:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
+
+/**
+ * Creates an Isgl3dPlane with the given geometry and with a UV map to match the content size of the texture.
+ * @param width The width of the plane in the x-direction.
+ * @param height The height of the plane in the y-direction.
+ * @param nx The number of segments along the x-axis.
+ * @param ny The number of segments along the y-axis.
+ * @param material The texture material.
+ * @result (autorelease) The Isgl3dGLMesh for the label for given size with UVs automatically calculated.
+ */
+- (Isgl3dPlane *) planeWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny forMaterial:(Isgl3dTextureMaterial *)material;
 
 @end

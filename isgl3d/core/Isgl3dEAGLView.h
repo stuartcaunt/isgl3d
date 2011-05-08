@@ -24,17 +24,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "Isgl3dGLView.h"
 
 @class Isgl3dGLContext;
 @class Isgl3dGLRenderer;
 
-
-@protocol Isgl3dTouchDelegate
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
-@end
 
 /**
  * The Isgl3dEAGLView provides the main interface between the device (and Cocoa) and iSGL3D. It inherits from UIView and
@@ -48,20 +42,16 @@
  * The view content is basically an EAGL surface you render your OpenGL scene into.
  * Note that setting the view non-opaque will only work if the EAGL surface has an alpha channel."
  * 
+ * The use of the protocol Isgl3dGLView allows for potentially any UIView to be used with the Isgl3dDirector, for example
+ * other OpenGL-based frameworks.
+ * 
  */ 
-@interface Isgl3dEAGLView : UIView {
+@interface Isgl3dEAGLView : UIView <Isgl3dGLView> {
 	    
 @protected
 	Isgl3dGLContext * _glContext;
     id<Isgl3dTouchDelegate> _touchDelegate;
 }
-
-/**
- * Sets the Isgl3dTouchDelegate for the view. 
- * The Isgl3dTouchDelegate provides the principal controller for all UI touch events. 
- * This, in practice, is the Isgl3dDirector and so should never be called in an iSGL3D application.
- */
-@property (nonatomic, assign) id<Isgl3dTouchDelegate> touchDelegate;
 
 /**
  * Allocates, initialises and returns an autoreleased Isgl3dEAGLView with a given frame.
@@ -116,27 +106,6 @@
  * The OpenGL vesion is set in isgl3d.plist.
  */
 - (id) initWithCoder:(NSCoder*)coder; 
-
-/**
- * Allocates, initialises and returns an autoreleased Isgl3dGLRenderer for either OpenGL 1.1 or 2.0.
- * This is used by the Isgl3dDirector to obtain an OpenGL renderer.
- * @returns the Isgl3dGLRenderer.
- */
-- (Isgl3dGLRenderer *)createRenderer;
-
-/**
- * Used to finalize the rendering in OpenGL. 
- * This should never be called manually.
- */
-- (void) finalizeRender;
-
-/**
- * Returns the pixel colour as a hex string for a specific x and y location on the screen.
- * @param x The x location of the pixel (always assuming the device is in portrait mode)
- * @param y The y location of the pixel (always assuming the device is in portrait mode)
- * @return The hexidecimal value for the pixel colour.
- */
-- (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y;
 
 @end
 

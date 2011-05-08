@@ -40,7 +40,10 @@ rm $FRAMEWORK_DIR/isgl3d.h
 
 # header 
 echoHeader $BASE_DIR/isgl3d.h
-for file in $(find $BASE_DIR -name *.h -not -name isgl3d.h -not -name Isgl3dPODImporter.h)
+for file in $(find $BASE_DIR -name *.h \
+						-not -name isgl3d.h \
+						-not -name Isgl3dPODImporter.h \
+						)
 do
 
 	newFile=$(echo $file | sed 's/isgl3d\///g')

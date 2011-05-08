@@ -49,6 +49,7 @@
 #import "core/Isgl3dGLTextureFactoryState.h"
 #import "core/Isgl3dGLVBOData.h"
 #import "core/Isgl3dGLVBOFactory.h"
+#import "core/Isgl3dGLView.h"
 #import "core/Isgl3dScheduler.h"
 #import "core/Isgl3dUVMap.h"
 #import "core/v1.1/Isgl3dGLContext1.h"

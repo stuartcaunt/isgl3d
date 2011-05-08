@@ -27,6 +27,17 @@
 #import "Isgl3dVector.h"
 #import "Isgl3dQuaternion.h"
 
+#if (TARGET_IPHONE_SIMULATOR == 0) && (TARGET_OS_IPHONE == 1)
+#define USE_ACC_MATH
+
+#ifdef _ARM_ARCH_7
+#define ISGL3D_MATRIX_MATH_ACCEL @"neon"
+#else
+#define ISGL3D_MATRIX_MATH_ACCEL @"vfp"
+#endif
+
+#endif
+
 #define im4(sxx, sxy, sxz, tx, syx, syy, syz, ty, szx, szy, szz, tz, swx, swy, swz, tw) im4Create(sxx, sxy, sxz, tx, syx, syy, syz, ty, szx, szy, szz, tz, swx, swy, swz, tw)
 #define im4Identity() im4CreateIdentity()
 
@@ -35,7 +46,7 @@
  * stored in column-major order
  */
 typedef struct {
-	float sxx __attribute__ ((aligned)); // 11
+	float sxx; // 11 Note: removed __attribute__ ((aligned) to compile with LLVM GCC, crashes at run-time otherwise
 	float syx; // 21
 	float szx; // 31
 	float swx; // 41

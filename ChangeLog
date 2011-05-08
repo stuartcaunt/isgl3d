@@ -1,5 +1,11 @@
 current SVN version
-
+	Isgl3dRender1/Isgl3dGenericShader: Fix bug with lighting when using views with and without light sources
+	Isgl3dBillboardNode: Fix bug when using billboard node in scene graph
+	Isgl3dTextureMaterial: simplified init API using default precision/no repeat
+	Isgl3dGLTextureFactory: textures from non-factor-of-2 images (relevant uvs still need to be handled for meshes though)
+	Added support files for integration with Cocos2d
+	Isgl3dDirector: modified to allow UIViews (with OpenGL frame/render buffers) from other frameworks
+	
 version 1.2.0 (2011-05-04)
 	Isgl3dPODImporter: fix bug in Isgl3dPODImporter (Issue #3)
 	Isgl3dView: add method to convert 3D world position to 2D viewport point

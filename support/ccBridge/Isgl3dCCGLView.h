@@ -23,32 +23,23 @@
  *
  */
 
-#import "Isgl3dBillboardNode.h"
-#import "Isgl3dDirector.h"
-#import "Isgl3dCamera.h"
+#import <UIKit/UIKit.h>
+#import "EAGLView.h"
+#import "Isgl3dGLView.h"
 
-@implementation Isgl3dBillboardNode
-
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
-
-	// Update world transformation, including all children as normal	
-	[super updateWorldTransformation:parentTransformation];
-
-	// Modify the final world transformation so that the rotation
-	// faces the camera : use inverted view matrix
-	Isgl3dCamera * camera = [Isgl3dDirector sharedInstance].activeCamera;
-	Isgl3dMatrix4 viewMatrix = camera.viewMatrix;
-	im4Invert3x3(&viewMatrix);
-	
-	_worldTransformation.sxx = viewMatrix.sxx * _scaleX;
-	_worldTransformation.sxy = viewMatrix.sxy * _scaleX;
-	_worldTransformation.sxz = viewMatrix.sxz * _scaleX;
-	_worldTransformation.syx = viewMatrix.syx * _scaleY;
-	_worldTransformation.syy = viewMatrix.syy * _scaleY;
-	_worldTransformation.syz = viewMatrix.syz * _scaleY;
-	_worldTransformation.szx = viewMatrix.szx * _scaleZ;
-	_worldTransformation.szy = viewMatrix.szy * _scaleZ;
-	_worldTransformation.szz = viewMatrix.szz * _scaleZ;
+/**
+ * The Isgl3dCCGLView extends the EAGLView used by cocos2d-iphone. It allows both
+ * iSGL3D and cocos2d to use the same OpenGL frame and render buffers. An instance 
+ * of the Isgl3dCCGLView should be passed to be the Isgl3dDirector and the 
+ * CCDirector.
+ */
+@interface Isgl3dCCGLView : EAGLView <Isgl3dGLView> {
+	    
+@private
+    id<Isgl3dTouchDelegate> _touchDelegate;
 }
 
 @end
+
+
+

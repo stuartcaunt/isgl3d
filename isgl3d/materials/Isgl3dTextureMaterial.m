@@ -40,6 +40,14 @@
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
 }
 
++ (id) materialWithTextureFile:(NSString *)fileName {
+	return [[[self alloc] initWithTextureFile:fileName] autorelease];
+}
+
++ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess {
+	return [[[self alloc] initWithTextureFile:fileName shininess:shininess] autorelease];
+}
+
 + (id) materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	return [[[self alloc] initWithText:text fontName:fontName fontSize:fontSize] autorelease];
 }
@@ -55,6 +63,14 @@
 	}
 	
 	return self;
+}
+
+- (id) initWithTextureFile:(NSString *)fileName {
+	return [self initWithTextureFile:fileName shininess:0.0f precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+}
+
+- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess {
+	return [self initWithTextureFile:fileName shininess:shininess precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 }
 
 - (id) initWithCubemapTextureFiles:(NSArray *)texturePathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
