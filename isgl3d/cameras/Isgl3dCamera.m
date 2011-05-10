@@ -49,6 +49,7 @@
 @synthesize right = _right;
 @synthesize bottom = _bottom;
 @synthesize top = _top;
+@synthesize isTargetCamera = _isTargetCamera;
 
 + (id) camera {
 	return [[[self alloc] init] autorelease];
@@ -79,6 +80,8 @@
 		iv3Fill(&_initialCameraPosition, x, y, z);
 		iv3Copy(&_initialCameraLookAt, &_lookAt);
 		iv3Fill(&_up, upX, upY, upZ);		
+		
+		_isTargetCamera = YES;
 		
 		_zoom = 1;
 		_isPerspective = YES;
@@ -229,6 +232,9 @@
 - (void) setLookAt:(Isgl3dVector3)lookAt {
 	iv3Copy(&_lookAt, &lookAt);
 	_localTransformationDirty = YES;
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
+	}
 }
 
 - (void) lookAt:(float)x y:(float)y z:(float)z {
@@ -263,24 +269,36 @@
 	iv3Translate(&_lookAt, x, y, z);
 
 	_localTransformationDirty = YES;
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
+	}
 }
 
 - (void) rotateLookAtOnX:(float)angle centerY:(float)centerY centerZ:(float)centerZ {
 	iv3RotateX(&_lookAt, angle, centerY, centerZ);
 
 	_localTransformationDirty = YES;
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
+	}
 }
 
 - (void) rotateLookAtOnY:(float)angle centerX:(float)centerX centerZ:(float)centerZ {
 	iv3RotateY(&_lookAt, angle, centerX, centerZ);
 
 	_localTransformationDirty = YES;
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
+	}
 }
 
 - (void) rotateLookAtOnZ:(float)angle centerX:(float)centerX centerY:(float)centerY  {
 	iv3RotateZ(&_lookAt, angle, centerX, centerY);
 
 	_localTransformationDirty = YES;
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
+	}
 }
 
 - (float) getDistanceToLookAt {
@@ -295,11 +313,17 @@
 	iv3Scale(&position, distance);
 	
 	[self setPositionValues:_lookAt.x + position.x y:_lookAt.y + position.y z:_lookAt.z + position.z];
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
+	}
 }
 
 - (void) setUpX:(float)x y:(float)y z:(float)z {
 	iv3Fill(&_up, x, y, z);		
 	_localTransformationDirty = YES;
+	if (!_isTargetCamera) {
+		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting \"up\" has no effect");
+	}
 }
 
 - (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
@@ -316,10 +340,17 @@
 	
 	_cameraPosition = [self worldPosition];
 	
-	_viewMatrix = [Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
-				  centerx:_lookAt.x centery:_lookAt.y centerz:_lookAt.z 
-				  upx:_up.x upy:_up.y upz:_up.z];
-
+	if (_isTargetCamera) {
+		// Calculate view matrix from lookat position
+		_viewMatrix = [Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
+					  centerx:_lookAt.x centery:_lookAt.y centerz:_lookAt.z 
+					  upx:_up.x upy:_up.y upz:_up.z];
+	} else {	
+		// Calculate view matrix as the inverse of the current world transformation
+		im4Copy(&_viewMatrix, &_worldTransformation);
+		im4Invert(&_viewMatrix);
+	}
+		
 	_viewProjectionMatrixDirty = YES;
 }
 

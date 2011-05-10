@@ -390,6 +390,10 @@ static Isgl3dDirector * _instance = nil;
 	[self setAnimationInterval:_oldAnimationInterval];
 	
 	_isPaused = NO;
+	
+	gettimeofday(&_lastFrameTime, NULL);
+	_dt = 0;
+	
 }
 
 #pragma mark runtime errors

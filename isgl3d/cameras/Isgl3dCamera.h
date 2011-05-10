@@ -85,6 +85,7 @@
 	BOOL _viewProjectionMatrixDirty;
 	
 	Isgl3dVector3 _lookAt;
+	BOOL _isTargetCamera;
 	
 	Isgl3dVector3 _up;
 	Isgl3dVector3 _initialCameraPosition;
@@ -220,6 +221,14 @@
  * This represents the amount of zooming of the camera so that objects appear closer or further away.
  */
 @property (nonatomic) float zoom;
+
+/**
+ * Specified whether the camera is targetted on a specific world position or not.
+ * A target camera will always point towards a specific world position. A non-target camera always looks along the z-axis
+ * as defined by its local frame of reference. In this case the rotation and translation (as for any Isgl3dNode) of the camera 
+ * are taken into account when calculating the view matrix.
+ */
+@property (nonatomic) BOOL isTargetCamera;
 
 /**
  * Allocates and initialises (autorelease) camera.

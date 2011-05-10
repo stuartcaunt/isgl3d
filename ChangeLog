@@ -1,4 +1,6 @@
 current SVN version
+	Isgl3dCamera: allow camera to be fixed to local frame of reference, can be manipulated like normal Isgl3dNode (use isTargetCamera = NO) 
+	Isgl3dDirector: Fix bug on resume, reset delta time to 0
 	Isgl3dRender1/Isgl3dGenericShader: Fix bug with lighting when using views with and without light sources
 	Isgl3dBillboardNode: Fix bug when using billboard node in scene graph
 	Isgl3dTextureMaterial: simplified init API using default precision/no repeat
