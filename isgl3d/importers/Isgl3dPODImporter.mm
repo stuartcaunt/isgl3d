@@ -488,7 +488,7 @@
 	
 		// Get the mesh
 		Isgl3dGLMesh * mesh = [_meshes objectAtIndex:meshNodeInfo.nIdx];
-		Isgl3dMaterial * material;
+		Isgl3dMaterial * material = nil;
 
 		// Set the material
 		if (meshNodeInfo.nIdxMaterial >= 0 && meshNodeInfo.nIdxMaterial < [_materials count]) {
