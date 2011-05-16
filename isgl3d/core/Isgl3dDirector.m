@@ -413,6 +413,9 @@ static Isgl3dDirector * _instance = nil;
 - (void) addView:(Isgl3dView *)view {
 	[_views addObject:view];
 	
+	// Set active camera
+	_activeCamera = view.camera;
+	
 	// Activate the view when it has been added
 	[view activate];
 }

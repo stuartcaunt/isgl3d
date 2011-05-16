@@ -27,6 +27,7 @@ Desirable
   - Actions for animations
   - Bezier surfaces
   - Composite materials with blending functions
+  - msaa
   - Collada import
   - Inverse kinematics
   - Tweens

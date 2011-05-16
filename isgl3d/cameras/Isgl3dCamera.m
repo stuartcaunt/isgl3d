@@ -92,6 +92,11 @@
 		_height = height;
 		
 		[self setPositionValues:x y:y z:z];
+
+		// Initialise view matrix
+		_localTransformationDirty = YES;
+		Isgl3dMatrix4 identity = im4Identity();
+		[self updateWorldTransformation:&identity];
 	}
 	
 	return self;

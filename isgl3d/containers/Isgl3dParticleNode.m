@@ -104,6 +104,9 @@
 			[renderer postRender];
 		}
 	}
+	
+	// Recurse over children
+	[super render:renderer opaque:opaque];
 }
 
 - (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {

@@ -502,10 +502,7 @@
 		173122EA12FC7B9300861D84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		173122EB12FC7B9300861D84 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		173122F812FC7BD500861D84 /* man.pod in Resources */ = {isa = PBXBuildFile; fileRef = 173122F712FC7BD500861D84 /* man.pod */; };
-		173122FD12FC7BE000861D84 /* Belt.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122F912FC7BE000861D84 /* Belt.pvr */; };
-		173122FE12FC7BE000861D84 /* Body.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FA12FC7BE000861D84 /* Body.pvr */; };
 		173122FF12FC7BE000861D84 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122FB12FC7BE000861D84 /* ground.png */; };
-		1731230012FC7BE000861D84 /* Legs.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FC12FC7BE000861D84 /* Legs.pvr */; };
 		1731232712FC7DFA00861D84 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		1731232912FC7DFA00861D84 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		1731232A12FC7DFA00861D84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -1044,6 +1041,9 @@
 		17CDF5D413675B1600893070 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122FB12FC7BE000861D84 /* ground.png */; };
 		17CDF5D513675B7E00893070 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		17D39451135373B700D50A60 /* isgl3d.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D39450135373B700D50A60 /* isgl3d.m */; };
+		17E7E2AE137C47E200483AE6 /* Legs.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FC12FC7BE000861D84 /* Legs.pvr */; };
+		17E7E2AF137C47E400483AE6 /* Belt.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122F912FC7BE000861D84 /* Belt.pvr */; };
+		17E7E2B0137C47E700483AE6 /* Body.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FA12FC7BE000861D84 /* Body.pvr */; };
 		17EDE05D13743C0A00652E35 /* Isgl3dGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 17EDE05C13743C0A00652E35 /* Isgl3dGLView.h */; };
 		17F1D75512F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */; };
 		17F1D75612F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */; };
@@ -5341,11 +5341,11 @@
 				173D5D1713241EAE0092D2EE /* shadowMap.fsh in Resources */,
 				173D5D1813241EAE0092D2EE /* shadowMap.vsh in Resources */,
 				173122F812FC7BD500861D84 /* man.pod in Resources */,
-				173122FD12FC7BE000861D84 /* Belt.pvr in Resources */,
-				173122FE12FC7BE000861D84 /* Body.pvr in Resources */,
 				173122FF12FC7BE000861D84 /* ground.png in Resources */,
-				1731230012FC7BE000861D84 /* Legs.pvr in Resources */,
 				175CD4E813708A2100152EFE /* Default.png in Resources */,
+				17E7E2AF137C47E400483AE6 /* Belt.pvr in Resources */,
+				17E7E2AE137C47E200483AE6 /* Legs.pvr in Resources */,
+				17E7E2B0137C47E700483AE6 /* Body.pvr in Resources */,
 				175CD50413708A2100152EFE /* Icon.png in Resources */,
 				175CD52013708A2100152EFE /* Icon@2x.png in Resources */,
 			);
