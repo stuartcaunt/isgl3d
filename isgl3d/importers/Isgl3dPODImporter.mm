@@ -665,8 +665,10 @@
 		
 		vboData.positionOffset = (int)(podData->sVertex.pData);
 		vboData.normalOffset = (int)(podData->sNormals.pData);
-		vboData.uvOffset = (int)(podData->psUVW[0].pData);
-		
+		if ((podData->nNumUVW)) {
+			vboData.uvOffset = (int)(podData->psUVW[0].pData);
+		}
+				
 		if (podData->sBoneIdx.pData && podData->sBoneWeight.pData) {
 			vboData.boneIndexOffset = (int)(podData->sBoneIdx.pData);
 			vboData.boneWeightOffset = (int)(podData->sBoneWeight.pData);

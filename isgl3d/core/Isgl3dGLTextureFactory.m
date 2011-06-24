@@ -96,11 +96,12 @@ typedef struct _PVRTexHeader {
 }
 
 - (void) dealloc {
+
+	[_textures release];
+
 	if (_state) {
 		[_state release]; 
 	}
-	
-	[_textures release];
 	
 	[super dealloc];
 }

@@ -156,7 +156,7 @@
 	[self bindVertexBuffer:vboData.vboIndex];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_normalAttributeLocation size:VBO_NORMAL_SIZE strideBytes:vboData.stride offset:vboData.normalOffset];
-	if (_texCoordAttributeLocation != -1) {
+	if (_texCoordAttributeLocation != -1 && vboData.uvOffset != -1) {
 		[self setVertexAttribute:GL_FLOAT attributeLocation:_texCoordAttributeLocation size:VBO_UV_SIZE strideBytes:vboData.stride offset:vboData.uvOffset];
 	}
 	if (vboData.boneIndexOffset != -1) {
