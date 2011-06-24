@@ -1,4 +1,6 @@
 current SVN version
+
+version 1.2.0 (2011-06-24)
 	Isgl3dPODImporter: fix bug in Isgl3dPODImporter for models without UVs (Issue #5)
 	Isgl3dCamera: allow camera to be fixed to local frame of reference, can be manipulated like normal Isgl3dNode (use isTargetCamera = NO) 
 	Isgl3dDirector: Fix bug on resume, reset delta time to 0
