@@ -69,6 +69,7 @@
 		_randomizeSize = NO;
 		
 		_lastTime = 0;
+		_precTime = 0;
 		
 		_nPathSteps = 100;
 		_particlePaths = [[NSMutableArray alloc] init];
@@ -115,7 +116,7 @@
 
 - (void) updateParticles {
 	float timeDelta = ((1.0 / 60.0) * _animationFrameInterval);
-	float newTime = _lastTime + timeDelta;
+	float newTime = _precTime + timeDelta;
 	
 	NSMutableArray * finishedPaths = [[NSMutableArray alloc] init];
 	
@@ -150,9 +151,12 @@
 		
 		// Create new ones
 		float timeInterval = newTime - _lastTime;
-		unsigned int particleNumber = _particleRate * timeInterval;
+		unsigned int particleNumber = floorf(_particleRate * timeInterval);
+
+        		
 		if (particleNumber != 0) {
 			_lastTime = newTime;
+            _precTime = _lastTime;
 			
 			if (_nParticles + particleNumber > _maxParticles) {
 				particleNumber = _maxParticles - _nParticles;
@@ -169,7 +173,9 @@
 			for (Isgl3dParticlePath * particlePath in particlePaths) {
 				[_particlePaths addObject:particlePath];
 			}
-		}
+		} else {
+			_precTime = newTime;
+		}    
 	}	
 	
 }

@@ -65,6 +65,7 @@
 	BOOL _randomizeSize;
 	
 	float _lastTime;
+	float _precTime;
 	
 	BOOL _selfDestructing;
 	Isgl3dParticleGenerator * _instance;

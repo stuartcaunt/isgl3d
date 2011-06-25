@@ -82,8 +82,8 @@
 		float innerProgress = (progress - (step * _delta)) / _delta;
 		
 		Isgl3dVector3 * data1 = IA_GET_PTR(Isgl3dVector3 *, _path, step);
-		Isgl3dVector3 * data2 = IA_GET_PTR(Isgl3dVector3 *, _path, step);
-//		Isgl3dParticlePathData * data1 = [_path objectAtIndex:step + 1];
+		Isgl3dVector3 * data2 = IA_GET_PTR(Isgl3dVector3 *, _path, step + 1);
+//		Isgl3dParticlePathData * data1 = [_path objectAtIndex:step];
 //		Isgl3dParticlePathData * data2 = [_path objectAtIndex:step + 1];
 		
 		_particle.x = data1->x + (data2->x - data1->x) * innerProgress;
