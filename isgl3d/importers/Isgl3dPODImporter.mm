@@ -57,6 +57,8 @@
 - (Isgl3dAnimatedMeshNode *) createAnimatedMeshNode:(unsigned int)nodeId meshId:(unsigned int)meshId mesh:(Isgl3dGLMesh *)mesh material:(Isgl3dMaterial *)material;
 
 - (void) buildBones;
+- (void) buildMeshesAndMaterials;
+- (void) buildMeshNodes;
 
 @end
 
@@ -98,8 +100,10 @@
 		_lights = [[NSMutableArray alloc] init];
 		
 		_textureMods = [[NSMutableDictionary alloc] init];
-		_buildComplete = NO;
+		_buildSceneObjectsComplete = NO;
+		_buildMeshNodesComplete = NO;
 		_boneBuildComplete = NO;
+		_meshesAndMaterialsComplete = NO;
 	}
 	
 	return self;
@@ -215,8 +219,10 @@
 
 - (void) addMeshesToScene:(Isgl3dNode *)scene {
 	
-	if (!_buildComplete) {
-		[self buildSceneObjects];
+	if (!_buildMeshNodesComplete) {
+		[_meshNodes removeAllObjects];
+		[_indexedNodes removeAllObjects];
+		[self buildMeshNodes];
 	}
 	
 	// Link meshes to materials: iterate through nodes, include only meshes (at beginning of array)
@@ -233,12 +239,15 @@
 			Isgl3dMeshNode * parent = [_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdxParent]];
 			[parent addChild:node];
 		}
-		
 	}
+
+	// Remove all mesh node objects so that they are recreated for the next call to this method
+	_buildMeshNodesComplete = NO;
 	
 }
 
 - (Isgl3dMeshNode *) meshNodeWithName:(NSString *)nodeName {
+	
 	Isgl3dMeshNode * node = [_meshNodes objectForKey:nodeName];
 	if (!node) {
 		NSLog(@"Unable to find mesh node with name %@", nodeName);
@@ -286,6 +295,10 @@
 
 
 - (Isgl3dCamera *) cameraAtIndex:(unsigned int)cameraIndex {
+	if (!_buildSceneObjectsComplete) {
+		[self buildSceneObjects];
+	}	
+	
 	if (cameraIndex >= _podScene->nNumCamera) {
 		NSLog(@"Camera at index %i not available: POD scene contains %i cameras", cameraIndex, _podScene->nNumCamera);
 		return nil;
@@ -295,6 +308,10 @@
 }
 
 - (Isgl3dLight *) lightAtIndex:(unsigned int)lightIndex {
+	if (!_buildSceneObjectsComplete) {
+		[self buildSceneObjects];
+	}	
+
 	if (lightIndex >= _podScene->nNumLight) {
 		NSLog(@"Light at index %i not available: POD scene contains %i lights", lightIndex, _podScene->nNumLight);
 		return nil;
@@ -329,6 +346,9 @@
 - (void) addBonesToSkeleton:(Isgl3dSkeletonNode *)skeleton {
 
 	if (!_boneBuildComplete) {
+		[_boneNodeIndices removeAllObjects];
+		[_boneNodes removeAllObjects];
+		[_indexedNodes removeAllObjects];
 		[self buildBones];
 	}
 
@@ -355,6 +375,8 @@
 		*/
 	}
 	
+	// Remove all bone node data for the next call to this method
+	_boneBuildComplete = NO;
 }
 
 - (void) modifyTexture:(NSString *)podTextureFileName withTexture:(NSString *)replacementFileName {
@@ -367,9 +389,9 @@
  */
 
 
-- (void) buildSceneObjects {
+- (void) buildMeshesAndMaterials {
 	// Iterate over nodes and create meshes and materials as necessary
-	
+
 	// Create array of textures
 	for (int i = 0; i < _podScene->nNumTexture; i++) {
 		SPODTexture & textureInfo = _podScene->pTexture[i];
@@ -389,6 +411,7 @@
 		NSLog(@"Creating texture from %@:", textureFileName);
 		[_textures addObject:textureFileName];
 	}
+
 	
 	// Create array of materials
 	for (int i = 0; i < _podScene->nNumMaterial; i++) {
@@ -427,6 +450,16 @@
 		Isgl3dGLMesh * mesh = [self createMeshFromPODData:&meshInfo];
 		[_meshes addObject:mesh];
 	}
+	
+	_meshesAndMaterialsComplete = YES;
+}
+
+- (void) buildSceneObjects {
+	
+	if (!_buildMeshNodesComplete) {
+		[self buildMeshNodes];
+	}
+	
 	
 	// Create array of cameras
 	for (int i = 0; i < _podScene->nNumCamera; i++) {
@@ -480,6 +513,14 @@
 		[_lights addObject:light];
 	}
 	
+	_buildSceneObjectsComplete = YES;
+}
+
+- (void) buildMeshNodes {
+	
+	if (!_meshesAndMaterialsComplete) {
+		[self buildMeshesAndMaterials];
+	}
 	
 	// Create all mesh nodes, link to materials and meshes.
 	for (int i = 0; i < _podScene->nNumMeshNode; i++) {
@@ -526,7 +567,7 @@
 		
 	}
 	
-	_buildComplete = YES;
+	_buildMeshNodesComplete = YES;
 }
 
 - (void) buildBones {

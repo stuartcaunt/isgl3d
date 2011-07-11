@@ -1,4 +1,6 @@
 current SVN version
+	Allow nodes from PODs to be reused any number of times on a scene 
+	Added device auto-rotation handling
 
 version 1.2.0 (2011-06-24)
 	Isgl3dPODImporter: fix bug in Isgl3dPODImporter for models without UVs (Issue #5)

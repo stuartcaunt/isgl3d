@@ -82,8 +82,10 @@ class CPVRTModelPOD;
 	
 	NSMutableDictionary * _textureMods;
 	
-	BOOL _buildComplete;
+	BOOL _buildSceneObjectsComplete;
+	BOOL _buildMeshNodesComplete;
 	BOOL _boneBuildComplete;
+	BOOL _meshesAndMaterialsComplete;
 }
 
 /**

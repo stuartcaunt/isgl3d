@@ -37,7 +37,7 @@
 	isgl3dAllowedAutoRotations allowedAutoRotations = [Isgl3dDirector sharedInstance].allowedAutoRotations;
 	if ([Isgl3dDirector sharedInstance].autoRotationStrategy == Isgl3dAutoRotationNone) {
 		// Return true only for portrait
-		return  (interfaceOrientation == UIInterfaceOrientationPortrait);
+		return NO;
 	
 	} else if ([Isgl3dDirector sharedInstance].autoRotationStrategy == Isgl3dAutoRotationByIsgl3dDirector) {
 		
