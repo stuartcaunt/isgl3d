@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString * version = @"iSGL3D v1.2.1";
+static NSString * version = @"iSGL3D v1.2.2";
 
 NSString * isgl3dVersion() {
 	return version;

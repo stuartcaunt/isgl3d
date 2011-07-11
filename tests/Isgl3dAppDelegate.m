@@ -52,6 +52,10 @@
 	// Set view in director
 	[Isgl3dDirector sharedInstance].openGLView = glView;
 	
+	// Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
+//	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
+//	[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
+	
 	// Enable retina display : uncomment if desired
 //	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
 	

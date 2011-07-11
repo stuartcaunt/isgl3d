@@ -71,6 +71,8 @@
 	NSTimer * _animationTimer;
 	
 	isgl3dOrientation _deviceOrientation;
+	isgl3dAutoRotationStrategy _autoRotationStrategy;
+	isgl3dAllowedAutoRotations _allowedAutoRotations;
 	
 	UIView<Isgl3dGLView> * _glView;
 	CGRect _windowRect;
@@ -143,6 +145,31 @@
  * 
  */
 @property (nonatomic) isgl3dOrientation deviceOrientation;
+
+/**
+ * Specifies how iSGL3D should handle auto rotation of the device.
+ * Possible values are:
+ * <ul>
+ * <li>Isgl3dAutoRotationNone: no auto-rotation, keep user-specified value.</li>
+ * <li>Isgl3dAutoRotationByIsgl3dDirector: auto-rotation enabled and handled internally.</li>
+ * <li>Isgl3dAutoRotationByUIViewController: auto-rotation handled by UIViewController (over-rides all user
+ * specified values).</li>
+ * </ul>
+ * 
+ */
+@property (nonatomic) isgl3dAutoRotationStrategy autoRotationStrategy;
+
+/**
+ * Specifies which orientation types are allowed when auto-rotation is enabled
+ * Possible values are:
+ * <ul>
+ * <li>Isgl3dAllowedAutoRotationsAll: all orientations are allowed.</li>
+ * <li>Isgl3dAllowedAutoRotationsPortraitOnly: only portrait orientations are allowed.</li>
+ * <li>Isgl3dAllowedAutoRotationsLandscapeOnly: only landscape orientations are allowed.</li>
+ * </ul>
+ * 
+ */
+@property (nonatomic) isgl3dAllowedAutoRotations allowedAutoRotations;
 
 /**
  * The Isgl3dEAGLView with OpenGL-specific contexts.

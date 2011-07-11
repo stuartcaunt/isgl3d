@@ -39,6 +39,24 @@ typedef enum {
 } isgl3dOrientation;
 
 /**
+ * Auto-rotation strategy
+ */
+typedef enum {
+	Isgl3dAutoRotationNone = 0,
+	Isgl3dAutoRotationByIsgl3dDirector,
+	Isgl3dAutoRotationByUIViewController
+} isgl3dAutoRotationStrategy;
+
+/**
+ * Allowed auto rotations
+ */
+typedef enum {
+	Isgl3dAllowedAutoRotationsAll = 0,
+	Isgl3dAllowedAutoRotationsPortraitOnly,
+	Isgl3dAllowedAutoRotationsLandscapeOnly
+} isgl3dAllowedAutoRotations;
+
+/**
  * Shadow rendering methods
  */
 typedef enum {

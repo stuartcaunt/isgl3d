@@ -68,6 +68,7 @@
 		
 		// Get default viewport size from Isgl3dDirector (UIView window size)
 		self.viewport = [Isgl3dDirector sharedInstance].windowRect;
+		_autoResizeViewport = YES;
 			
 		_isOpaque = NO;
 		
@@ -102,6 +103,19 @@
 	_viewport = CGRectMake(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
 	_viewportInPixels = CGRectMake(viewport.origin.x * s, viewport.origin.y * s, viewport.size.width * s, viewport.size.height * s);
 
+	// Check if using same view port as main window
+	CGRect windowRect = [Isgl3dDirector sharedInstance].windowRect;
+	if (windowRect.origin.x == _viewport.origin.x && 
+		windowRect.origin.y == _viewport.origin.y &&
+		windowRect.size.width == _viewport.size.width &&
+		windowRect.size.height == _viewport.size.height) {
+
+		_autoResizeViewport = YES;
+	} else {
+		_autoResizeViewport = NO;
+	}
+
+
 	if (_camera) {
 		[_camera setWidth:_viewportInPixels.size.width andHeight:_viewportInPixels.size.height];
 	}	
@@ -113,12 +127,8 @@
 
 - (void) setViewportInPixels:(CGRect)viewportInPixels {
 	float s = 1. / [Isgl3dDirector sharedInstance].contentScaleFactor;
-	_viewportInPixels = CGRectMake(viewportInPixels.origin.x, viewportInPixels.origin.y, viewportInPixels.size.width, viewportInPixels.size.height);
-	_viewport = CGRectMake(viewportInPixels.origin.x * s, viewportInPixels.origin.y * s, viewportInPixels.size.width * s, viewportInPixels.size.height * s);
-
-	if (_camera) {
-		[_camera setWidth:_viewportInPixels.size.width andHeight:_viewportInPixels.size.height];
-	}	
+	CGRect viewport = CGRectMake(viewportInPixels.origin.x * s, viewportInPixels.origin.y * s, viewportInPixels.size.width * s, viewportInPixels.size.height * s);
+	[self setViewport:viewport];
 }
 
 - (isgl3dOrientation) viewOrientation {
@@ -410,6 +420,13 @@
 	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
 	
 	return CGPointMake(pixelPoint.x * s, pixelPoint.y * s);
+}
+
+- (void) onResizeFromLayer {
+	if (_autoResizeViewport) {
+		// Get default viewport size from Isgl3dDirector (UIView window size)
+		self.viewport = [Isgl3dDirector sharedInstance].windowRect;
+	}
 }
 
 @end

@@ -87,6 +87,8 @@
 	NSString * _sceneAmbient;
 	
 	BOOL _cameraUpdateOnly;
+	
+	BOOL _autoResizeViewport;
 }
 
 /**
@@ -329,6 +331,12 @@
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left in pixels.
  */
 - (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition;
+
+/**
+ * Resizes the viewport automatically if it is using the same rectangle as the main window, otherwise does nothing.
+ * Note this should never be called manually. This is called by the Isgl3dDirector during a window resize operation.
+ */
+- (void) onResizeFromLayer;
 
 @end
 

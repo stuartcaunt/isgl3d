@@ -58,6 +58,7 @@ static Isgl3dDirector * _instance = nil;
 @synthesize objectTouched = _objectTouched;
 @synthesize windowRect = _windowRect;
 @synthesize windowRectInPixels = _windowRectInPixels;
+@synthesize allowedAutoRotations = _allowedAutoRotations;
 @synthesize isPaused = _isPaused;
 @synthesize displayFPS = _displayFPS;
 @synthesize contentScaleFactor = _contentScaleFactor;
@@ -100,6 +101,9 @@ static Isgl3dDirector * _instance = nil;
 		// Default device orientation
 		_deviceOrientation = Isgl3dOrientation0;
 
+		// Default no auto-rotation
+		_autoRotationStrategy = Isgl3dAutoRotationNone;
+		
 		_views = [[NSMutableArray alloc] init];
 		
 		// Initialise timing so that dt = 0 on first tick
@@ -205,27 +209,36 @@ static Isgl3dDirector * _instance = nil;
 
 - (void) setDeviceOrientation:(isgl3dOrientation)orientation {
 
-	if (orientation != _deviceOrientation) {
-		_deviceOrientation = orientation;
-		if (_deviceOrientation == Isgl3dOrientation0) {
-			[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated:NO];
-			Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait");
-			
-		} else if (_deviceOrientation == Isgl3dOrientation180) {
-			[[UIApplication sharedApplication] setStatusBarOrientation: UIDeviceOrientationPortraitUpsideDown animated:NO];
-			Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait upside down");
-			
-		} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
-			[[UIApplication sharedApplication] setStatusBarOrientation: UIDeviceOrientationLandscapeLeft animated:NO];
-			Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape left");
-			
-		} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
-			[[UIApplication sharedApplication] setStatusBarOrientation: UIDeviceOrientationLandscapeRight animated:NO];
-			Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape right");
-			
-		} else {
-			Isgl3dLog(Error, @"Isgl3dDirector : unknown device orientation");
-		} 
+	if (_autoRotationStrategy != Isgl3dAutoRotationByUIViewController) {
+		// If autorotate is enabled via UIViewController then ignore user-specified device rotations: keep as portrait
+		if (orientation != _deviceOrientation) {
+			_deviceOrientation = orientation;
+			if (_deviceOrientation == Isgl3dOrientation0) {
+				[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated:NO];
+				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait");
+				
+			} else if (_deviceOrientation == Isgl3dOrientation180) {
+				[[UIApplication sharedApplication] setStatusBarOrientation: UIDeviceOrientationPortraitUpsideDown animated:NO];
+				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait upside down");
+				
+			} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
+				[[UIApplication sharedApplication] setStatusBarOrientation: UIDeviceOrientationLandscapeLeft animated:NO];
+				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape left");
+				
+			} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
+				[[UIApplication sharedApplication] setStatusBarOrientation: UIDeviceOrientationLandscapeRight animated:NO];
+				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape right");
+				
+			} else {
+				Isgl3dLog(Error, @"Isgl3dDirector : unknown device orientation");
+			} 
+		}
+	}
+
+
+	// Force recalculation of all view orientations
+	for (Isgl3dView * view in _views) {
+		view.viewOrientation = view.viewOrientation;
 	}
 
 	// Update fps renderer projection	
@@ -236,6 +249,18 @@ static Isgl3dDirector * _instance = nil;
 	// Set the device orientation in the accelerometer
 	[Isgl3dAccelerometer sharedInstance].deviceOrientation = _deviceOrientation;
 	
+}
+
+- (isgl3dAutoRotationStrategy) autoRotationStrategy {
+	return _autoRotationStrategy;
+}
+
+- (void) setAutoRotationStrategy:(isgl3dAutoRotationStrategy)autoRotationStrategy {
+	// Force portrait orientation if controlled by UIViewController
+	if (autoRotationStrategy == Isgl3dAutoRotationByUIViewController) {
+		self.deviceOrientation = Isgl3dOrientationPortrait;
+	}
+	_autoRotationStrategy = autoRotationStrategy;
 }
 
 - (void) setOpenGLView:(UIView<Isgl3dGLView> *)glView {
@@ -416,6 +441,9 @@ static Isgl3dDirector * _instance = nil;
 	// Set active camera
 	_activeCamera = view.camera;
 	
+	// Force recalculation of view orientation
+	view.viewOrientation = view.viewOrientation;
+	
 	// Activate the view when it has been added
 	[view activate];
 }
@@ -499,6 +527,11 @@ static Isgl3dDirector * _instance = nil;
 
 	// Update the viewport in the fps renderer
 	[_fpsRenderer updateViewport];
+
+	// Force recalculation of all view orientations
+	for (Isgl3dView * view in _views) {
+		[view onResizeFromLayer];
+	}
 
 	Isgl3dLog(Info, @"Isgl3dDirector : layer resized, window size in points = %ix%i and pixels = %ix%i", (int)_windowRect.size.width, (int)_windowRect.size.height,  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
 }
