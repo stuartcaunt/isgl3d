@@ -19,6 +19,7 @@ Desirable
 ---------
   - OpenGL ES 2.0 render problems: generic shader not working since iOS4.2?
     - [update 07/03/11] problems now rests in spotlighting only.  
+  - Antialiasing in Isgl3dEAGLView
   - Shaders in ES 2.0:
     - Ambient occlusion
     - Bump mapping
@@ -37,6 +38,7 @@ Desirable
     - replace by actions?
   - Extended UI features (or integration of cocos2d)
     - [update 07/03/11 Cocos2d difficult to integrate due to different architectures, handling of renderer states, plus only ES 1.1 compatible]
+    - Add more options to UILabel, etc
   - Shadows: shadow mapping + antialiasing
      - Fix current shadow mapping
      - Control of shadow map generation with ShadowCastingLight view matrix properties (fov etc)

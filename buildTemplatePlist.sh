@@ -42,7 +42,7 @@ generate_library_plist() {
 	LIBRARY_TEMPLATE_PLIST=$TEMPLATES_DIR_SRC/$LIBRARY_TEMPLATE_DIR/TemplateInfo.plist
 	LIBS_DIR=libs
 	EXTERNAL_DIR=external
-	POWERVR_DIR=external/PowerVR
+	POWERVR_DIR=external/PowerVR_SDK-2.0.8
 
 	echo "<?xml version="1.0" encoding="UTF-8"?>" > "$LIBRARY_TEMPLATE_PLIST"
 	echo "<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">" >> "$LIBRARY_TEMPLATE_PLIST"

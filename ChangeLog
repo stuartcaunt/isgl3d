@@ -1,4 +1,5 @@
 current SVN version
+	Updated to PowerVR SDK 2.0.8
 	Allow nodes from PODs to be reused any number of times on a scene 
 	Added device auto-rotation handling
 

@@ -2737,548 +2737,721 @@
 			<key>Path</key>
 			<string>libs/isgl3d/view/Isgl3dView.m</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTBackground.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/OGLES2Tools.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTBackground.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/OGLES2Tools.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTBoneBatch.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTBackground.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTBoneBatch.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTBackground.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTBoneBatch.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTBackgroundShaders.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTBoneBatch.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTBackgroundShaders.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTContext.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTContext.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTContext.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTContext.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTDecompress.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTgles2Ext.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTDecompress.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTgles2Ext.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTDecompress.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTgles2Ext.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTDecompress.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTgles2Ext.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTError.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPFXParserAPI.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTError.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPFXParserAPI.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTError.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPFXParserAPI.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTError.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPFXParserAPI.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTFixedPoint.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DAPI.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTFixedPoint.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DAPI.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTFixedPoint.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DIMGLogo.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTFixedPoint.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DIMGLogo.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTGeometry.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DPVRLogo.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTGeometry.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTGeometry.h</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTGeometry.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DPVRLogo.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTGlobal.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DShaders.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTGlobal.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DShaders.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTMathTable.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTShader.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMathTable.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTShader.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTShader.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTShader.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTMatrix.h</key>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTTextureAPI.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMatrix.h</string>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTTextureAPI.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/OGLES2/PVRTTextureAPI.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+				<string>OGLES2</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTTextureAPI.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTMatrixF.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTBackground.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMatrixF.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTMatrixX.cpp</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMatrixX.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTMemoryFileSystem.h</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMemoryFileSystem.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTBackground.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTMisc.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTBoneBatch.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMisc.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTBoneBatch.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTMisc.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTBoneBatch.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTMisc.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTBoneBatch.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTModelPOD.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTDecompress.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTModelPOD.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTDecompress.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTModelPOD.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTDecompress.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTModelPOD.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTDecompress.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTools.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTError.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTools.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTError.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTError.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTError.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTPFXParser.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTFixedPoint.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTPFXParser.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTFixedPoint.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTPFXParser.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTFixedPoint.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTPFXParser.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTFixedPoint.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTQuaternion.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTGeometry.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTQuaternion.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTGeometry.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTGeometry.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTGeometry.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTQuaternionF.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTGlobal.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTQuaternionF.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTQuaternionX.cpp</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTQuaternionX.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTResourceFile.cpp</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTResourceFile.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTResourceFile.h</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTResourceFile.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTGlobal.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTShadowVol.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMathTable.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTShadowVol.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTShadowVol.h</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTShadowVol.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMathTable.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTSingleton.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMatrix.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTSingleton.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMatrix.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTString.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMatrixF.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTString.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMatrixF.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTString.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMatrixX.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTString.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMatrixX.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMemoryFileSystem.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMemoryFileSystem.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTTexture.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMisc.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTTexture.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMisc.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTTexture.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTMisc.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTTexture.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTMisc.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTTrans.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTModelPOD.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTTrans.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTModelPOD.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTTrans.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTModelPOD.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTTrans.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTModelPOD.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTTriStrip.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTools.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTTriStrip.cpp</string>
-		</dict>
-		<key>external/PowerVR/Tools/PVRTTriStrip.h</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
-			</array>
-			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTTriStrip.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTools.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTVector.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTPFXParser.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTVector.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTPFXParser.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTVector.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTPFXParser.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTVector.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTPFXParser.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTVertex.cpp</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTPrint3D.cpp</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTVertex.cpp</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTPrint3D.cpp</string>
 		</dict>
-		<key>external/PowerVR/Tools/PVRTVertex.h</key>
+		<key>external/PowerVR_SDK-2.0.8/PVRTPrint3D.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>external</string>
-				<string>PowerVR</string>
-				<string>Tools</string>
+				<string>PowerVR_SDK-2.0.8</string>
 			</array>
 			<key>Path</key>
-			<string>external/PowerVR/Tools/PVRTVertex.h</string>
+			<string>external/PowerVR_SDK-2.0.8/PVRTPrint3D.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTPrint3Ddat.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTPrint3Ddat.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTQuaternion.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTQuaternion.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTQuaternionF.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTQuaternionF.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTQuaternionX.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTQuaternionX.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTResourceFile.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTResourceFile.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTResourceFile.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTResourceFile.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTShadowVol.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTShadowVol.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTShadowVol.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTShadowVol.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTSingleton.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTSingleton.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTString.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTString.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTString.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTString.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTTexture.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTTexture.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTTexture.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTTexture.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTTrans.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTTrans.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTTrans.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTTrans.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTTriStrip.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTTriStrip.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTTriStrip.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTTriStrip.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTVector.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTVector.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTVector.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTVector.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTVertex.cpp</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTVertex.cpp</string>
+		</dict>
+		<key>external/PowerVR_SDK-2.0.8/PVRTVertex.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>external</string>
+				<string>PowerVR_SDK-2.0.8</string>
+			</array>
+			<key>Path</key>
+			<string>external/PowerVR_SDK-2.0.8/PVRTVertex.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
@@ -3507,51 +3680,69 @@
 		<string>libs/isgl3d/utils/Isgl3dUShortArray.m</string>
 		<string>libs/isgl3d/view/Isgl3dView.h</string>
 		<string>libs/isgl3d/view/Isgl3dView.m</string>
-		<string>external/PowerVR/Tools/PVRTBackground.h</string>
-		<string>external/PowerVR/Tools/PVRTBoneBatch.cpp</string>
-		<string>external/PowerVR/Tools/PVRTBoneBatch.h</string>
-		<string>external/PowerVR/Tools/PVRTContext.h</string>
-		<string>external/PowerVR/Tools/PVRTDecompress.cpp</string>
-		<string>external/PowerVR/Tools/PVRTDecompress.h</string>
-		<string>external/PowerVR/Tools/PVRTError.cpp</string>
-		<string>external/PowerVR/Tools/PVRTError.h</string>
-		<string>external/PowerVR/Tools/PVRTFixedPoint.cpp</string>
-		<string>external/PowerVR/Tools/PVRTFixedPoint.h</string>
-		<string>external/PowerVR/Tools/PVRTGeometry.cpp</string>
-		<string>external/PowerVR/Tools/PVRTGeometry.h</string>
-		<string>external/PowerVR/Tools/PVRTGlobal.h</string>
-		<string>external/PowerVR/Tools/PVRTMathTable.h</string>
-		<string>external/PowerVR/Tools/PVRTMatrix.h</string>
-		<string>external/PowerVR/Tools/PVRTMatrixF.cpp</string>
-		<string>external/PowerVR/Tools/PVRTMatrixX.cpp</string>
-		<string>external/PowerVR/Tools/PVRTMemoryFileSystem.h</string>
-		<string>external/PowerVR/Tools/PVRTMisc.cpp</string>
-		<string>external/PowerVR/Tools/PVRTMisc.h</string>
-		<string>external/PowerVR/Tools/PVRTModelPOD.cpp</string>
-		<string>external/PowerVR/Tools/PVRTModelPOD.h</string>
-		<string>external/PowerVR/Tools/PVRTools.h</string>
-		<string>external/PowerVR/Tools/PVRTPFXParser.cpp</string>
-		<string>external/PowerVR/Tools/PVRTPFXParser.h</string>
-		<string>external/PowerVR/Tools/PVRTQuaternion.h</string>
-		<string>external/PowerVR/Tools/PVRTQuaternionF.cpp</string>
-		<string>external/PowerVR/Tools/PVRTQuaternionX.cpp</string>
-		<string>external/PowerVR/Tools/PVRTResourceFile.cpp</string>
-		<string>external/PowerVR/Tools/PVRTResourceFile.h</string>
-		<string>external/PowerVR/Tools/PVRTShadowVol.cpp</string>
-		<string>external/PowerVR/Tools/PVRTShadowVol.h</string>
-		<string>external/PowerVR/Tools/PVRTSingleton.h</string>
-		<string>external/PowerVR/Tools/PVRTString.cpp</string>
-		<string>external/PowerVR/Tools/PVRTString.h</string>
-		<string>external/PowerVR/Tools/PVRTTexture.cpp</string>
-		<string>external/PowerVR/Tools/PVRTTexture.h</string>
-		<string>external/PowerVR/Tools/PVRTTrans.cpp</string>
-		<string>external/PowerVR/Tools/PVRTTrans.h</string>
-		<string>external/PowerVR/Tools/PVRTTriStrip.cpp</string>
-		<string>external/PowerVR/Tools/PVRTTriStrip.h</string>
-		<string>external/PowerVR/Tools/PVRTVector.cpp</string>
-		<string>external/PowerVR/Tools/PVRTVector.h</string>
-		<string>external/PowerVR/Tools/PVRTVertex.cpp</string>
-		<string>external/PowerVR/Tools/PVRTVertex.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/OGLES2Tools.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTBackground.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTBackgroundShaders.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTContext.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTgles2Ext.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTgles2Ext.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPFXParserAPI.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPFXParserAPI.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DAPI.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DIMGLogo.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DPVRLogo.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTPrint3DShaders.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTShader.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTShader.h</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTTextureAPI.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/OGLES2/PVRTTextureAPI.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTBackground.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTBoneBatch.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTBoneBatch.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTDecompress.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTDecompress.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTError.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTError.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTFixedPoint.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTFixedPoint.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTGeometry.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTGeometry.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTGlobal.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMathTable.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMatrix.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMatrixF.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMatrixX.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMemoryFileSystem.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMisc.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTMisc.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTModelPOD.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTModelPOD.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTools.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTPFXParser.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTPFXParser.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTPrint3D.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTPrint3D.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTPrint3Ddat.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTQuaternion.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTQuaternionF.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTQuaternionX.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTResourceFile.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTResourceFile.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTShadowVol.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTShadowVol.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTSingleton.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTString.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTString.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTTexture.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTTexture.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTTrans.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTTrans.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTTriStrip.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTTriStrip.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTVector.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTVector.h</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTVertex.cpp</string>
+		<string>external/PowerVR_SDK-2.0.8/PVRTVertex.h</string>
 	</array>
 </dict>
 </plist>

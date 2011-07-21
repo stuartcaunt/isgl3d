@@ -3,7 +3,7 @@
 ISGL3D_VERSION="iSGL3D v`cat Version`"
 
 BASE_DIR=isgl3d
-POWERVR_DIR=external/PowerVR
+POWERVR_DIR=external/PowerVR_SDK-2.0.8
 LIBS_DIR=libs
 
 TEMPLATES_DIR_SRC=templates/xcode4

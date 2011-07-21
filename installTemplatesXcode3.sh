@@ -79,7 +79,7 @@ copy_base_files(){
 	echo ...copying iSGL3D files
 	copy_files isgl3d "$DST_DIR"libs
 	echo ...copying external files
-	copy_files external/PowerVR "$DST_DIR"external
+	copy_files external/PowerVR_SDK-2.0.8 "$DST_DIR"external
 	echo ...copying iSGL3D shaders
 	copy_files Resources/Shaders "$DST_DIR"Resources
 
