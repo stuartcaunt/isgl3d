@@ -23,6 +23,69 @@
 		17A3DC03135A0CBC0022BAD8 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A3DBF3135A0CAA0022BAD8 /* particle.vsh */; };
 		17A3DC04135A0CBC0022BAD8 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A3DBF4135A0CAA0022BAD8 /* shadowMap.fsh */; };
 		17A3DC05135A0CBC0022BAD8 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A3DBF5135A0CAA0022BAD8 /* shadowMap.vsh */; };
+		17AF822613D8A2F200271DB9 /* OGLES2Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81E713D8A2F200271DB9 /* OGLES2Tools.h */; };
+		17AF822713D8A2F200271DB9 /* PVRTBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81E813D8A2F200271DB9 /* PVRTBackground.cpp */; };
+		17AF822813D8A2F200271DB9 /* PVRTBackgroundShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81E913D8A2F200271DB9 /* PVRTBackgroundShaders.h */; };
+		17AF822913D8A2F200271DB9 /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81EA13D8A2F200271DB9 /* PVRTContext.h */; };
+		17AF822A13D8A2F200271DB9 /* PVRTgles2Ext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81EB13D8A2F200271DB9 /* PVRTgles2Ext.cpp */; };
+		17AF822B13D8A2F200271DB9 /* PVRTgles2Ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81EC13D8A2F200271DB9 /* PVRTgles2Ext.h */; };
+		17AF822C13D8A2F200271DB9 /* PVRTPFXParserAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81ED13D8A2F200271DB9 /* PVRTPFXParserAPI.cpp */; };
+		17AF822D13D8A2F200271DB9 /* PVRTPFXParserAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81EE13D8A2F200271DB9 /* PVRTPFXParserAPI.h */; };
+		17AF822E13D8A2F200271DB9 /* PVRTPrint3DAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81EF13D8A2F200271DB9 /* PVRTPrint3DAPI.cpp */; };
+		17AF822F13D8A2F200271DB9 /* PVRTPrint3DIMGLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F013D8A2F200271DB9 /* PVRTPrint3DIMGLogo.h */; };
+		17AF823013D8A2F200271DB9 /* PVRTPrint3DPVRLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F113D8A2F200271DB9 /* PVRTPrint3DPVRLogo.h */; };
+		17AF823113D8A2F200271DB9 /* PVRTPrint3DShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F213D8A2F200271DB9 /* PVRTPrint3DShaders.h */; };
+		17AF823213D8A2F200271DB9 /* PVRTShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81F313D8A2F200271DB9 /* PVRTShader.cpp */; };
+		17AF823313D8A2F200271DB9 /* PVRTShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F413D8A2F200271DB9 /* PVRTShader.h */; };
+		17AF823413D8A2F200271DB9 /* PVRTTextureAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81F513D8A2F200271DB9 /* PVRTTextureAPI.cpp */; };
+		17AF823513D8A2F200271DB9 /* PVRTTextureAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F613D8A2F200271DB9 /* PVRTTextureAPI.h */; };
+		17AF823613D8A2F200271DB9 /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F713D8A2F200271DB9 /* PVRTBackground.h */; };
+		17AF823713D8A2F200271DB9 /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81F813D8A2F200271DB9 /* PVRTBoneBatch.cpp */; };
+		17AF823813D8A2F200271DB9 /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81F913D8A2F200271DB9 /* PVRTBoneBatch.h */; };
+		17AF823913D8A2F200271DB9 /* PVRTDecompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81FA13D8A2F200271DB9 /* PVRTDecompress.cpp */; };
+		17AF823A13D8A2F200271DB9 /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81FB13D8A2F200271DB9 /* PVRTDecompress.h */; };
+		17AF823B13D8A2F200271DB9 /* PVRTError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81FC13D8A2F200271DB9 /* PVRTError.cpp */; };
+		17AF823C13D8A2F200271DB9 /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81FD13D8A2F200271DB9 /* PVRTError.h */; };
+		17AF823D13D8A2F200271DB9 /* PVRTFixedPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF81FE13D8A2F200271DB9 /* PVRTFixedPoint.cpp */; };
+		17AF823E13D8A2F200271DB9 /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF81FF13D8A2F200271DB9 /* PVRTFixedPoint.h */; };
+		17AF823F13D8A2F200271DB9 /* PVRTGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820013D8A2F200271DB9 /* PVRTGeometry.cpp */; };
+		17AF824013D8A2F200271DB9 /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820113D8A2F200271DB9 /* PVRTGeometry.h */; };
+		17AF824113D8A2F200271DB9 /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820213D8A2F200271DB9 /* PVRTGlobal.h */; };
+		17AF824213D8A2F200271DB9 /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820313D8A2F200271DB9 /* PVRTMathTable.h */; };
+		17AF824313D8A2F200271DB9 /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820413D8A2F200271DB9 /* PVRTMatrix.h */; };
+		17AF824413D8A2F200271DB9 /* PVRTMatrixF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820513D8A2F200271DB9 /* PVRTMatrixF.cpp */; };
+		17AF824513D8A2F200271DB9 /* PVRTMatrixX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820613D8A2F200271DB9 /* PVRTMatrixX.cpp */; };
+		17AF824613D8A2F200271DB9 /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820713D8A2F200271DB9 /* PVRTMemoryFileSystem.h */; };
+		17AF824713D8A2F200271DB9 /* PVRTMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820813D8A2F200271DB9 /* PVRTMisc.cpp */; };
+		17AF824813D8A2F200271DB9 /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820913D8A2F200271DB9 /* PVRTMisc.h */; };
+		17AF824913D8A2F200271DB9 /* PVRTModelPOD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820A13D8A2F200271DB9 /* PVRTModelPOD.cpp */; };
+		17AF824A13D8A2F200271DB9 /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820B13D8A2F200271DB9 /* PVRTModelPOD.h */; };
+		17AF824B13D8A2F200271DB9 /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820C13D8A2F200271DB9 /* PVRTools.h */; };
+		17AF824C13D8A2F200271DB9 /* PVRTPFXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820D13D8A2F200271DB9 /* PVRTPFXParser.cpp */; };
+		17AF824D13D8A2F200271DB9 /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF820E13D8A2F200271DB9 /* PVRTPFXParser.h */; };
+		17AF824E13D8A2F200271DB9 /* PVRTPrint3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF820F13D8A2F200271DB9 /* PVRTPrint3D.cpp */; };
+		17AF824F13D8A2F200271DB9 /* PVRTPrint3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821013D8A2F200271DB9 /* PVRTPrint3D.h */; };
+		17AF825013D8A2F200271DB9 /* PVRTPrint3Ddat.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821113D8A2F200271DB9 /* PVRTPrint3Ddat.h */; };
+		17AF825113D8A2F200271DB9 /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821213D8A2F200271DB9 /* PVRTQuaternion.h */; };
+		17AF825213D8A2F200271DB9 /* PVRTQuaternionF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821313D8A2F200271DB9 /* PVRTQuaternionF.cpp */; };
+		17AF825313D8A2F200271DB9 /* PVRTQuaternionX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821413D8A2F200271DB9 /* PVRTQuaternionX.cpp */; };
+		17AF825413D8A2F200271DB9 /* PVRTResourceFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821513D8A2F200271DB9 /* PVRTResourceFile.cpp */; };
+		17AF825513D8A2F200271DB9 /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821613D8A2F200271DB9 /* PVRTResourceFile.h */; };
+		17AF825613D8A2F200271DB9 /* PVRTShadowVol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821713D8A2F200271DB9 /* PVRTShadowVol.cpp */; };
+		17AF825713D8A2F200271DB9 /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821813D8A2F200271DB9 /* PVRTShadowVol.h */; };
+		17AF825813D8A2F200271DB9 /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821913D8A2F200271DB9 /* PVRTSingleton.h */; };
+		17AF825913D8A2F200271DB9 /* PVRTString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821A13D8A2F200271DB9 /* PVRTString.cpp */; };
+		17AF825A13D8A2F200271DB9 /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821B13D8A2F200271DB9 /* PVRTString.h */; };
+		17AF825B13D8A2F200271DB9 /* PVRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821C13D8A2F200271DB9 /* PVRTTexture.cpp */; };
+		17AF825C13D8A2F200271DB9 /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821D13D8A2F200271DB9 /* PVRTTexture.h */; };
+		17AF825D13D8A2F200271DB9 /* PVRTTrans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF821E13D8A2F200271DB9 /* PVRTTrans.cpp */; };
+		17AF825E13D8A2F200271DB9 /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF821F13D8A2F200271DB9 /* PVRTTrans.h */; };
+		17AF825F13D8A2F200271DB9 /* PVRTTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF822013D8A2F200271DB9 /* PVRTTriStrip.cpp */; };
+		17AF826013D8A2F200271DB9 /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF822113D8A2F200271DB9 /* PVRTTriStrip.h */; };
+		17AF826113D8A2F200271DB9 /* PVRTVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF822213D8A2F200271DB9 /* PVRTVector.cpp */; };
+		17AF826213D8A2F200271DB9 /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF822313D8A2F200271DB9 /* PVRTVector.h */; };
+		17AF826313D8A2F200271DB9 /* PVRTVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17AF822413D8A2F200271DB9 /* PVRTVertex.cpp */; };
+		17AF826413D8A2F200271DB9 /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 17AF822513D8A2F200271DB9 /* PVRTVertex.h */; };
 		17BC431E136DDF200064FF49 /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC422A136DDF1F0064FF49 /* Isgl3dAnimatedMeshNode.h */; };
 		17BC431F136DDF200064FF49 /* Isgl3dAnimatedMeshNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC422B136DDF1F0064FF49 /* Isgl3dAnimatedMeshNode.m */; };
 		17BC4320136DDF200064FF49 /* Isgl3dAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC422C136DDF1F0064FF49 /* Isgl3dAnimationController.h */; };
@@ -243,51 +306,6 @@
 		17BC43F7136DDF200064FF49 /* Isgl3dUShortArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC431A136DDF200064FF49 /* Isgl3dUShortArray.m */; };
 		17BC43F8136DDF200064FF49 /* Isgl3dView.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC431C136DDF200064FF49 /* Isgl3dView.h */; };
 		17BC43F9136DDF200064FF49 /* Isgl3dView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC431D136DDF200064FF49 /* Isgl3dView.m */; };
-		17BC442A136DE0A90064FF49 /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC43FD136DE0A90064FF49 /* PVRTBackground.h */; };
-		17BC442B136DE0A90064FF49 /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC43FE136DE0A90064FF49 /* PVRTBoneBatch.cpp */; };
-		17BC442C136DE0A90064FF49 /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC43FF136DE0A90064FF49 /* PVRTBoneBatch.h */; };
-		17BC442D136DE0A90064FF49 /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4400136DE0A90064FF49 /* PVRTContext.h */; };
-		17BC442E136DE0A90064FF49 /* PVRTDecompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4401136DE0A90064FF49 /* PVRTDecompress.cpp */; };
-		17BC442F136DE0A90064FF49 /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4402136DE0A90064FF49 /* PVRTDecompress.h */; };
-		17BC4430136DE0A90064FF49 /* PVRTError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4403136DE0A90064FF49 /* PVRTError.cpp */; };
-		17BC4431136DE0A90064FF49 /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4404136DE0A90064FF49 /* PVRTError.h */; };
-		17BC4432136DE0A90064FF49 /* PVRTFixedPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4405136DE0A90064FF49 /* PVRTFixedPoint.cpp */; };
-		17BC4433136DE0A90064FF49 /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4406136DE0A90064FF49 /* PVRTFixedPoint.h */; };
-		17BC4434136DE0A90064FF49 /* PVRTGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4407136DE0A90064FF49 /* PVRTGeometry.cpp */; };
-		17BC4435136DE0A90064FF49 /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4408136DE0A90064FF49 /* PVRTGeometry.h */; };
-		17BC4436136DE0A90064FF49 /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4409136DE0A90064FF49 /* PVRTGlobal.h */; };
-		17BC4437136DE0A90064FF49 /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC440A136DE0A90064FF49 /* PVRTMathTable.h */; };
-		17BC4438136DE0A90064FF49 /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC440B136DE0A90064FF49 /* PVRTMatrix.h */; };
-		17BC4439136DE0A90064FF49 /* PVRTMatrixF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC440C136DE0A90064FF49 /* PVRTMatrixF.cpp */; };
-		17BC443A136DE0A90064FF49 /* PVRTMatrixX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC440D136DE0A90064FF49 /* PVRTMatrixX.cpp */; };
-		17BC443B136DE0A90064FF49 /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC440E136DE0A90064FF49 /* PVRTMemoryFileSystem.h */; };
-		17BC443C136DE0A90064FF49 /* PVRTMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC440F136DE0A90064FF49 /* PVRTMisc.cpp */; };
-		17BC443D136DE0A90064FF49 /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4410136DE0A90064FF49 /* PVRTMisc.h */; };
-		17BC443E136DE0A90064FF49 /* PVRTModelPOD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4411136DE0A90064FF49 /* PVRTModelPOD.cpp */; };
-		17BC443F136DE0A90064FF49 /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4412136DE0A90064FF49 /* PVRTModelPOD.h */; };
-		17BC4440136DE0A90064FF49 /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4413136DE0A90064FF49 /* PVRTools.h */; };
-		17BC4441136DE0A90064FF49 /* PVRTPFXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4414136DE0A90064FF49 /* PVRTPFXParser.cpp */; };
-		17BC4442136DE0A90064FF49 /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4415136DE0A90064FF49 /* PVRTPFXParser.h */; };
-		17BC4443136DE0A90064FF49 /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4416136DE0A90064FF49 /* PVRTQuaternion.h */; };
-		17BC4444136DE0A90064FF49 /* PVRTQuaternionF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4417136DE0A90064FF49 /* PVRTQuaternionF.cpp */; };
-		17BC4445136DE0A90064FF49 /* PVRTQuaternionX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4418136DE0A90064FF49 /* PVRTQuaternionX.cpp */; };
-		17BC4446136DE0A90064FF49 /* PVRTResourceFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4419136DE0A90064FF49 /* PVRTResourceFile.cpp */; };
-		17BC4447136DE0A90064FF49 /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC441A136DE0A90064FF49 /* PVRTResourceFile.h */; };
-		17BC4448136DE0A90064FF49 /* PVRTShadowVol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC441B136DE0A90064FF49 /* PVRTShadowVol.cpp */; };
-		17BC4449136DE0A90064FF49 /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC441C136DE0A90064FF49 /* PVRTShadowVol.h */; };
-		17BC444A136DE0A90064FF49 /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC441D136DE0A90064FF49 /* PVRTSingleton.h */; };
-		17BC444B136DE0A90064FF49 /* PVRTString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC441E136DE0A90064FF49 /* PVRTString.cpp */; };
-		17BC444C136DE0A90064FF49 /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC441F136DE0A90064FF49 /* PVRTString.h */; };
-		17BC444D136DE0A90064FF49 /* PVRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4420136DE0A90064FF49 /* PVRTTexture.cpp */; };
-		17BC444E136DE0A90064FF49 /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4421136DE0A90064FF49 /* PVRTTexture.h */; };
-		17BC444F136DE0A90064FF49 /* PVRTTrans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4422136DE0A90064FF49 /* PVRTTrans.cpp */; };
-		17BC4450136DE0A90064FF49 /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4423136DE0A90064FF49 /* PVRTTrans.h */; };
-		17BC4451136DE0A90064FF49 /* PVRTTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4424136DE0A90064FF49 /* PVRTTriStrip.cpp */; };
-		17BC4452136DE0A90064FF49 /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4425136DE0A90064FF49 /* PVRTTriStrip.h */; };
-		17BC4453136DE0A90064FF49 /* PVRTVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4426136DE0A90064FF49 /* PVRTVector.cpp */; };
-		17BC4454136DE0A90064FF49 /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4427136DE0A90064FF49 /* PVRTVector.h */; };
-		17BC4455136DE0A90064FF49 /* PVRTVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17BC4428136DE0A90064FF49 /* PVRTVertex.cpp */; };
-		17BC4456136DE0A90064FF49 /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC4429136DE0A90064FF49 /* PVRTVertex.h */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -327,6 +345,69 @@
 		17A3DBF3135A0CAA0022BAD8 /* particle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vsh; sourceTree = "<group>"; };
 		17A3DBF4135A0CAA0022BAD8 /* shadowMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.fsh; sourceTree = "<group>"; };
 		17A3DBF5135A0CAA0022BAD8 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
+		17AF81E713D8A2F200271DB9 /* OGLES2Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLES2Tools.h; sourceTree = "<group>"; };
+		17AF81E813D8A2F200271DB9 /* PVRTBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBackground.cpp; sourceTree = "<group>"; };
+		17AF81E913D8A2F200271DB9 /* PVRTBackgroundShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackgroundShaders.h; sourceTree = "<group>"; };
+		17AF81EA13D8A2F200271DB9 /* PVRTContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTContext.h; sourceTree = "<group>"; };
+		17AF81EB13D8A2F200271DB9 /* PVRTgles2Ext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTgles2Ext.cpp; sourceTree = "<group>"; };
+		17AF81EC13D8A2F200271DB9 /* PVRTgles2Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTgles2Ext.h; sourceTree = "<group>"; };
+		17AF81ED13D8A2F200271DB9 /* PVRTPFXParserAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParserAPI.cpp; sourceTree = "<group>"; };
+		17AF81EE13D8A2F200271DB9 /* PVRTPFXParserAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParserAPI.h; sourceTree = "<group>"; };
+		17AF81EF13D8A2F200271DB9 /* PVRTPrint3DAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPrint3DAPI.cpp; sourceTree = "<group>"; };
+		17AF81F013D8A2F200271DB9 /* PVRTPrint3DIMGLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DIMGLogo.h; sourceTree = "<group>"; };
+		17AF81F113D8A2F200271DB9 /* PVRTPrint3DPVRLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DPVRLogo.h; sourceTree = "<group>"; };
+		17AF81F213D8A2F200271DB9 /* PVRTPrint3DShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DShaders.h; sourceTree = "<group>"; };
+		17AF81F313D8A2F200271DB9 /* PVRTShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShader.cpp; sourceTree = "<group>"; };
+		17AF81F413D8A2F200271DB9 /* PVRTShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShader.h; sourceTree = "<group>"; };
+		17AF81F513D8A2F200271DB9 /* PVRTTextureAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTextureAPI.cpp; sourceTree = "<group>"; };
+		17AF81F613D8A2F200271DB9 /* PVRTTextureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTextureAPI.h; sourceTree = "<group>"; };
+		17AF81F713D8A2F200271DB9 /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
+		17AF81F813D8A2F200271DB9 /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
+		17AF81F913D8A2F200271DB9 /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
+		17AF81FA13D8A2F200271DB9 /* PVRTDecompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTDecompress.cpp; sourceTree = "<group>"; };
+		17AF81FB13D8A2F200271DB9 /* PVRTDecompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTDecompress.h; sourceTree = "<group>"; };
+		17AF81FC13D8A2F200271DB9 /* PVRTError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTError.cpp; sourceTree = "<group>"; };
+		17AF81FD13D8A2F200271DB9 /* PVRTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTError.h; sourceTree = "<group>"; };
+		17AF81FE13D8A2F200271DB9 /* PVRTFixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTFixedPoint.cpp; sourceTree = "<group>"; };
+		17AF81FF13D8A2F200271DB9 /* PVRTFixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTFixedPoint.h; sourceTree = "<group>"; };
+		17AF820013D8A2F200271DB9 /* PVRTGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTGeometry.cpp; sourceTree = "<group>"; };
+		17AF820113D8A2F200271DB9 /* PVRTGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGeometry.h; sourceTree = "<group>"; };
+		17AF820213D8A2F200271DB9 /* PVRTGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGlobal.h; sourceTree = "<group>"; };
+		17AF820313D8A2F200271DB9 /* PVRTMathTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMathTable.h; sourceTree = "<group>"; };
+		17AF820413D8A2F200271DB9 /* PVRTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMatrix.h; sourceTree = "<group>"; };
+		17AF820513D8A2F200271DB9 /* PVRTMatrixF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixF.cpp; sourceTree = "<group>"; };
+		17AF820613D8A2F200271DB9 /* PVRTMatrixX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixX.cpp; sourceTree = "<group>"; };
+		17AF820713D8A2F200271DB9 /* PVRTMemoryFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMemoryFileSystem.h; sourceTree = "<group>"; };
+		17AF820813D8A2F200271DB9 /* PVRTMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMisc.cpp; sourceTree = "<group>"; };
+		17AF820913D8A2F200271DB9 /* PVRTMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMisc.h; sourceTree = "<group>"; };
+		17AF820A13D8A2F200271DB9 /* PVRTModelPOD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTModelPOD.cpp; sourceTree = "<group>"; };
+		17AF820B13D8A2F200271DB9 /* PVRTModelPOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTModelPOD.h; sourceTree = "<group>"; };
+		17AF820C13D8A2F200271DB9 /* PVRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTools.h; sourceTree = "<group>"; };
+		17AF820D13D8A2F200271DB9 /* PVRTPFXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParser.cpp; sourceTree = "<group>"; };
+		17AF820E13D8A2F200271DB9 /* PVRTPFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParser.h; sourceTree = "<group>"; };
+		17AF820F13D8A2F200271DB9 /* PVRTPrint3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPrint3D.cpp; sourceTree = "<group>"; };
+		17AF821013D8A2F200271DB9 /* PVRTPrint3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3D.h; sourceTree = "<group>"; };
+		17AF821113D8A2F200271DB9 /* PVRTPrint3Ddat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3Ddat.h; sourceTree = "<group>"; };
+		17AF821213D8A2F200271DB9 /* PVRTQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTQuaternion.h; sourceTree = "<group>"; };
+		17AF821313D8A2F200271DB9 /* PVRTQuaternionF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionF.cpp; sourceTree = "<group>"; };
+		17AF821413D8A2F200271DB9 /* PVRTQuaternionX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionX.cpp; sourceTree = "<group>"; };
+		17AF821513D8A2F200271DB9 /* PVRTResourceFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTResourceFile.cpp; sourceTree = "<group>"; };
+		17AF821613D8A2F200271DB9 /* PVRTResourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTResourceFile.h; sourceTree = "<group>"; };
+		17AF821713D8A2F200271DB9 /* PVRTShadowVol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShadowVol.cpp; sourceTree = "<group>"; };
+		17AF821813D8A2F200271DB9 /* PVRTShadowVol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShadowVol.h; sourceTree = "<group>"; };
+		17AF821913D8A2F200271DB9 /* PVRTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSingleton.h; sourceTree = "<group>"; };
+		17AF821A13D8A2F200271DB9 /* PVRTString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTString.cpp; sourceTree = "<group>"; };
+		17AF821B13D8A2F200271DB9 /* PVRTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTString.h; sourceTree = "<group>"; };
+		17AF821C13D8A2F200271DB9 /* PVRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTexture.cpp; sourceTree = "<group>"; };
+		17AF821D13D8A2F200271DB9 /* PVRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTexture.h; sourceTree = "<group>"; };
+		17AF821E13D8A2F200271DB9 /* PVRTTrans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTrans.cpp; sourceTree = "<group>"; };
+		17AF821F13D8A2F200271DB9 /* PVRTTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTrans.h; sourceTree = "<group>"; };
+		17AF822013D8A2F200271DB9 /* PVRTTriStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTriStrip.cpp; sourceTree = "<group>"; };
+		17AF822113D8A2F200271DB9 /* PVRTTriStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTriStrip.h; sourceTree = "<group>"; };
+		17AF822213D8A2F200271DB9 /* PVRTVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVector.cpp; sourceTree = "<group>"; };
+		17AF822313D8A2F200271DB9 /* PVRTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVector.h; sourceTree = "<group>"; };
+		17AF822413D8A2F200271DB9 /* PVRTVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVertex.cpp; sourceTree = "<group>"; };
+		17AF822513D8A2F200271DB9 /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
 		17BC422A136DDF1F0064FF49 /* Isgl3dAnimatedMeshNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimatedMeshNode.h; sourceTree = "<group>"; };
 		17BC422B136DDF1F0064FF49 /* Isgl3dAnimatedMeshNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAnimatedMeshNode.m; sourceTree = "<group>"; };
 		17BC422C136DDF1F0064FF49 /* Isgl3dAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimationController.h; sourceTree = "<group>"; };
@@ -547,51 +628,6 @@
 		17BC431A136DDF200064FF49 /* Isgl3dUShortArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dUShortArray.m; sourceTree = "<group>"; };
 		17BC431C136DDF200064FF49 /* Isgl3dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dView.h; sourceTree = "<group>"; };
 		17BC431D136DDF200064FF49 /* Isgl3dView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dView.m; sourceTree = "<group>"; };
-		17BC43FD136DE0A90064FF49 /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
-		17BC43FE136DE0A90064FF49 /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
-		17BC43FF136DE0A90064FF49 /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
-		17BC4400136DE0A90064FF49 /* PVRTContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTContext.h; sourceTree = "<group>"; };
-		17BC4401136DE0A90064FF49 /* PVRTDecompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTDecompress.cpp; sourceTree = "<group>"; };
-		17BC4402136DE0A90064FF49 /* PVRTDecompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTDecompress.h; sourceTree = "<group>"; };
-		17BC4403136DE0A90064FF49 /* PVRTError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTError.cpp; sourceTree = "<group>"; };
-		17BC4404136DE0A90064FF49 /* PVRTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTError.h; sourceTree = "<group>"; };
-		17BC4405136DE0A90064FF49 /* PVRTFixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTFixedPoint.cpp; sourceTree = "<group>"; };
-		17BC4406136DE0A90064FF49 /* PVRTFixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTFixedPoint.h; sourceTree = "<group>"; };
-		17BC4407136DE0A90064FF49 /* PVRTGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTGeometry.cpp; sourceTree = "<group>"; };
-		17BC4408136DE0A90064FF49 /* PVRTGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGeometry.h; sourceTree = "<group>"; };
-		17BC4409136DE0A90064FF49 /* PVRTGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGlobal.h; sourceTree = "<group>"; };
-		17BC440A136DE0A90064FF49 /* PVRTMathTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMathTable.h; sourceTree = "<group>"; };
-		17BC440B136DE0A90064FF49 /* PVRTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMatrix.h; sourceTree = "<group>"; };
-		17BC440C136DE0A90064FF49 /* PVRTMatrixF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixF.cpp; sourceTree = "<group>"; };
-		17BC440D136DE0A90064FF49 /* PVRTMatrixX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixX.cpp; sourceTree = "<group>"; };
-		17BC440E136DE0A90064FF49 /* PVRTMemoryFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMemoryFileSystem.h; sourceTree = "<group>"; };
-		17BC440F136DE0A90064FF49 /* PVRTMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMisc.cpp; sourceTree = "<group>"; };
-		17BC4410136DE0A90064FF49 /* PVRTMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMisc.h; sourceTree = "<group>"; };
-		17BC4411136DE0A90064FF49 /* PVRTModelPOD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTModelPOD.cpp; sourceTree = "<group>"; };
-		17BC4412136DE0A90064FF49 /* PVRTModelPOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTModelPOD.h; sourceTree = "<group>"; };
-		17BC4413136DE0A90064FF49 /* PVRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTools.h; sourceTree = "<group>"; };
-		17BC4414136DE0A90064FF49 /* PVRTPFXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParser.cpp; sourceTree = "<group>"; };
-		17BC4415136DE0A90064FF49 /* PVRTPFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParser.h; sourceTree = "<group>"; };
-		17BC4416136DE0A90064FF49 /* PVRTQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTQuaternion.h; sourceTree = "<group>"; };
-		17BC4417136DE0A90064FF49 /* PVRTQuaternionF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionF.cpp; sourceTree = "<group>"; };
-		17BC4418136DE0A90064FF49 /* PVRTQuaternionX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionX.cpp; sourceTree = "<group>"; };
-		17BC4419136DE0A90064FF49 /* PVRTResourceFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTResourceFile.cpp; sourceTree = "<group>"; };
-		17BC441A136DE0A90064FF49 /* PVRTResourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTResourceFile.h; sourceTree = "<group>"; };
-		17BC441B136DE0A90064FF49 /* PVRTShadowVol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShadowVol.cpp; sourceTree = "<group>"; };
-		17BC441C136DE0A90064FF49 /* PVRTShadowVol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShadowVol.h; sourceTree = "<group>"; };
-		17BC441D136DE0A90064FF49 /* PVRTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSingleton.h; sourceTree = "<group>"; };
-		17BC441E136DE0A90064FF49 /* PVRTString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTString.cpp; sourceTree = "<group>"; };
-		17BC441F136DE0A90064FF49 /* PVRTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTString.h; sourceTree = "<group>"; };
-		17BC4420136DE0A90064FF49 /* PVRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTexture.cpp; sourceTree = "<group>"; };
-		17BC4421136DE0A90064FF49 /* PVRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTexture.h; sourceTree = "<group>"; };
-		17BC4422136DE0A90064FF49 /* PVRTTrans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTrans.cpp; sourceTree = "<group>"; };
-		17BC4423136DE0A90064FF49 /* PVRTTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTrans.h; sourceTree = "<group>"; };
-		17BC4424136DE0A90064FF49 /* PVRTTriStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTriStrip.cpp; sourceTree = "<group>"; };
-		17BC4425136DE0A90064FF49 /* PVRTTriStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTriStrip.h; sourceTree = "<group>"; };
-		17BC4426136DE0A90064FF49 /* PVRTVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVector.cpp; sourceTree = "<group>"; };
-		17BC4427136DE0A90064FF49 /* PVRTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVector.h; sourceTree = "<group>"; };
-		17BC4428136DE0A90064FF49 /* PVRTVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVertex.cpp; sourceTree = "<group>"; };
-		17BC4429136DE0A90064FF49 /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
 		17E4A657136DED5C0093B7E0 /* LICENSE.IMGTEC */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.IMGTEC; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* ___PROJECTNAME___.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "___PROJECTNAME___.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -672,6 +708,84 @@
 				17BC4228136DDF1F0064FF49 /* isgl3d */,
 			);
 			path = libs;
+			sourceTree = "<group>";
+		};
+		17AF81E513D8A2F200271DB9 /* PowerVR_SDK-2.0.8 */ = {
+			isa = PBXGroup;
+			children = (
+				17AF81E613D8A2F200271DB9 /* OGLES2 */,
+				17AF81F713D8A2F200271DB9 /* PVRTBackground.h */,
+				17AF81F813D8A2F200271DB9 /* PVRTBoneBatch.cpp */,
+				17AF81F913D8A2F200271DB9 /* PVRTBoneBatch.h */,
+				17AF81FA13D8A2F200271DB9 /* PVRTDecompress.cpp */,
+				17AF81FB13D8A2F200271DB9 /* PVRTDecompress.h */,
+				17AF81FC13D8A2F200271DB9 /* PVRTError.cpp */,
+				17AF81FD13D8A2F200271DB9 /* PVRTError.h */,
+				17AF81FE13D8A2F200271DB9 /* PVRTFixedPoint.cpp */,
+				17AF81FF13D8A2F200271DB9 /* PVRTFixedPoint.h */,
+				17AF820013D8A2F200271DB9 /* PVRTGeometry.cpp */,
+				17AF820113D8A2F200271DB9 /* PVRTGeometry.h */,
+				17AF820213D8A2F200271DB9 /* PVRTGlobal.h */,
+				17AF820313D8A2F200271DB9 /* PVRTMathTable.h */,
+				17AF820413D8A2F200271DB9 /* PVRTMatrix.h */,
+				17AF820513D8A2F200271DB9 /* PVRTMatrixF.cpp */,
+				17AF820613D8A2F200271DB9 /* PVRTMatrixX.cpp */,
+				17AF820713D8A2F200271DB9 /* PVRTMemoryFileSystem.h */,
+				17AF820813D8A2F200271DB9 /* PVRTMisc.cpp */,
+				17AF820913D8A2F200271DB9 /* PVRTMisc.h */,
+				17AF820A13D8A2F200271DB9 /* PVRTModelPOD.cpp */,
+				17AF820B13D8A2F200271DB9 /* PVRTModelPOD.h */,
+				17AF820C13D8A2F200271DB9 /* PVRTools.h */,
+				17AF820D13D8A2F200271DB9 /* PVRTPFXParser.cpp */,
+				17AF820E13D8A2F200271DB9 /* PVRTPFXParser.h */,
+				17AF820F13D8A2F200271DB9 /* PVRTPrint3D.cpp */,
+				17AF821013D8A2F200271DB9 /* PVRTPrint3D.h */,
+				17AF821113D8A2F200271DB9 /* PVRTPrint3Ddat.h */,
+				17AF821213D8A2F200271DB9 /* PVRTQuaternion.h */,
+				17AF821313D8A2F200271DB9 /* PVRTQuaternionF.cpp */,
+				17AF821413D8A2F200271DB9 /* PVRTQuaternionX.cpp */,
+				17AF821513D8A2F200271DB9 /* PVRTResourceFile.cpp */,
+				17AF821613D8A2F200271DB9 /* PVRTResourceFile.h */,
+				17AF821713D8A2F200271DB9 /* PVRTShadowVol.cpp */,
+				17AF821813D8A2F200271DB9 /* PVRTShadowVol.h */,
+				17AF821913D8A2F200271DB9 /* PVRTSingleton.h */,
+				17AF821A13D8A2F200271DB9 /* PVRTString.cpp */,
+				17AF821B13D8A2F200271DB9 /* PVRTString.h */,
+				17AF821C13D8A2F200271DB9 /* PVRTTexture.cpp */,
+				17AF821D13D8A2F200271DB9 /* PVRTTexture.h */,
+				17AF821E13D8A2F200271DB9 /* PVRTTrans.cpp */,
+				17AF821F13D8A2F200271DB9 /* PVRTTrans.h */,
+				17AF822013D8A2F200271DB9 /* PVRTTriStrip.cpp */,
+				17AF822113D8A2F200271DB9 /* PVRTTriStrip.h */,
+				17AF822213D8A2F200271DB9 /* PVRTVector.cpp */,
+				17AF822313D8A2F200271DB9 /* PVRTVector.h */,
+				17AF822413D8A2F200271DB9 /* PVRTVertex.cpp */,
+				17AF822513D8A2F200271DB9 /* PVRTVertex.h */,
+			);
+			path = "PowerVR_SDK-2.0.8";
+			sourceTree = "<group>";
+		};
+		17AF81E613D8A2F200271DB9 /* OGLES2 */ = {
+			isa = PBXGroup;
+			children = (
+				17AF81E713D8A2F200271DB9 /* OGLES2Tools.h */,
+				17AF81E813D8A2F200271DB9 /* PVRTBackground.cpp */,
+				17AF81E913D8A2F200271DB9 /* PVRTBackgroundShaders.h */,
+				17AF81EA13D8A2F200271DB9 /* PVRTContext.h */,
+				17AF81EB13D8A2F200271DB9 /* PVRTgles2Ext.cpp */,
+				17AF81EC13D8A2F200271DB9 /* PVRTgles2Ext.h */,
+				17AF81ED13D8A2F200271DB9 /* PVRTPFXParserAPI.cpp */,
+				17AF81EE13D8A2F200271DB9 /* PVRTPFXParserAPI.h */,
+				17AF81EF13D8A2F200271DB9 /* PVRTPrint3DAPI.cpp */,
+				17AF81F013D8A2F200271DB9 /* PVRTPrint3DIMGLogo.h */,
+				17AF81F113D8A2F200271DB9 /* PVRTPrint3DPVRLogo.h */,
+				17AF81F213D8A2F200271DB9 /* PVRTPrint3DShaders.h */,
+				17AF81F313D8A2F200271DB9 /* PVRTShader.cpp */,
+				17AF81F413D8A2F200271DB9 /* PVRTShader.h */,
+				17AF81F513D8A2F200271DB9 /* PVRTTextureAPI.cpp */,
+				17AF81F613D8A2F200271DB9 /* PVRTTextureAPI.h */,
+			);
+			path = OGLES2;
 			sourceTree = "<group>";
 		};
 		17BC4228136DDF1F0064FF49 /* isgl3d */ = {
@@ -1104,69 +1218,9 @@
 		17BC43FA136DE0A90064FF49 /* external */ = {
 			isa = PBXGroup;
 			children = (
-				17BC43FB136DE0A90064FF49 /* PowerVR */,
+				17AF81E513D8A2F200271DB9 /* PowerVR_SDK-2.0.8 */,
 			);
 			path = external;
-			sourceTree = "<group>";
-		};
-		17BC43FB136DE0A90064FF49 /* PowerVR */ = {
-			isa = PBXGroup;
-			children = (
-				17BC43FC136DE0A90064FF49 /* Tools */,
-			);
-			path = PowerVR;
-			sourceTree = "<group>";
-		};
-		17BC43FC136DE0A90064FF49 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				17BC43FD136DE0A90064FF49 /* PVRTBackground.h */,
-				17BC43FE136DE0A90064FF49 /* PVRTBoneBatch.cpp */,
-				17BC43FF136DE0A90064FF49 /* PVRTBoneBatch.h */,
-				17BC4400136DE0A90064FF49 /* PVRTContext.h */,
-				17BC4401136DE0A90064FF49 /* PVRTDecompress.cpp */,
-				17BC4402136DE0A90064FF49 /* PVRTDecompress.h */,
-				17BC4403136DE0A90064FF49 /* PVRTError.cpp */,
-				17BC4404136DE0A90064FF49 /* PVRTError.h */,
-				17BC4405136DE0A90064FF49 /* PVRTFixedPoint.cpp */,
-				17BC4406136DE0A90064FF49 /* PVRTFixedPoint.h */,
-				17BC4407136DE0A90064FF49 /* PVRTGeometry.cpp */,
-				17BC4408136DE0A90064FF49 /* PVRTGeometry.h */,
-				17BC4409136DE0A90064FF49 /* PVRTGlobal.h */,
-				17BC440A136DE0A90064FF49 /* PVRTMathTable.h */,
-				17BC440B136DE0A90064FF49 /* PVRTMatrix.h */,
-				17BC440C136DE0A90064FF49 /* PVRTMatrixF.cpp */,
-				17BC440D136DE0A90064FF49 /* PVRTMatrixX.cpp */,
-				17BC440E136DE0A90064FF49 /* PVRTMemoryFileSystem.h */,
-				17BC440F136DE0A90064FF49 /* PVRTMisc.cpp */,
-				17BC4410136DE0A90064FF49 /* PVRTMisc.h */,
-				17BC4411136DE0A90064FF49 /* PVRTModelPOD.cpp */,
-				17BC4412136DE0A90064FF49 /* PVRTModelPOD.h */,
-				17BC4413136DE0A90064FF49 /* PVRTools.h */,
-				17BC4414136DE0A90064FF49 /* PVRTPFXParser.cpp */,
-				17BC4415136DE0A90064FF49 /* PVRTPFXParser.h */,
-				17BC4416136DE0A90064FF49 /* PVRTQuaternion.h */,
-				17BC4417136DE0A90064FF49 /* PVRTQuaternionF.cpp */,
-				17BC4418136DE0A90064FF49 /* PVRTQuaternionX.cpp */,
-				17BC4419136DE0A90064FF49 /* PVRTResourceFile.cpp */,
-				17BC441A136DE0A90064FF49 /* PVRTResourceFile.h */,
-				17BC441B136DE0A90064FF49 /* PVRTShadowVol.cpp */,
-				17BC441C136DE0A90064FF49 /* PVRTShadowVol.h */,
-				17BC441D136DE0A90064FF49 /* PVRTSingleton.h */,
-				17BC441E136DE0A90064FF49 /* PVRTString.cpp */,
-				17BC441F136DE0A90064FF49 /* PVRTString.h */,
-				17BC4420136DE0A90064FF49 /* PVRTTexture.cpp */,
-				17BC4421136DE0A90064FF49 /* PVRTTexture.h */,
-				17BC4422136DE0A90064FF49 /* PVRTTrans.cpp */,
-				17BC4423136DE0A90064FF49 /* PVRTTrans.h */,
-				17BC4424136DE0A90064FF49 /* PVRTTriStrip.cpp */,
-				17BC4425136DE0A90064FF49 /* PVRTTriStrip.h */,
-				17BC4426136DE0A90064FF49 /* PVRTVector.cpp */,
-				17BC4427136DE0A90064FF49 /* PVRTVector.h */,
-				17BC4428136DE0A90064FF49 /* PVRTVertex.cpp */,
-				17BC4429136DE0A90064FF49 /* PVRTVertex.h */,
-			);
-			path = Tools;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -1335,31 +1389,42 @@
 				17BC43F4136DDF200064FF49 /* Isgl3dLog.h in Headers */,
 				17BC43F6136DDF200064FF49 /* Isgl3dUShortArray.h in Headers */,
 				17BC43F8136DDF200064FF49 /* Isgl3dView.h in Headers */,
-				17BC442A136DE0A90064FF49 /* PVRTBackground.h in Headers */,
-				17BC442C136DE0A90064FF49 /* PVRTBoneBatch.h in Headers */,
-				17BC442D136DE0A90064FF49 /* PVRTContext.h in Headers */,
-				17BC442F136DE0A90064FF49 /* PVRTDecompress.h in Headers */,
-				17BC4431136DE0A90064FF49 /* PVRTError.h in Headers */,
-				17BC4433136DE0A90064FF49 /* PVRTFixedPoint.h in Headers */,
-				17BC4435136DE0A90064FF49 /* PVRTGeometry.h in Headers */,
-				17BC4436136DE0A90064FF49 /* PVRTGlobal.h in Headers */,
-				17BC4437136DE0A90064FF49 /* PVRTMathTable.h in Headers */,
-				17BC4438136DE0A90064FF49 /* PVRTMatrix.h in Headers */,
-				17BC443B136DE0A90064FF49 /* PVRTMemoryFileSystem.h in Headers */,
-				17BC443D136DE0A90064FF49 /* PVRTMisc.h in Headers */,
-				17BC443F136DE0A90064FF49 /* PVRTModelPOD.h in Headers */,
-				17BC4440136DE0A90064FF49 /* PVRTools.h in Headers */,
-				17BC4442136DE0A90064FF49 /* PVRTPFXParser.h in Headers */,
-				17BC4443136DE0A90064FF49 /* PVRTQuaternion.h in Headers */,
-				17BC4447136DE0A90064FF49 /* PVRTResourceFile.h in Headers */,
-				17BC4449136DE0A90064FF49 /* PVRTShadowVol.h in Headers */,
-				17BC444A136DE0A90064FF49 /* PVRTSingleton.h in Headers */,
-				17BC444C136DE0A90064FF49 /* PVRTString.h in Headers */,
-				17BC444E136DE0A90064FF49 /* PVRTTexture.h in Headers */,
-				17BC4450136DE0A90064FF49 /* PVRTTrans.h in Headers */,
-				17BC4452136DE0A90064FF49 /* PVRTTriStrip.h in Headers */,
-				17BC4454136DE0A90064FF49 /* PVRTVector.h in Headers */,
-				17BC4456136DE0A90064FF49 /* PVRTVertex.h in Headers */,
+				17AF822613D8A2F200271DB9 /* OGLES2Tools.h in Headers */,
+				17AF822813D8A2F200271DB9 /* PVRTBackgroundShaders.h in Headers */,
+				17AF822913D8A2F200271DB9 /* PVRTContext.h in Headers */,
+				17AF822B13D8A2F200271DB9 /* PVRTgles2Ext.h in Headers */,
+				17AF822D13D8A2F200271DB9 /* PVRTPFXParserAPI.h in Headers */,
+				17AF822F13D8A2F200271DB9 /* PVRTPrint3DIMGLogo.h in Headers */,
+				17AF823013D8A2F200271DB9 /* PVRTPrint3DPVRLogo.h in Headers */,
+				17AF823113D8A2F200271DB9 /* PVRTPrint3DShaders.h in Headers */,
+				17AF823313D8A2F200271DB9 /* PVRTShader.h in Headers */,
+				17AF823513D8A2F200271DB9 /* PVRTTextureAPI.h in Headers */,
+				17AF823613D8A2F200271DB9 /* PVRTBackground.h in Headers */,
+				17AF823813D8A2F200271DB9 /* PVRTBoneBatch.h in Headers */,
+				17AF823A13D8A2F200271DB9 /* PVRTDecompress.h in Headers */,
+				17AF823C13D8A2F200271DB9 /* PVRTError.h in Headers */,
+				17AF823E13D8A2F200271DB9 /* PVRTFixedPoint.h in Headers */,
+				17AF824013D8A2F200271DB9 /* PVRTGeometry.h in Headers */,
+				17AF824113D8A2F200271DB9 /* PVRTGlobal.h in Headers */,
+				17AF824213D8A2F200271DB9 /* PVRTMathTable.h in Headers */,
+				17AF824313D8A2F200271DB9 /* PVRTMatrix.h in Headers */,
+				17AF824613D8A2F200271DB9 /* PVRTMemoryFileSystem.h in Headers */,
+				17AF824813D8A2F200271DB9 /* PVRTMisc.h in Headers */,
+				17AF824A13D8A2F200271DB9 /* PVRTModelPOD.h in Headers */,
+				17AF824B13D8A2F200271DB9 /* PVRTools.h in Headers */,
+				17AF824D13D8A2F200271DB9 /* PVRTPFXParser.h in Headers */,
+				17AF824F13D8A2F200271DB9 /* PVRTPrint3D.h in Headers */,
+				17AF825013D8A2F200271DB9 /* PVRTPrint3Ddat.h in Headers */,
+				17AF825113D8A2F200271DB9 /* PVRTQuaternion.h in Headers */,
+				17AF825513D8A2F200271DB9 /* PVRTResourceFile.h in Headers */,
+				17AF825713D8A2F200271DB9 /* PVRTShadowVol.h in Headers */,
+				17AF825813D8A2F200271DB9 /* PVRTSingleton.h in Headers */,
+				17AF825A13D8A2F200271DB9 /* PVRTString.h in Headers */,
+				17AF825C13D8A2F200271DB9 /* PVRTTexture.h in Headers */,
+				17AF825E13D8A2F200271DB9 /* PVRTTrans.h in Headers */,
+				17AF826013D8A2F200271DB9 /* PVRTTriStrip.h in Headers */,
+				17AF826213D8A2F200271DB9 /* PVRTVector.h in Headers */,
+				17AF826413D8A2F200271DB9 /* PVRTVertex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1559,26 +1624,33 @@
 				17BC43F5136DDF200064FF49 /* Isgl3dLog.m in Sources */,
 				17BC43F7136DDF200064FF49 /* Isgl3dUShortArray.m in Sources */,
 				17BC43F9136DDF200064FF49 /* Isgl3dView.m in Sources */,
-				17BC442B136DE0A90064FF49 /* PVRTBoneBatch.cpp in Sources */,
-				17BC442E136DE0A90064FF49 /* PVRTDecompress.cpp in Sources */,
-				17BC4430136DE0A90064FF49 /* PVRTError.cpp in Sources */,
-				17BC4432136DE0A90064FF49 /* PVRTFixedPoint.cpp in Sources */,
-				17BC4434136DE0A90064FF49 /* PVRTGeometry.cpp in Sources */,
-				17BC4439136DE0A90064FF49 /* PVRTMatrixF.cpp in Sources */,
-				17BC443A136DE0A90064FF49 /* PVRTMatrixX.cpp in Sources */,
-				17BC443C136DE0A90064FF49 /* PVRTMisc.cpp in Sources */,
-				17BC443E136DE0A90064FF49 /* PVRTModelPOD.cpp in Sources */,
-				17BC4441136DE0A90064FF49 /* PVRTPFXParser.cpp in Sources */,
-				17BC4444136DE0A90064FF49 /* PVRTQuaternionF.cpp in Sources */,
-				17BC4445136DE0A90064FF49 /* PVRTQuaternionX.cpp in Sources */,
-				17BC4446136DE0A90064FF49 /* PVRTResourceFile.cpp in Sources */,
-				17BC4448136DE0A90064FF49 /* PVRTShadowVol.cpp in Sources */,
-				17BC444B136DE0A90064FF49 /* PVRTString.cpp in Sources */,
-				17BC444D136DE0A90064FF49 /* PVRTTexture.cpp in Sources */,
-				17BC444F136DE0A90064FF49 /* PVRTTrans.cpp in Sources */,
-				17BC4451136DE0A90064FF49 /* PVRTTriStrip.cpp in Sources */,
-				17BC4453136DE0A90064FF49 /* PVRTVector.cpp in Sources */,
-				17BC4455136DE0A90064FF49 /* PVRTVertex.cpp in Sources */,
+				17AF822713D8A2F200271DB9 /* PVRTBackground.cpp in Sources */,
+				17AF822A13D8A2F200271DB9 /* PVRTgles2Ext.cpp in Sources */,
+				17AF822C13D8A2F200271DB9 /* PVRTPFXParserAPI.cpp in Sources */,
+				17AF822E13D8A2F200271DB9 /* PVRTPrint3DAPI.cpp in Sources */,
+				17AF823213D8A2F200271DB9 /* PVRTShader.cpp in Sources */,
+				17AF823413D8A2F200271DB9 /* PVRTTextureAPI.cpp in Sources */,
+				17AF823713D8A2F200271DB9 /* PVRTBoneBatch.cpp in Sources */,
+				17AF823913D8A2F200271DB9 /* PVRTDecompress.cpp in Sources */,
+				17AF823B13D8A2F200271DB9 /* PVRTError.cpp in Sources */,
+				17AF823D13D8A2F200271DB9 /* PVRTFixedPoint.cpp in Sources */,
+				17AF823F13D8A2F200271DB9 /* PVRTGeometry.cpp in Sources */,
+				17AF824413D8A2F200271DB9 /* PVRTMatrixF.cpp in Sources */,
+				17AF824513D8A2F200271DB9 /* PVRTMatrixX.cpp in Sources */,
+				17AF824713D8A2F200271DB9 /* PVRTMisc.cpp in Sources */,
+				17AF824913D8A2F200271DB9 /* PVRTModelPOD.cpp in Sources */,
+				17AF824C13D8A2F200271DB9 /* PVRTPFXParser.cpp in Sources */,
+				17AF824E13D8A2F200271DB9 /* PVRTPrint3D.cpp in Sources */,
+				17AF825213D8A2F200271DB9 /* PVRTQuaternionF.cpp in Sources */,
+				17AF825313D8A2F200271DB9 /* PVRTQuaternionX.cpp in Sources */,
+				17AF825413D8A2F200271DB9 /* PVRTResourceFile.cpp in Sources */,
+				17AF825613D8A2F200271DB9 /* PVRTShadowVol.cpp in Sources */,
+				17AF825913D8A2F200271DB9 /* PVRTString.cpp in Sources */,
+				17AF825B13D8A2F200271DB9 /* PVRTTexture.cpp in Sources */,
+				17AF825D13D8A2F200271DB9 /* PVRTTrans.cpp in Sources */,
+				17AF825F13D8A2F200271DB9 /* PVRTTriStrip.cpp in Sources */,
+				17AF826113D8A2F200271DB9 /* PVRTVector.cpp in Sources */,
+				17AF826313D8A2F200271DB9 /* PVRTVertex.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
