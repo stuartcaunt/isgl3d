@@ -383,13 +383,17 @@
 }
 
 - (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition {
+	return [self convertWorldPositionToView:worldPosition orientation:_deviceViewOrientation];
+}
 
+- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition orientation:(isgl3dOrientation)orientation {
+	
 	Isgl3dMatrix4 viewProjectionMatrix = _camera.viewProjectionMatrix;
 	Isgl3dVector3 projectedPosition = im4MultVector(&viewProjectionMatrix, &worldPosition);
 	CGPoint viewPoint = CGPointZero;
 	CGSize viewportSize = _viewport.size;
 
-	switch (_deviceViewOrientation) {
+	switch (orientation) {
 		case Isgl3dOrientation0:
 			viewPoint.x = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.tw);
 			viewPoint.y = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.tw);
@@ -416,7 +420,11 @@
 
 
 - (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition {
-	CGPoint pixelPoint = [self convertWorldPositionToViewInPixels:worldPosition];
+	return [self convertWorldPositionToViewInPixels:worldPosition orientation:_deviceViewOrientation];
+}
+
+- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition orientation:(isgl3dOrientation)orientation {
+	CGPoint pixelPoint = [self convertWorldPositionToView:worldPosition];
 	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
 	
 	return CGPointMake(pixelPoint.x * s, pixelPoint.y * s);
