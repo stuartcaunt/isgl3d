@@ -38,6 +38,7 @@
 	NSMutableSet * _previousLocations;
 	NSMutableSet * _newTouches;
 }
+@property (nonatomic, readonly) Isgl3dNode *object;
 
 - (id) initWithObject:(Isgl3dNode *)object;
 - (void) addTouch:(UITouch *)touch;

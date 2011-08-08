@@ -30,11 +30,19 @@
 #import "Isgl3dGLTexture.h"
 #import "Isgl3dGLTextureFactory.h"
 
+
 @interface Isgl3dTextureMaterial (PrivateMethods)
 - (id) initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
 
+@interface Isgl3dTextureMaterial ()
+@property (nonatomic, retain) Isgl3dGLTexture *texture;
+@end
+
+
 @implementation Isgl3dTextureMaterial
+
+@synthesize texture=_texture;
 
 + (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
@@ -46,6 +54,18 @@
 
 + (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess] autorelease];
+}
+
++ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [[[self alloc] initWithTextureUIImage:image key:key shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
+}
+
++ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key {
+	return [[[self alloc] initWithTextureUIImage:image key:key] autorelease];
+}
+
++ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess {
+	return [[[self alloc] initWithTextureUIImage:image key:key shininess:shininess] autorelease];
 }
 
 + (id) materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
@@ -85,6 +105,25 @@
 	return self;
 }
 
+- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+    
+	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
+
+	if ((self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:specular shininess:shininess])) {
+		_texture = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromUIImage:image key:key precision:precision repeatX:repeatX repeatY:repeatY] retain];
+	}
+	
+	return self;   
+}
+
+- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key {
+	return [self initWithTextureUIImage:image key:key shininess:0.0f precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+}
+
+- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess {
+	return [self initWithTextureUIImage:image key:key shininess:shininess precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+}
+
 - (id)initWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	
 	if ((self = [super initWithHexColors:@"FFFFFF" diffuse:@"FFFFFF" specular:@"000000" shininess:0])) {
@@ -97,8 +136,18 @@
 
 - (void) dealloc {
 	[_texture release];
+	_texture = nil;
 
 	[super dealloc];
+}
+
+- (id) copyWithZone:(NSZone *)zone {
+	Isgl3dTextureMaterial * copy = [super copyWithZone:zone];
+	
+	copy.texture = _texture;
+	copy.isHighDefinition = _isHighDefinition;
+	
+	return copy;
 }
 
 - (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha {

@@ -28,33 +28,10 @@
 #import "Isgl3dGLTexture.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dDirector.h"
+#import <OpenGLES/EAGL.h>
 
-#define PVR_TEXTURE_FLAG_TYPE_MASK	0xff
 
 static Isgl3dGLTextureFactory * _instance = nil;
-static char gPVRTexIdentifier[4] = "PVR!";
-
-enum {
-	kPVRTextureFlagTypePVRTC_2 = 24,
-	kPVRTextureFlagTypePVRTC_4
-};
-
-typedef struct _PVRTexHeader {
-	uint32_t headerLength;
-	uint32_t height;
-	uint32_t width;
-	uint32_t numMipmaps;
-	uint32_t flags;
-	uint32_t dataLength;
-	uint32_t bpp;
-	uint32_t bitmaskRed;
-	uint32_t bitmaskGreen;
-	uint32_t bitmaskBlue;
-	uint32_t bitmaskAlpha;
-	uint32_t pvrTag;
-	uint32_t numSurfs;
-} PVRTexHeader;
-
 
 @interface Isgl3dGLTextureFactory (PrivateMethods)
 /**
@@ -68,11 +45,6 @@ typedef struct _PVRTexHeader {
 - (UIImage *) loadImage:(NSString *)path;
 - (void) copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height;
 - (BOOL) imageIsHD:(NSString *)path;
-
-/**
- * @result (autorelease) NSArray with image data
- */
-- (NSArray *) unpackPVRData:(NSData *)data width:(unsigned int)width height:(unsigned int)height;
 
 /**
  * @result (autorelease) NSString with texture key
@@ -187,6 +159,40 @@ typedef struct _PVRTexHeader {
 	return nil;
 }
 
+
+- (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY{
+	
+	if (_state) {
+		NSString * textureKey = [self textureKeyForFile:key precision:precision repeatX:repeatX repeatY:repeatY];
+		Isgl3dGLTexture * texture = [_textures objectForKey:textureKey];
+		if (texture) {
+			return texture;
+		}
+        
+		// Get nearest power of 2 dimensions
+		unsigned int width = [self nearestPowerOf2:CGImageGetWidth(image.CGImage)];
+		unsigned int height = [self nearestPowerOf2:CGImageGetHeight(image.CGImage)];
+        
+		void * data = malloc(width * height * 4);
+		[self copyImage:image toRawData:data width:width height:height];
+		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
+		free(data);
+		
+		// Create texture and store in dictionary
+		CGSize contentSize = CGSizeMake(CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage));
+		texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height contentSize:contentSize];
+		
+		texture.isHighDefinition = NO;
+		
+		[_textures setObject:texture forKey:textureKey];
+		
+		return texture;		
+	}
+    
+	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createTextureFromUIImage: not initialised with factory state");
+	return nil;
+}
+
 - (Isgl3dGLTexture *) createTextureFromText:(NSString *)text fontName:(NSString*)name fontSize:(CGFloat)size repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	if (_state) {
 		if ([text length] == 0) {
@@ -282,50 +288,15 @@ typedef struct _PVRTexHeader {
 			}
 		}
 		
+		unsigned int width=0, height=0;
+		unsigned int textureId = [_state createTextureFromPVR:filePath outWidth:&width outHeight:&height];
+
+		texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height];
+		texture.isHighDefinition = isHD;
 		
-		NSData * data = [NSData dataWithContentsOfFile:filePath];
+		[_textures setObject:texture forKey:textureKey];
 
-		if ([data bytes] == 0) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file contains no data %@.%@", fileName, extension);
-			return nil;
-		}
-
-		PVRTexHeader * header = (PVRTexHeader *)[data bytes];
-		unsigned int width = CFSwapInt32LittleToHost(header->width);
-		unsigned int height = CFSwapInt32LittleToHost(header->height);
-				
-		uint32_t flags = CFSwapInt32LittleToHost(header->flags);
-		uint32_t formatFlags = flags & PVR_TEXTURE_FLAG_TYPE_MASK;
-		
-		if (formatFlags == kPVRTextureFlagTypePVRTC_4 || formatFlags == kPVRTextureFlagTypePVRTC_2) {
-
-			unsigned int internalFormat;
-			if (formatFlags == kPVRTextureFlagTypePVRTC_4) {
-				internalFormat = [_state compressionFormatFromString:@"GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG"];
-			} else if (formatFlags == kPVRTextureFlagTypePVRTC_2) {
-				internalFormat = [_state compressionFormatFromString:@"GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG"];
-			}
-
-			NSArray * imageData = [self unpackPVRData:data width:width height:height];
-			if ([imageData count] > 0) {
-				
-				unsigned int textureId = [_state createTextureFromCompressedTexImageData:imageData format:internalFormat width:width height:height precision:precision repeatX:repeatX repeatY:repeatY];
-
-				// Create texture and store in dictionary
-				texture = [Isgl3dGLTexture textureWithId:textureId width:width height:height];
-				texture.isHighDefinition = isHD;
-				[_textures setObject:texture forKey:textureKey];
-				
-				return texture;		
-			
-			} else {
-				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : PVR file%@.%@ contains no image data", fileName, extension);
-			}
-		
-		} else {
-				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : File %@.%@ is not of a recognised PVR format", fileName, extension);
-		}
-		
+		return texture;		
 	} else {
 		Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createTextureFromCompressedFile: not initialised with factory state");
 	}
@@ -528,68 +499,6 @@ typedef struct _PVRTexHeader {
 	CGContextTranslateCTM(context, 0, height - imageHeight);
 	CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), image.CGImage);
 	CGContextRelease(context);
-}
-
-
-- (NSArray *) unpackPVRData:(NSData *)data width:(unsigned int)width height:(unsigned int)height {
-
-	uint32_t dataLength = 0, dataOffset = 0, dataSize = 0;
-	uint32_t blockSize = 0, widthBlocks = 0, heightBlocks = 0;
-	uint32_t bpp = 4;
-	
-	PVRTexHeader *header = (PVRTexHeader *)[data bytes];
-	uint32_t pvrTag = CFSwapInt32LittleToHost(header->pvrTag);
-
-	if (gPVRTexIdentifier[0] != ((pvrTag >>  0) & 0xff) ||
-		gPVRTexIdentifier[1] != ((pvrTag >>  8) & 0xff) ||
-		gPVRTexIdentifier[2] != ((pvrTag >> 16) & 0xff) ||
-		gPVRTexIdentifier[3] != ((pvrTag >> 24) & 0xff)) {
-			return nil;
-	}
-	
-	uint32_t flags = CFSwapInt32LittleToHost(header->flags);
-	uint32_t formatFlags = flags & PVR_TEXTURE_FLAG_TYPE_MASK;
-	
-	NSMutableArray * imageData = [NSMutableArray arrayWithCapacity:10];
-		
-	dataLength = CFSwapInt32LittleToHost(header->dataLength);
-	
-	uint8_t * bytes = ((uint8_t *)[data bytes]) + sizeof(PVRTexHeader);
-	
-	// Calculate the data size for each texture level and respect the minimum number of blocks
-	while (dataOffset < dataLength) {
-		if (formatFlags == kPVRTextureFlagTypePVRTC_4) {
-			blockSize = 4 * 4; // Pixel by pixel block size for 4bpp
-			widthBlocks = width / 4;
-			heightBlocks = height / 4;
-			bpp = 4;
-		} else {
-			blockSize = 8 * 4; // Pixel by pixel block size for 2bpp
-			widthBlocks = width / 8;
-			heightBlocks = height / 4;
-			bpp = 2;
-		}
-		
-		// Clamp to minimum number of blocks
-		if (widthBlocks < 2) {
-			widthBlocks = 2;
-		}
-		if (heightBlocks < 2) {
-			heightBlocks = 2;
-		}
-
-		dataSize = widthBlocks * heightBlocks * ((blockSize  * bpp) / 8);
-		
-		[imageData addObject:[NSData dataWithBytes:bytes+dataOffset length:dataSize]];
-		
-		dataOffset += dataSize;
-		
-		width = MAX(width >> 1, 1);
-		height = MAX(height >> 1, 1);
-	}
-				  
-	
-	return imageData;
 }
 
 

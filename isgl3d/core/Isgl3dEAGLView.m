@@ -45,19 +45,19 @@
 }
 
 + (id) viewWithFrame:(CGRect)frame {
-	return [[[Isgl3dEAGLView alloc] initWithFrame:frame] autorelease];
+	return [[[self alloc] initWithFrame:frame] autorelease];
 }
 
 + (id) viewWithFrameFromPlist:(CGRect)frame {
-	return [[[Isgl3dEAGLView alloc] initWithFrameFromPlist:frame] autorelease];
+	return [[[self alloc] initWithFrameFromPlist:frame] autorelease];
 }
 
 + (id) viewWithFrameForES1:(CGRect)frame {
-	return [[[Isgl3dEAGLView alloc] initWithFrameForES1:frame] autorelease];
+	return [[[self alloc] initWithFrameForES1:frame] autorelease];
 }
 
 + (id) viewWithFrameForES2:(CGRect)frame {
-	return [[[Isgl3dEAGLView alloc] initWithFrameForES2:frame] autorelease];
+	return [[[self alloc] initWithFrameForES2:frame] autorelease];
 }
 
 
@@ -134,7 +134,6 @@
     [super dealloc];
 }
 
-
 - (BOOL) initContextForOpenGLES1 {
 	CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 
@@ -148,6 +147,9 @@
 	_glContext = [[Isgl3dGLContext1 alloc] initWithLayer:eaglLayer];
 	if (_glContext) {
 		[self setMultipleTouchEnabled:YES];
+		
+		_size.width = [_glContext backingWidth];
+		_size.height = [_glContext backingHeight];
 		
 		Isgl3dLog(Info, @"Isgl3dEAGLView : GLContext for OpenGL ES 1.X used.");
 		return YES;
@@ -168,7 +170,10 @@
 	_glContext = [[Isgl3dGLContext2 alloc] initWithLayer:eaglLayer];
 	if (_glContext) {
 		[self setMultipleTouchEnabled:YES];
-
+		
+		_size.width = [_glContext backingWidth];
+		_size.height = [_glContext backingHeight];
+		
 		Isgl3dLog(Info, @"Isgl3dEAGLView : GLContext for OpenGL ES 2.X used.");
 		return YES;
 	}
@@ -213,15 +218,26 @@
 	return [_glContext createRenderer];
 }
 
+- (void) prepareRender {
+	[_glContext prepareRender];
+}
+
 - (void) finalizeRender {
 	[_glContext finalizeRender];
 }
 
 
 - (void) layoutSubviews {
-	[_glContext resizeFromLayer:(CAEAGLLayer*)self.layer];
+	CGRect bounds = self.bounds;
 	
-	[[Isgl3dDirector sharedInstance] onResizeFromLayer];
+	if ((roundf(bounds.size.width) != _size.width) || (roundf(bounds.size.height) != _size.height)) {
+		[_glContext resizeFromLayer:(CAEAGLLayer*)self.layer];
+		
+		[[Isgl3dDirector sharedInstance] onResizeFromLayer];
+		
+		_size.width = [_glContext backingWidth];
+		_size.height = [_glContext backingHeight];
+	}
 }
 
 - (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y {
@@ -252,5 +268,26 @@
 	}
 }
 
+- (void)switchToStandardBuffers
+{
+	[_glContext switchToStandardBuffers];
+}
+
+- (void)switchToMsaaBuffers
+{
+	[_glContext switchToMsaaBuffers];
+}
+
+- (BOOL)msaaAvailable {
+    return _glContext.msaaAvailable;
+}
+
+- (BOOL)msaaEnabled {
+    return _glContext.msaaEnabled;
+}
+
+- (void)setMsaaEnabled:(BOOL)value {
+    _glContext.msaaEnabled = value;
+}
 
 @end

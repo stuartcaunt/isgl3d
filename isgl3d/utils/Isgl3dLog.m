@@ -25,8 +25,8 @@
 
 #import "Isgl3dLog.h"
 
-void Isgl3dLog(Isgl3dLogLevel level, NSString * message, ...) {
-	
+
+static inline NSString* Isgl3dLevelStringForLevel(Isgl3dLogLevel level) {
 	// Create string alternative to log level
 	NSString * levelString = @"INFO ";
 	if (level == Debug) {
@@ -36,6 +36,46 @@ void Isgl3dLog(Isgl3dLogLevel level, NSString * message, ...) {
 	} else if (level == Error) {
 		levelString = @"ERROR";
 	} 
+	return levelString;
+}
+
+static inline NSString* Isgl3dErrStringForGLErr(GLenum err) {
+	switch (err) {
+		case GL_NO_ERROR:
+			return @"no error";
+			
+		case GL_INVALID_ENUM:
+			return @"An unacceptable value is specified for an enumerated argument. The offending command is ignored and has no other side effect than to set the error flag.";
+
+		case GL_INVALID_VALUE:
+			return @"A numeric argument is out of range. The offending command is ignored and has no other side effect than to set the error flag.";
+
+		case GL_INVALID_OPERATION:
+			return @"The specified operation is not allowed in the current state. The offending command is ignored and has no other side effect than to set the error flag.";
+
+		case GL_STACK_OVERFLOW:
+			return @"This command would cause a stack overflow. The offending command is ignored and has no other side effect than to set the error flag.";
+			
+		case GL_STACK_UNDERFLOW:
+			return @"This command would cause a stack underflow. The offending command is ignored and has no other side effect than to set the error flag.";
+			
+		case GL_OUT_OF_MEMORY:
+			return @"There is not enough memory left to execute the command. The state of the GL is undefined, except for the state of the error flags, after this error is recorded.";
+			
+#ifdef GL_ES_VERSION_2_0			
+		case GL_TABLE_TOO_LARGE:
+			return @"The specified table exceeds the implementation's maximum supported table size.  The offending command is ignored and has no other side effect than to set the error flag.";			
+#endif
+	}
+	
+	return @"unknown error";
+}
+
+
+void Isgl3dLog(Isgl3dLogLevel level, NSString * message, ...) {
+	
+	// Create string alternative to log level
+	NSString * levelString = Isgl3dLevelStringForLevel(level);
 	
 	if (message) {
 	    // Get the arguments
@@ -51,3 +91,24 @@ void Isgl3dLog(Isgl3dLogLevel level, NSString * message, ...) {
 		NSLog(@"iSGL3D : %@ : <nil message>", levelString);
 	}
 }
+
+void Isgl3dGLErrLog(Isgl3dLogLevel level, GLenum err, NSString * message, ...) {
+	// Create string alternative to log level
+	NSString * levelString = Isgl3dLevelStringForLevel(level);
+	
+	if (message) {
+	    // Get the arguments
+	    va_list args;
+	    va_start(args, message);
+		
+		NSMutableString * fullMessage = [[NSMutableString alloc] initWithFormat:message arguments:args];
+		[fullMessage appendFormat:@"\n  underlying OpenGL error : %@", Isgl3dErrStringForGLErr(err)];
+		
+		NSLog(@"iSGL3D : %@ : %@", levelString, fullMessage);
+		
+		[fullMessage release];
+	} else {
+		NSLog(@"iSGL3D : %@ : <nil message>", levelString);
+	}
+}
+

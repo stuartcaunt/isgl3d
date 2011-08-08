@@ -227,15 +227,15 @@
 }
 
 - (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+	if (_lightCount >= MAX_LIGHTS) {
+		Isgl3dLog(Warn, @"Number of lights exceeds %i", MAX_LIGHTS);
+		return;
+	}
+	
 	[self setActive];
 	unsigned int lightIndex = _lightCount;
 	
 	_lightCount++;
-	
-	if (_lightCount > MAX_LIGHTS) {
-		Isgl3dLog(Warn, @"Number of lights exceeds %i", MAX_LIGHTS);
-		return;
-	}
 	
 	// enable light
 	[self setUniform1i:_lightEnabledLocation[lightIndex] value:1];
@@ -353,12 +353,10 @@
 - (void) handleStates {
 
 	if (!_currentState.textureEnabled && _previousState.textureEnabled) {
-		glDisable(GL_TEXTURE_2D);
 		//glDisable(GL_BLEND);
 	
 	} else if (_currentState.textureEnabled && !_previousState.textureEnabled) {
 		glActiveTexture(GL_TEXTURE0);
-		glEnable(GL_TEXTURE_2D);
 	
 		// for transparency
 		glEnable(GL_BLEND);

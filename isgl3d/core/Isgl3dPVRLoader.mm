@@ -23,36 +23,37 @@
  *
  */
 
-#import <Foundation/Foundation.h>
+#import "Isgl3dPVRLoader.h"
+#import "Isgl3dLog.h"
+#ifdef GL_ES_VERSION_2_0
+#import <OpenGLES/ES2/gl.h>
+#else
+#import <OpenGLES/ES1/gl.h>
+#endif
+#import "PVRTTextureAPI.h"
+#import "PVRTTexture.h"
 
-@class Isgl3dGLRenderer;
 
-/**
- * The Isgl3dMaterial is the abstract class used for all materials in iSGL3D. It can not be rendered: an extended
- * class must be used to provide a real material for rendering.
- */
-@interface Isgl3dMaterial : NSObject <NSCopying> {
 
-@private
+@implementation Isgl3dPVRLoader
 
++ (unsigned int) createTextureFromPVR:(NSString *)file outWidth:(unsigned int *)width outHeight:(unsigned int *)height {
+	
+	unsigned int textureIndex = 0;
+	PVR_Texture_Header oldHeader;
+	const char *cFileName = [file cStringUsingEncoding:NSUTF8StringEncoding];
+	
+	if (PVRTTextureLoadFromPVR(cFileName, (GLuint *)&textureIndex, &oldHeader) == PVR_SUCCESS)
+	{
+		*width = CFSwapInt32LittleToHost(oldHeader.dwWidth);
+		*height = CFSwapInt32LittleToHost(oldHeader.dwHeight);
+	}			  
+	else
+	{
+		Isgl3dLog(Error, @"Error creating texture from file (%@)", file);
+	}
+	return textureIndex;
 }
-
-/*
- * Prepares the renderer for use with this material.
- * 
- * Note that this is intended for internal use only by iSGL3D and should never be called explicitly.
- * @param renderer The renderer
- * @param alpha The alpha value of the node being rendered.
- */
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha;
-
-/*
- * Returns the requirements for the renderer.
- * 
- * Note that this is intended for internal use only by iSGL3D and should never be called explicitly.
- * @return The renderer requirements.
- */
-- (unsigned int) getRendererRequirements;
 
 
 @end

@@ -27,15 +27,18 @@
 
 @implementation Isgl3dGLContext
 
-
 @synthesize backingWidth = _backingWidth;
 @synthesize backingHeight = _backingHeight;
 @synthesize stencilBufferAvailable = _stencilBufferAvailable;
+@synthesize msaaAvailable=_msaaAvailable;
+@synthesize msaaEnabled=_msaaEnabled;
+
 
 - (id) init {
 	
 	if ((self = [super init])) {
-		
+		_msaaAvailable = NO;
+        _msaaEnabled = NO;
 	}
 	
 	return self;
@@ -54,6 +57,9 @@
 	return true;
 }
 
+- (void) prepareRender {
+}
+
 - (void) finalizeRender {
 }
 
@@ -61,6 +67,10 @@
 	return nil;
 }
 
+- (void)switchToStandardBuffers {
+}
 
+- (void)switchToMsaaBuffers {
+}
 
 @end

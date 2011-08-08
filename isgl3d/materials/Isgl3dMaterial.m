@@ -41,6 +41,11 @@
 
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+	Isgl3dMaterial *copy = [[[self class] allocWithZone:zone] init];
+	return copy;
+}
+
 - (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha {
 }
 

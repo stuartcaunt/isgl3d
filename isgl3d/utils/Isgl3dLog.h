@@ -27,6 +27,12 @@
 #define ISGL3DLOG_H_
 
 #import <Foundation/Foundation.h>
+#ifdef GL_ES_VERSION_2_0
+#import <OpenGLES/ES2/gl.h>
+#else
+#import <OpenGLES/ES1/gl.h>
+#endif
+
 
 typedef enum {
 	Debug = 0,
@@ -35,7 +41,17 @@ typedef enum {
 	Error
 } Isgl3dLogLevel;
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 void Isgl3dLog(Isgl3dLogLevel level, NSString * message, ...);
+void Isgl3dGLErrLog(Isgl3dLogLevel level, GLenum err, NSString * message, ...);
+
+#ifdef __cplusplus
+}
+#endif // extern "C"
 
 
 #endif /*ISGL3DLOG_H_*/

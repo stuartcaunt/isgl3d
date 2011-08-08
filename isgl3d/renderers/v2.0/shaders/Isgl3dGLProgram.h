@@ -42,6 +42,7 @@
 - (BOOL)loadShaderFile:(GLenum)shaderType file:(NSString *)file withPreProcessorHeader:(NSString *)preProcessorHeader;
 - (BOOL)loadShaderSource:(GLenum)shaderType shaderSource:(NSString *)shaderSource withPreProcessorHeader:(NSString *)preProcessorHeader;
 - (BOOL)linkProgram;
+- (void)validateProgram;
 
 - (GLint)getAttributeLocation:(NSString*)attributeName;
 - (GLint)getUniformLocation:(NSString*)uniformName;

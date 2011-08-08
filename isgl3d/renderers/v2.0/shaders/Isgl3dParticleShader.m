@@ -159,10 +159,8 @@
 - (void) handleStates {
 
 	if (!_currentState.textureEnabled && _previousState.textureEnabled) {
-		glDisable(GL_TEXTURE_2D);
 	
 	} else if (_currentState.textureEnabled && !_previousState.textureEnabled) {
-		glEnable(GL_TEXTURE_2D);
 	
 		// for transparency
 		glEnable(GL_BLEND);

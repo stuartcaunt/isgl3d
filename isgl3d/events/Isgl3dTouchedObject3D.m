@@ -33,6 +33,7 @@
 
 @implementation Isgl3dTouchedObject3D
 
+@synthesize object = _object;
 
 - (id) initWithObject:(Isgl3dNode *)object {
 	if ((self = [super init])) {

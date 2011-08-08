@@ -27,6 +27,7 @@
 #import "Isgl3dGLDepthRenderTexture1.h"
 #import "Isgl3dGLTexture.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dPVRLoader.h"
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
@@ -50,6 +51,9 @@
 }
 
 
+- (unsigned int) createTextureFromPVR:(NSString *)file outWidth:(unsigned int *)width outHeight:(unsigned int *)height {
+	return [Isgl3dPVRLoader createTextureFromPVR:file outWidth:width outHeight:height];
+}
 
 - (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 
@@ -64,7 +68,7 @@
 		
 		GLenum err = glGetError();
 		if (err != GL_NO_ERROR) {
-			Isgl3dLog(Error, @"Error uploading compressed texture level: %d. glError: 0x%04X", index, err);
+			Isgl3dGLErrLog(Error, err, @"Error uploading compressed texture level: %d. glError: 0x%04X", index, err);
 		}
 
 		[self handleParameters:precision repeatX:repeatX repeatY:repeatY];
@@ -100,7 +104,7 @@
 	
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR) {
-		Isgl3dLog(Error, @"Error uploading texture. glError: 0x%04X", err);
+		Isgl3dGLErrLog(Error, err, @"Error uploading texture. glError: 0x%04X", err);
 	}
 	
 	return textureIndex;

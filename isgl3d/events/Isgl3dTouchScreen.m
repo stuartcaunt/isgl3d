@@ -137,7 +137,7 @@ static Isgl3dTouchScreen * _instance = nil;
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	for (Isgl3dViewTouchResponder * viewResponder in _responders) {
 		// Send all events to all responder
-		if ([viewResponder.responder respondsToSelector:@selector(touchesCancelled:event:)]) {
+		if ([viewResponder.responder respondsToSelector:@selector(touchesCancelled:withEvent:)]) {
 			[viewResponder.responder touchesCancelled:touches withEvent:event];
 		}
 	}

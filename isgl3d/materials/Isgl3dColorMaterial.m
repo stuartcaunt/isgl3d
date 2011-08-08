@@ -78,6 +78,17 @@
 
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+	Isgl3dColorMaterial * copy = [super copyWithZone:zone];
+	
+	copy.ambientColor = _ambientColor;
+	copy.diffuseColor = _diffuseColor;
+	copy.specularColor = _specularColor;
+	copy.shininess = _shininess;
+	
+	return copy;
+}
+
 - (float *) ambientColor {
 	return _ambientColor;
 }

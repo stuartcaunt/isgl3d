@@ -29,6 +29,10 @@
 
 @class Isgl3dGLProgram;
 
+
+#define USE_MSAA
+
+
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
@@ -36,15 +40,31 @@
 
 @private
 	EAGLContext * _context;
-	
+
+    // The active buffers
+    GLuint _activeFrameBuffer;
+    GLuint _activeRenderBuffer;
+    
 	// The OpenGL names for the framebuffer and renderbuffer used to render to this view
-	GLuint _defaultFramebuffer;
-	GLuint _colorRenderbuffer;
+	GLuint _defaultFrameBuffer;
+	GLuint _colorRenderBuffer;
 
 	GLuint _depthAndStencilRenderBuffer;
 	GLuint _depthRenderBuffer;
 	GLuint _stencilRenderBuffer;
 
+	// OpenGL MSAA buffers
+	GLuint _msaaFrameBuffer;
+	GLuint _msaaColorRenderBuffer;
+	
+	GLuint _msaaDepthAndStencilRenderBuffer;
+	GLuint _msaaDepthRenderBuffer;
+	GLuint _msaaStencilRenderBuffer;
+
+	//
+	CGImageRef _currentRenderImage;
+	GLubyte *_currentRenderImageData;
+	CGDataProviderRef _currentRenderImageDataRef;
 }
 
 - (id) initWithLayer:(CAEAGLLayer *) layer;

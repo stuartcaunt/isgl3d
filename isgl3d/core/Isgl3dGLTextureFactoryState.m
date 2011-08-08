@@ -40,6 +40,9 @@
 	[super dealloc];
 }
 
+- (unsigned int) createTextureFromPVR:(NSString *)file outWidth:(unsigned int *)width outHeight:(unsigned int *)height {
+	return 0;
+}
 
 - (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return 0;

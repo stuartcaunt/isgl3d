@@ -50,6 +50,7 @@
 #import <isgl3d/Isgl3dGLVBOData.h>
 #import <isgl3d/Isgl3dGLVBOFactory.h>
 #import <isgl3d/Isgl3dGLView.h>
+#import <isgl3d/Isgl3dPVRLoader.h>
 #import <isgl3d/Isgl3dScheduler.h>
 #import <isgl3d/Isgl3dUVMap.h>
 #import <isgl3d/Isgl3dGLContext1.h>
@@ -66,6 +67,7 @@
 #import <isgl3d/Isgl3dEvent3DHandler.h>
 #import <isgl3d/Isgl3dEvent3DListener.h>
 #import <isgl3d/Isgl3dEventType.h>
+#import <isgl3d/Isgl3dGestureManager.h>
 #import <isgl3d/Isgl3dObject3DGrabber.h>
 #import <isgl3d/Isgl3dTouchedObject3D.h>
 #import <isgl3d/Isgl3dTouchScreen.h>

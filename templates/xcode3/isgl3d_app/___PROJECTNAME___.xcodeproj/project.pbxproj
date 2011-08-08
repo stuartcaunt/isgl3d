@@ -11,7 +11,6 @@
 		175CE24913709A0800152EFE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24613709A0800152EFE /* Icon.png */; };
 		175CE24A13709A0800152EFE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24713709A0800152EFE /* Icon@2x.png */; };
 		17801AFB131AB0ED0045803F /* HelloWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801AF4131AB0ED0045803F /* HelloWorldView.m */; };
-		17801AFC131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801AF6131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.m */; };
 		17801AFE131AB0ED0045803F /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801AFA131AB0ED0045803F /* Isgl3dViewController.m */; };
 		17801B0A131AB15B0045803F /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17801B05131AB1370045803F /* libisgl3d.a */; };
 		17801CDE131AB2A10045803F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17801CDD131AB2A10045803F /* CoreGraphics.framework */; };
@@ -306,6 +305,12 @@
 		17BC43F7136DDF200064FF49 /* Isgl3dUShortArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC431A136DDF200064FF49 /* Isgl3dUShortArray.m */; };
 		17BC43F8136DDF200064FF49 /* Isgl3dView.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BC431C136DDF200064FF49 /* Isgl3dView.h */; };
 		17BC43F9136DDF200064FF49 /* Isgl3dView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BC431D136DDF200064FF49 /* Isgl3dView.m */; };
+		17D5F43A13F05C5B0031F88F /* ___PROJECTNAME___AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17D5F43913F05C5B0031F88F /* ___PROJECTNAME___AppDelegate.mm */; };
+		17D5F46613F05D6D0031F88F /* Isgl3dGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D5F46313F05D6D0031F88F /* Isgl3dGLView.h */; };
+		17D5F46713F05D6D0031F88F /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D5F46413F05D6D0031F88F /* Isgl3dPVRLoader.h */; };
+		17D5F46813F05D6D0031F88F /* Isgl3dPVRLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17D5F46513F05D6D0031F88F /* Isgl3dPVRLoader.mm */; };
+		17D5F46B13F05D7D0031F88F /* Isgl3dGestureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D5F46913F05D7D0031F88F /* Isgl3dGestureManager.h */; };
+		17D5F46C13F05D7D0031F88F /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D5F46A13F05D7D0031F88F /* Isgl3dGestureManager.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -331,7 +336,6 @@
 		17801AF3131AB0ED0045803F /* HelloWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldView.h; sourceTree = "<group>"; };
 		17801AF4131AB0ED0045803F /* HelloWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldView.m; sourceTree = "<group>"; };
 		17801AF5131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "___PROJECTNAME___AppDelegate.h"; sourceTree = "<group>"; };
-		17801AF6131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "___PROJECTNAME___AppDelegate.m"; sourceTree = "<group>"; };
 		17801AF9131AB0ED0045803F /* Isgl3dViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dViewController.h; sourceTree = "<group>"; };
 		17801AFA131AB0ED0045803F /* Isgl3dViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dViewController.m; sourceTree = "<group>"; };
 		17801B05131AB1370045803F /* libisgl3d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3d.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -628,6 +632,12 @@
 		17BC431A136DDF200064FF49 /* Isgl3dUShortArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dUShortArray.m; sourceTree = "<group>"; };
 		17BC431C136DDF200064FF49 /* Isgl3dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dView.h; sourceTree = "<group>"; };
 		17BC431D136DDF200064FF49 /* Isgl3dView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dView.m; sourceTree = "<group>"; };
+		17D5F43913F05C5B0031F88F /* ___PROJECTNAME___AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "___PROJECTNAME___AppDelegate.mm"; sourceTree = "<group>"; };
+		17D5F46313F05D6D0031F88F /* Isgl3dGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGLView.h; sourceTree = "<group>"; };
+		17D5F46413F05D6D0031F88F /* Isgl3dPVRLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPVRLoader.h; sourceTree = "<group>"; };
+		17D5F46513F05D6D0031F88F /* Isgl3dPVRLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPVRLoader.mm; sourceTree = "<group>"; };
+		17D5F46913F05D7D0031F88F /* Isgl3dGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGestureManager.h; sourceTree = "<group>"; };
+		17D5F46A13F05D7D0031F88F /* Isgl3dGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGestureManager.m; sourceTree = "<group>"; };
 		17E4A657136DED5C0093B7E0 /* LICENSE.IMGTEC */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.IMGTEC; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* ___PROJECTNAME___.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "___PROJECTNAME___.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -680,7 +690,7 @@
 				17801AF3131AB0ED0045803F /* HelloWorldView.h */,
 				17801AF4131AB0ED0045803F /* HelloWorldView.m */,
 				17801AF5131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.h */,
-				17801AF6131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.m */,
+				17D5F43913F05C5B0031F88F /* ___PROJECTNAME___AppDelegate.mm */,
 				17801AF9131AB0ED0045803F /* Isgl3dViewController.h */,
 				17801AFA131AB0ED0045803F /* Isgl3dViewController.m */,
 			);
@@ -868,6 +878,9 @@
 		17BC424A136DDF1F0064FF49 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				17D5F46313F05D6D0031F88F /* Isgl3dGLView.h */,
+				17D5F46413F05D6D0031F88F /* Isgl3dPVRLoader.h */,
+				17D5F46513F05D6D0031F88F /* Isgl3dPVRLoader.mm */,
 				17BC424B136DDF1F0064FF49 /* Isgl3dDirector.h */,
 				17BC424C136DDF1F0064FF49 /* Isgl3dDirector.m */,
 				17BC424D136DDF1F0064FF49 /* Isgl3dEAGLView.h */,
@@ -933,6 +946,8 @@
 		17BC4277136DDF1F0064FF49 /* events */ = {
 			isa = PBXGroup;
 			children = (
+				17D5F46913F05D7D0031F88F /* Isgl3dGestureManager.h */,
+				17D5F46A13F05D7D0031F88F /* Isgl3dGestureManager.m */,
 				17BC4278136DDF1F0064FF49 /* Isgl3dAccelerometer.h */,
 				17BC4279136DDF1F0064FF49 /* Isgl3dAccelerometer.m */,
 				17BC427A136DDF1F0064FF49 /* Isgl3dEvent3D.h */,
@@ -1425,6 +1440,9 @@
 				17AF826013D8A2F200271DB9 /* PVRTTriStrip.h in Headers */,
 				17AF826213D8A2F200271DB9 /* PVRTVector.h in Headers */,
 				17AF826413D8A2F200271DB9 /* PVRTVertex.h in Headers */,
+				17D5F46613F05D6D0031F88F /* Isgl3dGLView.h in Headers */,
+				17D5F46713F05D6D0031F88F /* Isgl3dPVRLoader.h in Headers */,
+				17D5F46B13F05D7D0031F88F /* Isgl3dGestureManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1651,6 +1669,8 @@
 				17AF825F13D8A2F200271DB9 /* PVRTTriStrip.cpp in Sources */,
 				17AF826113D8A2F200271DB9 /* PVRTVector.cpp in Sources */,
 				17AF826313D8A2F200271DB9 /* PVRTVertex.cpp in Sources */,
+				17D5F46813F05D6D0031F88F /* Isgl3dPVRLoader.mm in Sources */,
+				17D5F46C13F05D7D0031F88F /* Isgl3dGestureManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1660,8 +1680,8 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				17801AFB131AB0ED0045803F /* HelloWorldView.m in Sources */,
-				17801AFC131AB0ED0045803F /* ___PROJECTNAME___AppDelegate.m in Sources */,
 				17801AFE131AB0ED0045803F /* Isgl3dViewController.m in Sources */,
+				17D5F43A13F05C5B0031F88F /* ___PROJECTNAME___AppDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

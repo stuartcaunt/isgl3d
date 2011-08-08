@@ -68,17 +68,7 @@
 
 	// Iterate over all touches
 	for (UITouch * touch in touches) {
-		CGPoint point = [touch locationInView:touch.view];
-		
-		unsigned int eventX = (unsigned int)point.x * [Isgl3dDirector sharedInstance].contentScaleFactor;
-		unsigned int eventY = (unsigned int)point.y * [Isgl3dDirector sharedInstance].contentScaleFactor;
-		
-		// Get pixel color associated with touch
-		NSString * colorString = [[Isgl3dDirector sharedInstance] getPixelString:eventX y:eventY];
-		//NSLog(@"Color string = %@", colorString);
-		
-		// Get object associated with pixel colour (if one exists)
-		Isgl3dNode * object = [[Isgl3dObject3DGrabber sharedInstance] getObjectWithColorString:colorString];
+		Isgl3dNode * object = [[Isgl3dDirector sharedInstance] nodeForTouch:touch];							   
 		
 		// If object found then associate the touch with it
 		if (object) {
@@ -178,6 +168,12 @@
 	}
 	
 	[finishedObjects release];
+}
+
+/**
+ *
+ */
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 
 /**

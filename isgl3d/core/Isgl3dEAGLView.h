@@ -47,8 +47,9 @@
  * 
  */ 
 @interface Isgl3dEAGLView : UIView <Isgl3dGLView> {
-	    
+	
 @protected
+	CGSize _size;
 	Isgl3dGLContext * _glContext;
     id<Isgl3dTouchDelegate> _touchDelegate;
 }
@@ -106,6 +107,27 @@
  * The OpenGL vesion is set in isgl3d.plist.
  */
 - (id) initWithCoder:(NSCoder*)coder; 
+
+/**
+ * Allocates, initialises and returns an autoreleased Isgl3dGLRenderer for either OpenGL 1.1 or 2.0.
+ * This is used by the Isgl3dDirector to obtain an OpenGL renderer.
+ * @returns the Isgl3dGLRenderer.
+ */
+- (Isgl3dGLRenderer *)createRenderer;
+
+/**
+ * Used to finalize the rendering in OpenGL. 
+ * This should never be called manually.
+ */
+- (void) finalizeRender;
+
+/**
+ * Returns the pixel colour as a hex string for a specific x and y location on the screen.
+ * @param x The x location of the pixel (always assuming the device is in portrait mode)
+ * @param y The y location of the pixel (always assuming the device is in portrait mode)
+ * @return The hexidecimal value for the pixel colour.
+ */
+- (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y;
 
 @end
 

@@ -70,6 +70,7 @@
 		}
 
 		[_glProgram linkProgram];
+		//[_glProgram validateProgram];
 		[self getAttributeAndUniformLocations];
 	
 		_whiteAndAlpha[0] = 1.0;	

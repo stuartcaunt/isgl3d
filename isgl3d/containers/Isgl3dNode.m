@@ -33,6 +33,7 @@
 #import "Isgl3dLight.h"
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dQuaternion.h"
+#import "Isgl3dDirector.h"
 
 static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
@@ -665,6 +666,18 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	for (Isgl3dNode * node in _children) {
 		[node setAlphaWithChildren:alpha];
     }
+}
+
+- (void) addGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
+	[[Isgl3dDirector sharedInstance] addGestureRecognizer:gestureRecognizer forNode:self];
+}
+
+- (void) removeGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer fromNode:(Isgl3dNode *)node {
+	[[Isgl3dDirector sharedInstance] removeGestureRecognizer:gestureRecognizer fromNode:self];
+}
+
+- (NSArray *) gestureRecognizers {
+	return [[Isgl3dDirector sharedInstance] gestureRecognizersForNode:self];
 }
 
 

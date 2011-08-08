@@ -1,4 +1,10 @@
 current SVN version
+	Isgl3dTextureMaterial: Add API to create textures from UIImages (thanks to Viktor)
+	Isgl3dNode: added gesture recognizer api
+	AntiAliasing using MSAA frame buffer implemented (Holger Wiedemann)
+	Isgl3dGestureManager added: UIGestureRecognizer handling added to nodes (Holger Wiedemann)
+	Isgl3dPVRLoader added: handles all PVR texture formats (Issue #1) (Holger Wiedemann)
+	Bugs with OpenGL ES 2.0 (errors from textures) fixed (Issue #6) (Holger Wiedemann)
 	Updated to PowerVR SDK 2.0.8
 	Allow nodes from PODs to be reused any number of times on a scene 
 	Added device auto-rotation handling

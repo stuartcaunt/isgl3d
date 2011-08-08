@@ -166,6 +166,31 @@
 	return TRUE;
 }
 
+- (void)validateProgram {
+	GLint status;
+
+	// Link the program
+	glValidateProgram(_program);
+	
+	// Check for errors
+    glGetProgramiv(_program, GL_VALIDATE_STATUS, &status);
+    if (status == 0) {
+    	// Error occurred: get error log
+		GLint logLength;
+	    glGetProgramiv(_program, GL_INFO_LOG_LENGTH, &logLength);
+	    
+	    if (logLength > 0) {
+	        GLchar *error = (GLchar *)malloc(logLength);
+	        glGetProgramInfoLog(_program, logLength, &logLength, error);
+	        Isgl3dLog(Error, @"Error in program validation:\n%s", error);
+	        free(error);
+	    }
+    	
+    } else {
+    	NSLog(@"NO ERROR");
+    }
+}
+
 - (GLint)getAttributeLocation:(NSString*)attributeName {
 	return glGetAttribLocation(_program, [attributeName UTF8String]);
 }

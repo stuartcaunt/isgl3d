@@ -1,33 +1,18 @@
-/*
- * iSGL3D: http://isgl3d.com
- *
- * Copyright (c) 2010-2011 Stuart Caunt
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- */
+//
+//  ___PROJECTNAMEASIDENTIFIER___AppDelegate.h
+//  ___PROJECTNAME___
+//
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//
 
-#import "Isgl3dAppDelegate.h"
+
+#import "___PROJECTNAMEASIDENTIFIER___AppDelegate.h"
 #import "Isgl3dViewController.h"
+#import "HelloWorldView.h"
 #import "Isgl3d.h"
 
-@implementation Isgl3dAppDelegate
+@implementation ___PROJECTNAMEASIDENTIFIER___AppDelegate
 
 @synthesize window = _window;
 
@@ -38,6 +23,9 @@
 	
 	// Instantiate the Isgl3dDirector and set background color
 	[Isgl3dDirector sharedInstance].backgroundColorString = @"333333ff"; 
+
+	// Set the device orientation
+	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 
 	// Set the director to display the FPS
 	[Isgl3dDirector sharedInstance].displayFPS = YES; 
@@ -53,11 +41,14 @@
 	[Isgl3dDirector sharedInstance].openGLView = glView;
 	
 	// Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
-//	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
-//	[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
+	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
+	[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
 	
 	// Enable retina display : uncomment if desired
 //	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
+
+	// Enables anti aliasing (MSAA) : uncomment if desired (note may not be available on all devices and can have performance cost)
+//	[Isgl3dDirector sharedInstance].antiAliasingEnabled = YES;
 	
 	// Set the animation frame rate
 	[[Isgl3dDirector sharedInstance] setAnimationInterval:1.0/60];
@@ -66,11 +57,11 @@
 	_viewController.view = glView;
 
 	// Add view to window and make visible
-	[_window addSubview:glView];
+	[_window addSubview:_viewController.view];
 	[_window makeKeyAndVisible];
 
 	// Creates the view(s) and adds them to the director
-	[self createViews];
+	[[Isgl3dDirector sharedInstance] addView:[HelloWorldView view]];
 	
 	// Run the director
 	[[Isgl3dDirector sharedInstance] run];
@@ -85,10 +76,6 @@
 	}
 	
 	[super dealloc];
-}
-
-- (void) createViews {
-	// Implement in sub-classes
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application {

@@ -27,6 +27,7 @@
 #import "Isgl3dColorMaterial.h"
 #import "isgl3dTypes.h"
 #import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 
 @class Isgl3dGLTexture;
 
@@ -99,6 +100,32 @@
 + (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess;
 
 /**
+ * Allocates and initialises (autorelease) texture material from an UIImage object.
+ * @param image UIImage object for the new texture.
+ * @param key The key of the image object.
+ * @param shininess The shiness of the material.
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
+ */
++ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Allocates and initialises (autorelease) texture material from an UIImage object using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param image UIImage object for the new texture.
+ * @param key The key of the image object.
+ */
++ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key;
+
+/**
+ * Allocates and initialises (autorelease) texture material from an UIImage object and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param image UIImage object for the new texture.
+ * @param key The key of the image object.
+ * @param shininess The shiness of the material.
+ */
++ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess;
+
+/**
  * Allocates and initialises (autorelease) texture material with text to be rendered.
  * @param text The text to be rendered.
  * @param fontName The name of the font.
@@ -128,6 +155,33 @@
  * @param shininess The shiness of the material.
  */
 - (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess;
+
+/**
+ * Initialises the texture material from an UIImage object.
+ * @param image UIImage object
+ * @param key The key of the image object.
+ * @param shininess The shiness of the material.
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
+ */
+- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Initialises the texture material from an UIImage object using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param image UIImage object
+ * @param key The key of the image object.
+ */
+- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key;
+
+/**
+ * Initialises the texture material from an UIImage object and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
+ * @param image UIImage object
+ * @param key The key of the image object.
+ * @param shininess The shiness of the material.
+ */
+- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess;
+
 
 /**
  * Initialises the texture material with text to be rendered.

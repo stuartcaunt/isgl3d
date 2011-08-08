@@ -23,6 +23,9 @@
  *
  */
 
+#import <UIKit/UIKit.h>
+ 
+
 #import "Isgl3dEvent3DDispatcher.h"
 #import "Isgl3dVector.h"
 #import "Isgl3dMatrix.h"
@@ -585,5 +588,23 @@
  * Note: this is called internally by iSGL3D and should not be called directly. 
  */
 - (void) createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene;
+
+/**
+ * Add a gesture recognizer for the node. The same gesture recognizer may be added for different nodes.
+ * @param gestureRecognizer The gesture recognizer to be added. Must not be nil.
+ */
+- (void) addGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
+
+/**
+ * Removes a gesture recognizer handling touches for the node.
+ * @param gestureRecognizer The gesture recognizer to be removed. Must not be nil.
+ */
+- (void) removeGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer fromNode:(Isgl3dNode *)node;
+
+/**
+ * Returns an array of all gesture recognizers attached to the node.
+ * @result Array of gesture recognizers attached to the node.
+ */
+- (NSArray *) gestureRecognizers;
 
 @end

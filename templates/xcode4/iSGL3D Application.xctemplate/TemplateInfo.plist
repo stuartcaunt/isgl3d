@@ -64,10 +64,10 @@
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>___PACKAGENAMEASIDENTIFIER___AppDelegate.m</key>
+		<key>___PACKAGENAMEASIDENTIFIER___AppDelegate.mm</key>
 		<dict>
 			<key>Path</key>
-			<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.m</string>
+			<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.mm</string>
 		</dict>
 	</dict>
 	<key>Nodes</key>
@@ -75,7 +75,7 @@
 		<string>Prefix.pch</string>
 		<string>main.m</string>
 		<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.h</string>
-		<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.m</string>
+		<string>___PACKAGENAMEASIDENTIFIER___AppDelegate.mm</string>
 		<string>Isgl3dViewController.h</string>
 		<string>Isgl3dViewController.m</string>
 		<string>HelloWorldView.h</string>

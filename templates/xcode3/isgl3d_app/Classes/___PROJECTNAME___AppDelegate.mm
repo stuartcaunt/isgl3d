@@ -1,18 +1,17 @@
 //
-//  ___PROJECTNAMEASIDENTIFIER___AppDelegate.h
+//  ___PROJECTNAME___AppDelegate.m
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
-//  Copyright ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//  Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
 //
 
-
-#import "___PROJECTNAMEASIDENTIFIER___AppDelegate.h"
+#import "___PROJECTNAME___AppDelegate.h"
 #import "Isgl3dViewController.h"
 #import "HelloWorldView.h"
 #import "Isgl3d.h"
 
-@implementation ___PROJECTNAMEASIDENTIFIER___AppDelegate
+@implementation ___PROJECTNAME___AppDelegate
 
 @synthesize window = _window;
 
@@ -41,11 +40,14 @@
 	[Isgl3dDirector sharedInstance].openGLView = glView;
 	
 	// Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
-//	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
-//	[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
+	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
+	[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
 	
 	// Enable retina display : uncomment if desired
 //	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
+
+	// Enables anti aliasing (MSAA) : uncomment if desired (note may not be available on all devices and can have performance cost)
+//	[Isgl3dDirector sharedInstance].antiAliasingEnabled = YES;
 	
 	// Set the animation frame rate
 	[[Isgl3dDirector sharedInstance] setAnimationInterval:1.0/60];
@@ -74,6 +76,7 @@
 	
 	[super dealloc];
 }
+
 
 - (void) applicationWillResignActive:(UIApplication *)application {
 	[[Isgl3dDirector sharedInstance] pause];
