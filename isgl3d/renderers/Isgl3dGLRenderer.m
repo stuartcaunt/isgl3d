@@ -238,4 +238,9 @@
 - (void) clean {
 }
 
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
+	return NO;
+}
+
+
 @end

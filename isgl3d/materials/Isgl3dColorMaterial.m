@@ -134,7 +134,9 @@
 }
 
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha {
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
+	[super prepareRenderer:renderer requirements:requirements alpha:alpha];
+	
 	float ambient[4];
 	float diffuse[4];
 	float specular[4];
@@ -150,10 +152,6 @@
 //	[renderer enableLighting];
 
 	[renderer setMaterialData:ambient diffuseColor:diffuse specularColor:specular withShininess:_shininess];
-}
-
-- (unsigned int) getRendererRequirements {
-	return [super getRendererRequirements];
 }
 
 @end

@@ -42,17 +42,10 @@
  * 
  * Note that this is intended for internal use only by iSGL3D and should never be called explicitly.
  * @param renderer The renderer
+ * @param requirements The node requirements for the renderer
  * @param alpha The alpha value of the node being rendered.
  */
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha;
-
-/*
- * Returns the requirements for the renderer.
- * 
- * Note that this is intended for internal use only by iSGL3D and should never be called explicitly.
- * @return The renderer requirements.
- */
-- (unsigned int) getRendererRequirements;
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha;
 
 
 @end

@@ -23,18 +23,25 @@
  *
  */
 
-#import "Isgl3dShadowMapShader.h"
+#import "DemoShader.h"
 #import "Isgl3dGLProgram.h"
-#import "Isgl3dGLMesh.h"
 #import "Isgl3dGLVBOData.h"
 
-@implementation Isgl3dShadowMapShader
 
-- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
-	
-	if ((self = [super initWithVertexShaderName:@"shadowMap.vsh" fragmentShaderName:@"shadowMap.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
+@implementation DemoShader
+
+
++ (id) shaderWithKey:(NSString *)key {
+	return [[[self alloc] initWithKey:key] autorelease];
+}
+
+- (id) initWithKey:(NSString *)key {
+	if ((self = [super initWithVertexShaderFile:@"demoShader.vsh" fragmentShaderFile:@"demoShader.fsh" key:key])) {
+		//[self setUniform1f:@"u_minHeight" value:-1.0f];
+		//[self setUniform1f:@"u_maxHeight" value:1.0f];
+	    [self setUniform1f:_minHeightUniformLocation value:-1.0f];
+	    [self setUniform1f:_maxHeightUniformLocation value:1.0f];
 	}
-	
 	return self;
 }
 
@@ -45,18 +52,10 @@
 
 
 - (void) getAttributeAndUniformLocations {
-
-	// Get attribute locations
 	_vertexAttributeLocation = [_glProgram getAttributeLocation:@"a_vertex"];
-
-	// Get uniform locations	
     _mvpMatrixUniformLocation = [_glProgram getUniformLocation:@"u_mvpMatrix"];
-
-	// Skinning
-	_boneIndexAttributeLocation = [_glProgram getAttributeLocation:@"a_boneIndex"];
-	_boneWeightsAttributeLocation = [_glProgram getAttributeLocation:@"a_boneWeights"];
-	_boneCountUniformLocation = [_glProgram getUniformLocation:@"u_boneCount"];
-	_boneMatrixArrayUniformLocation = [_glProgram getUniformLocation:@"u_boneMatrixArray[0]"];
+    _minHeightUniformLocation = [_glProgram getUniformLocation:@"u_minHeight"];
+    _maxHeightUniformLocation = [_glProgram getUniformLocation:@"u_maxHeight"];
 }
 
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
@@ -65,26 +64,6 @@
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
-	if (vboData.boneIndexOffset != -1) {
-		[self setVertexAttribute:GL_UNSIGNED_BYTE attributeLocation:_boneIndexAttributeLocation size:vboData.boneIndexSize strideBytes:vboData.stride offset:vboData.boneIndexOffset];
-		[self setVertexAttribute:GL_FLOAT attributeLocation:_boneWeightsAttributeLocation size:vboData.boneWeightSize strideBytes:vboData.stride offset:vboData.boneWeightOffset];
-	}
 }
-
-- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
-	// render elements
-	glDrawElements(GL_TRIANGLES, numberOfElements, GL_UNSIGNED_SHORT, &((unsigned short*)0)[elementOffset]);
-
-}
-
-
-- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
-	[self setUniformMatrix4:_boneMatrixArrayUniformLocation matrix:transformations size:8];
-}
-
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
-	[self setUniform1i:_boneCountUniformLocation value:numberOfBonesPerVertex];
-}
-
 
 @end

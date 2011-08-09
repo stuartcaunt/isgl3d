@@ -93,7 +93,7 @@
 	// Create a shader
     GLuint shader = glCreateShader(shaderType);
 	if (!shader) {
-		Isgl3dLog(Error, @"Unable to create %s shader", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"));	   
+		Isgl3dLog(Error, @"Isgl3dGLProgram : Unable to create %s shader", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"));	   
 		return FALSE;
 	}
     
@@ -112,7 +112,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetShaderInfoLog(shader, logLength, &logLength, error);
-	        Isgl3dLog(Info, @"Error compiling %s shader:\n%s", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"), error);
+	        Isgl3dLog(Error, @"Isgl3dGLProgram : Error compiling %s shader:\n%s", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"), error);
 	        free(error);
 	    }
 
@@ -146,7 +146,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetProgramInfoLog(_program, logLength, &logLength, error);
-	        Isgl3dLog(Error, @"Error in program linking:\n%s", error);
+	        Isgl3dLog(Error, @"Isgl3dGLProgram : Error in program linking:\n%s", error);
 	        free(error);
 	    }
     	
@@ -182,7 +182,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetProgramInfoLog(_program, logLength, &logLength, error);
-	        Isgl3dLog(Error, @"Error in program validation:\n%s", error);
+	        Isgl3dLog(Error, @"Isgl3dGLProgram : Error in program validation:\n%s", error);
 	        free(error);
 	    }
     	

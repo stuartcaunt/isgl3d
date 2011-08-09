@@ -153,7 +153,6 @@
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-	[self bindVertexBuffer:vboData.vboIndex];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_normalAttributeLocation size:VBO_NORMAL_SIZE strideBytes:vboData.stride offset:vboData.normalOffset];
 	if (_texCoordAttributeLocation != -1 && vboData.uvOffset != -1) {
@@ -164,32 +163,6 @@
 		[self setVertexAttribute:GL_FLOAT attributeLocation:_boneWeightsAttributeLocation size:vboData.boneWeightSize strideBytes:vboData.stride offset:vboData.boneWeightOffset];
 	}
 }
-
-- (void) setVertexBufferData:(GLuint)bufferId {
-	// Bind the vertex buffer data to the vertex attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_vertexAttributeLocation size:3];
-}
-
-- (void) setNormalBufferData:(GLuint)bufferId {
-	// Bind the vertex buffer data to the normal attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_normalAttributeLocation size:3];
-}
-
-- (void) setTexCoordBufferData:(GLuint)bufferId {
-	// Bind the texture coordinates buffer data to the texcoord attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_texCoordAttributeLocation size:2];
-}
-
-- (void) setBoneIndexBufferData:(GLuint)bufferId size:(GLint)size {
-	// Bind the bone index buffer data to the bone index attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_boneIndexAttributeLocation size:size];
-}
-
-- (void) setBoneWeightsBufferData:(GLuint)bufferId size:(GLint)size {
-	// Bind the bone weight buffer data to the bone weight attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_boneWeightsAttributeLocation size:size];
-}
-
 
 - (void) setTexture:(GLuint)textureId {
 	if (_samplerLocation != -1) {

@@ -102,24 +102,9 @@
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-	[self bindVertexBuffer:vboData.vboIndex];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexColorAttributeLocation size:VBO_COLOR_SIZE strideBytes:vboData.stride offset:vboData.colorOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_pointSizeAttributeLocation size:VBO_SIZE_SIZE strideBytes:vboData.stride offset:vboData.sizeOffset];
-}
-
-- (void) setVertexBufferData:(GLuint)bufferId {
-	// Bind the vertex buffer data to the vertex attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_vertexAttributeLocation size:3];
-}
-
-- (void) setColorBufferData:(GLuint)bufferId {
-	// Bind the vertex buffer data to the vertex attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_vertexColorAttributeLocation size:4];
-}
-
-- (void) setPointSizeBufferData:(GLuint)bufferId {
-	[self bindBufferToAttribute:bufferId attributeLocation:_pointSizeAttributeLocation size:1];
 }
 
 - (void) setTexture:(GLuint)textureId {

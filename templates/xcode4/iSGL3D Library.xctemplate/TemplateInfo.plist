@@ -1372,6 +1372,30 @@
 			<key>Path</key>
 			<string>libs/isgl3d/materials/Isgl3dMaterial.m</string>
 		</dict>
+		<key>libs/isgl3d/materials/Isgl3dShaderMaterial.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>materials</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/materials/Isgl3dShaderMaterial.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/materials/Isgl3dShaderMaterial.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>materials</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/materials/Isgl3dShaderMaterial.m</string>
+		</dict>
 		<key>libs/isgl3d/materials/Isgl3dTextureMaterial.h</key>
 		<dict>
 			<key>Group</key>
@@ -2291,6 +2315,34 @@
 			</array>
 			<key>Path</key>
 			<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCaptureShader.m</string>
+		</dict>
+		<key>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCustomShader.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>renderers</string>
+				<string>v2.0</string>
+				<string>shaders</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCustomShader.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCustomShader.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>renderers</string>
+				<string>v2.0</string>
+				<string>shaders</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCustomShader.m</string>
 		</dict>
 		<key>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGenericShader.h</key>
 		<dict>
@@ -3619,6 +3671,8 @@
 		<string>libs/isgl3d/materials/Isgl3dColorMaterial.m</string>
 		<string>libs/isgl3d/materials/Isgl3dMaterial.h</string>
 		<string>libs/isgl3d/materials/Isgl3dMaterial.m</string>
+		<string>libs/isgl3d/materials/Isgl3dShaderMaterial.h</string>
+		<string>libs/isgl3d/materials/Isgl3dShaderMaterial.m</string>
 		<string>libs/isgl3d/materials/Isgl3dTextureMaterial.h</string>
 		<string>libs/isgl3d/materials/Isgl3dTextureMaterial.m</string>
 		<string>libs/isgl3d/math/Isgl3dGLU.h</string>
@@ -3693,6 +3747,8 @@
 		<string>libs/isgl3d/renderers/v2.0/Isgl3dGLRenderer2State.m</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCaptureShader.h</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCaptureShader.m</string>
+		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCustomShader.h</string>
+		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dCustomShader.m</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGenericShader.h</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGenericShader.m</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGLProgram.h</string>

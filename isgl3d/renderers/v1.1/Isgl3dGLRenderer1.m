@@ -60,14 +60,7 @@
 		_renderTypes[Points] = GL_POINTS;
 		
 		_currentVBOId = 0;
-		_currentVertexBufferId = 0;
-		_currentColorBufferId = 0;
-		_currentNormalBufferId = 0;
-		_currentTexCoordBufferId = 0;
 		_currentTextureId = 0;
-		_currentPointSizeBufferId = 0;
-		_currentBoneIndexBufferId = 0;
-		_currentBoneWeightBufferId = 0;
 		_currentElementBufferId = 0;
 		
 		Isgl3dLog(Info, @"Isgl3dGLRenderer1 : created renderer for OpenGL ES 1.1");
@@ -108,14 +101,7 @@
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	_currentVBOId = 0;
-	_currentVertexBufferId = 0;
-	_currentColorBufferId = 0;
-	_currentNormalBufferId = 0;
-	_currentTexCoordBufferId = 0;
 	_currentTextureId = 0;
-	_currentPointSizeBufferId = 0;
-	_currentBoneIndexBufferId = 0;
-	_currentBoneWeightBufferId = 0;
 	_currentElementBufferId = 0;
 
 	[_previousState release];
@@ -268,76 +254,6 @@
 		_currentState.boneWeightEnabled = YES;
 	}
 
-}
-
-- (void) setVertexBufferData:(unsigned int)bufferId {
-	if (_currentVertexBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glVertexPointer(3, GL_FLOAT, 0, 0);
-		_currentVertexBufferId = bufferId;
-	}
-	
-	_currentState.vertexEnabled = YES;
-}
-
-- (void) setColorBufferData:(unsigned int)bufferId {
-	if (_currentColorBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glColorPointer(4, GL_FLOAT, 0, 0);
-		_currentColorBufferId = bufferId;
-	}
-
-	_currentState.colorEnabled = YES;
-}
-
-- (void) setNormalBufferData:(unsigned int)bufferId {
-	if (_currentNormalBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glNormalPointer(GL_FLOAT, 0, 0);
-		_currentNormalBufferId = bufferId;
-	}
-
-	_currentState.normalEnabled = YES;
-}
-
-- (void) setTexCoordBufferData:(unsigned int)bufferId {
-	if (_currentTexCoordBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glTexCoordPointer(2, GL_FLOAT, 0, 0);
-		_currentTexCoordBufferId = bufferId;
-	}
-	
-	_currentState.texCoordEnabled = YES;
-}
-
-- (void) setPointSizeBufferData:(unsigned int)bufferId {
-	if (_currentPointSizeBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glPointSizePointerOES(GL_FLOAT, 0, 0);
-		_currentPointSizeBufferId = bufferId;
-	}
-	
-	_currentState.pointSizeEnabled = YES;
-}
-
-- (void) setBoneIndexBufferData:(unsigned int)bufferId size:(int)size {
-	if (_currentBoneIndexBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glMatrixIndexPointerOES(size, GL_UNSIGNED_BYTE, 0, 0);
-		_currentBoneIndexBufferId = bufferId;
-	}
-	
-	_currentState.boneIndexEnabled = YES;
-}
-
-- (void) setBoneWeightBufferData:(unsigned int)bufferId size:(int)size {
-	if (_currentBoneWeightBufferId != bufferId) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferId);
-		glWeightPointerOES(size, GL_FLOAT, 0, 0);
-		_currentBoneWeightBufferId = bufferId;
-	}
-	
-	_currentState.boneWeightEnabled = YES;
 }
 
 - (void) setElementBufferData:(unsigned int)bufferId {
@@ -677,5 +593,11 @@
 	}
 	
 }
+
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
+	Isgl3dLog(Error, @"Isgl3dRenderer1 : Cannot user shader materials using OpenGL ES1");
+	return NO;
+}
+
 
 @end

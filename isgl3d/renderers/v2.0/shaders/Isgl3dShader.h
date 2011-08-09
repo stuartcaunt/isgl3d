@@ -69,19 +69,15 @@
 
 - (void) bindTexture:(GLuint)textureIndex index:(GLuint)index;
 
+- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix;
+- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix;
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix;
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix;
 
 - (void) setActive;
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData;
-- (void) setVertexBufferData:(GLuint)bufferId;
-- (void) setColorBufferData:(GLuint)bufferId;
-- (void) setNormalBufferData:(GLuint)bufferId;
-- (void) setTexCoordBufferData:(GLuint)bufferId;
-- (void) setPointSizeBufferData:(GLuint)bufferId;
-- (void) setBoneIndexBufferData:(GLuint)bufferId size:(GLint)size;
-- (void) setBoneWeightsBufferData:(GLuint)bufferId size:(GLint)size;
 
 - (void) setTexture:(GLuint)textureId;
 - (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;

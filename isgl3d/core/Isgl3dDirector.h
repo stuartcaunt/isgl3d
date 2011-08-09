@@ -36,6 +36,7 @@
 @class Isgl3dCamera;
 @class Isgl3dGestureManager;
 @class Isgl3dNode;
+@class Isgl3dCustomShader;
 
 
 @protocol Isgl3dRenderPhaseCallback
@@ -408,6 +409,12 @@
  * param gestureRecognizer The gesture recognizer of the node for which the delegate should be set.
  */
 - (void)setGestureRecognizerDelegate:(id<UIGestureRecognizerDelegate>)aDelegate forGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
+
+/**
+ * Registers a custom shader when used by an Isgl3dShaderMaterial.
+ * Note, this should never be called manually. This is called internally by the Isgl3dEAGLView.
+ */
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;
 
 @end
 

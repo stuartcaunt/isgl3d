@@ -64,27 +64,11 @@
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-	[self bindVertexBuffer:vboData.vboIndex];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 	if (vboData.boneIndexOffset != -1) {
 		[self setVertexAttribute:GL_UNSIGNED_BYTE attributeLocation:_boneIndexAttributeLocation size:vboData.boneIndexSize strideBytes:vboData.stride offset:vboData.boneIndexOffset];
 		[self setVertexAttribute:GL_FLOAT attributeLocation:_boneWeightsAttributeLocation size:vboData.boneWeightSize strideBytes:vboData.stride offset:vboData.boneWeightOffset];
 	}
-}
-
-- (void) setVertexBufferData:(GLuint)bufferId {
-	// Bind the vertex buffer data to the vertex attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_vertexAttributeLocation size:3];
-}
-
-- (void) setBoneIndexBufferData:(GLuint)bufferId size:(GLint)size {
-	// Bind the bone index buffer data to the bone index attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_boneIndexAttributeLocation size:size];
-}
-
-- (void) setBoneWeightsBufferData:(GLuint)bufferId size:(GLint)size {
-	// Bind the bone weight buffer data to the bone weight attribute
-	[self bindBufferToAttribute:bufferId attributeLocation:_boneWeightsAttributeLocation size:size];
 }
 
 - (void) setCaptureColor:(float *)color {

@@ -121,7 +121,8 @@
 }
 				
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha {
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
+
 	// Control animation
 	if (_isRunning == YES) {
 		NSTimeInterval timePassed = [_date timeIntervalSinceNow] * -1000.0;		// Time interval between now and _date creation, in milli-secs.
@@ -149,7 +150,7 @@
 		
 	}
 	
-	[super prepareRenderer:renderer alpha:alpha];
+	[super prepareRenderer:renderer requirements:requirements alpha:alpha];
 }
 
 

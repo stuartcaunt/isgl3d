@@ -71,20 +71,13 @@
 				[_particle buildArrays];
 				_particle.dirty = NO;
 			}
-	
 
 			// Set the renderer requirements
-			unsigned int rendererRequirements = [_material getRendererRequirements] | PARTICLES_ON;
+			unsigned int rendererRequirements = PARTICLES_ON;
 			rendererRequirements |= _alphaCulling ? ALPHA_CULLING_ON : 0;
-			[renderer setRendererRequirements:rendererRequirements];
 
-			// Enable point sprites if necessary
-			if (rendererRequirements & TEXTURE_MAPPING_ON) {
-				[renderer enablePointSprites:YES];
-			}
-		
-			// Prepare the particle to be rendered
-			[_material prepareRenderer:renderer alpha:_alpha];
+			// Prepare the material to be rendered
+			[_material prepareRenderer:renderer requirements:rendererRequirements alpha:_alpha];
 				
 			[renderer setVBOData:[_particle vboData]];
 		

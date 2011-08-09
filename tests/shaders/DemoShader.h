@@ -23,44 +23,16 @@
  *
  */
 
-#import <OpenGLES/ES2/gl.h>
+#import "Isgl3dCustomShader.h"
 
-#import "Isgl3dGLRenderer.h"
-
-@class Isgl3dGLRenderer2State;
-@class Isgl3dShader;
-
-/**
- * __isgl3d_internal__ Internal class of the iSGL3D framework
- */
-@interface Isgl3dGLRenderer2 : Isgl3dGLRenderer {
-
-@private
-	Isgl3dMatrix4 _mvpMatrix;
-	Isgl3dMatrix4 _mvMatrix;
-
-	Isgl3dMatrix4 _lightViewProjectionMatrix;
-	Isgl3dMatrix4 _lightModelViewProjectionMatrix;
-
-	
-	BOOL _shadowMapActive;
-
-	unsigned int _currentVBOIndex;
-
-	Isgl3dGLRenderer2State * _currentState;
-	Isgl3dGLRenderer2State * _previousState;
-
-	NSMutableDictionary * _shaders;
-	NSMutableDictionary * _customShaders;
-	Isgl3dShader * _activeShader;
-	
-	unsigned int _renderedObjects;
-
-	GLuint _currentElementBufferId;
+@interface DemoShader : Isgl3dCustomShader {
+	GLint _vertexAttributeLocation;
+    GLint _mvpMatrixUniformLocation;
+    GLint _minHeightUniformLocation;
+    GLint _maxHeightUniformLocation;
 }
 
-- (id) init;
-
-- (void) setShaderActive:(Isgl3dShader *)shader;
++ (id) shaderWithKey:(NSString *)key;
+- (id) initWithKey:(NSString *)key;
 
 @end

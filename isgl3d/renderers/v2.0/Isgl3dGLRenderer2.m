@@ -29,6 +29,7 @@
 #import "Isgl3dParticleShader.h"
 #import "Isgl3dCaptureShader.h"
 #import "Isgl3dShadowMapShader.h"
+#import "Isgl3dCustomShader.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dLog.h"
 
@@ -36,7 +37,6 @@
 @interface Isgl3dGLRenderer2 (PrivateMethods)
 - (void) initRendererState;
 - (void) initShader:(Isgl3dShader *)shader;
-- (void) setShaderActive:(Isgl3dShader *)shader;
 - (void) handleStates;
 - (void) buildAllShaders;
 - (void) setPlanarShadowsActive:(BOOL)planarShadowActive;
@@ -63,6 +63,7 @@
 		_currentElementBufferId = 0;
 
 		[self buildAllShaders];
+		_customShaders = [[NSMutableDictionary alloc] init];
 
 		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : created renderer for OpenGL ES 2.0");
 	}
@@ -75,6 +76,7 @@
 	[_previousState release];
 
 	[_shaders release];
+	[_customShaders release];
 	
 	[super dealloc];
 }
@@ -214,7 +216,6 @@
 	} else {
 		Isgl3dLog(Error, @"Error in getting shader for requirements 0x%04X", rendererRequirements);
 	}
-	
 }
 - (void) reset {
 	
@@ -255,6 +256,10 @@
 	im4Copy(&_mvpMatrix, &_projectionMatrix);
 	im4Multiply(&_mvpMatrix, &_mvMatrix);
 
+	[_activeShader setModelMatrix:&_modelMatrix];
+	[_activeShader setViewMatrix:&_viewMatrix];
+	[_activeShader setProjectionMatrix:&_projectionMatrix];
+	[_activeShader setModelViewMatrix:&_mvMatrix];
 	[_activeShader setModelViewMatrix:&_mvMatrix];
 	[_activeShader setModelViewProjectionMatrix:&_mvpMatrix];
 
@@ -268,29 +273,10 @@
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
 	if (_currentVBOIndex != vboData.vboIndex) {
+		[_activeShader bindVertexBuffer:vboData.vboIndex];
 		[_activeShader setVBOData:vboData];
 		_currentVBOIndex = vboData.vboIndex;
 	}
-}
-
-- (void) setVertexBufferData:(unsigned int)bufferId {
-	[_activeShader setVertexBufferData:bufferId];
-}
-
-- (void) setNormalBufferData:(GLuint)bufferId {
-	[_activeShader setNormalBufferData:bufferId];
-}
-
-- (void) setTexCoordBufferData:(GLuint)bufferId {
-	[_activeShader setTexCoordBufferData:bufferId];
-}
-
-- (void) setColorBufferData:(GLuint)bufferId {
-	[_activeShader setColorBufferData:bufferId];
-}
-
-- (void) setPointSizeBufferData:(GLuint)bufferId {
-	[_activeShader setPointSizeBufferData:bufferId];
 }
 
 - (void) setElementBufferData:(unsigned int)bufferId {
@@ -515,5 +501,17 @@
 	}
 	_renderedObjects = 0;
 }
+
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
+	if ([_customShaders objectForKey:shader.key]) {
+		Isgl3dLog(Warn, @"Isgl3dGLRenderer2 : custom shader with key %@ already exists.", shader.key);
+		return NO;
+	}
+	
+	[_customShaders setObject:shader forKey:shader.key];
+	
+	return YES;
+}
+
 
 @end

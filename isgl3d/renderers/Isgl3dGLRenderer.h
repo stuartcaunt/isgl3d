@@ -55,6 +55,7 @@ typedef enum {
 @class Isgl3dLight;
 @class Isgl3dGLVBOData;
 @class Isgl3dArray;
+@class Isgl3dCustomShader;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -101,13 +102,6 @@ typedef enum {
 - (void) setupMatrices;
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData;
-- (void) setVertexBufferData:(unsigned int)bufferId;
-- (void) setColorBufferData:(unsigned int)bufferId;
-- (void) setNormalBufferData:(unsigned int)bufferId;
-- (void) setTexCoordBufferData:(unsigned int)bufferId;
-- (void) setPointSizeBufferData:(unsigned int)bufferId;
-- (void) setBoneIndexBufferData:(unsigned int)bufferId;
-- (void) setBoneWeightBufferData:(unsigned int)bufferId;
 - (void) setElementBufferData:(unsigned int)bufferId;
 
 - (void) setTexture:(unsigned int)textureId;
@@ -153,5 +147,9 @@ typedef enum {
 - (void) finishRenderForShadowMapRendering;
 
 - (void) clean;
+
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;
+
+
 
 @end

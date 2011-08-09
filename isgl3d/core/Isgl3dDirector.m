@@ -38,6 +38,7 @@
 #import "Isgl3dMatrix.h"
 #import "Isgl3dGestureManager.h"
 #import "Isgl3dNode.h"
+#import "Isgl3dCustomShader.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
@@ -741,5 +742,11 @@ static Isgl3dDirector * _instance = nil;
 - (void)setGestureRecognizerDelegate:(id<UIGestureRecognizerDelegate>)aDelegate forGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
 	[_gestureManager setGestureRecognizerDelegate:aDelegate forGestureRecognizer:gestureRecognizer];
 }
+
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
+	return [_renderer registerCustomShader:shader];
+}
+
+
 
 @end

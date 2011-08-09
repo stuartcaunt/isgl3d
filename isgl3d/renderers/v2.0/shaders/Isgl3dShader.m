@@ -50,21 +50,23 @@
        	
    		NSString * vertexShaderFileName = [[NSBundle mainBundle] pathForResource:vertexName ofType:vertexExtension];
    		if (!vertexShaderFileName) {
-			Isgl3dLog(Error, @"Isgl3dShader: cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
+			Isgl3dLog(Error, @"Isgl3dShader : cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
 			return nil;
    		}
    		
 		NSString * fragmentShaderFileName = [[NSBundle mainBundle] pathForResource:fragmentName ofType:fragmentExtension];
    		if (!fragmentShaderFileName) {
-			Isgl3dLog(Error, @"Isgl3dShader: cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
+			Isgl3dLog(Error, @"Isgl3dShader : cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
 			return nil;
    		}
 	
    		if (![_glProgram loadShaderFile:GL_VERTEX_SHADER file:vertexShaderFileName withPreProcessorHeader:vsPreProcHeader]) {
+			Isgl3dLog(Error, @"Isgl3dShader : failed compilation of vertex shader %@.", vertexShaderName);
    			[self release];
 			return nil;
 		}
 		if (![_glProgram loadShaderFile:GL_FRAGMENT_SHADER file:fragmentShaderFileName withPreProcessorHeader:fsPreProcHeader]) {
+			Isgl3dLog(Error, @"Isgl3dShader : failed compilation of fragment shader %@.", fragmentShaderName);
    			[self release];
 			return nil;
 		}
@@ -110,10 +112,7 @@
 }
 
 - (void) bindVertexBuffer:(GLuint)bufferIndex {
-//	if (_currentVBOIndex != bufferIndex) {
-		glBindBuffer(GL_ARRAY_BUFFER, bufferIndex);
-//		_currentVBOIndex = bufferIndex;
-//	}
+	glBindBuffer(GL_ARRAY_BUFFER, bufferIndex);
 }
 
 - (void) setVertexAttribute:(GLenum)type attributeLocation:(GLuint)attributeLocation size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset {
@@ -145,14 +144,6 @@
 }
 
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
-/*	float matrixArray[size * 16];
-	int offset = 0;
-	IA_FOREACH_PTR(Isgl3dMatrix4 *, matrix, matrices) {
-
-		im4ConvertToColumnMajorFloatArray(matrix, &(matrixArray[offset]));
-		offset += 16;
-	}
-*/
 	Isgl3dMatrix4 * firstMatrix = IA_GET_PTR(Isgl3dMatrix4 *, matrices, 0);
 	float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(firstMatrix);
 	
@@ -189,6 +180,18 @@
 	glBindTexture(GL_TEXTURE_2D, textureIndex);
 }
 
+- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
+	
+}
+
+- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+	
+}
+
+- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
+	
+}
+
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 }
 
@@ -201,27 +204,6 @@
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-}
-
-- (void) setVertexBufferData:(GLuint)bufferId {
-}
-
-- (void) setColorBufferData:(GLuint)bufferId {
-}
-
-- (void) setNormalBufferData:(GLuint)bufferId {
-}
-
-- (void) setTexCoordBufferData:(GLuint)bufferId {
-}
-
-- (void) setPointSizeBufferData:(GLuint)bufferId {
-}
-
-- (void) setBoneIndexBufferData:(GLuint)bufferId size:(GLint)size {
-}
-
-- (void) setBoneWeightsBufferData:(GLuint)bufferId size:(GLint)size {
 }
 
 - (void) setTexture:(GLuint)textureId {

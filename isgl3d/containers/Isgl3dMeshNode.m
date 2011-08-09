@@ -200,20 +200,20 @@
 	}
 	
 	if (goOn && _mesh && _material) {
+		// calculate transparency
+		float alpha = _alpha * _occlusionAlpha;
+
 		// Set the renderer requirements
-		unsigned int rendererRequirements = [_material getRendererRequirements];
-		rendererRequirements |= _alphaCulling ? ALPHA_CULLING_ON : 0;
+		unsigned int rendererRequirements = _alphaCulling ? ALPHA_CULLING_ON : 0;
 		if (_enableShadowRendering && renderer.shadowMapActive) {
 			rendererRequirements |= SHADOW_MAPPING_ON;
 		}
 		if (_skinningEnabled) {
 			rendererRequirements |= SKINNING_ON;
 		}
-		[renderer setRendererRequirements:rendererRequirements];
 		
 		// Prepare the material to be rendered
-		float alpha = _alpha * _occlusionAlpha;
-		[_material prepareRenderer:renderer alpha:alpha];
+		[_material prepareRenderer:renderer requirements:rendererRequirements alpha:alpha];
 	
 		// Send the vertex data to the renderer
 		[renderer setVBOData:[_mesh vboData]];
@@ -333,19 +333,18 @@
 - (void) renderForPlanarShadows:(Isgl3dGLRenderer *)renderer {
 
 	if (_enableShadowCasting && _mesh && _material) {
-		
+		// calculate transparency
+		float alpha = _alpha * _occlusionAlpha;
+
 		// Set the renderer requirements
-		unsigned int rendererRequirements = [_material getRendererRequirements];
-		rendererRequirements |= _alphaCulling ? ALPHA_CULLING_ON : 0;
+		unsigned int rendererRequirements = _alphaCulling ? ALPHA_CULLING_ON : 0;
 		if (_skinningEnabled) {
 			rendererRequirements |= SKINNING_ON;
 		}
-		[renderer setRendererRequirements:rendererRequirements];
-
-		// Prepare the material to be rendered
-		float alpha = _alpha * _occlusionAlpha;
-		[_material prepareRenderer:renderer alpha:alpha];
 		
+		// Prepare the material to be rendered
+		[_material prepareRenderer:renderer requirements:rendererRequirements alpha:alpha];
+
 		// Send the vertex data to the renderer
 		[renderer setVBOData:[_mesh vboData]];
 	

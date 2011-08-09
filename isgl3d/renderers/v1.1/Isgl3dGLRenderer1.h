@@ -53,13 +53,6 @@
 	
 		
 	unsigned int _currentVBOId;
-	unsigned int _currentVertexBufferId;
-	unsigned int _currentColorBufferId;
-	unsigned int _currentNormalBufferId;
-	unsigned int _currentTexCoordBufferId;
-	unsigned int _currentPointSizeBufferId;
-	unsigned int _currentBoneIndexBufferId;
-	unsigned int _currentBoneWeightBufferId;
 	unsigned int _currentTextureId;
 	unsigned int _currentElementBufferId;
 }

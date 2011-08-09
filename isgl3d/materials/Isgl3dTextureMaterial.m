@@ -150,15 +150,16 @@
 	return copy;
 }
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer alpha:(float)alpha {
-	[super prepareRenderer:renderer alpha:alpha];
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
+	requirements |= TEXTURE_MAPPING_ON;
+	[super prepareRenderer:renderer requirements:requirements alpha:alpha];
+
+	// Enable point sprites if necessary
+	if (requirements & PARTICLES_ON) {
+		[renderer enablePointSprites:YES];
+	}
 
 	[renderer setTexture:[_texture textureId]];
-}
-
-
-- (unsigned int) getRendererRequirements {
-	return [super getRendererRequirements] | TEXTURE_MAPPING_ON;
 }
 
 - (unsigned int) width {

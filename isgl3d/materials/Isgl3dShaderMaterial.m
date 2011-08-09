@@ -23,31 +23,71 @@
  *
  */
 
-#import "Isgl3dMaterial.h"
-#import "Isgl3dGLRenderer.h"
+#import "Isgl3dShaderMaterial.h"
+#import "Isgl3dCustomShader.h"
+#import "Isgl3dDirector.h"
+#import "Isgl3dGLRenderer2.h"
 
-@implementation Isgl3dMaterial
+@implementation Isgl3dShaderMaterial
 
-- (id)init {
++ (id) materialWithShader:(Isgl3dCustomShader *)shader {
+	return [[[self alloc] initWithShader:shader] autorelease];
+}
+
+- (id) initWithShader:(Isgl3dCustomShader *)shader {
 	
 	if ((self = [super init])) {
+		self.shader = shader;
+		
 	}
-	
 	return self;
 }
 
+
 - (void) dealloc {
+	if (_shader) {
+		[_shader release];
+	}
+	
 	[super dealloc];
 
 }
 
 - (id) copyWithZone:(NSZone *)zone {
-	Isgl3dMaterial *copy = [[[self class] allocWithZone:zone] init];
+	Isgl3dShaderMaterial * copy = [super copyWithZone:zone];
+	
+	copy.shader = _shader;
+
 	return copy;
 }
 
+
+- (Isgl3dCustomShader *) shader {
+	return _shader;
+}
+
+- (void) setShader:(Isgl3dCustomShader *)shader {
+	if (_shader != shader) {
+		[_shader release];
+		_shader = nil;
+	}
+	
+	if (shader) {
+		// Register shader with renderer
+		if ([[Isgl3dDirector sharedInstance] registerCustomShader:shader]) {
+			_shader = [shader retain];
+		}	
+	}
+}
+
 - (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
-	[renderer setRendererRequirements:requirements];
+	// Requirements don't count here - shader is custom/independent
+	
+	// Recast renderer as ES2 renderer
+	Isgl3dGLRenderer2 * es2Renderer = (Isgl3dGLRenderer2 *)renderer;
+	
+	// set active shader
+	[es2Renderer setShaderActive:_shader];
 }
 
 @end
