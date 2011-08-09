@@ -31,6 +31,8 @@
 
 @interface Isgl3dShader (PrivateMethods)
 - (void) getAttributeAndUniformLocations;
+- (GLint) attributeIndexForName:(NSString *)name;
+- (GLint) uniformIndexForName:(NSString *)name;
 @end
 
 //static GLuint _currentVBOIndex = -1;
@@ -50,29 +52,36 @@
        	
    		NSString * vertexShaderFileName = [[NSBundle mainBundle] pathForResource:vertexName ofType:vertexExtension];
    		if (!vertexShaderFileName) {
-			Isgl3dLog(Error, @"Isgl3dShader : cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
+			Isgl3dLog(Error, @"Isgl3dShader: cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
 			return nil;
    		}
    		
 		NSString * fragmentShaderFileName = [[NSBundle mainBundle] pathForResource:fragmentName ofType:fragmentExtension];
    		if (!fragmentShaderFileName) {
-			Isgl3dLog(Error, @"Isgl3dShader : cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
+			Isgl3dLog(Error, @"Isgl3dShader: cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
 			return nil;
    		}
 	
    		if (![_glProgram loadShaderFile:GL_VERTEX_SHADER file:vertexShaderFileName withPreProcessorHeader:vsPreProcHeader]) {
-			Isgl3dLog(Error, @"Isgl3dShader : failed compilation of vertex shader %@.", vertexShaderName);
    			[self release];
 			return nil;
 		}
 		if (![_glProgram loadShaderFile:GL_FRAGMENT_SHADER file:fragmentShaderFileName withPreProcessorHeader:fsPreProcHeader]) {
-			Isgl3dLog(Error, @"Isgl3dShader : failed compilation of fragment shader %@.", fragmentShaderName);
    			[self release];
 			return nil;
 		}
 
 		[_glProgram linkProgram];
-		//[_glProgram validateProgram];
+		// Validation slows down app startup : uncomment for validation results during testing
+//        if (![_glProgram validateProgram]) {
+//            [self release];
+//            return nil;
+//        }
+        
+        _uniformNameIndices = [[NSMutableDictionary alloc] init];
+        _attributeNameIndices = [[NSMutableDictionary alloc] init];
+        
+        
 		[self getAttributeAndUniformLocations];
 	
 		_whiteAndAlpha[0] = 1.0;	
@@ -92,6 +101,8 @@
 
 - (void) dealloc {
 
+	[_uniformNameIndices release];
+	[_attributeNameIndices release];
 	[_glProgram release];
 		
 	[super dealloc];
@@ -104,11 +115,39 @@
 - (void) getAttributeAndUniformLocations {
 }
 
-- (void) bindBufferToAttribute:(GLuint)bufferIndex attributeLocation:(GLuint)attributeLocation size:(GLint)size {
-	// Enable attribute array and bind to buffer data 
-	glEnableVertexAttribArray(attributeLocation);
-	glBindBuffer(GL_ARRAY_BUFFER, bufferIndex);
-	glVertexAttribPointer(attributeLocation, size, GL_FLOAT, GL_FALSE, 0, 0);
+
+- (GLint) uniformIndexForName:(NSString *)name {
+
+	NSNumber * index = [_uniformNameIndices objectForKey:name];
+	if (index) {
+		return (GLint)[index intValue];
+	
+	} else {
+		GLint location = [_glProgram getUniformLocation:name];
+		if (location >= 0) {
+			[_uniformNameIndices setObject:[NSNumber numberWithInt:location] forKey:name];
+		} else {
+			Isgl3dLog(Error, @"Isgl3dShader: cannot find uniform with name %@.", name);
+		}
+		return location;
+	}
+}
+
+- (GLint) attributeIndexForName:(NSString *)name {
+
+	NSNumber * index = [_attributeNameIndices objectForKey:name];
+	if (index) {
+		return (GLint)[index intValue];
+	
+	} else {
+		GLint location = [_glProgram getAttributeLocation:name];
+		if (location >= 0) {
+			[_attributeNameIndices setObject:[NSNumber numberWithInt:location] forKey:name];
+		} else {
+			Isgl3dLog(Error, @"Isgl3dShader: cannot find attribute with name %@.", name);
+		}
+		return location;
+	}
 }
 
 - (void) bindVertexBuffer:(GLuint)bufferIndex {
@@ -117,6 +156,13 @@
 
 - (void) setVertexAttribute:(GLenum)type attributeLocation:(GLuint)attributeLocation size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset {
 	// Enable attribute array and bind to buffer data 
+	glEnableVertexAttribArray(attributeLocation);
+	glVertexAttribPointer(attributeLocation, size, type, GL_FALSE, strideBytes, (const void *)offset);
+}
+
+- (void) setVertexAttribute:(GLenum)type attributeName:(NSString *)attributeName size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset {
+	// Enable attribute array and bind to buffer data 
+	GLint attributeLocation = [self attributeIndexForName:attributeName];
 	glEnableVertexAttribArray(attributeLocation);
 	glVertexAttribPointer(attributeLocation, size, type, GL_FALSE, strideBytes, (const void *)offset);
 }
@@ -150,26 +196,161 @@
 	glUniformMatrix4fv(uniformLocation, size, GL_FALSE, matrixArray);
 }
 
+- (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value {
+	glUniform1f(uniformIndex, value);
+}
+
+- (void) setUniform2f:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform2f(uniformIndex, values[0], values[1]);
+}
+
+- (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform3f(uniformIndex, values[0], values[1], values[2]);
+}
+
+- (void) setUniform4f:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform4f(uniformIndex, values[0], values[1], values[2], values[3]);
+}
 
 - (void) setUniform1i:(GLint)uniformIndex value:(GLint)value {
 	glUniform1i(uniformIndex, value);
 }
 
-- (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value {
-	glUniform1f(uniformIndex, value);
+- (void) setUniform2i:(GLint)uniformIndex values:(GLint *)values {
+	glUniform2i(uniformIndex, values[0], values[1]);
 }
 
-- (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform3fv(uniformIndex, 3, values);
+- (void) setUniform3i:(GLint)uniformIndex values:(GLint *)values {
+	glUniform3i(uniformIndex, values[0], values[1], values[2]);
 }
 
-- (void) setUniform4f:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform4fv(uniformIndex, 4, values);
+- (void) setUniform4i:(GLint)uniformIndex values:(GLint *)values {
+	glUniform4i(uniformIndex, values[0], values[1], values[2], values[3]);
+}
+
+- (void) setUniform2fv:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform2fv(uniformIndex, 1, values);
+}
+
+- (void) setUniform3fv:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform3fv(uniformIndex, 1, values);
+}
+
+- (void) setUniform4fv:(GLint)uniformIndex values:(GLfloat *)values {
+	glUniform4fv(uniformIndex, 1, values);
+}
+
+- (void) setUniform2iv:(GLint)uniformIndex values:(GLint *)values {
+	glUniform2iv(uniformIndex, 1, values);
+}
+
+- (void) setUniform3iv:(GLint)uniformIndex values:(GLint *)values {
+	glUniform3iv(uniformIndex, 1, values);
+}
+
+- (void) setUniform4iv:(GLint)uniformIndex values:(GLint *)values {
+	glUniform4iv(uniformIndex, 1, values);
 }
 
 - (void) setUniformSampler:(GLint)samplerIndex forTextureIndex:(GLuint)textureIndex {
 	glUniform1i(samplerIndex, textureIndex);
 }
+
+- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix {
+	GLint uniformLocation = [self uniformIndexForName:uniformName];
+	[self setUniformMatrix3:uniformLocation matrix:matrix];
+}
+
+- (void) setUniformMatrix4WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix {
+	GLint uniformLocation = [self uniformIndexForName:uniformName];
+	[self setUniformMatrix4:uniformLocation matrix:matrix];
+}
+
+- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
+	GLint uniformLocation = [self uniformIndexForName:uniformName];
+	[self setUniformMatrix3:uniformLocation matrix:matrices size:size];
+}
+
+- (void) setUniformMatrix4WithName:(NSString *)uniformName matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
+	GLint uniformLocation = [self uniformIndexForName:uniformName];
+	[self setUniformMatrix4:uniformLocation matrix:matrices size:size];
+}
+
+- (void) setUniform1fWithName:(NSString *)uniformName value:(GLfloat)value {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform1f(uniformIndex, value);
+}
+
+- (void) setUniform2fWithName:(NSString *)uniformName values:(GLfloat *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform2f(uniformIndex, values[0], values[1]);
+}
+
+- (void) setUniform3fWithName:(NSString *)uniformName values:(GLfloat *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform3f(uniformIndex, values[0], values[1], values[2]);
+}
+
+- (void) setUniform4fWithName:(NSString *)uniformName values:(GLfloat *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform4f(uniformIndex, values[0], values[1], values[2], values[3]);
+}
+
+- (void) setUniform1iWithName:(NSString *)uniformName value:(GLint)value {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform1i(uniformIndex, value);
+}
+
+- (void) setUniform2iWithName:(NSString *)uniformName values:(GLint *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform2i(uniformIndex, values[0], values[1]);
+}
+
+- (void) setUniform3iWithName:(NSString *)uniformName values:(GLint *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform3i(uniformIndex, values[0], values[1], values[2]);
+}
+
+- (void) setUniform4iWithName:(NSString *)uniformName values:(GLint *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform4i(uniformIndex, values[0], values[1], values[2], values[3]);
+}
+
+- (void) setUniform2fvWithName:(NSString *)uniformName values:(GLfloat *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform2fv(uniformIndex, 1, values);
+}
+
+- (void) setUniform3fvWithName:(NSString *)uniformName values:(GLfloat *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform3fv(uniformIndex, 1, values);
+}
+
+- (void) setUniform4fvWithName:(NSString *)uniformName values:(GLfloat *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform4fv(uniformIndex, 1, values);
+}
+
+- (void) setUniform2ivWithName:(NSString *)uniformName values:(GLint *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform2iv(uniformIndex, 1, values);
+}
+
+- (void) setUniform3ivWithName:(NSString *)uniformName values:(GLint *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform3iv(uniformIndex, 1, values);
+}
+
+- (void) setUniform4ivWithName:(NSString *)uniformName values:(GLint *)values {
+	GLint uniformIndex = [self uniformIndexForName:uniformName];
+	glUniform4iv(uniformIndex, 1, values);
+}
+
+- (void) setUniformSamplerWithName:(NSString *)samplerName forTextureIndex:(GLuint)textureIndex {
+	GLint samplerIndex = [self uniformIndexForName:samplerName];
+	glUniform1i(samplerIndex, textureIndex);
+}
+
 
 - (void) bindTexture:(GLuint)textureIndex index:(GLuint)index {
 	if (index == 0) {
@@ -232,7 +413,6 @@
 }
 
 - (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
-//- (void) setBoneTransformations:(NSArray *)transformations andInverseTransformations:(NSArray *)inverseTransformations {
 }
 
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {

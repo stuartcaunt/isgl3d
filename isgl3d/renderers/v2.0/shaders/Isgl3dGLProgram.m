@@ -93,7 +93,7 @@
 	// Create a shader
     GLuint shader = glCreateShader(shaderType);
 	if (!shader) {
-		Isgl3dLog(Error, @"Isgl3dGLProgram : Unable to create %s shader", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"));	   
+		Isgl3dLog(Error, @"Unable to create %s shader", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"));	   
 		return FALSE;
 	}
     
@@ -112,7 +112,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetShaderInfoLog(shader, logLength, &logLength, error);
-	        Isgl3dLog(Error, @"Isgl3dGLProgram : Error compiling %s shader:\n%s", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"), error);
+	        Isgl3dLog(Info, @"Error compiling %s shader:\n%s", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"), error);
 	        free(error);
 	    }
 
@@ -146,7 +146,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetProgramInfoLog(_program, logLength, &logLength, error);
-	        Isgl3dLog(Error, @"Isgl3dGLProgram : Error in program linking:\n%s", error);
+	        Isgl3dLog(Error, @"Error in program linking:\n%s", error);
 	        free(error);
 	    }
     	
@@ -166,29 +166,32 @@
 	return TRUE;
 }
 
-- (void)validateProgram {
-	GLint status;
+- (BOOL)validateProgram {
+    glValidateProgram(_program);
+    
+    GLint logLength;
+    glGetProgramiv(_program, GL_INFO_LOG_LENGTH, &logLength);
+    if (logLength > 0) {
+        GLchar *error = (GLchar *)malloc(logLength);
+        glGetProgramInfoLog(_program, logLength, &logLength, error);
+        Isgl3dLog(Error, @"Error in program validation:\n%s", error);
+        free(error);
 
-	// Link the program
-	glValidateProgram(_program);
-	
-	// Check for errors
-    glGetProgramiv(_program, GL_VALIDATE_STATUS, &status);
-    if (status == 0) {
-    	// Error occurred: get error log
-		GLint logLength;
-	    glGetProgramiv(_program, GL_INFO_LOG_LENGTH, &logLength);
-	    
-	    if (logLength > 0) {
-	        GLchar *error = (GLchar *)malloc(logLength);
-	        glGetProgramInfoLog(_program, logLength, &logLength, error);
-	        Isgl3dLog(Error, @"Isgl3dGLProgram : Error in program validation:\n%s", error);
-	        free(error);
-	    }
-    	
-    } else {
-    	NSLog(@"NO ERROR");
+    	// clean up
+    	glDeleteProgram(_program);
+		_program = 0;
+    	if (_vertexShader) {
+	    	glDeleteShader(_vertexShader);
+	    	_vertexShader = 0;
+    	}
+    	if (_fragmentShader) {
+	    	glDeleteShader(_fragmentShader);
+	    	_fragmentShader = 0;
+    	}
+    	return FALSE;
     }
+    
+    return TRUE;
 }
 
 - (GLint)getAttributeLocation:(NSString*)attributeName {
@@ -196,7 +199,7 @@
 }
 
 - (GLint)getUniformLocation:(NSString*)uniformName {
-	return glGetUniformLocation(_program, [uniformName UTF8String]);
+    return glGetUniformLocation(_program, [uniformName UTF8String]);
 }
 
 - (void)bindAttributeLocation:(NSString*)attributeName location:(GLint)location {

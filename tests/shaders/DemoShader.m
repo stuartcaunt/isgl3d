@@ -37,10 +37,9 @@
 
 - (id) initWithKey:(NSString *)key {
 	if ((self = [super initWithVertexShaderFile:@"demoShader.vsh" fragmentShaderFile:@"demoShader.fsh" key:key])) {
-		//[self setUniform1f:@"u_minHeight" value:-1.0f];
-		//[self setUniform1f:@"u_maxHeight" value:1.0f];
-	    [self setUniform1f:_minHeightUniformLocation value:-1.0f];
-	    [self setUniform1f:_maxHeightUniformLocation value:1.0f];
+	
+		[self setUniform1fWithName:@"u_minHeight" value:-1.0f];
+		[self setUniform1fWithName:@"u_maxHeight" value:1.0f];
 	}
 	return self;
 }
@@ -50,20 +49,12 @@
 	[super dealloc];
 }
 
-
-- (void) getAttributeAndUniformLocations {
-	_vertexAttributeLocation = [_glProgram getAttributeLocation:@"a_vertex"];
-    _mvpMatrixUniformLocation = [_glProgram getUniformLocation:@"u_mvpMatrix"];
-    _minHeightUniformLocation = [_glProgram getUniformLocation:@"u_minHeight"];
-    _maxHeightUniformLocation = [_glProgram getUniformLocation:@"u_maxHeight"];
-}
-
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
-	[self setUniformMatrix4:_mvpMatrixUniformLocation matrix:modelViewProjectionMatrix];
+	[self setUniformMatrix4WithName:@"u_mvpMatrix" matrix:modelViewProjectionMatrix];
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
+	[self setVertexAttribute:GL_FLOAT attributeName:@"a_vertex" size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 }
 
 @end

@@ -791,7 +791,6 @@
 		17A481B113F129880098AC3F /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
 		17A481B213F129880098AC3F /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
 		17A481B313F129880098AC3F /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
-		17A481B413F129880098AC3F /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
 		17A481B513F129880098AC3F /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
 		17A481B613F129880098AC3F /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
 		17A481B713F129880098AC3F /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
@@ -815,6 +814,7 @@
 		17A4821813F12A4E0098AC3F /* DemoShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4821313F12A4E0098AC3F /* DemoShader.m */; };
 		17A4821913F12A4E0098AC3F /* demoShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4821413F12A4E0098AC3F /* demoShader.vsh */; };
 		17A4821A13F12A4E0098AC3F /* ShaderMaterialDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4821613F12A4E0098AC3F /* ShaderMaterialDemoView.m */; };
+		17A4821B13F1E7820098AC3F /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
 		17A95E9F1325752500D06694 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
 		17A95EA01325752500D06694 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
 		17A95EA11325752500D06694 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
@@ -5701,7 +5701,7 @@
 				17A481B113F129880098AC3F /* capture.fsh in Resources */,
 				17A481B213F129880098AC3F /* capture.vsh in Resources */,
 				17A481B313F129880098AC3F /* generic.fsh in Resources */,
-				17A481B413F129880098AC3F /* generic.vsh in Resources */,
+				17A4821B13F1E7820098AC3F /* generic.vsh in Resources */,
 				17A481B513F129880098AC3F /* particle.fsh in Resources */,
 				17A481B613F129880098AC3F /* particle.vsh in Resources */,
 				17A481B713F129880098AC3F /* shadowMap.fsh in Resources */,

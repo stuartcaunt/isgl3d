@@ -26,10 +26,6 @@
 #import "Isgl3dCustomShader.h"
 
 @interface DemoShader : Isgl3dCustomShader {
-	GLint _vertexAttributeLocation;
-    GLint _mvpMatrixUniformLocation;
-    GLint _minHeightUniformLocation;
-    GLint _maxHeightUniformLocation;
 }
 
 + (id) shaderWithKey:(NSString *)key;

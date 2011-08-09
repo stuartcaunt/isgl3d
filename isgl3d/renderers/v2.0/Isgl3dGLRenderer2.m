@@ -144,6 +144,11 @@
 		} else {
 			shader = [[Isgl3dGenericShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
 		}
+        
+        if (!shader) {
+            Isgl3dLog(Error, @"Isgl3dGLRenderer2 failed to add shader for renderer type %i", rendererType);
+            continue;
+        }
 
 		[_shaders setObject:shader forKey:[NSNumber numberWithUnsignedInt:rendererType]];
 		

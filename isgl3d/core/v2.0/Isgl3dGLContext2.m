@@ -51,6 +51,17 @@
 @synthesize activeFrameBuffer=_activeFrameBuffer;
 @synthesize activeRenderBuffer=_activeRenderBuffer;
 
+static NSArray *_glExtensionsNames = nil;
+
+BOOL CheckForGLExtension(NSString *searchName) {
+    if (_glExtensionsNames == nil) {
+        const char *extensionsCStr = (const char *)glGetString(GL_EXTENSIONS);
+        NSString *extensionsString = [NSString stringWithCString:extensionsCStr encoding: NSASCIIStringEncoding];
+        _glExtensionsNames = [[extensionsString componentsSeparatedByString:@" "] retain];
+    }
+    return [_glExtensionsNames containsObject:searchName];
+}
+
 
 // Create an ES 2.0 context
 - (id) initWithLayer:(CAEAGLLayer *) layer {
@@ -119,23 +130,8 @@
 
 - (void) checkGLExtensions {
 	// Check and activate additional OpenGL extensions
-	//const GLubyte *str = glGetString(GL_EXTENSIONS);
-	//NSString *featuresStr = [NSString stringWithCString:(const char *)str encoding:NSASCIIStringEncoding];
-	
-	//_msaaAvailable = ([featuresStr rangeOfString:@"GL_APPLE_framebuffer_multisample"].location != NSNotFound);
-	//_framebufferDiscardAvailable = ([featuresStr rangeOfString:@"GL_EXT_discard_framebuffer"].location != NSNotFound);
-
-#if (GL_APPLE_framebuffer_multisample==1)
-	_msaaAvailable = YES;
-#else
-	_msaaAvailable = NO;
-#endif
-	
-#if	(EXT_discard_framebuffer==1)
-	_framebufferDiscardAvailable = YES;
-#else
-	_framebufferDiscardAvailable = NO;
-#endif
+    _msaaAvailable = CheckForGLExtension(@"GL_APPLE_framebuffer_multisample");
+    _framebufferDiscardAvailable = CheckForGLExtension(@"GL_EXT_discard_framebuffer");
 }
 
 - (BOOL) createBuffers:(CAEAGLLayer *)eaglLayer {
@@ -224,7 +220,7 @@
 	// MSAA support
     if (!_msaaAvailable) {
 		Isgl3dLog(Info, @"Isgl3dGLContext2 : MSAA unavailable for device.");
-        return succeeded;
+        return YES;
     }
     
 	if (_msaaEnabled) {
@@ -233,8 +229,6 @@
 		if (_msaaSamples <= 0) {
 			Isgl3dLog(Info, @"Isgl3dGLContext2 : MSAA unavailable for device (max samples <= 0).");
 			return succeeded;
-	    } else {
-			Isgl3dLog(Info, @"Isgl3dGLContext2 : MSAA available for device, using %i samples.", _msaaSamples);
 		}
 		
 		glGenFramebuffers(1, &_msaaFrameBuffer);

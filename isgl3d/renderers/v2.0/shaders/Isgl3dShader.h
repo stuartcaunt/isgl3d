@@ -48,24 +48,57 @@
 	float _whiteAndAlpha[4];
 	float _blackAndAlpha[4];
 	
+	NSMutableDictionary * _attributeNameIndices;
+	NSMutableDictionary * _uniformNameIndices;
+	
 }
 
 - (id) initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 - (void) initShader;
 
-- (void) bindBufferToAttribute:(GLuint)bufferIndex attributeLocation:(GLuint)attributeLocation size:(GLint)size;
 - (void) bindVertexBuffer:(GLuint)bufferIndex;
 - (void) setVertexAttribute:(GLenum)type attributeLocation:(GLuint)attributeLocation size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset;
+- (void) setVertexAttribute:(GLenum)type attributeName:(NSString *)attributeName size:(GLint)size strideBytes:(GLsizei)strideBytes offset:(unsigned int)offset;
 
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size;
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size;
-- (void) setUniform1i:(GLint)uniformIndex value:(GLint)value;
 - (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value;
+- (void) setUniform2f:(GLint)uniformIndex values:(GLfloat *)values;
 - (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values;
 - (void) setUniform4f:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform1i:(GLint)uniformIndex value:(GLint)value;
+- (void) setUniform2i:(GLint)uniformIndex values:(GLint *)value;
+- (void) setUniform3i:(GLint)uniformIndex values:(GLint *)value;
+- (void) setUniform4i:(GLint)uniformIndex values:(GLint *)value;
+- (void) setUniform2fv:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform3fv:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform4fv:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform2iv:(GLint)uniformIndex values:(GLint *)values;
+- (void) setUniform3iv:(GLint)uniformIndex values:(GLint *)values;
+- (void) setUniform4iv:(GLint)uniformIndex values:(GLint *)values;
 - (void) setUniformSampler:(GLint)samplerIndex forTextureIndex:(GLuint)textureIndex;
+
+- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix;
+- (void) setUniformMatrix4WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix;
+- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dArray *)matrices size:(unsigned int)size;
+- (void) setUniformMatrix4WithName:(NSString *)uniformName matrix:(Isgl3dArray *)matrices size:(unsigned int)size;
+- (void) setUniform1fWithName:(NSString *)uniformName value:(GLfloat)value;
+- (void) setUniform2fWithName:(NSString *)uniformName values:(GLfloat *)values;
+- (void) setUniform3fWithName:(NSString *)uniformName values:(GLfloat *)values;
+- (void) setUniform4fWithName:(NSString *)uniformName values:(GLfloat *)values;
+- (void) setUniform1iWithName:(NSString *)uniformName value:(GLint)value;
+- (void) setUniform2iWithName:(NSString *)uniformName values:(GLint *)value;
+- (void) setUniform3iWithName:(NSString *)uniformName values:(GLint *)value;
+- (void) setUniform4iWithName:(NSString *)uniformName values:(GLint *)value;
+- (void) setUniform2fvWithName:(NSString *)uniformName values:(GLfloat *)values;
+- (void) setUniform3fvWithName:(NSString *)uniformName values:(GLfloat *)values;
+- (void) setUniform4fvWithName:(NSString *)uniformName values:(GLfloat *)values;
+- (void) setUniform2ivWithName:(NSString *)uniformName values:(GLint *)values;
+- (void) setUniform3ivWithName:(NSString *)uniformName values:(GLint *)values;
+- (void) setUniform4ivWithName:(NSString *)uniformName values:(GLint *)values;
+- (void) setUniformSamplerWithName:(NSString *)samplerName forTextureIndex:(GLuint)textureIndex;
 
 - (void) bindTexture:(GLuint)textureIndex index:(GLuint)index;
 

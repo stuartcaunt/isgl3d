@@ -1,4 +1,5 @@
 current SVN version
+	OpenGL ES2 generic shader bugs : fixed by Holger
 	Isgl3dTextureMaterial: Add API to create textures from UIImages (thanks to Viktor)
 	Isgl3dNode: added gesture recognizer api
 	AntiAliasing using MSAA frame buffer implemented (Holger Wiedemann)

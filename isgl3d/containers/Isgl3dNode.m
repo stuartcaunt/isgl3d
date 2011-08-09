@@ -668,16 +668,25 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
     }
 }
 
-- (void) addGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
+
+- (NSArray *)gestureRecognizers {
+	return [[Isgl3dDirector sharedInstance] gestureRecognizersForNode:self];
+}
+
+- (void)addGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
 	[[Isgl3dDirector sharedInstance] addGestureRecognizer:gestureRecognizer forNode:self];
 }
 
-- (void) removeGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer fromNode:(Isgl3dNode *)node {
+- (void)removeGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
 	[[Isgl3dDirector sharedInstance] removeGestureRecognizer:gestureRecognizer fromNode:self];
 }
 
-- (NSArray *) gestureRecognizers {
-	return [[Isgl3dDirector sharedInstance] gestureRecognizersForNode:self];
+- (id<UIGestureRecognizerDelegate>)gestureRecognizerDelegateFor:(UIGestureRecognizer *)gestureRecognizer {
+	return [[Isgl3dDirector sharedInstance] gestureRecognizerDelegateFor:gestureRecognizer];
+}
+
+- (void)setGestureRecognizerDelegate:(id<UIGestureRecognizerDelegate>)aDelegate forGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer {
+	[[Isgl3dDirector sharedInstance] setGestureRecognizerDelegate:aDelegate forGestureRecognizer:gestureRecognizer];
 }
 
 
