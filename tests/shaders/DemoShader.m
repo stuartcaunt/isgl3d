@@ -24,7 +24,6 @@
  */
 
 #import "DemoShader.h"
-#import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 
 
@@ -56,5 +55,12 @@
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
 	[self setVertexAttribute:GL_FLOAT attributeName:@"a_vertex" size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 }
+
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	_time += dt;
+	float val = 0.5f * (1.0f + sin(2.0f * M_PI * _time / 1.0f));
+	[self setUniform1fWithName:@"u_factor" value:val];
+}
+
 
 @end

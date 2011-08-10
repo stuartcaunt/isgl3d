@@ -33,24 +33,13 @@
 
 static Isgl3dGLTextureFactory * _instance = nil;
 
-@interface Isgl3dGLTextureFactory (PrivateMethods)
-/**
- * @result (autorelease) GLTexture created from compressed image file
- */
+@interface Isgl3dGLTextureFactory ()
+- (id) initSingleton;
 - (Isgl3dGLTexture *) createTextureFromCompressedFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
-
-/**
- * @result (autorelease) UIImage from specified path
- */
 - (UIImage *) loadImage:(NSString *)path;
 - (void) copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height;
 - (BOOL) imageIsHD:(NSString *)path;
-
-/**
- * @result (autorelease) NSString with texture key
- */
 - (NSString *) textureKeyForFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
-
 - (unsigned int) nearestPowerOf2:(unsigned int)value;
 @end
 
@@ -58,7 +47,14 @@ static Isgl3dGLTextureFactory * _instance = nil;
 
 @implementation Isgl3dGLTextureFactory
 
+
 - (id) init {
+	NSLog(@"Isgl3dGLTextureFactory::init should not be called on singleton. Instance should be accessed via sharedInstance");
+	
+	return nil;
+}
+
+- (id) initSingleton {
 	
 	if ((self = [super init])) {
 		_textures = [[NSMutableDictionary alloc] init];
@@ -82,7 +78,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	
 	@synchronized (self) {
 		if (!_instance) {
-			_instance = [[Isgl3dGLTextureFactory alloc] init];
+			_instance = [[Isgl3dGLTextureFactory alloc] initSingleton];
 		}
 	}
 		
@@ -112,6 +108,10 @@ static Isgl3dGLTextureFactory * _instance = nil;
 
 - (void) clear {
 	[_textures removeAllObjects];
+}
+
+- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file {
+	return [self createTextureFromFile:file precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 }
 
 - (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
@@ -159,8 +159,11 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	return nil;
 }
 
+- (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key {
+	return [self createTextureFromUIImage:image key:key precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+}
 
-- (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY{
+- (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	if (_state) {
 		NSString * textureKey = [self textureKeyForFile:key precision:precision repeatX:repeatX repeatY:repeatY];
@@ -411,6 +414,20 @@ static Isgl3dGLTextureFactory * _instance = nil;
 - (void) deleteTexture:(Isgl3dGLTexture *)texture {
 	if (_state) {
 		[_state deleteTextureId:texture.textureId];
+		
+		NSString * textureKey = nil;
+		for (NSString * key in _textures) {
+			 Isgl3dGLTexture * storedTexture = [_textures objectForKey:key];
+			 if (storedTexture.textureId == texture.textureId) {
+			 	textureKey = key;
+			 	break;
+			 }
+		}
+		
+		if (textureKey) {
+			[_textures removeObjectForKey:textureKey];
+		}
+		
 	} else {
 		Isgl3dLog(Error, @"Isgl3dGLTextureFactory.deleteTexture: not initialised with factory state");
 	}

@@ -56,6 +56,7 @@ typedef enum {
 @class Isgl3dGLVBOData;
 @class Isgl3dArray;
 @class Isgl3dCustomShader;
+@class Isgl3dGLTexture;
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -104,7 +105,7 @@ typedef enum {
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData;
 - (void) setElementBufferData:(unsigned int)bufferId;
 
-- (void) setTexture:(unsigned int)textureId;
+- (void) setTexture:(Isgl3dGLTexture *)texture;
 - (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
 
 - (void) addLight:(Isgl3dLight *)light;
@@ -137,7 +138,7 @@ typedef enum {
 - (void) initRenderForShadowMap;
 - (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
 - (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position;
-- (void) setShadowMap:(unsigned int)textureId;
+- (void) setShadowMap:(Isgl3dGLTexture *)texture;
 - (BOOL) shadowMapActive;
 - (void) enableShadowStencil:(BOOL)shadowStencilEnabled;
 
@@ -149,7 +150,7 @@ typedef enum {
 - (void) clean;
 
 - (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;
-
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt;
 
 
 @end

@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 
 @class Isgl3dGLRenderer;
+@class Isgl3dNode;
 
 /**
  * The Isgl3dMaterial is the abstract class used for all materials in iSGL3D. It can not be rendered: an extended
@@ -44,8 +45,9 @@
  * @param renderer The renderer
  * @param requirements The node requirements for the renderer
  * @param alpha The alpha value of the node being rendered.
+ * @param node The node being rendered.
  */
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha;
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node;
 
 
 @end

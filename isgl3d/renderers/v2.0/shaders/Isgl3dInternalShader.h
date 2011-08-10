@@ -23,37 +23,28 @@
  *
  */
 
-#import "Isgl3dGLTexture.h"
+#import "Isgl3dShader.h"
+
 
 /**
- * The Isgl3dGLDepthRenderTexture is used internally to render z-buffer depth values onto a texture (used for example with shadow mapping).
- * 
- * Note : This class is intended for internal use only.
+ * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
-@interface Isgl3dGLDepthRenderTexture : Isgl3dGLTexture {
+@interface Isgl3dInternalShader : Isgl3dShader {
 
+@protected
+	float _whiteAndAlpha[4];
+	float _blackAndAlpha[4];
 }
 
-/**
- * Initialises the Isgl3dGLDepthRenderTexture with an OpenGL texture object for a given width and height.
- */
-- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
+- (id) initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 
-/**
- * Clears and prepares the texture.
- */
-- (void) clear;
-
-/**
- * Initializes the texture to be rendered onto.
- */
-- (void) initializeRender;
-
-/**
- * Finalizes the texture after rendering.
- */
-- (void) finalizeRender;
-
-
+- (void) setTexture:(Isgl3dGLTexture *)texture;
+- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
+- (void) enableLighting:(BOOL)lightingEnabled;
+- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix;
+- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void) setShadowMap:(Isgl3dGLTexture *)texture;
+- (void) setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha;
+- (void) setCaptureColor:(float *)color;
 
 @end

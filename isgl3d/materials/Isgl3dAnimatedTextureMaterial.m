@@ -121,7 +121,7 @@
 }
 				
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 
 	// Control animation
 	if (_isRunning == YES) {
@@ -150,7 +150,7 @@
 		
 	}
 	
-	[super prepareRenderer:renderer requirements:requirements alpha:alpha];
+	[super prepareRenderer:renderer requirements:requirements alpha:alpha node:node];
 }
 
 

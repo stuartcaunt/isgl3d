@@ -213,7 +213,7 @@
 		}
 		
 		// Prepare the material to be rendered
-		[_material prepareRenderer:renderer requirements:rendererRequirements alpha:alpha];
+		[_material prepareRenderer:renderer requirements:rendererRequirements alpha:alpha node:self];
 	
 		// Send the vertex data to the renderer
 		[renderer setVBOData:[_mesh vboData]];
@@ -343,7 +343,7 @@
 		}
 		
 		// Prepare the material to be rendered
-		[_material prepareRenderer:renderer requirements:rendererRequirements alpha:alpha];
+		[_material prepareRenderer:renderer requirements:rendererRequirements alpha:alpha node:self];
 
 		// Send the vertex data to the renderer
 		[renderer setVBOData:[_mesh vboData]];

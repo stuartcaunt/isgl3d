@@ -643,6 +643,9 @@ static Isgl3dDirector * _instance = nil;
 	// Clear the color buffer of full screen (depth/stencil handled by individual views)
 	[_renderer clear:ISGL3D_COLOR_BUFFER_BIT color:_backgroundColor viewport:_windowRectInPixels];
 
+	// Handle any processing before rendering
+	[_renderer onRenderPhaseBeginsWithDeltaTime:_dt];
+
 	// Render scenes in all views
 	for (Isgl3dView * view in _views) {
 		// Set active camera
@@ -656,7 +659,7 @@ static Isgl3dDirector * _instance = nil;
 		// Render view scene
 		[view render:_renderer];
 	}
-	
+
 	// Render the fps if desired
 	if (_displayFPS) {
 		[_fpsRenderer update:_dt andRender:_renderer isPaused:_isPaused];

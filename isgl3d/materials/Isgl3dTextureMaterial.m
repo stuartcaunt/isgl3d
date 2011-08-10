@@ -31,12 +31,8 @@
 #import "Isgl3dGLTextureFactory.h"
 
 
-@interface Isgl3dTextureMaterial (PrivateMethods)
-- (id) initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
-@end
-
 @interface Isgl3dTextureMaterial ()
-@property (nonatomic, retain) Isgl3dGLTexture *texture;
+- (id) initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
 
 
@@ -150,16 +146,16 @@
 	return copy;
 }
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 	requirements |= TEXTURE_MAPPING_ON;
-	[super prepareRenderer:renderer requirements:requirements alpha:alpha];
+	[super prepareRenderer:renderer requirements:requirements alpha:alpha node:node];
 
 	// Enable point sprites if necessary
 	if (requirements & PARTICLES_ON) {
 		[renderer enablePointSprites:YES];
 	}
 
-	[renderer setTexture:[_texture textureId]];
+	[renderer setTexture:_texture];
 }
 
 - (unsigned int) width {

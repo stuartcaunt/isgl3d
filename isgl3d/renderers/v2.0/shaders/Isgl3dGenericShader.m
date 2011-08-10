@@ -59,6 +59,16 @@
 		
 		_planarShadowsActive = NO,
 		_shadowAlpha = 1.0;
+
+		// Initialise lighting
+		for (int i = 0; i < MAX_LIGHTS; i++) {
+			[self setUniform1i:_lightEnabledLocation[i] value:0];
+		}
+		[self setUniform1i:_lightingEnabledUniformLocation value:0];
+		[self setSceneAmbient:@"000000"];
+		
+		_lightCount = 0;
+	
 	}
 	
 	return self;
@@ -132,17 +142,6 @@
 	
 }
 
-- (void) initShader {
-	
-	for (int i = 0; i < MAX_LIGHTS; i++) {
-		[self setUniform1i:_lightEnabledLocation[i] value:0];
-	}
-	[self setUniform1i:_lightingEnabledUniformLocation value:0];
-	[self setSceneAmbient:@"000000"];
-	
-	_lightCount = 0;
-}
-
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
 	[self setUniformMatrix3:_normalMatrixUniformLocation matrix:modelViewMatrix];
@@ -164,10 +163,10 @@
 	}
 }
 
-- (void) setTexture:(GLuint)textureId {
+- (void) setTexture:(Isgl3dGLTexture *)texture {
 	if (_samplerLocation != -1) {
 		// Bind the texture
-		[self bindTexture:textureId index:TEXTURE0_INDEX];
+		[self bindTexture:texture index:TEXTURE0_INDEX];
 		[self setUniformSampler:_samplerLocation forTextureIndex:TEXTURE0_INDEX];
 	}
 	
@@ -296,9 +295,9 @@
 	[self setUniform4f:_shadowCastingLightPositionLocation values:transformedLightPosition];
 }
 
-- (void) setShadowMap:(unsigned int)textureId {
+- (void) setShadowMap:(Isgl3dGLTexture *)texture {
 	if (_shadowMapSamplerLocation != -1) {
-		[self bindTexture:textureId index:SHADOWMAP_INDEX];
+		[self bindTexture:texture index:SHADOWMAP_INDEX];
 		[self setUniformSampler:_shadowMapSamplerLocation forTextureIndex:SHADOWMAP_INDEX];
 	}
 }

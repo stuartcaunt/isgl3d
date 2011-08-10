@@ -134,8 +134,8 @@
 }
 
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
-	[super prepareRenderer:renderer requirements:requirements alpha:alpha];
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
+	[super prepareRenderer:renderer requirements:requirements alpha:alpha node:node];
 	
 	float ambient[4];
 	float diffuse[4];

@@ -24,12 +24,14 @@
  */
 
 #import "Isgl3dCustomShader.h"
+#import "Isgl3dLog.h"
 
 
 @implementation Isgl3dCustomShader
 
 @synthesize key = _key;
 @synthesize shaderType = _shaderType;
+@synthesize activeNode = _activeNode;
 
 + (id) shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
@@ -79,8 +81,9 @@
 		
 		_shaderType = Isgl3dCustomShaderTrianglesType;
 		_key = key;
-		
-		[self setActive];
+
+        Isgl3dLog(Info, @"Created custom shader for key %@", key);
+
 	}
 	return self;
 }
@@ -91,14 +94,6 @@
 	[super dealloc];
 }
 
-
-- (void) getAttributeAndUniformLocations {
-	// to be over-ridden
-}
-
-- (void) initShader {
-	// to be over-ridden
-}
 
 - (void) clean {
 	// to be over-ridden if needed
@@ -136,10 +131,6 @@
 	// to be over-ridden if needed
 }
 
-- (void) enableLighting:(BOOL)lightingEnabled {
-	// to be over-ridden if needed
-}
-
 - (void) setAlphaCullingValue:(float)cullValue {
 	// to be over-ridden if needed
 }
@@ -170,6 +161,10 @@
 	} else {
 		glDrawElements(GL_POINTS, numberOfElements, GL_UNSIGNED_SHORT, &((unsigned short*)0)[elementOffset]);
 	}
+}
+
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	// to be over-ridden if needed
 }
 
 

@@ -50,7 +50,7 @@
 	Isgl3dGLRenderer2State * _currentState;
 	Isgl3dGLRenderer2State * _previousState;
 
-	NSMutableDictionary * _shaders;
+	NSMutableDictionary * _internalShaders;
 	NSMutableDictionary * _customShaders;
 	Isgl3dShader * _activeShader;
 	

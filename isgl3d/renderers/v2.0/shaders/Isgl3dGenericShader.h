@@ -23,9 +23,12 @@
  *
  */
 
-#import "Isgl3dShader.h"
+#import "Isgl3dInternalShader.h"
 
 #define MAX_LIGHTS 4
+
+#define TEXTURE0_INDEX 0
+#define SHADOWMAP_INDEX 1
 
 
 @class Isgl3dShaderState;
@@ -33,7 +36,7 @@
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
-@interface Isgl3dGenericShader : Isgl3dShader {
+@interface Isgl3dGenericShader : Isgl3dInternalShader {
 
 @private
 

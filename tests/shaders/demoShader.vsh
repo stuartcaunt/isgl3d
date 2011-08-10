@@ -3,6 +3,7 @@ attribute vec4 a_vertex;
 uniform mat4 u_mvpMatrix;
 uniform float u_minHeight;
 uniform float u_maxHeight;
+uniform float u_factor;
 
 varying lowp vec4 v_color;
 
@@ -18,7 +19,7 @@ void main(void) {
 		value = (height - u_minHeight) / (u_maxHeight - u_minHeight);
 	}
 
-	v_color = vec4(value, 0.0, 1.0 - value, 1.0);
+	v_color = vec4(value, u_factor, 1.0 - value, 1.0);
 
 	gl_Position = u_mvpMatrix * a_vertex;
 }

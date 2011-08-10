@@ -23,12 +23,12 @@
  *
  */
 
-#import "Isgl3dShader.h"
+#import "Isgl3dInternalShader.h"
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
-@interface Isgl3dCaptureShader : Isgl3dShader {
+@interface Isgl3dCaptureShader : Isgl3dInternalShader {
 
 @private
 	GLint _vertexAttributeLocation;

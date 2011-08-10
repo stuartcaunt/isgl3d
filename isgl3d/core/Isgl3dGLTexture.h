@@ -27,7 +27,9 @@
 #import <UIKit/UIKit.h>
 
 /**
- * __isgl3d_internal__ Internal class of the iSGL3D framework
+ * Ths Isgl3dGLTexture encapsulates an OpenGL texture object stored in the GPU. It is created by the Isgl3dGLTextureFactory.
+ * This class contains additional information used for rendering the texture including the texture size in pixels and the 
+ * content size used if the desired texture is smaller than that created for OpenGL (which must have factor of 2 dimensions).
  */
 @interface Isgl3dGLTexture : NSObject {
 
@@ -41,16 +43,65 @@
 	BOOL _isHighDefinition;
 }
 
+/**
+ * Returns the id of the texture used internally by OpenGL.
+ */
+@property (nonatomic, readonly) unsigned int textureId;
+
+/**
+ * Returns the full width of the texture in pixels.
+ */
+@property (nonatomic, readonly) unsigned int width;
+
+/**
+ * Returns the full height of the texture in pixels.
+ */
+@property (nonatomic, readonly) unsigned int height;
+
+/**
+ * Returns the size of the usable content of the texture.
+ */
+@property (nonatomic, readonly) CGSize contentSize;
+
+/**
+ * Returns true if the texture has been created from a high definition (retina display) image
+ */
+@property (nonatomic) BOOL isHighDefinition;
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dGLTexture for an OpenGL texture object of given width and height.
+ * @param textureId The OpenGL texture id.
+ * @param width The width of the texture.
+ * @param height The height of the texture.
+ */
 + (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dGLTexture for an OpenGL texture object of given width and height and
+ * specified content size.
+ * @param textureId The OpenGL texture id.
+ * @param width The width of the texture.
+ * @param height The height of the texture.
+ * @param contentSize The size of the content.
+ */
 + (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
+/**
+ * Initialises an Isgl3dGLTexture for an OpenGL texture object of given width and height.
+ * @param textureId The OpenGL texture id.
+ * @param width The width of the texture.
+ * @param height The height of the texture.
+ */
 - (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
-- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
-@property (nonatomic, readonly) unsigned int textureId;
-@property (nonatomic, readonly) unsigned int width;
-@property (nonatomic, readonly) unsigned int height;
-@property (nonatomic, readonly) CGSize contentSize;
-@property (nonatomic) BOOL isHighDefinition;
+/**
+ * Intialises an Isgl3dGLTexture for an OpenGL texture object of given width and height and
+ * specified content size.
+ * @param textureId The OpenGL texture id.
+ * @param width The width of the texture.
+ * @param height The height of the texture.
+ * @param contentSize The size of the content.
+ */
+- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
 @end

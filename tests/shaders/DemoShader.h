@@ -26,6 +26,7 @@
 #import "Isgl3dCustomShader.h"
 
 @interface DemoShader : Isgl3dCustomShader {
+	float _time;
 }
 
 + (id) shaderWithKey:(NSString *)key;

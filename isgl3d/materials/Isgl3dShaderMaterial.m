@@ -80,8 +80,11 @@
 	}
 }
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha {
+- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 	// Requirements don't count here - shader is custom/independent
+	
+	// Pass current node to shader if it needs it
+	_shader.activeNode = node;
 	
 	// Recast renderer as ES2 renderer
 	Isgl3dGLRenderer2 * es2Renderer = (Isgl3dGLRenderer2 *)renderer;

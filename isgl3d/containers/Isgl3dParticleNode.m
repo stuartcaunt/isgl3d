@@ -77,7 +77,7 @@
 			rendererRequirements |= _alphaCulling ? ALPHA_CULLING_ON : 0;
 
 			// Prepare the material to be rendered
-			[_material prepareRenderer:renderer requirements:rendererRequirements alpha:_alpha];
+			[_material prepareRenderer:renderer requirements:rendererRequirements alpha:_alpha node:self];
 				
 			[renderer setVBOData:[_particle vboData]];
 		

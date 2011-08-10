@@ -138,7 +138,7 @@
 - (void) setElementBufferData:(unsigned int)bufferId {
 }
 
-- (void) setTexture:(unsigned int)textureId {
+- (void) setTexture:(Isgl3dGLTexture *)texture {
 }
 
 - (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
@@ -213,7 +213,7 @@
 - (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {
 }
 
-- (void) setShadowMap:(unsigned int)textureId {
+- (void) setShadowMap:(Isgl3dGLTexture *)texture {
 }
 
 - (BOOL) shadowMapActive {
@@ -240,6 +240,10 @@
 
 - (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
 	return NO;
+}
+
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	
 }
 
 

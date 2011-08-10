@@ -77,6 +77,11 @@
 @property (nonatomic) BOOL isHighDefinition;
 
 /**
+ * Gets/sets the Isgl3dGLTexture associated with the material.
+ */
+@property (nonatomic, retain) Isgl3dGLTexture *texture;
+
+/**
  * Allocates and initialises (autorelease) texture material from an image file.
  * @param fileName The name of the image file.
  * @param shininess The shiness of the material.

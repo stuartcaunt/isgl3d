@@ -36,9 +36,8 @@
 
 @interface Isgl3dGLRenderer2 (PrivateMethods)
 - (void) initRendererState;
-- (void) initShader:(Isgl3dShader *)shader;
 - (void) handleStates;
-- (void) buildAllShaders;
+- (Isgl3dInternalShader *) shaderForRendererRequirements:(unsigned int)rendererRequirements;
 - (void) setPlanarShadowsActive:(BOOL)planarShadowActive;
 @end
 
@@ -62,7 +61,8 @@
 
 		_currentElementBufferId = 0;
 
-		[self buildAllShaders];
+		//[self buildAllShaders];
+		_internalShaders = [[NSMutableDictionary alloc] init];
 		_customShaders = [[NSMutableDictionary alloc] init];
 
 		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : created renderer for OpenGL ES 2.0");
@@ -75,87 +75,12 @@
 	[_currentState release];
 	[_previousState release];
 
-	[_shaders release];
+	[_internalShaders release];
 	[_customShaders release];
 	
 	[super dealloc];
 }
 
-- (void) buildAllShaders {
-		
-	_shaders = [[NSMutableDictionary alloc] init];
-
-	// define the different types of shaders
-	unsigned int nRendererCombinations = 19;
-	unsigned int rendererCombinations[] = {
-		NOTHING_ON,
-		SKINNING_ON,
-		SHADOW_MAPPING_ON,
-		SHADOW_MAP_CREATION_ON,
-		CAPTURE_ON,
-		TEXTURE_MAPPING_ON,
-		TEXTURE_MAPPING_ON | ALPHA_CULLING_ON,
-		TEXTURE_MAPPING_ON | SHADOW_MAPPING_ON,
-		TEXTURE_MAPPING_ON | ALPHA_CULLING_ON | SHADOW_MAPPING_ON,
-		SKINNING_ON | SHADOW_MAPPING_ON,
-		SKINNING_ON | SHADOW_MAP_CREATION_ON,
-		SKINNING_ON | TEXTURE_MAPPING_ON,
-		SKINNING_ON | CAPTURE_ON,
-		SKINNING_ON | TEXTURE_MAPPING_ON | ALPHA_CULLING_ON,
-		SKINNING_ON | TEXTURE_MAPPING_ON | SHADOW_MAPPING_ON,
-		SKINNING_ON | TEXTURE_MAPPING_ON | ALPHA_CULLING_ON | SHADOW_MAPPING_ON,
-		PARTICLES_ON,
-		PARTICLES_ON | TEXTURE_MAPPING_ON,
-		PARTICLES_ON | TEXTURE_MAPPING_ON | ALPHA_CULLING_ON 
-	};
-
-	// Create the different shaders and add pre-processor directives to shaders
-	for (unsigned int i = 0; i < nRendererCombinations; i++) {
-		unsigned int rendererType = rendererCombinations[i];
-		NSString * vsPreProcHeader = @"";
-		NSString * fsPreProcHeader = @"";
-		
-		Isgl3dShader * shader;
-		
-		if (rendererType & TEXTURE_MAPPING_ON) {
-			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define TEXTURE_MAPPING_ENABLED\n"];
-			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define TEXTURE_MAPPING_ENABLED\n"];
-		}
-		if (rendererType & ALPHA_CULLING_ON) {
-			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define ALPHA_TEST_ENABLED\n"];
-		}
-		if (rendererType & SHADOW_MAPPING_ON) {
-			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_ENABLED\n"];
-			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_ENABLED\n"];
-		}
-		if (rendererType & SKINNING_ON) {
-			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SKINNING_ENABLED\n"];
-		}
-		
-		if (rendererType & SHADOW_MAP_CREATION_ON) {
-			shader = [[Isgl3dShadowMapShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
-		
-		} else if (rendererType & CAPTURE_ON) {
-			shader = [[Isgl3dCaptureShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
-		
-		} else if (rendererType & PARTICLES_ON) {
-			shader = [[Isgl3dParticleShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
-		
-		} else {
-			shader = [[Isgl3dGenericShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
-		}
-        
-        if (!shader) {
-            Isgl3dLog(Error, @"Isgl3dGLRenderer2 failed to add shader for renderer type %i", rendererType);
-            continue;
-        }
-
-		[_shaders setObject:shader forKey:[NSNumber numberWithUnsignedInt:rendererType]];
-		
-		[self initShader:shader];
-		[shader release];
-	}
-}
 
 - (void) clear:(unsigned int)bufferBits {
 	unsigned int glBufferBits = 0;
@@ -205,21 +130,72 @@
 }
 
 
-- (void) setRendererRequirements:(unsigned int)rendererRequirements {
-	// Determine which shader to use depending on requirements
-	
-	Isgl3dShader * shader;
+- (Isgl3dInternalShader *) shaderForRendererRequirements:(unsigned int)rendererRequirements {
+	Isgl3dInternalShader * shader;
 	
 	NSNumber * shaderId = [NSNumber numberWithUnsignedInt:rendererRequirements];
-	shader = [_shaders objectForKey:shaderId];
+	shader = [_internalShaders objectForKey:shaderId];
 
+	if (shader) {
+		return shader;
+	
+	} else {
+		NSString * vsPreProcHeader = @"";
+		NSString * fsPreProcHeader = @"";
+		
+		if (rendererRequirements & TEXTURE_MAPPING_ON) {
+			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define TEXTURE_MAPPING_ENABLED\n"];
+			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define TEXTURE_MAPPING_ENABLED\n"];
+		}
+		if (rendererRequirements & ALPHA_CULLING_ON) {
+			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define ALPHA_TEST_ENABLED\n"];
+		}
+		if (rendererRequirements & SHADOW_MAPPING_ON) {
+			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_ENABLED\n"];
+			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_ENABLED\n"];
+		}
+		if (rendererRequirements & SKINNING_ON) {
+			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SKINNING_ENABLED\n"];
+		}
+		
+		if (rendererRequirements & SHADOW_MAP_CREATION_ON) {
+			shader = [[Isgl3dShadowMapShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+		
+		} else if (rendererRequirements & CAPTURE_ON) {
+			shader = [[Isgl3dCaptureShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+		
+		} else if (rendererRequirements & PARTICLES_ON) {
+			shader = [[Isgl3dParticleShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+		
+		} else {
+			shader = [[Isgl3dGenericShader alloc] initWithVsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader];
+		}
+        
+        if (shader) {
+            Isgl3dLog(Info, @"Created internal shader for renderer requirements %i", rendererRequirements);
+			[_internalShaders setObject:shader forKey:[NSNumber numberWithUnsignedInt:rendererRequirements]];
+			[shader release];
+        } else {
+            Isgl3dLog(Error, @"Isgl3dGLRenderer2 : Failed to add shader for renderer requirements %i", rendererRequirements);
+        }
+
+	}
+	
+	return shader;
+}
+
+- (void) setRendererRequirements:(unsigned int)rendererRequirements {
+
+	// Determine which shader to use depending on requirements - create new one if needed
+	Isgl3dShader * shader = [self shaderForRendererRequirements:rendererRequirements];
+	
 	if (shader != nil) {
 		//Isgl3dLog(Info, @"Using shader: 0x%04X", rendererRequirements);
 		
 		[self setShaderActive:shader];
 	
 	} else {
-		Isgl3dLog(Error, @"Error in getting shader for requirements 0x%04X", rendererRequirements);
+		Isgl3dLog(Error, @"Isgl3dGLRenderer2 : Error in getting shader for requirements 0x%04X", rendererRequirements);
 	}
 }
 - (void) reset {
@@ -234,17 +210,9 @@
 	
 }
 
-- (void) initShader:(Isgl3dShader *)shader {
-	[self setShaderActive:shader];
-	[shader initShader];
-}
-
-
 - (void) setShaderActive:(Isgl3dShader *)shader {
-	if (_activeShader != shader) {
-		_activeShader = shader;
-		[_activeShader setActive];		
-	}
+	_activeShader = shader;
+	[_activeShader setActive];		
 }
 
 - (void) setupMatrices {
@@ -265,7 +233,6 @@
 	[_activeShader setViewMatrix:&_viewMatrix];
 	[_activeShader setProjectionMatrix:&_projectionMatrix];
 	[_activeShader setModelViewMatrix:&_mvMatrix];
-	[_activeShader setModelViewMatrix:&_mvMatrix];
 	[_activeShader setModelViewProjectionMatrix:&_mvpMatrix];
 
 
@@ -273,7 +240,9 @@
 	im4Copy(&_lightModelViewProjectionMatrix, &_lightViewProjectionMatrix);
 	im4Multiply(&_lightModelViewProjectionMatrix, &_modelMatrix);
 
-	[_activeShader setShadowCastingMVPMatrix:&_lightModelViewProjectionMatrix];
+	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
+		[(Isgl3dInternalShader *)_activeShader setShadowCastingMVPMatrix:&_lightModelViewProjectionMatrix];
+	}
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
@@ -292,37 +261,57 @@
 	}
 }
 
-- (void) setTexture:(GLuint)textureId {
-	[_activeShader setTexture:textureId];
-	_currentState.alphaBlendEnabled = YES;
+- (void) setTexture:(Isgl3dGLTexture *)texture {
+	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
+		[(Isgl3dInternalShader *)_activeShader setTexture:texture];
+		_currentState.alphaBlendEnabled = YES;
+	}
 }
 
 - (void) setMaterialData:(GLfloat *)ambientColor diffuseColor:(GLfloat *)diffuseColor specularColor:(GLfloat *)specularColor withShininess:(GLfloat)shininess {
-	[_activeShader setMaterialData:ambientColor diffuseColor:diffuseColor specularColor:specularColor withShininess:shininess];
-	_currentState.alphaBlendEnabled = YES;
+	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
+		[(Isgl3dInternalShader *)_activeShader setMaterialData:ambientColor diffuseColor:diffuseColor specularColor:specularColor withShininess:shininess];
+		_currentState.alphaBlendEnabled = YES;
+	}
 }
 
 - (void) addLight:(Isgl3dLight *)light {
-	NSEnumerator *enumerator = [_shaders objectEnumerator];
-	Isgl3dGenericShader * genericShader;
-	while ((genericShader = [enumerator nextObject])) {
-		[self setShaderActive:genericShader];
-		[genericShader addLight:light viewMatrix:&_viewMatrix];
+	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
+	Isgl3dInternalShader * shader;
+	while ((shader = [enumerator nextObject])) {
+		[self setShaderActive:shader];
+		[shader addLight:light viewMatrix:&_viewMatrix];
+	}
+	
+	// Add lighting to custom shaders
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader addLight:light viewMatrix:&_viewMatrix];
 	}
 }
 
 - (void) setSceneAmbient:(NSString *)ambient {
-	NSEnumerator *enumerator = [_shaders objectEnumerator];
-	Isgl3dGenericShader * genericShader;
-	while ((genericShader = [enumerator nextObject])) {
-		[self setShaderActive:genericShader];
-		[genericShader setSceneAmbient:ambient];
+	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
+	Isgl3dInternalShader * shader;
+	while ((shader = [enumerator nextObject])) {
+		[self setShaderActive:shader];
+		[shader setSceneAmbient:ambient];
+	}
+
+	// Add scene ambient custom shaders
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader setSceneAmbient:ambient];
 	}
 }
 
 
 - (void) enableLighting:(BOOL)lightingEnabled {
-	[_activeShader enableLighting:lightingEnabled];
+	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
+		[(Isgl3dInternalShader *)_activeShader enableLighting:lightingEnabled];
+	}
 }
 
 - (void) enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace {
@@ -354,7 +343,9 @@
 
 
 - (void) setCaptureColor:(float *)color {
-	[_activeShader setCaptureColor:color];
+	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
+		[(Isgl3dInternalShader *)_activeShader setCaptureColor:color];
+	}
 }
 
 - (void) preRender {
@@ -411,21 +402,21 @@
 }
 
 - (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {
-	NSEnumerator *enumerator = [_shaders objectEnumerator];
-	Isgl3dGenericShader * genericShader;
-	while ((genericShader = [enumerator nextObject])) {
-		[self setShaderActive:genericShader];
-		[genericShader setShadowCastingLightPosition:position viewMatrix:&_viewMatrix];
+	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
+	Isgl3dInternalShader * shader;
+	while ((shader = [enumerator nextObject])) {
+		[self setShaderActive:shader];
+		[shader setShadowCastingLightPosition:position viewMatrix:&_viewMatrix];
 	}
 }
 
 
-- (void) setShadowMap:(unsigned int)textureId {
-	NSEnumerator *enumerator = [_shaders objectEnumerator];
-	Isgl3dGenericShader * genericShader;
-	while ((genericShader = [enumerator nextObject])) {
-		[self setShaderActive:genericShader];
-		[genericShader setShadowMap:textureId];
+- (void) setShadowMap:(Isgl3dGLTexture *)texture {
+	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
+	Isgl3dInternalShader * shader;
+	while ((shader = [enumerator nextObject])) {
+		[self setShaderActive:shader];
+		[shader setShadowMap:texture];
 	}
 	_shadowMapActive = YES;
 }
@@ -489,21 +480,28 @@
 - (void) setPlanarShadowsActive:(BOOL)planarShadowsActive {
 	_planarShadowsActive = planarShadowsActive;
 	
-	NSEnumerator *enumerator = [_shaders objectEnumerator];
-	Isgl3dGenericShader * genericShader;
-	while ((genericShader = [enumerator nextObject])) {
-		[self setShaderActive:genericShader];
-		[genericShader setPlanarShadowsActive:planarShadowsActive shadowAlpha:_shadowAlpha];
+	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
+	Isgl3dInternalShader * shader;
+	while ((shader = [enumerator nextObject])) {
+		[self setShaderActive:shader];
+		[shader setPlanarShadowsActive:planarShadowsActive shadowAlpha:_shadowAlpha];
 	}	
 }
 
 - (void) clean {
 //	Isgl3dLog(Info, @"Last number of rendered objects = %i", _renderedObjects);
-	for (NSNumber * key in _shaders) {
-		Isgl3dShader * shader = [_shaders objectForKey:key];
+	for (NSNumber * key in _internalShaders) {
+		Isgl3dInternalShader * shader = [_internalShaders objectForKey:key];
 		[self setShaderActive:shader];
 		[shader clean];
 	}
+	
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader clean];
+	} 
+		
 	_renderedObjects = 0;
 }
 
@@ -518,5 +516,27 @@
 	return YES;
 }
 
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	// Clean up of custom shaders (remove any that are no longer retained)
+	NSMutableArray * unretainedShaders = [NSMutableArray arrayWithCapacity:1];
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		if ([shader retainCount] == 1) {
+			[unretainedShaders addObject:key];
+		}
+	} 
+
+	for (NSString * key in unretainedShaders) {
+		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : custom shader with key \"%@\" no longer retained: deleting.", key);
+		[_customShaders removeObjectForKey:key];
+	}	
+	
+	// custom handling of phase event
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader onRenderPhaseBeginsWithDeltaTime:dt];
+	} 
+}
 
 @end

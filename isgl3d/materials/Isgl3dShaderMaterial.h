@@ -27,15 +27,32 @@
 
 @class Isgl3dCustomShader;
 
+/**
+ * The Isgl3dShaderMaterial allows custom OpenGL shaders (using Isgl3dCustomShader) to be used to render objects in iSGL3D.
+ * 
+ * Note that this material can only be used when running iSGL3D for OpenGL ES 2.
+ * 
+ */
 @interface Isgl3dShaderMaterial : Isgl3dMaterial {
 	
 	Isgl3dCustomShader * _shader;
 }
 
+/**
+ * Sets the Isgl3dCustomShader to be used by the material.
+ */
 @property (nonatomic, retain) Isgl3dCustomShader * shader;
 
+/**
+ * Allocates and initialises (autorelease) an Isgl3dShaderMaterial with the specified Isgl3dCustomShader shader.
+ * @param shader The custom shader to be used to render the object.
+ */
 + (id) materialWithShader:(Isgl3dCustomShader *)shader;
 
+/**
+ * Initialises an Isgl3dShaderMaterial with the specified Isgl3dCustomShader shader.
+ * @param shader The custom shader to be used to render the object.
+ */
 - (id) initWithShader:(Isgl3dCustomShader *)shader;
 
 

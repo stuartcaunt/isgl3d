@@ -239,7 +239,7 @@
 
 		// Cleanup from last render
 		[renderer clean];
-	
+		
 		// Set camera characteristics
 		Isgl3dMatrix4 viewMatrix = _camera.viewMatrix;
 		Isgl3dMatrix4 projectionMatrix = _camera.projectionMatrix;
@@ -276,7 +276,7 @@
 		} else {
 			[_scene render:renderer opaque:false];
 		}
-		
+
 		// Second planar shadow pass (if needed) (why ?)
 //		[self renderPlanarShadows:renderer];
 	}

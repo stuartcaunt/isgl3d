@@ -23,37 +23,18 @@
  *
  */
 
-#import "Isgl3dGLTexture.h"
+#import "Isgl3dCustomShader.h"
 
-/**
- * The Isgl3dGLDepthRenderTexture is used internally to render z-buffer depth values onto a texture (used for example with shadow mapping).
- * 
- * Note : This class is intended for internal use only.
- */
-@interface Isgl3dGLDepthRenderTexture : Isgl3dGLTexture {
+@class Isgl3dGLTexture;
 
+@interface PowerVRShader : Isgl3dCustomShader {
+	Isgl3dGLTexture * _materialTexture;
+	Isgl3dGLTexture * _noiseTexture;
+	
+	float _fAnim;
 }
 
-/**
- * Initialises the Isgl3dGLDepthRenderTexture with an OpenGL texture object for a given width and height.
- */
-- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
-
-/**
- * Clears and prepares the texture.
- */
-- (void) clear;
-
-/**
- * Initializes the texture to be rendered onto.
- */
-- (void) initializeRender;
-
-/**
- * Finalizes the texture after rendering.
- */
-- (void) finalizeRender;
-
-
++ (id) shaderWithKey:(NSString *)key;
+- (id) initWithKey:(NSString *)key;
 
 @end

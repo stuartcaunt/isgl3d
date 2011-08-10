@@ -26,6 +26,7 @@
 #import "ShaderMaterialDemoView.h"
 #import "Isgl3dDemoCameraController.h"
 #import "DemoShader.h"
+#import "PowerVRShader.h"
 
 @implementation ShaderMaterialDemoView
 
@@ -44,17 +45,23 @@
 		
 		// Create custom shader and associate it with a material
 		Isgl3dCustomShader * demoShader = [DemoShader shaderWithKey:@"myDemoShader"];
-		Isgl3dShaderMaterial * shaderMaterial = [Isgl3dShaderMaterial materialWithShader:demoShader];
+		Isgl3dShaderMaterial * shaderMaterial1 = [Isgl3dShaderMaterial materialWithShader:demoShader];
+
+		Isgl3dCustomShader * powerVRShader = [PowerVRShader shaderWithKey:@"powerVRShader"];
+		Isgl3dShaderMaterial * shaderMaterial2 = [Isgl3dShaderMaterial materialWithShader:powerVRShader];
+
+		// Standard material
+		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9];
 	
 		// Apply custom shader material to torus
 		Isgl3dTorus * torusMesh = [Isgl3dTorus meshWithGeometry:2 tubeRadius:1 ns:32 nt:32];
-		_torus = [_container createNodeWithMesh:torusMesh andMaterial:shaderMaterial];
+		_torus = [_container createNodeWithMesh:torusMesh andMaterial:shaderMaterial1];
 		_torus.position = iv3(-7, 0, 0);
-
-		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9];
+		_torus.interactive = YES;
+		[_torus addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 	
 		Isgl3dCone * coneMesh = [Isgl3dCone meshWithGeometry:4 topRadius:0 bottomRadius:2 ns:32 nt:32 openEnded:NO];
-		_cone = [_container createNodeWithMesh:coneMesh andMaterial:material];
+		_cone = [_container createNodeWithMesh:coneMesh andMaterial:shaderMaterial2];
 		_cone.position = iv3(7, 0, 0);
 	
 		Isgl3dCylinder * cylinderMesh = [Isgl3dCylinder meshWithGeometry:4 radius:1 ns:32 nt:32 openEnded:NO];
@@ -75,7 +82,8 @@
 		
 		// Add light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		light.position = iv3(5, 15, 15);
+		[light setDirection:-1 y:-2 z:1];
+		light.lightType = DirectionalLight;
 		[self.scene addChild:light];
 		
 		// Schedule updates
@@ -115,6 +123,9 @@
 	[_cameraController update];
 }
 
+- (void) objectTouched:(Isgl3dEvent3D *)event {
+	NSLog(@"object touched");
+}
 
 @end
 

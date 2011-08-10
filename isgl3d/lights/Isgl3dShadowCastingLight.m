@@ -67,7 +67,7 @@
 	
 	if (renderer.shadowRenderingMethod == Isgl3dShadowMaps) {
 		
-		[renderer setShadowMap:_shadowRenderTexture.textureId];
+		[renderer setShadowMap:_shadowRenderTexture];
 		
 		[renderer setShadowCastingLightViewMatrix:&_viewMatrix];
 		

@@ -26,6 +26,7 @@
 #import "Isgl3dGLRenderer1.h"
 #import "Isgl3dGLRenderer1State.h"
 #import "Isgl3dGLVBOData.h"
+#import "Isgl3dGLTexture.h"
 #import "Isgl3dMaterial.h"
 #import "Isgl3dLight.h"
 #import "Isgl3dColorUtil.h"
@@ -263,10 +264,10 @@
 	}
 }
 
-- (void) setTexture:(unsigned int)textureId {
-	if (_currentTextureId != textureId) {
-		glBindTexture(GL_TEXTURE_2D, textureId);
-		_currentTextureId = textureId;
+- (void) setTexture:(Isgl3dGLTexture *)texture {
+	if (_currentTextureId != texture.textureId) {
+		glBindTexture(GL_TEXTURE_2D, texture.textureId);
+		_currentTextureId = texture.textureId;
 	}
 	
 	_currentState.textureEnabled = YES;

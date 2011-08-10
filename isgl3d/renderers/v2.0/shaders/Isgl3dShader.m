@@ -27,15 +27,24 @@
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dArray.h"
+#import "Isgl3dGLTexture.h"
 #import "Isgl3dLog.h"
 
-@interface Isgl3dShader (PrivateMethods)
-- (void) getAttributeAndUniformLocations;
+@interface Isgl3dShader ()
 - (GLint) attributeIndexForName:(NSString *)name;
 - (GLint) uniformIndexForName:(NSString *)name;
 @end
 
 //static GLuint _currentVBOIndex = -1;
+
+static Isgl3dShader * __activeShader = nil;
+
+static unsigned int __textureUnitIndices[32] = {
+	GL_TEXTURE0,  GL_TEXTURE1,  GL_TEXTURE2,  GL_TEXTURE3,  GL_TEXTURE4,  GL_TEXTURE5,  GL_TEXTURE6,  GL_TEXTURE7, 
+	GL_TEXTURE8,  GL_TEXTURE9,  GL_TEXTURE10, GL_TEXTURE11, GL_TEXTURE12, GL_TEXTURE13, GL_TEXTURE14, GL_TEXTURE15, 
+	GL_TEXTURE16, GL_TEXTURE17, GL_TEXTURE18, GL_TEXTURE19, GL_TEXTURE20, GL_TEXTURE21, GL_TEXTURE22, GL_TEXTURE23, 
+	GL_TEXTURE24, GL_TEXTURE25, GL_TEXTURE26, GL_TEXTURE27, GL_TEXTURE28, GL_TEXTURE29, GL_TEXTURE30, GL_TEXTURE31 
+};
 
 @implementation Isgl3dShader
 
@@ -81,18 +90,7 @@
         _uniformNameIndices = [[NSMutableDictionary alloc] init];
         _attributeNameIndices = [[NSMutableDictionary alloc] init];
         
-        
-		[self getAttributeAndUniformLocations];
-	
-		_whiteAndAlpha[0] = 1.0;	
-		_whiteAndAlpha[1] = 1.0;	
-		_whiteAndAlpha[2] = 1.0;	
-		_whiteAndAlpha[3] = 1.0;
-		_blackAndAlpha[0] = 0.0;	
-		_blackAndAlpha[1] = 0.0;	
-		_blackAndAlpha[2] = 0.0;	
-		_blackAndAlpha[3] = 1.0;
-
+		[self setActive];
 	}
 	
 	return self;
@@ -108,12 +106,7 @@
 	[super dealloc];
 }
 
-- (void) initShader {
-}
-
-
-- (void) getAttributeAndUniformLocations {
-}
+#pragma private methods
 
 
 - (GLint) uniformIndexForName:(NSString *)name {
@@ -147,6 +140,16 @@
 			Isgl3dLog(Error, @"Isgl3dShader: cannot find attribute with name %@.", name);
 		}
 		return location;
+	}
+}
+
+#pragma mark internal methods
+
+- (void) setActive {
+	// Set program to be used : only activate if currently not active to improve perf
+	if (__activeShader != self) {
+		glUseProgram([_glProgram glProgram]);
+		__activeShader = self;
 	}
 }
 
@@ -352,25 +355,33 @@
 }
 
 
-- (void) bindTexture:(GLuint)textureIndex index:(GLuint)index {
-	if (index == 0) {
-		glActiveTexture(GL_TEXTURE0);
-	} else if (index == 1) {
-		glActiveTexture(GL_TEXTURE1);
+- (void) bindTexture:(Isgl3dGLTexture *)texture index:(GLuint)index {
+	if (index > 31) {
+		Isgl3dLog(Warn, @"Isgl3dShader: a texture unit of %i is too hight: maximum value is 31.", index);
+		
+	} else {
+		GLuint textureUnit = __textureUnitIndices[index];
+	
+		glActiveTexture(textureUnit);
+		glBindTexture(GL_TEXTURE_2D, texture.textureId);
 	}
-	glBindTexture(GL_TEXTURE_2D, textureIndex);
+}
+
+- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+}
+
+#pragma mark user modifiable methods
+
+- (void) clean {
 }
 
 - (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
-	
 }
 
 - (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-	
 }
 
 - (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
-	
 }
 
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
@@ -379,34 +390,16 @@
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 }
 
-- (void) setActive {
-	// Set program to be used
-	glUseProgram([_glProgram glProgram]);
-}
-
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
 }
 
-- (void) setTexture:(GLuint)textureId {
+- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 }
 
-- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
-}
-
-
-- (void) enableLighting:(BOOL)lightingEnabled {
+- (void) setSceneAmbient:(NSString *)ambient {
 }
 
 - (void) setAlphaCullingValue:(float)cullValue {
-}
-
-- (void) preRender {
-}
-
-- (void) postRender {
-}
-
-- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
 }
 
 - (void) setPointAttenuation:(float *)attenuation {
@@ -418,30 +411,11 @@
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 }
 
-- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void) preRender {
 }
 
-- (void) setSceneAmbient:(NSString *)ambient {
+- (void) postRender {
 }
-
-- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
-}
-
-- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-}
-
-- (void) setShadowMap:(unsigned int)textureId {
-}
-
-- (void) setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha {
-}
-
-- (void) setCaptureColor:(float *)color {
-}
-
-- (void) clean {
-}
-
 
 
 @end

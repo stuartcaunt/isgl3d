@@ -40,6 +40,14 @@
 
 		_currentState = [[Isgl3dShaderState alloc] init];
 		_previousState = [[Isgl3dShaderState alloc] init];
+
+
+		// Initialise point characteristics
+		[self setUniform1f:_pointMinSize value:1.0];
+		[self setUniform1f:_pointMaxSize value:64.0];
+		[self setUniform1f:_pointConstantAttenuation value:1.0];
+		[self setUniform1f:_pointLinearAttenuation value:0.0];
+		[self setUniform1f:_pointQuadraticAttenuation value:0.0];
 	}
 	
 	return self;
@@ -82,17 +90,6 @@
 	_alphaTestValueUniformLocation = [_glProgram getUniformLocation:@"u_alphaTestValue"];
 }
 
-- (void) initShader {
-
-	// Initialise point characteristics
-	[self setUniform1f:_pointMinSize value:1.0];
-	[self setUniform1f:_pointMaxSize value:64.0];
-	[self setUniform1f:_pointConstantAttenuation value:1.0];
-	[self setUniform1f:_pointLinearAttenuation value:0.0];
-	[self setUniform1f:_pointQuadraticAttenuation value:0.0];
-	
-}
-
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
 }
@@ -107,10 +104,10 @@
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_pointSizeAttributeLocation size:VBO_SIZE_SIZE strideBytes:vboData.stride offset:vboData.sizeOffset];
 }
 
-- (void) setTexture:(GLuint)textureId {
+- (void) setTexture:(Isgl3dGLTexture *)texture {
 	// Bind the texture
 	if (_samplerLocation != -1) {
-		[self bindTexture:textureId index:0];
+		[self bindTexture:texture index:0];
 		[self setUniformSampler:_samplerLocation forTextureIndex:0];
 	}
 	

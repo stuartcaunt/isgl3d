@@ -815,6 +815,12 @@
 		17A4821913F12A4E0098AC3F /* demoShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4821413F12A4E0098AC3F /* demoShader.vsh */; };
 		17A4821A13F12A4E0098AC3F /* ShaderMaterialDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4821613F12A4E0098AC3F /* ShaderMaterialDemoView.m */; };
 		17A4821B13F1E7820098AC3F /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		17A4823113F27F5E0098AC3F /* Noise.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 17A4822B13F27F5E0098AC3F /* Noise.pvr */; };
+		17A4823313F27F5E0098AC3F /* PowerVRShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4822E13F27F5E0098AC3F /* PowerVRShader.m */; };
+		17A4823B13F286740098AC3F /* powervrShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4823913F286740098AC3F /* powervrShader.fsh */; };
+		17A4823C13F286740098AC3F /* powervrShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4823A13F286740098AC3F /* powervrShader.vsh */; };
+		17A4823F13F2B7F40098AC3F /* Isgl3dInternalShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A4823D13F2B7F40098AC3F /* Isgl3dInternalShader.h */; };
+		17A4824013F2B7F40098AC3F /* Isgl3dInternalShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4823E13F2B7F40098AC3F /* Isgl3dInternalShader.m */; };
 		17A95E9F1325752500D06694 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
 		17A95EA01325752500D06694 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
 		17A95EA11325752500D06694 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
@@ -2183,6 +2189,13 @@
 		17A4821413F12A4E0098AC3F /* demoShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = demoShader.vsh; sourceTree = "<group>"; };
 		17A4821513F12A4E0098AC3F /* ShaderMaterialDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderMaterialDemoView.h; sourceTree = "<group>"; };
 		17A4821613F12A4E0098AC3F /* ShaderMaterialDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShaderMaterialDemoView.m; sourceTree = "<group>"; };
+		17A4822B13F27F5E0098AC3F /* Noise.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Noise.pvr; sourceTree = "<group>"; };
+		17A4822D13F27F5E0098AC3F /* PowerVRShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerVRShader.h; sourceTree = "<group>"; };
+		17A4822E13F27F5E0098AC3F /* PowerVRShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerVRShader.m; sourceTree = "<group>"; };
+		17A4823913F286740098AC3F /* powervrShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = powervrShader.fsh; sourceTree = "<group>"; };
+		17A4823A13F286740098AC3F /* powervrShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = powervrShader.vsh; sourceTree = "<group>"; };
+		17A4823D13F2B7F40098AC3F /* Isgl3dInternalShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dInternalShader.h; sourceTree = "<group>"; };
+		17A4823E13F2B7F40098AC3F /* Isgl3dInternalShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dInternalShader.m; sourceTree = "<group>"; };
 		17AD09EF13434FD7005F5F7F /* ViewportTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewportTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AD09F213435013005F5F7F /* ViewportTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewportTestView.h; path = viewport/ViewportTestView.h; sourceTree = "<group>"; };
 		17AD09F313435013005F5F7F /* ViewportTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewportTestView.m; path = viewport/ViewportTestView.m; sourceTree = "<group>"; };
@@ -3604,6 +3617,11 @@
 		17A4821013F12A4E0098AC3F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				17A4823913F286740098AC3F /* powervrShader.fsh */,
+				17A4823A13F286740098AC3F /* powervrShader.vsh */,
+				17A4822B13F27F5E0098AC3F /* Noise.pvr */,
+				17A4822D13F27F5E0098AC3F /* PowerVRShader.h */,
+				17A4822E13F27F5E0098AC3F /* PowerVRShader.m */,
 				17A4821113F12A4E0098AC3F /* demoShader.fsh */,
 				17A4821213F12A4E0098AC3F /* DemoShader.h */,
 				17A4821313F12A4E0098AC3F /* DemoShader.m */,
@@ -4044,6 +4062,8 @@
 		17F1D72B12F87EC5008D39E8 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				17A4823D13F2B7F40098AC3F /* Isgl3dInternalShader.h */,
+				17A4823E13F2B7F40098AC3F /* Isgl3dInternalShader.m */,
 				17EA00C213F0AAD200924372 /* Isgl3dCustomShader.h */,
 				17EA00C313F0AAD200924372 /* Isgl3dCustomShader.m */,
 				17F1D72C12F87EC5008D39E8 /* Isgl3dCaptureShader.h */,
@@ -4564,6 +4584,7 @@
 				8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */,
 				17EA00C013F0AAB500924372 /* Isgl3dShaderMaterial.h in Headers */,
 				17EA00C413F0AAD200924372 /* Isgl3dCustomShader.h in Headers */,
+				17A4823F13F2B7F40098AC3F /* Isgl3dInternalShader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5708,11 +5729,14 @@
 				17A481B813F129880098AC3F /* shadowMap.vsh in Resources */,
 				17A4821713F12A4E0098AC3F /* demoShader.fsh in Resources */,
 				17A4821913F12A4E0098AC3F /* demoShader.vsh in Resources */,
+				17A4823B13F286740098AC3F /* powervrShader.fsh in Resources */,
+				17A4823C13F286740098AC3F /* powervrShader.vsh in Resources */,
 				17A481B913F129880098AC3F /* red_checker.png in Resources */,
 				17A481BA13F129880098AC3F /* Default.png in Resources */,
 				17A481BB13F129880098AC3F /* Icon.png in Resources */,
 				17A481BC13F129880098AC3F /* Icon@2x.png in Resources */,
 				17A481BD13F129880098AC3F /* red_checker150.png in Resources */,
+				17A4823113F27F5E0098AC3F /* Noise.pvr in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6109,6 +6133,7 @@
 				17A481C313F129880098AC3F /* Isgl3dAppDelegate.mm in Sources */,
 				17A4821813F12A4E0098AC3F /* DemoShader.m in Sources */,
 				17A4821A13F12A4E0098AC3F /* ShaderMaterialDemoView.m in Sources */,
+				17A4823313F27F5E0098AC3F /* PowerVRShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6450,6 +6475,7 @@
 				8B0FA35A13E8046D00E798BA /* Isgl3dPVRLoader.mm in Sources */,
 				17EA00C113F0AAB500924372 /* Isgl3dShaderMaterial.m in Sources */,
 				17EA00C513F0AAD200924372 /* Isgl3dCustomShader.m in Sources */,
+				17A4824013F2B7F40098AC3F /* Isgl3dInternalShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
