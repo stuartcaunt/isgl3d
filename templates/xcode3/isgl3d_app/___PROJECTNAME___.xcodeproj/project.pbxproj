@@ -10,6 +10,12 @@
 		175CE24813709A0800152EFE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24513709A0800152EFE /* Default.png */; };
 		175CE24913709A0800152EFE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24613709A0800152EFE /* Icon.png */; };
 		175CE24A13709A0800152EFE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24713709A0800152EFE /* Icon@2x.png */; };
+		1764B9DC13F349A900287E35 /* Isgl3dShaderMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 1764B9DA13F349A900287E35 /* Isgl3dShaderMaterial.h */; };
+		1764B9DD13F349A900287E35 /* Isgl3dShaderMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 1764B9DB13F349A900287E35 /* Isgl3dShaderMaterial.m */; };
+		1764B9E413F349BD00287E35 /* Isgl3dCustomShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1764B9E013F349BD00287E35 /* Isgl3dCustomShader.h */; };
+		1764B9E513F349BD00287E35 /* Isgl3dCustomShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1764B9E113F349BD00287E35 /* Isgl3dCustomShader.m */; };
+		1764B9E613F349BD00287E35 /* Isgl3dInternalShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1764B9E213F349BD00287E35 /* Isgl3dInternalShader.h */; };
+		1764B9E713F349BD00287E35 /* Isgl3dInternalShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1764B9E313F349BD00287E35 /* Isgl3dInternalShader.m */; };
 		17801AFB131AB0ED0045803F /* HelloWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801AF4131AB0ED0045803F /* HelloWorldView.m */; };
 		17801AFE131AB0ED0045803F /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17801AFA131AB0ED0045803F /* Isgl3dViewController.m */; };
 		17801B0A131AB15B0045803F /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17801B05131AB1370045803F /* libisgl3d.a */; };
@@ -332,6 +338,12 @@
 		175CE24513709A0800152EFE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		175CE24613709A0800152EFE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		175CE24713709A0800152EFE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		1764B9DA13F349A900287E35 /* Isgl3dShaderMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dShaderMaterial.h; sourceTree = "<group>"; };
+		1764B9DB13F349A900287E35 /* Isgl3dShaderMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dShaderMaterial.m; sourceTree = "<group>"; };
+		1764B9E013F349BD00287E35 /* Isgl3dCustomShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dCustomShader.h; sourceTree = "<group>"; };
+		1764B9E113F349BD00287E35 /* Isgl3dCustomShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dCustomShader.m; sourceTree = "<group>"; };
+		1764B9E213F349BD00287E35 /* Isgl3dInternalShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dInternalShader.h; sourceTree = "<group>"; };
+		1764B9E313F349BD00287E35 /* Isgl3dInternalShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dInternalShader.m; sourceTree = "<group>"; };
 		17801AEB131AB0BD0045803F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17801AF3131AB0ED0045803F /* HelloWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldView.h; sourceTree = "<group>"; };
 		17801AF4131AB0ED0045803F /* HelloWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldView.m; sourceTree = "<group>"; };
@@ -1003,6 +1015,8 @@
 		17BC4298136DDF200064FF49 /* materials */ = {
 			isa = PBXGroup;
 			children = (
+				1764B9DA13F349A900287E35 /* Isgl3dShaderMaterial.h */,
+				1764B9DB13F349A900287E35 /* Isgl3dShaderMaterial.m */,
 				17BC4299136DDF200064FF49 /* Isgl3dAnimatedTextureMaterial.h */,
 				17BC429A136DDF200064FF49 /* Isgl3dAnimatedTextureMaterial.m */,
 				17BC429B136DDF200064FF49 /* Isgl3dColorMaterial.h */,
@@ -1157,6 +1171,10 @@
 		17BC42F0136DDF200064FF49 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				1764B9E013F349BD00287E35 /* Isgl3dCustomShader.h */,
+				1764B9E113F349BD00287E35 /* Isgl3dCustomShader.m */,
+				1764B9E213F349BD00287E35 /* Isgl3dInternalShader.h */,
+				1764B9E313F349BD00287E35 /* Isgl3dInternalShader.m */,
 				17BC42F1136DDF200064FF49 /* Isgl3dCaptureShader.h */,
 				17BC42F2136DDF200064FF49 /* Isgl3dCaptureShader.m */,
 				17BC42F3136DDF200064FF49 /* Isgl3dGenericShader.h */,
@@ -1443,6 +1461,9 @@
 				17D5F46613F05D6D0031F88F /* Isgl3dGLView.h in Headers */,
 				17D5F46713F05D6D0031F88F /* Isgl3dPVRLoader.h in Headers */,
 				17D5F46B13F05D7D0031F88F /* Isgl3dGestureManager.h in Headers */,
+				1764B9DC13F349A900287E35 /* Isgl3dShaderMaterial.h in Headers */,
+				1764B9E413F349BD00287E35 /* Isgl3dCustomShader.h in Headers */,
+				1764B9E613F349BD00287E35 /* Isgl3dInternalShader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1671,6 +1692,9 @@
 				17AF826313D8A2F200271DB9 /* PVRTVertex.cpp in Sources */,
 				17D5F46813F05D6D0031F88F /* Isgl3dPVRLoader.mm in Sources */,
 				17D5F46C13F05D7D0031F88F /* Isgl3dGestureManager.m in Sources */,
+				1764B9DD13F349A900287E35 /* Isgl3dShaderMaterial.m in Sources */,
+				1764B9E513F349BD00287E35 /* Isgl3dCustomShader.m in Sources */,
+				1764B9E713F349BD00287E35 /* Isgl3dInternalShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

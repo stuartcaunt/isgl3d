@@ -2400,6 +2400,34 @@
 			<key>Path</key>
 			<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGLProgram.m</string>
 		</dict>
+		<key>libs/isgl3d/renderers/v2.0/shaders/Isgl3dInternalShader.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>renderers</string>
+				<string>v2.0</string>
+				<string>shaders</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dInternalShader.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/renderers/v2.0/shaders/Isgl3dInternalShader.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>renderers</string>
+				<string>v2.0</string>
+				<string>shaders</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dInternalShader.m</string>
+		</dict>
 		<key>libs/isgl3d/renderers/v2.0/shaders/Isgl3dParticleShader.h</key>
 		<dict>
 			<key>Group</key>
@@ -3753,6 +3781,8 @@
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGenericShader.m</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGLProgram.h</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dGLProgram.m</string>
+		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dInternalShader.h</string>
+		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dInternalShader.m</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dParticleShader.h</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dParticleShader.m</string>
 		<string>libs/isgl3d/renderers/v2.0/shaders/Isgl3dShader.h</string>
