@@ -45,6 +45,24 @@ typedef enum {
 	NSString * _key;
 	Isgl3dCustomShaderType _shaderType;
 	
+	Isgl3dMatrix4 * _modelMatrix;
+	Isgl3dMatrix4 * _viewMatrix;
+	Isgl3dMatrix4 * _projectionMatrix;
+	Isgl3dMatrix4 * _modelViewMatrix;
+	Isgl3dMatrix4 * _modelViewProjectionMatrix;
+	
+	Isgl3dGLVBOData * _vboData;
+	
+	NSMutableArray * _lights;
+	NSString * _sceneAmbient;
+	
+	float _alphaCullingValue;
+	float * _pointAttenuation;
+	
+	Isgl3dArray * _boneTransformations;
+	Isgl3dArray * _boneInverseTransformations;
+	unsigned int _numberOfBonesPerVertex;
+	
 	Isgl3dNode * _activeNode;
 }
 
@@ -57,6 +75,71 @@ typedef enum {
  * Specifies the shader type. Values can be Isgl3dCustomShaderTrianglesType (the default value) or Isgl3dCustomShaderPointsType.
  */
 @property (nonatomic) Isgl3dCustomShaderType shaderType;
+
+/**
+ * Returns the current model transformation matrix for the shader
+ */
+@property (nonatomic, readonly) Isgl3dMatrix4 * modelMatrix;
+
+/**
+ * Returns the current view transformation matrix for the shader
+ */
+@property (nonatomic, readonly) Isgl3dMatrix4 * viewMatrix;
+
+/**
+ * Returns the current projections transformation matrix for the shader
+ */
+@property (nonatomic, readonly) Isgl3dMatrix4 * projectionMatrix;
+
+/**
+ * Returns the current model-view transformation matrix for the shader
+ */
+@property (nonatomic, readonly) Isgl3dMatrix4 * modelViewMatrix;
+
+/**
+ * Returns the current model-view-projection transformation matrix for the shader
+ */
+@property (nonatomic, readonly) Isgl3dMatrix4 * modelViewProjectionMatrix;
+
+/**
+ * Returns the current VBO data bound to the shader
+ */
+@property (nonatomic, readonly) Isgl3dGLVBOData * vboData;
+
+/**
+ * Returns the array of lights available in the scene
+ */
+@property (nonatomic, readonly) NSArray * lights;
+
+/**
+ * Returns the scene ambient light as a hex value
+ */
+@property (nonatomic, readonly) NSString * sceneAmbient;
+
+/**
+ * Returns the alpha culling value for the current object
+ */
+@property (nonatomic, readonly) float alphaCullingValue;
+
+/**
+ * Returns the array of point attenuation values.
+ */
+@property (nonatomic, readonly) float * pointAttenuation;
+
+/**
+ * Returns an array of 8 bone transformation matrices.
+ */
+@property (nonatomic, readonly) Isgl3dArray * boneTransformations;
+
+/**
+ * Returns an array of 8 bone inverse transformation matrices.
+ */
+@property (nonatomic, readonly) Isgl3dArray * boneInverseTransformations;
+
+/**
+ * Returns the number of bones per vertex for the current model to be shaded.
+ */
+@property (nonatomic, readonly) unsigned int numberOfBonesPerVertex;
 
 /**
  * Specifies the active node being rendered.
@@ -116,5 +199,36 @@ typedef enum {
  * @param dt The delta time since the last render.
  */
 - (void) onRenderPhaseBeginsWithDeltaTime:(float)dt;
+
+/**
+ * Called immediately after all scene-related attributes have been handed to the shader and
+ * before individual models are rendered.
+ * This can be used for example to handling lighting, view matrices, etc
+ */
+- (void) onSceneRenderReady;
+
+/**
+ * Called immediately before rendering the object to perform any pre-render operations.
+ * This can be used for example to bind textures to samplers, handle shader states, etc
+ */
+- (void) onModelRenderReady;
+
+/**
+ * Called immediately after rendering the object to perform any post-render operations.
+ * This can be used for example to handle shader states, perform clean up, etc
+ */
+- (void) onModelRenderEnds;
+
+/**
+ * Called immediately after all objects on a scene have been rendered.
+ * This can be used for example to clear up lighting before the next scene render.
+ */
+- (void) onSceneRenderEnds;
+
+/**
+ * Called right at the end of the render cycle.
+ * This can be used to perform any remaining clean up for example.
+ */
+- (void) onRenderPhaseEnds;
 
 @end

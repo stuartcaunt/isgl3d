@@ -92,9 +92,9 @@
 			[renderer setModelMatrix:&_worldTransformation];
 
 			// Renderer the particle
-			[renderer preRender];
+			[renderer onModelRenderReady];
 			[renderer render:Points withNumberOfElements:[_particle numberOfPoints] atOffset:0];
-			[renderer postRender];
+			[renderer onModelRenderEnds];
 		}
 	}
 	
@@ -134,9 +134,9 @@
 		[renderer setModelMatrix:&_worldTransformation];
 
 		// Renderer the particle
-		[renderer preRender];
+		[renderer onModelRenderReady];
 		[renderer render:Points withNumberOfElements:[_particle numberOfPoints] atOffset:0];
-		[renderer postRender];
+		[renderer onModelRenderEnds];
 
 		// Restore original particle color: !!! bad performance for particle systems !!!
 		[_particle restoreRenderColor];

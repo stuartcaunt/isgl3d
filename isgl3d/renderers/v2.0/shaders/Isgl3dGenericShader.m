@@ -166,8 +166,8 @@
 - (void) setTexture:(Isgl3dGLTexture *)texture {
 	if (_samplerLocation != -1) {
 		// Bind the texture
-		[self bindTexture:texture index:TEXTURE0_INDEX];
-		[self setUniformSampler:_samplerLocation forTextureIndex:TEXTURE0_INDEX];
+		[self bindTexture:texture textureUnit:TEXTURE0_INDEX];
+		[self setUniformSampler:_samplerLocation forTextureUnit:TEXTURE0_INDEX];
 	}
 	
 	_currentState.textureEnabled = YES;
@@ -297,8 +297,8 @@
 
 - (void) setShadowMap:(Isgl3dGLTexture *)texture {
 	if (_shadowMapSamplerLocation != -1) {
-		[self bindTexture:texture index:SHADOWMAP_INDEX];
-		[self setUniformSampler:_shadowMapSamplerLocation forTextureIndex:SHADOWMAP_INDEX];
+		[self bindTexture:texture textureUnit:SHADOWMAP_INDEX];
+		[self setUniformSampler:_shadowMapSamplerLocation forTextureUnit:SHADOWMAP_INDEX];
 	}
 }
 
@@ -307,11 +307,11 @@
 	_shadowAlpha = shadowAlpha;
 }
 
-- (void) preRender {
+- (void) onModelRenderReady {
 	[self handleStates];
 }
 
-- (void) postRender {
+- (void) onModelRenderEnds {
 	// save client states
 	[_previousState copyFrom:_currentState];
 	[_currentState reset];

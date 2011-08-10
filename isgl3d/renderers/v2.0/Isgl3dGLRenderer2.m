@@ -215,6 +215,27 @@
 	[_activeShader setActive];		
 }
 
+- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
+	[super setProjectionMatrix:projectionMatrix];
+	
+	// Pass projection matrix to all custom shaders
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[shader setProjectionMatrix:projectionMatrix];
+	}
+}
+
+- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+	[super setViewMatrix:viewMatrix];
+	
+	// Pass view matrix to all custom shaders
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[shader setViewMatrix:viewMatrix];
+	}
+}
+
+
 - (void) setupMatrices {
 
 	// calculate model-view matrix
@@ -229,12 +250,10 @@
 	im4Copy(&_mvpMatrix, &_projectionMatrix);
 	im4Multiply(&_mvpMatrix, &_mvMatrix);
 
+	// Pass model matrix (and combinations only to active shader)
 	[_activeShader setModelMatrix:&_modelMatrix];
-	[_activeShader setViewMatrix:&_viewMatrix];
-	[_activeShader setProjectionMatrix:&_projectionMatrix];
 	[_activeShader setModelViewMatrix:&_mvMatrix];
 	[_activeShader setModelViewProjectionMatrix:&_mvpMatrix];
-
 
 	// Send light model-view-projection matrix to generic renderer (for shadows)
 	im4Copy(&_lightModelViewProjectionMatrix, &_lightViewProjectionMatrix);
@@ -261,6 +280,7 @@
 	}
 }
 
+// Called only by Isgl3dTextureMaterial
 - (void) setTexture:(Isgl3dGLTexture *)texture {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setTexture:texture];
@@ -268,6 +288,7 @@
 	}
 }
 
+// Called only by Isgl3dColorMaterial
 - (void) setMaterialData:(GLfloat *)ambientColor diffuseColor:(GLfloat *)diffuseColor specularColor:(GLfloat *)specularColor withShininess:(GLfloat)shininess {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setMaterialData:ambientColor diffuseColor:diffuseColor specularColor:specularColor withShininess:shininess];
@@ -348,19 +369,69 @@
 	}
 }
 
-- (void) preRender {
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	// Clean up of custom shaders (remove any that are no longer retained)
+	NSMutableArray * unretainedShaders = [NSMutableArray arrayWithCapacity:1];
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		if ([shader retainCount] == 1) {
+			[unretainedShaders addObject:key];
+		}
+	} 
+
+	for (NSString * key in unretainedShaders) {
+		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : custom shader with key \"%@\" no longer retained: deleting.", key);
+		[_customShaders removeObjectForKey:key];
+	}	
+	
+	// custom handling of phase event
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader onRenderPhaseBeginsWithDeltaTime:dt];
+	} 
+}
+
+- (void) onSceneRenderReady {
+	// custom handling of phase event
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader onSceneRenderReady];
+	} 
+}
+
+- (void) onModelRenderReady {
 	// handle client states
 	[self handleStates];
 	
-	[_activeShader preRender];
+	[_activeShader onModelRenderReady];
 }
 
-- (void) postRender {
+- (void) onModelRenderEnds {
 	// save client states
 	[_previousState copyFrom:_currentState];
 	[_currentState reset];
 
-	[_activeShader postRender];
+	[_activeShader onModelRenderEnds];
+}
+
+- (void) onSceneRenderEnds {
+	// custom handling of phase event
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader onSceneRenderEnds];
+	} 
+}
+
+- (void) onRenderPhaseEnds {
+	// custom handling of phase event
+	for (NSString * key in _customShaders) {
+		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
+		[self setShaderActive:shader];
+		[shader onRenderPhaseEnds];
+	} 
 }
 
 - (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
@@ -514,29 +585,6 @@
 	[_customShaders setObject:shader forKey:shader.key];
 	
 	return YES;
-}
-
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
-	// Clean up of custom shaders (remove any that are no longer retained)
-	NSMutableArray * unretainedShaders = [NSMutableArray arrayWithCapacity:1];
-	for (NSString * key in _customShaders) {
-		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
-		if ([shader retainCount] == 1) {
-			[unretainedShaders addObject:key];
-		}
-	} 
-
-	for (NSString * key in unretainedShaders) {
-		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : custom shader with key \"%@\" no longer retained: deleting.", key);
-		[_customShaders removeObjectForKey:key];
-	}	
-	
-	// custom handling of phase event
-	for (NSString * key in _customShaders) {
-		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
-		[self setShaderActive:shader];
-		[shader onRenderPhaseBeginsWithDeltaTime:dt];
-	} 
 }
 
 @end

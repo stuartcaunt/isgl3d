@@ -37,6 +37,7 @@
 - (id) initWithKey:(NSString *)key {
 	if ((self = [super initWithVertexShaderFile:@"demoShader.vsh" fragmentShaderFile:@"demoShader.fsh" key:key])) {
 	
+		// Initialise the min and max height uniforms
 		[self setUniform1fWithName:@"u_minHeight" value:-1.0f];
 		[self setUniform1fWithName:@"u_maxHeight" value:1.0f];
 	}
@@ -48,18 +49,19 @@
 	[super dealloc];
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
-	[self setUniformMatrix4WithName:@"u_mvpMatrix" matrix:modelViewProjectionMatrix];
-}
-
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-	[self setVertexAttribute:GL_FLOAT attributeName:@"a_vertex" size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
-}
-
 - (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	// Update the animation factor with a new render phase
 	_time += dt;
 	float val = 0.5f * (1.0f + sin(2.0f * M_PI * _time / 1.0f));
 	[self setUniform1fWithName:@"u_factor" value:val];
+}
+
+- (void) onModelRenderReady {
+	// Bind the vertex data to the attributes
+	[self setVertexAttribute:GL_FLOAT attributeName:@"a_vertex" size:VBO_POSITION_SIZE strideBytes:self.vboData.stride offset:self.vboData.positionOffset];
+
+	// Set the mvp matrix
+	[self setUniformMatrix4WithName:@"u_mvpMatrix" matrix:self.modelViewProjectionMatrix];
 }
 
 

@@ -31,6 +31,19 @@
 
 @synthesize key = _key;
 @synthesize shaderType = _shaderType;
+@synthesize modelMatrix = _modelMatrix;
+@synthesize viewMatrix = _viewMatrix;
+@synthesize projectionMatrix = _projectionMatrix;
+@synthesize modelViewMatrix = _modelViewMatrix;
+@synthesize modelViewProjectionMatrix = _modelViewProjectionMatrix;
+@synthesize vboData = _vboData;
+@synthesize lights = _lights;
+@synthesize sceneAmbient = _sceneAmbient;
+@synthesize alphaCullingValue = _alphaCullingValue;
+@synthesize pointAttenuation = _pointAttenuation;
+@synthesize boneTransformations = _boneTransformations;
+@synthesize boneInverseTransformations = _boneInverseTransformations;
+@synthesize numberOfBonesPerVertex = _numberOfBonesPerVertex;
 @synthesize activeNode = _activeNode;
 
 + (id) shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
@@ -82,6 +95,8 @@
 		_shaderType = Isgl3dCustomShaderTrianglesType;
 		_key = key;
 
+		_lights = [[NSMutableArray alloc] init];
+
         Isgl3dLog(Info, @"Created custom shader for key %@", key);
 
 	}
@@ -90,69 +105,63 @@
 
 
 - (void) dealloc {
+	[_lights release];
 
 	[super dealloc];
 }
 
 
 - (void) clean {
-	// to be over-ridden if needed
+	[_lights removeAllObjects];
 }
 
 - (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
-	// to be over-ridden if needed
+	_modelMatrix = modelMatrix;
 }
 
 - (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-	// to be over-ridden if needed
+	_viewMatrix = viewMatrix;
 }
 
 - (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
-	// to be over-ridden if needed
+	_projectionMatrix = projectionMatrix;
 }
 
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
-	// to be over-ridden if needed
+	_modelViewMatrix = modelViewMatrix;
 }
 
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
-	// to be over-ridden if needed
+	_modelViewProjectionMatrix = modelViewProjectionMatrix;
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {
-	// to be over-ridden if needed
+	_vboData = vboData;
 }
 
 - (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-	// to be over-ridden if needed
+	[_lights addObject:light];
 }
 
 - (void) setSceneAmbient:(NSString *)ambient {
-	// to be over-ridden if needed
+	_sceneAmbient = ambient;
 }
 
 - (void) setAlphaCullingValue:(float)cullValue {
-	// to be over-ridden if needed
+	_alphaCullingValue = cullValue;
 }
 
 - (void) setPointAttenuation:(float *)attenuation {
-	// to be over-ridden if needed
+	_pointAttenuation = attenuation;
 }
 
 - (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
-	// to be over-ridden if needed
+	_boneTransformations = transformations;
+	_boneInverseTransformations = inverseTransformations;
 }
 
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
-	// to be over-ridden if needed
-}
-
-- (void) preRender {
-	// to be over-ridden if needed
-}
-
-- (void) postRender {
-	// to be over-ridden if needed
+	_numberOfBonesPerVertex = numberOfBonesPerVertex;
 }
 
 - (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
@@ -165,6 +174,32 @@
 
 - (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
 	// to be over-ridden if needed
+}
+
+
+- (void) onSceneRenderReady {
+	// to be over-ridden if needed
+	
+}
+
+- (void) onModelRenderReady {
+	// to be over-ridden if needed
+	
+}
+
+- (void) onModelRenderEnds {
+	// to be over-ridden if needed
+	
+}
+
+- (void) onSceneRenderEnds {
+	// to be over-ridden if needed
+	
+}
+
+- (void) onRenderPhaseEnds {
+	// to be over-ridden if needed
+	
 }
 
 

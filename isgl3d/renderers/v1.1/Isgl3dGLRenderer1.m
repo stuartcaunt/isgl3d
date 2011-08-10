@@ -397,17 +397,33 @@
 	glPointParameterfv(GL_POINT_DISTANCE_ATTENUATION, attenuation);
 }
 
-- (void) preRender {
+- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+	// Do nothing
+}
+
+- (void) onSceneRenderReady {
+	// Do nothing
+}
+
+- (void) onModelRenderReady {
 	// handle client states
 	[self handleStates];
 }
 
-- (void) postRender {
+- (void) onModelRenderEnds {
 	[self removeModelMatrix];
 	
 	// save client states
 	[_previousState copyFrom:_currentState];
 	[_currentState reset];
+}
+
+- (void) onSceneRenderEnds {
+	// Do nothing
+}
+
+- (void) onRenderPhaseEnds {
+	// Do nothing
 }
 
 - (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {

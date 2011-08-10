@@ -263,6 +263,9 @@
 			[_scene occlusionTest:&_cameraPosition normal:&_eyeNormal targetDistance:distance maxAngle:_occlusionTestingAngle];
 		}
 
+		// Handle any processing after all scene parameters have been set
+		[renderer onSceneRenderReady];
+
 		// Render opaque objects
 		[_scene render:renderer opaque:true];
 	
@@ -277,8 +280,9 @@
 			[_scene render:renderer opaque:false];
 		}
 
-		// Second planar shadow pass (if needed) (why ?)
-//		[self renderPlanarShadows:renderer];
+		// Handle any processing after rendering the scene
+		[renderer onSceneRenderEnds];
+
 	}
 	
 }

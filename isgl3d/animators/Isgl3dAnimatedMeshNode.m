@@ -96,11 +96,11 @@
 
 	[renderer setNumberOfBonesPerVertex:_numberOfBonesPerVertex];
 
-	[renderer preRender];
+	[renderer onModelRenderReady];
 	for (Isgl3dBoneBatch * boneBatch in _boneBatches) {
 		[boneBatch renderMesh:renderer];
 	}
-	[renderer postRender];
+	[renderer onModelRenderEnds];
 }
 
 @end

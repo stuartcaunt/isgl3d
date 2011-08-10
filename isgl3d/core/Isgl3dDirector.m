@@ -660,6 +660,9 @@ static Isgl3dDirector * _instance = nil;
 		[view render:_renderer];
 	}
 
+	// Handle any processing before rendering
+	[_renderer onRenderPhaseEnds];
+
 	// Render the fps if desired
 	if (_displayFPS) {
 		[_fpsRenderer update:_dt andRender:_renderer isPaused:_isPaused];

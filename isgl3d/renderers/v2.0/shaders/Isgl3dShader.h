@@ -64,7 +64,7 @@
  */
 - (id) initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 
-#pragma mark internal methods
+#pragma mark opengl related operations
 
 /**
  * Sets the shader, and its associated glProgram, active. Only one shader is active at a time.
@@ -231,9 +231,9 @@
  * @param textureIndex a user-defined index for a texture, specified with <em>bindTexture</em>. Note that a shader
  * can have up to a maximum 31 textures associated.
  * @param sampleIndex The location of the sampler
- * @param textureIndex The index of the texture unit (between 0 and 31)
+ * @param textureUnit The index of the texture unit (between 0 and 31)
  */
-- (void) setUniformSampler:(GLint)samplerIndex forTextureIndex:(GLuint)textureIndex;
+- (void) setUniformSampler:(GLint)samplerIndex forTextureUnit:(GLuint)textureUnit;
 
 /**
  * Copies data from an Isgl3dMatrix4 matrix to a 3x3 matrix uniform in the shader.
@@ -369,18 +369,18 @@
  * @param textureIndex a user-defined index for a texture, specified with <em>bindTexture</em>. Note that a shader
  * can have up to a maximum 31 textures associated.
  * @param sampleName The name of the sampler
- * @param textureIndex The index of the texture unit (between 0 and 31)
+ * @param textureUnit The index of the texture unit (between 0 and 31)
  */
-- (void) setUniformSamplerWithName:(NSString *)samplerName forTextureIndex:(GLuint)textureIndex;
+- (void) setUniformSamplerWithName:(NSString *)samplerName forTextureUnit:(GLuint)textureUnit;
 
 /**
  * Binds an Isgl3dGLTexture texture to a particular texture unit in the shader. A shader can have up to 
  * 32 different textures associated to different texture units. See also <em>setUniformSampler</em> and
  * <em>setUniformSamplerWithName</em> on how to link these texture units to samplers.
  * @param texture The texture to be associated with a texture unit.
- * @param index The index of the texture unit (between 0 and 31)
+ * @param textureUnit The index of the texture unit (between 0 and 31)
  */
-- (void) bindTexture:(Isgl3dGLTexture *)texture index:(GLuint)index;
+- (void) bindTexture:(Isgl3dGLTexture *)texture textureUnit:(GLuint)textureUnit;
 
 /**
  * Used by the different sub-classed shaders to render the currently active vertex buffer data with shader.
@@ -389,7 +389,7 @@
  */
 - (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset;
 
-#pragma mark user modifiable methods
+#pragma mark isgl3d internal calls (can be over-ridden for custom shaders)
 
 /**
  * Called at the beginning of the render cycle for an Isgl3dView after the buffers have been initialised. All shader-specific operations needed 
@@ -485,16 +485,19 @@
  */
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
 
+#pragma mark methods intended to be over-ridden
+
 /**
  * Called immediately before rendering the object to perform any pre-render operations.
  * This can be used for example to bind textures to samplers, handle shader states, etc
  */
-- (void) preRender;
+- (void) onModelRenderReady;
 
 /**
  * Called immediately after rendering the object to perform any post-render operations.
  * This can be used for example to handle shader states, perform clean up, etc
  */
-- (void) postRender;
+- (void) onModelRenderEnds;
+
 
 @end

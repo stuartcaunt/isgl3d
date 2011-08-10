@@ -107,8 +107,8 @@
 - (void) setTexture:(Isgl3dGLTexture *)texture {
 	// Bind the texture
 	if (_samplerLocation != -1) {
-		[self bindTexture:texture index:0];
-		[self setUniformSampler:_samplerLocation forTextureIndex:0];
+		[self bindTexture:texture textureUnit:0];
+		[self setUniformSampler:_samplerLocation forTextureUnit:0];
 	}
 	
 	_currentState.textureEnabled = YES;

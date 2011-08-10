@@ -128,10 +128,6 @@ typedef enum {
 - (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations;
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
 
-- (void) preRender;
-- (void) postRender;
-- (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset;
-
 - (void) setCaptureColor:(float *)color;
 - (void) resetCaptureColor;
 
@@ -149,8 +145,16 @@ typedef enum {
 
 - (void) clean;
 
-- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;
 - (void) onRenderPhaseBeginsWithDeltaTime:(float)dt;
+- (void) onSceneRenderReady;
+- (void) onModelRenderReady;
+- (void) onModelRenderEnds;
+- (void) onSceneRenderEnds;
+- (void) onRenderPhaseEnds;
+- (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset;
+
+
+- (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;
 
 
 @end

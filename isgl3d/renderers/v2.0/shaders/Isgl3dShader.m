@@ -255,8 +255,8 @@ static unsigned int __textureUnitIndices[32] = {
 	glUniform4iv(uniformIndex, 1, values);
 }
 
-- (void) setUniformSampler:(GLint)samplerIndex forTextureIndex:(GLuint)textureIndex {
-	glUniform1i(samplerIndex, textureIndex);
+- (void) setUniformSampler:(GLint)samplerIndex forTextureUnit:(GLuint)textureUnit {
+	glUniform1i(samplerIndex, textureUnit);
 }
 
 - (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix {
@@ -349,20 +349,20 @@ static unsigned int __textureUnitIndices[32] = {
 	glUniform4iv(uniformIndex, 1, values);
 }
 
-- (void) setUniformSamplerWithName:(NSString *)samplerName forTextureIndex:(GLuint)textureIndex {
+- (void) setUniformSamplerWithName:(NSString *)samplerName forTextureUnit:(GLuint)textureUnit {
 	GLint samplerIndex = [self uniformIndexForName:samplerName];
-	glUniform1i(samplerIndex, textureIndex);
+	glUniform1i(samplerIndex, textureUnit);
 }
 
 
-- (void) bindTexture:(Isgl3dGLTexture *)texture index:(GLuint)index {
-	if (index > 31) {
-		Isgl3dLog(Warn, @"Isgl3dShader: a texture unit of %i is too hight: maximum value is 31.", index);
+- (void) bindTexture:(Isgl3dGLTexture *)texture textureUnit:(GLuint)textureUnit {
+	if (textureUnit > 31) {
+		Isgl3dLog(Warn, @"Isgl3dShader: a texture unit of %i is too hight: maximum value is 31.", textureUnit);
 		
 	} else {
-		GLuint textureUnit = __textureUnitIndices[index];
+		GLuint glTextureUnit = __textureUnitIndices[textureUnit];
 	
-		glActiveTexture(textureUnit);
+		glActiveTexture(glTextureUnit);
 		glBindTexture(GL_TEXTURE_2D, texture.textureId);
 	}
 }
@@ -411,10 +411,10 @@ static unsigned int __textureUnitIndices[32] = {
 - (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 }
 
-- (void) preRender {
+- (void) onModelRenderReady {
 }
 
-- (void) postRender {
+- (void) onModelRenderEnds {
 }
 
 

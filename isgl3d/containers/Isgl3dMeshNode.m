@@ -181,9 +181,9 @@
 }
 
 - (void) renderMesh:(Isgl3dGLRenderer *)renderer {
-	[renderer preRender];
+	[renderer onModelRenderReady];
 	[renderer render:Triangles withNumberOfElements:[_mesh numberOfElements] atOffset:0];
-	[renderer postRender];
+	[renderer onModelRenderEnds];
 }
 
 - (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
