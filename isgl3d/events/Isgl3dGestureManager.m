@@ -418,7 +418,7 @@
 		shouldReceive = YES;
 		
 		id<UIGestureRecognizerDelegate> recognizerDelegate = [self delegateForGestureRecognizer:gestureRecognizer];
-		if (recognizerDelegate != nil)
+		if ((recognizerDelegate != nil) && [recognizerDelegate respondsToSelector:@selector(gestureRecognizer:shouldReceiveTouch:)])
 			shouldReceive = [recognizerDelegate gestureRecognizer:gestureRecognizer shouldReceiveTouch:touch];
 	}
 	
@@ -430,7 +430,7 @@
 	BOOL shouldRecognize = YES;
 	
 	id<UIGestureRecognizerDelegate> recognizerDelegate = [self delegateForGestureRecognizer:gestureRecognizer];
-	if (recognizerDelegate != nil)
+	if ((recognizerDelegate != nil) && ([recognizerDelegate respondsToSelector:@selector(gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:)]))
 		shouldRecognize = [recognizerDelegate gestureRecognizer:gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer];
 	
 	return shouldRecognize;
@@ -441,7 +441,7 @@
 	BOOL shouldBegin = YES;
 	
 	id<UIGestureRecognizerDelegate> recognizerDelegate = [self delegateForGestureRecognizer:gestureRecognizer];
-	if (recognizerDelegate != nil)
+	if ((recognizerDelegate != nil) && ([recognizerDelegate respondsToSelector:@selector(gestureRecognizerShouldBegin:)]))
 		shouldBegin = [recognizerDelegate gestureRecognizerShouldBegin:gestureRecognizer];
 	
 	return shouldBegin;
