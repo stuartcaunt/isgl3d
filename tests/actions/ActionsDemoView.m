@@ -56,9 +56,11 @@
 		
 		
 		Isgl3dAction * action = [Isgl3dActionSequence actionWithActions:
-									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(3.0, 0.0, 0.0)],
-									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(3.0, 2.0, 0.0)],
-									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(0.0, 0.0, 0.0)],
+									[Isgl3dActionRotateXTo actionWithDuration:1.0 angle:90.0f],
+									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(3.0f, 0.0f, 0.0f)],
+									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(3.0f, 2.0f, 0.0f)],
+									[Isgl3dActionMoveBy actionWithDuration:1.0 vector:iv3(0.0f, 0.0f, 3.0f)],
+									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(0.0f, 0.0f, 0.0f)],
 									nil];
 		[_arrow runAction:action];
 		

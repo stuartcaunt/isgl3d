@@ -30,6 +30,8 @@
  #import "Isgl3dActionInterval.h"
  #import "Isgl3dVector.h"
 
+#pragma mark Isgl3dActionMoveTo
+
 /**
  * The Isgl3dActionMoveTo moves an object to a specified location.
  */
@@ -49,5 +51,26 @@
  */
 - (id) initWithDuration:(float)duration position:(Isgl3dVector3)position;
 
+@end
+
+#pragma mark Isgl3dActionMoveBy
+
+/**
+ * The Isgl3dActionMoveTo moves an object to a specified location.
+ */
+@interface Isgl3dActionMoveBy : Isgl3dActionInterval <NSCopying> {
+	Isgl3dVector3 _initialPosition;
+	Isgl3dVector3 _vector;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionMoveBy with a duration and a vector.
+ */
++ (id) actionWithDuration:(float)duration vector:(Isgl3dVector3)vector;
+
+/**
+ * Initialises the an Isgl3dActionMoveTo with a duration and a vector.
+ */
+- (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 
 @end

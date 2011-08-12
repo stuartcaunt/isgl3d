@@ -23,46 +23,32 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * 
  *
  */
+ 
+ #import "Isgl3dActionInterval.h"
 
-#import "Isgl3dActionMoveTo.h"
-#import "Isgl3dNode.h"
+#pragma mark Isgl3dActionRotateXTo
 
-@implementation Isgl3dActionMoveTo
-
-
-+ (id) actionWithDuration:(float)duration position:(Isgl3dVector3)position {
-	return [[[self alloc] initWithDuration:duration position:position] autorelease];
+/**
+ * The Isgl3dActionRotateXTo rotates an object to a specified rotation around the X axis.
+ */
+@interface Isgl3dActionRotateXTo : Isgl3dActionInterval <NSCopying> {
+	float _initialAngle;
+	float _finalAngle;
+	float _delta;
 }
 
-- (id) initWithDuration:(float)duration position:(Isgl3dVector3)position {
-	if ((self = [super initWithDuration:duration])) {
-		_finalPosition = position;
-	}
-	
-	return self;
-}
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRotateXTo with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
 
-- (void) dealloc {
-	[super dealloc];
-}
-
-- (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionMoveTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration position:_finalPosition];
-
-	return copy;
-}
-
--(void) startWithTarget:(id)target {
-	[super startWithTarget:target];
-	_initialPosition = ((Isgl3dNode *)target).position;
-	_vector = _finalPosition;
-	iv3Sub(&_vector, &_initialPosition);
-}
-
-- (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
-}
+/**
+ * Initialises the an Isgl3dActionRotateXTo with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
 
 @end
+

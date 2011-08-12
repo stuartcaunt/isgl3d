@@ -129,7 +129,7 @@
 			<key>Path</key>
 			<string>libs/isgl3d/actions/Isgl3dActionManager.m</string>
 		</dict>
-		<key>libs/isgl3d/actions/Isgl3dActionMoveTo.h</key>
+		<key>libs/isgl3d/actions/Isgl3dActionMove.h</key>
 		<dict>
 			<key>Group</key>
 			<array>
@@ -138,11 +138,11 @@
 				<string>actions</string>
 			</array>
 			<key>Path</key>
-			<string>libs/isgl3d/actions/Isgl3dActionMoveTo.h</string>
+			<string>libs/isgl3d/actions/Isgl3dActionMove.h</string>
 			<key>TargetIndices</key>
 			<array/>
 		</dict>
-		<key>libs/isgl3d/actions/Isgl3dActionMoveTo.m</key>
+		<key>libs/isgl3d/actions/Isgl3dActionMove.m</key>
 		<dict>
 			<key>Group</key>
 			<array>
@@ -151,7 +151,7 @@
 				<string>actions</string>
 			</array>
 			<key>Path</key>
-			<string>libs/isgl3d/actions/Isgl3dActionMoveTo.m</string>
+			<string>libs/isgl3d/actions/Isgl3dActionMove.m</string>
 		</dict>
 		<key>libs/isgl3d/actions/Isgl3dActionSequence.h</key>
 		<dict>
@@ -3765,8 +3765,8 @@
 		<string>libs/isgl3d/actions/Isgl3dActionInterval.m</string>
 		<string>libs/isgl3d/actions/Isgl3dActionManager.h</string>
 		<string>libs/isgl3d/actions/Isgl3dActionManager.m</string>
-		<string>libs/isgl3d/actions/Isgl3dActionMoveTo.h</string>
-		<string>libs/isgl3d/actions/Isgl3dActionMoveTo.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionMove.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionMove.m</string>
 		<string>libs/isgl3d/actions/Isgl3dActionSequence.h</string>
 		<string>libs/isgl3d/actions/Isgl3dActionSequence.m</string>
 		<string>libs/isgl3d/animators/Isgl3dAnimatedMeshNode.h</string>

@@ -36,7 +36,7 @@ echoHeader() {
 
 rm $BASE_DIR/isgl3d.h
 rm $BASE_DIR/isgl3d.m
-rm $FRAMEWORK_DIR/isgl3d.h
+#rm $FRAMEWORK_DIR/isgl3d.h
 
 # header 
 echoHeader $BASE_DIR/isgl3d.h
@@ -62,14 +62,14 @@ echo "	return version;" >> $BASE_DIR/isgl3d.m
 echo "}" >> $BASE_DIR/isgl3d.m
 echo "" >> $BASE_DIR/isgl3d.m
 
-# framework isgl3d.h
-echoHeader $FRAMEWORK_DIR/isgl3d.h
-for file in $(find $BASE_DIR -name Isgl3d*.h -not -name isgl3d.h -not -name Isgl3dPODImporter.h)
-do
+## framework isgl3d.h
+#echoHeader $FRAMEWORK_DIR/isgl3d.h
+#for file in $(find $BASE_DIR -name Isgl3d*.h -not -name isgl3d.h -not -name Isgl3dPODImporter.h)
+#do
+#
+#	newFile=$(echo $file | sed 's!.*/!!')
+#	echo "#import <isgl3d/$newFile>" >> $FRAMEWORK_DIR/isgl3d.h
+#done
 
-	newFile=$(echo $file | sed 's!.*/!!')
-	echo "#import <isgl3d/$newFile>" >> $FRAMEWORK_DIR/isgl3d.h
-done
-
-# Generate Xcode4 template library plist
-./buildTemplatePlist.sh
+## Generate Xcode4 template library plist
+#./buildTemplatePlist.sh

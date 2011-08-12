@@ -1101,8 +1101,6 @@
 		17D0773813F459E2003F6E46 /* Isgl3dActionInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0772E13F459E2003F6E46 /* Isgl3dActionInterval.m */; };
 		17D0773913F459E2003F6E46 /* Isgl3dActionSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */; };
 		17D0773A13F459E2003F6E46 /* Isgl3dActionSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */; };
-		17D0773D13F47BCE003F6E46 /* Isgl3dActionMoveTo.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0773B13F47BCE003F6E46 /* Isgl3dActionMoveTo.h */; };
-		17D0773E13F47BCE003F6E46 /* Isgl3dActionMoveTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0773C13F47BCE003F6E46 /* Isgl3dActionMoveTo.m */; };
 		17D0774113F4A38C003F6E46 /* Isgl3dActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */; };
 		17D0774213F4A38C003F6E46 /* Isgl3dActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */; };
 		17D0774713F4A643003F6E46 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
@@ -1130,6 +1128,10 @@
 		17D0776013F4A643003F6E46 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17D0776913F4A675003F6E46 /* ActionsDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0776813F4A675003F6E46 /* ActionsDemoView.m */; };
 		17D39451135373B700D50A60 /* isgl3d.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D39450135373B700D50A60 /* isgl3d.m */; };
+		17DC4E4D13F509580002B569 /* Isgl3dActionMove.h in Headers */ = {isa = PBXBuildFile; fileRef = 17DC4E4B13F509580002B569 /* Isgl3dActionMove.h */; };
+		17DC4E4E13F509580002B569 /* Isgl3dActionMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DC4E4C13F509580002B569 /* Isgl3dActionMove.m */; };
+		17DC4E5113F50CAC0002B569 /* Isgl3dActionRotate.h in Headers */ = {isa = PBXBuildFile; fileRef = 17DC4E4F13F50CAC0002B569 /* Isgl3dActionRotate.h */; };
+		17DC4E5213F50CAC0002B569 /* Isgl3dActionRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DC4E5013F50CAC0002B569 /* Isgl3dActionRotate.m */; };
 		17E7E2AE137C47E200483AE6 /* Legs.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FC12FC7BE000861D84 /* Legs.pvr */; };
 		17E7E2AF137C47E400483AE6 /* Belt.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122F912FC7BE000861D84 /* Belt.pvr */; };
 		17E7E2B0137C47E700483AE6 /* Body.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FA12FC7BE000861D84 /* Body.pvr */; };
@@ -2340,14 +2342,16 @@
 		17D0772E13F459E2003F6E46 /* Isgl3dActionInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionInterval.m; sourceTree = "<group>"; };
 		17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionSequence.h; sourceTree = "<group>"; };
 		17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionSequence.m; sourceTree = "<group>"; };
-		17D0773B13F47BCE003F6E46 /* Isgl3dActionMoveTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionMoveTo.h; sourceTree = "<group>"; };
-		17D0773C13F47BCE003F6E46 /* Isgl3dActionMoveTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionMoveTo.m; sourceTree = "<group>"; };
 		17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionManager.h; sourceTree = "<group>"; };
 		17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionManager.m; sourceTree = "<group>"; };
 		17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PrimitivesDemo copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D0776713F4A675003F6E46 /* ActionsDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsDemoView.h; sourceTree = "<group>"; };
 		17D0776813F4A675003F6E46 /* ActionsDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsDemoView.m; sourceTree = "<group>"; };
 		17D39450135373B700D50A60 /* isgl3d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = isgl3d.m; sourceTree = "<group>"; };
+		17DC4E4B13F509580002B569 /* Isgl3dActionMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionMove.h; sourceTree = "<group>"; };
+		17DC4E4C13F509580002B569 /* Isgl3dActionMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionMove.m; sourceTree = "<group>"; };
+		17DC4E4F13F50CAC0002B569 /* Isgl3dActionRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionRotate.h; sourceTree = "<group>"; };
+		17DC4E5013F50CAC0002B569 /* Isgl3dActionRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionRotate.m; sourceTree = "<group>"; };
 		17EA00BE13F0AAB500924372 /* Isgl3dShaderMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dShaderMaterial.h; sourceTree = "<group>"; };
 		17EA00BF13F0AAB500924372 /* Isgl3dShaderMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dShaderMaterial.m; sourceTree = "<group>"; };
 		17EA00C213F0AAD200924372 /* Isgl3dCustomShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dCustomShader.h; sourceTree = "<group>"; };
@@ -3820,8 +3824,10 @@
 				17D0772E13F459E2003F6E46 /* Isgl3dActionInterval.m */,
 				17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */,
 				17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */,
-				17D0773B13F47BCE003F6E46 /* Isgl3dActionMoveTo.h */,
-				17D0773C13F47BCE003F6E46 /* Isgl3dActionMoveTo.m */,
+				17DC4E4B13F509580002B569 /* Isgl3dActionMove.h */,
+				17DC4E4C13F509580002B569 /* Isgl3dActionMove.m */,
+				17DC4E4F13F50CAC0002B569 /* Isgl3dActionRotate.h */,
+				17DC4E5013F50CAC0002B569 /* Isgl3dActionRotate.m */,
 				17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */,
 				17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */,
 			);
@@ -4696,8 +4702,9 @@
 				17D0773513F459E2003F6E46 /* Isgl3dActionInstant.h in Headers */,
 				17D0773713F459E2003F6E46 /* Isgl3dActionInterval.h in Headers */,
 				17D0773913F459E2003F6E46 /* Isgl3dActionSequence.h in Headers */,
-				17D0773D13F47BCE003F6E46 /* Isgl3dActionMoveTo.h in Headers */,
 				17D0774113F4A38C003F6E46 /* Isgl3dActionManager.h in Headers */,
+				17DC4E4D13F509580002B569 /* Isgl3dActionMove.h in Headers */,
+				17DC4E5113F50CAC0002B569 /* Isgl3dActionRotate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6645,8 +6652,9 @@
 				17D0773613F459E2003F6E46 /* Isgl3dActionInstant.m in Sources */,
 				17D0773813F459E2003F6E46 /* Isgl3dActionInterval.m in Sources */,
 				17D0773A13F459E2003F6E46 /* Isgl3dActionSequence.m in Sources */,
-				17D0773E13F47BCE003F6E46 /* Isgl3dActionMoveTo.m in Sources */,
 				17D0774213F4A38C003F6E46 /* Isgl3dActionManager.m in Sources */,
+				17DC4E4E13F509580002B569 /* Isgl3dActionMove.m in Sources */,
+				17DC4E5213F50CAC0002B569 /* Isgl3dActionRotate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
