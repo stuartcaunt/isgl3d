@@ -1,4 +1,5 @@
 current SVN version
+	Isgl3dAction (and sub-classes): added as an alternative means of animating nodes.
 	Isgl3dShaderMaterial, Isgl3dCustomShader : Added to framework to allow custom OpenGL ES2 shaders to be more easily integrated.
 	OpenGL ES2 generic shader bugs : fixed by Holger
 	Isgl3dTextureMaterial: Add API to create textures from UIImages (thanks to Viktor)

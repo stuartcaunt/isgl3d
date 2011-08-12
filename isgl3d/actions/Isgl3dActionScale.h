@@ -43,21 +43,33 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionScaleTo with a duration and end scale.
+ * @param duration The duration of the action
+ * @param scale The desired scale
  */
 + (id) actionWithDuration:(float)duration scale:(float)scale ;
 
 /**
  * Initialises the an Isgl3dActionScaleTo with a duration and end scale.
+ * @param duration The duration of the action
+ * @param scale The desired scale
  */
 - (id) initWithDuration:(float)duration scale:(float)scale;
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionScaleTo with a duration and end scales.
+ * @param duration The duration of the action
+ * @param scaleX The desired scaleX
+ * @param scaleY The desired scaleY
+ * @param scaleZ The desired scaleZ
  */
 + (id) actionWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 
 /**
  * Initialises the an Isgl3dActionScaleTo with a duration and end scales.
+ * @param duration The duration of the action
+ * @param scaleX The desired scaleX
+ * @param scaleY The desired scaleY
+ * @param scaleZ The desired scaleZ
  */
 - (id) initWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 
@@ -77,21 +89,33 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionScaleBy with a duration and delta scale.
+ * @param duration The duration of the action
+ * @param scale The desired change in scale
  */
 + (id) actionWithDuration:(float)duration scale:(float)scale ;
 
 /**
  * Initialises the an Isgl3dActionScaleBy with a duration and delta scale.
+ * @param duration The duration of the action
+ * @param scale The desired change in scale
  */
 - (id) initWithDuration:(float)duration scale:(float)scale;
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionScaleBy with a duration and delta scales.
+ * @param duration The duration of the action
+ * @param scaleX The desired change in scaleX
+ * @param scaleY The desired change in scaleY
+ * @param scaleZ The desired change in scaleZ
  */
 + (id) actionWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 
 /**
  * Initialises the an Isgl3dActionScaleBy with a duration and delta scales.
+ * @param duration The duration of the action
+ * @param scaleX The desired change in scaleX
+ * @param scaleY The desired change in scaleY
+ * @param scaleZ The desired change in scaleZ
  */
 - (id) initWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 

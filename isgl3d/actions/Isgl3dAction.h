@@ -53,16 +53,16 @@
 - (id) init;
 
 /**
- * Called internally when starting the action to associate it with the target and perform any other initialisation.
- * Note : This is called internally by the iSGL3D framework and should not be called manually.
+ * Copies the action.
  */
-- (void) startWithTarget:(id)target;
+- (id) copyWithZone:(NSZone *) zone;
 
 /**
- * Stops the action.
+ * Called internally when starting the action to associate it with the target and perform any other initialisation.
  * Note : This is called internally by the iSGL3D framework and should not be called manually.
+ * @param target The target to run the action on.
  */
-- (void) stop;
+- (void) startWithTarget:(id)target;
 
 /**
  * Returns true if the action has terminated.
@@ -72,12 +72,14 @@
 /**
  * Called by the action manager to update the action with the time between render frames. 
  * Note : This is called internally by the iSGL3D framework and should not be called manually.
+ * @param dt The delta time since the last update.
  */
 - (void) tick:(float)dt;
 
 /**
  * Updates the action with a progress between 0 (started) and 1 (terminated).
  * Note : This is called internally by the iSGL3D framework and should not be called manually.
+ * @param progress The progress of the action between 0 and 1.
  */
 - (void) update:(float)progress;
 

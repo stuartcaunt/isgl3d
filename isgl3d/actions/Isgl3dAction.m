@@ -58,10 +58,6 @@
 	_target = target;
 }
 
-- (void) stop {
-	// to be over-ridden
-}
-
 - (BOOL) hasTerminated {
 	// to be over-ridden
 	return YES;

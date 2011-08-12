@@ -23,69 +23,33 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * 
  *
  */
+ 
+#import "Isgl3dAction.h"
 
-#import "Isgl3dActionInterval.h"
+@class Isgl3dActionInterval;
 
-@implementation Isgl3dActionInterval
+#pragma mark Isgl3dActionRepeatForever
 
-@synthesize elapsedTime = _elapsedTime;
-
-+ (id) actionWithDuration:(float)duration {
-	return [[[self alloc] initWithDuration:duration] autorelease];
+/**
+ * The Isgl3dActionRepeatForever repeats an action forever until stopped
+ */
+@interface Isgl3dActionRepeatForever : Isgl3dAction <NSCopying> {
+	Isgl3dActionInterval * _action;
 }
 
-- (id) initWithDuration:(float)duration {
-	if ((self = [super init])) {
-		
-		// Ensure that duration is positive and greater than 0
-		duration = fmax(1.0e-6, duration);
-		
-		_duration = duration;
-		_elapsedTime = 0.0f;
-		_isFirstTick = YES;
-	}
-	
-	return self;
-}
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRepeatForever with an action to repeat
+ * @param action The action to repeat forever
+ */
++ (id) actionWithAction:(Isgl3dActionInterval *)action;
 
-- (void) dealloc {
-	[super dealloc];
-}
-
-- (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionInterval * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
-
-	return copy;
-}
-
-- (float) duration {
-	return _duration;
-}
-
--(void) startWithTarget:(id)target {
-	[super startWithTarget:target];
-
-	_elapsedTime = 0.0f;
-	_isFirstTick = YES;
-}
-
-- (BOOL) hasTerminated {
-	return _elapsedTime >= _duration;
-}
-
-- (void) tick:(float)dt {
-	float progress = 0.0f;
-	if (_isFirstTick) {
-		_isFirstTick = NO;
-	
-	} else {
-		_elapsedTime += dt;
-		progress = fmin(1.0f, (_elapsedTime / _duration));
-	}
-
-	[self update:progress];
-}
+/**
+ * Initialises the an Isgl3dActionRepeatForever with an action to repeat.
+ * @param action The action to repeat forever
+ */
+- (id) initWithAction:(Isgl3dActionInterval *)action;
 
 @end

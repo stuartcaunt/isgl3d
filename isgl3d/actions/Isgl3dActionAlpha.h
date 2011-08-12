@@ -43,11 +43,15 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionAlphaTo with a duration and end alpha.
+ * @param duration The duration of the action
+ * @param alpha The desired alpha
  */
 + (id) actionWithDuration:(float)duration alpha:(float)alpha;
 
 /**
  * Initialises the an Isgl3dActionAlphaTo with a duration and end alpha.
+ * @param duration The duration of the action
+ * @param alpha The desired alpha
  */
 - (id) initWithDuration:(float)duration alpha:(float)alpha;
 
@@ -63,11 +67,13 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionFadeIn.
+ * @param duration The duration of the action
  */
 + (id) actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionFadeIn.
+ * @param duration The duration of the action
  */
 - (id) initWithDuration:(float)duration;
 
@@ -83,11 +89,13 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionFadeOut.
+ * @param duration The duration of the action
  */
 + (id) actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionFadeIn.
+ * @param duration The duration of the action
  */
 - (id) initWithDuration:(float)duration;
 
@@ -104,11 +112,13 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionSetAlpha with an alpha.
+ * @param alpha The desired alpha
  */
 + (id) actionWithAlpha:(float)alpha;
 
 /**
  * Initialises the an Isgl3dActionSetAlpha with analpha.
+ * @param alpha The desired alpha
  */
 - (id) initWithAlpha:(float)alpha;
 

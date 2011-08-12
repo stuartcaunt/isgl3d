@@ -40,14 +40,17 @@
 }
 
 @property (nonatomic, readonly) float duration;
+@property (nonatomic, readonly) float elapsedTime;
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionInterval with a duration.
+ * @param duration The duration of the action
  */
 + (id) actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionInterval with a duration.
+ * @param duration The duration of the action
  */
 - (id) initWithDuration:(float)duration;
 

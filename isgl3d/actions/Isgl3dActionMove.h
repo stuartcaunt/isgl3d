@@ -44,11 +44,15 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionMoveTo with a duration and end position.
+ * @param duration The duration of the action
+ * @param position The position to move to
  */
 + (id) actionWithDuration:(float)duration position:(Isgl3dVector3)position;
 
 /**
  * Initialises the an Isgl3dActionMoveTo with a duration and end position.
+ * @param duration The duration of the action
+ * @param position The position to move to
  */
 - (id) initWithDuration:(float)duration position:(Isgl3dVector3)position;
 
@@ -66,11 +70,15 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionMoveBy with a duration and a vector.
+ * @param duration The duration of the action
+ * @param position The position to move by
  */
 + (id) actionWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 
 /**
  * Initialises the an Isgl3dActionMoveTo with a duration and a vector.
+ * @param duration The duration of the action
+ * @param position The position to move by
  */
 - (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 
@@ -87,11 +95,13 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionSetPosition with a position.
+ * @param position The position to move to
  */
 + (id) actionWithPosition:(Isgl3dVector3)position;
 
 /**
  * Initialises the an Isgl3dActionSetPosition with a position.
+ * @param position The position to move to
  */
 - (id) initWithPosition:(Isgl3dVector3)position;
 

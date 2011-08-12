@@ -41,11 +41,15 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionCallFunc with a function target and selector.
+ * @param target The target to call the selector on
+ * @param selector The selector to call
  */
 + (id) actionWithTarget:(id)target selector:(SEL)selector;
 
 /**
  * Initialises the Isgl3dActionCallFunc with a function target and selector.
+ * @param target The target to call the selector on
+ * @param selector The selector to call
  */
 - (id) initWithTarget:(id)target selector:(SEL)selector;
 

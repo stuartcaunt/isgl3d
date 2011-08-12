@@ -39,11 +39,13 @@
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionDelay with a duration.
+ * @param duration The duration of the action
  */
 + (id) actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionAlphaTo with a duration.
+ * @param duration The duration of the action
  */
 - (id) initWithDuration:(float)duration;
 

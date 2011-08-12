@@ -26,66 +26,56 @@
  *
  */
 
+#import "Isgl3dActionRepeat.h"
 #import "Isgl3dActionInterval.h"
 
-@implementation Isgl3dActionInterval
+#pragma mark Isgl3dActionRepeatForever
 
-@synthesize elapsedTime = _elapsedTime;
+@implementation Isgl3dActionRepeatForever
 
-+ (id) actionWithDuration:(float)duration {
-	return [[[self alloc] initWithDuration:duration] autorelease];
++ (id) actionWithAction:(Isgl3dActionInterval *)action {
+	return [[[self alloc] initWithAction:action] autorelease];
 }
 
-- (id) initWithDuration:(float)duration {
+- (id) initWithAction:(Isgl3dActionInterval *)action {
 	if ((self = [super init])) {
-		
-		// Ensure that duration is positive and greater than 0
-		duration = fmax(1.0e-6, duration);
-		
-		_duration = duration;
-		_elapsedTime = 0.0f;
-		_isFirstTick = YES;
+		_action = [action retain];
 	}
 	
 	return self;
 }
 
 - (void) dealloc {
+	[_action release];
+	
 	[super dealloc];
 }
 
 - (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionInterval * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
+	Isgl3dActionRepeatForever * copy = [[[self class] allocWithZone:zone] initWithAction:_action];
 
 	return copy;
 }
 
-- (float) duration {
-	return _duration;
-}
-
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
-
-	_elapsedTime = 0.0f;
-	_isFirstTick = YES;
-}
-
-- (BOOL) hasTerminated {
-	return _elapsedTime >= _duration;
+	
+	[_action startWithTarget:_target];
 }
 
 - (void) tick:(float)dt {
-	float progress = 0.0f;
-	if (_isFirstTick) {
-		_isFirstTick = NO;
+	[_action tick:dt];
 	
-	} else {
-		_elapsedTime += dt;
-		progress = fmin(1.0f, (_elapsedTime / _duration));
+	if (_action.hasTerminated) {
+		float dt = dt + _action.duration - _action.elapsedTime;
+		
+		[_action startWithTarget:_target];
+		[_action tick:dt];
 	}
+}
 
-	[self update:progress];
+- (BOOL) hasTerminated {
+	return NO;
 }
 
 @end

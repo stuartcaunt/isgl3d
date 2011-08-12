@@ -23,69 +23,44 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ * 
  *
  */
+ 
+ #import "Isgl3dActionInterval.h"
 
-#import "Isgl3dActionInterval.h"
+#pragma mark Isgl3dActionParallel
 
-@implementation Isgl3dActionInterval
-
-@synthesize elapsedTime = _elapsedTime;
-
-+ (id) actionWithDuration:(float)duration {
-	return [[[self alloc] initWithDuration:duration] autorelease];
+/**
+ * The Isgl3dActionParallel is used to execute a number of actions in parallel.
+ */
+@interface Isgl3dActionParallel : Isgl3dActionInterval <NSCopying> {
+	NSMutableArray * _actions;
 }
 
-- (id) initWithDuration:(float)duration {
-	if ((self = [super init])) {
-		
-		// Ensure that duration is positive and greater than 0
-		duration = fmax(1.0e-6, duration);
-		
-		_duration = duration;
-		_elapsedTime = 0.0f;
-		_isFirstTick = YES;
-	}
-	
-	return self;
-}
+/**
+ * Allocates and initialises (autorelease) the Isgl3dActionParallel with a number of actions to execute.
+ * @param action The first in a list of actions to run in parallel (terminated by nil)
+ */
++ (id) actionWithActions:(Isgl3dActionFixedDuration *)action, ...;
 
-- (void) dealloc {
-	[super dealloc];
-}
+/**
+ * Allocates and initialises (autorelease) the Isgl3dActionParallel with an array of actions to execute.
+ * @param actions An array of actions to run in parallel
+ */
++ (id) actionWithActionsArray:(NSArray *)actions;
 
-- (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionInterval * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
+/**
+ * Initialises the Isgl3dActionParallel with a number of actions to execute.
+ * @param action The first in a list of actions to run in parallel (terminated by nil)
+ */
+- (id) initWithActions:(Isgl3dActionFixedDuration *)action, ...;
 
-	return copy;
-}
+/**
+ * Initialises the Isgl3dActionParallel with an array of actions to execute.
+ * @param actions An array of actions to run in parallel
+ */
+- (id) initWithActionsArray:(NSArray *)actions;
 
-- (float) duration {
-	return _duration;
-}
-
--(void) startWithTarget:(id)target {
-	[super startWithTarget:target];
-
-	_elapsedTime = 0.0f;
-	_isFirstTick = YES;
-}
-
-- (BOOL) hasTerminated {
-	return _elapsedTime >= _duration;
-}
-
-- (void) tick:(float)dt {
-	float progress = 0.0f;
-	if (_isFirstTick) {
-		_isFirstTick = NO;
-	
-	} else {
-		_elapsedTime += dt;
-		progress = fmin(1.0f, (_elapsedTime / _duration));
-	}
-
-	[self update:progress];
-}
 
 @end

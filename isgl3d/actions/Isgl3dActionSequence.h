@@ -27,12 +27,12 @@
  *
  */
  
- #import "Isgl3dActionFixedDuration.h"
+ #import "Isgl3dActionInterval.h"
 
 /**
  * The Isgl3dActionSequence is used to execute a series of actions sequentially.
  */
-@interface Isgl3dActionSequence : Isgl3dActionFixedDuration <NSCopying> {
+@interface Isgl3dActionSequence : Isgl3dActionInterval <NSCopying> {
 	NSMutableArray * _actions;
 	unsigned int _currentActionIndex;
 	Isgl3dActionFixedDuration * _currentAction;
@@ -41,26 +41,27 @@
 	BOOL _isLastAction;
 }
 
-@property (nonatomic, retain) NSMutableArray * actions;
-
-
 /**
  * Allocates and initialises (autorelease) the Isgl3dActionSequence with a series of actions to execute.
+ * @param action The first in a list of actions to run sequentially (terminated by nil)
  */
 + (id) actionWithActions:(Isgl3dActionFixedDuration *)action, ...;
 
 /**
  * Allocates and initialises (autorelease) the Isgl3dActionSequence with an array of actions to execute.
+ * @param actions An array of actions to run sequentially
  */
 + (id) actionWithActionsArray:(NSArray *)actions;
 
 /**
  * Initialises the Isgl3dActionSequence with a series of actions to execute.
+ * @param action The first in a list of actions to run sequentially (terminated by nil)
  */
 - (id) initWithActions:(Isgl3dActionFixedDuration *)action, ...;
 
 /**
  * Initialises the Isgl3dActionSequence with an array of actions to execute.
+ * @param actions An array of actions to run sequentially
  */
 - (id) initWithActionsArray:(NSArray *)actions;
 

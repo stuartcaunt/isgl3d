@@ -26,9 +26,9 @@
  *
  */
 
-#import "Isgl3dActionSequence.h"
+#import "Isgl3dActionParallel.h"
 
-@implementation Isgl3dActionSequence
+@implementation Isgl3dActionParallel
 
 + (id) actionWithActions:(Isgl3dActionFixedDuration *)action, ... {
 	NSMutableArray * actions = [NSMutableArray arrayWithCapacity:2];
@@ -87,7 +87,7 @@
 
 - (id) copyWithZone:(NSZone*)zone {
 	NSMutableArray * actionsCopy = [[NSMutableArray alloc] initWithArray:_actions copyItems:YES];
-	Isgl3dActionSequence * copy = [[[self class] allocWithZone:zone] initWithActionsArray:[actionsCopy autorelease]];
+	Isgl3dActionParallel * copy = [[[self class] allocWithZone:zone] initWithActionsArray:[actionsCopy autorelease]];
 
 	return copy;
 }
@@ -95,7 +95,7 @@
 - (float) duration {
 	float duration = 0.0f;
 	for (Isgl3dActionFixedDuration * action in _actions) {
-		duration += action.duration;
+		duration = fmax(duration, action.duration);
 	}
 	return duration;
 }
@@ -103,31 +103,25 @@
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
 
-	_numberOfActions = [_actions count];
-	_currentActionIndex = 0;
-	_currentAction = [_actions objectAtIndex:0];
-	_isLastAction = (_currentActionIndex == _numberOfActions - 1);
-	
-	[_currentAction startWithTarget:_target];
+	for (Isgl3dActionFixedDuration * action in _actions) {
+		[action startWithTarget:_target];
+	}
 }
 
 - (BOOL) hasTerminated {
-	return _isLastAction && [_currentAction hasTerminated];
+	BOOL hasTerminated = YES;
+	for (Isgl3dActionFixedDuration * action in _actions) {
+		hasTerminated &= [action hasTerminated];
+	}
+	return hasTerminated;
 }
 
 - (void) tick:(float)dt {
-	if ([_currentAction hasTerminated]) {
-		if (!_isLastAction) {
-			_currentActionIndex++;
-			_isLastAction = (_currentActionIndex == _numberOfActions - 1);
-			
-			_currentAction = [_actions objectAtIndex:_currentActionIndex];
-			
-			[_currentAction startWithTarget:_target];
+	for (Isgl3dActionFixedDuration * action in _actions) {
+		if (!action.hasTerminated) {
+			[action tick:dt];
 		}
 	}
-
-	[_currentAction tick:dt];
 }
 
 @end
