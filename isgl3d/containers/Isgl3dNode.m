@@ -34,6 +34,8 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dQuaternion.h"
 #import "Isgl3dDirector.h"
+#import "Isgl3dActionManager.h"
+#import "Isgl3dAction.h"
 
 static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
@@ -105,6 +107,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 - (void) dealloc {
 	[_children release];
+
+	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
 	
 	[super dealloc];
 }
@@ -517,12 +521,22 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[_children addObject:child];
 	_hasChildren = YES;
 	
+	if (_isRunning) {
+		[child activate];
+	}
+	
 	return child;
 }
 
 - (void) removeChild:(Isgl3dNode *)child {
 	child.parent = nil;
 	[_children removeObject:child];
+	
+	if (_isRunning) {
+		[child deactivate];
+	}
+	
+	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
 	
 	if ([_children count] == 0) {
 		_hasChildren = NO;
@@ -531,6 +545,36 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 - (void) removeFromParent {
 	[_parent removeChild:self];
+}
+
+- (void) activate {
+	_isRunning = YES;
+	for (Isgl3dNode * child in _children) {
+		[child activate];
+	}
+	
+	[[Isgl3dActionManager sharedInstance] resumeActionsForTarget:self];
+	
+	[self onActivated];
+}
+
+- (void) deactivate {
+	_isRunning = NO;
+	for (Isgl3dNode * child in _children) {
+		[child deactivate];
+	}
+
+	[[Isgl3dActionManager sharedInstance] pauseActionsForTarget:self];
+	
+	[self onDeactivated];
+}
+
+- (void) onActivated {
+	// To be over-ridden	
+}
+
+- (void) onDeactivated {
+	// To be over-ridden	
 }
 
 - (void) clearAll {
@@ -689,5 +733,16 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[[Isgl3dDirector sharedInstance] setGestureRecognizerDelegate:aDelegate forGestureRecognizer:gestureRecognizer];
 }
 
+- (void) runAction:(Isgl3dAction *)action {
+	[[Isgl3dActionManager sharedInstance] addAction:action toTarget:self isPaused:!_isRunning];
+}
+
+- (void) stopAction:(Isgl3dAction *)action {
+	[[Isgl3dActionManager sharedInstance] stopAction:action];
+}
+
+- (void) stopAllActions {
+	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
+}
 
 @end

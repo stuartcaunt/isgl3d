@@ -23,6 +23,13 @@
  *
  */
 
+#import <isgl3d/Isgl3dAction.h>
+#import <isgl3d/Isgl3dActionFixedDuration.h>
+#import <isgl3d/Isgl3dActionInstant.h>
+#import <isgl3d/Isgl3dActionInterval.h>
+#import <isgl3d/Isgl3dActionManager.h>
+#import <isgl3d/Isgl3dActionMoveTo.h>
+#import <isgl3d/Isgl3dActionSequence.h>
 #import <isgl3d/Isgl3dAnimatedMeshNode.h>
 #import <isgl3d/Isgl3dAnimationController.h>
 #import <isgl3d/Isgl3dBoneBatch.h>
@@ -78,6 +85,7 @@
 #import <isgl3d/Isgl3dAnimatedTextureMaterial.h>
 #import <isgl3d/Isgl3dColorMaterial.h>
 #import <isgl3d/Isgl3dMaterial.h>
+#import <isgl3d/Isgl3dShaderMaterial.h>
 #import <isgl3d/Isgl3dTextureMaterial.h>
 #import <isgl3d/Isgl3dGLU.h>
 #import <isgl3d/Isgl3dMatrix.h>
@@ -111,8 +119,10 @@
 #import <isgl3d/Isgl3dGLRenderer2.h>
 #import <isgl3d/Isgl3dGLRenderer2State.h>
 #import <isgl3d/Isgl3dCaptureShader.h>
+#import <isgl3d/Isgl3dCustomShader.h>
 #import <isgl3d/Isgl3dGenericShader.h>
 #import <isgl3d/Isgl3dGLProgram.h>
+#import <isgl3d/Isgl3dInternalShader.h>
 #import <isgl3d/Isgl3dParticleShader.h>
 #import <isgl3d/Isgl3dShader.h>
 #import <isgl3d/Isgl3dShaderState.h>

@@ -30,7 +30,6 @@
 #import "Isgl3dVector.h"
 #import "Isgl3dMatrix.h"
 #import "isgl3dTypes.h"
-#import <UIKit/UIKit.h>
 
 
 @class Isgl3dMeshNode;
@@ -44,6 +43,8 @@
 @class Isgl3dGLMesh;
 @class Isgl3dGLParticle;
 @class Isgl3dGLRenderer;
+@class Isgl3dActionManager;
+@class Isgl3dAction;
 
 /**
  * The Isgl3dNode provides an interface to perform transformations on a node.
@@ -102,6 +103,8 @@
 	BOOL _interactive;
 
 	BOOL _isVisible;
+	
+	BOOL _isRunning;
 	
 @private
 
@@ -477,6 +480,30 @@
 - (void) removeFromParent;
 
 /**
+ * Activates the node and all its children. Called when a view is made active or a child is added to an already active node.
+ * Note : This is called internally by iSGL3D and should not be called manually. Any code that needs to
+ * be handled when the node is activated should be added in "onActivated".
+ */
+- (void) activate;
+
+/**
+ * Deactivates the node and all its children. Called when a view is made deactive or a child is removed from an active node.
+ * Note : This is called internally by iSGL3D and should not be called manually. Any code that needs to
+ * be handled when the node is deactivated should be added in "onDeactivated".
+ */
+- (void) deactivate;
+
+/**
+ * Called by "activate": any code that needs to be called when a node is activated should be implemented here in sub-classes.
+ */
+- (void) onActivated;
+
+/**
+ * Called by "deactivate": any code that needs to be called when a node is deactivated should be implemented here in sub-classes.
+ */
+- (void) onDeactivated;
+
+/**
  * Removes all child nodes.
  */
 - (void) clearAll;
@@ -624,5 +651,21 @@
  */
 - (void)setGestureRecognizerDelegate:(id<UIGestureRecognizerDelegate>)aDelegate forGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
 
+/**
+ * Runs a Isgl3dAction using this node as the target.
+ * @param action The action to be run on this node.
+ */
+- (void) runAction:(Isgl3dAction *)action;
+
+/**
+ * Stops a Isgl3dAction.
+ * @param action The action to be stopped.
+ */
+- (void) stopAction:(Isgl3dAction *)action;
+
+/**
+ * Stops all actions associated with this node.
+ */
+- (void) stopAllActions;
 
 @end

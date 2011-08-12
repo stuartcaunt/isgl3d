@@ -1091,6 +1091,44 @@
 		17CDF5D21367544500893070 /* KeyframeMeshAnimationTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CDF5CF1367544500893070 /* KeyframeMeshAnimationTestView.m */; };
 		17CDF5D413675B1600893070 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 173122FB12FC7BE000861D84 /* ground.png */; };
 		17CDF5D513675B7E00893070 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		17D0773113F459E2003F6E46 /* Isgl3dAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772713F459E2003F6E46 /* Isgl3dAction.h */; };
+		17D0773213F459E2003F6E46 /* Isgl3dAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0772813F459E2003F6E46 /* Isgl3dAction.m */; };
+		17D0773313F459E2003F6E46 /* Isgl3dActionFixedDuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772913F459E2003F6E46 /* Isgl3dActionFixedDuration.h */; };
+		17D0773413F459E2003F6E46 /* Isgl3dActionFixedDuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0772A13F459E2003F6E46 /* Isgl3dActionFixedDuration.m */; };
+		17D0773513F459E2003F6E46 /* Isgl3dActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772B13F459E2003F6E46 /* Isgl3dActionInstant.h */; };
+		17D0773613F459E2003F6E46 /* Isgl3dActionInstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0772C13F459E2003F6E46 /* Isgl3dActionInstant.m */; };
+		17D0773713F459E2003F6E46 /* Isgl3dActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772D13F459E2003F6E46 /* Isgl3dActionInterval.h */; };
+		17D0773813F459E2003F6E46 /* Isgl3dActionInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0772E13F459E2003F6E46 /* Isgl3dActionInterval.m */; };
+		17D0773913F459E2003F6E46 /* Isgl3dActionSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */; };
+		17D0773A13F459E2003F6E46 /* Isgl3dActionSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */; };
+		17D0773D13F47BCE003F6E46 /* Isgl3dActionMoveTo.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0773B13F47BCE003F6E46 /* Isgl3dActionMoveTo.h */; };
+		17D0773E13F47BCE003F6E46 /* Isgl3dActionMoveTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0773C13F47BCE003F6E46 /* Isgl3dActionMoveTo.m */; };
+		17D0774113F4A38C003F6E46 /* Isgl3dActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */; };
+		17D0774213F4A38C003F6E46 /* Isgl3dActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */; };
+		17D0774713F4A643003F6E46 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		17D0774813F4A643003F6E46 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		17D0774913F4A643003F6E46 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		17D0774A13F4A643003F6E46 /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		17D0774B13F4A643003F6E46 /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		17D0774C13F4A643003F6E46 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		17D0774D13F4A643003F6E46 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		17D0774E13F4A643003F6E46 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		17D0774F13F4A643003F6E46 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731227B12FC76D100861D84 /* red_checker.png */; };
+		17D0775013F4A643003F6E46 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DB13708A2100152EFE /* Default.png */; };
+		17D0775113F4A643003F6E46 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DC13708A2100152EFE /* Icon.png */; };
+		17D0775213F4A643003F6E46 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DD13708A2100152EFE /* Icon@2x.png */; };
+		17D0775313F4A643003F6E46 /* red_checker150.png in Resources */ = {isa = PBXBuildFile; fileRef = 17055FC913748DA300A3F20D /* red_checker150.png */; };
+		17D0775513F4A643003F6E46 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		17D0775613F4A643003F6E46 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		17D0775713F4A643003F6E46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		17D0775913F4A643003F6E46 /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
+		17D0775B13F4A643003F6E46 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		17D0775C13F4A643003F6E46 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		17D0775D13F4A643003F6E46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		17D0775E13F4A643003F6E46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		17D0775F13F4A643003F6E46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		17D0776013F4A643003F6E46 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		17D0776913F4A675003F6E46 /* ActionsDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D0776813F4A675003F6E46 /* ActionsDemoView.m */; };
 		17D39451135373B700D50A60 /* isgl3d.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D39450135373B700D50A60 /* isgl3d.m */; };
 		17E7E2AE137C47E200483AE6 /* Legs.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122FC12FC7BE000861D84 /* Legs.pvr */; };
 		17E7E2AF137C47E400483AE6 /* Belt.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 173122F912FC7BE000861D84 /* Belt.pvr */; };
@@ -1180,7 +1218,6 @@
 		17F1D7AC12F87EC5008D39E8 /* Isgl3dTouchScreenResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6C012F87EC5008D39E8 /* Isgl3dTouchScreenResponder.h */; };
 		17F1D7AD12F87EC5008D39E8 /* Isgl3dSingleTouchFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6C212F87EC5008D39E8 /* Isgl3dSingleTouchFilter.h */; };
 		17F1D7AE12F87EC5008D39E8 /* Isgl3dSingleTouchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D6C312F87EC5008D39E8 /* Isgl3dSingleTouchFilter.m */; };
-		17F1D7B112F87EC5008D39E8 /* isgl3d.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6C812F87EC5008D39E8 /* isgl3d.h */; };
 		17F1D7B212F87EC5008D39E8 /* Isgl3dLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6CA12F87EC5008D39E8 /* Isgl3dLight.h */; };
 		17F1D7B312F87EC5008D39E8 /* Isgl3dLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D6CB12F87EC5008D39E8 /* Isgl3dLight.m */; };
 		17F1D7B412F87EC5008D39E8 /* Isgl3dShadowCastingLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6CC12F87EC5008D39E8 /* Isgl3dShadowCastingLight.h */; };
@@ -1709,6 +1746,13 @@
 			remoteInfo = isgl3d;
 		};
 		17CDF5B0136753FA00893070 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		17D0774513F4A643003F6E46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -2286,6 +2330,23 @@
 		17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyframeMeshAnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17CDF5CE1367544500893070 /* KeyframeMeshAnimationTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyframeMeshAnimationTestView.h; sourceTree = "<group>"; };
 		17CDF5CF1367544500893070 /* KeyframeMeshAnimationTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyframeMeshAnimationTestView.m; sourceTree = "<group>"; };
+		17D0772713F459E2003F6E46 /* Isgl3dAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAction.h; sourceTree = "<group>"; };
+		17D0772813F459E2003F6E46 /* Isgl3dAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAction.m; sourceTree = "<group>"; };
+		17D0772913F459E2003F6E46 /* Isgl3dActionFixedDuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionFixedDuration.h; sourceTree = "<group>"; };
+		17D0772A13F459E2003F6E46 /* Isgl3dActionFixedDuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionFixedDuration.m; sourceTree = "<group>"; };
+		17D0772B13F459E2003F6E46 /* Isgl3dActionInstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionInstant.h; sourceTree = "<group>"; };
+		17D0772C13F459E2003F6E46 /* Isgl3dActionInstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionInstant.m; sourceTree = "<group>"; };
+		17D0772D13F459E2003F6E46 /* Isgl3dActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionInterval.h; sourceTree = "<group>"; };
+		17D0772E13F459E2003F6E46 /* Isgl3dActionInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionInterval.m; sourceTree = "<group>"; };
+		17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionSequence.h; sourceTree = "<group>"; };
+		17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionSequence.m; sourceTree = "<group>"; };
+		17D0773B13F47BCE003F6E46 /* Isgl3dActionMoveTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionMoveTo.h; sourceTree = "<group>"; };
+		17D0773C13F47BCE003F6E46 /* Isgl3dActionMoveTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionMoveTo.m; sourceTree = "<group>"; };
+		17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionManager.h; sourceTree = "<group>"; };
+		17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionManager.m; sourceTree = "<group>"; };
+		17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PrimitivesDemo copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D0776713F4A675003F6E46 /* ActionsDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsDemoView.h; sourceTree = "<group>"; };
+		17D0776813F4A675003F6E46 /* ActionsDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsDemoView.m; sourceTree = "<group>"; };
 		17D39450135373B700D50A60 /* isgl3d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = isgl3d.m; sourceTree = "<group>"; };
 		17EA00BE13F0AAB500924372 /* Isgl3dShaderMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dShaderMaterial.h; sourceTree = "<group>"; };
 		17EA00BF13F0AAB500924372 /* Isgl3dShaderMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dShaderMaterial.m; sourceTree = "<group>"; };
@@ -2856,6 +2917,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17D0775A13F4A643003F6E46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17D0775B13F4A643003F6E46 /* CoreGraphics.framework in Frameworks */,
+				17D0775C13F4A643003F6E46 /* OpenGLES.framework in Frameworks */,
+				17D0775D13F4A643003F6E46 /* QuartzCore.framework in Frameworks */,
+				17D0775E13F4A643003F6E46 /* UIKit.framework in Frameworks */,
+				17D0775F13F4A643003F6E46 /* Foundation.framework in Frameworks */,
+				17D0776013F4A643003F6E46 /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1D86012F88A4A008D39E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2949,6 +3023,7 @@
 				17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */,
 				178A63011368558A00BEFD2C /* KeyframePODAnimationTest.app */,
 				17A481CE13F129880098AC3F /* ShaderMaterialDemo.app */,
+				17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3732,9 +3807,40 @@
 			path = animation;
 			sourceTree = "<group>";
 		};
+		17D0772613F459E2003F6E46 /* actions */ = {
+			isa = PBXGroup;
+			children = (
+				17D0772713F459E2003F6E46 /* Isgl3dAction.h */,
+				17D0772813F459E2003F6E46 /* Isgl3dAction.m */,
+				17D0772913F459E2003F6E46 /* Isgl3dActionFixedDuration.h */,
+				17D0772A13F459E2003F6E46 /* Isgl3dActionFixedDuration.m */,
+				17D0772B13F459E2003F6E46 /* Isgl3dActionInstant.h */,
+				17D0772C13F459E2003F6E46 /* Isgl3dActionInstant.m */,
+				17D0772D13F459E2003F6E46 /* Isgl3dActionInterval.h */,
+				17D0772E13F459E2003F6E46 /* Isgl3dActionInterval.m */,
+				17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */,
+				17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */,
+				17D0773B13F47BCE003F6E46 /* Isgl3dActionMoveTo.h */,
+				17D0773C13F47BCE003F6E46 /* Isgl3dActionMoveTo.m */,
+				17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */,
+				17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */,
+			);
+			path = actions;
+			sourceTree = "<group>";
+		};
+		17D0776613F4A675003F6E46 /* actions */ = {
+			isa = PBXGroup;
+			children = (
+				17D0776713F4A675003F6E46 /* ActionsDemoView.h */,
+				17D0776813F4A675003F6E46 /* ActionsDemoView.m */,
+			);
+			path = actions;
+			sourceTree = "<group>";
+		};
 		17F1D66112F87EC5008D39E8 /* isgl3d */ = {
 			isa = PBXGroup;
 			children = (
+				17D0772613F459E2003F6E46 /* actions */,
 				17F1D66212F87EC5008D39E8 /* animators */,
 				17F1D66D12F87EC5008D39E8 /* cameras */,
 				17F1D67412F87EC5008D39E8 /* containers */,
@@ -4171,6 +4277,7 @@
 			isa = PBXGroup;
 			children = (
 				17F1E07812F89324008D39E8 /* accelerometer */,
+				17D0776613F4A675003F6E46 /* actions */,
 				17CDF5CD1367544500893070 /* animation */,
 				171CB86B13195D0C003712F4 /* augmentedreality */,
 				17BE1768132E95BD00D053BA /* billboard */,
@@ -4472,7 +4579,6 @@
 				17F1D7AA12F87EC5008D39E8 /* Isgl3dTouchScreen.h in Headers */,
 				17F1D7AC12F87EC5008D39E8 /* Isgl3dTouchScreenResponder.h in Headers */,
 				17F1D7AD12F87EC5008D39E8 /* Isgl3dSingleTouchFilter.h in Headers */,
-				17F1D7B112F87EC5008D39E8 /* isgl3d.h in Headers */,
 				17F1D7B212F87EC5008D39E8 /* Isgl3dLight.h in Headers */,
 				17F1D7B412F87EC5008D39E8 /* Isgl3dShadowCastingLight.h in Headers */,
 				17F1D7B612F87EC5008D39E8 /* Isgl3dAnimatedTextureMaterial.h in Headers */,
@@ -4585,6 +4691,13 @@
 				17EA00C013F0AAB500924372 /* Isgl3dShaderMaterial.h in Headers */,
 				17EA00C413F0AAD200924372 /* Isgl3dCustomShader.h in Headers */,
 				17A4823F13F2B7F40098AC3F /* Isgl3dInternalShader.h in Headers */,
+				17D0773113F459E2003F6E46 /* Isgl3dAction.h in Headers */,
+				17D0773313F459E2003F6E46 /* Isgl3dActionFixedDuration.h in Headers */,
+				17D0773513F459E2003F6E46 /* Isgl3dActionInstant.h in Headers */,
+				17D0773713F459E2003F6E46 /* Isgl3dActionInterval.h in Headers */,
+				17D0773913F459E2003F6E46 /* Isgl3dActionSequence.h in Headers */,
+				17D0773D13F47BCE003F6E46 /* Isgl3dActionMoveTo.h in Headers */,
+				17D0774113F4A38C003F6E46 /* Isgl3dActionManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5106,6 +5219,24 @@
 			productReference = 17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17D0774313F4A643003F6E46 /* ActionsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17D0776113F4A643003F6E46 /* Build configuration list for PBXNativeTarget "ActionsDemo" */;
+			buildPhases = (
+				17D0774613F4A643003F6E46 /* Resources */,
+				17D0775413F4A643003F6E46 /* Sources */,
+				17D0775A13F4A643003F6E46 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17D0774413F4A643003F6E46 /* PBXTargetDependency */,
+			);
+			name = ActionsDemo;
+			productName = CameraZoomAndFocus;
+			productReference = 17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		17F1D86112F88A4A008D39E8 /* isgl3dbullet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17F1D87312F88A5A008D39E8 /* Build configuration list for PBXNativeTarget "isgl3dbullet" */;
@@ -5247,6 +5378,7 @@
 				17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */,
 				178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */,
 				17A481AD13F129880098AC3F /* ShaderMaterialDemo */,
+				17D0774313F4A643003F6E46 /* ActionsDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -5797,6 +5929,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17D0774613F4A643003F6E46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17D0774713F4A643003F6E46 /* capture.fsh in Resources */,
+				17D0774813F4A643003F6E46 /* capture.vsh in Resources */,
+				17D0774913F4A643003F6E46 /* generic.fsh in Resources */,
+				17D0774A13F4A643003F6E46 /* generic.vsh in Resources */,
+				17D0774B13F4A643003F6E46 /* particle.fsh in Resources */,
+				17D0774C13F4A643003F6E46 /* particle.vsh in Resources */,
+				17D0774D13F4A643003F6E46 /* shadowMap.fsh in Resources */,
+				17D0774E13F4A643003F6E46 /* shadowMap.vsh in Resources */,
+				17D0774F13F4A643003F6E46 /* red_checker.png in Resources */,
+				17D0775013F4A643003F6E46 /* Default.png in Resources */,
+				17D0775113F4A643003F6E46 /* Icon.png in Resources */,
+				17D0775213F4A643003F6E46 /* Icon@2x.png in Resources */,
+				17D0775313F4A643003F6E46 /* red_checker150.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1E06712F89091008D39E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6174,6 +6326,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17D0775413F4A643003F6E46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17D0775513F4A643003F6E46 /* Isgl3dDemoCameraController.m in Sources */,
+				17D0775613F4A643003F6E46 /* Isgl3dViewController.m in Sources */,
+				17D0775713F4A643003F6E46 /* main.m in Sources */,
+				17D0775913F4A643003F6E46 /* Isgl3dAppDelegate.mm in Sources */,
+				17D0776913F4A675003F6E46 /* ActionsDemoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17F1D85F12F88A4A008D39E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6476,6 +6640,13 @@
 				17EA00C113F0AAB500924372 /* Isgl3dShaderMaterial.m in Sources */,
 				17EA00C513F0AAD200924372 /* Isgl3dCustomShader.m in Sources */,
 				17A4824013F2B7F40098AC3F /* Isgl3dInternalShader.m in Sources */,
+				17D0773213F459E2003F6E46 /* Isgl3dAction.m in Sources */,
+				17D0773413F459E2003F6E46 /* Isgl3dActionFixedDuration.m in Sources */,
+				17D0773613F459E2003F6E46 /* Isgl3dActionInstant.m in Sources */,
+				17D0773813F459E2003F6E46 /* Isgl3dActionInterval.m in Sources */,
+				17D0773A13F459E2003F6E46 /* Isgl3dActionSequence.m in Sources */,
+				17D0773E13F47BCE003F6E46 /* Isgl3dActionMoveTo.m in Sources */,
+				17D0774213F4A38C003F6E46 /* Isgl3dActionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6766,6 +6937,11 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17CDF5B0136753FA00893070 /* PBXContainerItemProxy */;
+		};
+		17D0774413F4A643003F6E46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 17D0774513F4A643003F6E46 /* PBXContainerItemProxy */;
 		};
 		17F1E07E12F89333008D39E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8100,6 +8276,55 @@
 			};
 			name = Release;
 		};
+		17D0776213F4A643003F6E46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "PrimitivesDemo copy";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17D0776313F4A643003F6E46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "PrimitivesDemo copy";
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		17F1D86312F88A4B008D39E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -8586,6 +8811,15 @@
 			buildConfigurations = (
 				17CDF5C9136753FA00893070 /* Debug */,
 				17CDF5CA136753FA00893070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17D0776113F4A643003F6E46 /* Build configuration list for PBXNativeTarget "ActionsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17D0776213F4A643003F6E46 /* Debug */,
+				17D0776313F4A643003F6E46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -23,6 +23,13 @@
  *
  */
 
+#import "actions/Isgl3dAction.h"
+#import "actions/Isgl3dActionFixedDuration.h"
+#import "actions/Isgl3dActionInstant.h"
+#import "actions/Isgl3dActionInterval.h"
+#import "actions/Isgl3dActionManager.h"
+#import "actions/Isgl3dActionMoveTo.h"
+#import "actions/Isgl3dActionSequence.h"
 #import "animators/Isgl3dAnimatedMeshNode.h"
 #import "animators/Isgl3dAnimationController.h"
 #import "animators/Isgl3dBoneBatch.h"
@@ -121,6 +128,7 @@
 #import "renderers/v2.0/shaders/Isgl3dCustomShader.h"
 #import "renderers/v2.0/shaders/Isgl3dGenericShader.h"
 #import "renderers/v2.0/shaders/Isgl3dGLProgram.h"
+#import "renderers/v2.0/shaders/Isgl3dInternalShader.h"
 #import "renderers/v2.0/shaders/Isgl3dParticleShader.h"
 #import "renderers/v2.0/shaders/Isgl3dShader.h"
 #import "renderers/v2.0/shaders/Isgl3dShaderState.h"

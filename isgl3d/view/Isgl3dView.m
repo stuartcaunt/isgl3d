@@ -175,12 +175,18 @@
 	// Initialise all transformations in the scene
 	[_scene updateWorldTransformation:nil];
 
+	// Activate the scene (and all children)
+	[_scene activate];
+
 	[[Isgl3dScheduler sharedInstance] resume:self];
 	
 	[self onActivated];
 }
 
 - (void) deactivate {
+	// Deactivate the scene (and all children)
+	[_scene deactivate];
+
 	_isRunning = NO;
 	[[Isgl3dScheduler sharedInstance] pause:self];
 

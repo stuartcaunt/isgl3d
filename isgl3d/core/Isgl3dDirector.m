@@ -39,6 +39,7 @@
 #import "Isgl3dGestureManager.h"
 #import "Isgl3dNode.h"
 #import "Isgl3dCustomShader.h"
+#import "Isgl3dActionManager.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
@@ -590,6 +591,7 @@ static Isgl3dDirector * _instance = nil;
 	
 	// Update all timers
 	if (!_isPaused) {
+		[[Isgl3dActionManager sharedInstance] tick:_dt];	
 		[[Isgl3dScheduler sharedInstance] tick:_dt];	
 	}
 	
