@@ -27,7 +27,8 @@
  *
  */
  
- #import "Isgl3dActionInterval.h"
+#import "Isgl3dActionInterval.h"
+#import "Isgl3dActionInstant.h"
 
 #pragma mark Isgl3dActionRotateXTo
 
@@ -51,4 +52,311 @@
 - (id) initWithDuration:(float)duration angle:(float)angle;
 
 @end
+
+#pragma mark Isgl3dActionRotateYTo
+
+/**
+ * The Isgl3dActionRotateYTo rotates an object to a specified rotation around the Y axis.
+ */
+@interface Isgl3dActionRotateYTo : Isgl3dActionInterval <NSCopying> {
+	float _initialAngle;
+	float _finalAngle;
+	float _delta;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRotateYTo with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionRotateYTo with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionRotateZTo
+
+/**
+ * The Isgl3dActionRotateZTo rotates an object to a specified rotation around the X axis.
+ */
+@interface Isgl3dActionRotateZTo : Isgl3dActionInterval <NSCopying> {
+	float _initialAngle;
+	float _finalAngle;
+	float _delta;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRotateZTo with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionRotateZTo with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionRotateXBy
+
+/**
+ * The Isgl3dActionRotateXBy rotates an object by a specified angle around the X axis.
+ */
+@interface Isgl3dActionRotateXBy : Isgl3dActionInterval <NSCopying> {
+	float _initialAngle;
+	float _delta;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRotateXBy with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionRotateXBy with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionRotateYBy
+
+/**
+ * The Isgl3dActionRotateYBy rotates an object by a specified angle around the X axis.
+ */
+@interface Isgl3dActionRotateYBy : Isgl3dActionInterval <NSCopying> {
+	float _initialAngle;
+	float _delta;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRotateYBy with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionRotateYBy with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionRotateZBy
+
+/**
+ * The Isgl3dActionRotateZBy rotates an object by a specified angle around the X axis.
+ */
+@interface Isgl3dActionRotateZBy : Isgl3dActionInterval <NSCopying> {
+	float _initialAngle;
+	float _delta;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRotateZBy with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionRotateZBy with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+
+#pragma mark Isgl3dActionYawBy
+
+/**
+ * The Isgl3dActionYawBy peform a yaw rotation on an object by a specified angle.
+ */
+@interface Isgl3dActionYawBy : Isgl3dActionInterval <NSCopying> {
+	float _angle;
+	float _lastAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionYawBy with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionYawBy with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionPitchBy
+
+/**
+ * The Isgl3dActionPitchBy peform a pitch rotation on an object by a specified angle.
+ */
+@interface Isgl3dActionPitchBy : Isgl3dActionInterval <NSCopying> {
+	float _angle;
+	float _lastAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionPitchBy with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionPitchBy with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionRollBy
+
+/**
+ * The Isgl3dActionRollBy peform a roll rotation on an object by a specified angle.
+ */
+@interface Isgl3dActionRollBy : Isgl3dActionInterval <NSCopying> {
+	float _angle;
+	float _lastAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionRollBy with a duration and end rotation.
+ */
++ (id) actionWithDuration:(float)duration angle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionRollBy with a duration and end rotation.
+ */
+- (id) initWithDuration:(float)duration angle:(float)angle;
+
+@end
+
+
+#pragma mark Isgl3dActionSetRotationX
+
+/**
+ * The Isgl3dActionSetRotationX rotates an object to a specified rotation around the X axis immediately.
+ */
+@interface Isgl3dActionSetRotationX : Isgl3dActionInstant <NSCopying> {
+	float _finalAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetRotationX with a rotation.
+ */
++ (id) actionWithAngle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionSetRotationX with a rotation.
+ */
+- (id) initWithAngle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionSetRotationY
+
+/**
+ * The Isgl3dActionSetRotationY rotates an object to a specified rotation around the Y axis immediately.
+ */
+@interface Isgl3dActionSetRotationY : Isgl3dActionInstant <NSCopying> {
+	float _finalAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetRotationY with a rotation.
+ */
++ (id) actionWithAngle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionSetRotationY with a rotation.
+ */
+- (id) initWithAngle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionSetRotationZ
+
+/**
+ * The Isgl3dActionSetRotationZ rotates an object to a specified rotation around the Z axis immediately.
+ */
+@interface Isgl3dActionSetRotationZ : Isgl3dActionInstant <NSCopying> {
+	float _finalAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetRotationZ with a rotation.
+ */
++ (id) actionWithAngle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionSetRotationZ with a rotation.
+ */
+- (id) initWithAngle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionSetYaw
+
+/**
+ * The Isgl3dActionSetYaw peform a yaw rotation on an object by a specified angle instantly.
+ */
+@interface Isgl3dActionSetYaw : Isgl3dActionInstant <NSCopying> {
+	float _finalAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetYaw with a rotation.
+ */
++ (id) actionWithAngle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionSetYaw with a rotation.
+ */
+- (id) initWithAngle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionSetPitch
+
+/**
+ * The Isgl3dActionSetYaw peform a pitch rotation on an object by a specified angle instantly.
+ */
+@interface Isgl3dActionSetPitch : Isgl3dActionInstant <NSCopying> {
+	float _finalAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetPitch with a rotation.
+ */
++ (id) actionWithAngle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionSetPitch with a rotation.
+ */
+- (id) initWithAngle:(float)angle;
+
+@end
+
+#pragma mark Isgl3dActionSetRoll
+
+/**
+ * The Isgl3dActionSetRoll peform a roll rotation on an object by a specified angle instantly.
+ */
+@interface Isgl3dActionSetRoll : Isgl3dActionInstant <NSCopying> {
+	float _finalAngle;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetRoll with a rotation.
+ */
++ (id) actionWithAngle:(float)angle;
+
+/**
+ * Initialises the an Isgl3dActionSetRoll with a rotation.
+ */
+- (id) initWithAngle:(float)angle;
+
+@end
+
 

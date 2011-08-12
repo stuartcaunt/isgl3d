@@ -27,8 +27,9 @@
  *
  */
  
- #import "Isgl3dActionInterval.h"
- #import "Isgl3dVector.h"
+#import "Isgl3dActionInterval.h"
+#import "Isgl3dActionInstant.h"
+#import "Isgl3dVector.h"
 
 #pragma mark Isgl3dActionMoveTo
 
@@ -72,5 +73,26 @@
  * Initialises the an Isgl3dActionMoveTo with a duration and a vector.
  */
 - (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector;
+
+@end
+
+#pragma mark Isgl3dActionSetPosition
+
+/**
+ * The Isgl3dActionSetPosition sets the position of an object to a specified location immediately.
+ */
+@interface Isgl3dActionSetPosition : Isgl3dActionInstant <NSCopying> {
+	Isgl3dVector3 _finalPosition;
+}
+
+/**
+ * Allocates and initialises (autorelease) an Isgl3dActionSetPosition with a position.
+ */
++ (id) actionWithPosition:(Isgl3dVector3)position;
+
+/**
+ * Initialises the an Isgl3dActionSetPosition with a position.
+ */
+- (id) initWithPosition:(Isgl3dVector3)position;
 
 @end

@@ -24,12 +24,16 @@
  */
 
 #import "actions/Isgl3dAction.h"
+#import "actions/Isgl3dActionAlpha.h"
+#import "actions/Isgl3dActionCallFunc.h"
+#import "actions/Isgl3dActionDelay.h"
 #import "actions/Isgl3dActionFixedDuration.h"
 #import "actions/Isgl3dActionInstant.h"
 #import "actions/Isgl3dActionInterval.h"
 #import "actions/Isgl3dActionManager.h"
 #import "actions/Isgl3dActionMove.h"
 #import "actions/Isgl3dActionRotate.h"
+#import "actions/Isgl3dActionScale.h"
 #import "actions/Isgl3dActionSequence.h"
 #import "animators/Isgl3dAnimatedMeshNode.h"
 #import "animators/Isgl3dAnimationController.h"

@@ -269,15 +269,18 @@ void im4TranslateByVector(Isgl3dMatrix4 * m, Isgl3dVector3 * v) {
 
 void im4Scale(Isgl3dMatrix4 * m, float x, float y, float z) {
 		
-	m->sxx *= x;
-	m->syx *= x;
-	m->szx *= x;
-	m->sxy *= y;
-	m->syy *= y;
-	m->szy *= y;
-	m->sxz *= z;
-	m->syz *= z;
-	m->szz *= z;	
+	Isgl3dVector3 currentScale = im4ToScaleValues(m);
+		
+		
+	m->sxx *= x / currentScale.x;
+	m->syx *= x / currentScale.x;
+	m->szx *= x / currentScale.x;
+	m->sxy *= y / currentScale.y;
+	m->syy *= y / currentScale.y;
+	m->szy *= y / currentScale.y;
+	m->sxz *= z / currentScale.z;
+	m->syz *= z / currentScale.z;
+	m->szz *= z / currentScale.z;	
 }
 
 void im4Transpose(Isgl3dMatrix4 * m) {

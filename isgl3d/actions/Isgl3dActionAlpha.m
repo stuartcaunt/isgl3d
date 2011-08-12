@@ -26,21 +26,20 @@
  *
  */
 
-#import "Isgl3dActionMove.h"
+#import "Isgl3dActionAlpha.h"
 #import "Isgl3dNode.h"
 
-#pragma mark Isgl3dActionMoveTo
+#pragma mark Isgl3dActionAlphaTo
 
-@implementation Isgl3dActionMoveTo
+@implementation Isgl3dActionAlphaTo
 
-
-+ (id) actionWithDuration:(float)duration position:(Isgl3dVector3)position {
-	return [[[self alloc] initWithDuration:duration position:position] autorelease];
++ (id) actionWithDuration:(float)duration alpha:(float)alpha {
+	return [[[self alloc] initWithDuration:duration alpha:alpha] autorelease];
 }
 
-- (id) initWithDuration:(float)duration position:(Isgl3dVector3)position {
+- (id) initWithDuration:(float)duration alpha:(float)alpha {
 	if ((self = [super initWithDuration:duration])) {
-		_finalPosition = position;
+		_finalAlpha = alpha;
 	}
 	
 	return self;
@@ -51,36 +50,33 @@
 }
 
 - (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionMoveTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration position:_finalPosition];
+	Isgl3dActionAlphaTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration alpha:_finalAlpha];
 
 	return copy;
 }
 
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
-	_initialPosition = ((Isgl3dNode *)target).position;
-	_vector = _finalPosition;
-	iv3Sub(&_vector, &_initialPosition);
+	_initialAlpha = ((Isgl3dNode *)target).alpha;
+	_delta = _finalAlpha - _initialAlpha;
 }
 
 - (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
+	[_target setAlpha:_initialAlpha + progress * _delta];
 }
 
 @end
 
-#pragma mark Isgl3dActionMoveBy
+#pragma mark Isgl3dActionFadeIn
 
-@implementation Isgl3dActionMoveBy
+@implementation Isgl3dActionFadeIn
 
-
-+ (id) actionWithDuration:(float)duration vector:(Isgl3dVector3)vector {
-	return [[[self alloc] initWithDuration:duration vector:vector] autorelease];
++ (id) actionWithDuration:(float)duration {
+	return [[[self alloc] initWithDuration:duration] autorelease];
 }
 
-- (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector {
+- (id) initWithDuration:(float)duration {
 	if ((self = [super initWithDuration:duration])) {
-		_vector = vector;
 	}
 	
 	return self;
@@ -91,34 +87,69 @@
 }
 
 - (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionMoveBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration vector:_vector];
+	Isgl3dActionFadeIn * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
 
 	return copy;
 }
 
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
-	_initialPosition = ((Isgl3dNode *)target).position;
+	((Isgl3dNode *)target).alpha = 0.0f;
 }
 
 - (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
+	[_target setAlpha:progress];
 }
 
 @end
 
-#pragma mark Isgl3dActionSetPosition
+#pragma mark Isgl3dActionFadeOut
 
-@implementation Isgl3dActionSetPosition
+@implementation Isgl3dActionFadeOut
 
-
-+ (id) actionWithPosition:(Isgl3dVector3)position {
-	return [[[self alloc] initWithPosition:position] autorelease];
++ (id) actionWithDuration:(float)duration {
+	return [[[self alloc] initWithDuration:duration] autorelease];
 }
 
-- (id) initWithPosition:(Isgl3dVector3)position {
+- (id) initWithDuration:(float)duration {
+	if ((self = [super initWithDuration:duration])) {
+	}
+	
+	return self;
+}
+
+- (void) dealloc {
+	[super dealloc];
+}
+
+- (id) copyWithZone:(NSZone*)zone {
+	Isgl3dActionFadeOut * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
+
+	return copy;
+}
+
+-(void) startWithTarget:(id)target {
+	[super startWithTarget:target];
+	((Isgl3dNode *)target).alpha = 1.0f;
+}
+
+- (void) update:(float)progress {
+	[_target setAlpha:(1.0f - progress)];
+}
+
+@end
+
+#pragma mark Isgl3dActionSetAlpha
+
+@implementation Isgl3dActionSetAlpha
+
++ (id) actionWithAlpha:(float)alpha {
+	return [[[self alloc] initWithAlpha:alpha] autorelease];
+}
+
+- (id) initWithAlpha:(float)alpha {
 	if ((self = [super init])) {
-		_finalPosition = position;
+		_finalAlpha = alpha;
 	}
 	
 	return self;
@@ -129,13 +160,14 @@
 }
 
 - (id) copyWithZone:(NSZone*)zone {
-	Isgl3dActionSetPosition * copy = [[[self class] allocWithZone:zone] initWithPosition:_finalPosition];
+	Isgl3dActionSetAlpha * copy = [[[self class] allocWithZone:zone] initWithAlpha:_finalAlpha];
 
 	return copy;
 }
 
 - (void) update:(float)progress {
-	[_target setPosition:_finalPosition];
+	[_target setAlpha:_finalAlpha];
 }
 
 @end
+

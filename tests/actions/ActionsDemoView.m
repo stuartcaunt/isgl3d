@@ -56,11 +56,26 @@
 		
 		
 		Isgl3dAction * action = [Isgl3dActionSequence actionWithActions:
-									[Isgl3dActionRotateXTo actionWithDuration:1.0 angle:90.0f],
-									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(3.0f, 0.0f, 0.0f)],
-									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(3.0f, 2.0f, 0.0f)],
+									[Isgl3dActionFadeIn actionWithDuration:1.0],
+									[Isgl3dActionScaleTo actionWithDuration:1.0 scaleX:0.5f scaleY:2.0f scaleZ:1.0f],
+									[Isgl3dActionSetPosition actionWithPosition:iv3(0.0f, 0.0f, -3.0f)],
+									[Isgl3dActionScaleBy actionWithDuration:1.0 scale:0.5f],
+									[Isgl3dActionSetRotationZ actionWithAngle:90.0f],
+									[Isgl3dActionDelay actionWithDuration:1.0f],
+									[Isgl3dActionMoveTo actionWithDuration:1.0 position:iv3(3.0f, 0.0f, 0.0f)],
+									[Isgl3dActionCallFunc actionWithTarget:self selector:@selector(callback1)],
+									[Isgl3dActionMoveTo actionWithDuration:1.0 position:iv3(3.0f, 2.0f, 0.0f)],
 									[Isgl3dActionMoveBy actionWithDuration:1.0 vector:iv3(0.0f, 0.0f, 3.0f)],
+									[Isgl3dActionAlphaTo actionWithDuration:1.0 alpha:0.2f],
+									[Isgl3dActionRotateZBy actionWithDuration:0.5f angle:-45.0f],
 									[Isgl3dActionMoveTo actionWithDuration:2.0 position:iv3(0.0f, 0.0f, 0.0f)],
+									[Isgl3dActionAlphaTo actionWithDuration:1.0 alpha:1.0f],
+									[Isgl3dActionYawBy actionWithDuration:0.5f angle:90.0f],
+									[Isgl3dActionPitchBy actionWithDuration:0.5f angle:90.0f],
+									[Isgl3dActionRollBy actionWithDuration:0.5f angle:90.0f],
+									[Isgl3dActionScaleTo actionWithDuration:1.0 scale:1.0f],
+									[Isgl3dActionFadeOut actionWithDuration:1.0],
+									[Isgl3dActionFadeIn actionWithDuration:1.0],
 									nil];
 		[_arrow runAction:action];
 		
@@ -88,6 +103,10 @@
 - (void) tick:(float)dt {
 	// update camera
 	[_cameraController update];
+}
+
+- (void) callback1 {
+	NSLog(@"Callback1 called !");
 }
 
 
