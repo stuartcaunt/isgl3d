@@ -1,4 +1,6 @@
 current SVN version
+
+version 1.2.2 (2011-08-13)
 	GesturesDemoView added to illustrate gesture recognizers.
 	Isgl3dPODImporter: Fixed bug on loading non-mesh nodes
 	ccBridge::AppDelegate: Fixed bug on event capturing.
