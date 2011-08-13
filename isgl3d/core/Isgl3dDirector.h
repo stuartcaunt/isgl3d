@@ -385,7 +385,7 @@
 
 /**
  * Removes a gesture recognizer from all nodes.
- * @param gestureRecogniter The gesture recognizer to be removed.
+ * @param gestureRecognizer The gesture recognizer to be removed.
  */
 - (void)removeGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
 

@@ -71,14 +71,14 @@
 /**
  * Allocates and initialises (autorelease) an Isgl3dActionMoveBy with a duration and a vector.
  * @param duration The duration of the action
- * @param position The position to move by
+ * @param vector The vector to move along
  */
 + (id) actionWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 
 /**
  * Initialises the an Isgl3dActionMoveTo with a duration and a vector.
  * @param duration The duration of the action
- * @param position The position to move by
+ * @param vector The vector to move along
  */
 - (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 

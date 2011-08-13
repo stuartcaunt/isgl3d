@@ -90,7 +90,7 @@
 /**
  * Sets an attribute in the shader by its name to the bound vertex buffer with a given data type, siwe, stride and offset.
  * @param type The data type to be set to the attribute.
- * @param attributeLocation The location of the attribute.
+ * @param attributeName The name of the attribute.
  * @param size The number of elements to be set.
  * @param strideBytes The stride of the data structure in the buffer in bytes.
  * @param offset The offset in the VBO object in bytes to the desired data
@@ -132,108 +132,105 @@
  * @param uniformLocation The location of the float uniform
  * @param value The value to be set in the shader.
  */
-- (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value;
+- (void) setUniform1f:(GLint)uniformLocation value:(GLfloat)value;
 
 /**
  * Sets an array of 2 float values to a float vector uniform in the shader
  * @param uniformLocation The location of the float vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform2f:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform2f:(GLint)uniformLocation values:(GLfloat *)values;
 
 /**
  * Sets an array of 3 float values to a float vector uniform in the shader
  * @param uniformLocation The location of the float vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform3f:(GLint)uniformLocation values:(GLfloat *)values;
 
 /**
  * Sets an array of 4 float values to a float vector uniform in the shader
  * @param uniformLocation The location of the float vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform4f:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform4f:(GLint)uniformLocation values:(GLfloat *)values;
 
 /**
  * Sets an integer value to a integer uniform in the shader
  * @param uniformLocation The location of the integer uniform
  * @param value The value to be set in the shader.
  */
-- (void) setUniform1i:(GLint)uniformIndex value:(GLint)value;
+- (void) setUniform1i:(GLint)uniformLocation value:(GLint)value;
 
 /**
  * Sets an array of 2 integer values to an integer vector uniform in the shader
  * @param uniformLocation The location of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform2i:(GLint)uniformIndex values:(GLint *)value;
+- (void) setUniform2i:(GLint)uniformLocation values:(GLint *)values;
 
 /**
  * Sets an array of 3 integer values to an integer vector uniform in the shader
  * @param uniformLocation The location of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform3i:(GLint)uniformIndex values:(GLint *)value;
+- (void) setUniform3i:(GLint)uniformLocation values:(GLint *)values;
 
 /**
  * Sets an array of 4 integer values to an integer vector uniform in the shader
  * @param uniformLocation The location of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform4i:(GLint)uniformIndex values:(GLint *)value;
+- (void) setUniform4i:(GLint)uniformLocation values:(GLint *)values;
 
 /**
  * Sets an array of 2 float values to a float vector uniform in the shader
  * @param uniformLocation The location of the float vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform2fv:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform2fv:(GLint)uniformLocation values:(GLfloat *)values;
 
 /**
  * Sets an array of 3 float values to a float vector uniform in the shader
  * @param uniformLocation The location of the float vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform3fv:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform3fv:(GLint)uniformLocation values:(GLfloat *)values;
 
 /**
  * Sets an array of 4 float values to a float vector uniform in the shader
  * @param uniformLocation The location of the float vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform4fv:(GLint)uniformIndex values:(GLfloat *)values;
+- (void) setUniform4fv:(GLint)uniformLocation values:(GLfloat *)values;
 
 /**
  * Sets an array of 2 integer values to an integer vector uniform in the shader
  * @param uniformLocation The location of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform2iv:(GLint)uniformIndex values:(GLint *)values;
+- (void) setUniform2iv:(GLint)uniformLocation values:(GLint *)values;
 
 /**
  * Sets an array of 3 integer values to an integer vector uniform in the shader
  * @param uniformLocation The location of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform3iv:(GLint)uniformIndex values:(GLint *)values;
+- (void) setUniform3iv:(GLint)uniformLocation values:(GLint *)values;
 
 /**
  * Sets an array of 4 integer values to an integer vector uniform in the shader
  * @param uniformLocation The location of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform4iv:(GLint)uniformIndex values:(GLint *)values;
+- (void) setUniform4iv:(GLint)uniformLocation values:(GLint *)values;
 
 /**
  * Associates a texture unit index to a uniform sampler location.
- * @param samplerIndex The location of the sampler uniform.
- * @param textureIndex a user-defined index for a texture, specified with <em>bindTexture</em>. Note that a shader
- * can have up to a maximum 31 textures associated.
- * @param sampleIndex The location of the sampler
- * @param textureUnit The index of the texture unit (between 0 and 31)
+ * @param samplerLocation The location of the sampler
+ * @param textureUnit The index of the texture unit, specified with <em>bindTexture</em> (between 0 and 31)
  */
-- (void) setUniformSampler:(GLint)samplerIndex forTextureUnit:(GLuint)textureUnit;
+- (void) setUniformSampler:(GLint)samplerLocation forTextureUnit:(GLuint)textureUnit;
 
 /**
  * Copies data from an Isgl3dMatrix4 matrix to a 3x3 matrix uniform in the shader.
@@ -305,21 +302,21 @@
  * @param uniformName The name of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform2iWithName:(NSString *)uniformName values:(GLint *)value;
+- (void) setUniform2iWithName:(NSString *)uniformName values:(GLint *)values;
 
 /**
  * Sets an array of 3 integer values to an integer vector uniform in the shader
  * @param uniformName The name of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform3iWithName:(NSString *)uniformName values:(GLint *)value;
+- (void) setUniform3iWithName:(NSString *)uniformName values:(GLint *)values;
 
 /**
  * Sets an array of 4 integer values to an integer vector uniform in the shader
  * @param uniformName The name of the integer vector uniform
  * @param values The values to be set in the shader.
  */
-- (void) setUniform4iWithName:(NSString *)uniformName values:(GLint *)value;
+- (void) setUniform4iWithName:(NSString *)uniformName values:(GLint *)values;
 
 /**
  * Sets an array of 2 float values to a float vector uniform in the shader
@@ -365,11 +362,8 @@
 
 /**
  * Associates a texture unit index to a uniform sampler location.
- * @param samplerName The name of the sampler uniform.
- * @param textureIndex a user-defined index for a texture, specified with <em>bindTexture</em>. Note that a shader
- * can have up to a maximum 31 textures associated.
- * @param sampleName The name of the sampler
- * @param textureUnit The index of the texture unit (between 0 and 31)
+ * @param samplerName The name of the sampler
+ * @param textureUnit The index of the texture unit, specified with <em>bindTexture</em> (between 0 and 31)
  */
 - (void) setUniformSamplerWithName:(NSString *)samplerName forTextureUnit:(GLuint)textureUnit;
 
@@ -452,7 +446,7 @@
 /**
  * Sets the scene ambient color (as a hex value)
  * Called during the scene intialisation in the render phase before rendering all objects.
- * @param ambien The ambient color of the scene.
+ * @param ambient The ambient color of the scene.
  */
 - (void) setSceneAmbient:(NSString *)ambient;
 

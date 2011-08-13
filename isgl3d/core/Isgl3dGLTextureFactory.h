@@ -111,8 +111,8 @@
  * Creates a new instance of an Isgl3dGLTexture from text with a given font name and size with default repeating behaviour (no repeating). 
  * Note that these textures are not stored in the dictionary.
  * @param text The text to be rendered
- * @param fontName The name of the font
- * @param fontSize The size of the font
+ * @param name The name of the font
+ * @param size The size of the font
  * @result an autoreleased Isgl3dGLTexture created from the text
  */
 - (Isgl3dGLTexture *) createTextureFromText:(NSString *)text fontName:(NSString*)name fontSize:(CGFloat)size;
@@ -122,10 +122,10 @@
  * Creates a new instance of an Isgl3dGLTexture from text with a given font name and size with specified precision and repeating behaviour. 
  * Note that these textures are not stored in the dictionary.
  * @param text The text to be rendered
- * @param fontName The name of the font
- * @param fontSize The size of the font
- * @param repeatY Inidicates whether the texture will be repeated (tesselated) across the rendered object in the y-direction.
+ * @param name The name of the font
+ * @param size The size of the font
  * @param repeatX Inidicates whether the texture will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Inidicates whether the texture will be repeated (tesselated) across the rendered object in the y-direction.
  * @result an autoreleased Isgl3dGLTexture created from the text
  */
 - (Isgl3dGLTexture *) createTextureFromText:(NSString *)text fontName:(NSString*)name fontSize:(CGFloat)size repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;

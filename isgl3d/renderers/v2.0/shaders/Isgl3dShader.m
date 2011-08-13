@@ -199,64 +199,64 @@ static unsigned int __textureUnitIndices[32] = {
 	glUniformMatrix4fv(uniformLocation, size, GL_FALSE, matrixArray);
 }
 
-- (void) setUniform1f:(GLint)uniformIndex value:(GLfloat)value {
-	glUniform1f(uniformIndex, value);
+- (void) setUniform1f:(GLint)uniformLocation value:(GLfloat)value {
+	glUniform1f(uniformLocation, value);
 }
 
-- (void) setUniform2f:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform2f(uniformIndex, values[0], values[1]);
+- (void) setUniform2f:(GLint)uniformLocation values:(GLfloat *)values {
+	glUniform2f(uniformLocation, values[0], values[1]);
 }
 
-- (void) setUniform3f:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform3f(uniformIndex, values[0], values[1], values[2]);
+- (void) setUniform3f:(GLint)uniformLocation values:(GLfloat *)values {
+	glUniform3f(uniformLocation, values[0], values[1], values[2]);
 }
 
-- (void) setUniform4f:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform4f(uniformIndex, values[0], values[1], values[2], values[3]);
+- (void) setUniform4f:(GLint)uniformLocation values:(GLfloat *)values {
+	glUniform4f(uniformLocation, values[0], values[1], values[2], values[3]);
 }
 
-- (void) setUniform1i:(GLint)uniformIndex value:(GLint)value {
-	glUniform1i(uniformIndex, value);
+- (void) setUniform1i:(GLint)uniformLocation value:(GLint)value {
+	glUniform1i(uniformLocation, value);
 }
 
-- (void) setUniform2i:(GLint)uniformIndex values:(GLint *)values {
-	glUniform2i(uniformIndex, values[0], values[1]);
+- (void) setUniform2i:(GLint)uniformLocation values:(GLint *)values {
+	glUniform2i(uniformLocation, values[0], values[1]);
 }
 
-- (void) setUniform3i:(GLint)uniformIndex values:(GLint *)values {
-	glUniform3i(uniformIndex, values[0], values[1], values[2]);
+- (void) setUniform3i:(GLint)uniformLocation values:(GLint *)values {
+	glUniform3i(uniformLocation, values[0], values[1], values[2]);
 }
 
-- (void) setUniform4i:(GLint)uniformIndex values:(GLint *)values {
-	glUniform4i(uniformIndex, values[0], values[1], values[2], values[3]);
+- (void) setUniform4i:(GLint)uniformLocation values:(GLint *)values {
+	glUniform4i(uniformLocation, values[0], values[1], values[2], values[3]);
 }
 
-- (void) setUniform2fv:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform2fv(uniformIndex, 1, values);
+- (void) setUniform2fv:(GLint)uniformLocation values:(GLfloat *)values {
+	glUniform2fv(uniformLocation, 1, values);
 }
 
-- (void) setUniform3fv:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform3fv(uniformIndex, 1, values);
+- (void) setUniform3fv:(GLint)uniformLocation values:(GLfloat *)values {
+	glUniform3fv(uniformLocation, 1, values);
 }
 
-- (void) setUniform4fv:(GLint)uniformIndex values:(GLfloat *)values {
-	glUniform4fv(uniformIndex, 1, values);
+- (void) setUniform4fv:(GLint)uniformLocation values:(GLfloat *)values {
+	glUniform4fv(uniformLocation, 1, values);
 }
 
-- (void) setUniform2iv:(GLint)uniformIndex values:(GLint *)values {
-	glUniform2iv(uniformIndex, 1, values);
+- (void) setUniform2iv:(GLint)uniformLocation values:(GLint *)values {
+	glUniform2iv(uniformLocation, 1, values);
 }
 
-- (void) setUniform3iv:(GLint)uniformIndex values:(GLint *)values {
-	glUniform3iv(uniformIndex, 1, values);
+- (void) setUniform3iv:(GLint)uniformLocation values:(GLint *)values {
+	glUniform3iv(uniformLocation, 1, values);
 }
 
-- (void) setUniform4iv:(GLint)uniformIndex values:(GLint *)values {
-	glUniform4iv(uniformIndex, 1, values);
+- (void) setUniform4iv:(GLint)uniformLocation values:(GLint *)values {
+	glUniform4iv(uniformLocation, 1, values);
 }
 
-- (void) setUniformSampler:(GLint)samplerIndex forTextureUnit:(GLuint)textureUnit {
-	glUniform1i(samplerIndex, textureUnit);
+- (void) setUniformSampler:(GLint)samplerLocation forTextureUnit:(GLuint)textureUnit {
+	glUniform1i(samplerLocation, textureUnit);
 }
 
 - (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix {
