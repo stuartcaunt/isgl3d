@@ -33,6 +33,102 @@
 			<key>Path</key>
 			<string>libs/isgl3d/actions/Isgl3dAction.m</string>
 		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionAlpha.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionAlpha.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionAlpha.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionAlpha.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionCallFunc.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionCallFunc.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionCallFunc.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionCallFunc.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionDelay.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionDelay.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionDelay.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionDelay.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionEase.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionEase.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionEase.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionEase.m</string>
+		</dict>
 		<key>libs/isgl3d/actions/Isgl3dActionFixedDuration.h</key>
 		<dict>
 			<key>Group</key>
@@ -153,6 +249,102 @@
 			<key>Path</key>
 			<string>libs/isgl3d/actions/Isgl3dActionMove.m</string>
 		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionParallel.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionParallel.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionParallel.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionParallel.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionRepeat.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionRepeat.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionRepeat.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionRepeat.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionRotate.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionRotate.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionRotate.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionRotate.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionScale.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionScale.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionScale.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionScale.m</string>
+		</dict>
 		<key>libs/isgl3d/actions/Isgl3dActionSequence.h</key>
 		<dict>
 			<key>Group</key>
@@ -176,6 +368,30 @@
 			</array>
 			<key>Path</key>
 			<string>libs/isgl3d/actions/Isgl3dActionSequence.m</string>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionTween.h</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionTween.h</string>
+			<key>TargetIndices</key>
+			<array/>
+		</dict>
+		<key>libs/isgl3d/actions/Isgl3dActionTween.m</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>libs</string>
+				<string>isgl3d</string>
+				<string>actions</string>
+			</array>
+			<key>Path</key>
+			<string>libs/isgl3d/actions/Isgl3dActionTween.m</string>
 		</dict>
 		<key>libs/isgl3d/animators/Isgl3dAnimatedMeshNode.h</key>
 		<dict>
@@ -3757,6 +3973,14 @@
 	<array>
 		<string>libs/isgl3d/actions/Isgl3dAction.h</string>
 		<string>libs/isgl3d/actions/Isgl3dAction.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionAlpha.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionAlpha.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionCallFunc.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionCallFunc.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionDelay.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionDelay.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionEase.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionEase.m</string>
 		<string>libs/isgl3d/actions/Isgl3dActionFixedDuration.h</string>
 		<string>libs/isgl3d/actions/Isgl3dActionFixedDuration.m</string>
 		<string>libs/isgl3d/actions/Isgl3dActionInstant.h</string>
@@ -3767,8 +3991,18 @@
 		<string>libs/isgl3d/actions/Isgl3dActionManager.m</string>
 		<string>libs/isgl3d/actions/Isgl3dActionMove.h</string>
 		<string>libs/isgl3d/actions/Isgl3dActionMove.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionParallel.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionParallel.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionRepeat.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionRepeat.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionRotate.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionRotate.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionScale.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionScale.m</string>
 		<string>libs/isgl3d/actions/Isgl3dActionSequence.h</string>
 		<string>libs/isgl3d/actions/Isgl3dActionSequence.m</string>
+		<string>libs/isgl3d/actions/Isgl3dActionTween.h</string>
+		<string>libs/isgl3d/actions/Isgl3dActionTween.m</string>
 		<string>libs/isgl3d/animators/Isgl3dAnimatedMeshNode.h</string>
 		<string>libs/isgl3d/animators/Isgl3dAnimatedMeshNode.m</string>
 		<string>libs/isgl3d/animators/Isgl3dAnimationController.h</string>

@@ -10,6 +10,38 @@
 		175CE24813709A0800152EFE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24513709A0800152EFE /* Default.png */; };
 		175CE24913709A0800152EFE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24613709A0800152EFE /* Icon.png */; };
 		175CE24A13709A0800152EFE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CE24713709A0800152EFE /* Icon@2x.png */; };
+		17635B2913F6D0EA001C5371 /* Isgl3dAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B0913F6D0EA001C5371 /* Isgl3dAction.h */; };
+		17635B2A13F6D0EA001C5371 /* Isgl3dAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B0A13F6D0EA001C5371 /* Isgl3dAction.m */; };
+		17635B2B13F6D0EA001C5371 /* Isgl3dActionAlpha.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B0B13F6D0EA001C5371 /* Isgl3dActionAlpha.h */; };
+		17635B2C13F6D0EA001C5371 /* Isgl3dActionAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B0C13F6D0EA001C5371 /* Isgl3dActionAlpha.m */; };
+		17635B2D13F6D0EA001C5371 /* Isgl3dActionCallFunc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B0D13F6D0EA001C5371 /* Isgl3dActionCallFunc.h */; };
+		17635B2E13F6D0EA001C5371 /* Isgl3dActionCallFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B0E13F6D0EA001C5371 /* Isgl3dActionCallFunc.m */; };
+		17635B2F13F6D0EA001C5371 /* Isgl3dActionDelay.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B0F13F6D0EA001C5371 /* Isgl3dActionDelay.h */; };
+		17635B3013F6D0EA001C5371 /* Isgl3dActionDelay.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1013F6D0EA001C5371 /* Isgl3dActionDelay.m */; };
+		17635B3113F6D0EA001C5371 /* Isgl3dActionEase.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1113F6D0EA001C5371 /* Isgl3dActionEase.h */; };
+		17635B3213F6D0EA001C5371 /* Isgl3dActionEase.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1213F6D0EA001C5371 /* Isgl3dActionEase.m */; };
+		17635B3313F6D0EA001C5371 /* Isgl3dActionFixedDuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1313F6D0EA001C5371 /* Isgl3dActionFixedDuration.h */; };
+		17635B3413F6D0EA001C5371 /* Isgl3dActionFixedDuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1413F6D0EA001C5371 /* Isgl3dActionFixedDuration.m */; };
+		17635B3513F6D0EA001C5371 /* Isgl3dActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1513F6D0EA001C5371 /* Isgl3dActionInstant.h */; };
+		17635B3613F6D0EA001C5371 /* Isgl3dActionInstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1613F6D0EA001C5371 /* Isgl3dActionInstant.m */; };
+		17635B3713F6D0EA001C5371 /* Isgl3dActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1713F6D0EA001C5371 /* Isgl3dActionInterval.h */; };
+		17635B3813F6D0EA001C5371 /* Isgl3dActionInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1813F6D0EA001C5371 /* Isgl3dActionInterval.m */; };
+		17635B3913F6D0EA001C5371 /* Isgl3dActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1913F6D0EA001C5371 /* Isgl3dActionManager.h */; };
+		17635B3A13F6D0EA001C5371 /* Isgl3dActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1A13F6D0EA001C5371 /* Isgl3dActionManager.m */; };
+		17635B3B13F6D0EA001C5371 /* Isgl3dActionMove.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1B13F6D0EA001C5371 /* Isgl3dActionMove.h */; };
+		17635B3C13F6D0EA001C5371 /* Isgl3dActionMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1C13F6D0EA001C5371 /* Isgl3dActionMove.m */; };
+		17635B3D13F6D0EA001C5371 /* Isgl3dActionParallel.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1D13F6D0EA001C5371 /* Isgl3dActionParallel.h */; };
+		17635B3E13F6D0EA001C5371 /* Isgl3dActionParallel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B1E13F6D0EA001C5371 /* Isgl3dActionParallel.m */; };
+		17635B3F13F6D0EA001C5371 /* Isgl3dActionRepeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B1F13F6D0EA001C5371 /* Isgl3dActionRepeat.h */; };
+		17635B4013F6D0EA001C5371 /* Isgl3dActionRepeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B2013F6D0EA001C5371 /* Isgl3dActionRepeat.m */; };
+		17635B4113F6D0EA001C5371 /* Isgl3dActionRotate.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B2113F6D0EA001C5371 /* Isgl3dActionRotate.h */; };
+		17635B4213F6D0EA001C5371 /* Isgl3dActionRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B2213F6D0EA001C5371 /* Isgl3dActionRotate.m */; };
+		17635B4313F6D0EA001C5371 /* Isgl3dActionScale.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B2313F6D0EA001C5371 /* Isgl3dActionScale.h */; };
+		17635B4413F6D0EA001C5371 /* Isgl3dActionScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B2413F6D0EA001C5371 /* Isgl3dActionScale.m */; };
+		17635B4513F6D0EA001C5371 /* Isgl3dActionSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B2513F6D0EA001C5371 /* Isgl3dActionSequence.h */; };
+		17635B4613F6D0EA001C5371 /* Isgl3dActionSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B2613F6D0EA001C5371 /* Isgl3dActionSequence.m */; };
+		17635B4713F6D0EA001C5371 /* Isgl3dActionTween.h in Headers */ = {isa = PBXBuildFile; fileRef = 17635B2713F6D0EA001C5371 /* Isgl3dActionTween.h */; };
+		17635B4813F6D0EA001C5371 /* Isgl3dActionTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 17635B2813F6D0EA001C5371 /* Isgl3dActionTween.m */; };
 		1764B9DC13F349A900287E35 /* Isgl3dShaderMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 1764B9DA13F349A900287E35 /* Isgl3dShaderMaterial.h */; };
 		1764B9DD13F349A900287E35 /* Isgl3dShaderMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 1764B9DB13F349A900287E35 /* Isgl3dShaderMaterial.m */; };
 		1764B9E413F349BD00287E35 /* Isgl3dCustomShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1764B9E013F349BD00287E35 /* Isgl3dCustomShader.h */; };
@@ -338,6 +370,38 @@
 		175CE24513709A0800152EFE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		175CE24613709A0800152EFE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		175CE24713709A0800152EFE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		17635B0913F6D0EA001C5371 /* Isgl3dAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAction.h; sourceTree = "<group>"; };
+		17635B0A13F6D0EA001C5371 /* Isgl3dAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAction.m; sourceTree = "<group>"; };
+		17635B0B13F6D0EA001C5371 /* Isgl3dActionAlpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionAlpha.h; sourceTree = "<group>"; };
+		17635B0C13F6D0EA001C5371 /* Isgl3dActionAlpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionAlpha.m; sourceTree = "<group>"; };
+		17635B0D13F6D0EA001C5371 /* Isgl3dActionCallFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionCallFunc.h; sourceTree = "<group>"; };
+		17635B0E13F6D0EA001C5371 /* Isgl3dActionCallFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionCallFunc.m; sourceTree = "<group>"; };
+		17635B0F13F6D0EA001C5371 /* Isgl3dActionDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionDelay.h; sourceTree = "<group>"; };
+		17635B1013F6D0EA001C5371 /* Isgl3dActionDelay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionDelay.m; sourceTree = "<group>"; };
+		17635B1113F6D0EA001C5371 /* Isgl3dActionEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionEase.h; sourceTree = "<group>"; };
+		17635B1213F6D0EA001C5371 /* Isgl3dActionEase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionEase.m; sourceTree = "<group>"; };
+		17635B1313F6D0EA001C5371 /* Isgl3dActionFixedDuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionFixedDuration.h; sourceTree = "<group>"; };
+		17635B1413F6D0EA001C5371 /* Isgl3dActionFixedDuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionFixedDuration.m; sourceTree = "<group>"; };
+		17635B1513F6D0EA001C5371 /* Isgl3dActionInstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionInstant.h; sourceTree = "<group>"; };
+		17635B1613F6D0EA001C5371 /* Isgl3dActionInstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionInstant.m; sourceTree = "<group>"; };
+		17635B1713F6D0EA001C5371 /* Isgl3dActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionInterval.h; sourceTree = "<group>"; };
+		17635B1813F6D0EA001C5371 /* Isgl3dActionInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionInterval.m; sourceTree = "<group>"; };
+		17635B1913F6D0EA001C5371 /* Isgl3dActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionManager.h; sourceTree = "<group>"; };
+		17635B1A13F6D0EA001C5371 /* Isgl3dActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionManager.m; sourceTree = "<group>"; };
+		17635B1B13F6D0EA001C5371 /* Isgl3dActionMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionMove.h; sourceTree = "<group>"; };
+		17635B1C13F6D0EA001C5371 /* Isgl3dActionMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionMove.m; sourceTree = "<group>"; };
+		17635B1D13F6D0EA001C5371 /* Isgl3dActionParallel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionParallel.h; sourceTree = "<group>"; };
+		17635B1E13F6D0EA001C5371 /* Isgl3dActionParallel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionParallel.m; sourceTree = "<group>"; };
+		17635B1F13F6D0EA001C5371 /* Isgl3dActionRepeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionRepeat.h; sourceTree = "<group>"; };
+		17635B2013F6D0EA001C5371 /* Isgl3dActionRepeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionRepeat.m; sourceTree = "<group>"; };
+		17635B2113F6D0EA001C5371 /* Isgl3dActionRotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionRotate.h; sourceTree = "<group>"; };
+		17635B2213F6D0EA001C5371 /* Isgl3dActionRotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionRotate.m; sourceTree = "<group>"; };
+		17635B2313F6D0EA001C5371 /* Isgl3dActionScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionScale.h; sourceTree = "<group>"; };
+		17635B2413F6D0EA001C5371 /* Isgl3dActionScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionScale.m; sourceTree = "<group>"; };
+		17635B2513F6D0EA001C5371 /* Isgl3dActionSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionSequence.h; sourceTree = "<group>"; };
+		17635B2613F6D0EA001C5371 /* Isgl3dActionSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionSequence.m; sourceTree = "<group>"; };
+		17635B2713F6D0EA001C5371 /* Isgl3dActionTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionTween.h; sourceTree = "<group>"; };
+		17635B2813F6D0EA001C5371 /* Isgl3dActionTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionTween.m; sourceTree = "<group>"; };
 		1764B9DA13F349A900287E35 /* Isgl3dShaderMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dShaderMaterial.h; sourceTree = "<group>"; };
 		1764B9DB13F349A900287E35 /* Isgl3dShaderMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dShaderMaterial.m; sourceTree = "<group>"; };
 		1764B9E013F349BD00287E35 /* Isgl3dCustomShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dCustomShader.h; sourceTree = "<group>"; };
@@ -684,6 +748,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17635B0813F6D0EA001C5371 /* actions */ = {
+			isa = PBXGroup;
+			children = (
+				17635B0913F6D0EA001C5371 /* Isgl3dAction.h */,
+				17635B0A13F6D0EA001C5371 /* Isgl3dAction.m */,
+				17635B0B13F6D0EA001C5371 /* Isgl3dActionAlpha.h */,
+				17635B0C13F6D0EA001C5371 /* Isgl3dActionAlpha.m */,
+				17635B0D13F6D0EA001C5371 /* Isgl3dActionCallFunc.h */,
+				17635B0E13F6D0EA001C5371 /* Isgl3dActionCallFunc.m */,
+				17635B0F13F6D0EA001C5371 /* Isgl3dActionDelay.h */,
+				17635B1013F6D0EA001C5371 /* Isgl3dActionDelay.m */,
+				17635B1113F6D0EA001C5371 /* Isgl3dActionEase.h */,
+				17635B1213F6D0EA001C5371 /* Isgl3dActionEase.m */,
+				17635B1313F6D0EA001C5371 /* Isgl3dActionFixedDuration.h */,
+				17635B1413F6D0EA001C5371 /* Isgl3dActionFixedDuration.m */,
+				17635B1513F6D0EA001C5371 /* Isgl3dActionInstant.h */,
+				17635B1613F6D0EA001C5371 /* Isgl3dActionInstant.m */,
+				17635B1713F6D0EA001C5371 /* Isgl3dActionInterval.h */,
+				17635B1813F6D0EA001C5371 /* Isgl3dActionInterval.m */,
+				17635B1913F6D0EA001C5371 /* Isgl3dActionManager.h */,
+				17635B1A13F6D0EA001C5371 /* Isgl3dActionManager.m */,
+				17635B1B13F6D0EA001C5371 /* Isgl3dActionMove.h */,
+				17635B1C13F6D0EA001C5371 /* Isgl3dActionMove.m */,
+				17635B1D13F6D0EA001C5371 /* Isgl3dActionParallel.h */,
+				17635B1E13F6D0EA001C5371 /* Isgl3dActionParallel.m */,
+				17635B1F13F6D0EA001C5371 /* Isgl3dActionRepeat.h */,
+				17635B2013F6D0EA001C5371 /* Isgl3dActionRepeat.m */,
+				17635B2113F6D0EA001C5371 /* Isgl3dActionRotate.h */,
+				17635B2213F6D0EA001C5371 /* Isgl3dActionRotate.m */,
+				17635B2313F6D0EA001C5371 /* Isgl3dActionScale.h */,
+				17635B2413F6D0EA001C5371 /* Isgl3dActionScale.m */,
+				17635B2513F6D0EA001C5371 /* Isgl3dActionSequence.h */,
+				17635B2613F6D0EA001C5371 /* Isgl3dActionSequence.m */,
+				17635B2713F6D0EA001C5371 /* Isgl3dActionTween.h */,
+				17635B2813F6D0EA001C5371 /* Isgl3dActionTween.m */,
+			);
+			path = actions;
+			sourceTree = "<group>";
+		};
 		17801AEA131AB0BD0045803F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +916,7 @@
 		17BC4228136DDF1F0064FF49 /* isgl3d */ = {
 			isa = PBXGroup;
 			children = (
+				17635B0813F6D0EA001C5371 /* actions */,
 				17BC4229136DDF1F0064FF49 /* animators */,
 				17BC4236136DDF1F0064FF49 /* cameras */,
 				17BC423D136DDF1F0064FF49 /* containers */,
@@ -1464,6 +1568,22 @@
 				1764B9DC13F349A900287E35 /* Isgl3dShaderMaterial.h in Headers */,
 				1764B9E413F349BD00287E35 /* Isgl3dCustomShader.h in Headers */,
 				1764B9E613F349BD00287E35 /* Isgl3dInternalShader.h in Headers */,
+				17635B2913F6D0EA001C5371 /* Isgl3dAction.h in Headers */,
+				17635B2B13F6D0EA001C5371 /* Isgl3dActionAlpha.h in Headers */,
+				17635B2D13F6D0EA001C5371 /* Isgl3dActionCallFunc.h in Headers */,
+				17635B2F13F6D0EA001C5371 /* Isgl3dActionDelay.h in Headers */,
+				17635B3113F6D0EA001C5371 /* Isgl3dActionEase.h in Headers */,
+				17635B3313F6D0EA001C5371 /* Isgl3dActionFixedDuration.h in Headers */,
+				17635B3513F6D0EA001C5371 /* Isgl3dActionInstant.h in Headers */,
+				17635B3713F6D0EA001C5371 /* Isgl3dActionInterval.h in Headers */,
+				17635B3913F6D0EA001C5371 /* Isgl3dActionManager.h in Headers */,
+				17635B3B13F6D0EA001C5371 /* Isgl3dActionMove.h in Headers */,
+				17635B3D13F6D0EA001C5371 /* Isgl3dActionParallel.h in Headers */,
+				17635B3F13F6D0EA001C5371 /* Isgl3dActionRepeat.h in Headers */,
+				17635B4113F6D0EA001C5371 /* Isgl3dActionRotate.h in Headers */,
+				17635B4313F6D0EA001C5371 /* Isgl3dActionScale.h in Headers */,
+				17635B4513F6D0EA001C5371 /* Isgl3dActionSequence.h in Headers */,
+				17635B4713F6D0EA001C5371 /* Isgl3dActionTween.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1695,6 +1815,22 @@
 				1764B9DD13F349A900287E35 /* Isgl3dShaderMaterial.m in Sources */,
 				1764B9E513F349BD00287E35 /* Isgl3dCustomShader.m in Sources */,
 				1764B9E713F349BD00287E35 /* Isgl3dInternalShader.m in Sources */,
+				17635B2A13F6D0EA001C5371 /* Isgl3dAction.m in Sources */,
+				17635B2C13F6D0EA001C5371 /* Isgl3dActionAlpha.m in Sources */,
+				17635B2E13F6D0EA001C5371 /* Isgl3dActionCallFunc.m in Sources */,
+				17635B3013F6D0EA001C5371 /* Isgl3dActionDelay.m in Sources */,
+				17635B3213F6D0EA001C5371 /* Isgl3dActionEase.m in Sources */,
+				17635B3413F6D0EA001C5371 /* Isgl3dActionFixedDuration.m in Sources */,
+				17635B3613F6D0EA001C5371 /* Isgl3dActionInstant.m in Sources */,
+				17635B3813F6D0EA001C5371 /* Isgl3dActionInterval.m in Sources */,
+				17635B3A13F6D0EA001C5371 /* Isgl3dActionManager.m in Sources */,
+				17635B3C13F6D0EA001C5371 /* Isgl3dActionMove.m in Sources */,
+				17635B3E13F6D0EA001C5371 /* Isgl3dActionParallel.m in Sources */,
+				17635B4013F6D0EA001C5371 /* Isgl3dActionRepeat.m in Sources */,
+				17635B4213F6D0EA001C5371 /* Isgl3dActionRotate.m in Sources */,
+				17635B4413F6D0EA001C5371 /* Isgl3dActionScale.m in Sources */,
+				17635B4613F6D0EA001C5371 /* Isgl3dActionSequence.m in Sources */,
+				17635B4813F6D0EA001C5371 /* Isgl3dActionTween.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
