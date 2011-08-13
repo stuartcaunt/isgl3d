@@ -26,7 +26,7 @@
 	_viewController.wantsFullScreenLayout = YES;
 	
 	// Create cocos2d OpenGL view, modified to run with iSGL3D.
-	Isgl3dCCGLView * glView = [Isgl3dCCGLView viewWithFrame:[_window bounds] pixelFormat:kEAGLColorFormatRGB565 depthFormat:GL_DEPTH_COMPONENT16_OES];
+	Isgl3dCCGLView * glView = [Isgl3dCCGLView viewWithFrame:[_window bounds] pixelFormat:kEAGLColorFormatRGBA8 depthFormat:GL_DEPTH_COMPONENT16_OES];
 
 	// Initialise both directors
 	[self initialiseCocos2d:glView];

@@ -1,4 +1,6 @@
 current SVN version
+	Isgl3dPODImporter: Fixed bug on loading non-mesh nodes
+	ccBridge::AppDelegate: Fixed bug on event capturing.
 	Isgl3dAction (and sub-classes): added as an alternative means of animating nodes.
 	Isgl3dShaderMaterial, Isgl3dCustomShader : Added to framework to allow custom OpenGL ES2 shaders to be more easily integrated.
 	OpenGL ES2 generic shader bugs : fixed by Holger
@@ -12,7 +14,7 @@ current SVN version
 	Allow nodes from PODs to be reused any number of times on a scene 
 	Added device auto-rotation handling
 
-version 1.2.0 (2011-06-24)
+version 1.2.1 (2011-06-24)
 	Isgl3dPODImporter: fix bug in Isgl3dPODImporter for models without UVs (Issue #5)
 	Isgl3dParticleGenerator/Isgl3dParticlePath: Bug fixes (thanks to Massimiliano Rossi) 
 	Isgl3dCamera: allow camera to be fixed to local frame of reference, can be manipulated like normal Isgl3dNode (use isTargetCamera = NO) 

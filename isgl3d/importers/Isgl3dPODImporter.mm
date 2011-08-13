@@ -231,13 +231,17 @@
 
 		NSLog(@"Adding node: %s:", nodeInfo.pszName);
 		
-		Isgl3dMeshNode * node = [_meshNodes objectForKey:[NSString stringWithUTF8String:nodeInfo.pszName]];
+		Isgl3dNode * node = [_meshNodes objectForKey:[NSString stringWithUTF8String:nodeInfo.pszName]];
 		
 		if (nodeInfo.nIdxParent == -1) {
 			[scene addChild:node];
 		} else {
-			Isgl3dMeshNode * parent = [_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdxParent]];
-			[parent addChild:node];
+			Isgl3dNode * parent = [_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdxParent]];
+			
+			if (parent) {
+				[parent addChild:node];
+			} else {
+			}
 		}
 	}
 
@@ -566,6 +570,19 @@
 		[node setTransformationFromOpenGLMatrix:podTransformation.f];
 		
 	}
+	
+	// Create all non-mesh nodes
+	for (int i = 0; i < _podScene->nNumNode; i++) {
+		SPODNode & nodeInfo = _podScene->pNode[i];
+		
+		// See if node already exists as a mesh node, otherise create simple node
+		if (![_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdx]]) {
+			Isgl3dNode * node = [Isgl3dNode node];
+			[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:nodeInfo.nIdx]];
+		}
+		
+	}
+	
 	
 	_buildMeshNodesComplete = YES;
 }
