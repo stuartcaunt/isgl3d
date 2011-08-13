@@ -1085,6 +1085,29 @@
 		17C2F0A813F5E1D60002C7D3 /* Isgl3dActionTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C2F0A613F5E1D60002C7D3 /* Isgl3dActionTween.m */; };
 		17C2F0AB13F5E7C70002C7D3 /* Isgl3dActionRepeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C2F0A913F5E7C70002C7D3 /* Isgl3dActionRepeat.h */; };
 		17C2F0AC13F5E7C70002C7D3 /* Isgl3dActionRepeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C2F0AA13F5E7C70002C7D3 /* Isgl3dActionRepeat.m */; };
+		17C2F0B913F6CCEE0002C7D3 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		17C2F0BA13F6CCEE0002C7D3 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		17C2F0BB13F6CCEE0002C7D3 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		17C2F0BC13F6CCEE0002C7D3 /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		17C2F0BD13F6CCEE0002C7D3 /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		17C2F0BE13F6CCEE0002C7D3 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		17C2F0BF13F6CCEE0002C7D3 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		17C2F0C013F6CCEE0002C7D3 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		17C2F0C113F6CCEE0002C7D3 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731227B12FC76D100861D84 /* red_checker.png */; };
+		17C2F0C213F6CCEE0002C7D3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DB13708A2100152EFE /* Default.png */; };
+		17C2F0C313F6CCEE0002C7D3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DC13708A2100152EFE /* Icon.png */; };
+		17C2F0C413F6CCEE0002C7D3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DD13708A2100152EFE /* Icon@2x.png */; };
+		17C2F0C713F6CCEE0002C7D3 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		17C2F0C813F6CCEE0002C7D3 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		17C2F0C913F6CCEE0002C7D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		17C2F0CA13F6CCEE0002C7D3 /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
+		17C2F0CD13F6CCEE0002C7D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		17C2F0CE13F6CCEE0002C7D3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		17C2F0CF13F6CCEE0002C7D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		17C2F0D013F6CCEE0002C7D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		17C2F0D113F6CCEE0002C7D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		17C2F0D213F6CCEE0002C7D3 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		17C2F0DB13F6CD460002C7D3 /* GesturesDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C2F0DA13F6CD460002C7D3 /* GesturesDemoView.m */; };
 		17CDF5AB13674DB500893070 /* Isgl3dKeyframeMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CDF5A913674DB500893070 /* Isgl3dKeyframeMesh.h */; };
 		17CDF5AC13674DB500893070 /* Isgl3dKeyframeMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CDF5AA13674DB500893070 /* Isgl3dKeyframeMesh.m */; };
 		17CDF5B2136753FA00893070 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
@@ -1763,6 +1786,13 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
 		};
+		17C2F0B713F6CCEE0002C7D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
 		17CDF5B0136753FA00893070 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -2359,6 +2389,9 @@
 		17C2F0A613F5E1D60002C7D3 /* Isgl3dActionTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionTween.m; sourceTree = "<group>"; };
 		17C2F0A913F5E7C70002C7D3 /* Isgl3dActionRepeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionRepeat.h; sourceTree = "<group>"; };
 		17C2F0AA13F5E7C70002C7D3 /* Isgl3dActionRepeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionRepeat.m; sourceTree = "<group>"; };
+		17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C2F0D913F6CD460002C7D3 /* GesturesDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GesturesDemoView.h; sourceTree = "<group>"; };
+		17C2F0DA13F6CD460002C7D3 /* GesturesDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GesturesDemoView.m; sourceTree = "<group>"; };
 		17CDF5A913674DB500893070 /* Isgl3dKeyframeMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dKeyframeMesh.h; sourceTree = "<group>"; };
 		17CDF5AA13674DB500893070 /* Isgl3dKeyframeMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dKeyframeMesh.m; sourceTree = "<group>"; };
 		17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyframeMeshAnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2940,6 +2973,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C2F0CC13F6CCEE0002C7D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C2F0CD13F6CCEE0002C7D3 /* CoreGraphics.framework in Frameworks */,
+				17C2F0CE13F6CCEE0002C7D3 /* OpenGLES.framework in Frameworks */,
+				17C2F0CF13F6CCEE0002C7D3 /* QuartzCore.framework in Frameworks */,
+				17C2F0D013F6CCEE0002C7D3 /* UIKit.framework in Frameworks */,
+				17C2F0D113F6CCEE0002C7D3 /* Foundation.framework in Frameworks */,
+				17C2F0D213F6CCEE0002C7D3 /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17CDF5C1136753FA00893070 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3060,6 +3106,7 @@
 				178A63011368558A00BEFD2C /* KeyframePODAnimationTest.app */,
 				17A481CE13F129880098AC3F /* ShaderMaterialDemo.app */,
 				17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */,
+				17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3830,6 +3877,15 @@
 			path = billboard;
 			sourceTree = "<group>";
 		};
+		17C2F0D813F6CD460002C7D3 /* gestures */ = {
+			isa = PBXGroup;
+			children = (
+				17C2F0D913F6CD460002C7D3 /* GesturesDemoView.h */,
+				17C2F0DA13F6CD460002C7D3 /* GesturesDemoView.m */,
+			);
+			path = gestures;
+			sourceTree = "<group>";
+		};
 		17CDF5CD1367544500893070 /* animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -4336,6 +4392,7 @@
 				171CB86B13195D0C003712F4 /* augmentedreality */,
 				17BE1768132E95BD00D053BA /* billboard */,
 				1762372112F9CE31008CDB4B /* camera */,
+				17C2F0D813F6CD460002C7D3 /* gestures */,
 				17F7A88712FA0D7F00C7BB82 /* lighting */,
 				17801A62131A959D0045803F /* occlusion */,
 				1731215612FB3D9B00861D84 /* particles */,
@@ -5264,6 +5321,24 @@
 			productReference = 17BE1790132E98B100D053BA /* BillboardTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17C2F0B513F6CCEE0002C7D3 /* GesturesDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C2F0D313F6CCEE0002C7D3 /* Build configuration list for PBXNativeTarget "GesturesDemo" */;
+			buildPhases = (
+				17C2F0B813F6CCEE0002C7D3 /* Resources */,
+				17C2F0C613F6CCEE0002C7D3 /* Sources */,
+				17C2F0CC13F6CCEE0002C7D3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17C2F0B613F6CCEE0002C7D3 /* PBXTargetDependency */,
+			);
+			name = GesturesDemo;
+			productName = CameraZoomAndFocus;
+			productReference = 17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17CDF5C8136753FA00893070 /* Build configuration list for PBXNativeTarget "KeyframeMeshAnimationTest" */;
@@ -5442,6 +5517,7 @@
 				178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */,
 				17A481AD13F129880098AC3F /* ShaderMaterialDemo */,
 				17D0774313F4A643003F6E46 /* ActionsDemo */,
+				17C2F0B513F6CCEE0002C7D3 /* GesturesDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -5973,6 +6049,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C2F0B813F6CCEE0002C7D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C2F0B913F6CCEE0002C7D3 /* capture.fsh in Resources */,
+				17C2F0BA13F6CCEE0002C7D3 /* capture.vsh in Resources */,
+				17C2F0BB13F6CCEE0002C7D3 /* generic.fsh in Resources */,
+				17C2F0BC13F6CCEE0002C7D3 /* generic.vsh in Resources */,
+				17C2F0BD13F6CCEE0002C7D3 /* particle.fsh in Resources */,
+				17C2F0BE13F6CCEE0002C7D3 /* particle.vsh in Resources */,
+				17C2F0BF13F6CCEE0002C7D3 /* shadowMap.fsh in Resources */,
+				17C2F0C013F6CCEE0002C7D3 /* shadowMap.vsh in Resources */,
+				17C2F0C113F6CCEE0002C7D3 /* red_checker.png in Resources */,
+				17C2F0C213F6CCEE0002C7D3 /* Default.png in Resources */,
+				17C2F0C313F6CCEE0002C7D3 /* Icon.png in Resources */,
+				17C2F0C413F6CCEE0002C7D3 /* Icon@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		17CDF5B1136753FA00893070 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6373,6 +6468,18 @@
 				17BE1759132E94E400D053BA /* main.m in Sources */,
 				17BE176B132E95BD00D053BA /* BillboardTestView.m in Sources */,
 				1733548513408C38000F26F0 /* Isgl3dAppDelegate.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C2F0C613F6CCEE0002C7D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C2F0C713F6CCEE0002C7D3 /* Isgl3dDemoCameraController.m in Sources */,
+				17C2F0C813F6CCEE0002C7D3 /* Isgl3dViewController.m in Sources */,
+				17C2F0C913F6CCEE0002C7D3 /* main.m in Sources */,
+				17C2F0CA13F6CCEE0002C7D3 /* Isgl3dAppDelegate.mm in Sources */,
+				17C2F0DB13F6CD460002C7D3 /* GesturesDemoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7004,6 +7111,11 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17BE1748132E94E400D053BA /* PBXContainerItemProxy */;
+		};
+		17C2F0B613F6CCEE0002C7D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 17C2F0B713F6CCEE0002C7D3 /* PBXContainerItemProxy */;
 		};
 		17CDF5AF136753FA00893070 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8297,6 +8409,55 @@
 			};
 			name = Release;
 		};
+		17C2F0D413F6CCEE0002C7D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = GesturesDemo;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17C2F0D513F6CCEE0002C7D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = GesturesDemo;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		17CDF5C9136753FA00893070 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -8874,6 +9035,15 @@
 			buildConfigurations = (
 				17BE1763132E94E400D053BA /* Debug */,
 				17BE1764132E94E400D053BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C2F0D313F6CCEE0002C7D3 /* Build configuration list for PBXNativeTarget "GesturesDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C2F0D413F6CCEE0002C7D3 /* Debug */,
+				17C2F0D513F6CCEE0002C7D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

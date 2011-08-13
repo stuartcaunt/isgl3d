@@ -1,6 +1,8 @@
 current SVN version
+	GesturesDemoView added to illustrate gesture recognizers.
 	Isgl3dPODImporter: Fixed bug on loading non-mesh nodes
 	ccBridge::AppDelegate: Fixed bug on event capturing.
+	ActionsDemoView added to illustrate action animation.
 	Isgl3dAction (and sub-classes): added as an alternative means of animating nodes.
 	Isgl3dShaderMaterial, Isgl3dCustomShader : Added to framework to allow custom OpenGL ES2 shaders to be more easily integrated.
 	OpenGL ES2 generic shader bugs : fixed by Holger
