@@ -26,7 +26,7 @@
 #define SHADOW_MAP_HEIGHT 256.0
 #define SHADOW_MAP_WIDTH 256.0
 
-#import "Isgl3dLight.h";
+#import "Isgl3dLight.h"
 
 @class Isgl3dGLDepthRenderTexture;
 
