@@ -207,6 +207,8 @@
 		<dict>
 			<key>ARCHS</key>
 			<string>$(ARCHS_STANDARD_32_BIT)</string>
+			<key>GCC_VERSION</key>
+			<string>com.apple.compilers.llvmgcc42</string>
 			<key>GCC_C_LANGUAGE_STANDARD</key>
 			<string>gnu99</string>
 			<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
