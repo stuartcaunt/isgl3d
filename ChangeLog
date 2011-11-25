@@ -1,5 +1,8 @@
 current SVN version
 
+Version 1.2.3 (2011-11-26)
+	Fix compiler bugs in template for Xcode4.2.
+
 version 1.2.2 (2011-08-13)
 	GesturesDemoView added to illustrate gesture recognizers.
 	Isgl3dPODImporter: Fixed bug on loading non-mesh nodes
