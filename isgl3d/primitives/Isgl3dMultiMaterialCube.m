@@ -123,7 +123,7 @@
 }
 
 
-- (Isgl3dPlane *) addFace:(FaceId)faceId material:(Isgl3dMaterial *)material uvMap:(const Isgl3dUVMap *)uvMap {
+- (Isgl3dPlane *) addFace:(FaceId)faceId material:(Isgl3dMaterial *)material uvMap:(Isgl3dUVMap *)uvMap {
 	Isgl3dPlane *plane;
 	
 	// First, create the plane
