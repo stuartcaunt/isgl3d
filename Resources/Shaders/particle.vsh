@@ -1,3 +1,6 @@
+#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
 
 struct Point {
 	float minSize;

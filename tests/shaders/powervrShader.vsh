@@ -1,3 +1,7 @@
+#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
+
 attribute vec3	myVertex;
 attribute vec3	myNormal;
 attribute vec2	myUV;
