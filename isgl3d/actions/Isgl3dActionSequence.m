@@ -71,7 +71,7 @@
 
 - (id) initWithActionsArray:(NSArray *)actions {
 	if ((self = [super init])) {
-		_actions = [actions retain];
+		_actions = [actions mutableCopy];
 
 	}
 	
