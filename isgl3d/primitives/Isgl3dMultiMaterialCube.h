@@ -152,6 +152,6 @@ typedef enum {
  * @param uvMap The Isgl3dUVMap corresponding to the face. If nil, the standard uv map is used.
  * @return The Isgl3dPlane mesh created for the face.
  */
-- (Isgl3dPlane *) addFace:(FaceId)faceId material:(Isgl3dMaterial *)material uvMap:(Isgl3dUVMap *)uvMap;
+- (Isgl3dPlane *) addFace:(FaceId)faceId material:(Isgl3dMaterial *)material uvMap:(const Isgl3dUVMap *)uvMap;
 
 @end

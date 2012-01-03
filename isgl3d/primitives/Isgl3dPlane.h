@@ -83,7 +83,7 @@
  * @param ny The number of segments along the y-axis.
  * @param uvMap The Isgl3dUVMap for mapping a texture material.
  */
-+ (id) meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap;
++ (id) meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap;
 
 /**
  * Initialises the plane with the specified geometry.
@@ -120,6 +120,6 @@
  * @param ny The number of segments along the y-axis.
  * @param uvMap The Isgl3dUVMap for mapping a texture material.
  */
-- (id) initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap;
+- (id) initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap;
 
 @end
