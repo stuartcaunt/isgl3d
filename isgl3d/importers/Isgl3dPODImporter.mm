@@ -278,7 +278,7 @@
 }
 
 - (Isgl3dMaterial *) materialWithName:(NSString *)materialName {
-	Isgl3dMaterial * material;
+	Isgl3dMaterial * material = NULL;
 	for (int i = 0; i < _podScene->nNumMaterial; i++) {
 		SPODMaterial & materialInfo = _podScene->pMaterial[i];
 		if ([materialName isEqualToString:[NSString stringWithUTF8String:materialInfo.pszName]]) {
