@@ -57,13 +57,13 @@
 }
 
 - (id)initWithStdArray:(int)count array:(float*)array {
-	if ([self init]) {
+	if (self = [super init]) {
 		for (int i = 0; i < count; i++) {
 			[self add:array[i]];
 		}
-    }
+	}
 	
-    return self;
+	return self;
 }
 
 - (void) dealloc {
