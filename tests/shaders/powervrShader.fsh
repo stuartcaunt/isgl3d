@@ -1,3 +1,7 @@
+#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
+
 varying highp float	fDiffuse;
 varying lowp vec2	fTexCoord;
 varying lowp vec2  fTexCoord2;

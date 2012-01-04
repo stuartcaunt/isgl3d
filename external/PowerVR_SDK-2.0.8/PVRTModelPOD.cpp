@@ -1757,7 +1757,7 @@ static bool Read(
 	if(!(pS->nFlags & PVRTMODELPODSF_FIXED))
 		PVRTModelPODToggleFixedPoint(*pS);
 #else
-	if(pS->nFlags & PVRTMODELPODSF_FIXED)
+	if(pS && pS->nFlags & PVRTMODELPODSF_FIXED)
 		PVRTModelPODToggleFixedPoint(*pS);
 #endif
 

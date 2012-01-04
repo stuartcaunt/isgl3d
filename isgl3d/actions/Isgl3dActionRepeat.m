@@ -67,7 +67,7 @@
 	[_action tick:dt];
 	
 	if (_action.hasTerminated) {
-		float dt = dt + _action.duration - _action.elapsedTime;
+		dt += _action.duration - _action.elapsedTime;
 		
 		[_action startWithTarget:_target];
 		[_action tick:dt];

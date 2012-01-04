@@ -71,7 +71,7 @@ btCapsuleShape::btCapsuleShape(btScalar radius, btScalar height) : btConvexInter
 		newDot = vec.dot(vtx);
 		if (newDot > maxDot)
 		{
-			maxDot = newDot;
+			//maxDot = newDot; // <-- true, but value not needed.
 			supVec = vtx;
 		}
 	}

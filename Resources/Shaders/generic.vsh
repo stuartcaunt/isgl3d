@@ -1,3 +1,7 @@
+#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
+
 #define MAX_LIGHTS 4
 #define MAX_BONES 4
 

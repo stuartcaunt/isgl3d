@@ -480,7 +480,7 @@ btHullTriangle* HullLibrary::extrudable(btScalar epsilon)
 			t = m_tris[i];
 		}
 	}
-	return (t->rise >epsilon)?t:NULL ;
+	return (t && t->rise >epsilon)?t:NULL ;
 }
 
 

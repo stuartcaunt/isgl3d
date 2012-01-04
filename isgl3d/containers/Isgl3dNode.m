@@ -139,7 +139,6 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
     copy->_transparent = _transparent;
     copy->_alphaCulling = _alphaCulling;
     copy->_alphaCullValue = _alphaCullValue;
-    copy->_lightingEnabled = _lightingEnabled;
     copy->_interactive = _interactive;
     copy->_isVisible = _isVisible;
 

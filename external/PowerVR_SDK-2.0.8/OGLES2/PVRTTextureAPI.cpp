@@ -45,7 +45,7 @@ void PVRTTextureTile(
 	const PVR_Texture_Header	* const pIn,
 	const int					nRepeatCnt)
 {
-	unsigned int		nFormat = 0, nType = 0, nBPP, nSize, nElW = 0, nElH = 0;
+	unsigned int		nFormat = 0, nType = 0, nBPP, nSize, nElW = 1, nElH = 1;
 	PVRTuint8		*pMmSrc, *pMmDst;
 	unsigned int		nLevel;
 	PVR_Texture_Header	*psTexHeaderNew;
