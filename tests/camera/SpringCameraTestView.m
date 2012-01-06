@@ -136,6 +136,7 @@
 		[label setX:100 andY:8];
 		label.transparent = YES;
 		[self.scene addChild:label];
+        [label release];
 	}
 	
 	return self;
