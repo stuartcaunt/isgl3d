@@ -34,7 +34,7 @@
  * The UV map is specified by three points: the bottom left coordinate, the bottom right coordinate
  * and the top left coordinate. 
  */
-@interface Isgl3dUVMap : NSObject {
+@interface Isgl3dUVMap : NSObject <NSCopying> {
 	
 @private
 	float _uA; 
