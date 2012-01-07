@@ -1520,7 +1520,7 @@ bool CPVRTPFXParser::ParseTextures(int nStartLine, int nEndLine, CPVRTString * c
 				}
 
 				// ----------------Wrap mode----------------//
-				nWrapS = 1;
+				//nWrapS = 1; <-- redundant. default set below.
 				nWrapT = 1;
 				nWrapR = 1;
 
