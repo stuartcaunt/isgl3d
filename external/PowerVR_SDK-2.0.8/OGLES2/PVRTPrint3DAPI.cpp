@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "PVRTContext.h"
 #include "PVRTFixedPoint.h"
@@ -226,7 +227,7 @@ bool CPVRTPrint3D::APIInit(const SPVRTContext	* const pContext)
 		bRes = (PVRTShaderLoadSourceFromMemory(_Print3DFragShader_fsh, GL_FRAGMENT_SHADER, &m_pAPI->m_FragmentShaderObject, &error) == PVR_SUCCESS) &&
 			   (PVRTShaderLoadSourceFromMemory(_Print3DVertShader_vsh, GL_VERTEX_SHADER, &m_pAPI->m_VertexShaderObject, &error)  == PVR_SUCCESS);
 	}
-	_ASSERT(bRes);
+	assert(bRes);
 
     m_pAPI->m_ProgramObject = glCreateProgram();
     glAttachShader(m_pAPI->m_ProgramObject, m_pAPI->m_VertexShaderObject);
@@ -242,7 +243,7 @@ bool CPVRTPrint3D::APIInit(const SPVRTContext	* const pContext)
 	if (!Linked)
 		bRes = false;
 
-	_ASSERT(bRes);
+	assert(bRes);
 
 	return true;
 }
