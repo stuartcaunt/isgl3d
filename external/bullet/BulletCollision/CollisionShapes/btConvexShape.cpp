@@ -246,7 +246,7 @@ btVector3 btConvexShape::localGetSupportVertexWithoutMarginNonVirtual (const btV
 			newDot = vec.dot(vtx);
 			if (newDot > maxDot)
 			{
-				maxDot = newDot;
+				//maxDot = newDot; <-- true, but value never read.
 				supVec = vtx;
 			}
 		}
