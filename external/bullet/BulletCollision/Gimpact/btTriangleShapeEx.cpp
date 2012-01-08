@@ -22,7 +22,6 @@ subject to the following restrictions:
 */
 
 #include "btTriangleShapeEx.h"
-#include <assert.h>
 
 
 void GIM_TRIANGLE_CONTACT::merge_points(const btVector4 & plane,
@@ -54,7 +53,7 @@ void GIM_TRIANGLE_CONTACT::merge_points(const btVector4 & plane,
             }
         }
     }
-    assert(point_indices);
+
     for ( _k=0;_k<m_point_count;_k++)
     {
         m_points[_k] = points[point_indices[_k]];
