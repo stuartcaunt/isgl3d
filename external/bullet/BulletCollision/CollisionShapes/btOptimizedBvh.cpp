@@ -315,11 +315,10 @@ void	btOptimizedBvh::updateBvhNodes(btStridingMeshInterface* meshInterface,int f
 
 				unsigned int* gfxbase = (unsigned int*)(indexbase+nodeTriangleIndex*indexstride);
 				
-				
 				for (int j=2;j>=0;j--)
 				{
 					
-					int graphicsindex = indicestype==PHY_SHORT?((unsigned short*)gfxbase)[j]:gfxbase[j];
+					int graphicsindex = indicestype==PHY_SHORT?((unsigned short*)gfxbase)[j]:gfxbase[j]; // LLVM-SA False-Positive.
 					if (type == PHY_FLOAT)
 					{
 						float* graphicsbase = (float*)(vertexbase+graphicsindex*stride);
