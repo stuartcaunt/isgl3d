@@ -110,7 +110,7 @@ void	btContinuousDynamicsWorld::calculateTimeOfImpacts(btScalar timeStep)
 		
 		///'toi' is the global smallest time of impact. However, we just calculate the time of impact for each object individually.
 		///so we handle the case moving versus static properly, and we cheat for moving versus moving
-		btScalar toi = 1.f;
+		//btScalar toi = 1.f;
 		
 	
 		btDispatcherInfo& dispatchInfo = getDispatchInfo();
@@ -126,7 +126,7 @@ void	btContinuousDynamicsWorld::calculateTimeOfImpacts(btScalar timeStep)
 		if (dispatcher)
 			dispatcher->dispatchAllCollisionPairs(m_broadphasePairCache->getOverlappingPairCache(),dispatchInfo,m_dispatcher1);
 
-		toi = dispatchInfo.m_timeOfImpact;
+		//toi = dispatchInfo.m_timeOfImpact;
 
 		dispatchInfo.m_dispatchFunc = btDispatcherInfo::DISPATCH_DISCRETE;
 
