@@ -1,10 +1,16 @@
+#!/bin/bash
+
 # Credits and thanks for this installation script go to cocos2d-iphone (Ricardo Quesada)
 #
 # The original template installation script can be found in the cocos2d-iphone distribution (http://www.cocos2d-iphone.org/)
 #
 # Modifications have been made to install the iSGL3D sources and template files.
 
-#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo "[EUID:$EUID]This script must be run as root (man sudo)" 1>&2
+   exit 1
+fi
+
 
 echo 'iSGL3D template installer'
 
