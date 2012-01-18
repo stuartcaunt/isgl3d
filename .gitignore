@@ -12,4 +12,7 @@ Thumbs.db
 # XCode Files
 xcuserdata/
 *.xcworkspacedata
+*.mode1v3
+*.pbxuser
+build/
 
