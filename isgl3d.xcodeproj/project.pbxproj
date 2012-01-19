@@ -54,7 +54,7 @@
 		1713BB041358B014002C3288 /* SpringCameraTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB021358B014002C3288 /* SpringCameraTestView.h */; };
 		1713BB061358B06E002C3288 /* SpringCameraTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB031358B014002C3288 /* SpringCameraTestView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1713BB491358D6F7002C3288 /* neon_matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB401358D6F7002C3288 /* neon_matrix_impl.h */; };
-		1713BB4A1358D6F7002C3288 /* neon_matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB411358D6F7002C3288 /* neon_matrix_impl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1713BB4A1358D6F7002C3288 /* neon_matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB411358D6F7002C3288 /* neon_matrix_impl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -marm"; }; };
 		1713BB4B1358D6F7002C3288 /* common_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB431358D6F7002C3288 /* common_macros.h */; };
 		1713BB4C1358D6F7002C3288 /* matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB441358D6F7002C3288 /* matrix_impl.h */; };
 		1713BB4D1358D6F7002C3288 /* matrix_impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1713BB451358D6F7002C3288 /* matrix_impl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
