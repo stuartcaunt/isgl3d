@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -980,69 +980,6 @@
 		17B7228212F8C8C000F80DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
 		17B7228412F8C8C000F80DFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		17B7228F12F8C9E000F80DFD /* AccelerometerDemoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */; };
-		17B9862A13D8979C00B141DA /* OGLES2Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985EB13D8979B00B141DA /* OGLES2Tools.h */; };
-		17B9862B13D8979C00B141DA /* PVRTBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985EC13D8979B00B141DA /* PVRTBackground.cpp */; };
-		17B9862C13D8979C00B141DA /* PVRTBackgroundShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985ED13D8979B00B141DA /* PVRTBackgroundShaders.h */; };
-		17B9862D13D8979C00B141DA /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985EE13D8979B00B141DA /* PVRTContext.h */; };
-		17B9862E13D8979C00B141DA /* PVRTgles2Ext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985EF13D8979B00B141DA /* PVRTgles2Ext.cpp */; };
-		17B9862F13D8979C00B141DA /* PVRTgles2Ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985F013D8979B00B141DA /* PVRTgles2Ext.h */; };
-		17B9863013D8979C00B141DA /* PVRTPFXParserAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985F113D8979B00B141DA /* PVRTPFXParserAPI.cpp */; };
-		17B9863113D8979C00B141DA /* PVRTPFXParserAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985F213D8979B00B141DA /* PVRTPFXParserAPI.h */; };
-		17B9863213D8979C00B141DA /* PVRTPrint3DAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985F313D8979B00B141DA /* PVRTPrint3DAPI.cpp */; };
-		17B9863313D8979C00B141DA /* PVRTPrint3DIMGLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985F413D8979B00B141DA /* PVRTPrint3DIMGLogo.h */; };
-		17B9863413D8979C00B141DA /* PVRTPrint3DPVRLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985F513D8979B00B141DA /* PVRTPrint3DPVRLogo.h */; };
-		17B9863513D8979C00B141DA /* PVRTPrint3DShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985F613D8979B00B141DA /* PVRTPrint3DShaders.h */; };
-		17B9863613D8979C00B141DA /* PVRTShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985F713D8979B00B141DA /* PVRTShader.cpp */; };
-		17B9863713D8979C00B141DA /* PVRTShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985F813D8979B00B141DA /* PVRTShader.h */; };
-		17B9863813D8979C00B141DA /* PVRTTextureAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985F913D8979B00B141DA /* PVRTTextureAPI.cpp */; };
-		17B9863913D8979C00B141DA /* PVRTTextureAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985FA13D8979B00B141DA /* PVRTTextureAPI.h */; };
-		17B9863A13D8979C00B141DA /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985FB13D8979B00B141DA /* PVRTBackground.h */; };
-		17B9863B13D8979C00B141DA /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985FC13D8979B00B141DA /* PVRTBoneBatch.cpp */; };
-		17B9863C13D8979C00B141DA /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985FD13D8979B00B141DA /* PVRTBoneBatch.h */; };
-		17B9863D13D8979C00B141DA /* PVRTDecompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B985FE13D8979B00B141DA /* PVRTDecompress.cpp */; };
-		17B9863E13D8979C00B141DA /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B985FF13D8979C00B141DA /* PVRTDecompress.h */; };
-		17B9863F13D8979C00B141DA /* PVRTError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860013D8979C00B141DA /* PVRTError.cpp */; };
-		17B9864013D8979C00B141DA /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860113D8979C00B141DA /* PVRTError.h */; };
-		17B9864113D8979C00B141DA /* PVRTFixedPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860213D8979C00B141DA /* PVRTFixedPoint.cpp */; };
-		17B9864213D8979C00B141DA /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860313D8979C00B141DA /* PVRTFixedPoint.h */; };
-		17B9864313D8979C00B141DA /* PVRTGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860413D8979C00B141DA /* PVRTGeometry.cpp */; };
-		17B9864413D8979C00B141DA /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860513D8979C00B141DA /* PVRTGeometry.h */; };
-		17B9864513D8979C00B141DA /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860613D8979C00B141DA /* PVRTGlobal.h */; };
-		17B9864613D8979C00B141DA /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860713D8979C00B141DA /* PVRTMathTable.h */; };
-		17B9864713D8979C00B141DA /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860813D8979C00B141DA /* PVRTMatrix.h */; };
-		17B9864813D8979C00B141DA /* PVRTMatrixF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860913D8979C00B141DA /* PVRTMatrixF.cpp */; };
-		17B9864913D8979C00B141DA /* PVRTMatrixX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860A13D8979C00B141DA /* PVRTMatrixX.cpp */; };
-		17B9864A13D8979C00B141DA /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860B13D8979C00B141DA /* PVRTMemoryFileSystem.h */; };
-		17B9864B13D8979C00B141DA /* PVRTMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860C13D8979C00B141DA /* PVRTMisc.cpp */; };
-		17B9864C13D8979C00B141DA /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860D13D8979C00B141DA /* PVRTMisc.h */; };
-		17B9864D13D8979C00B141DA /* PVRTModelPOD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9860E13D8979C00B141DA /* PVRTModelPOD.cpp */; };
-		17B9864E13D8979C00B141DA /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9860F13D8979C00B141DA /* PVRTModelPOD.h */; };
-		17B9864F13D8979C00B141DA /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861013D8979C00B141DA /* PVRTools.h */; };
-		17B9865013D8979C00B141DA /* PVRTPFXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861113D8979C00B141DA /* PVRTPFXParser.cpp */; };
-		17B9865113D8979C00B141DA /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861213D8979C00B141DA /* PVRTPFXParser.h */; };
-		17B9865213D8979C00B141DA /* PVRTPrint3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861313D8979C00B141DA /* PVRTPrint3D.cpp */; };
-		17B9865313D8979C00B141DA /* PVRTPrint3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861413D8979C00B141DA /* PVRTPrint3D.h */; };
-		17B9865413D8979C00B141DA /* PVRTPrint3Ddat.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861513D8979C00B141DA /* PVRTPrint3Ddat.h */; };
-		17B9865513D8979C00B141DA /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861613D8979C00B141DA /* PVRTQuaternion.h */; };
-		17B9865613D8979C00B141DA /* PVRTQuaternionF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861713D8979C00B141DA /* PVRTQuaternionF.cpp */; };
-		17B9865713D8979C00B141DA /* PVRTQuaternionX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861813D8979C00B141DA /* PVRTQuaternionX.cpp */; };
-		17B9865813D8979C00B141DA /* PVRTResourceFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861913D8979C00B141DA /* PVRTResourceFile.cpp */; };
-		17B9865913D8979C00B141DA /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861A13D8979C00B141DA /* PVRTResourceFile.h */; };
-		17B9865A13D8979C00B141DA /* PVRTShadowVol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861B13D8979C00B141DA /* PVRTShadowVol.cpp */; };
-		17B9865B13D8979C00B141DA /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861C13D8979C00B141DA /* PVRTShadowVol.h */; };
-		17B9865C13D8979C00B141DA /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861D13D8979C00B141DA /* PVRTSingleton.h */; };
-		17B9865D13D8979C00B141DA /* PVRTString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9861E13D8979C00B141DA /* PVRTString.cpp */; };
-		17B9865E13D8979C00B141DA /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9861F13D8979C00B141DA /* PVRTString.h */; };
-		17B9865F13D8979C00B141DA /* PVRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9862013D8979C00B141DA /* PVRTTexture.cpp */; };
-		17B9866013D8979C00B141DA /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9862113D8979C00B141DA /* PVRTTexture.h */; };
-		17B9866113D8979C00B141DA /* PVRTTrans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9862213D8979C00B141DA /* PVRTTrans.cpp */; };
-		17B9866213D8979C00B141DA /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9862313D8979C00B141DA /* PVRTTrans.h */; };
-		17B9866313D8979C00B141DA /* PVRTTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9862413D8979C00B141DA /* PVRTTriStrip.cpp */; };
-		17B9866413D8979C00B141DA /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9862513D8979C00B141DA /* PVRTTriStrip.h */; };
-		17B9866513D8979C00B141DA /* PVRTVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9862613D8979C00B141DA /* PVRTVector.cpp */; };
-		17B9866613D8979C00B141DA /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9862713D8979C00B141DA /* PVRTVector.h */; };
-		17B9866713D8979C00B141DA /* PVRTVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17B9862813D8979C00B141DA /* PVRTVertex.cpp */; };
-		17B9866813D8979C00B141DA /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B9862913D8979C00B141DA /* PVRTVertex.h */; };
 		17BE1736132E92AF00D053BA /* Isgl3dBillboardNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */; };
 		17BE1737132E92AF00D053BA /* Isgl3dBillboardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */; };
 		17BE174A132E94E400D053BA /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
@@ -1390,6 +1327,72 @@
 		8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */; };
 		8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
 		8B0FA35A13E8046D00E798BA /* Isgl3dPVRLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */; };
+		8BDBA18814CCFA9000BAEB8A /* PVRTArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */; };
+		8BDBA18914CCFA9000BAEB8A /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */; };
+		8BDBA18A14CCFA9000BAEB8A /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA15814CCFA9000BAEB8A /* PVRTBoneBatch.cpp */; };
+		8BDBA18B14CCFA9000BAEB8A /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15914CCFA9000BAEB8A /* PVRTBoneBatch.h */; };
+		8BDBA18C14CCFA9000BAEB8A /* PVRTDecompress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA15A14CCFA9000BAEB8A /* PVRTDecompress.cpp */; };
+		8BDBA18D14CCFA9000BAEB8A /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15B14CCFA9000BAEB8A /* PVRTDecompress.h */; };
+		8BDBA18E14CCFA9000BAEB8A /* PVRTError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA15C14CCFA9000BAEB8A /* PVRTError.cpp */; };
+		8BDBA18F14CCFA9000BAEB8A /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15D14CCFA9000BAEB8A /* PVRTError.h */; };
+		8BDBA19014CCFA9000BAEB8A /* PVRTFixedPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA15E14CCFA9000BAEB8A /* PVRTFixedPoint.cpp */; };
+		8BDBA19114CCFA9000BAEB8A /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15F14CCFA9000BAEB8A /* PVRTFixedPoint.h */; };
+		8BDBA19214CCFA9000BAEB8A /* PVRTGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA16014CCFA9000BAEB8A /* PVRTGeometry.cpp */; };
+		8BDBA19314CCFA9000BAEB8A /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16114CCFA9000BAEB8A /* PVRTGeometry.h */; };
+		8BDBA19414CCFA9000BAEB8A /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16214CCFA9000BAEB8A /* PVRTGlobal.h */; };
+		8BDBA19514CCFA9000BAEB8A /* PVRTHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16314CCFA9000BAEB8A /* PVRTHash.h */; };
+		8BDBA19614CCFA9000BAEB8A /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16414CCFA9000BAEB8A /* PVRTMathTable.h */; };
+		8BDBA19714CCFA9000BAEB8A /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16514CCFA9000BAEB8A /* PVRTMatrix.h */; };
+		8BDBA19814CCFA9000BAEB8A /* PVRTMatrixF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA16614CCFA9000BAEB8A /* PVRTMatrixF.cpp */; };
+		8BDBA19914CCFA9000BAEB8A /* PVRTMatrixX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA16714CCFA9000BAEB8A /* PVRTMatrixX.cpp */; };
+		8BDBA19A14CCFA9000BAEB8A /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16814CCFA9000BAEB8A /* PVRTMemoryFileSystem.h */; };
+		8BDBA19B14CCFA9000BAEB8A /* PVRTMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA16914CCFA9000BAEB8A /* PVRTMisc.cpp */; };
+		8BDBA19C14CCFA9000BAEB8A /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16A14CCFA9000BAEB8A /* PVRTMisc.h */; };
+		8BDBA19D14CCFA9000BAEB8A /* PVRTModelPOD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA16B14CCFA9000BAEB8A /* PVRTModelPOD.cpp */; };
+		8BDBA19E14CCFA9000BAEB8A /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16C14CCFA9000BAEB8A /* PVRTModelPOD.h */; };
+		8BDBA19F14CCFA9000BAEB8A /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16D14CCFA9000BAEB8A /* PVRTools.h */; };
+		8BDBA1A014CCFA9000BAEB8A /* PVRTPFXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA16E14CCFA9000BAEB8A /* PVRTPFXParser.cpp */; };
+		8BDBA1A114CCFA9000BAEB8A /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16F14CCFA9000BAEB8A /* PVRTPFXParser.h */; };
+		8BDBA1A214CCFA9000BAEB8A /* PVRTPrint3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17014CCFA9000BAEB8A /* PVRTPrint3D.cpp */; };
+		8BDBA1A314CCFA9000BAEB8A /* PVRTPrint3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17114CCFA9000BAEB8A /* PVRTPrint3D.h */; };
+		8BDBA1A414CCFA9000BAEB8A /* PVRTPrint3Ddat.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17214CCFA9000BAEB8A /* PVRTPrint3Ddat.h */; };
+		8BDBA1A514CCFA9000BAEB8A /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17314CCFA9000BAEB8A /* PVRTQuaternion.h */; };
+		8BDBA1A614CCFA9000BAEB8A /* PVRTQuaternionF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17414CCFA9000BAEB8A /* PVRTQuaternionF.cpp */; };
+		8BDBA1A714CCFA9000BAEB8A /* PVRTQuaternionX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17514CCFA9000BAEB8A /* PVRTQuaternionX.cpp */; };
+		8BDBA1A814CCFA9000BAEB8A /* PVRTResourceFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17614CCFA9000BAEB8A /* PVRTResourceFile.cpp */; };
+		8BDBA1A914CCFA9000BAEB8A /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17714CCFA9000BAEB8A /* PVRTResourceFile.h */; };
+		8BDBA1AA14CCFA9000BAEB8A /* PVRTShadowVol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17814CCFA9000BAEB8A /* PVRTShadowVol.cpp */; };
+		8BDBA1AB14CCFA9000BAEB8A /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17914CCFA9000BAEB8A /* PVRTShadowVol.h */; };
+		8BDBA1AC14CCFA9000BAEB8A /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17A14CCFA9000BAEB8A /* PVRTSingleton.h */; };
+		8BDBA1AD14CCFA9000BAEB8A /* PVRTSkipGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17B14CCFA9000BAEB8A /* PVRTSkipGraph.h */; };
+		8BDBA1AE14CCFA9000BAEB8A /* PVRTString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17C14CCFA9000BAEB8A /* PVRTString.cpp */; };
+		8BDBA1AF14CCFA9000BAEB8A /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17D14CCFA9000BAEB8A /* PVRTString.h */; };
+		8BDBA1B014CCFA9000BAEB8A /* PVRTTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA17E14CCFA9000BAEB8A /* PVRTTexture.cpp */; };
+		8BDBA1B114CCFA9000BAEB8A /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17F14CCFA9000BAEB8A /* PVRTTexture.h */; };
+		8BDBA1B214CCFA9000BAEB8A /* PVRTTrans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA18014CCFA9000BAEB8A /* PVRTTrans.cpp */; };
+		8BDBA1B314CCFA9000BAEB8A /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18114CCFA9000BAEB8A /* PVRTTrans.h */; };
+		8BDBA1B414CCFA9000BAEB8A /* PVRTTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA18214CCFA9000BAEB8A /* PVRTTriStrip.cpp */; };
+		8BDBA1B514CCFA9000BAEB8A /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18314CCFA9000BAEB8A /* PVRTTriStrip.h */; };
+		8BDBA1B614CCFA9000BAEB8A /* PVRTVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA18414CCFA9000BAEB8A /* PVRTVector.cpp */; };
+		8BDBA1B714CCFA9000BAEB8A /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18514CCFA9000BAEB8A /* PVRTVector.h */; };
+		8BDBA1B814CCFA9000BAEB8A /* PVRTVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA18614CCFA9000BAEB8A /* PVRTVertex.cpp */; };
+		8BDBA1B914CCFA9000BAEB8A /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18714CCFA9000BAEB8A /* PVRTVertex.h */; };
+		8BDBA1CA14CCFABE00BAEB8A /* OGLES2Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BA14CCFABE00BAEB8A /* OGLES2Tools.h */; };
+		8BDBA1CB14CCFABE00BAEB8A /* PVRTBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1BB14CCFABE00BAEB8A /* PVRTBackground.cpp */; };
+		8BDBA1CC14CCFABE00BAEB8A /* PVRTBackgroundShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BC14CCFABE00BAEB8A /* PVRTBackgroundShaders.h */; };
+		8BDBA1CD14CCFABE00BAEB8A /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BD14CCFABE00BAEB8A /* PVRTContext.h */; };
+		8BDBA1CE14CCFABE00BAEB8A /* PVRTgles2Ext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1BE14CCFABE00BAEB8A /* PVRTgles2Ext.cpp */; };
+		8BDBA1CF14CCFABE00BAEB8A /* PVRTgles2Ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BF14CCFABE00BAEB8A /* PVRTgles2Ext.h */; };
+		8BDBA1D014CCFABE00BAEB8A /* PVRTPFXParserAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1C014CCFABE00BAEB8A /* PVRTPFXParserAPI.cpp */; };
+		8BDBA1D114CCFABE00BAEB8A /* PVRTPFXParserAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C114CCFABE00BAEB8A /* PVRTPFXParserAPI.h */; };
+		8BDBA1D214CCFABE00BAEB8A /* PVRTPrint3DAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1C214CCFABE00BAEB8A /* PVRTPrint3DAPI.cpp */; };
+		8BDBA1D314CCFABE00BAEB8A /* PVRTPrint3DIMGLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C314CCFABE00BAEB8A /* PVRTPrint3DIMGLogo.h */; };
+		8BDBA1D414CCFABE00BAEB8A /* PVRTPrint3DPVRLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C414CCFABE00BAEB8A /* PVRTPrint3DPVRLogo.h */; };
+		8BDBA1D514CCFABE00BAEB8A /* PVRTPrint3DShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C514CCFABE00BAEB8A /* PVRTPrint3DShaders.h */; };
+		8BDBA1D614CCFABE00BAEB8A /* PVRTShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1C614CCFABE00BAEB8A /* PVRTShader.cpp */; };
+		8BDBA1D714CCFABE00BAEB8A /* PVRTShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C714CCFABE00BAEB8A /* PVRTShader.h */; };
+		8BDBA1D814CCFABE00BAEB8A /* PVRTTextureAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1C814CCFABE00BAEB8A /* PVRTTextureAPI.cpp */; };
+		8BDBA1D914CCFABE00BAEB8A /* PVRTTextureAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -2183,7 +2186,7 @@
 		1731215712FB3D9B00861D84 /* ParticleGeneratorDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleGeneratorDemoView.h; sourceTree = "<group>"; };
 		1731215812FB3D9B00861D84 /* ParticleGeneratorDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticleGeneratorDemoView.m; sourceTree = "<group>"; };
 		1731216512FB3DEC00861D84 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
-		1731218D12FB562900861D84 /* Physics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Physics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1731218D12FB562900861D84 /* PhysicsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysicsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1731219112FB566A00861D84 /* PhysicsTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsTestView.h; sourceTree = "<group>"; };
 		1731219212FB566A00861D84 /* PhysicsTestView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsTestView.mm; sourceTree = "<group>"; };
 		173121A412FB570200861D84 /* cardboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cardboard.jpg; sourceTree = "<group>"; };
@@ -2300,69 +2303,6 @@
 		17B7228312F8C8C000F80DFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		17B7228D12F8C9E000F80DFD /* AccelerometerDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerDemoView.h; sourceTree = "<group>"; };
 		17B7228E12F8C9E000F80DFD /* AccelerometerDemoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AccelerometerDemoView.mm; sourceTree = "<group>"; };
-		17B985EB13D8979B00B141DA /* OGLES2Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLES2Tools.h; sourceTree = "<group>"; };
-		17B985EC13D8979B00B141DA /* PVRTBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBackground.cpp; sourceTree = "<group>"; };
-		17B985ED13D8979B00B141DA /* PVRTBackgroundShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackgroundShaders.h; sourceTree = "<group>"; };
-		17B985EE13D8979B00B141DA /* PVRTContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTContext.h; sourceTree = "<group>"; };
-		17B985EF13D8979B00B141DA /* PVRTgles2Ext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTgles2Ext.cpp; sourceTree = "<group>"; };
-		17B985F013D8979B00B141DA /* PVRTgles2Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTgles2Ext.h; sourceTree = "<group>"; };
-		17B985F113D8979B00B141DA /* PVRTPFXParserAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParserAPI.cpp; sourceTree = "<group>"; };
-		17B985F213D8979B00B141DA /* PVRTPFXParserAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParserAPI.h; sourceTree = "<group>"; };
-		17B985F313D8979B00B141DA /* PVRTPrint3DAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPrint3DAPI.cpp; sourceTree = "<group>"; };
-		17B985F413D8979B00B141DA /* PVRTPrint3DIMGLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DIMGLogo.h; sourceTree = "<group>"; };
-		17B985F513D8979B00B141DA /* PVRTPrint3DPVRLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DPVRLogo.h; sourceTree = "<group>"; };
-		17B985F613D8979B00B141DA /* PVRTPrint3DShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DShaders.h; sourceTree = "<group>"; };
-		17B985F713D8979B00B141DA /* PVRTShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShader.cpp; sourceTree = "<group>"; };
-		17B985F813D8979B00B141DA /* PVRTShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShader.h; sourceTree = "<group>"; };
-		17B985F913D8979B00B141DA /* PVRTTextureAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTextureAPI.cpp; sourceTree = "<group>"; };
-		17B985FA13D8979B00B141DA /* PVRTTextureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTextureAPI.h; sourceTree = "<group>"; };
-		17B985FB13D8979B00B141DA /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
-		17B985FC13D8979B00B141DA /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
-		17B985FD13D8979B00B141DA /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
-		17B985FE13D8979B00B141DA /* PVRTDecompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTDecompress.cpp; sourceTree = "<group>"; };
-		17B985FF13D8979C00B141DA /* PVRTDecompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTDecompress.h; sourceTree = "<group>"; };
-		17B9860013D8979C00B141DA /* PVRTError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTError.cpp; sourceTree = "<group>"; };
-		17B9860113D8979C00B141DA /* PVRTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTError.h; sourceTree = "<group>"; };
-		17B9860213D8979C00B141DA /* PVRTFixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTFixedPoint.cpp; sourceTree = "<group>"; };
-		17B9860313D8979C00B141DA /* PVRTFixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTFixedPoint.h; sourceTree = "<group>"; };
-		17B9860413D8979C00B141DA /* PVRTGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTGeometry.cpp; sourceTree = "<group>"; };
-		17B9860513D8979C00B141DA /* PVRTGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGeometry.h; sourceTree = "<group>"; };
-		17B9860613D8979C00B141DA /* PVRTGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGlobal.h; sourceTree = "<group>"; };
-		17B9860713D8979C00B141DA /* PVRTMathTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMathTable.h; sourceTree = "<group>"; };
-		17B9860813D8979C00B141DA /* PVRTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMatrix.h; sourceTree = "<group>"; };
-		17B9860913D8979C00B141DA /* PVRTMatrixF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixF.cpp; sourceTree = "<group>"; };
-		17B9860A13D8979C00B141DA /* PVRTMatrixX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixX.cpp; sourceTree = "<group>"; };
-		17B9860B13D8979C00B141DA /* PVRTMemoryFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMemoryFileSystem.h; sourceTree = "<group>"; };
-		17B9860C13D8979C00B141DA /* PVRTMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMisc.cpp; sourceTree = "<group>"; };
-		17B9860D13D8979C00B141DA /* PVRTMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMisc.h; sourceTree = "<group>"; };
-		17B9860E13D8979C00B141DA /* PVRTModelPOD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTModelPOD.cpp; sourceTree = "<group>"; };
-		17B9860F13D8979C00B141DA /* PVRTModelPOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTModelPOD.h; sourceTree = "<group>"; };
-		17B9861013D8979C00B141DA /* PVRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTools.h; sourceTree = "<group>"; };
-		17B9861113D8979C00B141DA /* PVRTPFXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParser.cpp; sourceTree = "<group>"; };
-		17B9861213D8979C00B141DA /* PVRTPFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParser.h; sourceTree = "<group>"; };
-		17B9861313D8979C00B141DA /* PVRTPrint3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPrint3D.cpp; sourceTree = "<group>"; };
-		17B9861413D8979C00B141DA /* PVRTPrint3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3D.h; sourceTree = "<group>"; };
-		17B9861513D8979C00B141DA /* PVRTPrint3Ddat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3Ddat.h; sourceTree = "<group>"; };
-		17B9861613D8979C00B141DA /* PVRTQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTQuaternion.h; sourceTree = "<group>"; };
-		17B9861713D8979C00B141DA /* PVRTQuaternionF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionF.cpp; sourceTree = "<group>"; };
-		17B9861813D8979C00B141DA /* PVRTQuaternionX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionX.cpp; sourceTree = "<group>"; };
-		17B9861913D8979C00B141DA /* PVRTResourceFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTResourceFile.cpp; sourceTree = "<group>"; };
-		17B9861A13D8979C00B141DA /* PVRTResourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTResourceFile.h; sourceTree = "<group>"; };
-		17B9861B13D8979C00B141DA /* PVRTShadowVol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShadowVol.cpp; sourceTree = "<group>"; };
-		17B9861C13D8979C00B141DA /* PVRTShadowVol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShadowVol.h; sourceTree = "<group>"; };
-		17B9861D13D8979C00B141DA /* PVRTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSingleton.h; sourceTree = "<group>"; };
-		17B9861E13D8979C00B141DA /* PVRTString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTString.cpp; sourceTree = "<group>"; };
-		17B9861F13D8979C00B141DA /* PVRTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTString.h; sourceTree = "<group>"; };
-		17B9862013D8979C00B141DA /* PVRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTexture.cpp; sourceTree = "<group>"; };
-		17B9862113D8979C00B141DA /* PVRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTexture.h; sourceTree = "<group>"; };
-		17B9862213D8979C00B141DA /* PVRTTrans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTrans.cpp; sourceTree = "<group>"; };
-		17B9862313D8979C00B141DA /* PVRTTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTrans.h; sourceTree = "<group>"; };
-		17B9862413D8979C00B141DA /* PVRTTriStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTriStrip.cpp; sourceTree = "<group>"; };
-		17B9862513D8979C00B141DA /* PVRTTriStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTriStrip.h; sourceTree = "<group>"; };
-		17B9862613D8979C00B141DA /* PVRTVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVector.cpp; sourceTree = "<group>"; };
-		17B9862713D8979C00B141DA /* PVRTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVector.h; sourceTree = "<group>"; };
-		17B9862813D8979C00B141DA /* PVRTVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVertex.cpp; sourceTree = "<group>"; };
-		17B9862913D8979C00B141DA /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
 		17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dBillboardNode.h; sourceTree = "<group>"; };
 		17BE1735132E92AF00D053BA /* Isgl3dBillboardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dBillboardNode.m; sourceTree = "<group>"; };
 		17BE1769132E95BD00D053BA /* BillboardTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillboardTestView.h; sourceTree = "<group>"; };
@@ -2409,7 +2349,7 @@
 		17D0773013F459E2003F6E46 /* Isgl3dActionSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionSequence.m; sourceTree = "<group>"; };
 		17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dActionManager.h; sourceTree = "<group>"; };
 		17D0774013F4A38C003F6E46 /* Isgl3dActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dActionManager.m; sourceTree = "<group>"; };
-		17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PrimitivesDemo copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D0776413F4A643003F6E46 /* ActionsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActionsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D0776713F4A675003F6E46 /* ActionsDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsDemoView.h; sourceTree = "<group>"; };
 		17D0776813F4A675003F6E46 /* ActionsDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsDemoView.m; sourceTree = "<group>"; };
 		17D39450135373B700D50A60 /* isgl3d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = isgl3d.m; sourceTree = "<group>"; };
@@ -2634,6 +2574,73 @@
 		8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGestureManager.m; sourceTree = "<group>"; };
 		8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPVRLoader.h; sourceTree = "<group>"; };
 		8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPVRLoader.mm; sourceTree = "<group>"; };
+		8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTArray.h; sourceTree = "<group>"; };
+		8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
+		8BDBA15814CCFA9000BAEB8A /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
+		8BDBA15914CCFA9000BAEB8A /* PVRTBoneBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBoneBatch.h; sourceTree = "<group>"; };
+		8BDBA15A14CCFA9000BAEB8A /* PVRTDecompress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTDecompress.cpp; sourceTree = "<group>"; };
+		8BDBA15B14CCFA9000BAEB8A /* PVRTDecompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTDecompress.h; sourceTree = "<group>"; };
+		8BDBA15C14CCFA9000BAEB8A /* PVRTError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTError.cpp; sourceTree = "<group>"; };
+		8BDBA15D14CCFA9000BAEB8A /* PVRTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTError.h; sourceTree = "<group>"; };
+		8BDBA15E14CCFA9000BAEB8A /* PVRTFixedPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTFixedPoint.cpp; sourceTree = "<group>"; };
+		8BDBA15F14CCFA9000BAEB8A /* PVRTFixedPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTFixedPoint.h; sourceTree = "<group>"; };
+		8BDBA16014CCFA9000BAEB8A /* PVRTGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTGeometry.cpp; sourceTree = "<group>"; };
+		8BDBA16114CCFA9000BAEB8A /* PVRTGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGeometry.h; sourceTree = "<group>"; };
+		8BDBA16214CCFA9000BAEB8A /* PVRTGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTGlobal.h; sourceTree = "<group>"; };
+		8BDBA16314CCFA9000BAEB8A /* PVRTHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTHash.h; sourceTree = "<group>"; };
+		8BDBA16414CCFA9000BAEB8A /* PVRTMathTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMathTable.h; sourceTree = "<group>"; };
+		8BDBA16514CCFA9000BAEB8A /* PVRTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMatrix.h; sourceTree = "<group>"; };
+		8BDBA16614CCFA9000BAEB8A /* PVRTMatrixF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixF.cpp; sourceTree = "<group>"; };
+		8BDBA16714CCFA9000BAEB8A /* PVRTMatrixX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMatrixX.cpp; sourceTree = "<group>"; };
+		8BDBA16814CCFA9000BAEB8A /* PVRTMemoryFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMemoryFileSystem.h; sourceTree = "<group>"; };
+		8BDBA16914CCFA9000BAEB8A /* PVRTMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTMisc.cpp; sourceTree = "<group>"; };
+		8BDBA16A14CCFA9000BAEB8A /* PVRTMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTMisc.h; sourceTree = "<group>"; };
+		8BDBA16B14CCFA9000BAEB8A /* PVRTModelPOD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTModelPOD.cpp; sourceTree = "<group>"; };
+		8BDBA16C14CCFA9000BAEB8A /* PVRTModelPOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTModelPOD.h; sourceTree = "<group>"; };
+		8BDBA16D14CCFA9000BAEB8A /* PVRTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTools.h; sourceTree = "<group>"; };
+		8BDBA16E14CCFA9000BAEB8A /* PVRTPFXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParser.cpp; sourceTree = "<group>"; };
+		8BDBA16F14CCFA9000BAEB8A /* PVRTPFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParser.h; sourceTree = "<group>"; };
+		8BDBA17014CCFA9000BAEB8A /* PVRTPrint3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPrint3D.cpp; sourceTree = "<group>"; };
+		8BDBA17114CCFA9000BAEB8A /* PVRTPrint3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3D.h; sourceTree = "<group>"; };
+		8BDBA17214CCFA9000BAEB8A /* PVRTPrint3Ddat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3Ddat.h; sourceTree = "<group>"; };
+		8BDBA17314CCFA9000BAEB8A /* PVRTQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTQuaternion.h; sourceTree = "<group>"; };
+		8BDBA17414CCFA9000BAEB8A /* PVRTQuaternionF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionF.cpp; sourceTree = "<group>"; };
+		8BDBA17514CCFA9000BAEB8A /* PVRTQuaternionX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTQuaternionX.cpp; sourceTree = "<group>"; };
+		8BDBA17614CCFA9000BAEB8A /* PVRTResourceFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTResourceFile.cpp; sourceTree = "<group>"; };
+		8BDBA17714CCFA9000BAEB8A /* PVRTResourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTResourceFile.h; sourceTree = "<group>"; };
+		8BDBA17814CCFA9000BAEB8A /* PVRTShadowVol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShadowVol.cpp; sourceTree = "<group>"; };
+		8BDBA17914CCFA9000BAEB8A /* PVRTShadowVol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShadowVol.h; sourceTree = "<group>"; };
+		8BDBA17A14CCFA9000BAEB8A /* PVRTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSingleton.h; sourceTree = "<group>"; };
+		8BDBA17B14CCFA9000BAEB8A /* PVRTSkipGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTSkipGraph.h; sourceTree = "<group>"; };
+		8BDBA17C14CCFA9000BAEB8A /* PVRTString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTString.cpp; sourceTree = "<group>"; };
+		8BDBA17D14CCFA9000BAEB8A /* PVRTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTString.h; sourceTree = "<group>"; };
+		8BDBA17E14CCFA9000BAEB8A /* PVRTTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTexture.cpp; sourceTree = "<group>"; };
+		8BDBA17F14CCFA9000BAEB8A /* PVRTTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTexture.h; sourceTree = "<group>"; };
+		8BDBA18014CCFA9000BAEB8A /* PVRTTrans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTrans.cpp; sourceTree = "<group>"; };
+		8BDBA18114CCFA9000BAEB8A /* PVRTTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTrans.h; sourceTree = "<group>"; };
+		8BDBA18214CCFA9000BAEB8A /* PVRTTriStrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTriStrip.cpp; sourceTree = "<group>"; };
+		8BDBA18314CCFA9000BAEB8A /* PVRTTriStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTriStrip.h; sourceTree = "<group>"; };
+		8BDBA18414CCFA9000BAEB8A /* PVRTVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVector.cpp; sourceTree = "<group>"; };
+		8BDBA18514CCFA9000BAEB8A /* PVRTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVector.h; sourceTree = "<group>"; };
+		8BDBA18614CCFA9000BAEB8A /* PVRTVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTVertex.cpp; sourceTree = "<group>"; };
+		8BDBA18714CCFA9000BAEB8A /* PVRTVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTVertex.h; sourceTree = "<group>"; };
+		8BDBA1BA14CCFABE00BAEB8A /* OGLES2Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLES2Tools.h; sourceTree = "<group>"; };
+		8BDBA1BB14CCFABE00BAEB8A /* PVRTBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBackground.cpp; sourceTree = "<group>"; };
+		8BDBA1BC14CCFABE00BAEB8A /* PVRTBackgroundShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackgroundShaders.h; sourceTree = "<group>"; };
+		8BDBA1BD14CCFABE00BAEB8A /* PVRTContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTContext.h; sourceTree = "<group>"; };
+		8BDBA1BE14CCFABE00BAEB8A /* PVRTgles2Ext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTgles2Ext.cpp; sourceTree = "<group>"; };
+		8BDBA1BF14CCFABE00BAEB8A /* PVRTgles2Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTgles2Ext.h; sourceTree = "<group>"; };
+		8BDBA1C014CCFABE00BAEB8A /* PVRTPFXParserAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPFXParserAPI.cpp; sourceTree = "<group>"; };
+		8BDBA1C114CCFABE00BAEB8A /* PVRTPFXParserAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPFXParserAPI.h; sourceTree = "<group>"; };
+		8BDBA1C214CCFABE00BAEB8A /* PVRTPrint3DAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTPrint3DAPI.cpp; sourceTree = "<group>"; };
+		8BDBA1C314CCFABE00BAEB8A /* PVRTPrint3DIMGLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DIMGLogo.h; sourceTree = "<group>"; };
+		8BDBA1C414CCFABE00BAEB8A /* PVRTPrint3DPVRLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DPVRLogo.h; sourceTree = "<group>"; };
+		8BDBA1C514CCFABE00BAEB8A /* PVRTPrint3DShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTPrint3DShaders.h; sourceTree = "<group>"; };
+		8BDBA1C614CCFABE00BAEB8A /* PVRTShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTShader.cpp; sourceTree = "<group>"; };
+		8BDBA1C714CCFABE00BAEB8A /* PVRTShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTShader.h; sourceTree = "<group>"; };
+		8BDBA1C814CCFABE00BAEB8A /* PVRTTextureAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTextureAPI.cpp; sourceTree = "<group>"; };
+		8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTextureAPI.h; sourceTree = "<group>"; };
+		8BDBA1DE14CD006200BAEB8A /* isgl3d-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "isgl3d-Prefix.pch"; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libisgl3d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -3080,7 +3087,7 @@
 				17F7A85012FA0BB000C7BB82 /* CameraMovement.app */,
 				17F7A88412FA0D6100C7BB82 /* Lighting.app */,
 				1731215312FB3D6500861D84 /* ParticleSystem.app */,
-				1731218D12FB562900861D84 /* Physics.app */,
+				1731218D12FB562900861D84 /* PhysicsTest.app */,
 				173121C812FB58A000861D84 /* PODTest.app */,
 				1731226F12FC764100861D84 /* PrimitivesDemo.app */,
 				173122B312FC797300861D84 /* ShadowMappingTest.app */,
@@ -3105,7 +3112,7 @@
 				17CDF5CB136753FA00893070 /* KeyframeMeshAnimationTest.app */,
 				178A63011368558A00BEFD2C /* KeyframePODAnimationTest.app */,
 				17A481CE13F129880098AC3F /* ShaderMaterialDemo.app */,
-				17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */,
+				17D0776413F4A643003F6E46 /* ActionsDemo.app */,
 				17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */,
 			);
 			name = Products;
@@ -3790,84 +3797,6 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
-		17B985E913D8979B00B141DA /* PowerVR_SDK-2.0.8 */ = {
-			isa = PBXGroup;
-			children = (
-				17B985EA13D8979B00B141DA /* OGLES2 */,
-				17B985FB13D8979B00B141DA /* PVRTBackground.h */,
-				17B985FC13D8979B00B141DA /* PVRTBoneBatch.cpp */,
-				17B985FD13D8979B00B141DA /* PVRTBoneBatch.h */,
-				17B985FE13D8979B00B141DA /* PVRTDecompress.cpp */,
-				17B985FF13D8979C00B141DA /* PVRTDecompress.h */,
-				17B9860013D8979C00B141DA /* PVRTError.cpp */,
-				17B9860113D8979C00B141DA /* PVRTError.h */,
-				17B9860213D8979C00B141DA /* PVRTFixedPoint.cpp */,
-				17B9860313D8979C00B141DA /* PVRTFixedPoint.h */,
-				17B9860413D8979C00B141DA /* PVRTGeometry.cpp */,
-				17B9860513D8979C00B141DA /* PVRTGeometry.h */,
-				17B9860613D8979C00B141DA /* PVRTGlobal.h */,
-				17B9860713D8979C00B141DA /* PVRTMathTable.h */,
-				17B9860813D8979C00B141DA /* PVRTMatrix.h */,
-				17B9860913D8979C00B141DA /* PVRTMatrixF.cpp */,
-				17B9860A13D8979C00B141DA /* PVRTMatrixX.cpp */,
-				17B9860B13D8979C00B141DA /* PVRTMemoryFileSystem.h */,
-				17B9860C13D8979C00B141DA /* PVRTMisc.cpp */,
-				17B9860D13D8979C00B141DA /* PVRTMisc.h */,
-				17B9860E13D8979C00B141DA /* PVRTModelPOD.cpp */,
-				17B9860F13D8979C00B141DA /* PVRTModelPOD.h */,
-				17B9861013D8979C00B141DA /* PVRTools.h */,
-				17B9861113D8979C00B141DA /* PVRTPFXParser.cpp */,
-				17B9861213D8979C00B141DA /* PVRTPFXParser.h */,
-				17B9861313D8979C00B141DA /* PVRTPrint3D.cpp */,
-				17B9861413D8979C00B141DA /* PVRTPrint3D.h */,
-				17B9861513D8979C00B141DA /* PVRTPrint3Ddat.h */,
-				17B9861613D8979C00B141DA /* PVRTQuaternion.h */,
-				17B9861713D8979C00B141DA /* PVRTQuaternionF.cpp */,
-				17B9861813D8979C00B141DA /* PVRTQuaternionX.cpp */,
-				17B9861913D8979C00B141DA /* PVRTResourceFile.cpp */,
-				17B9861A13D8979C00B141DA /* PVRTResourceFile.h */,
-				17B9861B13D8979C00B141DA /* PVRTShadowVol.cpp */,
-				17B9861C13D8979C00B141DA /* PVRTShadowVol.h */,
-				17B9861D13D8979C00B141DA /* PVRTSingleton.h */,
-				17B9861E13D8979C00B141DA /* PVRTString.cpp */,
-				17B9861F13D8979C00B141DA /* PVRTString.h */,
-				17B9862013D8979C00B141DA /* PVRTTexture.cpp */,
-				17B9862113D8979C00B141DA /* PVRTTexture.h */,
-				17B9862213D8979C00B141DA /* PVRTTrans.cpp */,
-				17B9862313D8979C00B141DA /* PVRTTrans.h */,
-				17B9862413D8979C00B141DA /* PVRTTriStrip.cpp */,
-				17B9862513D8979C00B141DA /* PVRTTriStrip.h */,
-				17B9862613D8979C00B141DA /* PVRTVector.cpp */,
-				17B9862713D8979C00B141DA /* PVRTVector.h */,
-				17B9862813D8979C00B141DA /* PVRTVertex.cpp */,
-				17B9862913D8979C00B141DA /* PVRTVertex.h */,
-			);
-			path = "PowerVR_SDK-2.0.8";
-			sourceTree = "<group>";
-		};
-		17B985EA13D8979B00B141DA /* OGLES2 */ = {
-			isa = PBXGroup;
-			children = (
-				17B985EB13D8979B00B141DA /* OGLES2Tools.h */,
-				17B985EC13D8979B00B141DA /* PVRTBackground.cpp */,
-				17B985ED13D8979B00B141DA /* PVRTBackgroundShaders.h */,
-				17B985EE13D8979B00B141DA /* PVRTContext.h */,
-				17B985EF13D8979B00B141DA /* PVRTgles2Ext.cpp */,
-				17B985F013D8979B00B141DA /* PVRTgles2Ext.h */,
-				17B985F113D8979B00B141DA /* PVRTPFXParserAPI.cpp */,
-				17B985F213D8979B00B141DA /* PVRTPFXParserAPI.h */,
-				17B985F313D8979B00B141DA /* PVRTPrint3DAPI.cpp */,
-				17B985F413D8979B00B141DA /* PVRTPrint3DIMGLogo.h */,
-				17B985F513D8979B00B141DA /* PVRTPrint3DPVRLogo.h */,
-				17B985F613D8979B00B141DA /* PVRTPrint3DShaders.h */,
-				17B985F713D8979B00B141DA /* PVRTShader.cpp */,
-				17B985F813D8979B00B141DA /* PVRTShader.h */,
-				17B985F913D8979B00B141DA /* PVRTTextureAPI.cpp */,
-				17B985FA13D8979B00B141DA /* PVRTTextureAPI.h */,
-			);
-			path = OGLES2;
-			sourceTree = "<group>";
-		};
 		17BE1768132E95BD00D053BA /* billboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -3970,6 +3899,7 @@
 				179F86E2133E6746007F4671 /* isgl3dTypes.h */,
 				17F1D6C812F87EC5008D39E8 /* isgl3d.h */,
 				17D39450135373B700D50A60 /* isgl3d.m */,
+				8BDBA1DE14CD006200BAEB8A /* isgl3d-Prefix.pch */,
 			);
 			path = isgl3d;
 			sourceTree = "<group>";
@@ -4363,7 +4293,7 @@
 		17F1D88512F88AD8008D39E8 /* external */ = {
 			isa = PBXGroup;
 			children = (
-				17B985E913D8979B00B141DA /* PowerVR_SDK-2.0.8 */,
+				8BDBA04B14CCF5CE00BAEB8A /* PowerVR_SDK-2.0.9 */,
 				171CB9D513196FE7003712F4 /* bullet */,
 			);
 			path = external;
@@ -4449,6 +4379,87 @@
 				17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		8BDBA04B14CCF5CE00BAEB8A /* PowerVR_SDK-2.0.9 */ = {
+			isa = PBXGroup;
+			children = (
+				8BDBA0B014CCF63C00BAEB8A /* OGLES2 */,
+				8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */,
+				8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */,
+				8BDBA15814CCFA9000BAEB8A /* PVRTBoneBatch.cpp */,
+				8BDBA15914CCFA9000BAEB8A /* PVRTBoneBatch.h */,
+				8BDBA15A14CCFA9000BAEB8A /* PVRTDecompress.cpp */,
+				8BDBA15B14CCFA9000BAEB8A /* PVRTDecompress.h */,
+				8BDBA15C14CCFA9000BAEB8A /* PVRTError.cpp */,
+				8BDBA15D14CCFA9000BAEB8A /* PVRTError.h */,
+				8BDBA15E14CCFA9000BAEB8A /* PVRTFixedPoint.cpp */,
+				8BDBA15F14CCFA9000BAEB8A /* PVRTFixedPoint.h */,
+				8BDBA16014CCFA9000BAEB8A /* PVRTGeometry.cpp */,
+				8BDBA16114CCFA9000BAEB8A /* PVRTGeometry.h */,
+				8BDBA16214CCFA9000BAEB8A /* PVRTGlobal.h */,
+				8BDBA16314CCFA9000BAEB8A /* PVRTHash.h */,
+				8BDBA16414CCFA9000BAEB8A /* PVRTMathTable.h */,
+				8BDBA16514CCFA9000BAEB8A /* PVRTMatrix.h */,
+				8BDBA16614CCFA9000BAEB8A /* PVRTMatrixF.cpp */,
+				8BDBA16714CCFA9000BAEB8A /* PVRTMatrixX.cpp */,
+				8BDBA16814CCFA9000BAEB8A /* PVRTMemoryFileSystem.h */,
+				8BDBA16914CCFA9000BAEB8A /* PVRTMisc.cpp */,
+				8BDBA16A14CCFA9000BAEB8A /* PVRTMisc.h */,
+				8BDBA16B14CCFA9000BAEB8A /* PVRTModelPOD.cpp */,
+				8BDBA16C14CCFA9000BAEB8A /* PVRTModelPOD.h */,
+				8BDBA16D14CCFA9000BAEB8A /* PVRTools.h */,
+				8BDBA16E14CCFA9000BAEB8A /* PVRTPFXParser.cpp */,
+				8BDBA16F14CCFA9000BAEB8A /* PVRTPFXParser.h */,
+				8BDBA17014CCFA9000BAEB8A /* PVRTPrint3D.cpp */,
+				8BDBA17114CCFA9000BAEB8A /* PVRTPrint3D.h */,
+				8BDBA17214CCFA9000BAEB8A /* PVRTPrint3Ddat.h */,
+				8BDBA17314CCFA9000BAEB8A /* PVRTQuaternion.h */,
+				8BDBA17414CCFA9000BAEB8A /* PVRTQuaternionF.cpp */,
+				8BDBA17514CCFA9000BAEB8A /* PVRTQuaternionX.cpp */,
+				8BDBA17614CCFA9000BAEB8A /* PVRTResourceFile.cpp */,
+				8BDBA17714CCFA9000BAEB8A /* PVRTResourceFile.h */,
+				8BDBA17814CCFA9000BAEB8A /* PVRTShadowVol.cpp */,
+				8BDBA17914CCFA9000BAEB8A /* PVRTShadowVol.h */,
+				8BDBA17A14CCFA9000BAEB8A /* PVRTSingleton.h */,
+				8BDBA17B14CCFA9000BAEB8A /* PVRTSkipGraph.h */,
+				8BDBA17C14CCFA9000BAEB8A /* PVRTString.cpp */,
+				8BDBA17D14CCFA9000BAEB8A /* PVRTString.h */,
+				8BDBA17E14CCFA9000BAEB8A /* PVRTTexture.cpp */,
+				8BDBA17F14CCFA9000BAEB8A /* PVRTTexture.h */,
+				8BDBA18014CCFA9000BAEB8A /* PVRTTrans.cpp */,
+				8BDBA18114CCFA9000BAEB8A /* PVRTTrans.h */,
+				8BDBA18214CCFA9000BAEB8A /* PVRTTriStrip.cpp */,
+				8BDBA18314CCFA9000BAEB8A /* PVRTTriStrip.h */,
+				8BDBA18414CCFA9000BAEB8A /* PVRTVector.cpp */,
+				8BDBA18514CCFA9000BAEB8A /* PVRTVector.h */,
+				8BDBA18614CCFA9000BAEB8A /* PVRTVertex.cpp */,
+				8BDBA18714CCFA9000BAEB8A /* PVRTVertex.h */,
+			);
+			path = "PowerVR_SDK-2.0.9";
+			sourceTree = "<group>";
+		};
+		8BDBA0B014CCF63C00BAEB8A /* OGLES2 */ = {
+			isa = PBXGroup;
+			children = (
+				8BDBA1BA14CCFABE00BAEB8A /* OGLES2Tools.h */,
+				8BDBA1BB14CCFABE00BAEB8A /* PVRTBackground.cpp */,
+				8BDBA1BC14CCFABE00BAEB8A /* PVRTBackgroundShaders.h */,
+				8BDBA1BD14CCFABE00BAEB8A /* PVRTContext.h */,
+				8BDBA1BE14CCFABE00BAEB8A /* PVRTgles2Ext.cpp */,
+				8BDBA1BF14CCFABE00BAEB8A /* PVRTgles2Ext.h */,
+				8BDBA1C014CCFABE00BAEB8A /* PVRTPFXParserAPI.cpp */,
+				8BDBA1C114CCFABE00BAEB8A /* PVRTPFXParserAPI.h */,
+				8BDBA1C214CCFABE00BAEB8A /* PVRTPrint3DAPI.cpp */,
+				8BDBA1C314CCFABE00BAEB8A /* PVRTPrint3DIMGLogo.h */,
+				8BDBA1C414CCFABE00BAEB8A /* PVRTPrint3DPVRLogo.h */,
+				8BDBA1C514CCFABE00BAEB8A /* PVRTPrint3DShaders.h */,
+				8BDBA1C614CCFABE00BAEB8A /* PVRTShader.cpp */,
+				8BDBA1C714CCFABE00BAEB8A /* PVRTShader.h */,
+				8BDBA1C814CCFABE00BAEB8A /* PVRTTextureAPI.cpp */,
+				8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */,
+			);
+			path = OGLES2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4761,42 +4772,6 @@
 				1713BB501358D6F7002C3288 /* vfp_clobbers.h in Headers */,
 				17A3E611135A18B90022BAD8 /* Isgl3dPODImporter.h in Headers */,
 				17CDF5AB13674DB500893070 /* Isgl3dKeyframeMesh.h in Headers */,
-				17B9862A13D8979C00B141DA /* OGLES2Tools.h in Headers */,
-				17B9862C13D8979C00B141DA /* PVRTBackgroundShaders.h in Headers */,
-				17B9862D13D8979C00B141DA /* PVRTContext.h in Headers */,
-				17B9862F13D8979C00B141DA /* PVRTgles2Ext.h in Headers */,
-				17B9863113D8979C00B141DA /* PVRTPFXParserAPI.h in Headers */,
-				17B9863313D8979C00B141DA /* PVRTPrint3DIMGLogo.h in Headers */,
-				17B9863413D8979C00B141DA /* PVRTPrint3DPVRLogo.h in Headers */,
-				17B9863513D8979C00B141DA /* PVRTPrint3DShaders.h in Headers */,
-				17B9863713D8979C00B141DA /* PVRTShader.h in Headers */,
-				17B9863913D8979C00B141DA /* PVRTTextureAPI.h in Headers */,
-				17B9863A13D8979C00B141DA /* PVRTBackground.h in Headers */,
-				17B9863C13D8979C00B141DA /* PVRTBoneBatch.h in Headers */,
-				17B9863E13D8979C00B141DA /* PVRTDecompress.h in Headers */,
-				17B9864013D8979C00B141DA /* PVRTError.h in Headers */,
-				17B9864213D8979C00B141DA /* PVRTFixedPoint.h in Headers */,
-				17B9864413D8979C00B141DA /* PVRTGeometry.h in Headers */,
-				17B9864513D8979C00B141DA /* PVRTGlobal.h in Headers */,
-				17B9864613D8979C00B141DA /* PVRTMathTable.h in Headers */,
-				17B9864713D8979C00B141DA /* PVRTMatrix.h in Headers */,
-				17B9864A13D8979C00B141DA /* PVRTMemoryFileSystem.h in Headers */,
-				17B9864C13D8979C00B141DA /* PVRTMisc.h in Headers */,
-				17B9864E13D8979C00B141DA /* PVRTModelPOD.h in Headers */,
-				17B9864F13D8979C00B141DA /* PVRTools.h in Headers */,
-				17B9865113D8979C00B141DA /* PVRTPFXParser.h in Headers */,
-				17B9865313D8979C00B141DA /* PVRTPrint3D.h in Headers */,
-				17B9865413D8979C00B141DA /* PVRTPrint3Ddat.h in Headers */,
-				17B9865513D8979C00B141DA /* PVRTQuaternion.h in Headers */,
-				17B9865913D8979C00B141DA /* PVRTResourceFile.h in Headers */,
-				17B9865B13D8979C00B141DA /* PVRTShadowVol.h in Headers */,
-				17B9865C13D8979C00B141DA /* PVRTSingleton.h in Headers */,
-				17B9865E13D8979C00B141DA /* PVRTString.h in Headers */,
-				17B9866013D8979C00B141DA /* PVRTTexture.h in Headers */,
-				17B9866213D8979C00B141DA /* PVRTTrans.h in Headers */,
-				17B9866413D8979C00B141DA /* PVRTTriStrip.h in Headers */,
-				17B9866613D8979C00B141DA /* PVRTVector.h in Headers */,
-				17B9866813D8979C00B141DA /* PVRTVertex.h in Headers */,
 				8B0FA33F13E8038500E798BA /* Isgl3dGestureManager.h in Headers */,
 				8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */,
 				17EA00C013F0AAB500924372 /* Isgl3dShaderMaterial.h in Headers */,
@@ -4818,6 +4793,45 @@
 				17C2F0A313F5D12A0002C7D3 /* Isgl3dActionEase.h in Headers */,
 				17C2F0A713F5E1D60002C7D3 /* Isgl3dActionTween.h in Headers */,
 				17C2F0AB13F5E7C70002C7D3 /* Isgl3dActionRepeat.h in Headers */,
+				8BDBA18814CCFA9000BAEB8A /* PVRTArray.h in Headers */,
+				8BDBA18914CCFA9000BAEB8A /* PVRTBackground.h in Headers */,
+				8BDBA18B14CCFA9000BAEB8A /* PVRTBoneBatch.h in Headers */,
+				8BDBA18D14CCFA9000BAEB8A /* PVRTDecompress.h in Headers */,
+				8BDBA18F14CCFA9000BAEB8A /* PVRTError.h in Headers */,
+				8BDBA19114CCFA9000BAEB8A /* PVRTFixedPoint.h in Headers */,
+				8BDBA19314CCFA9000BAEB8A /* PVRTGeometry.h in Headers */,
+				8BDBA19414CCFA9000BAEB8A /* PVRTGlobal.h in Headers */,
+				8BDBA19514CCFA9000BAEB8A /* PVRTHash.h in Headers */,
+				8BDBA19614CCFA9000BAEB8A /* PVRTMathTable.h in Headers */,
+				8BDBA19714CCFA9000BAEB8A /* PVRTMatrix.h in Headers */,
+				8BDBA19A14CCFA9000BAEB8A /* PVRTMemoryFileSystem.h in Headers */,
+				8BDBA19C14CCFA9000BAEB8A /* PVRTMisc.h in Headers */,
+				8BDBA19E14CCFA9000BAEB8A /* PVRTModelPOD.h in Headers */,
+				8BDBA19F14CCFA9000BAEB8A /* PVRTools.h in Headers */,
+				8BDBA1A114CCFA9000BAEB8A /* PVRTPFXParser.h in Headers */,
+				8BDBA1A314CCFA9000BAEB8A /* PVRTPrint3D.h in Headers */,
+				8BDBA1A414CCFA9000BAEB8A /* PVRTPrint3Ddat.h in Headers */,
+				8BDBA1A514CCFA9000BAEB8A /* PVRTQuaternion.h in Headers */,
+				8BDBA1A914CCFA9000BAEB8A /* PVRTResourceFile.h in Headers */,
+				8BDBA1AB14CCFA9000BAEB8A /* PVRTShadowVol.h in Headers */,
+				8BDBA1AC14CCFA9000BAEB8A /* PVRTSingleton.h in Headers */,
+				8BDBA1AD14CCFA9000BAEB8A /* PVRTSkipGraph.h in Headers */,
+				8BDBA1AF14CCFA9000BAEB8A /* PVRTString.h in Headers */,
+				8BDBA1B114CCFA9000BAEB8A /* PVRTTexture.h in Headers */,
+				8BDBA1B314CCFA9000BAEB8A /* PVRTTrans.h in Headers */,
+				8BDBA1B514CCFA9000BAEB8A /* PVRTTriStrip.h in Headers */,
+				8BDBA1B714CCFA9000BAEB8A /* PVRTVector.h in Headers */,
+				8BDBA1B914CCFA9000BAEB8A /* PVRTVertex.h in Headers */,
+				8BDBA1CA14CCFABE00BAEB8A /* OGLES2Tools.h in Headers */,
+				8BDBA1CC14CCFABE00BAEB8A /* PVRTBackgroundShaders.h in Headers */,
+				8BDBA1CD14CCFABE00BAEB8A /* PVRTContext.h in Headers */,
+				8BDBA1CF14CCFABE00BAEB8A /* PVRTgles2Ext.h in Headers */,
+				8BDBA1D114CCFABE00BAEB8A /* PVRTPFXParserAPI.h in Headers */,
+				8BDBA1D314CCFABE00BAEB8A /* PVRTPrint3DIMGLogo.h in Headers */,
+				8BDBA1D414CCFABE00BAEB8A /* PVRTPrint3DPVRLogo.h in Headers */,
+				8BDBA1D514CCFABE00BAEB8A /* PVRTPrint3DShaders.h in Headers */,
+				8BDBA1D714CCFABE00BAEB8A /* PVRTShader.h in Headers */,
+				8BDBA1D914CCFABE00BAEB8A /* PVRTTextureAPI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5002,7 +5016,7 @@
 			);
 			name = PhysicsTest;
 			productName = CameraZoomAndFocus;
-			productReference = 1731218D12FB562900861D84 /* Physics.app */;
+			productReference = 1731218D12FB562900861D84 /* PhysicsTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		173121B312FB58A000861D84 /* PODTest */ = {
@@ -5372,7 +5386,7 @@
 			);
 			name = ActionsDemo;
 			productName = CameraZoomAndFocus;
-			productReference = 17D0776413F4A643003F6E46 /* PrimitivesDemo copy.app */;
+			productReference = 17D0776413F4A643003F6E46 /* ActionsDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17F1D86112F88A4A008D39E8 /* isgl3dbullet */ = {
@@ -5469,8 +5483,11 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "isgl3d" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -6778,33 +6795,6 @@
 				1713BB4F1358D6F7002C3288 /* utility_impl.m in Sources */,
 				17A3E612135A18B90022BAD8 /* Isgl3dPODImporter.mm in Sources */,
 				17CDF5AC13674DB500893070 /* Isgl3dKeyframeMesh.m in Sources */,
-				17B9862B13D8979C00B141DA /* PVRTBackground.cpp in Sources */,
-				17B9862E13D8979C00B141DA /* PVRTgles2Ext.cpp in Sources */,
-				17B9863013D8979C00B141DA /* PVRTPFXParserAPI.cpp in Sources */,
-				17B9863213D8979C00B141DA /* PVRTPrint3DAPI.cpp in Sources */,
-				17B9863613D8979C00B141DA /* PVRTShader.cpp in Sources */,
-				17B9863813D8979C00B141DA /* PVRTTextureAPI.cpp in Sources */,
-				17B9863B13D8979C00B141DA /* PVRTBoneBatch.cpp in Sources */,
-				17B9863D13D8979C00B141DA /* PVRTDecompress.cpp in Sources */,
-				17B9863F13D8979C00B141DA /* PVRTError.cpp in Sources */,
-				17B9864113D8979C00B141DA /* PVRTFixedPoint.cpp in Sources */,
-				17B9864313D8979C00B141DA /* PVRTGeometry.cpp in Sources */,
-				17B9864813D8979C00B141DA /* PVRTMatrixF.cpp in Sources */,
-				17B9864913D8979C00B141DA /* PVRTMatrixX.cpp in Sources */,
-				17B9864B13D8979C00B141DA /* PVRTMisc.cpp in Sources */,
-				17B9864D13D8979C00B141DA /* PVRTModelPOD.cpp in Sources */,
-				17B9865013D8979C00B141DA /* PVRTPFXParser.cpp in Sources */,
-				17B9865213D8979C00B141DA /* PVRTPrint3D.cpp in Sources */,
-				17B9865613D8979C00B141DA /* PVRTQuaternionF.cpp in Sources */,
-				17B9865713D8979C00B141DA /* PVRTQuaternionX.cpp in Sources */,
-				17B9865813D8979C00B141DA /* PVRTResourceFile.cpp in Sources */,
-				17B9865A13D8979C00B141DA /* PVRTShadowVol.cpp in Sources */,
-				17B9865D13D8979C00B141DA /* PVRTString.cpp in Sources */,
-				17B9865F13D8979C00B141DA /* PVRTTexture.cpp in Sources */,
-				17B9866113D8979C00B141DA /* PVRTTrans.cpp in Sources */,
-				17B9866313D8979C00B141DA /* PVRTTriStrip.cpp in Sources */,
-				17B9866513D8979C00B141DA /* PVRTVector.cpp in Sources */,
-				17B9866713D8979C00B141DA /* PVRTVertex.cpp in Sources */,
 				8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */,
 				8B0FA35A13E8046D00E798BA /* Isgl3dPVRLoader.mm in Sources */,
 				17EA00C113F0AAB500924372 /* Isgl3dShaderMaterial.m in Sources */,
@@ -6826,6 +6816,33 @@
 				17C2F0A413F5D12A0002C7D3 /* Isgl3dActionEase.m in Sources */,
 				17C2F0A813F5E1D60002C7D3 /* Isgl3dActionTween.m in Sources */,
 				17C2F0AC13F5E7C70002C7D3 /* Isgl3dActionRepeat.m in Sources */,
+				8BDBA18A14CCFA9000BAEB8A /* PVRTBoneBatch.cpp in Sources */,
+				8BDBA18C14CCFA9000BAEB8A /* PVRTDecompress.cpp in Sources */,
+				8BDBA18E14CCFA9000BAEB8A /* PVRTError.cpp in Sources */,
+				8BDBA19014CCFA9000BAEB8A /* PVRTFixedPoint.cpp in Sources */,
+				8BDBA19214CCFA9000BAEB8A /* PVRTGeometry.cpp in Sources */,
+				8BDBA19814CCFA9000BAEB8A /* PVRTMatrixF.cpp in Sources */,
+				8BDBA19914CCFA9000BAEB8A /* PVRTMatrixX.cpp in Sources */,
+				8BDBA19B14CCFA9000BAEB8A /* PVRTMisc.cpp in Sources */,
+				8BDBA19D14CCFA9000BAEB8A /* PVRTModelPOD.cpp in Sources */,
+				8BDBA1A014CCFA9000BAEB8A /* PVRTPFXParser.cpp in Sources */,
+				8BDBA1A214CCFA9000BAEB8A /* PVRTPrint3D.cpp in Sources */,
+				8BDBA1A614CCFA9000BAEB8A /* PVRTQuaternionF.cpp in Sources */,
+				8BDBA1A714CCFA9000BAEB8A /* PVRTQuaternionX.cpp in Sources */,
+				8BDBA1A814CCFA9000BAEB8A /* PVRTResourceFile.cpp in Sources */,
+				8BDBA1AA14CCFA9000BAEB8A /* PVRTShadowVol.cpp in Sources */,
+				8BDBA1AE14CCFA9000BAEB8A /* PVRTString.cpp in Sources */,
+				8BDBA1B014CCFA9000BAEB8A /* PVRTTexture.cpp in Sources */,
+				8BDBA1B214CCFA9000BAEB8A /* PVRTTrans.cpp in Sources */,
+				8BDBA1B414CCFA9000BAEB8A /* PVRTTriStrip.cpp in Sources */,
+				8BDBA1B614CCFA9000BAEB8A /* PVRTVector.cpp in Sources */,
+				8BDBA1B814CCFA9000BAEB8A /* PVRTVertex.cpp in Sources */,
+				8BDBA1CB14CCFABE00BAEB8A /* PVRTBackground.cpp in Sources */,
+				8BDBA1CE14CCFABE00BAEB8A /* PVRTgles2Ext.cpp in Sources */,
+				8BDBA1D014CCFABE00BAEB8A /* PVRTPFXParserAPI.cpp in Sources */,
+				8BDBA1D214CCFABE00BAEB8A /* PVRTPrint3DAPI.cpp in Sources */,
+				8BDBA1D614CCFABE00BAEB8A /* PVRTShader.cpp in Sources */,
+				8BDBA1D814CCFABE00BAEB8A /* PVRTTextureAPI.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7149,21 +7166,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = FollowCamera;
 				SDKROOT = iphoneos;
 			};
@@ -7173,22 +7187,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = FollowCamera;
-				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -7198,21 +7208,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = SpringCamera;
 				SDKROOT = iphoneos;
 			};
@@ -7222,22 +7229,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = SpringCamera;
-				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -7247,7 +7250,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -7256,14 +7258,12 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
 			};
@@ -7273,21 +7273,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7298,21 +7294,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
 			};
@@ -7322,21 +7315,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7347,21 +7336,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
 			};
@@ -7371,21 +7357,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7396,21 +7378,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
 			};
@@ -7420,21 +7399,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7445,21 +7420,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
 			};
@@ -7469,21 +7441,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7494,21 +7462,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
 			};
@@ -7518,21 +7483,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7543,21 +7504,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
 			};
@@ -7567,21 +7525,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7592,7 +7546,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -7600,15 +7553,13 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
-				PRODUCT_NAME = Physics;
+				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -7617,21 +7568,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7642,21 +7590,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
 			};
@@ -7666,21 +7611,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7691,21 +7632,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
 			};
@@ -7715,21 +7653,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7740,21 +7674,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
 			};
@@ -7764,21 +7695,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7789,21 +7716,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
 			};
@@ -7813,21 +7737,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7838,21 +7758,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
 			};
@@ -7862,21 +7779,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7887,21 +7800,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
 			};
@@ -7911,21 +7821,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7936,21 +7842,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
 			};
@@ -7960,21 +7863,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7985,21 +7884,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8009,21 +7905,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8034,7 +7926,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -8042,14 +7933,12 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TerrainPhysics;
 				SDKROOT = iphoneos;
 			};
@@ -8059,21 +7948,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TerrainPhysics;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8084,21 +7970,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CameraZoomAndFocus;
 				SDKROOT = iphoneos;
 			};
@@ -8108,21 +7991,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CameraZoomAndFocus;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8133,21 +8012,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
 			};
@@ -8157,21 +8033,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8182,23 +8054,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = KeyframePODAnimationTest;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -8207,23 +8075,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = KeyframePODAnimationTest;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -8239,7 +8102,7 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -8254,7 +8117,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -8265,21 +8128,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ShaderMaterialDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8289,21 +8150,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ShaderMaterialDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8314,21 +8172,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ViewportTest;
 				SDKROOT = iphoneos;
 			};
@@ -8338,22 +8193,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INSTALL_PATH = "$(HOME)/Applications";
+				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = ViewportTest;
-				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -8363,21 +8214,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = BillboardTest;
 				SDKROOT = iphoneos;
 			};
@@ -8387,23 +8235,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = Resources/Info2.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
+				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = BillboardTest;
-				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -8413,21 +8256,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = GesturesDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8437,21 +8277,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = GesturesDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8462,23 +8298,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = KeyframeMeshAnimationTest;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -8487,23 +8319,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = KeyframeMeshAnimationTest;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -8513,22 +8340,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "PrimitivesDemo copy";
+				PRODUCT_NAME = ActionsDemo;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -8537,22 +8361,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "PrimitivesDemo copy";
+				PRODUCT_NAME = ActionsDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -8567,7 +8387,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
-				PREBINDING = NO;
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
 			};
@@ -8579,8 +8398,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PREBINDING = NO;
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8591,7 +8408,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -8600,14 +8416,12 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Accelerometer;
 				SDKROOT = iphoneos;
 			};
@@ -8617,21 +8431,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Accelerometer;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8642,21 +8453,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
 			};
@@ -8666,21 +8474,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8691,21 +8495,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Lighting;
 				SDKROOT = iphoneos;
 			};
@@ -8715,23 +8516,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Stuart Caunt (GVG98KQFA3)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Lighting;
-				PROVISIONING_PROFILE = "3C19DE0C-DF02-4922-A272-50CC275BE1E0";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -8745,15 +8541,15 @@
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/isgl3d.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = BUILD_OGLES2;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
 			};
 			name = Debug;
@@ -8766,10 +8562,12 @@
 				DSTROOT = /tmp/isgl3d.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = isgl3d_Prefix.pch;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = BUILD_OGLES2;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/lib;
+				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
 			};
 			name = Release;
@@ -8778,12 +8576,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -8793,12 +8594,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};

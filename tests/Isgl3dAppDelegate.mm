@@ -46,8 +46,13 @@
 	_viewController = [[Isgl3dViewController alloc] initWithNibName:nil bundle:nil];
 	_viewController.wantsFullScreenLayout = YES;
 	
-	// Create OpenGL view (here for OpenGL ES 1.1)
-	Isgl3dEAGLView * glView = [Isgl3dEAGLView viewWithFrameForES1:[_window bounds]];
+#ifdef USE_LATEST_GLES
+    // Create OpenGL view with autodetection of the latest available version
+	Isgl3dEAGLView * glView = [Isgl3dEAGLView viewWithFrame:[_window bounds]];
+#else
+	// Create OpenGL ES 1.1 view
+    Isgl3dEAGLView * glView = [Isgl3dEAGLView viewWithFrameForES1:[_window bounds]];
+#endif
 
 	// Set view in director
 	[Isgl3dDirector sharedInstance].openGLView = glView;

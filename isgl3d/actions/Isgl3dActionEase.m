@@ -275,7 +275,7 @@
 			newProgress = 0.5f * powf(2.0f, -10.0f * progress) * sinf((progress - s) * 2.0f * M_PI / _period) + 1.0f;
 		}
 	}
-	[_action update:progress];	
+	[_action update:newProgress];	
 }
 @end
 

@@ -38,13 +38,11 @@
     	_arraySize = 1;
     	_size = 0;
     }
-	
     return self;
 }
 
 - (id) initWithSize:(unsigned int)size {    
     if ((self = [super init])) {
-
     	// Convert to power of 2 number
     	unsigned int arraySize = pow(2, ceil(log2(size)));
 		_array = (ushort *)malloc(arraySize * sizeof(ushort));
@@ -52,23 +50,27 @@
     	
     	_size = 0;
     }
-	
     return self;
 }
 
 - (id)initWithArray:(int)count array:(ushort*)array {
-	if ([self init]) {
+	if (self = [super init]) {
+		_array = (ushort *)malloc(sizeof(ushort));
+    	_arraySize = 1;
+    	_size = 0;
+        
 		for (int i = 0; i < count; i++) {
 			[self add:array[i]];
 		}
     }
-	
     return self;
 }
 
 - (void) dealloc {
-
-	free(_array);
+    if (_array != NULL) {
+        free(_array);
+        _array = NULL;
+    }
 	
 	[super dealloc];
 }

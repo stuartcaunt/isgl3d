@@ -491,9 +491,8 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	NSString * extension = [path pathExtension];
 	NSString * origFileName = [path stringByDeletingPathExtension];
 	
-	NSString * fileName = origFileName;
 	if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
-		fileName = [origFileName stringByAppendingString:@"-hd"];
+		NSString *fileName = [origFileName stringByAppendingString:@"-hd"];
 		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
 		
 		if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
