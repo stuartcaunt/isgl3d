@@ -36,7 +36,7 @@
 
 void NEON_Matrix4Mul(const float* a, const float* b, float* output)
 {
-	_asm volatile 
+	__asm__ volatile 
 	(
 	 // Store A & B leaving room for q4-q7, which should be preserved
 	 "vldmia %1, { q0-q3 } \n\t"
@@ -76,7 +76,7 @@ void NEON_Matrix4Mul(const float* a, const float* b, float* output)
 	 
 void NEON_Matrix4Vector4Mul(const float* m, const float* v, float* output)
 {
-	_asm volatile 
+	__asm__ volatile 
 	(
 	 // Store m & v - avoiding q4-q7 which need to be preserved - q0 = result
 	 "vldmia %1, { q8-q11 }	\n\t"	// q8-q11 = m

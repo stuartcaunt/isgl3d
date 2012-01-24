@@ -65,9 +65,9 @@
 
 		// Schedule updates
 		[self schedule:@selector(tick:)];
-    
-		[mesh1 release];
-		[mesh2 release];
+        
+        [mesh1 release];
+        [mesh2 release];
 	}
 	
 	return self;

@@ -78,9 +78,9 @@
 
 - (id) initWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	if ((self = [self initWithText:text fontName:fontName fontSize:fontSize])) {
-		_useCharacterSet = YES;
-		_characters = [[NSMutableDictionary alloc] init];
-		_characterNodes = [[NSMutableArray alloc] init];		
+        _useCharacterSet = YES;
+        _characters = [[NSMutableDictionary alloc] init];
+        _characterNodes = [[NSMutableArray alloc] init];
 	}
 	
 	return self;

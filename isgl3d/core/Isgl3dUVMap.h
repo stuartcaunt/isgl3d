@@ -62,7 +62,7 @@
 /**
  * Contains the default UV map using the full texture.
  */
-+ (const Isgl3dUVMap *) standardUVMap;
++ (Isgl3dUVMap *) standardUVMap;
 
 /**
  * Contains the u componenent of the bottom left coordinate.

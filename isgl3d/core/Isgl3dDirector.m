@@ -226,11 +226,11 @@ static Isgl3dDirector * _instance = nil;
 		if (orientation != _deviceOrientation) {
 			_deviceOrientation = orientation;
 			if (_deviceOrientation == Isgl3dOrientation0) {
-				[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated:NO];
+				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
 				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation180) {
-				[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortraitUpsideDown animated:NO];
+				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortraitUpsideDown animated:NO];
 				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait upside down");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {

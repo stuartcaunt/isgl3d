@@ -16,3 +16,6 @@ xcuserdata/
 *.pbxuser
 build/
 
+# opendiff (FileMerge)
+*.orig
+

@@ -64,7 +64,7 @@ static Isgl3dUVMap *theStandardUVMap = nil;
 }
 
 
-+ (const Isgl3dUVMap *) standardUVMap {
++ (Isgl3dUVMap *) standardUVMap {
 	if (theStandardUVMap == nil) {
 		theStandardUVMap = [[Isgl3dUVMap uvMapWithUA:0.0 vA:0.0 uB:1.0 vB:0.0 uC:0.0 vC:1.0] retain];
 	}
