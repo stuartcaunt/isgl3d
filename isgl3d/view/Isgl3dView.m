@@ -405,23 +405,23 @@
 
 	switch (orientation) {
 		case Isgl3dOrientation0:
-			viewPoint.x = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.tw);
-			viewPoint.y = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.tw);
+			viewPoint.x = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
+			viewPoint.y = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
 			break;
 
 		case Isgl3dOrientation180:
-			viewPoint.x = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.tw);
-			viewPoint.y = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.tw);
+			viewPoint.x = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
+			viewPoint.y = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
 			break;
 
 		case Isgl3dOrientation90Clockwise:
-			viewPoint.x = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.tw);
-			viewPoint.y = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.tw);
+			viewPoint.x = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
+			viewPoint.y = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
 			break;
 
 		case Isgl3dOrientation90CounterClockwise:
-			viewPoint.x = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.tw);
-			viewPoint.y = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.tw);
+			viewPoint.x = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
+			viewPoint.y = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
 			break;
 	}
 

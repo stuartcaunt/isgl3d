@@ -186,10 +186,10 @@
 	//   their direction remains constant, but the direction is stored as a translation
 	//   so copy it from the local transformation
 	if (_lightType == DirectionalLight) {
-		_worldTransformation.tx = self.x;
-		_worldTransformation.ty = self.y;
-		_worldTransformation.tz = self.z;
-		_worldTransformation.tw = 0.0;
+		_worldTransformation.m30 = self.x;
+		_worldTransformation.m31 = self.y;
+		_worldTransformation.m32 = self.z;
+		_worldTransformation.m33 = 0.0;
 	} else {
 		[super updateWorldTransformation:parentTransformation];
 	}

@@ -241,14 +241,13 @@
 	// calculate model-view matrix
 	im4Copy(&_mvMatrix, &_viewMatrix);
 	if (_planarShadowsActive) {
-		im4Multiply(&_mvMatrix, &_planarShadowsMatrix);
+        _mvMatrix = Isgl3dMatrix4Multiply(_mvMatrix, _planarShadowsMatrix);
 	}
-	im4Multiply(&_mvMatrix, &_modelMatrix);
+    _mvMatrix = Isgl3dMatrix4Multiply(_mvMatrix, _modelMatrix);
 	
 	
 	// calculate model-view-projection
-	im4Copy(&_mvpMatrix, &_projectionMatrix);
-	im4Multiply(&_mvpMatrix, &_mvMatrix);
+    _mvpMatrix = Isgl3dMatrix4Multiply(_projectionMatrix, _mvMatrix);
 
 	// Pass model matrix (and combinations only to active shader)
 	[_activeShader setModelMatrix:&_modelMatrix];
@@ -256,8 +255,7 @@
 	[_activeShader setModelViewProjectionMatrix:&_mvpMatrix];
 
 	// Send light model-view-projection matrix to generic renderer (for shadows)
-	im4Copy(&_lightModelViewProjectionMatrix, &_lightViewProjectionMatrix);
-	im4Multiply(&_lightModelViewProjectionMatrix, &_modelMatrix);
+    _lightModelViewProjectionMatrix = Isgl3dMatrix4Multiply(_lightViewProjectionMatrix, _modelMatrix);
 
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setShadowCastingMVPMatrix:&_lightModelViewProjectionMatrix];
@@ -468,8 +466,7 @@
 }
 
 - (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-	im4Copy(&_lightViewProjectionMatrix, &_projectionMatrix);
-	im4Multiply(&_lightViewProjectionMatrix, viewMatrix);
+	_lightViewProjectionMatrix = Isgl3dMatrix4Multiply(_projectionMatrix, *viewMatrix);
 }
 
 - (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {

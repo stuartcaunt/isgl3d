@@ -64,7 +64,7 @@
 	Isgl3dMatrix4 translation = im4(1, 0, 0, -eyex, 0, 1, 0, -eyey, 0, 0, 1, -eyez, 0, 0, 0, 1); 
 	
 	// calculate final lookat (projection) matrix from combination of both rotation and translation
-	im4Multiply(&lookat, &translation);
+	lookat = Isgl3dMatrix4Multiply(lookat, translation);
 	
 	return lookat;
 }
@@ -91,25 +91,25 @@
 	
 	Isgl3dMatrix4  matrix;
 	
-	matrix.sxx = (2 * near) / (right - left);
-	matrix.syx = 0;
-	matrix.szx = 0;
-	matrix.swx = 0;
+	matrix.m00 = (2 * near) / (right - left);
+	matrix.m01 = 0;
+	matrix.m02 = 0;
+	matrix.m03 = 0;
 	
-	matrix.sxy = 0;
-	matrix.syy = 2 * near / (top - bottom);
-	matrix.szy = 0;
-	matrix.swy = 0;
+	matrix.m10 = 0;
+	matrix.m11 = 2 * near / (top - bottom);
+	matrix.m12 = 0;
+	matrix.m13 = 0;
 	
-	matrix.sxz = A;
-	matrix.syz = B;
-	matrix.szz = C;
-	matrix.swz = -1;
+	matrix.m20 = A;
+	matrix.m21 = B;
+	matrix.m22 = C;
+	matrix.m23 = -1;
 	
-	matrix.tx = 0;
-	matrix.ty = 0;
-	matrix.tz = D;
-	matrix.tw = 0;
+	matrix.m30 = 0;
+	matrix.m31 = 0;
+	matrix.m32 = D;
+	matrix.m33 = 0;
 	
 	if (orientation == Isgl3dOrientation90Clockwise) {
 		float orientationArray[9] = {0, -1, 0, 1, 0, 0, 0, 0, 1}; 
@@ -145,76 +145,76 @@
 	Isgl3dMatrix4  matrix;
 
 	if (orientation == Isgl3dOrientation0) {
-		matrix.sxx = 2 / (right - left);
-		matrix.sxy = 0;
-		matrix.sxz = 0;
-		matrix.tx  = -tx;
-		matrix.syx = 0;
-		matrix.syy = 2 / (top - bottom);
-		matrix.syz = 0;
-		matrix.ty  = -ty;
-		matrix.szx = 0;
-		matrix.szy = 0;
-		matrix.szz = -2 / (far - near);
-		matrix.tz  = -tz;
-		matrix.swx = 0;
-		matrix.swy = 0;
-		matrix.swz = 0;
-		matrix.tw  = 1;
+		matrix.m00 = 2 / (right - left);
+		matrix.m10 = 0;
+		matrix.m20 = 0;
+		matrix.m30  = -tx;
+		matrix.m01 = 0;
+		matrix.m11 = 2 / (top - bottom);
+		matrix.m21 = 0;
+		matrix.m31  = -ty;
+		matrix.m02 = 0;
+		matrix.m12 = 0;
+		matrix.m22 = -2 / (far - near);
+		matrix.m32  = -tz;
+		matrix.m03 = 0;
+		matrix.m13 = 0;
+		matrix.m23 = 0;
+		matrix.m33  = 1;
 		
 	} else if (orientation == Isgl3dOrientation90Clockwise) {
-		matrix.sxx = 0;
-		matrix.sxy = -2 / (right - left);
-		matrix.sxz = 0;
-		matrix.tx  = tx;
-		matrix.syx = 2 / (top - bottom);
-		matrix.syy = 0;
-		matrix.syz = 0;
-		matrix.ty  = -ty;
-		matrix.szx = 0;
-		matrix.szy = 0;
-		matrix.szz = -2 / (far - near);
-		matrix.tz  = -tz;
-		matrix.swx = 0;
-		matrix.swy = 0;
-		matrix.swz = 0;
-		matrix.tw  = 1;
+		matrix.m00 = 0;
+		matrix.m10 = -2 / (right - left);
+		matrix.m20 = 0;
+		matrix.m30  = tx;
+		matrix.m01 = 2 / (top - bottom);
+		matrix.m11 = 0;
+		matrix.m21 = 0;
+		matrix.m31  = -ty;
+		matrix.m02 = 0;
+		matrix.m12 = 0;
+		matrix.m22 = -2 / (far - near);
+		matrix.m32  = -tz;
+		matrix.m03 = 0;
+		matrix.m13 = 0;
+		matrix.m23 = 0;
+		matrix.m33  = 1;
 		
 	} else if (orientation == Isgl3dOrientation180) {
-		matrix.sxx = -2 / (right - left);
-		matrix.sxy = 0;
-		matrix.sxz = 0;
-		matrix.tx  = tx;
-		matrix.syx = 0;
-		matrix.syy = -2 / (top - bottom);
-		matrix.syz = 0;
-		matrix.ty  = ty;
-		matrix.szx = 0;
-		matrix.szy = 0;
-		matrix.szz = -2 / (far - near);
-		matrix.tz  = -tz;
-		matrix.swx = 0;
-		matrix.swy = 0;
-		matrix.swz = 0;
-		matrix.tw  = 1;
+		matrix.m00 = -2 / (right - left);
+		matrix.m10 = 0;
+		matrix.m20 = 0;
+		matrix.m30  = tx;
+		matrix.m01 = 0;
+		matrix.m11 = -2 / (top - bottom);
+		matrix.m21 = 0;
+		matrix.m31  = ty;
+		matrix.m02 = 0;
+		matrix.m12 = 0;
+		matrix.m22 = -2 / (far - near);
+		matrix.m32  = -tz;
+		matrix.m03 = 0;
+		matrix.m13 = 0;
+		matrix.m23 = 0;
+		matrix.m33  = 1;
 
 	} else if (orientation == Isgl3dOrientation90CounterClockwise) {
-		matrix.sxx = 0;
-		matrix.sxy = 2 / (right - left);
-		matrix.sxz = 0;
-		matrix.tx  = -tx;
-		matrix.syx = -2 / (top - bottom);
-		matrix.syy = 0;
-		matrix.syz = 0;
-		matrix.ty  = ty;
-		matrix.szx = 0;
-		matrix.szy = 0;
-		matrix.szz = -2 / (far - near);
-		matrix.tz  = -tz;
-		matrix.swx = 0;
-		matrix.swy = 0;
-		matrix.swz = 0;
-		matrix.tw  = 1;
+		matrix.m00 = 0;
+		matrix.m10 = 2 / (right - left);
+		matrix.m20 = 0;
+		matrix.m30  = -tx;
+		matrix.m01 = -2 / (top - bottom);
+		matrix.m11 = 0;
+		matrix.m21 = 0;
+		matrix.m31  = ty;
+		matrix.m02 = 0;
+		matrix.m12 = 0;
+		matrix.m22 = -2 / (far - near);
+		matrix.m32  = -tz;
+		matrix.m03 = 0;
+		matrix.m13 = 0;
+		matrix.m23 = 0;
+		matrix.m33  = 1;
 	} 		
 	return matrix;
 }

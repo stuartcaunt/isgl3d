@@ -131,7 +131,7 @@
 
 		// Rotate gravity vector x-z components relative to camera horizontal angle
 		// (Accelerometer returns gravity relative to the device itself: needs to be converted to coordinates of camera)
-		float horizontalAngle = atan2(self.camera.viewMatrix.szx, self.camera.viewMatrix.szz);
+		float horizontalAngle = atan2(self.camera.viewMatrix.m02, self.camera.viewMatrix.m22);
 		float transformedGravity[3];
 		transformedGravity[0] =  cos(horizontalAngle) * gravityVector[0] + sin(horizontalAngle) * gravityVector[2];
 		transformedGravity[1] = gravityVector[1];

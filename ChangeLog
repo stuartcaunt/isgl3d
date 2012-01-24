@@ -1,4 +1,6 @@
-current SVN version
+Current branch 1.3.0 (2012-01-23)
+	Project migrated to the latest Xcode version 4.2
+	iOS Deployment target changed to 4.3
 
 Version 1.2.3 (2011-11-26)
 	Fix compiler bugs in template for Xcode4.2.

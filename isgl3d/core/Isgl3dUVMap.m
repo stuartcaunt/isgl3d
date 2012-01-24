@@ -55,7 +55,7 @@ static Isgl3dUVMap *theStandardUVMap = nil;
 }	
 
 - (id) copyWithZone:(NSZone *)zone {
-	return [[Isgl3dUVMap allocWithZone:zone] initWithUA:_uA vA:_vA uB:_uB vB:_vB uC:_uC vC:_vC];
+    return [[Isgl3dUVMap allocWithZone:zone] initWithUA:_uA vA:_vA uB:_uB vB:_vB uC:_uC vC:_vC];
 }
 
 

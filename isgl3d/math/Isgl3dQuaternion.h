@@ -24,18 +24,9 @@
  */
 
 #import "math.h"
+#import "Isgl3dMathTypes.h"
 
 #define iqn(X, Y, Z, W) iqnCreate(X, Y, Z, W)
-
-/**
- * Simple structure to hold the components of a quaternion
- */
-typedef struct {
-	float x; // Note: removed __attribute__ ((aligned) to compile with LLVM GCC, crashes at run-time otherwise
-	float y;
-	float z;
-	float w;
-} Isgl3dQuaternion;
 
 
 /**

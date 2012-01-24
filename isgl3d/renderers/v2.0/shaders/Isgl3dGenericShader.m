@@ -281,8 +281,7 @@
 
 - (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
 	if (_mcToLightMatrixUniformLocation != -1) {
-		im4Copy(&_shadowMapTransformMatrix, &_biasMatrix);
-		im4Multiply(&_shadowMapTransformMatrix, mvpMatrix);
+        _shadowMapTransformMatrix = Isgl3dMatrix4Multiply(_biasMatrix, *mvpMatrix);
 		
 		[self setUniformMatrix4:_mcToLightMatrixUniformLocation matrix:&_shadowMapTransformMatrix];
 	}

@@ -1,0 +1,11 @@
+//
+// Prefix header for all source files of the isgl3d app targets in the 'isgl3d' project
+//
+
+#import <Availability.h>
+#import <TargetConditionals.h>
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif

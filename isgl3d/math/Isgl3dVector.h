@@ -24,29 +24,11 @@
  */
 
 #import "math.h"
+#import "Isgl3dMathTypes.h"
 
 #define iv3(X, Y, Z) iv3Create(X, Y, Z)
 #define iv4(X, Y, Z, W) iv4Create(X, Y, Z, W)
 
-
-/**
- * Simple structure to hold the components of a 3 dimensional vector.
- */
-typedef struct {
-	float x; // Note: removed __attribute__ ((aligned) to compile with LLVM GCC, crashes at run-time otherwise
-	float y;
-	float z;
-} Isgl3dVector3;
-
-/**
- * Simple structure to hold the components of a 4 dimensional vector.
- */
-typedef struct {
-	float x; // Note: removed __attribute__ ((aligned) to compile with LLVM GCC, crashes at run-time otherwise
-	float y;
-	float z;
-	float w;
-} Isgl3dVector4;
 
 
 #pragma mark Isgl3dVector3

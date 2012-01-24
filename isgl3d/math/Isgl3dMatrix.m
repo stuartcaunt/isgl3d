@@ -88,42 +88,42 @@ void im4Invert(Isgl3dMatrix4 * m) {
 	
 	float invDet = 1.0 / det;
 
-	float m11 = m->sxx;
-	float m12 = m->sxy;
-	float m13 = m->sxz;
-	float m14 = m->tx;
-	float m21 = m->syx;
-	float m22 = m->syy;
-	float m23 = m->syz;
-	float m24 = m->ty;
-	float m31 = m->szx;
-	float m32 = m->szy;
-	float m33 = m->szz;
-	float m34 = m->tz; 
-	float m41 = m->swx;
-	float m42 = m->swy;
-	float m43 = m->swz;
-	float m44 = m->tw;
+	float m11 = m->m00;
+	float m12 = m->m10;
+	float m13 = m->m20;
+	float m14 = m->m30;
+	float m21 = m->m01;
+	float m22 = m->m11;
+	float m23 = m->m21;
+	float m24 = m->m31;
+	float m31 = m->m02;
+	float m32 = m->m12;
+	float m33 = m->m22;
+	float m34 = m->m32; 
+	float m41 = m->m03;
+	float m42 = m->m13;
+	float m43 = m->m23;
+	float m44 = m->m33;
 	
-	m->sxx =  invDet * (m22 * (m33 * m44 - m43 * m34) - m32 * (m23 * m44 - m43 * m24) + m42 * (m23 * m34 - m33 * m24));
-	m->sxy = -invDet * (m12 * (m33 * m44 - m43 * m34) - m32 * (m13 * m44 - m43 * m14) + m42 * (m13 * m34 - m33 * m14));
-	m->sxz =  invDet * (m12 * (m23 * m44 - m43 * m24) - m22 * (m13 * m44 - m43 * m14) + m42 * (m13 * m24 - m23 * m14));
-	m->tx  = -invDet * (m12 * (m23 * m34 - m33 * m24) - m22 * (m13 * m34 - m33 * m14) + m32 * (m13 * m24 - m23 * m14));
+	m->m00 =  invDet * (m22 * (m33 * m44 - m43 * m34) - m32 * (m23 * m44 - m43 * m24) + m42 * (m23 * m34 - m33 * m24));
+	m->m10 = -invDet * (m12 * (m33 * m44 - m43 * m34) - m32 * (m13 * m44 - m43 * m14) + m42 * (m13 * m34 - m33 * m14));
+	m->m20 =  invDet * (m12 * (m23 * m44 - m43 * m24) - m22 * (m13 * m44 - m43 * m14) + m42 * (m13 * m24 - m23 * m14));
+	m->m30  = -invDet * (m12 * (m23 * m34 - m33 * m24) - m22 * (m13 * m34 - m33 * m14) + m32 * (m13 * m24 - m23 * m14));
 
-	m->syx = -invDet * (m21 * (m33 * m44 - m43 * m34) - m31 * (m23 * m44 - m43 * m24) + m41 * (m23 * m34 - m33 * m24));
-	m->syy =  invDet * (m11 * (m33 * m44 - m43 * m34) - m31 * (m13 * m44 - m43 * m14) + m41 * (m13 * m34 - m33 * m14));
-	m->syz = -invDet * (m11 * (m23 * m44 - m43 * m24) - m21 * (m13 * m44 - m43 * m14) + m41 * (m13 * m24 - m23 * m14));
-	m->ty  =  invDet * (m11 * (m23 * m34 - m33 * m24) - m21 * (m13 * m34 - m33 * m14) + m31 * (m13 * m24 - m23 * m14));
+	m->m01 = -invDet * (m21 * (m33 * m44 - m43 * m34) - m31 * (m23 * m44 - m43 * m24) + m41 * (m23 * m34 - m33 * m24));
+	m->m11 =  invDet * (m11 * (m33 * m44 - m43 * m34) - m31 * (m13 * m44 - m43 * m14) + m41 * (m13 * m34 - m33 * m14));
+	m->m21 = -invDet * (m11 * (m23 * m44 - m43 * m24) - m21 * (m13 * m44 - m43 * m14) + m41 * (m13 * m24 - m23 * m14));
+	m->m31  =  invDet * (m11 * (m23 * m34 - m33 * m24) - m21 * (m13 * m34 - m33 * m14) + m31 * (m13 * m24 - m23 * m14));
 
-	m->szx =  invDet * (m21 * (m32 * m44 - m42 * m34) - m31 * (m22 * m44 - m42 * m24) + m41 * (m22 * m34 - m32 * m24));
-	m->szy = -invDet * (m11 * (m32 * m44 - m42 * m34) - m31 * (m12 * m44 - m42 * m14) + m41 * (m12 * m34 - m32 * m14));
-	m->szz =  invDet * (m11 * (m22 * m44 - m42 * m24) - m21 * (m12 * m44 - m42 * m14) + m41 * (m12 * m24 - m22 * m14));
-	m->tz  = -invDet * (m11 * (m22 * m34 - m32 * m24) - m21 * (m12 * m34 - m32 * m14) + m31 * (m12 * m24 - m22 * m14));
+	m->m02 =  invDet * (m21 * (m32 * m44 - m42 * m34) - m31 * (m22 * m44 - m42 * m24) + m41 * (m22 * m34 - m32 * m24));
+	m->m12 = -invDet * (m11 * (m32 * m44 - m42 * m34) - m31 * (m12 * m44 - m42 * m14) + m41 * (m12 * m34 - m32 * m14));
+	m->m22 =  invDet * (m11 * (m22 * m44 - m42 * m24) - m21 * (m12 * m44 - m42 * m14) + m41 * (m12 * m24 - m22 * m14));
+	m->m32  = -invDet * (m11 * (m22 * m34 - m32 * m24) - m21 * (m12 * m34 - m32 * m14) + m31 * (m12 * m24 - m22 * m14));
 
-	m->swx = -invDet * (m21 * (m32 * m43 - m42 * m33) - m31 * (m22 * m43 - m42 * m23) + m41 * (m22 * m33 - m32 * m23));
-	m->swy =  invDet * (m11 * (m32 * m43 - m42 * m33) - m31 * (m12 * m43 - m42 * m13) + m41 * (m12 * m33 - m32 * m13));
-	m->swz = -invDet * (m11 * (m22 * m43 - m42 * m23) - m21 * (m12 * m43 - m42 * m13) + m41 * (m12 * m23 - m22 * m13));
-	m->tw  =  invDet * (m11 * (m22 * m33 - m32 * m23) - m21 * (m12 * m33 - m32 * m13) + m31 * (m12 * m23 - m22 * m13));		
+	m->m03 = -invDet * (m21 * (m32 * m43 - m42 * m33) - m31 * (m22 * m43 - m42 * m23) + m41 * (m22 * m33 - m32 * m23));
+	m->m13 =  invDet * (m11 * (m32 * m43 - m42 * m33) - m31 * (m12 * m43 - m42 * m13) + m41 * (m12 * m33 - m32 * m13));
+	m->m23 = -invDet * (m11 * (m22 * m43 - m42 * m23) - m21 * (m12 * m43 - m42 * m13) + m41 * (m12 * m23 - m22 * m13));
+	m->m33  =  invDet * (m11 * (m22 * m33 - m32 * m23) - m21 * (m12 * m33 - m32 * m13) + m31 * (m12 * m23 - m22 * m13));		
 }
 
 void im4Invert3x3(Isgl3dMatrix4 * m) {
@@ -137,30 +137,30 @@ void im4Invert3x3(Isgl3dMatrix4 * m) {
 	
 	float invDet = 1 / det;
 
-	float m11 = m->sxx;
-	float m12 = m->sxy;
-	float m13 = m->sxz;
-	float m21 = m->syx;
-	float m22 = m->syy;
-	float m23 = m->syz;
-	float m31 = m->szx;
-	float m32 = m->szy;
-	float m33 = m->szz;
+	float m11 = m->m00;
+	float m12 = m->m10;
+	float m13 = m->m20;
+	float m21 = m->m01;
+	float m22 = m->m11;
+	float m23 = m->m21;
+	float m31 = m->m02;
+	float m32 = m->m12;
+	float m33 = m->m22;
 
-	m->sxx =  invDet * (m22 * m33 - m32 * m23),
-	m->sxy = -invDet * (m12 * m33 - m32 * m13),
-	m->sxz =  invDet * (m12 * m23 - m22 * m13),
-	m->syx = -invDet * (m21 * m33 - m31 * m23),
-	m->syy =  invDet * (m11 * m33 - m31 * m13),
-	m->syz = -invDet * (m11 * m23 - m21 * m13),
-	m->szx =  invDet * (m21 * m32 - m31 * m22),
-	m->szy = -invDet * (m11 * m32 - m31 * m12),
-	m->szz =  invDet * (m11 * m22 - m21 * m12),
+	m->m00 =  invDet * (m22 * m33 - m32 * m23),
+	m->m10 = -invDet * (m12 * m33 - m32 * m13),
+	m->m20 =  invDet * (m12 * m23 - m22 * m13),
+	m->m01 = -invDet * (m21 * m33 - m31 * m23),
+	m->m11 =  invDet * (m11 * m33 - m31 * m13),
+	m->m21 = -invDet * (m11 * m23 - m21 * m13),
+	m->m02 =  invDet * (m21 * m32 - m31 * m22),
+	m->m12 = -invDet * (m11 * m32 - m31 * m12),
+	m->m22 =  invDet * (m11 * m22 - m21 * m12),
 
 
-	m->swx = m->swy = m->swz = 0;
-	m->tx = m->ty = m->tz = 0;
-	m->tw = 1;	
+	m->m03 = m->m13 = m->m23 = 0;
+	m->m30 = m->m31 = m->m32 = 0;
+	m->m33 = 1;	
 }
 
 void im4Rotate(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
@@ -190,61 +190,61 @@ void im4Rotate(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
 
 	// optimize case where axis is along major axis
 	if (x == 1 && y == 0 && z == 0) {
-		matrix.sxx = 1;
-		matrix.syx = 0;
-		matrix.szx = 0;
-		matrix.sxy = 0;
-		matrix.syy = 1 - 2 * sinA2;
-		matrix.szy = 2 * sinA * cosA;
-		matrix.sxz = 0;
-		matrix.syz = -2 * sinA * cosA;
-		matrix.szz = 1 - 2 * sinA2;
-		matrix.swx = matrix.swy = matrix.swz = 0;
-		matrix.tx = matrix.ty = matrix.tz = 0;
-		matrix.tw = 1;
+		matrix.m00 = 1;
+		matrix.m01 = 0;
+		matrix.m02 = 0;
+		matrix.m10 = 0;
+		matrix.m11 = 1 - 2 * sinA2;
+		matrix.m12 = 2 * sinA * cosA;
+		matrix.m20 = 0;
+		matrix.m21 = -2 * sinA * cosA;
+		matrix.m22 = 1 - 2 * sinA2;
+		matrix.m03 = matrix.m13 = matrix.m23 = 0;
+		matrix.m30 = matrix.m31 = matrix.m32 = 0;
+		matrix.m33 = 1;
 	} else if (x == 0 && y == 1 && z == 0) {
-		matrix.sxx = 1 - 2 * sinA2;
-		matrix.syx = 0;
-		matrix.szx = -2 * sinA * cosA;
-		matrix.sxy = 0;
-		matrix.syy = 1;
-		matrix.szy = 0;
-		matrix.sxz = 2 * sinA * cosA;
-		matrix.syz = 0;
-		matrix.szz = 1 - 2 * sinA2;
-		matrix.swx = matrix.swy = matrix.swz = 0;
-		matrix.tx = matrix.ty = matrix.tz = 0;
-		matrix.tw = 1;
+		matrix.m00 = 1 - 2 * sinA2;
+		matrix.m01 = 0;
+		matrix.m02 = -2 * sinA * cosA;
+		matrix.m10 = 0;
+		matrix.m11 = 1;
+		matrix.m12 = 0;
+		matrix.m20 = 2 * sinA * cosA;
+		matrix.m21 = 0;
+		matrix.m22 = 1 - 2 * sinA2;
+		matrix.m03 = matrix.m13 = matrix.m23 = 0;
+		matrix.m30 = matrix.m31 = matrix.m32 = 0;
+		matrix.m33 = 1;
 	} else if (x == 0 && y == 0 && z == 1) {
-		matrix.sxx = 1 - 2 * sinA2;
-		matrix.syx = 2 * sinA * cosA;
-		matrix.szx = 0;
-		matrix.sxy = -2 * sinA * cosA;
-		matrix.syy = 1 - 2 * sinA2;
-		matrix.szy = 0;
-		matrix.sxz = 0;
-		matrix.syz = 0;
-		matrix.szz = 1;
-		matrix.swx = matrix.swy = matrix.swz = 0;
-		matrix.tx = matrix.ty = matrix.tz = 0;
-		matrix.tw = 1;
+		matrix.m00 = 1 - 2 * sinA2;
+		matrix.m01 = 2 * sinA * cosA;
+		matrix.m02 = 0;
+		matrix.m10 = -2 * sinA * cosA;
+		matrix.m11 = 1 - 2 * sinA2;
+		matrix.m12 = 0;
+		matrix.m20 = 0;
+		matrix.m21 = 0;
+		matrix.m22 = 1;
+		matrix.m03 = matrix.m13 = matrix.m23 = 0;
+		matrix.m30 = matrix.m31 = matrix.m32 = 0;
+		matrix.m33 = 1;
 	} else {
 		float x2 = x*x;
 		float y2 = y*y;
 		float z2 = z*z;
 	
-		matrix.sxx = 1 - 2 * (y2 + z2) * sinA2;
-		matrix.syx = 2 * (x * y * sinA2 + z * sinA * cosA);
-		matrix.szx = 2 * (x * z * sinA2 - y * sinA * cosA);
-		matrix.sxy = 2 * (y * x * sinA2 - z * sinA * cosA);
-		matrix.syy = 1 - 2 * (z2 + x2) * sinA2;
-		matrix.szy = 2 * (y * z * sinA2 + x * sinA * cosA);
-		matrix.sxz = 2 * (z * x * sinA2 + y * sinA * cosA);
-		matrix.syz = 2 * (z * y * sinA2 - x * sinA * cosA);
-		matrix.szz = 1 - 2 * (x2 + y2) * sinA2;
-		matrix.swx = matrix.swy = matrix.swz = 0;
-		matrix.tx = matrix.ty = matrix.tz = 0;
-		matrix.tw = 1;
+		matrix.m00 = 1 - 2 * (y2 + z2) * sinA2;
+		matrix.m01 = 2 * (x * y * sinA2 + z * sinA * cosA);
+		matrix.m02 = 2 * (x * z * sinA2 - y * sinA * cosA);
+		matrix.m10 = 2 * (y * x * sinA2 - z * sinA * cosA);
+		matrix.m11 = 1 - 2 * (z2 + x2) * sinA2;
+		matrix.m12 = 2 * (y * z * sinA2 + x * sinA * cosA);
+		matrix.m20 = 2 * (z * x * sinA2 + y * sinA * cosA);
+		matrix.m21 = 2 * (z * y * sinA2 - x * sinA * cosA);
+		matrix.m22 = 1 - 2 * (x2 + y2) * sinA2;
+		matrix.m03 = matrix.m13 = matrix.m23 = 0;
+		matrix.m30 = matrix.m31 = matrix.m32 = 0;
+		matrix.m33 = 1;
 	}	
 	
 	im4MultiplyOnLeft3x3(m, &matrix);
@@ -254,17 +254,17 @@ void im4Translate(Isgl3dMatrix4 * m, float x, float y, float z) {
 	Isgl3dVector3 v = iv3(x, y, z);
 	Isgl3dVector3 tv = im4MultVector3x3(m, &v);
 
-	m->tx += tv.x;
-	m->ty += tv.y;
-	m->tz += tv.z;
+	m->m30 += tv.x;
+	m->m31 += tv.y;
+	m->m32 += tv.z;
 }
 
 void im4TranslateByVector(Isgl3dMatrix4 * m, Isgl3dVector3 * v) {
 	Isgl3dVector3 tv = im4MultVector3x3(m, v);
 
-	m->tx += tv.x;
-	m->ty += tv.y;
-	m->tz += tv.z;
+	m->m30 += tv.x;
+	m->m31 += tv.y;
+	m->m32 += tv.z;
 }
 
 void im4Scale(Isgl3dMatrix4 * m, float x, float y, float z) {
@@ -272,41 +272,41 @@ void im4Scale(Isgl3dMatrix4 * m, float x, float y, float z) {
 	Isgl3dVector3 currentScale = im4ToScaleValues(m);
 		
 		
-	m->sxx *= x / currentScale.x;
-	m->syx *= x / currentScale.x;
-	m->szx *= x / currentScale.x;
-	m->sxy *= y / currentScale.y;
-	m->syy *= y / currentScale.y;
-	m->szy *= y / currentScale.y;
-	m->sxz *= z / currentScale.z;
-	m->syz *= z / currentScale.z;
-	m->szz *= z / currentScale.z;	
+	m->m00 *= x / currentScale.x;
+	m->m01 *= x / currentScale.x;
+	m->m02 *= x / currentScale.x;
+	m->m10 *= y / currentScale.y;
+	m->m11 *= y / currentScale.y;
+	m->m12 *= y / currentScale.y;
+	m->m20 *= z / currentScale.z;
+	m->m21 *= z / currentScale.z;
+	m->m22 *= z / currentScale.z;	
 }
 
 void im4Transpose(Isgl3dMatrix4 * m) {
-	float tmp = m->sxy;
-    m->sxy = m->syx;
-    m->syx = tmp;
+	float tmp = m->m10;
+    m->m10 = m->m01;
+    m->m01 = tmp;
     
-    tmp = m->sxz;
-    m->sxz = m->szx;
-    m->szx = tmp;
+    tmp = m->m20;
+    m->m20 = m->m02;
+    m->m02 = tmp;
     
-    tmp = m->tx;
-    m->tx = m->swx;
-    m->swx = tmp;
+    tmp = m->m30;
+    m->m30 = m->m03;
+    m->m03 = tmp;
     
-    tmp = m->syz;
-    m->syz = m->szy;
-    m->szy = tmp;
+    tmp = m->m21;
+    m->m21 = m->m12;
+    m->m12 = tmp;
     
-    tmp = m->ty;
-    m->ty = m->swy;
-    m->swy = tmp;
+    tmp = m->m31;
+    m->m31 = m->m13;
+    m->m13 = tmp;
     
-    tmp = m->tz;
-    m->tz = m->swz;
-    m->swz = tmp;
+    tmp = m->m32;
+    m->m32 = m->m23;
+    m->m23 = tmp;
 	
 }
 
@@ -315,15 +315,15 @@ void im4SetRotation(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
 	Isgl3dMatrix4 matrix = im4Identity();
 	im4Rotate(&matrix, angle, x, y, z);
 	
-	m->sxx = matrix.sxx;
-	m->sxy = matrix.sxy;
-	m->sxz = matrix.sxz;
-	m->syx = matrix.syx;
-	m->syy = matrix.syy;
-	m->syz = matrix.syz;
-	m->szx = matrix.szx;
-	m->szy = matrix.szy;
-	m->szz = matrix.szz;
+	m->m00 = matrix.m00;
+	m->m10 = matrix.m10;
+	m->m20 = matrix.m20;
+	m->m01 = matrix.m01;
+	m->m11 = matrix.m11;
+	m->m21 = matrix.m21;
+	m->m02 = matrix.m02;
+	m->m12 = matrix.m12;
+	m->m22 = matrix.m22;
 }
 
 void im4SetRotationFromEuler(Isgl3dMatrix4 * m, float ax, float ay, float az) {
@@ -352,15 +352,15 @@ void im4SetRotationFromQuaternion(Isgl3dMatrix4 * m, Isgl3dQuaternion * q) {
 
 	float ww = w * w;
 	
-	m->sxx = 1 - 2 * (zz + ww);
-	m->sxy =     2 * (yz - xw);
-	m->sxz =     2 * (xz + yw);
-	m->syx =     2 * (yz + xw);
-	m->syy = 1 - 2 * (yy + ww);
-	m->syz =     2 * (zw - xy);
-	m->szx =     2 * (yw - xz);
-	m->szy =     2 * (xy + zw);
-	m->szz = 1 - 2 * (yy + zz);
+	m->m00 = 1 - 2 * (zz + ww);
+	m->m10 =     2 * (yz - xw);
+	m->m20 =     2 * (xz + yw);
+	m->m01 =     2 * (yz + xw);
+	m->m11 = 1 - 2 * (yy + ww);
+	m->m21 =     2 * (zw - xy);
+	m->m02 =     2 * (yw - xz);
+	m->m12 =     2 * (xy + zw);
+	m->m22 = 1 - 2 * (yy + zz);
 }
 
 
@@ -382,56 +382,56 @@ void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
 #endif
 
 #else
-	float m111 = a->sxx;
-	float m112 = a->sxy;
-	float m113 = a->sxz;
-	float m114 = a->tx;
-	float m121 = a->syx;
-	float m122 = a->syy;
-	float m123 = a->syz;
-	float m124 = a->ty;
-	float m131 = a->szx;
-	float m132 = a->szy;
-	float m133 = a->szz;
-	float m134 = a->tz;
-	float m141 = a->swx;
-	float m142 = a->swy;
-	float m143 = a->swz;
-	float m144 = a->tw;
+	float m111 = a->m00;
+	float m112 = a->m10;
+	float m113 = a->m20;
+	float m114 = a->m30;
+	float m121 = a->m01;
+	float m122 = a->m11;
+	float m123 = a->m21;
+	float m124 = a->m31;
+	float m131 = a->m02;
+	float m132 = a->m12;
+	float m133 = a->m22;
+	float m134 = a->m32;
+	float m141 = a->m03;
+	float m142 = a->m13;
+	float m143 = a->m23;
+	float m144 = a->m33;
 	
-	float m211 = b->sxx;
-	float m212 = b->sxy;
-	float m213 = b->sxz;
-	float m214 = b->tx;
-	float m221 = b->syx;
-	float m222 = b->syy;
-	float m223 = b->syz;
-	float m224 = b->ty;
-	float m231 = b->szx;
-	float m232 = b->szy;
-	float m233 = b->szz;
-	float m234 = b->tz;
-	float m241 = b->swx;
-	float m242 = b->swy;
-	float m243 = b->swz;
-	float m244 = b->tw;
+	float m211 = b->m00;
+	float m212 = b->m10;
+	float m213 = b->m20;
+	float m214 = b->m30;
+	float m221 = b->m01;
+	float m222 = b->m11;
+	float m223 = b->m21;
+	float m224 = b->m31;
+	float m231 = b->m02;
+	float m232 = b->m12;
+	float m233 = b->m22;
+	float m234 = b->m32;
+	float m241 = b->m03;
+	float m242 = b->m13;
+	float m243 = b->m23;
+	float m244 = b->m33;
 	
-	a->sxx = m111 * m211 + m112 * m221 + m113 * m231 + m114 * m241;
-	a->sxy = m111 * m212 + m112 * m222 + m113 * m232 + m114 * m242;
-	a->sxz = m111 * m213 + m112 * m223 + m113 * m233 + m114 * m243;
-	a->tx  = m111 * m214 + m112 * m224 + m113 * m234 + m114 * m244;
-	a->syx = m121 * m211 + m122 * m221 + m123 * m231 + m124 * m241;
-	a->syy = m121 * m212 + m122 * m222 + m123 * m232 + m124 * m242;
-	a->syz = m121 * m213 + m122 * m223 + m123 * m233 + m124 * m243;
-	a->ty  = m121 * m214 + m122 * m224 + m123 * m234 + m124 * m244;
-	a->szx = m131 * m211 + m132 * m221 + m133 * m231 + m134 * m241;
-	a->szy = m131 * m212 + m132 * m222 + m133 * m232 + m134 * m242;
-	a->szz = m131 * m213 + m132 * m223 + m133 * m233 + m134 * m243;
-	a->tz  = m131 * m214 + m132 * m224 + m133 * m234 + m134 * m244;
-	a->swx = m141 * m211 + m142 * m221 + m143 * m231 + m144 * m241;
-	a->swy = m141 * m212 + m142 * m222 + m143 * m232 + m144 * m242;
-	a->swz = m141 * m213 + m142 * m223 + m143 * m233 + m144 * m243;
-	a->tw  = m141 * m214 + m142 * m224 + m143 * m234 + m144 * m244;
+	a->m00 = m111 * m211 + m112 * m221 + m113 * m231 + m114 * m241;
+	a->m10 = m111 * m212 + m112 * m222 + m113 * m232 + m114 * m242;
+	a->m20 = m111 * m213 + m112 * m223 + m113 * m233 + m114 * m243;
+	a->m30  = m111 * m214 + m112 * m224 + m113 * m234 + m114 * m244;
+	a->m01 = m121 * m211 + m122 * m221 + m123 * m231 + m124 * m241;
+	a->m11 = m121 * m212 + m122 * m222 + m123 * m232 + m124 * m242;
+	a->m21 = m121 * m213 + m122 * m223 + m123 * m233 + m124 * m243;
+	a->m31  = m121 * m214 + m122 * m224 + m123 * m234 + m124 * m244;
+	a->m02 = m131 * m211 + m132 * m221 + m133 * m231 + m134 * m241;
+	a->m12 = m131 * m212 + m132 * m222 + m133 * m232 + m134 * m242;
+	a->m22 = m131 * m213 + m132 * m223 + m133 * m233 + m134 * m243;
+	a->m32  = m131 * m214 + m132 * m224 + m133 * m234 + m134 * m244;
+	a->m03 = m141 * m211 + m142 * m221 + m143 * m231 + m144 * m241;
+	a->m13 = m141 * m212 + m142 * m222 + m143 * m232 + m144 * m242;
+	a->m23 = m141 * m213 + m142 * m223 + m143 * m233 + m144 * m243;
+	a->m33  = m141 * m214 + m142 * m224 + m143 * m234 + m144 * m244;
 #endif	
 }
 
@@ -453,89 +453,89 @@ void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
 #endif
 	
 #else
-	float m111 = b->sxx;
-	float m112 = b->sxy;
-	float m113 = b->sxz;
-	float m114 = b->tx;
-	float m121 = b->syx;
-	float m122 = b->syy;
-	float m123 = b->syz;
-	float m124 = b->ty;
-	float m131 = b->szx;
-	float m132 = b->szy;
-	float m133 = b->szz;
-	float m134 = b->tz;
-	float m141 = b->swx;
-	float m142 = b->swy;
-	float m143 = b->swz;
-	float m144 = b->tw;
+	float m111 = b->m00;
+	float m112 = b->m10;
+	float m113 = b->m20;
+	float m114 = b->m30;
+	float m121 = b->m01;
+	float m122 = b->m11;
+	float m123 = b->m21;
+	float m124 = b->m31;
+	float m131 = b->m02;
+	float m132 = b->m12;
+	float m133 = b->m22;
+	float m134 = b->m32;
+	float m141 = b->m03;
+	float m142 = b->m13;
+	float m143 = b->m23;
+	float m144 = b->m33;
 	
-	float m211 = a->sxx;
-	float m212 = a->sxy;
-	float m213 = a->sxz;
-	float m214 = a->tx;
-	float m221 = a->syx;
-	float m222 = a->syy;
-	float m223 = a->syz;
-	float m224 = a->ty;
-	float m231 = a->szx;
-	float m232 = a->szy;
-	float m233 = a->szz;
-	float m234 = a->tz;
-	float m241 = a->swx;
-	float m242 = a->swy;
-	float m243 = a->swz;
-	float m244 = a->tw;
+	float m211 = a->m00;
+	float m212 = a->m10;
+	float m213 = a->m20;
+	float m214 = a->m30;
+	float m221 = a->m01;
+	float m222 = a->m11;
+	float m223 = a->m21;
+	float m224 = a->m31;
+	float m231 = a->m02;
+	float m232 = a->m12;
+	float m233 = a->m22;
+	float m234 = a->m32;
+	float m241 = a->m03;
+	float m242 = a->m13;
+	float m243 = a->m23;
+	float m244 = a->m33;
 	
-	a->sxx = m111 * m211 + m112 * m221 + m113 * m231 + m114 * m241;
-	a->sxy = m111 * m212 + m112 * m222 + m113 * m232 + m114 * m242;
-	a->sxz = m111 * m213 + m112 * m223 + m113 * m233 + m114 * m243;
-	a->tx  = m111 * m214 + m112 * m224 + m113 * m234 + m114 * m244;
-	a->syx = m121 * m211 + m122 * m221 + m123 * m231 + m124 * m241;
-	a->syy = m121 * m212 + m122 * m222 + m123 * m232 + m124 * m242;
-	a->syz = m121 * m213 + m122 * m223 + m123 * m233 + m124 * m243;
-	a->ty  = m121 * m214 + m122 * m224 + m123 * m234 + m124 * m244;
-	a->szx = m131 * m211 + m132 * m221 + m133 * m231 + m134 * m241;
-	a->szy = m131 * m212 + m132 * m222 + m133 * m232 + m134 * m242;
-	a->szz = m131 * m213 + m132 * m223 + m133 * m233 + m134 * m243;
-	a->tz  = m131 * m214 + m132 * m224 + m133 * m234 + m134 * m244;
-	a->swx = m141 * m211 + m142 * m221 + m143 * m231 + m144 * m241;
-	a->swy = m141 * m212 + m142 * m222 + m143 * m232 + m144 * m242;
-	a->swz = m141 * m213 + m142 * m223 + m143 * m233 + m144 * m243;
-	a->tw  = m141 * m214 + m142 * m224 + m143 * m234 + m144 * m244;
+	a->m00 = m111 * m211 + m112 * m221 + m113 * m231 + m114 * m241;
+	a->m10 = m111 * m212 + m112 * m222 + m113 * m232 + m114 * m242;
+	a->m20 = m111 * m213 + m112 * m223 + m113 * m233 + m114 * m243;
+	a->m30  = m111 * m214 + m112 * m224 + m113 * m234 + m114 * m244;
+	a->m01 = m121 * m211 + m122 * m221 + m123 * m231 + m124 * m241;
+	a->m11 = m121 * m212 + m122 * m222 + m123 * m232 + m124 * m242;
+	a->m21 = m121 * m213 + m122 * m223 + m123 * m233 + m124 * m243;
+	a->m31  = m121 * m214 + m122 * m224 + m123 * m234 + m124 * m244;
+	a->m02 = m131 * m211 + m132 * m221 + m133 * m231 + m134 * m241;
+	a->m12 = m131 * m212 + m132 * m222 + m133 * m232 + m134 * m242;
+	a->m22 = m131 * m213 + m132 * m223 + m133 * m233 + m134 * m243;
+	a->m32  = m131 * m214 + m132 * m224 + m133 * m234 + m134 * m244;
+	a->m03 = m141 * m211 + m142 * m221 + m143 * m231 + m144 * m241;
+	a->m13 = m141 * m212 + m142 * m222 + m143 * m232 + m144 * m242;
+	a->m23 = m141 * m213 + m142 * m223 + m143 * m233 + m144 * m243;
+	a->m33  = m141 * m214 + m142 * m224 + m143 * m234 + m144 * m244;
 #endif
 }
 
 void im4MultiplyOnLeft3x3(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b) {
-	float m111 = b->sxx;
-	float m112 = b->sxy;
-	float m113 = b->sxz;
-	float m121 = b->syx;
-	float m122 = b->syy;
-	float m123 = b->syz;
-	float m131 = b->szx;
-	float m132 = b->szy;
-	float m133 = b->szz;
+	float m111 = b->m00;
+	float m112 = b->m10;
+	float m113 = b->m20;
+	float m121 = b->m01;
+	float m122 = b->m11;
+	float m123 = b->m21;
+	float m131 = b->m02;
+	float m132 = b->m12;
+	float m133 = b->m22;
 
-	float m211 = a->sxx;
-	float m212 = a->sxy;
-	float m213 = a->sxz;
-	float m221 = a->syx;
-	float m222 = a->syy;
-	float m223 = a->syz;
-	float m231 = a->szx;
-	float m232 = a->szy;
-	float m233 = a->szz;
+	float m211 = a->m00;
+	float m212 = a->m10;
+	float m213 = a->m20;
+	float m221 = a->m01;
+	float m222 = a->m11;
+	float m223 = a->m21;
+	float m231 = a->m02;
+	float m232 = a->m12;
+	float m233 = a->m22;
 	
-	a->sxx = m111 * m211 + m112 * m221 + m113 * m231;
-	a->sxy = m111 * m212 + m112 * m222 + m113 * m232;
-	a->sxz = m111 * m213 + m112 * m223 + m113 * m233;
-	a->syx = m121 * m211 + m122 * m221 + m123 * m231;
-	a->syy = m121 * m212 + m122 * m222 + m123 * m232;
-	a->syz = m121 * m213 + m122 * m223 + m123 * m233;
-	a->szx = m131 * m211 + m132 * m221 + m133 * m231;
-	a->szy = m131 * m212 + m132 * m222 + m133 * m232;
-	a->szz = m131 * m213 + m132 * m223 + m133 * m233;
+	a->m00 = m111 * m211 + m112 * m221 + m113 * m231;
+	a->m10 = m111 * m212 + m112 * m222 + m113 * m232;
+	a->m20 = m111 * m213 + m112 * m223 + m113 * m233;
+	a->m01 = m121 * m211 + m122 * m221 + m123 * m231;
+	a->m11 = m121 * m212 + m122 * m222 + m123 * m232;
+	a->m21 = m121 * m213 + m122 * m223 + m123 * m233;
+	a->m02 = m131 * m211 + m132 * m221 + m133 * m231;
+	a->m12 = m131 * m212 + m132 * m222 + m133 * m232;
+	a->m22 = m131 * m213 + m132 * m223 + m133 * m233;
 }	
 
 Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector)
@@ -555,10 +555,10 @@ Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector)
 	float az = vector->z;
 	float aw = vector->w;
 	
-	float vx = m->sxx * ax + m->sxy * ay + m->sxz * az + m->tx * aw;
-	float vy = m->syx * ax + m->syy * ay + m->syz * az + m->ty * aw;
-	float vz = m->szx * ax + m->szy * ay + m->szz * az + m->tz * aw;
-	float vw = m->swx * ax + m->swy * ay + m->swz * az + m->tw * aw;
+	float vx = m->m00 * ax + m->m10 * ay + m->m20 * az + m->m30 * aw;
+	float vy = m->m01 * ax + m->m11 * ay + m->m21 * az + m->m31 * aw;
+	float vz = m->m02 * ax + m->m12 * ay + m->m22 * az + m->m32 * aw;
+	float vw = m->m03 * ax + m->m13 * ay + m->m23 * az + m->m33 * aw;
 	
 	iv4Fill(&result, vx, vy, vz, vw);
 #endif
@@ -571,9 +571,9 @@ Isgl3dVector3 im4MultVector(Isgl3dMatrix4 * m, Isgl3dVector3 * vector) {
 	float ay = vector->y;
 	float az = vector->z;
 	
-	float vx = m->sxx * ax + m->sxy * ay + m->sxz * az + m->tx;
-	float vy = m->syx * ax + m->syy * ay + m->syz * az + m->ty;
-	float vz = m->szx * ax + m->szy * ay + m->szz * az + m->tz;
+	float vx = m->m00 * ax + m->m10 * ay + m->m20 * az + m->m30;
+	float vy = m->m01 * ax + m->m11 * ay + m->m21 * az + m->m31;
+	float vz = m->m02 * ax + m->m12 * ay + m->m22 * az + m->m32;
 
 	return iv3(vx, vy, vz);	
 } 
@@ -584,9 +584,9 @@ Isgl3dVector3 im4MultVector3x3(Isgl3dMatrix4 * m, Isgl3dVector3 * vector) {
 	float ay = vector->y;
 	float az = vector->z;
 	
-	float vx = m->sxx * ax + m->sxy * ay + m->sxz * az;
-	float vy = m->syx * ax + m->syy * ay + m->syz * az;
-	float vz = m->szx * ax + m->szy * ay + m->szz * az;
+	float vx = m->m00 * ax + m->m10 * ay + m->m20 * az;
+	float vy = m->m01 * ax + m->m11 * ay + m->m21 * az;
+	float vz = m->m02 * ax + m->m12 * ay + m->m22 * az;
 
 	return iv3(vx, vy, vz);		
 } 
@@ -597,10 +597,10 @@ void im4MultArray4(Isgl3dMatrix4 * m, float * array) {
 	float az = array[2];
 	float aw = array[3];
 	
-	float vx = m->sxx * ax + m->sxy * ay + m->sxz * az + m->tx * aw;
-	float vy = m->syx * ax + m->syy * ay + m->syz * az + m->ty * aw;
-	float vz = m->szx * ax + m->szy * ay + m->szz * az + m->tz * aw;
-	float vw = m->swx * ax + m->swy * ay + m->swz * az + m->tw * aw;
+	float vx = m->m00 * ax + m->m10 * ay + m->m20 * az + m->m30 * aw;
+	float vy = m->m01 * ax + m->m11 * ay + m->m21 * az + m->m31 * aw;
+	float vz = m->m02 * ax + m->m12 * ay + m->m22 * az + m->m32 * aw;
+	float vw = m->m03 * ax + m->m13 * ay + m->m23 * az + m->m33 * aw;
 
 	array[0] = vx;
 	array[1] = vy;
@@ -612,7 +612,7 @@ void im4MultArray4(Isgl3dMatrix4 * m, float * array) {
 Isgl3dVector3 im4ToEulerAngles(Isgl3dMatrix4 * m) {
 
 	// Get rotation about X
-	float rotX = -atan2(m->szy, m->szz);
+	float rotX = -atan2(m->m12, m->m22);
 	
 	// Create rotation matrix around X
 	Isgl3dMatrix4 matrix = im4Identity();
@@ -622,11 +622,11 @@ Isgl3dVector3 im4ToEulerAngles(Isgl3dMatrix4 * m) {
 	im4MultiplyOnLeft(&matrix, m);
 	
 	// Get rotation about Y
-	float cosRotY = sqrt(matrix.sxx * matrix.sxx + matrix.syx * matrix.syx);
-	float rotY = atan2(-matrix.szx, cosRotY);
+	float cosRotY = sqrt(matrix.m00 * matrix.m00 + matrix.m01 * matrix.m01);
+	float rotY = atan2(-matrix.m02, cosRotY);
 	
 	// get rotation about Z
-	float rotZ = atan2(-matrix.sxy, matrix.syy);
+	float rotZ = atan2(-matrix.m10, matrix.m11);
 	
 	// Fix angles (from Away3D)
 	if (lroundf(rotZ / M_PI) == 1) {
@@ -695,9 +695,9 @@ Isgl3dVector3 im4ToEulerAngles(Isgl3dMatrix4 * m) {
 
 Isgl3dVector3 im4ToScaleValues(Isgl3dMatrix4 * m) {
 
-	float scaleX = sqrt(m->sxx*m->sxx + m->syx*m->syx + m->szx*m->szx);
-	float scaleY = sqrt(m->sxy*m->sxy + m->syy*m->syy + m->szy*m->szy);
-	float scaleZ = sqrt(m->sxz*m->sxz + m->syz*m->syz + m->szz*m->szz);
+	float scaleX = sqrt(m->m00*m->m00 + m->m01*m->m01 + m->m02*m->m02);
+	float scaleY = sqrt(m->m10*m->m10 + m->m11*m->m11 + m->m12*m->m12);
+	float scaleZ = sqrt(m->m20*m->m20 + m->m21*m->m21 + m->m22*m->m22);
 
 	return iv3(scaleX, scaleY, scaleZ);
 
