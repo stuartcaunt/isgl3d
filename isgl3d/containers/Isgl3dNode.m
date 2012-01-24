@@ -152,31 +152,31 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 #pragma mark translation rotation scaling
 
 - (float) x {
-	return _localTransformation.tx;
+	return _localTransformation.m30;
 }
 
 - (void) setX:(float)x {
-	_localTransformation.tx = x;
+	_localTransformation.m30 = x;
 	
 	_transformationDirty = YES;
 }
 
 - (float) y {
-	return _localTransformation.ty;
+	return _localTransformation.m31;
 }
 
 - (void) setY:(float)y {
-	_localTransformation.ty = y;
+	_localTransformation.m31 = y;
 	
 	_transformationDirty = YES;
 }
 
 - (float) z {
-	return _localTransformation.tz;
+	return _localTransformation.m32;
 }
 
 - (void) setZ:(float)z {
-	_localTransformation.tz = z;
+	_localTransformation.m32 = z;
 	
 	_transformationDirty = YES;
 }
@@ -186,9 +186,9 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 - (void) setPosition:(Isgl3dVector3)position {
-	_localTransformation.tx = position.x;
-	_localTransformation.ty = position.y;
-	_localTransformation.tz = position.z;
+	_localTransformation.m30 = position.x;
+	_localTransformation.m31 = position.y;
+	_localTransformation.m32 = position.z;
 	
 	_transformationDirty = YES;
 }
@@ -379,14 +379,14 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 
 - (void) copyWorldPositionToArray:(float *)position {
-	position[0] = _worldTransformation.tx;
-	position[1] = _worldTransformation.ty;
-	position[2] = _worldTransformation.tz;
-	position[3] = _worldTransformation.tw;
+	position[0] = _worldTransformation.m30;
+	position[1] = _worldTransformation.m31;
+	position[2] = _worldTransformation.m32;
+	position[3] = _worldTransformation.m33;
 }
 
 - (Isgl3dVector3) worldPosition {
-	return iv3(_worldTransformation.tx, _worldTransformation.ty, _worldTransformation.tz);
+	return iv3(_worldTransformation.m30, _worldTransformation.m31, _worldTransformation.m32);
 	
 }
 
@@ -395,7 +395,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	im4Copy(&modelViewMatrix, viewMatrix);
 	im4Multiply(&modelViewMatrix, &_worldTransformation);
 	
-	float z = modelViewMatrix.tz;
+	float z = modelViewMatrix.m32;
 	
 	return z;
 }
@@ -407,7 +407,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	float A = transformedNormal.x;
 	float B = transformedNormal.y;
 	float C = transformedNormal.z;
-	float D = -(A * _worldTransformation.tx + B * _worldTransformation.ty + C * _worldTransformation.tz);
+	float D = -(A * _worldTransformation.m30 + B * _worldTransformation.m31 + C * _worldTransformation.m32);
 	
 	return iv4(A, B, C, D);
 }

@@ -382,10 +382,10 @@
 		iMatrix++;
 		Isgl3dMatrix4 boneViewMatrix = _viewMatrix;
 		if (_planarShadowsActive) {
-			im4Multiply(&boneViewMatrix, &_planarShadowsMatrix);
+            boneViewMatrix = Isgl3dMatrix4Multiply(boneViewMatrix, _planarShadowsMatrix);
 		}
 
-		im4Multiply(&boneViewMatrix, boneWorldTransformation);
+        boneViewMatrix = Isgl3dMatrix4Multiply(boneViewMatrix, *boneWorldTransformation);
 
 		float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(&boneViewMatrix);
 	    glLoadMatrixf(matrixArray);

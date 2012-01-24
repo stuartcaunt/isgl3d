@@ -40,15 +40,15 @@
 	Isgl3dMatrix4 viewMatrix = camera.viewMatrix;
 	im4Invert3x3(&viewMatrix);
 	
-	_worldTransformation.sxx = viewMatrix.sxx * _scaleX;
-	_worldTransformation.sxy = viewMatrix.sxy * _scaleX;
-	_worldTransformation.sxz = viewMatrix.sxz * _scaleX;
-	_worldTransformation.syx = viewMatrix.syx * _scaleY;
-	_worldTransformation.syy = viewMatrix.syy * _scaleY;
-	_worldTransformation.syz = viewMatrix.syz * _scaleY;
-	_worldTransformation.szx = viewMatrix.szx * _scaleZ;
-	_worldTransformation.szy = viewMatrix.szy * _scaleZ;
-	_worldTransformation.szz = viewMatrix.szz * _scaleZ;
+	_worldTransformation.m00 = viewMatrix.m00 * _scaleX;
+	_worldTransformation.m10 = viewMatrix.m10 * _scaleX;
+	_worldTransformation.m20 = viewMatrix.m20 * _scaleX;
+	_worldTransformation.m01 = viewMatrix.m01 * _scaleY;
+	_worldTransformation.m11 = viewMatrix.m11 * _scaleY;
+	_worldTransformation.m21 = viewMatrix.m21 * _scaleY;
+	_worldTransformation.m02 = viewMatrix.m02 * _scaleZ;
+	_worldTransformation.m12 = viewMatrix.m12 * _scaleZ;
+	_worldTransformation.m22 = viewMatrix.m22 * _scaleZ;
 }
 
 @end

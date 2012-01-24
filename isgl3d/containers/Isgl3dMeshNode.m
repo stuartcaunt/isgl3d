@@ -125,7 +125,7 @@
 	Isgl3dVector3 eyeToModel;
 	Isgl3dVector3 eyeToModelNormal;
 
-	iv3Fill(&eyeToModel, _worldTransformation.tx, _worldTransformation.ty, _worldTransformation.tz);
+	iv3Fill(&eyeToModel, _worldTransformation.m30, _worldTransformation.m31, _worldTransformation.m32);
 	iv3Sub(&eyeToModel, eye);
 
 	iv3Copy(&eyeToModelNormal, &eyeToModel);
