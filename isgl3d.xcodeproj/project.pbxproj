@@ -5496,7 +5496,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "isgl3d" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -7178,13 +7178,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7201,12 +7202,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7224,13 +7226,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7247,12 +7250,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7270,7 +7274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -7278,6 +7282,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7295,12 +7300,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7318,13 +7324,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7341,12 +7348,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7364,13 +7372,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7387,12 +7396,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7410,13 +7420,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7433,12 +7444,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7456,13 +7468,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7479,12 +7492,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7502,13 +7516,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7525,12 +7540,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7548,13 +7564,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7571,12 +7588,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7594,13 +7612,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7618,12 +7637,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7642,13 +7662,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7665,12 +7686,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7688,13 +7710,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7711,12 +7734,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7734,13 +7758,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7757,12 +7782,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7780,13 +7806,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7803,12 +7830,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7826,13 +7854,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7849,12 +7878,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7872,13 +7902,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7895,12 +7926,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7918,13 +7950,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7941,12 +7974,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7964,13 +7998,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -7987,12 +8022,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8010,13 +8046,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8034,12 +8071,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8058,13 +8096,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8081,12 +8120,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8104,13 +8144,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8127,12 +8168,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8150,13 +8192,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8173,12 +8216,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8196,12 +8240,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/build_all.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -8213,10 +8252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = /tmp/build_all.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
@@ -8228,7 +8264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -8236,6 +8272,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8252,13 +8289,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8276,13 +8314,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8299,12 +8338,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8322,13 +8362,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8345,12 +8386,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8368,13 +8410,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8391,12 +8434,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8414,13 +8458,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8437,12 +8482,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8460,13 +8506,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8483,12 +8530,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8510,6 +8558,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
@@ -8522,6 +8571,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8532,7 +8582,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -8540,6 +8590,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8557,12 +8608,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8581,13 +8633,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8604,12 +8657,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8627,13 +8681,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8650,12 +8705,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -8674,7 +8730,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -8683,6 +8739,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = BUILD_OGLES2;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
@@ -8694,12 +8751,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = BUILD_OGLES2;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
@@ -8714,6 +8772,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -8730,6 +8789,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
