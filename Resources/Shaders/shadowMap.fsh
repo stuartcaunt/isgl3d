@@ -1,3 +1,7 @@
+//#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
+
 varying highp vec4 v_position;
 
 const highp vec4 packFactors = vec4(256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0);

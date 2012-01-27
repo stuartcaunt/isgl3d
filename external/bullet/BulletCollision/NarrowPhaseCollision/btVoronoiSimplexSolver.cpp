@@ -576,7 +576,7 @@ bool	btVoronoiSimplexSolver::closestPtPointTetrahedron(const btVector3& p, const
         btScalar sqDist = (q - p).dot( q - p);
         if (sqDist < bestSqDist) 
 		{
-			bestSqDist = sqDist;
+			//bestSqDist = sqDist;  // True, but value stored is never read.
 			finalResult.m_closestPointOnSimplex = q;
 			finalResult.m_usedVertices.reset();
 			//

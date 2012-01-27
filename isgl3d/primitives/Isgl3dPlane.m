@@ -62,9 +62,9 @@
 		_ny = ny;
 		
 		if (uvMap) {
-			_uvMap = [uvMap retain];
+			_uvMap = [uvMap copy];
 		} else {
-			_uvMap = [[Isgl3dUVMap standardUVMap] retain];
+			_uvMap = [[Isgl3dUVMap standardUVMap] copy];
 		}
 		
 		[self constructVBOData];

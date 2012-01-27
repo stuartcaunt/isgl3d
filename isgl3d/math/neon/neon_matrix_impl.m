@@ -21,6 +21,10 @@
  3. This notice may not be removed or altered from any source distribution.
 */
 
+#if __clang_major__ >= 3
+#define _asm asm
+#endif
+
 #import "neon_matrix_impl.h"
 
 #ifdef __thumb__

@@ -1,0 +1,21 @@
+# Git Files
+.gitignore.*
+
+# MacOSX Generated Files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+.Spotlight-V*
+.Trashes
+
+# XCode Files
+xcuserdata/
+*.xcworkspacedata
+*.mode1v3
+*.pbxuser
+build/
+
+# opendiff (FileMerge)
+*.orig
+

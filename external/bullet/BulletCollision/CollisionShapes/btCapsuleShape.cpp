@@ -71,7 +71,7 @@ btCapsuleShape::btCapsuleShape(btScalar radius, btScalar height) : btConvexInter
 		newDot = vec.dot(vtx);
 		if (newDot > maxDot)
 		{
-			maxDot = newDot;
+			//maxDot = newDot; // <-- true, but value not needed.
 			supVec = vtx;
 		}
 	}
@@ -111,7 +111,7 @@ btCapsuleShape::btCapsuleShape(btScalar radius, btScalar height) : btConvexInter
 			newDot = vec.dot(vtx);
 			if (newDot > maxDot)
 			{
-				maxDot = newDot;
+				//maxDot = newDot; // True, but value never read since iteration reinitializes maxDot.
 				supportVerticesOut[j] = vtx;
 			}
 		}

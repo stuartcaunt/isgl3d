@@ -22,18 +22,22 @@ subject to the following restrictions:
 */
 
 #include "btTriangleShapeEx.h"
-
-
+#include <ciso646>
+#include <cstring>
 
 void GIM_TRIANGLE_CONTACT::merge_points(const btVector4 & plane,
                                        btScalar margin, const btVector3 * points, int point_count)
 {
+    btAssert(point_count >= 0 and points);
     m_point_count = 0;
     m_penetration_depth= -1000.0f;
 
     int point_indices[MAX_TRI_CLIPPING];
-
-	int _k;
+#ifdef __clang_analyzer__
+    memset(point_indices,0,sizeof(int)*MAX_TRI_CLIPPING);
+#endif
+  
+    int _k;
 
     for ( _k=0;_k<point_count;_k++)
     {
@@ -55,9 +59,10 @@ void GIM_TRIANGLE_CONTACT::merge_points(const btVector4 & plane,
         }
     }
 
+    btAssert(m_point_count <= point_count);
     for ( _k=0;_k<m_point_count;_k++)
     {
-        m_points[_k] = points[point_indices[_k]];
+        m_points[_k] = points[point_indices[_k]]; // LLVM-SA dislikes lack of else clause or memset.
     }
 }
 

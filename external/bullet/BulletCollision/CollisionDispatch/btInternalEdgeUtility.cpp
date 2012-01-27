@@ -595,8 +595,6 @@ void btAdjustInternalEdgeContacts(btManifoldPoint& cp, const btCollisionObject* 
 
 			btVector3 edge(v1-v2);
 
-			isNearEdge = true;
-
 			if (info->m_edgeV1V2Angle == btScalar(0))
 			{
 				numConcaveEdgeHits++;

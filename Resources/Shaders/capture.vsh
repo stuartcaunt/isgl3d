@@ -1,3 +1,7 @@
+//#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
+
 attribute vec4 a_vertex;
 uniform mat4 u_mvpMatrix;
 

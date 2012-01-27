@@ -1,3 +1,7 @@
+//#version 100
+//#pragma optimize(off)
+//#pragma debug(on)
+
 uniform lowp vec4 u_color;
 
 void main() {

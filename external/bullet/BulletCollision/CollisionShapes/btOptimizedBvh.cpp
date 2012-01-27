@@ -18,7 +18,7 @@ subject to the following restrictions:
 #include "btStridingMeshInterface.h"
 #include "LinearMath/btAabbUtil2.h"
 #include "LinearMath/btIDebugDraw.h"
-
+#include <cassert>
 
 btOptimizedBvh::btOptimizedBvh()
 { 
@@ -315,10 +315,11 @@ void	btOptimizedBvh::updateBvhNodes(btStridingMeshInterface* meshInterface,int f
 
 				unsigned int* gfxbase = (unsigned int*)(indexbase+nodeTriangleIndex*indexstride);
 				
-				
 				for (int j=2;j>=0;j--)
 				{
-					
+#if __clang_analyzer__ != 0 || DEBUG != 0
+          assert(gfxbase);
+#endif
 					int graphicsindex = indicestype==PHY_SHORT?((unsigned short*)gfxbase)[j]:gfxbase[j];
 					if (type == PHY_FLOAT)
 					{

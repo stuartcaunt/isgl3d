@@ -18,7 +18,7 @@
 		[self.camera setPosition:iv3(0, 3, 7)];
 
 		// Create texture material with text
-		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithText:@"Hello World!" fontName:@"Arial" fontSize:48];
+		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithText:@"Hello World!" fontName:@"MarkerFelt-Wide" fontSize:48];
 	
 		// Create a UV Map so that only the rendered content of the texture is shown on plane
 		float uMax = material.contentSize.width / material.width;
