@@ -50,13 +50,11 @@
 }
 
 - (void) dealloc {
-	if (_shadowRenderTexture) {
-		[_shadowRenderTexture release];
-	}
+    [_shadowRenderTexture release];
+    _shadowRenderTexture = nil;
 
-	if (_planarShadowsNode) {
-		[_planarShadowsNode release];
-	}
+	[_planarShadowsNode release];
+    _planarShadowsNode = nil;
 
 	[super dealloc];
 }
@@ -79,7 +77,7 @@
 
 - (void) createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
 
-	if (!_shadowRenderTexture) {
+	if (_shadowRenderTexture == nil) {
 		_shadowRenderTexture = [[[Isgl3dGLTextureFactory sharedInstance] createDepthRenderTexture:SHADOW_MAP_WIDTH height:SHADOW_MAP_HEIGHT] retain];
 	}
 

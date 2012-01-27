@@ -42,6 +42,7 @@
 		glBindTexture(GL_TEXTURE_2D, self.textureId);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, self.textureId, 0);
 	
+        glGetIntegerv(GL_RENDERBUFFER_BINDING, &_oldRenderBuffer);
 		glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, self.width, self.height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
@@ -81,10 +82,12 @@
 
 - (void) initializeRender {
 	glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
 }
 
 - (void) finalizeRender {
 	glBindFramebuffer(GL_FRAMEBUFFER, _oldFrameBuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, _oldRenderBuffer);
 }
 
 @end

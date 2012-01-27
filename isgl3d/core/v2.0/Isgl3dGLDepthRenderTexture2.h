@@ -37,6 +37,7 @@
 	GLuint _depthRenderBuffer;
 	
 	GLint _oldFrameBuffer;
+    GLint _oldRenderBuffer;
 }
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;

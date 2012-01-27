@@ -1,3 +1,5 @@
+#define MAX_BONES 4
+
 attribute vec4 a_vertex;
 
 uniform mat4 u_mvpMatrix;
@@ -19,10 +21,15 @@ void main(void) {
 	
 	if (u_boneCount > 0) {
 		highp mat4 boneMatrix = u_boneMatrixArray[boneIndex.x];
+        int j;
 	
 		vec4 vertexPosition = boneMatrix * a_vertex * boneWeights.x;
+		j = 1;
 		
-		for (lowp int i = 1; i < u_boneCount; ++i) {
+		for (int i=1; i<MAX_BONES; i++) {
+			if (j >= u_boneCount)
+                break;
+
 			// "rotate" the vector components
 			boneIndex = boneIndex.yzwx;
 			boneWeights = boneWeights.yzwx;
@@ -30,6 +37,8 @@ void main(void) {
 			boneMatrix = u_boneMatrixArray[boneIndex.x];
 
 			vertexPosition += boneMatrix * a_vertex * boneWeights.x;
+
+            j++;
 		}	
 		v_position = u_mvpMatrix * vertexPosition;
 		gl_Position = v_position;
