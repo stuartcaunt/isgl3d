@@ -27,6 +27,7 @@
 #import "Isgl3dPrimitiveFactory.h"
 #import "Isgl3dPlane.h"
 #import "Isgl3dEventType.h"
+#import "Isgl3dDirector.h"
 
 @implementation Isgl3dGLUIButton
 
@@ -51,7 +52,12 @@
 
 - (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 	
-	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:width height:height nx:2 ny:2] andMaterial:material])) {
+    float contentScaleFactor = [Isgl3dDirector sharedInstance].contentScaleFactor;
+	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:width * contentScaleFactor
+	                                                       height:height * contentScaleFactor
+		                                                       nx:2
+		                                                       ny:2]
+	                    andMaterial:material])) {
 		[self setWidth:width andHeight:height];
 		self.interactive = YES;
 	}
