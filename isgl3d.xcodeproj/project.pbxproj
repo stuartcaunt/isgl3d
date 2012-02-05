@@ -1396,6 +1396,33 @@
 		8BDBA1D714CCFABE00BAEB8A /* PVRTShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C714CCFABE00BAEB8A /* PVRTShader.h */; };
 		8BDBA1D814CCFABE00BAEB8A /* PVRTTextureAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1C814CCFABE00BAEB8A /* PVRTTextureAPI.cpp */; };
 		8BDBA1D914CCFABE00BAEB8A /* PVRTTextureAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */; };
+		9B36749F14DEFBFC0086B496 /* NibDemo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B36749414DEFBFB0086B496 /* NibDemo.h */; };
+		9B3674A014DEFBFC0086B496 /* NibDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36749514DEFBFC0086B496 /* NibDemo.m */; };
+		9B3674A714DEFBFC0086B496 /* TestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B36749D14DEFBFC0086B496 /* TestViewController.h */; };
+		9B3674A814DEFBFC0086B496 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36749E14DEFBFC0086B496 /* TestViewController.m */; };
+		9B3674B314DF017E0086B496 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		9B3674B414DF017E0086B496 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		9B3674B514DF017E0086B496 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		9B3674C914DF026C0086B496 /* NibDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36749514DEFBFC0086B496 /* NibDemo.m */; };
+		9B3674CA14DF026C0086B496 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B36749E14DEFBFC0086B496 /* TestViewController.m */; };
+		9B3674CB14DF026C0086B496 /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
+		9B3674CC14DF026C0086B496 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		9B3674CD14DF026C0086B496 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		9B3674CE14DF02920086B496 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		9B3674CF14DF02B90086B496 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		9B3674D014DF02C20086B496 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		9BC947A114DF03ED003F1FE6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DB13708A2100152EFE /* Default.png */; };
+		9BC947A214DF07C7003F1FE6 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		9BC947A314DF07C7003F1FE6 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		9BC947A414DF07C7003F1FE6 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		9BC947A514DF07C7003F1FE6 /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		9BC947A614DF07C7003F1FE6 /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		9BC947A714DF07C7003F1FE6 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		9BC947A814DF07C7003F1FE6 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		9BC947A914DF07C7003F1FE6 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		9BC947AA14DF07C7003F1FE6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DC13708A2100152EFE /* Icon.png */; };
+		9BC947AB14DF07C7003F1FE6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DD13708A2100152EFE /* Icon@2x.png */; };
+		9BDA587A14DF0A6E00DC1CCB /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B36749C14DEFBFC0086B496 /* TestView.xib */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -1828,6 +1855,13 @@
 			remoteInfo = isgl3d;
 		};
 		17F7A87212FA0D6100C7BB82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		9B3674C714DF01F50086B496 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -2647,6 +2681,18 @@
 		8BDBA1C814CCFABE00BAEB8A /* PVRTTextureAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTTextureAPI.cpp; sourceTree = "<group>"; };
 		8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTTextureAPI.h; sourceTree = "<group>"; };
 		8BDBA1DE14CD006200BAEB8A /* isgl3d-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "isgl3d-Prefix.pch"; sourceTree = "<group>"; };
+		9B36749414DEFBFB0086B496 /* NibDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NibDemo.h; sourceTree = "<group>"; };
+		9B36749514DEFBFC0086B496 /* NibDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NibDemo.m; sourceTree = "<group>"; };
+		9B36749C14DEFBFC0086B496 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		9B36749D14DEFBFC0086B496 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		9B36749E14DEFBFC0086B496 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		9B3674B114DF017E0086B496 /* NibDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NibDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B3674B814DF017E0086B496 /* NibDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NibDemo-Info.plist"; sourceTree = "<group>"; };
+		9B3674BA14DF017F0086B496 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9B3674BC14DF017F0086B496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B3674BE14DF017F0086B496 /* NibDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NibDemo-Prefix.pch"; sourceTree = "<group>"; };
+		9B3674BF14DF017F0086B496 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9B3674C014DF017F0086B496 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libisgl3d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -3073,6 +3119,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9B3674AE14DF017E0086B496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B3674D014DF02C20086B496 /* libisgl3d.a in Frameworks */,
+				9B3674CF14DF02B90086B496 /* QuartzCore.framework in Frameworks */,
+				9B3674CE14DF02920086B496 /* OpenGLES.framework in Frameworks */,
+				9B3674B314DF017E0086B496 /* UIKit.framework in Frameworks */,
+				9B3674B414DF017E0086B496 /* Foundation.framework in Frameworks */,
+				9B3674B514DF017E0086B496 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07C0554694100DB518D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3122,6 +3181,7 @@
 				17A481CE13F129880098AC3F /* ShaderMaterialDemo.app */,
 				17D0776413F4A643003F6E46 /* ActionsDemo.app */,
 				17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */,
+				9B3674B114DF017E0086B496 /* NibDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3134,6 +3194,7 @@
 				17F1D88512F88AD8008D39E8 /* external */,
 				17F1E05A12F88FFA008D39E8 /* Resources */,
 				17F1E05B12F88FFA008D39E8 /* tests */,
+				9B3674B614DF017E0086B496 /* NibDemo */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				17116C1812FF1D9500C4BC65 /* LICENSE.bullet */,
@@ -3678,6 +3739,7 @@
 		1731240412FD62B200861D84 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				9B36749314DEFBFB0086B496 /* nib */,
 				1731240512FD62B200861D84 /* UITestView.h */,
 				1731240612FD62B200861D84 /* UITestView.m */,
 			);
@@ -4473,6 +4535,39 @@
 			path = OGLES2;
 			sourceTree = "<group>";
 		};
+		9B36749314DEFBFB0086B496 /* nib */ = {
+			isa = PBXGroup;
+			children = (
+				9B36749414DEFBFB0086B496 /* NibDemo.h */,
+				9B36749514DEFBFC0086B496 /* NibDemo.m */,
+				9B36749C14DEFBFC0086B496 /* TestView.xib */,
+				9B36749D14DEFBFC0086B496 /* TestViewController.h */,
+				9B36749E14DEFBFC0086B496 /* TestViewController.m */,
+			);
+			path = nib;
+			sourceTree = "<group>";
+		};
+		9B3674B614DF017E0086B496 /* NibDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9B3674BF14DF017F0086B496 /* AppDelegate.h */,
+				9B3674C014DF017F0086B496 /* AppDelegate.m */,
+				9B3674B714DF017E0086B496 /* Supporting Files */,
+			);
+			path = NibDemo;
+			sourceTree = "<group>";
+		};
+		9B3674B714DF017E0086B496 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B3674B814DF017E0086B496 /* NibDemo-Info.plist */,
+				9B3674B914DF017F0086B496 /* InfoPlist.strings */,
+				9B3674BC14DF017F0086B496 /* main.m */,
+				9B3674BE14DF017F0086B496 /* NibDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -4481,6 +4576,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				17EDE05D13743C0A00652E35 /* Isgl3dGLView.h in Headers */,
+				9B36749F14DEFBFC0086B496 /* NibDemo.h in Headers */,
+				9B3674A714DEFBFC0086B496 /* TestViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5473,6 +5570,24 @@
 			productReference = 17F7A88412FA0D6100C7BB82 /* Lighting.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9B3674B014DF017E0086B496 /* NibDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B3674C214DF017F0086B496 /* Build configuration list for PBXNativeTarget "NibDemo" */;
+			buildPhases = (
+				9B3674AD14DF017E0086B496 /* Sources */,
+				9B3674AE14DF017E0086B496 /* Frameworks */,
+				9B3674AF14DF017E0086B496 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B3674C814DF01F50086B496 /* PBXTargetDependency */,
+			);
+			name = NibDemo;
+			productName = NibDemo;
+			productReference = 9B3674B114DF017E0086B496 /* NibDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D2AAC07D0554694100DB518D /* isgl3d */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "isgl3d" */;
@@ -5507,6 +5622,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* isgl3d */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -5547,6 +5663,7 @@
 				17A481AD13F129880098AC3F /* ShaderMaterialDemo */,
 				17D0774313F4A643003F6E46 /* ActionsDemo */,
 				17C2F0B513F6CCEE0002C7D3 /* GesturesDemo */,
+				9B3674B014DF017E0086B496 /* NibDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -6197,6 +6314,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9B3674AF14DF017E0086B496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BDA587A14DF0A6E00DC1CCB /* TestView.xib in Resources */,
+				9BC947A214DF07C7003F1FE6 /* capture.fsh in Resources */,
+				9BC947A314DF07C7003F1FE6 /* capture.vsh in Resources */,
+				9BC947A414DF07C7003F1FE6 /* generic.fsh in Resources */,
+				9BC947A514DF07C7003F1FE6 /* generic.vsh in Resources */,
+				9BC947A614DF07C7003F1FE6 /* particle.fsh in Resources */,
+				9BC947A714DF07C7003F1FE6 /* particle.vsh in Resources */,
+				9BC947A814DF07C7003F1FE6 /* shadowMap.fsh in Resources */,
+				9BC947A914DF07C7003F1FE6 /* shadowMap.vsh in Resources */,
+				9BC947AA14DF07C7003F1FE6 /* Icon.png in Resources */,
+				9BC947AB14DF07C7003F1FE6 /* Icon@2x.png in Resources */,
+				9BC947A114DF03ED003F1FE6 /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -6459,6 +6595,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B3674A014DEFBFC0086B496 /* NibDemo.m in Sources */,
+				9B3674A814DEFBFC0086B496 /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6693,6 +6831,18 @@
 				17F7A87812FA0D6100C7BB82 /* main.m in Sources */,
 				17F7A88A12FA0D7F00C7BB82 /* LightingDemoView.m in Sources */,
 				1733547313408C38000F26F0 /* Isgl3dAppDelegate.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B3674AD14DF017E0086B496 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B3674C914DF026C0086B496 /* NibDemo.m in Sources */,
+				9B3674CA14DF026C0086B496 /* TestViewController.m in Sources */,
+				9B3674CB14DF026C0086B496 /* Isgl3dAppDelegate.mm in Sources */,
+				9B3674CC14DF026C0086B496 /* Isgl3dViewController.m in Sources */,
+				9B3674CD14DF026C0086B496 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7171,7 +7321,23 @@
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17F7A87212FA0D6100C7BB82 /* PBXContainerItemProxy */;
 		};
+		9B3674C814DF01F50086B496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 9B3674C714DF01F50086B496 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9B3674B914DF017F0086B496 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B3674BA14DF017F0086B496 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1713BAD91357979B002C3288 /* Debug */ = {
@@ -8801,6 +8967,46 @@
 			};
 			name = Release;
 		};
+		9B3674C314DF017F0086B496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9B3674C414DF017F0086B496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -9115,6 +9321,15 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B3674C214DF017F0086B496 /* Build configuration list for PBXNativeTarget "NibDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B3674C314DF017F0086B496 /* Debug */,
+				9B3674C414DF017F0086B496 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

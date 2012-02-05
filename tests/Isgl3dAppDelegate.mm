@@ -23,13 +23,15 @@
  *
  */
 
+#import "Isgl3d.h"
 #import "Isgl3dAppDelegate.h"
 #import "Isgl3dViewController.h"
-#import "Isgl3d.h"
+
 
 @implementation Isgl3dAppDelegate
 
 @synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application {
 

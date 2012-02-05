@@ -23,18 +23,42 @@
  *
  */
 
-@class Isgl3dViewController;
+#import "isgl3d.h"
 
-@interface Isgl3dAppDelegate : NSObject <UIApplicationDelegate> {
+@class Isgl3dDemoCameraController;
 
-@private
-	Isgl3dViewController * _viewController;
-	UIWindow * _window;
+@interface UIHUDView : Isgl3dBasic2DView {
 }
 
-@property (nonatomic, retain) UIWindow * window;
-@property (nonatomic, retain) Isgl3dViewController * viewController;
+@end
 
-- (void) createViews;
+
+@interface NibDemo : Isgl3dBasic3DView {
+	
+@private
+	Isgl3dMeshNode * _3dText;
+}
 
 @end
+
+
+/*
+ * Principal class to be instantiated in main.h. 
+ */
+#import "Isgl3dAppDelegate.h"
+
+@class TestViewController;
+
+@interface AppDelegate : Isgl3dAppDelegate
+{
+@private
+    TestViewController*     _testViewController;
+}
+
+@property (nonatomic, retain) TestViewController *testViewController;
+
+
+- (void) switchViews;
+@end
+
+
