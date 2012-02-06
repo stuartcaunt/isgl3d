@@ -2687,12 +2687,6 @@
 		9B36749D14DEFBFC0086B496 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		9B36749E14DEFBFC0086B496 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		9B3674B114DF017E0086B496 /* NibDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NibDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B3674B814DF017E0086B496 /* NibDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NibDemo-Info.plist"; sourceTree = "<group>"; };
-		9B3674BA14DF017F0086B496 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9B3674BC14DF017F0086B496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9B3674BE14DF017F0086B496 /* NibDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NibDemo-Prefix.pch"; sourceTree = "<group>"; };
-		9B3674BF14DF017F0086B496 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9B3674C014DF017F0086B496 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libisgl3d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -3194,7 +3188,6 @@
 				17F1D88512F88AD8008D39E8 /* external */,
 				17F1E05A12F88FFA008D39E8 /* Resources */,
 				17F1E05B12F88FFA008D39E8 /* tests */,
-				9B3674B614DF017E0086B496 /* NibDemo */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				17116C1812FF1D9500C4BC65 /* LICENSE.bullet */,
@@ -4545,27 +4538,6 @@
 				9B36749E14DEFBFC0086B496 /* TestViewController.m */,
 			);
 			path = nib;
-			sourceTree = "<group>";
-		};
-		9B3674B614DF017E0086B496 /* NibDemo */ = {
-			isa = PBXGroup;
-			children = (
-				9B3674BF14DF017F0086B496 /* AppDelegate.h */,
-				9B3674C014DF017F0086B496 /* AppDelegate.m */,
-				9B3674B714DF017E0086B496 /* Supporting Files */,
-			);
-			path = NibDemo;
-			sourceTree = "<group>";
-		};
-		9B3674B714DF017E0086B496 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9B3674B814DF017E0086B496 /* NibDemo-Info.plist */,
-				9B3674B914DF017F0086B496 /* InfoPlist.strings */,
-				9B3674BC14DF017F0086B496 /* main.m */,
-				9B3674BE14DF017F0086B496 /* NibDemo-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -7327,17 +7299,6 @@
 			targetProxy = 9B3674C714DF01F50086B496 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		9B3674B914DF017F0086B496 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B3674BA14DF017F0086B496 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1713BAD91357979B002C3288 /* Debug */ = {

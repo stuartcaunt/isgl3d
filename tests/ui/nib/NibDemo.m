@@ -37,7 +37,7 @@
 	if ((self = [super init])) {
 		Isgl3dGLUIButton * button = [Isgl3dGLUIButton buttonWithMaterial:nil];
 		[self.scene addChild:button];
-		[button setX:8 andY:264];
+		[button setX:8 andY:self.viewport.size.height/2];
 		[button addEvent3DListener:self method:@selector(buttonPressed:) forEventType:TOUCH_EVENT];
         
 	}
@@ -55,10 +55,7 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (appDelegate) {
         [appDelegate switchViews];
-    }
-    
-    
-    
+    }    
 }
 
 
@@ -117,9 +114,6 @@
 
 #pragma mark AppDelegate
 
-/*
- * Implement principal class: simply override the createViews method to return the desired demo view.
- */
 @implementation AppDelegate
 
 @synthesize testViewController = _testViewController;
@@ -137,14 +131,28 @@
 	[Isgl3dDirector sharedInstance].displayFPS = YES; 
     
     
+    // Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
+    [Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
+    [Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
+    
+    // Enable retina display : uncomment if desired
+    //	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
+    
+    // Enables anti aliasing (MSAA) : uncomment if desired (note may not be available on all devices and can have performance cost)
+    //	[Isgl3dDirector sharedInstance].antiAliasingEnabled = YES;
+    
+    // Set the animation frame rate
+    [[Isgl3dDirector sharedInstance] setAnimationInterval:1.0/60];
+ 
     
     // Create the UIWindow
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
+
+    // Create the controller with the provided nib file TestView.xib
     self.testViewController = [[TestViewController alloc] initWithNibName:@"TestView" bundle:nil];
     self.testViewController.wantsFullScreenLayout = YES;
-	// Add view to window and make visible
+	// Add the view of the controller to the window and make it visible
   	[self.window addSubview:self.testViewController.view];
 	[self.window makeKeyAndVisible];
     
@@ -160,6 +168,13 @@
 }
 
 
+
+
+/** A very simple method to show how interaction between a isgl3d and
+ * a UIViewController can be implemented. This method just switch between
+ * the TestViewController and the UIViewController that has the Isgl3dEAGLView instance
+ * assigned. 
+ */
 - (void) switchViews
 {
     if (self.viewController == nil || self.viewController.view.superview == nil) {
@@ -177,23 +192,10 @@
             // Set view in director
             [Isgl3dDirector sharedInstance].openGLView = glView;
             
-            // Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
-            [Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
-            [Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
-            
-            // Enable retina display : uncomment if desired
-            //	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
-            
-            // Enables anti aliasing (MSAA) : uncomment if desired (note may not be available on all devices and can have performance cost)
-            //	[Isgl3dDirector sharedInstance].antiAliasingEnabled = YES;
-            
-            // Set the animation frame rate
-            [[Isgl3dDirector sharedInstance] setAnimationInterval:1.0/60];
-            
             // Add the OpenGL view to the view controller
             self.viewController.view = glView;
             
-            // Creates the view(s) and adds them to the director
+            // Creates the view and adds them to the director
             [[Isgl3dDirector sharedInstance] addView:[NibDemo view]];
             
             // Create UI and add to Isgl3dDirector
