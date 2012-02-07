@@ -39,10 +39,10 @@
 #pragma mark - GLKit compatible definitions
 #
 
-#define Isgl3dMatrix4Transpose GLKitMatrix4Transpose
-#define Isgl3dMatrix4Multiply GLKitMatrix4Multiply
-#define Isgl3dMatrix4Add GLKitMatrix4Add
-#define Isgl3dMatrix4Subtract GLKitMatrix4Subtract
+#define Isgl3dMatrix4Transpose GLKMatrix4Transpose
+#define Isgl3dMatrix4Multiply GLKMatrix4Multiply
+#define Isgl3dMatrix4Add GLKMatrix4Add
+#define Isgl3dMatrix4Subtract GLKMatrix4Subtract
 
 #else
 
