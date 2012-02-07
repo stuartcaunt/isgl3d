@@ -73,7 +73,7 @@
 	// Get raw data from image
 	unsigned int imageWidth = terrainDataImage.size.width;  
 	unsigned int imageHeight = terrainDataImage.size.height;   
-	unsigned char * pixelData = malloc(imageWidth * imageHeight * 4);  
+	unsigned char * pixelData = (unsigned char*)(malloc(imageWidth * imageHeight * 4));  
 	   
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	CGContextRef context = CGBitmapContextCreate(pixelData, imageWidth, imageHeight, 8, imageWidth * 4, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
@@ -86,7 +86,7 @@
 	unsigned int heightDataNx = _nx + 1;
 	unsigned int heightDataNy = _nz + 1;
 	
-	float * terrainHeightData = malloc(heightDataNx * heightDataNy * sizeof(float));
+	float * terrainHeightData = (float*)(malloc(heightDataNx * heightDataNy * sizeof(float)));
 	
 	// Iterate once to get all terrain data needed in a simple array
 	for (int j = 0; j <= _nz; j++) {

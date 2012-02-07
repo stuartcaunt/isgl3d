@@ -108,7 +108,7 @@
 		free(_vertexData);
 	}
 	
-	_vertexData = malloc(vertexDataSize);
+	_vertexData = (unsigned char*)malloc(vertexDataSize);
 	memcpy(_vertexData, vertexData, vertexDataSize);
 	_vertexDataSize = vertexDataSize;
 }
@@ -122,7 +122,7 @@
 		free(_indices);
 	}
 	
-	_indices = malloc(indexDataSize);
+	_indices = (unsigned char*)malloc(indexDataSize);
 	memcpy(_indices, indices, indexDataSize);
 	_indexDataSize = indexDataSize;
 	_numberOfElements = numberOfElements;
@@ -160,7 +160,7 @@
 		free(_vertexData);
 	}
 	
-	_vertexData = malloc(vertexDataSize);
+	_vertexData = (unsigned char*)malloc(vertexDataSize);
 	memcpy(_vertexData, vertexData, vertexDataSize);
 	_vertexDataSize = vertexDataSize;
 
@@ -169,7 +169,7 @@
 		free(_indices);
 	}
 	
-	_indices = malloc(indexDataSize);
+	_indices = (unsigned char*)malloc(indexDataSize);
 	memcpy(_indices, indices, indexDataSize);
 	_indexDataSize = indexDataSize;
 	_numberOfElements = numberOfElements;

@@ -376,17 +376,17 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		void * data = malloc(stride * 6);
 		unsigned int offset = 0;
 	
-		[self copyImage:posXImage toRawData:data + offset width:width height:height];
+		[self copyImage:posXImage toRawData:(char*)data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:negXImage toRawData:data + offset width:width height:height];
+		[self copyImage:negXImage toRawData:(char*)data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:posYImage toRawData:data + offset width:width height:height];
+		[self copyImage:posYImage toRawData:(char*)data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:negYImage toRawData:data + offset width:width height:height];
+		[self copyImage:negYImage toRawData:(char*)data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:posZImage toRawData:data + offset width:width height:height];
+		[self copyImage:posZImage toRawData:(char*)data + offset width:width height:height];
 		offset += stride;
-		[self copyImage:negZImage toRawData:data + offset width:width height:height];
+		[self copyImage:negZImage toRawData:(char*)data + offset width:width height:height];
 	
 		unsigned int textureId = [_state createCubemapTextureFromRawData:data width:width mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
 		
@@ -491,8 +491,9 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	NSString * extension = [path pathExtension];
 	NSString * origFileName = [path stringByDeletingPathExtension];
 	
+	NSString * fileName = origFileName;
 	if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
-		NSString *fileName = [origFileName stringByAppendingString:@"-hd"];
+		fileName = [origFileName stringByAppendingString:@"-hd"];
 		NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
 		
 		if (filePath && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {

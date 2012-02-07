@@ -64,7 +64,7 @@
 }
 
 - (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
+	[(Isgl3dNode*)_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
 }
 
 @end
@@ -102,7 +102,7 @@
 }
 
 - (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
+	[(Isgl3dNode*)_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
 }
 
 @end
@@ -135,7 +135,7 @@
 }
 
 - (void) update:(float)progress {
-	[_target setPosition:_finalPosition];
+	[(Isgl3dNode*)_target setPosition:_finalPosition];
 }
 
 @end

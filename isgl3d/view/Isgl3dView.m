@@ -74,8 +74,7 @@
 		
 		self.backgroundColorString = [Isgl3dDirector sharedInstance].backgroundColorString;
 
-		_isEventCaptureEnabled = YES;
-		
+		_isEventCaptureEnabled = YES;		
 		_sceneAmbient = @"333333ff";		
 	}
     
@@ -137,7 +136,7 @@
 
 - (void) setViewOrientation:(isgl3dOrientation)orientation {
 	_viewOrientation = orientation;
-	_deviceViewOrientation = ([Isgl3dDirector sharedInstance].deviceOrientation - _viewOrientation) % 4;
+	_deviceViewOrientation = (isgl3dOrientation)(([Isgl3dDirector sharedInstance].deviceOrientation - _viewOrientation) % 4);
 	
 	// Update camera orientation
 	if (_camera) {

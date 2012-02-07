@@ -73,6 +73,8 @@ static Isgl3dDirector * _instance = nil;
 @synthesize renderPhaseCallback = _renderPhaseCallback;
 @synthesize gestureManager = _gestureManager;
 
+@synthesize views = _views;
+
 
 - (id) init {
 	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
@@ -226,19 +228,19 @@ static Isgl3dDirector * _instance = nil;
 		if (orientation != _deviceOrientation) {
 			_deviceOrientation = orientation;
 			if (_deviceOrientation == Isgl3dOrientation0) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+				[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated:NO];
 				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation180) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortraitUpsideDown animated:NO];
+				[[UIApplication sharedApplication] setStatusBarOrientation: (UIInterfaceOrientation)UIDeviceOrientationPortraitUpsideDown animated:NO];
 				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait upside down");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:NO];
+				[[UIApplication sharedApplication] setStatusBarOrientation: (UIInterfaceOrientation)UIDeviceOrientationLandscapeLeft animated:NO];
 				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape left");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
+				[[UIApplication sharedApplication] setStatusBarOrientation: (UIInterfaceOrientation)UIDeviceOrientationLandscapeRight animated:NO];
 				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape right");
 				
 			} else {

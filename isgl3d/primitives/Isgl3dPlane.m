@@ -41,7 +41,7 @@
 	return [[[self alloc] initWithGeometry:width height:height nx:nx ny:ny] autorelease];
 }
 
-+ (id) meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap {
++ (id) meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap {
 	return [[[self alloc] initWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:uvMap] autorelease];
 }
 
@@ -54,7 +54,7 @@
 	return self;
 }
 
-- (id) initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap {
+- (id) initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap {
 	if ((self = [super init])) {
 		_width = width;
 		_height = height;
@@ -62,9 +62,9 @@
 		_ny = ny;
 		
 		if (uvMap) {
-			_uvMap = [uvMap retain];
+			_uvMap = (Isgl3dUVMap*)[uvMap retain];
 		} else {
-			_uvMap = [[Isgl3dUVMap standardUVMap] retain];
+			_uvMap = (Isgl3dUVMap*)[[Isgl3dUVMap standardUVMap] retain];
 		}
 		
 		[self constructVBOData];

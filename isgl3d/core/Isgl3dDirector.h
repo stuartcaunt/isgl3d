@@ -256,6 +256,12 @@
 
 
 /**
+ * Returns the assigned views of the instance.
+ */
+@property (nonatomic, readonly) NSMutableArray * views;
+
+
+/**
  * Returns the singleton instance of the Isgl3dDirector.
  * @return The singleton instance of the Isgl3dDirector.
  */

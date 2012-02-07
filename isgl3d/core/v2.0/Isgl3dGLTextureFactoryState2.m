@@ -124,17 +124,17 @@
 	unsigned int stride = width * width * 4;
 	unsigned int offset = 0;
 	
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, (char*)data + offset);
 	offset += stride;
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, (char*)data + offset);
 	offset += stride;
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, (char*)data + offset);
 	offset += stride;
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, (char*)data + offset);
 	offset += stride;
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, (char*)data + offset);
 	offset += stride;
-	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
+	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, (char*)data + offset);
 	
 	[self handleParameters:GL_TEXTURE_CUBE_MAP precision:precision repeatX:repeatX repeatY:repeatY];
 	
