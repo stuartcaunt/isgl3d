@@ -64,30 +64,51 @@
 
 @implementation Isgl3dPODImporter
 
-
-+ (id) podImporterWithFile:(NSString *)path {
-	return [[[self alloc] initWithFile:path] autorelease];
++ (id) podImporterWithResource:(NSString *)name {
+	return [[[self alloc] initWithResource:name] autorelease];
 }
 
-- (id) initWithFile:(NSString *)path {
-	if ((self = [super init])) {
++ (id) podImporterWithFile:(NSString *)filePath {
+	return [[[self alloc] initWithFile:filePath] autorelease];
+}
+
+- (id) initWithResource:(NSString *)name {
+    if ((name == nil) || (name.length == 0)) {
+        [NSException raise:NSInvalidArgumentException format:@"invalid resource name specified"];
+    }
+
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:name ofType:nil];
+    
+    if (resourcePath == nil) {
+        NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD file %@ does not exist.", resourcePath);
+
+        [self release];
+        self = nil;
+        return self;
+    }
+        
+    return [self initWithFile:resourcePath];
+}
+
+- (id) initWithFile:(NSString *)filePath {
+    if ((filePath == nil) || (filePath.length == 0)) {
+        [NSException raise:NSInvalidArgumentException format:@"invalid file path specified"];
+    }
+
+	if (self = [super init]) {
 		_podScene = new CPVRTModelPOD();
 
-		// cut filename into name and extension
-		NSString * extension = [path pathExtension];
-		NSString * fileName = [path stringByDeletingPathExtension];
-		
-		if (![[NSBundle mainBundle] pathForResource:fileName ofType:extension]) {
-			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD file %@ does not exist.", path);
-		}
-		
-		if (_podScene->ReadFromFile([[[NSBundle mainBundle] pathForResource:fileName ofType:extension] UTF8String]) != PVR_SUCCESS) {
-			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : Unable to parse POD file %@", path);
+		if (_podScene->ReadFromFile([filePath UTF8String]) != PVR_SUCCESS) {
+			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : Unable to parse POD file %@", filePath);
 			delete _podScene;
-			return nil;
+            _podScene = NULL;
+
+            [self release];
+            self = nil;
+			return self;
 		}
 		
-		_podPath = path;
+		_podPath = filePath;
 
 		_meshes = [[NSMutableArray alloc] init];
 		_meshNodes = [[NSMutableDictionary alloc] init];

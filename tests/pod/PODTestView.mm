@@ -36,7 +36,7 @@
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
 
-		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithFile:@"Scene_float.pod"];
+		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithResource:@"Scene_float.pod"];
 //		[podImporter printPODInfo];
 		
 		// Add all meshes in POD to scene

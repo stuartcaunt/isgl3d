@@ -44,7 +44,7 @@
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.4;
 
-		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithFile:@"man.pod"];
+		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithResource:@"man.pod"];
 		
 		// Modify texture files
 		[podImporter modifyTexture:@"body.bmp" withTexture:@"Body.pvr"];

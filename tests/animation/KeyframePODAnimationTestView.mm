@@ -46,7 +46,7 @@
 		_cameraController.doubleTapEnabled = NO;
 
 		// Import pod data
-		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithFile:@"Scene_float.pod"];
+		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithResource:@"Scene_float.pod"];
 		[podImporter buildSceneObjects];
 
 		// Get the teapot mesh (plus POD data has non-normalised normals) 
