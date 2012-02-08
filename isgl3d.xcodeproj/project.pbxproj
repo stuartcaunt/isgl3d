@@ -8572,6 +8572,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = "external/bullet/**";
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
