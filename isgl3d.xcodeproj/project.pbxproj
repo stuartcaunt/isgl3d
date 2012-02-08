@@ -8744,6 +8744,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8762,6 +8763,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};

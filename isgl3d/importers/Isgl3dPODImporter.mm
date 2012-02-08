@@ -69,25 +69,35 @@
 	return [[[self alloc] initWithFile:path] autorelease];
 }
 
++ (id) podImporterWithAbsoluteFile:(NSString *)path {
+	return [[[self alloc] initWithAbsoluteFile:path] autorelease];
+}
+
 - (id) initWithFile:(NSString *)path {
+        // cut filename into name and extension
+        NSString * extension = [path pathExtension];
+        NSString * fileName = [path stringByDeletingPathExtension];
+        NSString * absolutePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
+        if (!absolutePath) {
+                NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD file %@ does not exist.", path);
+                return nil;
+        } else {
+                return [self initWithAbsoluteFile: absolutePath];
+        }
+}
+
+- (id) initWithAbsoluteFile:(NSString *)absolutePath {
 	if ((self = [super init])) {
 		_podScene = new CPVRTModelPOD();
-
-		// cut filename into name and extension
-		NSString * extension = [path pathExtension];
-		NSString * fileName = [path stringByDeletingPathExtension];
 		
-		if (![[NSBundle mainBundle] pathForResource:fileName ofType:extension]) {
-			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD file %@ does not exist.", path);
-		}
-		
-		if (_podScene->ReadFromFile([[[NSBundle mainBundle] pathForResource:fileName ofType:extension] UTF8String]) != PVR_SUCCESS) {
-			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : Unable to parse POD file %@", path);
+		if (_podScene->ReadFromFile([absolutePath UTF8String]) != PVR_SUCCESS) {
+			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : Unable to parse POD file %@", [absolutePath lastPathComponent]);
 			delete _podScene;
 			return nil;
 		}
 		
-		_podPath = path;
+                // Truncate the absolute path to just the filename.
+		_podPath = [absolutePath lastPathComponent];
 
 		_meshes = [[NSMutableArray alloc] init];
 		_meshNodes = [[NSMutableDictionary alloc] init];

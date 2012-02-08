@@ -90,15 +90,28 @@ class CPVRTModelPOD;
 
 /**
  * Allocates and initialises (autorelease) importer with the POD data file path.
- * @param path The path to the POD data file.
+ * @param path The main bundle-based path to the POD data file.
  */
 + (id) podImporterWithFile:(NSString *)path;
 
 /**
+ * Allocates and initialises (autorelease) importer with the absolute path to
+ * the POD data.
+ * @param path The absolute path to the POD data file.
+ */
++ (id) podImporterWithAbsoluteFile:(NSString *)path;
+
+/**
  * Initialises the importer with the POD data file path.
- * @param path The path to the POD data file.
+ * @param path The main bundle-based path to the POD data file.
  */
 - (id) initWithFile:(NSString *)path;
+
+/**
+ * Initialises the importer with the absolute path to the POD data file.
+ * @param path The absolute path to the POD data file.
+ */
+- (id) initWithAbsoluteFile:(NSString *)path;
 
 /**
  * Prints to the console information about the structure and contents of the POD.
