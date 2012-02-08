@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [[ $EUID -ne 0 ]]; then
+   echo "[EUID:$EUID]This script must be run as root (man sudo)" 1>&2
+   exit 1
+fi
+
 ISGL3D_VERSION="iSGL3D v`cat Version`"
 
 BASE_DIR=isgl3d
