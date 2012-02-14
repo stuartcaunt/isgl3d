@@ -88,6 +88,8 @@ class CPVRTModelPOD;
 	BOOL _meshesAndMaterialsComplete;
 }
 
+@property CPVRTModelPOD* podScene;
+
 /**
  * Allocates and initialises (autorelease) importer with the POD data file path.
  * @param path The path to the POD data file.
@@ -128,6 +130,10 @@ class CPVRTModelPOD;
  * @return The number of frames in the scene (for the bone/mesh animation).
  */
 - (unsigned int) numberOfFrames;
+
+- (unsigned int) numberOfTextures;
+
+- (NSString*) nameOfTexture:(unsigned int)index;
 
 /**
  * Builds all the scene objects in the POD file without adding them to the scene. The POD objects can
@@ -178,6 +184,16 @@ class CPVRTModelPOD;
  */
 - (Isgl3dMeshNode *) meshNodeWithName:(NSString *)nodeName;
 
+
+/**
+ * Returns the Isgl3dMeshNode corresponding to a node index (as defined in the POD file).
+ * All node indices can be obtained via printPODInfo.
+ * @param meshNodeIndex the index of the node as defined in the POD file.
+ * @return The Corresponding Isgl3dMeshNode.
+ */
+- (Isgl3dMeshNode *) meshNodeAtIndex:(unsigned int)meshNodeIndex;
+
+
 /**
  * Returns the Isgl3dMaterial corresponding to a material name (as defined in the POD file).
  * All material names can be obtained via printPODInfo.
@@ -185,6 +201,14 @@ class CPVRTModelPOD;
  * @return The Corresponding Isgl3dMaterial.
  */
 - (Isgl3dMaterial *) materialWithName:(NSString *)materialName;
+
+
+/**
+ * Get the indexed material.
+ * @param materialIndex the index of the material.
+ * @return The Corresponding Isgl3dMaterial.
+ */
+- (Isgl3dMaterial *) materialWithIndex:(unsigned int)materialIndex;
 
 /**
  * Returns the Isgl3dCamera corresponding to a camera index (as defined in the POD file).

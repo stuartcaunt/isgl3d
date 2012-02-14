@@ -39,6 +39,8 @@
 #import "isgl3dArray.h"
 #import "Isgl3dLog.h"
 
+#include "PVRTTrans.h"
+
 @interface Isgl3dPODImporter (PrivateMethods)
 
 /**
@@ -64,6 +66,8 @@
 
 @implementation Isgl3dPODImporter
 
+
+@synthesize podScene = _podScene;
 
 + (id) podImporterWithFile:(NSString *)path {
 	return [[[self alloc] initWithFile:path] autorelease];
@@ -216,6 +220,21 @@
 	return _podScene->nNumFrame;
 }
 
+- (unsigned int) numberOfTextures
+{
+    return _podScene->nNumTexture;    
+}
+
+- (NSString*) nameOfTexture:(unsigned int)index
+{
+    if (index >= _podScene->nNumTexture) {
+        return nil;
+    }
+    
+    SPODTexture & textureInfo = _podScene->pTexture[index];
+    NSString * textureFileName = [NSString stringWithUTF8String:textureInfo.pszName];
+    return textureFileName;
+}
 
 - (void) addMeshesToScene:(Isgl3dNode *)scene {
 	
@@ -229,7 +248,7 @@
 	for (int i = 0; i < _podScene->nNumMeshNode; i++) {
 		SPODNode & nodeInfo = _podScene->pNode[i];
 
-		NSLog(@"Adding node: %s:", nodeInfo.pszName);
+		NSLog(@"Adding node: %s: parent index:%i", nodeInfo.pszName, nodeInfo.nIdxParent);
 		
 		Isgl3dNode * node = [_meshNodes objectForKey:[NSString stringWithUTF8String:nodeInfo.pszName]];
 		
@@ -240,6 +259,8 @@
 			
 			if (parent) {
 				[parent addChild:node];
+                if([scene.children containsObject:parent] == FALSE)
+                    [scene addChild:parent];
 			} else {
 			}
 		}
@@ -258,6 +279,15 @@
 	}
 	return node;
 }
+
+- (Isgl3dMeshNode *) meshNodeAtIndex:(unsigned int)meshNodeIndex {
+	if (meshNodeIndex >= _podScene->nNumMeshNode) {
+		NSLog(@"Mesh at index %i not available: POD scene contains %i meshses", meshNodeIndex, _podScene->nNumMeshNode);
+		return nil;
+	}
+	return [_meshNodes.allValues objectAtIndex:meshNodeIndex];
+}
+
 
 - (Isgl3dGLMesh *) meshFromNodeWithName:(NSString *)nodeName {
 	Isgl3dMeshNode * meshNode = [self meshNodeWithName:nodeName];
@@ -296,6 +326,22 @@
 	}
 	return material;
 }
+
+
+
+- (Isgl3dMaterial *) materialWithIndex:(unsigned int)materialIndex {
+	Isgl3dMaterial * material;
+            
+    if (materialIndex < [_materials count]) {
+        material = [_materials objectAtIndex:materialIndex];
+    }
+    
+	if (!material) {
+		NSLog(@"Unable to find material with index: %i", materialIndex);
+	}
+	return material;
+}
+
 
 
 - (Isgl3dCamera *) cameraAtIndex:(unsigned int)cameraIndex {
@@ -427,7 +473,15 @@
 		if (!materialInfo.pszEffectFile) {
 			if (materialInfo.nIdxTexDiffuse >= 0 && materialInfo.nIdxTexDiffuse < [_textures count]) {
 				NSString * textureFileName = [_textures objectAtIndex:materialInfo.nIdxTexDiffuse];
-				
+                
+                NSFileManager *fileManager = [[NSFileManager alloc] init];
+                BOOL exists = [fileManager fileExistsAtPath:textureFileName];
+                if (!exists) {
+                    textureFileName = [NSString stringWithFormat:@"%@/%@", [_podPath stringByDeletingLastPathComponent], textureFileName]; 
+                    exists = [fileManager fileExistsAtPath:textureFileName];
+                }
+                [fileManager release];
+			
 				material = [Isgl3dTextureMaterial materialWithTextureFile:textureFileName shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:YES repeatY:YES];
 				
 			} else {
@@ -556,6 +610,7 @@
 			[_meshNodes setObject:node forKey:[NSString stringWithUTF8String:meshNodeInfo.pszName]];
 		}			
 
+		NSLog(@"IndexedNode mesh node: %s: index:%i", meshNodeInfo.pszName, meshNodeInfo.nIdx);
 		[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:meshNodeInfo.nIdx]];
 
 		// Add node alpha
@@ -574,12 +629,20 @@
 	// Create all non-mesh nodes
 	for (int i = 0; i < _podScene->nNumNode; i++) {
 		SPODNode & nodeInfo = _podScene->pNode[i];
+        NSLog(@"Node mesh node: %s: index:%i parent:%i", nodeInfo.pszName, nodeInfo.nIdx, nodeInfo.nIdxParent);
 		
 		// See if node already exists as a mesh node, otherise create simple node
 		if (![_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdx]]) {
 			Isgl3dNode * node = [Isgl3dNode node];
+            NSLog(@"Additional IndexedNode mesh node: %s: index:%i", nodeInfo.pszName, nodeInfo.nIdx);
 			[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:nodeInfo.nIdx]];
-		}
+		} else if (nodeInfo.nIdxParent != -1 && ![_indexedNodes objectForKey:[NSNumber numberWithInteger:nodeInfo.nIdxParent]])
+        {
+            // add the parent node
+			Isgl3dNode * node = [Isgl3dNode node];
+            NSLog(@"Additional IndexedNode mesh node: %s: parent index:%i", nodeInfo.pszName, nodeInfo.nIdxParent);
+			[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:nodeInfo.nIdxParent]];
+        }
 		
 	}
 	
