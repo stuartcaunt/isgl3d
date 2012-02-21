@@ -1336,6 +1336,42 @@
 		8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */; };
 		8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
 		8B0FA35A13E8046D00E798BA /* Isgl3dPVRLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */; };
+		8B4B558414F45592007EEFAA /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		8B4B558514F45592007EEFAA /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		8B4B558614F45592007EEFAA /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		8B4B558714F45592007EEFAA /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		8B4B558814F45592007EEFAA /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		8B4B558914F45592007EEFAA /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		8B4B558A14F45592007EEFAA /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		8B4B558B14F45592007EEFAA /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		8B4B558C14F45592007EEFAA /* demoShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4821113F12A4E0098AC3F /* demoShader.fsh */; };
+		8B4B558D14F45592007EEFAA /* demoShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4821413F12A4E0098AC3F /* demoShader.vsh */; };
+		8B4B558E14F45592007EEFAA /* powervrShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4823913F286740098AC3F /* powervrShader.fsh */; };
+		8B4B558F14F45592007EEFAA /* powervrShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17A4823A13F286740098AC3F /* powervrShader.vsh */; };
+		8B4B559014F45592007EEFAA /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731227B12FC76D100861D84 /* red_checker.png */; };
+		8B4B559114F45592007EEFAA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DB13708A2100152EFE /* Default.png */; };
+		8B4B559214F45592007EEFAA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DC13708A2100152EFE /* Icon.png */; };
+		8B4B559314F45592007EEFAA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DD13708A2100152EFE /* Icon@2x.png */; };
+		8B4B559414F45592007EEFAA /* red_checker150.png in Resources */ = {isa = PBXBuildFile; fileRef = 17055FC913748DA300A3F20D /* red_checker150.png */; };
+		8B4B559514F45592007EEFAA /* Noise.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 17A4822B13F27F5E0098AC3F /* Noise.pvr */; };
+		8B4B559614F45592007EEFAA /* norm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751614ED0467009E6AD6 /* norm1.png */; };
+		8B4B559714F45592007EEFAA /* norm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751714ED0467009E6AD6 /* norm4.png */; };
+		8B4B559814F45592007EEFAA /* NormalMapShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751B14ED0481009E6AD6 /* NormalMapShader.fsh */; };
+		8B4B559914F45592007EEFAA /* NormalMapShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751C14ED0481009E6AD6 /* NormalMapShader.vsh */; };
+		8B4B559B14F45592007EEFAA /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		8B4B559C14F45592007EEFAA /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		8B4B559D14F45592007EEFAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		8B4B559E14F45592007EEFAA /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
+		8B4B559F14F45592007EEFAA /* DemoShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4821313F12A4E0098AC3F /* DemoShader.m */; };
+		8B4B55A114F45592007EEFAA /* PowerVRShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4822E13F27F5E0098AC3F /* PowerVRShader.m */; };
+		8B4B55A214F45592007EEFAA /* NormalMapShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7752014ED048B009E6AD6 /* NormalMapShader.m */; };
+		8B4B55A414F45592007EEFAA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		8B4B55A514F45592007EEFAA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		8B4B55A614F45592007EEFAA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		8B4B55A714F45592007EEFAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		8B4B55A814F45592007EEFAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		8B4B55A914F45592007EEFAA /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		8B4B55B314F455FE007EEFAA /* NormalMappingDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B55B214F455FE007EEFAA /* NormalMappingDemoView.m */; };
 		8B8A870F14CF182500C17DC5 /* Isgl3dMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */; };
 		8B8A871214CF190200C17DC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A871114CF190200C17DC5 /* GLKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8B8A871314CF1CF200C17DC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A871114CF190200C17DC5 /* GLKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -1837,6 +1873,13 @@
 			remoteInfo = isgl3d;
 		};
 		17F7A87212FA0D6100C7BB82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		8B4B558214F45592007EEFAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -2592,6 +2635,9 @@
 		8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGestureManager.m; sourceTree = "<group>"; };
 		8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPVRLoader.h; sourceTree = "<group>"; };
 		8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPVRLoader.mm; sourceTree = "<group>"; };
+		8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalMappingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B4B55B114F455FE007EEFAA /* NormalMappingDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalMappingDemoView.h; sourceTree = "<group>"; };
+		8B4B55B214F455FE007EEFAA /* NormalMappingDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalMappingDemoView.m; sourceTree = "<group>"; };
 		8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMathTypes.h; sourceTree = "<group>"; };
 		8B8A871114CF190200C17DC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8B8A871814CF1E6D00C17DC5 /* isgl3d-Apps-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "isgl3d-Apps-Prefix.pch"; path = "../isgl3d/isgl3d-Apps-Prefix.pch"; sourceTree = "<group>"; };
@@ -3088,6 +3134,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B4B55A314F45592007EEFAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B4B55A414F45592007EEFAA /* CoreGraphics.framework in Frameworks */,
+				8B4B55A514F45592007EEFAA /* OpenGLES.framework in Frameworks */,
+				8B4B55A614F45592007EEFAA /* QuartzCore.framework in Frameworks */,
+				8B4B55A714F45592007EEFAA /* UIKit.framework in Frameworks */,
+				8B4B55A814F45592007EEFAA /* Foundation.framework in Frameworks */,
+				8B4B55A914F45592007EEFAA /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07C0554694100DB518D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3137,6 +3196,7 @@
 				17A481CE13F129880098AC3F /* ShaderMaterialDemo.app */,
 				17D0776413F4A643003F6E46 /* ActionsDemo.app */,
 				17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */,
+				8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3823,6 +3883,8 @@
 				17A4821413F12A4E0098AC3F /* demoShader.vsh */,
 				17A4821513F12A4E0098AC3F /* ShaderMaterialDemoView.h */,
 				17A4821613F12A4E0098AC3F /* ShaderMaterialDemoView.m */,
+				8B4B55B114F455FE007EEFAA /* NormalMappingDemoView.h */,
+				8B4B55B214F455FE007EEFAA /* NormalMappingDemoView.m */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -5495,6 +5557,24 @@
 			productReference = 17F7A88412FA0D6100C7BB82 /* Lighting.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8B4B558014F45592007EEFAA /* NormalMappingDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B4B55AA14F45592007EEFAA /* Build configuration list for PBXNativeTarget "NormalMappingDemo" */;
+			buildPhases = (
+				8B4B558314F45592007EEFAA /* Resources */,
+				8B4B559A14F45592007EEFAA /* Sources */,
+				8B4B55A314F45592007EEFAA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B4B558114F45592007EEFAA /* PBXTargetDependency */,
+			);
+			name = NormalMappingDemo;
+			productName = CameraZoomAndFocus;
+			productReference = 8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D2AAC07D0554694100DB518D /* isgl3d */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "isgl3d" */;
@@ -5567,6 +5647,7 @@
 				17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */,
 				178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */,
 				17A481AD13F129880098AC3F /* ShaderMaterialDemo */,
+				8B4B558014F45592007EEFAA /* NormalMappingDemo */,
 				17D0774313F4A643003F6E46 /* ActionsDemo */,
 				17C2F0B513F6CCEE0002C7D3 /* GesturesDemo */,
 			);
@@ -6223,6 +6304,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B4B558314F45592007EEFAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B4B558414F45592007EEFAA /* capture.fsh in Resources */,
+				8B4B558514F45592007EEFAA /* capture.vsh in Resources */,
+				8B4B558614F45592007EEFAA /* generic.fsh in Resources */,
+				8B4B558714F45592007EEFAA /* generic.vsh in Resources */,
+				8B4B558814F45592007EEFAA /* particle.fsh in Resources */,
+				8B4B558914F45592007EEFAA /* particle.vsh in Resources */,
+				8B4B558A14F45592007EEFAA /* shadowMap.fsh in Resources */,
+				8B4B558B14F45592007EEFAA /* shadowMap.vsh in Resources */,
+				8B4B558C14F45592007EEFAA /* demoShader.fsh in Resources */,
+				8B4B558D14F45592007EEFAA /* demoShader.vsh in Resources */,
+				8B4B558E14F45592007EEFAA /* powervrShader.fsh in Resources */,
+				8B4B558F14F45592007EEFAA /* powervrShader.vsh in Resources */,
+				8B4B559014F45592007EEFAA /* red_checker.png in Resources */,
+				8B4B559114F45592007EEFAA /* Default.png in Resources */,
+				8B4B559214F45592007EEFAA /* Icon.png in Resources */,
+				8B4B559314F45592007EEFAA /* Icon@2x.png in Resources */,
+				8B4B559414F45592007EEFAA /* red_checker150.png in Resources */,
+				8B4B559514F45592007EEFAA /* Noise.pvr in Resources */,
+				8B4B559614F45592007EEFAA /* norm1.png in Resources */,
+				8B4B559714F45592007EEFAA /* norm4.png in Resources */,
+				8B4B559814F45592007EEFAA /* NormalMapShader.fsh in Resources */,
+				8B4B559914F45592007EEFAA /* NormalMapShader.vsh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -6726,6 +6836,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B4B559A14F45592007EEFAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B4B559B14F45592007EEFAA /* Isgl3dDemoCameraController.m in Sources */,
+				8B4B559C14F45592007EEFAA /* Isgl3dViewController.m in Sources */,
+				8B4B559D14F45592007EEFAA /* main.m in Sources */,
+				8B4B559E14F45592007EEFAA /* Isgl3dAppDelegate.mm in Sources */,
+				8B4B559F14F45592007EEFAA /* DemoShader.m in Sources */,
+				8B4B55A114F45592007EEFAA /* PowerVRShader.m in Sources */,
+				8B4B55A214F45592007EEFAA /* NormalMapShader.m in Sources */,
+				8B4B55B314F455FE007EEFAA /* NormalMappingDemoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07B0554694100DB518D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7200,6 +7325,11 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17F7A87212FA0D6100C7BB82 /* PBXContainerItemProxy */;
+		};
+		8B4B558114F45592007EEFAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 8B4B558214F45592007EEFAA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -8832,6 +8962,56 @@
 			};
 			name = Release;
 		};
+		8B4B55AB14F45592007EEFAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = NormalMappingDemo;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8B4B55AC14F45592007EEFAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = NormalMappingDemo;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -9146,6 +9326,15 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B4B55AA14F45592007EEFAA /* Build configuration list for PBXNativeTarget "NormalMappingDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B4B55AB14F45592007EEFAA /* Debug */,
+				8B4B55AC14F45592007EEFAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
