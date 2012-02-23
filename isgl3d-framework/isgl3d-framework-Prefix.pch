@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'isgl3d-framework' target in the 'isgl3d-framework' project
+//
+
+#import <Availability.h>
+#import <TargetConditionals.h>
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
