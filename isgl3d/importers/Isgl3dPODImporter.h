@@ -63,29 +63,6 @@
  */
 @interface Isgl3dPODImporter : NSObject {
 	
-class CPVRTModelPOD;
-
-@private
-
-	CPVRTModelPOD * _podScene;
-	NSString * _podPath;
-	
-	NSMutableArray * _meshes;
-	NSMutableDictionary * _meshNodes;
-	NSMutableDictionary * _boneNodes;
-	NSMutableDictionary * _indexedNodes;
-	NSMutableArray * _boneNodeIndices;
-	NSMutableArray * _textures;
-	NSMutableArray * _materials;
-	NSMutableArray * _cameras;
-	NSMutableArray * _lights;
-	
-	NSMutableDictionary * _textureMods;
-	
-	BOOL _buildSceneObjectsComplete;
-	BOOL _buildMeshNodesComplete;
-	BOOL _boneBuildComplete;
-	BOOL _meshesAndMaterialsComplete;
 }
 
 /**

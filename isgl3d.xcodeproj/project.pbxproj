@@ -2320,7 +2320,7 @@
 		178C2D7E13472AFC003679AB /* ui_bg.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = ui_bg.pvr; sourceTree = "<group>"; };
 		179F86E2133E6746007F4671 /* isgl3dTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = isgl3dTypes.h; sourceTree = "<group>"; };
 		179F86E3133E67A5007F4671 /* Isgl3dDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dDirector.h; sourceTree = "<group>"; };
-		179F86E4133E67A5007F4671 /* Isgl3dDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Isgl3dDirector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		179F86E4133E67A5007F4671 /* Isgl3dDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Isgl3dDirector.m; sourceTree = "<group>"; };
 		179F86E7133E67BB007F4671 /* Isgl3dScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dScheduler.h; sourceTree = "<group>"; };
 		179F86E8133E67BB007F4671 /* Isgl3dScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dScheduler.m; sourceTree = "<group>"; };
 		179F86F0133E67CA007F4671 /* Isgl3dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dView.h; sourceTree = "<group>"; };
