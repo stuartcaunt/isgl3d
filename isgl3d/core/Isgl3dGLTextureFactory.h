@@ -81,11 +81,23 @@
  * Creates a new instance of an Isgl3dGLTexture from a given file (or reuses an existing one if it already exists) with specified precision and repeating behaviour.
  * @param file The name of the file containing the image information (.png, .jpg, .pvr, etc)
  * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
- * @param repeatX Inidicates whether the texture will be repeated (tesselated) across the rendered object in the x-direction.
- * @param repeatY Inidicates whether the texture will be repeated (tesselated) across the rendered object in the y-direction.
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
  * @result an autoreleased Isgl3dGLTexture created from image file
  */
 - (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Creates a new instance of an Isgl3dGLTexture from a given file (or reuses an existing one if it already exists) with specified precision and repeating behaviour.
+ * @param file The name of the file containing the image information (.png, .jpg, .pvr, etc)
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
+ * @param mirrorX Indicates whether the texture will be mirrored when repeated across the rendered object in the x-direction.
+ * @param mirrorY Indicates whether the texture will be mirrored when repeated across the rendered object in the y-direction.
+ * @result an autoreleased Isgl3dGLTexture created from image file
+ */
+- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 
 /**
  * Creates a new instance of an Isgl3dGLTexture from a UIImage (or reuses an existing one if it already exists) with default precision (Isgl3dTexturePrecisionMedium),
@@ -101,11 +113,24 @@
  * @param image The UIImage to be converted into a texture
  * @param key a unique identifier for the texture to avoid duplicating it for identical UIImages
  * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
- * @param repeatY Inidicates whether the texture will be repeated (tesselated) across the rendered object in the y-direction.
- * @param repeatX Inidicates whether the texture will be repeated (tesselated) across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
  * @result an autoreleased Isgl3dGLTexture created from image a UIImage
  */
 - (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+
+/**
+ * Creates a new instance of an Isgl3dGLTexture from a UIImage (or reuses an existing one if it already exists) with specified precision and repeating behaviour.
+ * @param image The UIImage to be converted into a texture
+ * @param key a unique identifier for the texture to avoid duplicating it for identical UIImages
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
+ * @param mirrorX Indicates whether the texture will be mirrored when repeated across the rendered object in the x-direction.
+ * @param mirrorY Indicates whether the texture will be mirrored when repeated across the rendered object in the y-direction.
+ * @result an autoreleased Isgl3dGLTexture created from image a UIImage
+ */
+- (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 
 /**
  * Creates a new instance of an Isgl3dGLTexture from text with a given font name and size with default repeating behaviour (no repeating). 
@@ -124,8 +149,8 @@
  * @param text The text to be rendered
  * @param name The name of the font
  * @param size The size of the font
- * @param repeatX Inidicates whether the texture will be repeated (tesselated) across the rendered object in the x-direction.
- * @param repeatY Inidicates whether the texture will be repeated (tesselated) across the rendered object in the y-direction.
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
  * @result an autoreleased Isgl3dGLTexture created from the text
  */
 - (Isgl3dGLTexture *) createTextureFromText:(NSString *)text fontName:(NSString*)name fontSize:(CGFloat)size repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
@@ -135,8 +160,8 @@
  * Creates a new instance of an Isgl3dGLTexture containing a cubemap texture (** OpenGL ES2 only **) from a given set of files with specified precision and repeating behaviour.
  * @param files An array of files containing the image information (.png, .jpg, .pvr, etc) for the different cube sides.
  * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
- * @param repeatX Inidicates whether the texture will be repeated (tesselated) across the rendered object in the x-direction.
- * @param repeatY Inidicates whether the texture will be repeated (tesselated) across the rendered object in the y-direction.
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
  * @result an autoreleased Isgl3dGLTexture for a cubemap texture created from a set of image files
  * 
  * Warning : highly experimental !
@@ -144,12 +169,26 @@
 - (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
+ * Creates a new instance of an Isgl3dGLTexture containing a cubemap texture (** OpenGL ES2 only **) from a given set of files with specified precision and repeating behaviour.
+ * @param files An array of files containing the image information (.png, .jpg, .pvr, etc) for the different cube sides.
+ * @param precision The precision of the texture material being one of Isgl3dTexturePrecisionLow, Isgl3dTexturePrecisionMedium and Isgl3dTexturePrecisionHigh
+ * @param repeatX Indicates whether the texture will be repeated (tessellated) across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be repeated (tessellated) across the rendered object in the y-direction.
+ * @param repeatX Indicates whether the texture will be mirrored when repeated across the rendered object in the x-direction.
+ * @param repeatY Indicates whether the texture will be mirrored when repeated across the rendered object in the y-direction
+ * @result an autoreleased Isgl3dGLTexture for a cubemap texture created from a set of image files
+ *
+ * Warning : highly experimental !
+ */
+- (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
+
+/**
  * Creates an Isgl3dGLDepthRenderTexture render texture to render depth values onto.
  * @param width The width of the render texture.
  * @param height The height of the render texture.
  * @result an autoreleased Isgl3dGLDepthRenderTexture depending on OpenGL version
  * 
- * Note : This is used internall by iSGL3D.
+ * Note : This is used internal by iSGL3D.
  */
 - (Isgl3dGLDepthRenderTexture *) createDepthRenderTexture:(int)width height:(int)height;
 
