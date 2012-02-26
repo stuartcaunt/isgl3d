@@ -36,7 +36,7 @@
 @interface NibDemo : Isgl3dBasic3DView {
 	
 @private
-	Isgl3dMeshNode * _3dText;
+	Isgl3dMultiMaterialCube * _cube;    
 }
 
 @end
