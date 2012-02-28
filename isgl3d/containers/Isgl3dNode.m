@@ -356,6 +356,11 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 - (void) setTransformation:(Isgl3dMatrix4)transformation {
 	_localTransformation = transformation;
 	
+    Isgl3dVector3 currentScale = im4ToScaleValues(&_localTransformation);
+    _scaleX = currentScale.x;
+    _scaleY = currentScale.y;
+    _scaleZ = currentScale.z;
+
 	_localTransformationDirty = YES;
 	_rotationMatrixDirty = NO;
 	_eulerAnglesDirty = YES;
@@ -363,6 +368,11 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 - (void) setTransformationFromOpenGLMatrix:(float *)transformation {
 	im4SetTransformationFromOpenGLMatrix(&_localTransformation, transformation);
+
+    Isgl3dVector3 currentScale = im4ToScaleValues(&_localTransformation);
+    _scaleX = currentScale.x;
+    _scaleY = currentScale.y;
+    _scaleZ = currentScale.z;
 	
 	_localTransformationDirty = YES;
 	_rotationMatrixDirty = NO;
