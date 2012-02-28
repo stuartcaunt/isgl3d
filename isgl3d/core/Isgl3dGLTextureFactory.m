@@ -115,6 +115,10 @@ static Isgl3dGLTextureFactory * _instance = nil;
 }
 
 - (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [self createTextureFromFile:file precision:precision repeatX:repeatX repeatY:repeatY mirrorX:NO mirrorY:NO];
+}
+
+- (Isgl3dGLTexture *) createTextureFromFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	NSString * extension = [file pathExtension];
 	if ([extension isEqualToString:@"pvr"]) {
 		return [self createTextureFromCompressedFile:file precision:precision repeatX:repeatX repeatY:repeatY];
@@ -140,7 +144,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	
 		void * data = malloc(width * height * 4);
 		[self copyImage:image toRawData:data width:width height:height];
-		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
+		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 		free(data);
 		
 		// Create texture and store in dictionary
@@ -164,6 +168,10 @@ static Isgl3dGLTextureFactory * _instance = nil;
 }
 
 - (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [self createTextureFromUIImage:image key:key precision:precision repeatX:repeatX repeatY:repeatY mirrorX:NO mirrorY:NO];
+}
+
+- (Isgl3dGLTexture *) createTextureFromUIImage:(UIImage *)image key:(NSString *)key  precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	if (_state) {
 		NSString * textureKey = [self textureKeyForFile:key precision:precision repeatX:repeatX repeatY:repeatY];
@@ -178,7 +186,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
         
 		void * data = malloc(width * height * 4);
 		[self copyImage:image toRawData:data width:width height:height];
-		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
+		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 		free(data);
 		
 		// Create texture and store in dictionary
@@ -232,7 +240,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		}
 		UIGraphicsPopContext();
 		
-		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:Isgl3dTexturePrecisionMedium repeatX:repeatX repeatY:repeatY];
+		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:Isgl3dTexturePrecisionMedium repeatX:repeatX repeatY:repeatY mirrorX:NO mirrorY:NO];
 		
 		CGContextRelease(context);
 		free(data);
@@ -307,8 +315,12 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	return nil;	
 }
 
-
 - (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+	return [self createCubemapTextureFromFiles:files precision:precision repeatX:repeatX repeatY:repeatY mirrorX:NO mirrorY:NO];
+}
+
+
+- (Isgl3dGLTexture *) createCubemapTextureFromFiles:(NSArray *)files precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 
 	if (_state) {
 		NSMutableArray * images = [[NSMutableArray alloc] init];
@@ -388,7 +400,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		offset += stride;
 		[self copyImage:negZImage toRawData:data + offset width:width height:height];
 	
-		unsigned int textureId = [_state createCubemapTextureFromRawData:data width:width mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY];
+		unsigned int textureId = [_state createCubemapTextureFromRawData:data width:width mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 		
 		free(data);
 		[images release];

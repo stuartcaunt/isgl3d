@@ -33,9 +33,9 @@
 
 
 @interface Isgl3dGLTextureFactoryState2 (PrivateMethods)
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 - (unsigned int) createTextureForDepthRender:(int)width height:(int)height;
-- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY ;
 @end
 
 @implementation Isgl3dGLTextureFactoryState2
@@ -57,13 +57,13 @@
 	return [Isgl3dPVRLoader createTextureFromPVR:file outWidth:width outHeight:height];
 }
 
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
 	glBindTexture(GL_TEXTURE_2D, textureIndex);
 	
-	[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY];
+	[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 	
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 	
@@ -80,7 +80,7 @@
 	return textureIndex;
 }
 
-- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	unsigned int textureIndex;
 	
@@ -97,7 +97,7 @@
 			Isgl3dGLErrLog(Error, err, @"Error uploading compressed texture level: %d (format 0x%X, %ux%u, %u bytes). glError: 0x%04X", index, format, width, height, [data length], err);
 		}
 		
-		[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY];
+		[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 		
 		width = MAX(width >> 1, 1);
 		height = MAX(height >> 1, 1);
@@ -105,7 +105,7 @@
 	}
 	
 	if ([imageData count] == 1) {
-		[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY];
+		[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 		
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
@@ -115,7 +115,7 @@
 }
 
 
-- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -136,7 +136,7 @@
 	offset += stride;
 	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGBA, width, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data + offset);
 	
-	[self handleParameters:GL_TEXTURE_CUBE_MAP precision:precision repeatX:repeatX repeatY:repeatY];
+	[self handleParameters:GL_TEXTURE_CUBE_MAP precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 	
 	if (mipmap) {
 		glGenerateMipmap(GL_TEXTURE_CUBE_MAP);
@@ -193,7 +193,7 @@
 	return textureIndex;
 }
 
-- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	if (precision == Isgl3dTexturePrecisionHigh) {
 		glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -208,15 +208,23 @@
 	}
 	
 	if (repeatX) {
-		glTexParameteri(target, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		if (mirrorX) {		
+			glTexParameteri(target, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+		} else {
+			glTexParameteri(target, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		}		
 		
 	} else {
 		glTexParameteri(target, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	}
 	
 	if (repeatY) {
-		glTexParameteri(target, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		
+		if (mirrorY) {
+			glTexParameteri(target, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+		} else {
+			glTexParameteri(target, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		}
+
 	} else {
 		glTexParameteri(target, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	}
