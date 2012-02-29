@@ -29,6 +29,7 @@
 
 @synthesize textureEnabled = _textureEnabled;
 @synthesize lightingEnabled = _lightingEnabled;
+@synthesize normalMappingEnabled = _normalMappingEnabled;
 
 - (id) init {
 	
@@ -48,11 +49,13 @@
 - (void) copyFrom:(Isgl3dShaderState *)state {
 	_textureEnabled = state.textureEnabled;
 	_lightingEnabled = state.lightingEnabled;
+	_normalMappingEnabled = state.normalMappingEnabled;
 }
 
 - (void) reset {
 	_textureEnabled = false;
 	_lightingEnabled = false;
+    _normalMappingEnabled = false;
 }
 
 

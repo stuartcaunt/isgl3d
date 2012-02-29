@@ -39,6 +39,7 @@
 @implementation Isgl3dTextureMaterial
 
 @synthesize texture=_texture;
+@synthesize normalMap=_normalMap;
 
 + (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
@@ -145,11 +146,23 @@
 	return self;
 }
 
+- (void) setNormalMapFromFile:(NSString *)normalMapFileName {
+    _normalMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:normalMapFileName] retain];
+    _isNormalMapped = YES;
+}
+
+- (void) setNormalMapFromUIImage:(UIImage *)image {
+    _normalMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromUIImage:image key:@"NormalMapping"] retain];
+    _isNormalMapped = YES;
+}
 
 - (void) dealloc {
 	[_texture release];
 	_texture = nil;
 
+    [_normalMap release];
+	_normalMap = nil;
+    
 	[super dealloc];
 }
 
@@ -158,12 +171,15 @@
 	
 	copy.texture = _texture;
 	copy.isHighDefinition = _isHighDefinition;
-	
+    copy.normalMap = _normalMap;
+
 	return copy;
 }
 
 - (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 	requirements |= TEXTURE_MAPPING_ON;
+    if(_isNormalMapped)
+        requirements |= NORMAL_MAPPING_ON;
 	[super prepareRenderer:renderer requirements:requirements alpha:alpha node:node];
 
 	// Enable point sprites if necessary
@@ -172,6 +188,8 @@
 	}
 
 	[renderer setTexture:_texture];
+    if(_isNormalMapped)
+        [renderer setNormalMap:_normalMap];
 }
 
 - (unsigned int) width {

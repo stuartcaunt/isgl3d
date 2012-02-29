@@ -125,6 +125,9 @@
 	// Texture
 	_samplerLocation = [_glProgram getUniformLocation:@"s_texture"];
 
+	// Normal Mapping Texture
+	_normalMapSamplerLocation = [_glProgram getUniformLocation:@"s_nm_texture"];
+    
 	// Alpha testing
 	_alphaTestValueUniformLocation = [_glProgram getUniformLocation:@"u_alphaTestValue"];
 	
@@ -196,6 +199,16 @@
 	}
 	
 	_currentState.textureEnabled = NO;
+}
+
+- (void) setNormalMapping:(Isgl3dGLTexture *)texture {
+	if (_normalMapSamplerLocation != -1) {
+		// Bind the texture
+		[self bindTexture:texture textureUnit:NORMALMAP_INDEX];
+		[self setUniformSampler:_normalMapSamplerLocation forTextureUnit:NORMALMAP_INDEX];
+	}
+	
+	_currentState.normalMappingEnabled = YES;
 }
 
 - (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
