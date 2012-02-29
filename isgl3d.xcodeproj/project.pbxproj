@@ -1325,13 +1325,9 @@
 		17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		4EA7751914ED046F009E6AD6 /* norm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751614ED0467009E6AD6 /* norm1.png */; };
 		4EA7751A14ED046F009E6AD6 /* norm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751714ED0467009E6AD6 /* norm4.png */; };
-		4EA7751D14ED0481009E6AD6 /* NormalMapShader.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7751B14ED0481009E6AD6 /* NormalMapShader.fsh */; };
-		4EA7751E14ED0481009E6AD6 /* NormalMapShader.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7751C14ED0481009E6AD6 /* NormalMapShader.vsh */; };
 		4EA7752114ED048B009E6AD6 /* NormalMapShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EA7751F14ED048B009E6AD6 /* NormalMapShader.h */; };
 		4EA7752214ED048B009E6AD6 /* NormalMapShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7752014ED048B009E6AD6 /* NormalMapShader.m */; };
 		4EA7752314ED0490009E6AD6 /* NormalMapShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7752014ED048B009E6AD6 /* NormalMapShader.m */; };
-		4EA7752414ED0494009E6AD6 /* NormalMapShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751B14ED0481009E6AD6 /* NormalMapShader.fsh */; };
-		4EA7752514ED0494009E6AD6 /* NormalMapShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751C14ED0481009E6AD6 /* NormalMapShader.vsh */; };
 		8B0FA33F13E8038500E798BA /* Isgl3dGestureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */; };
 		8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */; };
 		8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
@@ -1356,8 +1352,6 @@
 		8B4B559514F45592007EEFAA /* Noise.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 17A4822B13F27F5E0098AC3F /* Noise.pvr */; };
 		8B4B559614F45592007EEFAA /* norm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751614ED0467009E6AD6 /* norm1.png */; };
 		8B4B559714F45592007EEFAA /* norm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751714ED0467009E6AD6 /* norm4.png */; };
-		8B4B559814F45592007EEFAA /* NormalMapShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751B14ED0481009E6AD6 /* NormalMapShader.fsh */; };
-		8B4B559914F45592007EEFAA /* NormalMapShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751C14ED0481009E6AD6 /* NormalMapShader.vsh */; };
 		8B4B559B14F45592007EEFAA /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		8B4B559C14F45592007EEFAA /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		8B4B559D14F45592007EEFAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
@@ -2627,8 +2621,6 @@
 		17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
 		4EA7751614ED0467009E6AD6 /* norm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm1.png; sourceTree = "<group>"; };
 		4EA7751714ED0467009E6AD6 /* norm4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm4.png; sourceTree = "<group>"; };
-		4EA7751B14ED0481009E6AD6 /* NormalMapShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = NormalMapShader.fsh; sourceTree = "<group>"; };
-		4EA7751C14ED0481009E6AD6 /* NormalMapShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = NormalMapShader.vsh; sourceTree = "<group>"; };
 		4EA7751F14ED048B009E6AD6 /* NormalMapShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalMapShader.h; sourceTree = "<group>"; };
 		4EA7752014ED048B009E6AD6 /* NormalMapShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalMapShader.m; sourceTree = "<group>"; };
 		8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGestureManager.h; sourceTree = "<group>"; };
@@ -3868,8 +3860,6 @@
 		17A4821013F12A4E0098AC3F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				4EA7751B14ED0481009E6AD6 /* NormalMapShader.fsh */,
-				4EA7751C14ED0481009E6AD6 /* NormalMapShader.vsh */,
 				4EA7751F14ED048B009E6AD6 /* NormalMapShader.h */,
 				4EA7752014ED048B009E6AD6 /* NormalMapShader.m */,
 				17A4823913F286740098AC3F /* powervrShader.fsh */,
@@ -6142,8 +6132,6 @@
 				17A4823113F27F5E0098AC3F /* Noise.pvr in Resources */,
 				4EA7751914ED046F009E6AD6 /* norm1.png in Resources */,
 				4EA7751A14ED046F009E6AD6 /* norm4.png in Resources */,
-				4EA7752414ED0494009E6AD6 /* NormalMapShader.fsh in Resources */,
-				4EA7752514ED0494009E6AD6 /* NormalMapShader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6328,8 +6316,6 @@
 				8B4B559514F45592007EEFAA /* Noise.pvr in Resources */,
 				8B4B559614F45592007EEFAA /* norm1.png in Resources */,
 				8B4B559714F45592007EEFAA /* norm4.png in Resources */,
-				8B4B559814F45592007EEFAA /* NormalMapShader.fsh in Resources */,
-				8B4B559914F45592007EEFAA /* NormalMapShader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6595,8 +6581,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EA7751D14ED0481009E6AD6 /* NormalMapShader.fsh in Sources */,
-				4EA7751E14ED0481009E6AD6 /* NormalMapShader.vsh in Sources */,
 				4EA7752214ED048B009E6AD6 /* NormalMapShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

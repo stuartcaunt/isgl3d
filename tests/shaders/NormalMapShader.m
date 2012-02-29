@@ -25,6 +25,7 @@
 
 #import "NormalMapShader.h"
 #import "Isgl3dGLVBOData.h"
+#import "Isgl3dLight.h"
 
 #define MATERIAL_TEXTUREINDEX 0
 #define NORMAL_TEXTUREINDEX 1
