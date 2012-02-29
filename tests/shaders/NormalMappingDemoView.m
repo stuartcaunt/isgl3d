@@ -43,38 +43,23 @@
 
 		_container = [[self.scene createNode] retain];
 		
-		
-		// Create custom shader and associate it with a material
-		Isgl3dCustomShader * demoShader = [DemoShader shaderWithKey:@"myDemoShader"];
-		Isgl3dShaderMaterial * shaderMaterial1 = [Isgl3dShaderMaterial materialWithShader:demoShader];
-
-		Isgl3dCustomShader * powerVRShader = [PowerVRShader shaderWithKey:@"powerVRShader"];
-		Isgl3dShaderMaterial * shaderMaterial2 = [Isgl3dShaderMaterial materialWithShader:powerVRShader];
-
-		Isgl3dCustomShader * normalMappingShader1 = [NormalMapShader shaderWithKey:@"NormalMappingShader1"];
-        [normalMappingShader1 SetTextures:@"red_checker.png" NormalMapTexture:@"norm1.png"];
-		Isgl3dShaderMaterial * shaderMaterial3 = [Isgl3dShaderMaterial materialWithShader:normalMappingShader1];
-        
-		Isgl3dCustomShader * normalMappingShader2 = [NormalMapShader shaderWithKey:@"NormalMappingShader2"];
-        [normalMappingShader2 SetTextures:@"red_checker.png" NormalMapTexture:@"norm4.png"];
-		Isgl3dShaderMaterial * shaderMaterial4 = [Isgl3dShaderMaterial materialWithShader:normalMappingShader2];
-        
 		// Standard material
 		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9];
+        [material setNormalMapFromFile:@"norm4.png"];
 	
 		// Apply custom shader material to torus
 		Isgl3dTorus * torusMesh = [Isgl3dTorus meshWithGeometry:2 tubeRadius:1 ns:32 nt:32];
-		_torus = [_container createNodeWithMesh:torusMesh andMaterial:shaderMaterial1];
+		_torus = [_container createNodeWithMesh:torusMesh andMaterial:material];
 		_torus.position = iv3(-7, 0, 0);
 		_torus.interactive = YES;
 		[_torus addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 	
 		Isgl3dCone * coneMesh = [Isgl3dCone meshWithGeometry:4 topRadius:0 bottomRadius:2 ns:32 nt:32 openEnded:NO];
-		_cone = [_container createNodeWithMesh:coneMesh andMaterial:shaderMaterial2];
+		_cone = [_container createNodeWithMesh:coneMesh andMaterial:material];
 		_cone.position = iv3(7, 0, 0);
 	
 		Isgl3dCylinder * cylinderMesh = [Isgl3dCylinder meshWithGeometry:4 radius:1 ns:32 nt:32 openEnded:NO];
-		_cylinder = [_container createNodeWithMesh:cylinderMesh andMaterial:shaderMaterial3];
+		_cylinder = [_container createNodeWithMesh:cylinderMesh andMaterial:material];
 		_cylinder.position = iv3(0, 0, -7);
 	
 		Isgl3dArrow * arrowMesh = [Isgl3dArrow meshWithGeometry:4 radius:0.4 headHeight:1 headRadius:0.6 ns:32 nt:32];
@@ -82,7 +67,7 @@
 		_arrow.position = iv3(0, 0, 7);
 		
 		Isgl3dOvoid * ovoidMesh = [Isgl3dOvoid meshWithGeometry:1.5 b:2 k:0.2 longs:32 lats:32];
-		_ovoid = [_container createNodeWithMesh:ovoidMesh andMaterial:shaderMaterial4];
+		_ovoid = [_container createNodeWithMesh:ovoidMesh andMaterial:material];
 		_ovoid.position = iv3(0, -4, 0);
 		
 		Isgl3dGoursatSurface * gouratMesh = [Isgl3dGoursatSurface meshWithGeometry:0 b:0 c:-1 width:2 height:3 depth:2 longs:8 lats:16];

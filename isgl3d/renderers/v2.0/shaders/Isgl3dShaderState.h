@@ -34,6 +34,7 @@
 @private
 	BOOL _textureEnabled;
 	BOOL _lightingEnabled;
+	BOOL _normalMappingEnabled;
 }
 
 - (id) init;
@@ -42,6 +43,7 @@
 
 @property (nonatomic) BOOL textureEnabled;
 @property (nonatomic) BOOL lightingEnabled;
+@property (nonatomic) BOOL normalMappingEnabled;
 
 
 @end

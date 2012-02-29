@@ -7,6 +7,12 @@ varying mediump vec2 v_texCoord;
 uniform sampler2D s_texture;
 #endif
 
+#ifdef NORMAL_MAPPING_ENABLED
+uniform sampler2D s_nm_texture;
+varying lowp vec3 v_normal;
+varying lowp vec3 v_lightDir;
+#endif
+
 #ifdef ALPHA_TEST_ENABLED
 uniform lowp float u_alphaTestValue;
 #endif
@@ -31,6 +37,26 @@ void main() {
 	if (color.a <= u_alphaTestValue) {
 		discard;
 	}
+#endif
+    
+#ifdef NORMAL_MAPPING_ENABLED
+    lowp float maxVariance = 0.2;
+	lowp float minVariance = maxVariance / 2.0;
+	lowp vec3 normalAdjusted = v_normal + normalize(texture2D(s_nm_texture, v_texCoord.st).rgb * maxVariance - minVariance);
+	lowp float diffuseIntensity = max(0.0, dot(normalize(normalAdjusted), normalize(v_lightDir)));
+    
+	lowp vec3 colour = diffuseIntensity * color.rgb;
+	lowp vec4 vFragColour = vec4(colour, 1.0);
+    
+	lowp vec3 vReflection        = normalize(reflect(-normalize(normalAdjusted), normalize(v_lightDir)));
+	lowp float specularIntensity = max(0.0, dot(normalize(normalAdjusted), vReflection));
+    
+	if (diffuseIntensity > 0.00098)
+	{
+		highp float fSpec = pow(specularIntensity, 64.0);
+		vFragColour.rgb += vec3(fSpec);
+	}
+    color = vFragColour;
 #endif
 
 #ifdef SHADOW_MAPPING_ENABLED
