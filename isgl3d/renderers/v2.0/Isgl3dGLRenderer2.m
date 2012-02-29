@@ -147,6 +147,10 @@
 			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define TEXTURE_MAPPING_ENABLED\n"];
 			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define TEXTURE_MAPPING_ENABLED\n"];
 		}
+		if (rendererRequirements & NORMAL_MAPPING_ON) {
+			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define NORMAL_MAPPING_ENABLED\n"];
+			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define NORMAL_MAPPING_ENABLED\n"];
+		}
 		if (rendererRequirements & ALPHA_CULLING_ON) {
 			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define ALPHA_TEST_ENABLED\n"];
 		}
@@ -282,6 +286,14 @@
 - (void) setTexture:(Isgl3dGLTexture *)texture {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setTexture:texture];
+		_currentState.alphaBlendEnabled = YES;
+	}
+}
+
+// Called only by Isgl3dTextureMaterial
+- (void) setNormalMap:(Isgl3dGLTexture *)texture {
+	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
+		[(Isgl3dInternalShader *)_activeShader setNormalMapping:texture];
 		_currentState.alphaBlendEnabled = YES;
 	}
 }

@@ -29,7 +29,7 @@
 
 #define TEXTURE0_INDEX 0
 #define SHADOWMAP_INDEX 1
-
+#define NORMALMAP_INDEX 2
 
 @class Isgl3dShaderState;
 
@@ -90,6 +90,9 @@
 	
 	// Texture
 	GLint _samplerLocation;
+    
+    // Normal Mapping
+	GLint _normalMapSamplerLocation;
 
 	// Shadows
 	GLint _mcToLightMatrixUniformLocation;

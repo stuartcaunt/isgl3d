@@ -50,8 +50,10 @@
 	
 @protected
 	Isgl3dGLTexture * _texture;
-	
+    Isgl3dGLTexture * _normalMap;
+
 	BOOL _isHighDefinition;
+    BOOL _isNormalMapped;
 }
 
 /**
@@ -80,6 +82,11 @@
  * Gets/sets the Isgl3dGLTexture associated with the material.
  */
 @property (nonatomic, retain) Isgl3dGLTexture *texture;
+
+/**
+ * Gets/sets the Isgl3dGLTexture associated with the NormalMap.
+ */
+@property (nonatomic, retain) Isgl3dGLTexture *normalMap;
 
 /**
  * Allocates and initialises (autorelease) texture material from an image file.
@@ -195,5 +202,8 @@
  * @param fontSize The size of the font. 
  */
 - (id) initWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
+
+- (void) setNormalMapFromFile:(NSString *)normalMapFileName;
+- (void) setNormalMapFromUIImage:(UIImage *)image;
 
 @end
