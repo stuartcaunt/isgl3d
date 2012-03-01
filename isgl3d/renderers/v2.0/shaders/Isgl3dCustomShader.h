@@ -50,7 +50,8 @@ typedef enum {
 	Isgl3dMatrix4 * _projectionMatrix;
 	Isgl3dMatrix4 * _modelViewMatrix;
 	Isgl3dMatrix4 * _modelViewProjectionMatrix;
-	
+    Isgl3dMatrix3 * _normalMatrix;
+
 	Isgl3dGLVBOData * _vboData;
 	
 	NSMutableArray * _lights;
@@ -100,6 +101,11 @@ typedef enum {
  * Returns the current model-view-projection transformation matrix for the shader
  */
 @property (nonatomic, readonly) Isgl3dMatrix4 * modelViewProjectionMatrix;
+
+/**
+ * Returns the current normal matrix for the shader
+ */
+@property (nonatomic, readonly) Isgl3dMatrix3 * normalMatrix;
 
 /**
  * Returns the current VBO data bound to the shader

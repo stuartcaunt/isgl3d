@@ -1325,13 +1325,19 @@
 		17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		4EA7751914ED046F009E6AD6 /* norm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751614ED0467009E6AD6 /* norm1.png */; };
 		4EA7751A14ED046F009E6AD6 /* norm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751714ED0467009E6AD6 /* norm4.png */; };
-		4EA7752114ED048B009E6AD6 /* NormalMapShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EA7751F14ED048B009E6AD6 /* NormalMapShader.h */; };
-		4EA7752214ED048B009E6AD6 /* NormalMapShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7752014ED048B009E6AD6 /* NormalMapShader.m */; };
-		4EA7752314ED0490009E6AD6 /* NormalMapShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7752014ED048B009E6AD6 /* NormalMapShader.m */; };
 		8B0FA33F13E8038500E798BA /* Isgl3dGestureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */; };
 		8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */; };
 		8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
 		8B0FA35A13E8046D00E798BA /* Isgl3dPVRLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */; };
+		8B2AFA9414FEE2F30040102B /* Isgl3dVector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFA9214FEE2F30040102B /* Isgl3dVector3.h */; };
+		8B2AFA9514FEE2F30040102B /* Isgl3dVector3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AFA9314FEE2F30040102B /* Isgl3dVector3.m */; };
+		8B2AFA9914FEE3790040102B /* Isgl3dMatrix4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFA9714FEE3790040102B /* Isgl3dMatrix4.h */; };
+		8B2AFA9A14FEE3790040102B /* Isgl3dMatrix4.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AFA9814FEE3790040102B /* Isgl3dMatrix4.m */; };
+		8B2AFAC014FEE7970040102B /* Isgl3dVector4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFABE14FEE7970040102B /* Isgl3dVector4.h */; };
+		8B2AFAC114FEE7970040102B /* Isgl3dVector4.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AFABF14FEE7970040102B /* Isgl3dVector4.m */; };
+		8B2AFAD514FEECC40040102B /* Isgl3dMatrix3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFAD314FEECC30040102B /* Isgl3dMatrix3.h */; };
+		8B2AFAD614FEECC40040102B /* Isgl3dMatrix3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AFAD414FEECC30040102B /* Isgl3dMatrix3.m */; };
+		8B2AFAE114FEF1ED0040102B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A871114CF190200C17DC5 /* GLKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8B4B558414F45592007EEFAA /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
 		8B4B558514F45592007EEFAA /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
 		8B4B558614F45592007EEFAA /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
@@ -1358,7 +1364,6 @@
 		8B4B559E14F45592007EEFAA /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
 		8B4B559F14F45592007EEFAA /* DemoShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4821313F12A4E0098AC3F /* DemoShader.m */; };
 		8B4B55A114F45592007EEFAA /* PowerVRShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A4822E13F27F5E0098AC3F /* PowerVRShader.m */; };
-		8B4B55A214F45592007EEFAA /* NormalMapShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7752014ED048B009E6AD6 /* NormalMapShader.m */; };
 		8B4B55A414F45592007EEFAA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
 		8B4B55A514F45592007EEFAA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
 		8B4B55A614F45592007EEFAA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
@@ -2621,12 +2626,18 @@
 		17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
 		4EA7751614ED0467009E6AD6 /* norm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm1.png; sourceTree = "<group>"; };
 		4EA7751714ED0467009E6AD6 /* norm4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm4.png; sourceTree = "<group>"; };
-		4EA7751F14ED048B009E6AD6 /* NormalMapShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalMapShader.h; sourceTree = "<group>"; };
-		4EA7752014ED048B009E6AD6 /* NormalMapShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalMapShader.m; sourceTree = "<group>"; };
 		8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGestureManager.h; sourceTree = "<group>"; };
 		8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGestureManager.m; sourceTree = "<group>"; };
 		8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPVRLoader.h; sourceTree = "<group>"; };
 		8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dPVRLoader.mm; sourceTree = "<group>"; };
+		8B2AFA9214FEE2F30040102B /* Isgl3dVector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dVector3.h; sourceTree = "<group>"; };
+		8B2AFA9314FEE2F30040102B /* Isgl3dVector3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector3.m; sourceTree = "<group>"; };
+		8B2AFA9714FEE3790040102B /* Isgl3dMatrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix4.h; sourceTree = "<group>"; };
+		8B2AFA9814FEE3790040102B /* Isgl3dMatrix4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix4.m; sourceTree = "<group>"; };
+		8B2AFABE14FEE7970040102B /* Isgl3dVector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dVector4.h; sourceTree = "<group>"; };
+		8B2AFABF14FEE7970040102B /* Isgl3dVector4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector4.m; sourceTree = "<group>"; };
+		8B2AFAD314FEECC30040102B /* Isgl3dMatrix3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix3.h; sourceTree = "<group>"; };
+		8B2AFAD414FEECC30040102B /* Isgl3dMatrix3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix3.m; sourceTree = "<group>"; };
 		8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalMappingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4B55B114F455FE007EEFAA /* NormalMappingDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalMappingDemoView.h; sourceTree = "<group>"; };
 		8B4B55B214F455FE007EEFAA /* NormalMappingDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalMappingDemoView.m; sourceTree = "<group>"; };
@@ -3130,6 +3141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2AFAE114FEF1ED0040102B /* GLKit.framework in Frameworks */,
 				8B4B55A414F45592007EEFAA /* CoreGraphics.framework in Frameworks */,
 				8B4B55A514F45592007EEFAA /* OpenGLES.framework in Frameworks */,
 				8B4B55A614F45592007EEFAA /* QuartzCore.framework in Frameworks */,
@@ -3860,8 +3872,6 @@
 		17A4821013F12A4E0098AC3F /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				4EA7751F14ED048B009E6AD6 /* NormalMapShader.h */,
-				4EA7752014ED048B009E6AD6 /* NormalMapShader.m */,
 				17A4823913F286740098AC3F /* powervrShader.fsh */,
 				17A4823A13F286740098AC3F /* powervrShader.vsh */,
 				17A4822B13F27F5E0098AC3F /* Noise.pvr */,
@@ -4180,10 +4190,18 @@
 				17F1D6D912F87EC5008D39E8 /* Isgl3dGLU.m */,
 				1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */,
 				17C15BF01347AABB004EF5C3 /* Isgl3dMatrix.m */,
+				8B2AFAD314FEECC30040102B /* Isgl3dMatrix3.h */,
+				8B2AFAD414FEECC30040102B /* Isgl3dMatrix3.m */,
+				8B2AFA9714FEE3790040102B /* Isgl3dMatrix4.h */,
+				8B2AFA9814FEE3790040102B /* Isgl3dMatrix4.m */,
 				176903481355E2890010B4CB /* Isgl3dQuaternion.h */,
 				176903491355E2890010B4CB /* Isgl3dQuaternion.m */,
 				1756F4DA1347874000205D76 /* Isgl3dVector.h */,
 				17C15BF21347AAF8004EF5C3 /* Isgl3dVector.m */,
+				8B2AFA9214FEE2F30040102B /* Isgl3dVector3.h */,
+				8B2AFA9314FEE2F30040102B /* Isgl3dVector3.m */,
+				8B2AFABE14FEE7970040102B /* Isgl3dVector4.h */,
+				8B2AFABF14FEE7970040102B /* Isgl3dVector4.m */,
 			);
 			path = math;
 			sourceTree = "<group>";
@@ -4554,7 +4572,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17EDE05D13743C0A00652E35 /* Isgl3dGLView.h in Headers */,
-				4EA7752114ED048B009E6AD6 /* NormalMapShader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4918,6 +4935,10 @@
 				8BDBA1D714CCFABE00BAEB8A /* PVRTShader.h in Headers */,
 				8BDBA1D914CCFABE00BAEB8A /* PVRTTextureAPI.h in Headers */,
 				8B8A870F14CF182500C17DC5 /* Isgl3dMathTypes.h in Headers */,
+				8B2AFA9414FEE2F30040102B /* Isgl3dVector3.h in Headers */,
+				8B2AFA9914FEE3790040102B /* Isgl3dMatrix4.h in Headers */,
+				8B2AFAC014FEE7970040102B /* Isgl3dVector4.h in Headers */,
+				8B2AFAD514FEECC40040102B /* Isgl3dMatrix3.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6581,7 +6602,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EA7752214ED048B009E6AD6 /* NormalMapShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6596,7 +6616,6 @@
 				17A4821813F12A4E0098AC3F /* DemoShader.m in Sources */,
 				17A4821A13F12A4E0098AC3F /* ShaderMaterialDemoView.m in Sources */,
 				17A4823313F27F5E0098AC3F /* PowerVRShader.m in Sources */,
-				4EA7752314ED0490009E6AD6 /* NormalMapShader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6830,7 +6849,6 @@
 				8B4B559E14F45592007EEFAA /* Isgl3dAppDelegate.mm in Sources */,
 				8B4B559F14F45592007EEFAA /* DemoShader.m in Sources */,
 				8B4B55A114F45592007EEFAA /* PowerVRShader.m in Sources */,
-				8B4B55A214F45592007EEFAA /* NormalMapShader.m in Sources */,
 				8B4B55B314F455FE007EEFAA /* NormalMappingDemoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6994,6 +7012,10 @@
 				8BDBA1D214CCFABE00BAEB8A /* PVRTPrint3DAPI.cpp in Sources */,
 				8BDBA1D614CCFABE00BAEB8A /* PVRTShader.cpp in Sources */,
 				8BDBA1D814CCFABE00BAEB8A /* PVRTTextureAPI.cpp in Sources */,
+				8B2AFA9514FEE2F30040102B /* Isgl3dVector3.m in Sources */,
+				8B2AFA9A14FEE3790040102B /* Isgl3dMatrix4.m in Sources */,
+				8B2AFAC114FEE7970040102B /* Isgl3dVector4.m in Sources */,
+				8B2AFAD614FEECC40040102B /* Isgl3dMatrix3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8960,6 +8982,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -8984,6 +9007,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

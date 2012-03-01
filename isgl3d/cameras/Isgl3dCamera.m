@@ -95,7 +95,7 @@
 
 		// Initialise view matrix
 		_localTransformationDirty = YES;
-		Isgl3dMatrix4 identity = im4Identity();
+		Isgl3dMatrix4 identity = Isgl3dMatrix4Identity;
 		[self updateWorldTransformation:&identity];
 	}
 	

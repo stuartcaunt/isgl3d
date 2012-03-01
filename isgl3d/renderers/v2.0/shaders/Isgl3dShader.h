@@ -102,7 +102,7 @@
  * @param uniformLocation The location of the 3x3 matrix uniform
  * @param matrix The matrix to be copied to the shader
  */
-- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix;
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix3 *)matrix;
 
 /**
  * Copies data from an Isgl3dMatrix4 matrix to a 4x4 matrix uniform in the shader.
@@ -237,7 +237,7 @@
  * @param uniformName The name of the 3x3 matrix uniform
  * @param matrix The matrix to be copied to the shader
  */
-- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix;
+- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix3 *)matrix;
 
 /**
  * Copies data from an Isgl3dMatrix4 matrix to a 4x4 matrix uniform in the shader.
@@ -425,6 +425,13 @@
  * @param modelViewProjectionMatrix The model-view-projection transformation
  */
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix;
+
+/**
+ * Passes the normal matrix.
+ * Called before rendering a specific object using the shader.
+ * @param normalMatrix The normal matrix
+ */
+- (void) setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix;
 
 /**
  * Passes the VBO data (an Isgl3dVBOData object) to the shader for the object to be rendered.

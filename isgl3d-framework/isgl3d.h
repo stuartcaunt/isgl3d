@@ -116,6 +116,8 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dMaterial.h>
 #import <isgl3d/Isgl3dMathTypes.h>
 #import <isgl3d/Isgl3dMatrix.h>
+#import <isgl3d/Isgl3dMatrix3.h>
+#import <isgl3d/Isgl3dMatrix4.h>
 #import <isgl3d/Isgl3dMeshNode.h>
 #import <isgl3d/Isgl3dMultiMaterialCube.h>
 #import <isgl3d/Isgl3dNode.h>
@@ -153,6 +155,8 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dUShortArray.h>
 #import <isgl3d/Isgl3dUVMap.h>
 #import <isgl3d/Isgl3dVector.h>
+#import <isgl3d/Isgl3dVector3.h>
+#import <isgl3d/Isgl3dVector4.h>
 #import <isgl3d/Isgl3dView.h>
 #import <isgl3d/common_macros.h>
 #import <isgl3d/isgl3dTypes.h>

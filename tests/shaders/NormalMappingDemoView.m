@@ -26,7 +26,6 @@
 #import "NormalMappingDemoView.h"
 #import "Isgl3dDemoCameraController.h"
 #import "DemoShader.h"
-#import "NormalMapShader.h"
 #import "PowerVRShader.h"
 
 @implementation NormalMappingDemoView

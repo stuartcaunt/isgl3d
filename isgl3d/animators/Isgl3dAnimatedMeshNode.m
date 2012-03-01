@@ -28,6 +28,8 @@
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dMaterial.h"
 #import "Isgl3dGLRenderer.h"
+#import "Isgl3dMatrix4.h"
+
 
 @implementation Isgl3dAnimatedMeshNode
 
@@ -82,7 +84,7 @@
 	// Need to reset the current node transformation: the "model" matrices 
 	// Are included in the bone matrices.
 	if (transformationDirty) {
-		_worldTransformation = im4Identity();
+		_worldTransformation = Isgl3dMatrix4Identity;
 	}
 	
 	for (Isgl3dBoneBatch * boneBatch in _boneBatches) {

@@ -32,25 +32,53 @@
 #import "Isgl3dCustomShader.h"
 #import "Isgl3dGLVBOData.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dMatrix3.h"
+#import "Isgl3dMatrix4.h"
 
 
-@interface Isgl3dGLRenderer2 (PrivateMethods)
-- (void) initRendererState;
+@interface Isgl3dGLRenderer2 () {
+@private
+	Isgl3dMatrix4 _mvpMatrix;
+	Isgl3dMatrix4 _mvMatrix;
+    Isgl3dMatrix3 _normalMatrix;
+    
+	Isgl3dMatrix4 _lightViewProjectionMatrix;
+	Isgl3dMatrix4 _lightModelViewProjectionMatrix;
+    
+	
+	BOOL _shadowMapActive;
+    
+	unsigned int _currentVBOIndex;
+    
+	Isgl3dGLRenderer2State * _currentState;
+	Isgl3dGLRenderer2State * _previousState;
+    
+	NSMutableDictionary * _internalShaders;
+	NSMutableDictionary * _customShaders;
+	Isgl3dShader * _activeShader;
+	
+	unsigned int _renderedObjects;
+    
+	GLuint _currentElementBufferId;
+}
+//- (void) initRendererState;
 - (void) handleStates;
 - (Isgl3dInternalShader *) shaderForRendererRequirements:(unsigned int)rendererRequirements;
 - (void) setPlanarShadowsActive:(BOOL)planarShadowActive;
 @end
+
 
 @implementation Isgl3dGLRenderer2
 
 - (id) init {
 	
 	if ((self = [super init])) {
-       	_mvMatrix = im4Identity();
-       	_mvpMatrix = im4Identity();
+       	_mvMatrix = Isgl3dMatrix4Identity;
+       	_mvpMatrix = Isgl3dMatrix4Identity;
+        _normalMatrix = Isgl3dMatrix3Identity;
        	
-		_lightViewProjectionMatrix = im4Identity();
-		_lightModelViewProjectionMatrix = im4Identity();
+		_lightViewProjectionMatrix = Isgl3dMatrix4Identity;
+		_lightModelViewProjectionMatrix = Isgl3dMatrix4Identity;
        	
 		_currentState = [[Isgl3dGLRenderer2State alloc] init];
 		_previousState = [[Isgl3dGLRenderer2State alloc] init];
@@ -253,10 +281,19 @@
 	// calculate model-view-projection
     _mvpMatrix = Isgl3dMatrix4Multiply(_projectionMatrix, _mvMatrix);
 
+    // calculate the normal-matrix
+    // TODO: we can omit the following calculation and use the model view matrix if it is orthogonal
+    // i.e. if all scaling values are 1.0f
+    // but we don't have this information at this point so we need to calculate the matrix
+    // why wo do need the inverse transpose matrix: http://www.lighthouse3d.com/tutorials/glsl-tutorial/the-normal-matrix/
+    //_normalMatrix = Isgl3dMatrix3InvertAndTranspose(Isgl3dMatrix4GetMatrix3(_mvMatrix), NULL);
+    _normalMatrix = Isgl3dMatrix4GetMatrix3(_mvMatrix);
+    
 	// Pass model matrix (and combinations only to active shader)
 	[_activeShader setModelMatrix:&_modelMatrix];
 	[_activeShader setModelViewMatrix:&_mvMatrix];
 	[_activeShader setModelViewProjectionMatrix:&_mvpMatrix];
+    [_activeShader setNormalMatrix:&_normalMatrix];
 
 	// Send light model-view-projection matrix to generic renderer (for shadows)
     _lightModelViewProjectionMatrix = Isgl3dMatrix4Multiply(_lightViewProjectionMatrix, _modelMatrix);

@@ -170,15 +170,12 @@ static unsigned int __textureUnitIndices[32] = {
 	glVertexAttribPointer(attributeLocation, size, type, GL_FALSE, strideBytes, (const void *)offset);
 }
 
-- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix {
-	float matrixArray[9];
-	im4ConvertTo3x3ColumnMajorFloatArray(matrix, matrixArray);
-	glUniformMatrix3fv(uniformLocation, 1, GL_FALSE, matrixArray);
+- (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dMatrix3 *)matrix {
+	glUniformMatrix3fv(uniformLocation, 1, GL_FALSE, matrix->m);
 }
 
 - (void) setUniformMatrix4:(GLint)uniformLocation matrix:(Isgl3dMatrix4 *)matrix {
-	float *matrixArray = im4ColumnMajorFloatArrayFromMatrix(matrix);
-	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrixArray);
+	glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, matrix->m);
 }
 
 - (void) setUniformMatrix3:(GLint)uniformLocation matrix:(Isgl3dArray *)matrices size:(unsigned int)size {
@@ -259,7 +256,7 @@ static unsigned int __textureUnitIndices[32] = {
 	glUniform1i(samplerLocation, textureUnit);
 }
 
-- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix4 *)matrix {
+- (void) setUniformMatrix3WithName:(NSString *)uniformName matrix:(Isgl3dMatrix3 *)matrix {
 	GLint uniformLocation = [self uniformIndexForName:uniformName];
 	[self setUniformMatrix3:uniformLocation matrix:matrix];
 }
@@ -388,6 +385,9 @@ static unsigned int __textureUnitIndices[32] = {
 }
 
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
+}
+
+- (void) setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {

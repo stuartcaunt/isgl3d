@@ -27,6 +27,8 @@
 
 #import "isgl3dTypes.h"
 #import "isgl3dMatrix.h"
+#import "isgl3dMatrix4.h"
+
 
 /**
  * The Isgl3dGLU class provides some of the functionalities to the OpengGL Utility Library, essentially

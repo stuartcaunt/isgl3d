@@ -1,5 +1,5 @@
 /*
- * iSGL3D: http://isgl3d.com
+ * iSGL3D: http:isgl3d.com
  *
  * Copyright (c) 2010-2011 Stuart Caunt
  *
@@ -26,9 +26,9 @@
 #import "math.h"
 #import "Isgl3dMathTypes.h"
 
+
 #define iv3(X, Y, Z) iv3Create(X, Y, Z)
 #define iv4(X, Y, Z, W) iv4Create(X, Y, Z, W)
-
 
 
 #pragma mark Isgl3dVector3

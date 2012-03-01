@@ -25,6 +25,8 @@
 
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dPrimitive.h"
+#import "Isgl3dMatrix4.h"
+
 
 @implementation Isgl3dGLRenderer
 
@@ -35,9 +37,9 @@
 	
 	if ((self = [super init])) {
 		
-       	_modelMatrix = im4Identity();
-       	_viewMatrix = im4Identity();
-       	_projectionMatrix = im4Identity();
+       	_modelMatrix = Isgl3dMatrix4Identity;
+       	_viewMatrix = Isgl3dMatrix4Identity;
+       	_projectionMatrix = Isgl3dMatrix4Identity;
        	
 		_black[0] = 0.0;	
 		_black[1] = 0.0;	
@@ -58,7 +60,7 @@
 		_whiteAndAlpha[3] = 1.0;
 
 		_shadowRenderingMethod = Isgl3dShadowNone;
-       	_planarShadowsMatrix = im4Identity();
+       	_planarShadowsMatrix = Isgl3dMatrix4Identity;
 		_planarShadowsActive = NO;
 		_shadowAlpha = 1.0;
 	}

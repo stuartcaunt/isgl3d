@@ -36,6 +36,8 @@
 #import "Isgl3dDirector.h"
 #import "Isgl3dActionManager.h"
 #import "Isgl3dAction.h"
+#import "Isgl3dMatrix4.h"
+
 
 static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
@@ -67,8 +69,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 - (id) init {    
     if ((self = [super init])) {
 
-		_localTransformation = im4Identity();
-		_worldTransformation = im4Identity();
+		_localTransformation = Isgl3dMatrix4Identity;
+		_worldTransformation = Isgl3dMatrix4Identity;
 
 		_rotationX = 0;    	
 		_rotationY = 0;    	
@@ -346,7 +348,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 - (void) resetTransformation {
-	_localTransformation = im4Identity();
+	_localTransformation = Isgl3dMatrix4Identity;
 	
 	_localTransformationDirty = YES;
 	_rotationMatrixDirty = NO;

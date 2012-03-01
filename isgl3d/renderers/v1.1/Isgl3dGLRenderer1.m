@@ -32,6 +32,8 @@
 #import "Isgl3dColorUtil.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dArray.h"
+#import "Isgl3dMatrix4.h"
+
 
 @interface Isgl3dGLRenderer1 (PrivateMethods)
 - (void) removeModelMatrix;

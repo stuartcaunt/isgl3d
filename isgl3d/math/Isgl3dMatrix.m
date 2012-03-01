@@ -24,6 +24,7 @@
  */
 
 #import "Isgl3dMatrix.h"
+#import "Isgl3dMatrix4.h"
 #import "math.h"
 #import "Isgl3dLog.h"
 #import <TargetConditionals.h>
@@ -147,15 +148,15 @@ void im4Invert3x3(Isgl3dMatrix4 * m) {
 	float m32 = m->m12;
 	float m33 = m->m22;
 
-	m->m00 =  invDet * (m22 * m33 - m32 * m23),
-	m->m10 = -invDet * (m12 * m33 - m32 * m13),
-	m->m20 =  invDet * (m12 * m23 - m22 * m13),
-	m->m01 = -invDet * (m21 * m33 - m31 * m23),
-	m->m11 =  invDet * (m11 * m33 - m31 * m13),
-	m->m21 = -invDet * (m11 * m23 - m21 * m13),
-	m->m02 =  invDet * (m21 * m32 - m31 * m22),
-	m->m12 = -invDet * (m11 * m32 - m31 * m12),
-	m->m22 =  invDet * (m11 * m22 - m21 * m12),
+	m->m00 =  invDet * (m22 * m33 - m32 * m23);
+	m->m10 = -invDet * (m12 * m33 - m32 * m13);
+	m->m20 =  invDet * (m12 * m23 - m22 * m13);
+	m->m01 = -invDet * (m21 * m33 - m31 * m23);
+	m->m11 =  invDet * (m11 * m33 - m31 * m13);
+	m->m21 = -invDet * (m11 * m23 - m21 * m13);
+	m->m02 =  invDet * (m21 * m32 - m31 * m22);
+	m->m12 = -invDet * (m11 * m32 - m31 * m12);
+	m->m22 =  invDet * (m11 * m22 - m21 * m12);
 
 
 	m->m03 = m->m13 = m->m23 = 0;
@@ -312,7 +313,7 @@ void im4Transpose(Isgl3dMatrix4 * m) {
 
 void im4SetRotation(Isgl3dMatrix4 * m, float angle, float x, float y, float z) {
 
-	Isgl3dMatrix4 matrix = im4Identity();
+	Isgl3dMatrix4 matrix = Isgl3dMatrix4Identity;
 	im4Rotate(&matrix, angle, x, y, z);
 	
 	m->m00 = matrix.m00;
@@ -615,7 +616,7 @@ Isgl3dVector3 im4ToEulerAngles(Isgl3dMatrix4 * m) {
 	float rotX = -atan2(m->m12, m->m22);
 	
 	// Create rotation matrix around X
-	Isgl3dMatrix4 matrix = im4Identity();
+	Isgl3dMatrix4 matrix = Isgl3dMatrix4Identity;
 	im4Rotate(&matrix, rotX * 180.0 / M_PI, 1, 0, 0);
 
 	// left-multipy rotation matrix with self to remove X rotation from transformation

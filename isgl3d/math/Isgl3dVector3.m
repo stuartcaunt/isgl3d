@@ -23,20 +23,5 @@
  *
  */
 
-#import <OpenGLES/ES2/gl.h>
+#import "Isgl3dVector3.h"
 
-#import "Isgl3dGLRenderer.h"
-
-@class Isgl3dGLRenderer2State;
-@class Isgl3dShader;
-
-/**
- * __isgl3d_internal__ Internal class of the iSGL3D framework
- */
-@interface Isgl3dGLRenderer2 : Isgl3dGLRenderer {
-}
-
-- (id) init;
-- (void) setShaderActive:(Isgl3dShader *)shader;
-
-@end

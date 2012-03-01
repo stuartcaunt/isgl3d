@@ -30,6 +30,7 @@
 #import "Isgl3dLight.h"
 #import "Isgl3dColorUtil.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dMatrix4.h"
 
 
 @interface Isgl3dGenericShader (PrivateMethods)
@@ -48,7 +49,7 @@
 		_previousState = [[Isgl3dShaderState alloc] init];
 	
 		_biasMatrix = im4(0.5, 0, 0, 0.5, 0, 0.5, 0, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0, 1);
-		_shadowMapTransformMatrix = im4Identity();
+		_shadowMapTransformMatrix = Isgl3dMatrix4Identity;
 		
 		_sceneAmbient[0] = 0.0;
 		_sceneAmbient[1] = 0.0;
@@ -147,7 +148,10 @@
 
 - (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
-	[self setUniformMatrix3:_normalMatrixUniformLocation matrix:modelViewMatrix];
+}
+
+- (void) setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
+    [self setUniformMatrix3:_normalMatrixUniformLocation matrix:normalMatrix];
 }
 
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {

@@ -94,7 +94,7 @@
 	[self setUniformMatrix4WithName:@"myMVPMatrix" matrix:self.modelViewProjectionMatrix];
 
 	// Set the modelview matrix
-	[self setUniformMatrix3WithName:@"myModelViewIT" matrix:self.modelViewMatrix];
+	[self setUniformMatrix3WithName:@"myModelViewIT" matrix:self.normalMatrix];
 	
 	// Bind the textures to the texture unit	
 	[self bindTexture:_materialTexture textureUnit:MATERIAL_TEXTUREINDEX];

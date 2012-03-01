@@ -36,6 +36,7 @@
 @synthesize projectionMatrix = _projectionMatrix;
 @synthesize modelViewMatrix = _modelViewMatrix;
 @synthesize modelViewProjectionMatrix = _modelViewProjectionMatrix;
+@synthesize normalMatrix = _normalMatrix;
 @synthesize vboData = _vboData;
 @synthesize lights = _lights;
 @synthesize sceneAmbient = _sceneAmbient;
@@ -133,6 +134,10 @@
 
 - (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	_modelViewProjectionMatrix = modelViewProjectionMatrix;
+}
+
+- (void) setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
+    _normalMatrix = normalMatrix;
 }
 
 - (void) setVBOData:(Isgl3dGLVBOData *)vboData {

@@ -27,6 +27,8 @@
 #import "Isgl3dBoneNode.h"
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dArray.h"
+#import "Isgl3dMatrix4.h"
+
 
 @implementation Isgl3dBoneBatch
 
@@ -93,7 +95,7 @@
 
 			Isgl3dMatrix4 itMatrix = globalTransformation;
 			im4Invert(&itMatrix);
-			im4Transpose(&itMatrix);
+            itMatrix = Isgl3dMatrix4Transpose(itMatrix);
 			IA_ADD(_currentFrameGlobalInverseTransformations, itMatrix);
 		}	
 		

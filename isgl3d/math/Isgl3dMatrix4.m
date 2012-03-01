@@ -23,20 +23,15 @@
  *
  */
 
-#import <OpenGLES/ES2/gl.h>
+#import "Isgl3dMatrix4.h"
 
-#import "Isgl3dGLRenderer.h"
 
-@class Isgl3dGLRenderer2State;
-@class Isgl3dShader;
+const Isgl3dMatrix4 Isgl3dMatrix4Identity =
+{
+    1.0f, 0.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f, 0.0f,
+    0.0f, 0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 0.0f, 1.0f
+};
 
-/**
- * __isgl3d_internal__ Internal class of the iSGL3D framework
- */
-@interface Isgl3dGLRenderer2 : Isgl3dGLRenderer {
-}
 
-- (id) init;
-- (void) setShaderActive:(Isgl3dShader *)shader;
-
-@end
