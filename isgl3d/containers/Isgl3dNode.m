@@ -37,7 +37,8 @@
 #import "Isgl3dActionManager.h"
 #import "Isgl3dAction.h"
 #import "Isgl3dMatrix4.h"
-
+#import "Isgl3dAudioData.h"
+#import "Isgl3dAudioManager.h"
 
 static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
@@ -495,6 +496,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 			[node updateWorldTransformation:&_worldTransformation];
 	    }
 	}
+    
+    [self updateAudioPosition];
 }
 
 #pragma mark scene graph
@@ -754,6 +757,23 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 - (void) stopAllActions {
 	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
+}
+
+- (void) loadAudioForNode:(NSString*)fileName ReferenceDistance:(float)rDist MaxDistance:(float)maxDist {
+    _audioSource = [[Isgl3dAudioData alloc] initWithALBuffer:[[Isgl3dAudioManager sharedInstance] createAudioDataFromFile:fileName]];
+    _isAudioNode = YES;
+    [_audioSource setReferenceDistance:rDist];
+    [_audioSource setMaxDistance:maxDist];
+}
+
+- (void) updateAudioPosition {
+    if(_isAudioNode)
+        [_audioSource setPosition:self.position];
+}
+
+- (void) playAudio:(BOOL)loop {
+    if(_isAudioNode)
+        [_audioSource playAudio:loop];
 }
 
 @end
