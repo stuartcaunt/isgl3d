@@ -30,9 +30,11 @@
 #import "Isgl3dVector.h"
 #import "Isgl3dMatrix.h"
 
+
 @class Isgl3dScene3D;
 @class Isgl3dCamera;
 @class Isgl3dGLRenderer;
+
 
 /**
  * The Isgl3dView provides the main mechanism for rendering a "view". A view is composed of a single Isgl3dScene3d scene and
@@ -318,7 +320,6 @@
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
  */
 - (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition;
-- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition orientation:(isgl3dOrientation)orientation;
 
 /**
  * Converts a 3D world position to a 2D position in the viewport equivalent to where the position is rendered
@@ -332,7 +333,6 @@
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left in pixels.
  */
 - (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition;
-- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition orientation:(isgl3dOrientation)orientation;
 
 /**
  * Resizes the viewport automatically if it is using the same rectangle as the main window, otherwise does nothing.

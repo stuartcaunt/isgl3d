@@ -56,13 +56,14 @@
 
 	// Set view in director
 	[Isgl3dDirector sharedInstance].openGLView = glView;
-	
+    
 	// Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
 	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
-	[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
+	//[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
+    [Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsAll;
 	
 	// Enable retina display : uncomment if desired
-//	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
+	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
 
 	// Enables anti aliasing (MSAA) : uncomment if desired (note may not be available on all devices and can have performance cost)
 //	[Isgl3dDirector sharedInstance].antiAliasingEnabled = YES;

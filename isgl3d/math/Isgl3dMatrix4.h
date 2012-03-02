@@ -37,8 +37,6 @@
 
 #import <GLKit/GLKMath.h>
 
-#pragma mark - GLKit compatible definitions
-#
 
 #define Isgl3dMatrix4Identity GLKMatrix4Identity
 
@@ -66,6 +64,8 @@
 #define Isgl3dMatrix4SetRow GLKMatrix4SetRow
 #define Isgl3dMatrix4SetColumn GLKMatrix4SetColumn
 #define Isgl3dMatrix4Transpose GLKMatrix4Transpose
+#define Isgl3dMatrix4Invert GLKMatrix4Invert
+#define Isgl3dMatrix4InvertAndTranspose GLKMatrix4InvertAndTranspose
 #define Isgl3dMatrix4Multiply GLKMatrix4Multiply
 #define Isgl3dMatrix4Add GLKMatrix4Add
 #define Isgl3dMatrix4Subtract GLKMatrix4Subtract
@@ -151,6 +151,8 @@ static inline Isgl3dVector4 Isgl3dMatrix4GetColumn(Isgl3dMatrix4 matrix, int col
 static inline Isgl3dMatrix4 Isgl3dMatrix4SetRow(Isgl3dMatrix4 matrix, int row, Isgl3dVector4 vector);
 static inline Isgl3dMatrix4 Isgl3dMatrix4SetColumn(Isgl3dMatrix4 matrix, int column, Isgl3dVector4 vector);
 static inline Isgl3dMatrix4 Isgl3dMatrix4Transpose(Isgl3dMatrix4 matrix);
+Isgl3dMatrix4 Isgl3dMatrix4Invert(Isgl3dMatrix4 matrix, bool *isInvertible);
+Isgl3dMatrix4 Isgl3dMatrix4InvertAndTranspose(Isgl3dMatrix4 matrix, bool *isInvertible);
 #ifndef __clang__
 static inline Isgl3dMatrix4 Isgl3dMatrix4Multiply(Isgl3dMatrix4 matrixLeft, Isgl3dMatrix4 matrixRight);
 #else

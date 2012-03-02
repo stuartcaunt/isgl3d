@@ -29,12 +29,16 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class Isgl3dNode;
+
+
 /**
  * The Isgl3dAction is the base class for all actions in Isgl3d : it essentially provides
  * an interface to all sub-classed actions.
  */
 @interface Isgl3dAction : NSObject <NSCopying> {
-	id _target;
+	Isgl3dNode *_target;
 }
 
 /**

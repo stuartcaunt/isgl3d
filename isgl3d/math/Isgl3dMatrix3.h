@@ -37,8 +37,6 @@
 
 #import <GLKit/GLKMath.h>
 
-#pragma mark - GLKit compatible definitions
-#
 
 #define Isgl3dMatrix3Identity GLKMatrix3Identity
 

@@ -115,6 +115,7 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dLog.h>
 #import <isgl3d/Isgl3dMaterial.h>
 #import <isgl3d/Isgl3dMathTypes.h>
+#import <isgl3d/Isgl3dMathUtils.h>
 #import <isgl3d/Isgl3dMatrix.h>
 #import <isgl3d/Isgl3dMatrix3.h>
 #import <isgl3d/Isgl3dMatrix4.h>

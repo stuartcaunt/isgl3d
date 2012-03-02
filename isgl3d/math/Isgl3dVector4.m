@@ -25,3 +25,9 @@
 
 #import "Isgl3dVector3.h"
 
+
+#if !(defined(__STRICT_ANSI__)) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_5_0)
+
+#else
+
+#endif

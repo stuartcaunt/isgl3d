@@ -571,8 +571,6 @@
 		1733548413408C38000F26F0 /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
 		1733548513408C38000F26F0 /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
 		1733548813408D34000F26F0 /* Isgl3dAppDelegateWithCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 1733548713408D34000F26F0 /* Isgl3dAppDelegateWithCamera.m */; };
-		1733549A1340B82F000F26F0 /* Isgl3dEAGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 173354981340B82F000F26F0 /* Isgl3dEAGLView.h */; };
-		1733549B1340B82F000F26F0 /* Isgl3dEAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 173354991340B82F000F26F0 /* Isgl3dEAGLView.m */; };
 		173D5CEB13241DC10092D2EE /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
 		173D5CEC13241DC10092D2EE /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
 		173D5CED13241DC10092D2EE /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
@@ -1115,7 +1113,6 @@
 		17EA00C113F0AAB500924372 /* Isgl3dShaderMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EA00BF13F0AAB500924372 /* Isgl3dShaderMaterial.m */; };
 		17EA00C413F0AAD200924372 /* Isgl3dCustomShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17EA00C213F0AAD200924372 /* Isgl3dCustomShader.h */; };
 		17EA00C513F0AAD200924372 /* Isgl3dCustomShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EA00C313F0AAD200924372 /* Isgl3dCustomShader.m */; };
-		17EDE05D13743C0A00652E35 /* Isgl3dGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 17EDE05C13743C0A00652E35 /* Isgl3dGLView.h */; };
 		17F1D75512F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */; };
 		17F1D75612F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */; };
 		17F1D75712F87EC5008D39E8 /* Isgl3dAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */; };
@@ -1374,6 +1371,11 @@
 		8B8A870F14CF182500C17DC5 /* Isgl3dMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */; };
 		8B8A871214CF190200C17DC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A871114CF190200C17DC5 /* GLKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8B8A871314CF1CF200C17DC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A871114CF190200C17DC5 /* GLKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		8BBE50F0150019AC006CC905 /* Isgl3dMathUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE50EF150019AC006CC905 /* Isgl3dMathUtils.h */; };
+		8BBE511B150047D1006CC905 /* Isgl3dMathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE50F215001B12006CC905 /* Isgl3dMathUtils.m */; };
+		8BBE511F150060C0006CC905 /* Isgl3dEAGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE511D150060C0006CC905 /* Isgl3dEAGLView.h */; };
+		8BBE5120150060C0006CC905 /* Isgl3dEAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE511E150060C0006CC905 /* Isgl3dEAGLView.m */; };
+		8BBE5159150067A7006CC905 /* Isgl3dGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE5158150067A7006CC905 /* Isgl3dGLView.h */; };
 		8BDBA18814CCFA9000BAEB8A /* PVRTArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */; };
 		8BDBA18914CCFA9000BAEB8A /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */; };
 		8BDBA18A14CCFA9000BAEB8A /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA15814CCFA9000BAEB8A /* PVRTBoneBatch.cpp */; };
@@ -2286,8 +2288,6 @@
 		1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Isgl3dAppDelegate.mm; sourceTree = "<group>"; };
 		1733548613408D34000F26F0 /* Isgl3dAppDelegateWithCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAppDelegateWithCamera.h; sourceTree = "<group>"; };
 		1733548713408D34000F26F0 /* Isgl3dAppDelegateWithCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAppDelegateWithCamera.m; sourceTree = "<group>"; };
-		173354981340B82F000F26F0 /* Isgl3dEAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dEAGLView.h; sourceTree = "<group>"; };
-		173354991340B82F000F26F0 /* Isgl3dEAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dEAGLView.m; sourceTree = "<group>"; };
 		175535AF1360B4B700C593E3 /* TerrainPhysics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerrainPhysics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		175535B61360B53C00C593E3 /* TerrainPhysicsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainPhysicsView.h; sourceTree = "<group>"; };
 		175535B71360B53C00C593E3 /* TerrainPhysicsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TerrainPhysicsView.mm; sourceTree = "<group>"; };
@@ -2415,7 +2415,6 @@
 		17EA00BF13F0AAB500924372 /* Isgl3dShaderMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dShaderMaterial.m; sourceTree = "<group>"; };
 		17EA00C213F0AAD200924372 /* Isgl3dCustomShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dCustomShader.h; sourceTree = "<group>"; };
 		17EA00C313F0AAD200924372 /* Isgl3dCustomShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dCustomShader.m; sourceTree = "<group>"; };
-		17EDE05C13743C0A00652E35 /* Isgl3dGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGLView.h; sourceTree = "<group>"; };
 		17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimatedMeshNode.h; sourceTree = "<group>"; };
 		17F1D66412F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAnimatedMeshNode.m; sourceTree = "<group>"; };
 		17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAnimationController.h; sourceTree = "<group>"; };
@@ -2644,6 +2643,11 @@
 		8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMathTypes.h; sourceTree = "<group>"; };
 		8B8A871114CF190200C17DC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8B8A871814CF1E6D00C17DC5 /* isgl3d-Apps-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "isgl3d-Apps-Prefix.pch"; path = "../isgl3d/isgl3d-Apps-Prefix.pch"; sourceTree = "<group>"; };
+		8BBE50EF150019AC006CC905 /* Isgl3dMathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMathUtils.h; sourceTree = "<group>"; };
+		8BBE50F215001B12006CC905 /* Isgl3dMathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMathUtils.m; sourceTree = "<group>"; };
+		8BBE511D150060C0006CC905 /* Isgl3dEAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dEAGLView.h; sourceTree = "<group>"; };
+		8BBE511E150060C0006CC905 /* Isgl3dEAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dEAGLView.m; sourceTree = "<group>"; };
+		8BBE5158150067A7006CC905 /* Isgl3dGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGLView.h; sourceTree = "<group>"; };
 		8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTArray.h; sourceTree = "<group>"; };
 		8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTBackground.h; sourceTree = "<group>"; };
 		8BDBA15814CCFA9000BAEB8A /* PVRTBoneBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTBoneBatch.cpp; sourceTree = "<group>"; };
@@ -3854,6 +3858,9 @@
 		179F86EF133E67CA007F4671 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8BBE5158150067A7006CC905 /* Isgl3dGLView.h */,
+				8BBE511D150060C0006CC905 /* Isgl3dEAGLView.h */,
+				8BBE511E150060C0006CC905 /* Isgl3dEAGLView.m */,
 				179F86F0133E67CA007F4671 /* Isgl3dView.h */,
 				179F86F1133E67CA007F4671 /* Isgl3dView.m */,
 			);
@@ -4052,11 +4059,8 @@
 			children = (
 				17F1D69A12F87EC5008D39E8 /* v1.1 */,
 				17F1D6A312F87EC5008D39E8 /* v2.0 */,
-				17EDE05C13743C0A00652E35 /* Isgl3dGLView.h */,
 				179F86E3133E67A5007F4671 /* Isgl3dDirector.h */,
 				179F86E4133E67A5007F4671 /* Isgl3dDirector.m */,
-				173354981340B82F000F26F0 /* Isgl3dEAGLView.h */,
-				173354991340B82F000F26F0 /* Isgl3dEAGLView.m */,
 				179F876D133FC68E007F4671 /* Isgl3dFpsRenderer.h */,
 				179F876E133FC68E007F4671 /* Isgl3dFpsRenderer.m */,
 				17F1D68412F87EC5008D39E8 /* Isgl3dGLContext.h */,
@@ -4186,6 +4190,8 @@
 				1713BB3F1358D6F7002C3288 /* neon */,
 				1713BB421358D6F7002C3288 /* vfp */,
 				8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */,
+				8BBE50EF150019AC006CC905 /* Isgl3dMathUtils.h */,
+				8BBE50F215001B12006CC905 /* Isgl3dMathUtils.m */,
 				17F1D6D812F87EC5008D39E8 /* Isgl3dGLU.h */,
 				17F1D6D912F87EC5008D39E8 /* Isgl3dGLU.m */,
 				1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */,
@@ -4571,7 +4577,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17EDE05D13743C0A00652E35 /* Isgl3dGLView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4860,7 +4865,6 @@
 				179F86F2133E67CA007F4671 /* Isgl3dView.h in Headers */,
 				179F876B133FC65A007F4671 /* Isgl3dGLProgram.h in Headers */,
 				179F876F133FC68E007F4671 /* Isgl3dFpsRenderer.h in Headers */,
-				1733549A1340B82F000F26F0 /* Isgl3dEAGLView.h in Headers */,
 				1756F4DC1347874000205D76 /* Isgl3dVector.h in Headers */,
 				1756F5441347A5AD00205D76 /* Isgl3dMatrix.h in Headers */,
 				17C15C7E1348F4A5004EF5C3 /* Isgl3dArray.h in Headers */,
@@ -4939,6 +4943,9 @@
 				8B2AFA9914FEE3790040102B /* Isgl3dMatrix4.h in Headers */,
 				8B2AFAC014FEE7970040102B /* Isgl3dVector4.h in Headers */,
 				8B2AFAD514FEECC40040102B /* Isgl3dMatrix3.h in Headers */,
+				8BBE50F0150019AC006CC905 /* Isgl3dMathUtils.h in Headers */,
+				8BBE511F150060C0006CC905 /* Isgl3dEAGLView.h in Headers */,
+				8BBE5159150067A7006CC905 /* Isgl3dGLView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6953,7 +6960,6 @@
 				179F86F3133E67CA007F4671 /* Isgl3dView.m in Sources */,
 				179F876C133FC65A007F4671 /* Isgl3dGLProgram.m in Sources */,
 				179F8770133FC68E007F4671 /* Isgl3dFpsRenderer.m in Sources */,
-				1733549B1340B82F000F26F0 /* Isgl3dEAGLView.m in Sources */,
 				17C15BF11347AABB004EF5C3 /* Isgl3dMatrix.m in Sources */,
 				17C15BF31347AAF8004EF5C3 /* Isgl3dVector.m in Sources */,
 				172792EC134A3E5C0043956C /* Isgl3dArray.m in Sources */,
@@ -7016,6 +7022,8 @@
 				8B2AFA9A14FEE3790040102B /* Isgl3dMatrix4.m in Sources */,
 				8B2AFAC114FEE7970040102B /* Isgl3dVector4.m in Sources */,
 				8B2AFAD614FEECC40040102B /* Isgl3dMatrix3.m in Sources */,
+				8BBE511B150047D1006CC905 /* Isgl3dMathUtils.m in Sources */,
+				8BBE5120150060C0006CC905 /* Isgl3dEAGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8982,7 +8990,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -9007,7 +9014,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

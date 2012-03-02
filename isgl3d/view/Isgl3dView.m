@@ -32,6 +32,9 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dColorUtil.h"
+#import "Isgl3dMathUtils.h"
+#import "Isgl3dMatrix4.h"
+
 
 @interface Isgl3dView ()
 - (void) clearBuffers:(Isgl3dGLRenderer *)renderer;
@@ -393,50 +396,15 @@
 }
 
 - (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition {
-	return [self convertWorldPositionToView:worldPosition orientation:_deviceViewOrientation];
-}
-
-- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition orientation:(isgl3dOrientation)orientation {
-	
-	Isgl3dMatrix4 viewProjectionMatrix = _camera.viewProjectionMatrix;
-	Isgl3dVector3 projectedPosition = im4MultVector(&viewProjectionMatrix, &worldPosition);
-	CGPoint viewPoint = CGPointZero;
-	CGSize viewportSize = _viewport.size;
-
-	switch (orientation) {
-		case Isgl3dOrientation0:
-			viewPoint.x = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
-			viewPoint.y = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
-			break;
-
-		case Isgl3dOrientation180:
-			viewPoint.x = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
-			viewPoint.y = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
-			break;
-
-		case Isgl3dOrientation90Clockwise:
-			viewPoint.x = 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
-			viewPoint.y = viewportSize.width - 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
-			break;
-
-		case Isgl3dOrientation90CounterClockwise:
-			viewPoint.x = viewportSize.height - 0.5 * viewportSize.height * (1.0f + projectedPosition.y / viewProjectionMatrix.m33);
-			viewPoint.y = 0.5 * viewportSize.width * (1.0f + projectedPosition.x / viewProjectionMatrix.m33);
-			break;
-	}
-
-	return viewPoint;
+	int viewport[4] = { _viewport.origin.x, _viewport.origin.y, _viewport.size.width, _viewport.size.height };
+    Isgl3dVector3 windowPosition = Isgl3dMathProject(worldPosition, Isgl3dMatrix4Identity, _camera.viewProjectionMatrix, viewport);
+    return CGPointMake(windowPosition.x, windowPosition.y);
 }
 
 
 - (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition {
-	return [self convertWorldPositionToViewInPixels:worldPosition orientation:_deviceViewOrientation];
-}
-
-- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition orientation:(isgl3dOrientation)orientation {
 	CGPoint pixelPoint = [self convertWorldPositionToView:worldPosition];
 	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
-	
 	return CGPointMake(pixelPoint.x * s, pixelPoint.y * s);
 }
 

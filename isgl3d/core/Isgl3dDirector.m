@@ -554,13 +554,15 @@ static Isgl3dDirector * _instance = nil;
 		
 		// Scale current window rectangle (cannot call [_glView bounds] because resizing view is asynchronous)
 		_windowRectInPixels = CGRectMake(_windowRect.origin.x * _contentScaleFactor, 
-			_windowRect.origin.y * _contentScaleFactor, 
-			_windowRect.size.width * _contentScaleFactor, 
-	        _windowRect.size.height * _contentScaleFactor);
+                                         _windowRect.origin.y * _contentScaleFactor, 
+                                         _windowRect.size.width * _contentScaleFactor, 
+                                         _windowRect.size.height * _contentScaleFactor);
 	
-		// Update the viewport in the fps renderer
-		[_fpsRenderer updateViewport];
-	
+        // Force recalculation of all view orientations
+        for (Isgl3dView * view in _views) {
+            [view onResizeFromLayer];
+        }
+        
 		Isgl3dLog(Info, @"Isgl3dDirector : content scale factor changed, window size in pixels = %ix%i",  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
 	}
 }

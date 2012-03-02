@@ -153,8 +153,8 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	
 	// Get the width and height
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
-	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
-	
+    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
+
 	// Create and bind the frame buffer, attach the color render buffer to the framebuffer
 	glGenFramebuffers(1, &_defaultFrameBuffer);
 	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFrameBuffer);

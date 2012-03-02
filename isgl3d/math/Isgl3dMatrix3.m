@@ -26,6 +26,10 @@
 #import "Isgl3dMatrix3.h"
 
 
+#if !(defined(__STRICT_ANSI__)) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_5_0)
+
+#else
+
 const Isgl3dMatrix3 Isgl3dMatrix3Identity = 
 {
     1.0f, 0.0f, 0.0f,
@@ -34,42 +38,39 @@ const Isgl3dMatrix3 Isgl3dMatrix3Identity =
 };
 
 
+static inline float Isgl3dMatrix3Determinant(const Isgl3dMatrix3 m)
+{
+	return	  (m.m00 * m.m11 - m.m01 * m.m10) * m.m22 
+            - (m.m00 * m.m12 - m.m02 * m.m10) * m.m21 
+            + (m.m01 * m.m12 - m.m02 * m.m11) * m.m20;	
+}
+
 Isgl3dMatrix3 Isgl3dMatrix3Invert(Isgl3dMatrix3 matrix, bool *isInvertible)
 {
-	// If the determinant is zero then no inverse exists
     Isgl3dMatrix3 m = matrix;
-	float det =   (m.m00 * m.m11 - m.m01 * m.m10) * m.m22 
-                - (m.m00 * m.m12 - m.m02 * m.m10) * m.m21 
-                + (m.m01 * m.m12 - m.m02 * m.m11) * m.m20;	
-    
-    
+
+	// If the determinant is zero then no inverse exists
+	float det =  Isgl3dMatrix3Determinant(m);
 	if (fabs(det) < 1e-8) {
         if (isInvertible)
             *isInvertible = false;
 		return m;
 	}
 	
-	float invDet = 1 / det;
+	float invDet = 1.0f / det;
     
-	float m11 = m.m00;
-	float m12 = m.m10;
-	float m13 = m.m20;
-	float m21 = m.m01;
-	float m22 = m.m11;
-	float m23 = m.m21;
-	float m31 = m.m02;
-	float m32 = m.m12;
-	float m33 = m.m22;
-    
-	m.m00 =  invDet * (m22 * m33 - m32 * m23);
-	m.m10 = -invDet * (m12 * m33 - m32 * m13);
-	m.m20 =  invDet * (m12 * m23 - m22 * m13);
-	m.m01 = -invDet * (m21 * m33 - m31 * m23);
-	m.m11 =  invDet * (m11 * m33 - m31 * m13);
-	m.m21 = -invDet * (m11 * m23 - m21 * m13);
-	m.m02 =  invDet * (m21 * m32 - m31 * m22);
-	m.m12 = -invDet * (m11 * m32 - m31 * m12);
-	m.m22 =  invDet * (m11 * m22 - m21 * m12);
+    // Calculate inverse with Cramer's rule
+    // TODO: this could be optimized, SIMD instructions are possible
+    // ftp://download.intel.com/design/pentiumiii/sml/24504301.pdf
+	m.m00 =  invDet * (matrix.m11 * matrix.m22 - matrix.m12 * matrix.m21);
+	m.m10 = -invDet * (matrix.m10 * matrix.m22 - matrix.m12 * matrix.m20);
+	m.m20 =  invDet * (matrix.m10 * matrix.m21 - matrix.m11 * matrix.m20);
+	m.m01 = -invDet * (matrix.m01 * matrix.m22 - matrix.m02 * matrix.m21);
+	m.m11 =  invDet * (matrix.m00 * matrix.m22 - matrix.m02 * matrix.m20);
+	m.m21 = -invDet * (matrix.m00 * matrix.m21 - matrix.m01 * matrix.m20);
+	m.m02 =  invDet * (matrix.m01 * matrix.m12 - matrix.m02 * matrix.m11);
+	m.m12 = -invDet * (matrix.m00 * matrix.m12 - matrix.m02 * matrix.m10);
+	m.m22 =  invDet * (matrix.m00 * matrix.m11 - matrix.m01 * matrix.m10);
     
     if (*isInvertible)
         *isInvertible = true;
@@ -90,3 +91,5 @@ Isgl3dMatrix3 Isgl3dMatrix3InvertAndTranspose(Isgl3dMatrix3 matrix, bool *isInve
         *isInvertible = _isInvertible;
     return invTransposeMatrix;
 }
+
+#endif

@@ -35,9 +35,6 @@
 
 #import <GLKit/GLKMath.h>
 
-#pragma mark - GLKit compatible definitions
-#
-
 
 #define Isgl3dVector4Make GLKVector4Make
 #define Isgl3dVector4MakeWithArray GLKVector4MakeWithArray

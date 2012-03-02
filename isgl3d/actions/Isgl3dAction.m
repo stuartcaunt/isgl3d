@@ -27,6 +27,8 @@
  */
 
 #import "Isgl3dAction.h"
+#import "Isgl3dNode.h"
+
 
 @implementation Isgl3dAction
 
