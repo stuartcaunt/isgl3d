@@ -821,6 +821,14 @@
 		8B66D90414F68CF200EE2444 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B66D90314F68CF200EE2444 /* OpenGLES.framework */; };
 		8B66D90614F68D1900EE2444 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B66D90514F68D1900EE2444 /* CoreGraphics.framework */; };
 		8B66D90814F68D2600EE2444 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B66D90714F68D2500EE2444 /* QuartzCore.framework */; };
+		8B92DC5A15057E24007807C2 /* Isgl3dCameraLens.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B92DC5815057E24007807C2 /* Isgl3dCameraLens.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B92DC5B15057E24007807C2 /* Isgl3dCameraLens.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B92DC5915057E24007807C2 /* Isgl3dCameraLens.m */; };
+		8B92DC5F15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B92DC5D15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B92DC6015057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B92DC5E15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.m */; };
+		8B92DC6315057E4E007807C2 /* Isgl3dLookAtCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B92DC6115057E4E007807C2 /* Isgl3dLookAtCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B92DC6415057E4E007807C2 /* Isgl3dLookAtCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B92DC6215057E4E007807C2 /* Isgl3dLookAtCamera.m */; };
+		8B92DC6715057E5A007807C2 /* Isgl3dNodeCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B92DC6515057E59007807C2 /* Isgl3dNodeCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B92DC6815057E5A007807C2 /* Isgl3dNodeCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B92DC6615057E5A007807C2 /* Isgl3dNodeCamera.m */; };
 		8BBE516E15008F20006CC905 /* Isgl3dMathUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE516A15008F19006CC905 /* Isgl3dMathUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BBE516F15008F27006CC905 /* Isgl3dMathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE516B15008F19006CC905 /* Isgl3dMathUtils.m */; };
 		8BBE517315008F4F006CC905 /* Isgl3dEAGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE517015008F4F006CC905 /* Isgl3dEAGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1480,6 +1488,14 @@
 		8B66D90314F68CF200EE2444 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		8B66D90514F68D1900EE2444 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8B66D90714F68D2500EE2444 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8B92DC5815057E24007807C2 /* Isgl3dCameraLens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dCameraLens.h; sourceTree = "<group>"; };
+		8B92DC5915057E24007807C2 /* Isgl3dCameraLens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dCameraLens.m; sourceTree = "<group>"; };
+		8B92DC5D15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dFocusZoomPerspectiveLens.h; sourceTree = "<group>"; };
+		8B92DC5E15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dFocusZoomPerspectiveLens.m; sourceTree = "<group>"; };
+		8B92DC6115057E4E007807C2 /* Isgl3dLookAtCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dLookAtCamera.h; sourceTree = "<group>"; };
+		8B92DC6215057E4E007807C2 /* Isgl3dLookAtCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dLookAtCamera.m; sourceTree = "<group>"; };
+		8B92DC6515057E59007807C2 /* Isgl3dNodeCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dNodeCamera.h; sourceTree = "<group>"; };
+		8B92DC6615057E5A007807C2 /* Isgl3dNodeCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dNodeCamera.m; sourceTree = "<group>"; };
 		8BBE516A15008F19006CC905 /* Isgl3dMathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMathUtils.h; sourceTree = "<group>"; };
 		8BBE516B15008F19006CC905 /* Isgl3dMathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMathUtils.m; sourceTree = "<group>"; };
 		8BBE517015008F4F006CC905 /* Isgl3dEAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dEAGLView.h; sourceTree = "<group>"; };
@@ -1646,8 +1662,16 @@
 		8B66CFDB14F67B0C00EE2444 /* cameras */ = {
 			isa = PBXGroup;
 			children = (
+				8B92DC5815057E24007807C2 /* Isgl3dCameraLens.h */,
+				8B92DC5915057E24007807C2 /* Isgl3dCameraLens.m */,
+				8B92DC5D15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.h */,
+				8B92DC5E15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.m */,
 				8B66CFDC14F67B0C00EE2444 /* Isgl3dCamera.h */,
 				8B66CFDD14F67B0C00EE2444 /* Isgl3dCamera.m */,
+				8B92DC6115057E4E007807C2 /* Isgl3dLookAtCamera.h */,
+				8B92DC6215057E4E007807C2 /* Isgl3dLookAtCamera.m */,
+				8B92DC6515057E59007807C2 /* Isgl3dNodeCamera.h */,
+				8B92DC6615057E5A007807C2 /* Isgl3dNodeCamera.m */,
 				8B66CFDE14F67B0C00EE2444 /* Isgl3dFollowCamera.h */,
 				8B66CFDF14F67B0C00EE2444 /* Isgl3dFollowCamera.m */,
 				8B66CFE014F67B0C00EE2444 /* Isgl3dSpringCamera.h */,
@@ -2921,6 +2945,10 @@
 				8BBE516E15008F20006CC905 /* Isgl3dMathUtils.h in Headers */,
 				8BBE517315008F4F006CC905 /* Isgl3dEAGLView.h in Headers */,
 				8BBE517515008F4F006CC905 /* Isgl3dGLView.h in Headers */,
+				8B92DC5A15057E24007807C2 /* Isgl3dCameraLens.h in Headers */,
+				8B92DC5F15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.h in Headers */,
+				8B92DC6315057E4E007807C2 /* Isgl3dLookAtCamera.h in Headers */,
+				8B92DC6715057E5A007807C2 /* Isgl3dNodeCamera.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3379,6 +3407,10 @@
 				8B2AFAE014FEF1300040102B /* Isgl3dMatrix3.m in Sources */,
 				8BBE516F15008F27006CC905 /* Isgl3dMathUtils.m in Sources */,
 				8BBE517415008F4F006CC905 /* Isgl3dEAGLView.m in Sources */,
+				8B92DC5B15057E24007807C2 /* Isgl3dCameraLens.m in Sources */,
+				8B92DC6015057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.m in Sources */,
+				8B92DC6415057E4E007807C2 /* Isgl3dLookAtCamera.m in Sources */,
+				8B92DC6815057E5A007807C2 /* Isgl3dNodeCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,7 +52,6 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dBoneBatch.h>
 #import <isgl3d/Isgl3dBoneNode.h>
 #import <isgl3d/Isgl3dCArray.h>
-#import <isgl3d/Isgl3dCamera.h>
 #import <isgl3d/Isgl3dCaptureShader.h>
 #import <isgl3d/Isgl3dColorMaterial.h>
 #import <isgl3d/Isgl3dColorUtil.h>
@@ -71,7 +70,6 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dEventType.h>
 #import <isgl3d/Isgl3dExplosionParticleGenerator.h>
 #import <isgl3d/Isgl3dFloatArray.h>
-#import <isgl3d/Isgl3dFollowCamera.h>
 #import <isgl3d/Isgl3dFollowNode.h>
 #import <isgl3d/Isgl3dFountainBounceParticleGenerator.h>
 #import <isgl3d/Isgl3dFountainParticleGenerator.h>
@@ -144,7 +142,6 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dSingleTouchFilter.h>
 #import <isgl3d/Isgl3dSkeletonNode.h>
 #import <isgl3d/Isgl3dSphere.h>
-#import <isgl3d/Isgl3dSpringCamera.h>
 #import <isgl3d/Isgl3dTerrainMesh.h>
 #import <isgl3d/Isgl3dTextureMaterial.h>
 #import <isgl3d/Isgl3dTorus.h>
@@ -159,10 +156,17 @@ NSString * isgl3dVersion();
 #import <isgl3d/Isgl3dVector3.h>
 #import <isgl3d/Isgl3dVector4.h>
 #import <isgl3d/Isgl3dView.h>
+#import <isgl3d/Isgl3dCameraLens.h>
+#import <isgl3d/Isgl3dFocusZoomPerspectiveLens.h>
+#import <isgl3d/Isgl3dCamera.h>
+#import <isgl3d/Isgl3dLookAtCamera.h>
+#import <isgl3d/Isgl3dNodeCamera.h>
+#import <isgl3d/Isgl3dSpringCamera.h>
+#import <isgl3d/Isgl3dFollowCamera.h>
+#import <isgl3d/Isgl3dPODImporter.h>
 #import <isgl3d/common_macros.h>
 #import <isgl3d/isgl3dTypes.h>
 #import <isgl3d/matrix_impl.h>
 #import <isgl3d/neon_matrix_impl.h>
 #import <isgl3d/utility_impl.h>
 #import <isgl3d/vfp_clobbers.h>
-#import <isgl3d/Isgl3dPODImporter.h>
