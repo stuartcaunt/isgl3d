@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,11 +36,11 @@
 @synthesize lats = _lats;
 
 
-+ (id) meshWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats {
++ (id)meshWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats {
 	return [[[self alloc] initWithGeometry:radiusX radiusY:radiusY radiusZ:radiusZ longs:longs lats:lats] autorelease];
 }
 
-- (id) initWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats {
+- (id)initWithGeometry:(float)radiusX radiusY:(float)radiusY radiusZ:(float)radiusZ longs:(int)longs lats:(int)lats {
 	
 	if ((self = [super init])) {
 		_radiusX = radiusX;
@@ -55,11 +55,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [super dealloc];
 }
 
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 	
 	for (int latNumber = 0; latNumber <= _lats; ++latNumber) {
 		for (int longNumber = 0; longNumber <= _longs; ++longNumber) {

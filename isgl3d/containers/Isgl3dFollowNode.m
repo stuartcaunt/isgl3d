@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,11 @@
 
 @synthesize keepHorizontal = _keepHorizontal;
 
-+ (id) nodeWithTarget:(Isgl3dNode *)target {
++ (id)nodeWithTarget:(Isgl3dNode *)target {
 	return [[[self alloc] initWithTarget:target] autorelease];
 }
 
-- (id) initWithTarget:(Isgl3dNode *)target {
+- (id)initWithTarget:(Isgl3dNode *)target {
     if ((self = [super init])) {
     	_target = [target retain];
 		_isFirstUpdate = YES;
@@ -43,13 +43,13 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_target release];
 	
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dFollowNode * copy = [super copyWithZone:zone];
 	
 	copy->_target = [_target retain];
@@ -62,33 +62,36 @@
 }
 
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)targetTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)targetTransformation {
 	// Get current position
 	Isgl3dVector3 currentTargetPosition = [_target worldPosition];
 
 	// Initialise old target position if necessary
 	if (_isFirstUpdate) {
 		_isFirstUpdate = NO;
-		iv3Copy(&_oldTargetPosition, &currentTargetPosition);
+        _oldTargetPosition = currentTargetPosition;
 	}
 
 	if (iv3DistanceBetween(&currentTargetPosition, &_oldTargetPosition) > 0.01) {
 		// Calculate transformation matrix along line of movement of target
 		Isgl3dMatrix4 targetMovementTransformation;
 		if (_keepHorizontal) {
-			targetMovementTransformation = [Isgl3dGLU lookAt:currentTargetPosition.x eyey:currentTargetPosition.y eyez:currentTargetPosition.z centerx:(2 * currentTargetPosition.x) - _oldTargetPosition.x centery:currentTargetPosition.y centerz:(2 * currentTargetPosition.z) - _oldTargetPosition.z upx:0 upy:1 upz:0];
+            targetMovementTransformation = Isgl3dMatrix4MakeLookAt(currentTargetPosition.x, currentTargetPosition.y, currentTargetPosition.z,
+                                                                   (2.0f * currentTargetPosition.x) - _oldTargetPosition.x, currentTargetPosition.y, (2.0f * currentTargetPosition.z) - _oldTargetPosition.z,
+                                                                   0.0f, 1.0f, 0.0f);
 		} else {
-			targetMovementTransformation = [Isgl3dGLU lookAt:currentTargetPosition.x eyey:currentTargetPosition.y eyez:currentTargetPosition.z centerx:(2 * currentTargetPosition.x) - _oldTargetPosition.x centery:(2 * currentTargetPosition.y) - _oldTargetPosition.y centerz:(2 * currentTargetPosition.z) - _oldTargetPosition.z upx:0 upy:1 upz:0];
+            targetMovementTransformation = Isgl3dMatrix4MakeLookAt(currentTargetPosition.x, currentTargetPosition.y, currentTargetPosition.z,
+                                                                   (2.0f * currentTargetPosition.x) - _oldTargetPosition.x, (2.0f * currentTargetPosition.y) - _oldTargetPosition.y, (2.0f * currentTargetPosition.z) - _oldTargetPosition.z,
+                                                                   0.0f, 1.0f, 0.0f);
 		}
 		
-		im4Copy(&_targetMovementIT, &targetMovementTransformation);
-		im4Invert(&_targetMovementIT);
+        _targetMovementIT = Isgl3dMatrix4Invert(targetMovementTransformation, NULL);
 
 		[self setTransformation:_targetMovementIT];
 
 	}
 
-	iv3Copy(&_oldTargetPosition, &currentTargetPosition);
+    _oldTargetPosition = currentTargetPosition;
 
 	[super updateWorldTransformation:targetTransformation];
 }

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,18 +30,18 @@
 
 @implementation Isgl3dSkeletonNode
 
-+ (id) skeletonNode {
++ (id)skeletonNode {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
     if ((self = [super init])) {
     }
 	
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[super dealloc];
 }
@@ -50,7 +50,7 @@
 	return (Isgl3dBoneNode *)[self addChild:[Isgl3dBoneNode boneNode]];
 }
 
-- (void) setFrame:(unsigned int)frameNumber {
+- (void)setFrame:(unsigned int)frameNumber {
 	for (Isgl3dNode * node in _children) {
 		if ([node isKindOfClass:[Isgl3dBoneNode class]]) {
 			[(Isgl3dBoneNode *)node setFrame:frameNumber];

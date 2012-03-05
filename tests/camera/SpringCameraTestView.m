@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,21 +24,37 @@
  */
 
 #import "SpringCameraTestView.h"
+#import "Isgl3dSpringCamera.h"
+
+
+@interface SpringCameraTestView() {
+@private
+	Isgl3dNode * _container;
+	Isgl3dMeshNode * _sphere;
+	
+	id<Isgl3dCamera> _staticCamera;
+	Isgl3dSpringCamera * _springCamera;
+	
+	float _angle;
+}
+- (Isgl3dSpringCamera *)createSpringCameraForTarget:(Isgl3dNode *)target;
+@end
+
 
 @implementation SpringCameraTestView
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		_angle = 0;
 
 		// Enable shadows
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
-		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
+		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5f;
 		
 		// Keep a reference to the default camera and move it
 		_staticCamera = [self.camera retain];
-		_staticCamera.position = iv3(0, 14, 20);
+		_staticCamera.eyePosition = Isgl3dVector3Make(0.0f, 14.0f, 20.0f);
         
 		// Create the ground surface
 		Isgl3dTextureMaterial * woodMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"wood.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
@@ -48,21 +64,20 @@
 
 		// Create container		
 		_container = [self.scene createNode]; 
-		_container.position = iv3(0, 2, 0);
+		_container.position = Isgl3dVector3Make(0, 2, 0);
 		
 		// Create ball
 		Isgl3dTextureMaterial * checkerMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		Isgl3dSphere * sphereMesh = [Isgl3dSphere meshWithGeometry:1.0 longs:10 lats:10];
 		_sphere = [_container createNodeWithMesh:sphereMesh andMaterial:checkerMaterial];
-		_sphere.position = iv3(7, 0, 0);
+		_sphere.position = Isgl3dVector3Make(7.0f, 0.0f, 0.0f);
 		_sphere.enableShadowCasting = YES;
 		
 		// Create spring camera
- 		_springCamera = [[Isgl3dSpringCamera cameraWithWidth:self.camera.width andHeight:self.camera.height andTarget:_sphere] retain];
-		[_springCamera setPerspectiveProjection:45 near:1 far:10000 orientation:self.deviceViewOrientation];
-		_springCamera.stiffness = 60;
-		_springCamera.damping = 10;
-		_springCamera.lookOffset = iv3(0, 2, 2);
+        _springCamera = [[self createSpringCameraForTarget:_sphere] retain];
+		_springCamera.stiffness = 60.0f;
+		_springCamera.damping = 10.0f;
+		_springCamera.lookOffset = Isgl3dVector3Make(0.0f, 2.0f, 2.0f);
 		[self.scene addChild:_springCamera];
 		
 		// Create sphere (to represent camera)
@@ -72,7 +87,7 @@
 		
 		// Add light
 		Isgl3dShadowCastingLight * light  = [Isgl3dShadowCastingLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		light.position = iv3(5, 15, 5);
+		light.position = Isgl3dVector3Make(5, 15, 5);
 		light.planarShadowsNode = plane;
 		[self.scene addChild:light];
 		
@@ -85,9 +100,32 @@
 
 - (void) dealloc {
 	[_staticCamera release];
+    _staticCamera = nil;
 	[_springCamera release];
+    _springCamera = nil;
 	
 	[super dealloc];
+}
+
+- (Isgl3dSpringCamera *)createSpringCameraForTarget:(Isgl3dNode *)target {
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:self.viewport.size fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    Isgl3dSpringCamera *camera = [[[Isgl3dSpringCamera alloc] initWithLens:perspectiveLens position:cameraPosition andTarget:target up:cameraUp] autorelease];
+    [camera.lens viewSizeUpdated:self.viewport.size];
+    [perspectiveLens release];
+    
+    return camera;
+}
+
+- (void)setViewport:(CGRect)viewport {
+    [super setViewport:viewport];
+    
+	if (_springCamera) {
+        [_springCamera.lens viewSizeUpdated:viewport.size];
+	}	
 }
 
 - (void) onActivated {
@@ -129,7 +167,7 @@
 
 @implementation SimpleUIView
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		Isgl3dGLUILabel * label = [[Isgl3dGLUILabel alloc] initWithText:@"Click to change camera" fontName:@"Helvetica" fontSize:24];

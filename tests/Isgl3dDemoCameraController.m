@@ -1,8 +1,49 @@
+/*
+ * iSGL3D: http://isgl3d.com
+ *
+ * Copyright (c) 2010-2012 Stuart Caunt
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
+
 #import "Isgl3dDemoCameraController.h"
 
-@interface Isgl3dDemoCameraController ()
-- (void) reset;
-- (float) distanceBetweenPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2;
+
+@interface Isgl3dDemoCameraController () {
+@private
+	Isgl3dNodeCamera *_camera;
+	Isgl3dView * _view;
+	
+	Isgl3dNode * _target;
+	
+	float _orbit;
+	float _orbitMin;
+	float _vTheta;
+	float _vPhi;
+	float _theta;
+	float _phi;	
+	float _damping;
+	BOOL _doubleTapEnabled;
+}
+- (void)reset;
+- (float)distanceBetweenPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2;
 @end
 
 /**
@@ -22,7 +63,7 @@
 @synthesize damping = _damping;
 @synthesize doubleTapEnabled = _doubleTapEnabled;
 
-- (id) initWithCamera:(Isgl3dCamera *)camera andView:(Isgl3dView *)view {
+- (id)initWithNodeCamera:(Isgl3dNodeCamera *)camera andView:(Isgl3dView *)view {
 	
     if ((self = [super init])) {
 
@@ -36,7 +77,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_camera release];
 	[_view release];
 	
@@ -47,7 +88,7 @@
 	[super dealloc];
 }
 
-- (void) reset {
+- (void)reset {
 	
 	// Reset all variables to their defaults
 	_orbit = 10;
@@ -64,12 +105,12 @@
 		[_target release];
 		_target = nil;
 		
-		[_camera lookAt:0 y:0 z:0];
+		_camera.lookAtTarget = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
 	}
 	
 }
 
-- (void) update {
+- (void)update {
 	// Update and limit the camera angles
 	_theta -= _vTheta;
 	_phi -= _vPhi;
@@ -91,25 +132,26 @@
 	float z = l * cos(_theta * M_PI / 180);
 
 	// Take target into account if it exists
+
 	if (_target) {
-		float targetPosition[4];
-		[_target copyWorldPositionToArray:targetPosition];
-		
-		x += targetPosition[0];
-		y += targetPosition[1];
-		z += targetPosition[2];
-		[_camera lookAt:targetPosition[0] y:targetPosition[1] z:targetPosition[2]];
+        Isgl3dVector3 targetPosition = _target.worldPosition;
+
+		x += targetPosition.x;
+		y += targetPosition.y;
+		z += targetPosition.z;
+        
+        _camera.lookAtTarget = targetPosition;
 	}
 
 	// Translate camera
-	_camera.position = iv3(x, y, z);
+	_camera.position = Isgl3dVector3Make(x, y, z);
 	
 	// Add damping to camera velocities
 	_vTheta *= 0.99;
 	_vPhi *= 0.99;
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	// Test for touches if no 3D object has been touched
 	if (![Isgl3dDirector sharedInstance].objectTouched && ![Isgl3dDirector sharedInstance].isPaused) {
@@ -133,11 +175,11 @@
 	}
 } 
 
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	// Do nothing
 }
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 
 	if (![Isgl3dDirector sharedInstance].isPaused) {
 		NSEnumerator * enumerator = [touches objectEnumerator];
@@ -172,7 +214,7 @@
 /**
  * Calculate the distance between two CGPoints
  */
-- (float) distanceBetweenPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2 {
+- (float)distanceBetweenPoint1:(CGPoint)point1 andPoint2:(CGPoint)point2 {
 	float dx = point1.x - point2.x;
 	float dy = point1.y - point2.y;
 	

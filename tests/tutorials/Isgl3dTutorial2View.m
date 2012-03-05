@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,12 @@
 
 @implementation Isgl3dTutorial2View
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 
 		// Translate the camera.
-		self.camera.position = iv3(2, 8, 10);
+		self.camera.eyePosition = Isgl3dVector3Make(2.0f, 8.0f, 10.0f);
 
 		// Create a white color material (with grey ambient color)
 		Isgl3dColorMaterial * colorMaterial = [Isgl3dColorMaterial materialWithHexColors:@"444444" diffuse:@"FFFFFF" specular:@"FFFFFF" shininess:0.7];
@@ -70,18 +70,18 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	// Rotate the torus
 	_torusNode.rotationZ += 1;
 	
 	// Move the lights
-	_redLight.position = iv3(LIGHT_RADIUS * sin(_lightAngle * M_PI / 30), LIGHT_RADIUS * cos(_lightAngle * M_PI / 30), 0);
-	_greenLight.position = iv3(LIGHT_RADIUS * -cos(_lightAngle * M_PI / 60), LIGHT_RADIUS * sin(_lightAngle * M_PI / 60), LIGHT_RADIUS * cos(_lightAngle * M_PI / 60));
-	_blueLight.position = iv3(LIGHT_RADIUS * sin(_lightAngle * M_PI / 45), LIGHT_RADIUS * cos(_lightAngle * M_PI / 45), LIGHT_RADIUS * sin(_lightAngle * M_PI / 45));
+	_redLight.position = Isgl3dVector3Make(LIGHT_RADIUS * sin(_lightAngle * M_PI / 30), LIGHT_RADIUS * cos(_lightAngle * M_PI / 30), 0);
+	_greenLight.position = Isgl3dVector3Make(LIGHT_RADIUS * -cos(_lightAngle * M_PI / 60), LIGHT_RADIUS * sin(_lightAngle * M_PI / 60), LIGHT_RADIUS * cos(_lightAngle * M_PI / 60));
+	_blueLight.position = Isgl3dVector3Make(LIGHT_RADIUS * sin(_lightAngle * M_PI / 45), LIGHT_RADIUS * cos(_lightAngle * M_PI / 45), LIGHT_RADIUS * sin(_lightAngle * M_PI / 45));
 
 	// Update the light angle
 	_lightAngle = _lightAngle + 0.5;
@@ -97,7 +97,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

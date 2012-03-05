@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,18 +49,18 @@ class btCollisionShape;
 /**
  * Allocates and initialises (autorelease) Isgl3dPhysicsWorld;
  */
-+ (id) physicsWorld;
++ (id)physicsWorld;
 
 /**
  * Initialises the Isgl3dPhysicsWorld;
  */
-- (id) init;
+- (id)init;
 
 /**
  * Sets the btDiscreteDynamicsWorld in which the Bullet Physics simulation takes place. The btDiscreteDynamicsWorld is
  * automatically stepped at every rendered frame.
  */
-- (void) setDiscreteDynamicsWorld:(btDiscreteDynamicsWorld *)discreteDynamicsWorld;
+- (void)setDiscreteDynamicsWorld:(btDiscreteDynamicsWorld *)discreteDynamicsWorld;
 
 /**
  * Adds a new Isgl3dPhysicsObject3D containing both a btRigidBody and an Isgl3dNode. Note, this DOES NOT add the
@@ -68,14 +68,14 @@ class btCollisionShape;
  * added to the btDiscreteDynamicsWorld.
  * @param physicsObject The Isgl3dPhysicsObject3D containing both btRigidBody and Isgl3dNode.
  */
-- (void) addPhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject;
+- (void)addPhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject;
 
 /**
  * Removes an Isgl3dPhysicsObject3D from the physics world. Note, this DOES remove the associated Isgl3dNode
  * from its parent node in the scene. The btRigidBody is removed from the btDiscreteDynamicsWorld.
  * @param physicsObject The Isgl3dPhysicsObject3D to remove.
  */
-- (void) removePhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject;
+- (void)removePhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject;
 
 /**
  * Sets the size and direction of gravity in the physics simulation.
@@ -83,7 +83,7 @@ class btCollisionShape;
  * @param y The y component of the gravity vectory.
  * @param z The z component of the gravity vectory.
  */
-- (void) setGravity:(float)x y:(float)y z:(float)z;
+- (void)setGravity:(float)x y:(float)y z:(float)z;
 
 /**
  * Utility method to create an Isgl3dPhysicsObject3D from an Isgl3dNode and a btCollisionShape. A btRigidBody is created for

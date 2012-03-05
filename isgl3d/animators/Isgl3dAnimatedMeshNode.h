@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,26 +50,26 @@
  * @param mesh The mesh to be animated.
  * @param material The material associated with the mesh
  */
-+ (id) nodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
++ (id)nodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Initialises the node with a mesh to be animated and a material.
  * @param mesh The mesh to be animated.
  * @param material The material associated with the mesh
  */
-- (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
+- (id)initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Adds a bone batch to the node, used to animate a section of the mesh.
  * @param boneBatch The bone batch.
  */
-- (void) addBoneBatch:(Isgl3dBoneBatch *)boneBatch;
+- (void)addBoneBatch:(Isgl3dBoneBatch *)boneBatch;
 
 /**
  * Sets the number of bones associated with each vertex.
  * @param numberOfBonesPerVertex The number of bones per vertex.
  */
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
+- (void)setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
 
 /**
  * Sets the current frame number, used to update the animation.
@@ -77,6 +77,6 @@
  * frame number. At the following render stage, all bone transformations are recalculated accordingly. 
  * @param frameNumber The number of the frame to be shown.
  */
-- (void) setFrame:(unsigned int)frameNumber;
+- (void)setFrame:(unsigned int)frameNumber;
 
 @end

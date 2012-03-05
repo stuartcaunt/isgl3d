@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,10 +40,10 @@
 + (Isgl3dObject3DGrabber *) sharedInstance;
 + (void) resetInstance;
 
-- (id) init;
+- (id)init;
 
-- (void) startCapture;
-- (void) getCaptureColor:(float *)color forObject:(Isgl3dNode *)object;
+- (void)startCapture;
+- (void)getCaptureColor:(float *)color forObject:(Isgl3dNode *)object;
 - (Isgl3dNode *) getObjectWithColorString:(NSString *)colorString;
 
 @end

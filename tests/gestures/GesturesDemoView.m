@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@
 
 @implementation GesturesDemoView
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
         
@@ -73,7 +73,7 @@
 	
 		Isgl3dTorus * torusMesh = [Isgl3dTorus meshWithGeometry:2 tubeRadius:1 ns:32 nt:32];
 		_torus = [_container createNodeWithMesh:torusMesh andMaterial:_standardMaterial];
-		_torus.position = iv3(0, 0, 0);
+		_torus.position = Isgl3dVector3Make(0, 0, 0);
         _torus.rotationX = 45.0;
         
         _torus.interactive = YES;
@@ -83,7 +83,7 @@
 
 		// Add light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		light.position = iv3(5, 15, 15);
+		light.position = Isgl3dVector3Make(5, 15, 15);
 		[self.scene addChild:light];
 		
 		// Schedule updates
@@ -93,7 +93,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [_standardMaterial release];
     _standardMaterial = nil;
     
@@ -113,13 +113,13 @@
 	[super dealloc];
 }
 
-- (void) onActivated {
+- (void)onActivated {
 }
 
-- (void) onDeactivated {
+- (void)onDeactivated {
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
     if (_rotationActive) {
         _containerRotation += 0.2;
         
@@ -183,7 +183,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

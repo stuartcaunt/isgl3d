@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,12 +62,12 @@
  * Sets the state of the Isgl3dGLTextureFactoryState for either OpenGL ES1 or ES2.
  * Note that this is called internally by iSGL3D and should not be called otherwise.
  */
-- (void) setState:(Isgl3dGLTextureFactoryState *)state;
+- (void)setState:(Isgl3dGLTextureFactoryState *)state;
 
 /**
  * Removes all previously created textures from the dictionary.
  */
-- (void) clear;
+- (void)clear;
 
 /**
  * Creates a new instance of an Isgl3dGLTexture from a given file (or reuses an existing one if it already exists) with default precision (Isgl3dTexturePrecisionMedium),
@@ -196,7 +196,7 @@
  * Deletes a given texture in OpenGL as well as remove it from the shared instance dictionary.
  * @param texture The texture to be deleted.
  */
-- (void) deleteTexture:(Isgl3dGLTexture *)texture;
+- (void)deleteTexture:(Isgl3dGLTexture *)texture;
 
 
 @end

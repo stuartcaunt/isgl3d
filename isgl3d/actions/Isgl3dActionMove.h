@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -47,14 +47,14 @@
  * @param duration The duration of the action
  * @param position The position to move to
  */
-+ (id) actionWithDuration:(float)duration position:(Isgl3dVector3)position;
++ (id)actionWithDuration:(float)duration position:(Isgl3dVector3)position;
 
 /**
  * Initialises the an Isgl3dActionMoveTo with a duration and end position.
  * @param duration The duration of the action
  * @param position The position to move to
  */
-- (id) initWithDuration:(float)duration position:(Isgl3dVector3)position;
+- (id)initWithDuration:(float)duration position:(Isgl3dVector3)position;
 
 @end
 
@@ -73,14 +73,14 @@
  * @param duration The duration of the action
  * @param vector The vector to move along
  */
-+ (id) actionWithDuration:(float)duration vector:(Isgl3dVector3)vector;
++ (id)actionWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 
 /**
  * Initialises the an Isgl3dActionMoveTo with a duration and a vector.
  * @param duration The duration of the action
  * @param vector The vector to move along
  */
-- (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector;
+- (id)initWithDuration:(float)duration vector:(Isgl3dVector3)vector;
 
 @end
 
@@ -97,12 +97,12 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetPosition with a position.
  * @param position The position to move to
  */
-+ (id) actionWithPosition:(Isgl3dVector3)position;
++ (id)actionWithPosition:(Isgl3dVector3)position;
 
 /**
  * Initialises the an Isgl3dActionSetPosition with a position.
  * @param position The position to move to
  */
-- (id) initWithPosition:(Isgl3dVector3)position;
+- (id)initWithPosition:(Isgl3dVector3)position;
 
 @end

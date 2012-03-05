@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@
  */
 #import "Isgl3dAppDelegateWithCamera.h"
 @interface AppDelegate : Isgl3dAppDelegateWithCamera
-- (void) createViews;
+- (void)createViews;
 @end
 
 

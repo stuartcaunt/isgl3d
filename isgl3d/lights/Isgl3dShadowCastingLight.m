@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,26 +30,28 @@
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dGLU.h"
 #import "Isgl3dTypes.h"
+#import "Isgl3dMathUtils.h"
+
 
 @interface Isgl3dShadowCastingLight (PrivateMethods)
-- (void) calculateViewMatrix;
+- (void)calculateViewMatrix;
 @end
 
 @implementation Isgl3dShadowCastingLight
 
 @synthesize planarShadowsNodeNormal = _planarShadowsNodeNormal;
 
-- (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
+- (id)initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
 	
 	if ((self = [super initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation])) {
 
-		_planarShadowsNodeNormal = iv3(0, 0, 1);
+		_planarShadowsNodeNormal = Isgl3dVector3Make(0.0f, 0.0f, 1.0f);
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [_shadowRenderTexture release];
     _shadowRenderTexture = nil;
 
@@ -60,7 +62,7 @@
 }
 
 
-- (void) renderLights:(Isgl3dGLRenderer *)renderer {
+- (void)renderLights:(Isgl3dGLRenderer *)renderer {
 	[super renderLights:renderer];
 	
 	if (renderer.shadowRenderingMethod == Isgl3dShadowMaps) {
@@ -75,7 +77,7 @@
 }
 
 
-- (void) createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
+- (void)createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
 
 	if (_shadowRenderTexture == nil) {
 		_shadowRenderTexture = [[[Isgl3dGLTextureFactory sharedInstance] createDepthRenderTexture:SHADOW_MAP_WIDTH height:SHADOW_MAP_HEIGHT] retain];
@@ -95,7 +97,7 @@
 	[_shadowRenderTexture finalizeRender];
 }
 
-- (void) createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
+- (void)createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
 
 	Isgl3dVector4 plane;
 	if (_planarShadowsNode != nil) {
@@ -125,7 +127,7 @@
 	return _planarShadowsNode;
 }
 
-- (void) setPlanarShadowsNode:(Isgl3dNode *)node {
+- (void)setPlanarShadowsNode:(Isgl3dNode *)node {
 	if (_planarShadowsNode != nil) {
 		_planarShadowsNode.isPlanarShadowsNode = NO;
 		[_planarShadowsNode release];
@@ -136,25 +138,25 @@
 }
 
 
-- (void) translateByValues:(float)x y:(float)y z:(float)z {
+- (void)translateByValues:(float)x y:(float)y z:(float)z {
 	[super translateByValues:x y:y z:z];
 	
 	[self calculateViewMatrix];
 }
 
-- (void) setPositionValues:(float)x y:(float)y z:(float)z {
+- (void)setPositionValues:(float)x y:(float)y z:(float)z {
 	[super setPositionValues:x y:y z:z];
 	
 	[self calculateViewMatrix];
 }
 
-- (void) resetTransformation {
+- (void)resetTransformation {
 	[super resetTransformation];
 
 	[self setPositionValues:0 y:0 z:10];
 }
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	
 	BOOL calculateViewMatrix = _transformationDirty;
 	[super updateWorldTransformation:parentTransformation];
@@ -164,12 +166,12 @@
 	}
 }
 
-- (void) calculateViewMatrix {
+- (void)calculateViewMatrix {
 	
 	float lightPosition[4];
 	[self copyWorldPositionToArray:lightPosition];
 	
-	_viewMatrix = [Isgl3dGLU lookAt:lightPosition[0] eyey:lightPosition[1] eyez:lightPosition[2] centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:0];
+    _viewMatrix = Isgl3dMatrix4MakeLookAt(lightPosition[0], lightPosition[1], lightPosition[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 }
 
 

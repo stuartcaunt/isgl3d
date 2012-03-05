@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,11 @@
 
 @implementation Isgl3dBoneNode
 
-+ (id) boneNode {
++ (id)boneNode {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
     if ((self = [super initWithMesh:[[Isgl3dPrimitiveFactory sharedInstance] boneMesh] andMaterial:[[[Isgl3dColorMaterial alloc] initWithHexColors:@"FFFF00" diffuse:@"FFFF00" specular:@"FFFF00" shininess:0] autorelease]])) {
 		_frameTransformations = IA_ALLOC_INIT(Isgl3dMatrix4);
     }
@@ -43,7 +43,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_frameTransformations release];
 	
 	[super dealloc];
@@ -53,13 +53,13 @@
 	return (Isgl3dBoneNode *)[self addChild:[Isgl3dBoneNode boneNode]];
 }
 
-- (void) addFrameTransformationFromOpenGLMatrix:(float *)transformation {
+- (void)addFrameTransformationFromOpenGLMatrix:(float *)transformation {
 	Isgl3dMatrix4 matrix;
 	im4SetTransformationFromOpenGLMatrix(&matrix, transformation);
 	IA_ADD(_frameTransformations, matrix);
 }
 
-- (void) setFrame:(unsigned int)frameNumber {
+- (void)setFrame:(unsigned int)frameNumber {
 	Isgl3dMatrix4 * matrix = IA_GET_PTR(Isgl3dMatrix4 *, _frameTransformations, frameNumber);
 	[self setTransformation:*matrix];
 	

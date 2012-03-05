@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,7 +57,7 @@
  * Allocates and initialises (autorelease) material with a random color. The same color is used for all three material properties. The material has
  * zero shininess.
  */
-+ (id) material;
++ (id)material;
 
 /**
  * Allocates and initialises (autorelease) material with user-defined values.
@@ -66,13 +66,13 @@
  * @param specular The specular color property of the material specified as a hex color value.
  * @param shininess The shiness of the material.
  */
-+ (id) materialWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess;
++ (id)materialWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess;
 
 /**
  * Initialises the material with a random color. The same color is used for all three material properties. The material has
  * zero shininess.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Initialises the material with user-defined values.
@@ -81,7 +81,7 @@
  * @param specular The specular color property of the material specified as a hex color value.
  * @param shininess The shiness of the material.
  */
-- (id) initWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess;
+- (id)initWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess;
 
 /**
  * Returns the float array containing the ambient color
@@ -93,7 +93,7 @@
  * Sets the ambient color property of the material.
  * @param color Float array containing the rgb values of the ambient material color.
  */
-- (void) setAmbientColor:(float *)color;
+- (void)setAmbientColor:(float *)color;
 
 /**
  * Returns the float array containing the diffuse color
@@ -105,7 +105,7 @@
  * Sets the diffuse color property of the material.
  * @param color Float array containing the rgb values of the diffuse material color.
  */
-- (void) setDiffuseColor:(float *)color;
+- (void)setDiffuseColor:(float *)color;
 
 /**
  * Returns the float array containing the specular color
@@ -117,7 +117,7 @@
  * Sets the specular color property of the material.
  * @param color Float array containing the rgb values of the specular material color.
  */
-- (void) setSpecularColor:(float *)color;
+- (void)setSpecularColor:(float *)color;
 
 /**
  * Returns the shininess
@@ -129,24 +129,24 @@
  * Sets the shininess of the material.
  * @param shininess The shininess of the material.
  */
-- (void) setShininess:(float)shininess;
+- (void)setShininess:(float)shininess;
 
 /**
  * Sets the ambient color property of the material.
  * @param colorString Hexidecimel string value for the rgb values of the ambient material color.
  */
-- (void) setAmbientColorAsString:(NSString *)colorString;
+- (void)setAmbientColorAsString:(NSString *)colorString;
 
 /**
  * Sets the diffuse color property of the material.
  * @param colorString Hexidecimel string value for the rgb values of the diffuse material color.
  */
-- (void) setDiffuseColorAsString:(NSString *)colorString;
+- (void)setDiffuseColorAsString:(NSString *)colorString;
 
 /**
  * Sets the specular color property of the material.
  * @param colorString Hexidecimel string value for the rgb values of the specular material color.
  */
-- (void) setSpecularColorAsString:(NSString *)colorString;
+- (void)setSpecularColorAsString:(NSString *)colorString;
 
 @end

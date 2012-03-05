@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@
 
 @implementation Isgl3dPrimitive
 
-- (id) init {    
+- (id)init {    
     if ((self = [super init])) {
 
     }
@@ -44,12 +44,12 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) constructMeshData {
+- (void)constructMeshData {
 	unsigned int vertexDataSize = [self estimatedVertexDataSize];
 	unsigned int indicesSize = [self estimatedIndicesSize];
 	
@@ -84,7 +84,7 @@
 }
 
 
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 	// overload
 }
 

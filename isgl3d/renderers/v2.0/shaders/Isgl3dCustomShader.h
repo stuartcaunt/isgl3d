@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -158,7 +158,7 @@ typedef enum {
  * @param fragmentShaderFile The fragment shader filename
  * @param key The key for the shader
  */
-+ (id) shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
++ (id)shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			key:(NSString *)key;
 
@@ -170,7 +170,7 @@ typedef enum {
  * @param fragmentShaderPreProcessorHeader The fragment shader pre-processor directives (can be nil).
  * @param key The key for the shader
  */
-+ (id) shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
++ (id)shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			vertexShaderPreProcessorHeader:(NSString *)vertexShaderPreProcessorHeader 
 			fragmentShaderPreProcessorHeader:(NSString *)fragmentShaderPreProcessorHeader 
@@ -182,7 +182,7 @@ typedef enum {
  * @param fragmentShaderFile The fragment shader filename
  * @param key The key for the shader
  */
-- (id) initWithVertexShaderFile:(NSString *)vertexShaderFile 
+- (id)initWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			key:(NSString *)key;
 
@@ -194,7 +194,7 @@ typedef enum {
  * @param fragmentShaderPreProcessorHeader The fragment shader pre-processor directives (can be nil).
  * @param key The key for the shader
  */
-- (id) initWithVertexShaderFile:(NSString *)vertexShaderFile 
+- (id)initWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			vertexShaderPreProcessorHeader:(NSString *)vertexShaderPreProcessorHeader 
 			fragmentShaderPreProcessorHeader:(NSString *)fragmentShaderPreProcessorHeader 
@@ -204,37 +204,37 @@ typedef enum {
  * Called at the very beginning of the render phase with the delta time since the last render.
  * @param dt The delta time since the last render.
  */
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt;
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt;
 
 /**
  * Called immediately after all scene-related attributes have been handed to the shader and
  * before individual models are rendered.
  * This can be used for example to handling lighting, view matrices, etc
  */
-- (void) onSceneRenderReady;
+- (void)onSceneRenderReady;
 
 /**
  * Called immediately before rendering the object to perform any pre-render operations.
  * This can be used for example to bind textures to samplers, handle shader states, etc
  */
-- (void) onModelRenderReady;
+- (void)onModelRenderReady;
 
 /**
  * Called immediately after rendering the object to perform any post-render operations.
  * This can be used for example to handle shader states, perform clean up, etc
  */
-- (void) onModelRenderEnds;
+- (void)onModelRenderEnds;
 
 /**
  * Called immediately after all objects on a scene have been rendered.
  * This can be used for example to clear up lighting before the next scene render.
  */
-- (void) onSceneRenderEnds;
+- (void)onSceneRenderEnds;
 
 /**
  * Called right at the end of the render cycle.
  * This can be used to perform any remaining clean up for example.
  */
-- (void) onRenderPhaseEnds;
+- (void)onRenderPhaseEnds;
 
 @end

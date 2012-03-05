@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,16 +35,16 @@
 	srandom(time(NULL));
 }
 
-+ (id) material {
++ (id)material {
 	return [[[self alloc] init] autorelease];
 }
 
-+ (id) materialWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess {
++ (id)materialWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess {
 	return [[[self alloc] initWithHexColors:ambient diffuse:diffuse specular:specular shininess:shininess] autorelease];
 }
 
 
-- (id) init {
+- (id)init {
 	if ((self = [super init])) {
 
 		NSString * hexColor = [Isgl3dColorUtil randomHexColor];
@@ -58,7 +58,7 @@
 	return self;
 }
 
-- (id) initWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess {
+- (id)initWithHexColors:(NSString *)ambient diffuse:(NSString *)diffuse specular:(NSString *)specular shininess:(float)shininess {
 	
 	if ((self = [super init])) {
 		[Isgl3dColorUtil hexColorStringToFloatArray:ambient floatArray:_ambientColor]; 
@@ -72,13 +72,13 @@
 }
 
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[super dealloc];
 
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dColorMaterial * copy = [super copyWithZone:zone];
 	
 	copy.ambientColor = _ambientColor;
@@ -93,7 +93,7 @@
 	return _ambientColor;
 }
 
-- (void) setAmbientColor:(float *)color {
+- (void)setAmbientColor:(float *)color {
 	memcpy(_ambientColor, color, sizeof(float) * 3);
 }
 
@@ -101,7 +101,7 @@
 	return _diffuseColor;
 }
 
-- (void) setDiffuseColor:(float *)color {
+- (void)setDiffuseColor:(float *)color {
 	memcpy(_diffuseColor, color, sizeof(float) * 3);
 }
 
@@ -109,7 +109,7 @@
 	return _specularColor;
 }
 
-- (void) setSpecularColor:(float *)color {
+- (void)setSpecularColor:(float *)color {
 	memcpy(_specularColor, color, sizeof(float) * 3);
 }
 
@@ -117,24 +117,24 @@
 	return _shininess;
 }
 
-- (void) setShininess:(float)shininess {
+- (void)setShininess:(float)shininess {
 	_shininess = shininess;
 }
 
-- (void) setAmbientColorAsString:(NSString *)colorString {
+- (void)setAmbientColorAsString:(NSString *)colorString {
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:_ambientColor]; 
 }
 
-- (void) setDiffuseColorAsString:(NSString *)colorString {
+- (void)setDiffuseColorAsString:(NSString *)colorString {
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:_diffuseColor]; 
 }
 
-- (void) setSpecularColorAsString:(NSString *)colorString {
+- (void)setSpecularColorAsString:(NSString *)colorString {
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:_specularColor]; 
 }
 
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
+- (void)prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 	[super prepareRenderer:renderer requirements:requirements alpha:alpha node:node];
 	
 	float ambient[4];

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@
 @synthesize shadowAlpha = _shadowAlpha;
 @synthesize stencilBufferAvailable = _stencilBufferAvailable;
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		
@@ -68,191 +68,191 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) reset {
+- (void)reset {
 }
 
-- (void) clear:(unsigned int)bufferBits {
+- (void)clear:(unsigned int)bufferBits {
 	// OpenGL version specific
 }
 
-- (void) clear:(unsigned int)bufferBits color:(float *)color {
+- (void)clear:(unsigned int)bufferBits color:(float *)color {
 	// OpenGL version specific
 }
 
-- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
+- (void)clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
 	// OpenGL version specific
 }
 
-- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
+- (void)clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
 	// OpenGL version specific
 }
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
-	im4Copy(&_projectionMatrix, projectionMatrix);
+- (void)setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
+    _projectionMatrix = *projectionMatrix;
 }
 
-- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-	im4Copy(&_viewMatrix, viewMatrix);
+- (void)setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+    _viewMatrix = *viewMatrix;
 }
 
-- (void) setPlanarShadowsMatrix:(Isgl3dMatrix4 *)planarShadowsMatrix {
-	im4Copy(&_planarShadowsMatrix, planarShadowsMatrix);
+- (void)setPlanarShadowsMatrix:(Isgl3dMatrix4 *)planarShadowsMatrix {
+    _planarShadowsMatrix = *planarShadowsMatrix;
 }
 
-- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
-	im4Copy(&_modelMatrix, modelMatrix);
+- (void)setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
+    _modelMatrix = *modelMatrix;
 	
 	[self setupMatrices];
 }
 
-- (void) setupMatrices {
+- (void)setupMatrices {
 }
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData {
 }
 
-- (void) setVertexBufferData:(unsigned int)bufferId {
+- (void)setVertexBufferData:(unsigned int)bufferId {
 }
 
-- (void) setColorBufferData:(unsigned int)bufferId {
+- (void)setColorBufferData:(unsigned int)bufferId {
 }
 
-- (void) setNormalBufferData:(unsigned int)bufferId {
+- (void)setNormalBufferData:(unsigned int)bufferId {
 }
 
-- (void) setTexCoordBufferData:(unsigned int)bufferId {
+- (void)setTexCoordBufferData:(unsigned int)bufferId {
 }
 
-- (void) setPointSizeBufferData:(unsigned int)bufferId {
+- (void)setPointSizeBufferData:(unsigned int)bufferId {
 }
 
-- (void) setBoneIndexBufferData:(unsigned int)bufferId {
+- (void)setBoneIndexBufferData:(unsigned int)bufferId {
 }
 
-- (void) setBoneWeightBufferData:(unsigned int)bufferId {
+- (void)setBoneWeightBufferData:(unsigned int)bufferId {
 }
 
-- (void) setElementBufferData:(unsigned int)bufferId {
+- (void)setElementBufferData:(unsigned int)bufferId {
 }
 
-- (void) setTexture:(Isgl3dGLTexture *)texture {
+- (void)setTexture:(Isgl3dGLTexture *)texture {
 }
 
-- (void) setNormalMap:(Isgl3dGLTexture *)texture {
+- (void)setNormalMap:(Isgl3dGLTexture *)texture {
 }
 
-- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
-}
-
-
-- (void) addLight:(Isgl3dLight *)light {
-}
-
-- (void) setSceneAmbient:(NSString *)ambient {
-}
-
-- (void) enableLighting:(BOOL)lightingEnabled {
-}
-
-- (void) setRendererRequirements:(unsigned int)rendererRequirements {
+- (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
 }
 
 
-- (void) enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace {
+- (void)addLight:(Isgl3dLight *)light {
 }
 
-- (void) setAlphaCullingValue:(float)cullValue {
+- (void)setSceneAmbient:(NSString *)ambient {
 }
 
-- (void) enablePointSprites:(BOOL)pointSpriteEnabled {
+- (void)enableLighting:(BOOL)lightingEnabled {
 }
 
-- (void) enableNormalization:(BOOL)nomalizationEnabled {
+- (void)setRendererRequirements:(unsigned int)rendererRequirements {
 }
 
-- (void) enableSkinning:(BOOL)skinningEnabled {
+
+- (void)enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace {
 }
 
-- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
+- (void)setAlphaCullingValue:(float)cullValue {
 }
 
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
+- (void)enablePointSprites:(BOOL)pointSpriteEnabled {
 }
 
-- (void) setPointAttenuation:(float *)attenuation {
+- (void)enableNormalization:(BOOL)nomalizationEnabled {
 }
 
-- (void) setCaptureColor:(float *)color {
+- (void)enableSkinning:(BOOL)skinningEnabled {
 }
 
-- (void) resetCaptureColor {
+- (void)setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 }
 
-- (void) initRenderForShadowMap {
+- (void)setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 }
 
-- (void) setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
+- (void)setPointAttenuation:(float *)attenuation {
+}
+
+- (void)setCaptureColor:(float *)color {
+}
+
+- (void)resetCaptureColor {
+}
+
+- (void)initRenderForShadowMap {
+}
+
+- (void)setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
 }
 
 - (isgl3dShadowType) shadowRenderingMethod {
 	return _shadowRenderingMethod;
 }
 
-- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {
+- (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position {
 }
 
-- (void) setShadowMap:(Isgl3dGLTexture *)texture {
+- (void)setShadowMap:(Isgl3dGLTexture *)texture {
 }
 
 - (BOOL) shadowMapActive {
 	return NO;
 }
 
-- (void) enableShadowStencil:(BOOL)shadowStencilEnabled {
+- (void)enableShadowStencil:(BOOL)shadowStencilEnabled {
 }
 
-- (void) initRenderForPlanarShadows {
+- (void)initRenderForPlanarShadows {
 }
 
-- (void) finishRenderForPlanarShadows {
+- (void)finishRenderForPlanarShadows {
 }
 
-- (void) initRenderForShadowMapRendering {
+- (void)initRenderForShadowMapRendering {
 }
 
-- (void) finishRenderForShadowMapRendering {
+- (void)finishRenderForShadowMapRendering {
 }
 
-- (void) clean {
+- (void)clean {
 }
 
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt {
 }
 
-- (void) onSceneRenderReady {
+- (void)onSceneRenderReady {
 }
 
-- (void) onModelRenderReady {
+- (void)onModelRenderReady {
 }
 
-- (void) onModelRenderEnds {
+- (void)onModelRenderEnds {
 }
 
-- (void) onSceneRenderEnds {
+- (void)onSceneRenderEnds {
 }
 
-- (void) onRenderPhaseEnds {
+- (void)onRenderPhaseEnds {
 }
 
-- (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+- (void)render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
 }
 
 

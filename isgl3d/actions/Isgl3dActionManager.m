@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -33,18 +33,18 @@
 static Isgl3dActionManager * _instance = nil;
 
 @interface Isgl3dActionManager ()
-- (id) initSingleton;
+- (id)initSingleton;
 @end
 
 @implementation Isgl3dActionManager
 
-- (id) init {
+- (id)init {
 	NSLog(@"Isgl3dActionManager::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
 
-- (id) initSingleton {
+- (id)initSingleton {
 	
 	if ((self = [super init])) {
 		_actionsHandlers = [[NSMutableArray alloc] init];
@@ -54,7 +54,7 @@ static Isgl3dActionManager * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_actionsHandlers release];
 
 	[super dealloc];
@@ -79,7 +79,7 @@ static Isgl3dActionManager * _instance = nil;
 	}
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	// tick all action handlers
 	NSMutableArray * terminatedActionsHandlers = [NSMutableArray arrayWithCapacity:0];
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
@@ -98,7 +98,7 @@ static Isgl3dActionManager * _instance = nil;
 	}
 }
 
-- (void) addAction:(Isgl3dAction *)action toTarget:(id)target isPaused:(BOOL)isPaused {
+- (void)addAction:(Isgl3dAction *)action toTarget:(id)target isPaused:(BOOL)isPaused {
 	// determine if action is already running or get action handler if it exists
 	Isgl3dActionsHandler * targetActionsHandler = nil;
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
@@ -121,7 +121,7 @@ static Isgl3dActionManager * _instance = nil;
 	[targetActionsHandler addAction:action];
 }
 
-- (void) stopAction:(Isgl3dAction *)action {
+- (void)stopAction:(Isgl3dAction *)action {
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
 		if ([actionsHandler containsAction:action]) {
 			[actionsHandler stopAction:action];
@@ -135,7 +135,7 @@ static Isgl3dActionManager * _instance = nil;
 	}
 }
 
-- (void) stopAllActionsForTarget:(id)target {
+- (void)stopAllActionsForTarget:(id)target {
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
 		if (actionsHandler.target == target) {
 			[actionsHandler stopAllActions];
@@ -147,7 +147,7 @@ static Isgl3dActionManager * _instance = nil;
 	}
 }
 
-- (void) pauseActionsForTarget:(id)target {
+- (void)pauseActionsForTarget:(id)target {
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
 		if (actionsHandler.target == target) {
 			actionsHandler.isPaused = YES;
@@ -156,7 +156,7 @@ static Isgl3dActionManager * _instance = nil;
 	}
 }
 
-- (void) resumeActionsForTarget:(id)target {
+- (void)resumeActionsForTarget:(id)target {
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
 		if (actionsHandler.target == target) {
 			actionsHandler.isPaused = NO;
@@ -176,11 +176,11 @@ static Isgl3dActionManager * _instance = nil;
 @synthesize target = _target;
 @synthesize isPaused = _isPaused;
 
-+ (id) handlerWithTarget:(id)target isPaused:(BOOL)isPaused {
++ (id)handlerWithTarget:(id)target isPaused:(BOOL)isPaused {
 	return [[[self alloc] initWithTarget:target isPaused:isPaused] autorelease];
 }
 
-- (id) initWithTarget:(id)target isPaused:(BOOL)isPaused {
+- (id)initWithTarget:(id)target isPaused:(BOOL)isPaused {
 	if ((self = [super init])) {
 		_target = target;
 		_isPaused = isPaused;
@@ -190,7 +190,7 @@ static Isgl3dActionManager * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_actions release];
 
 	[super dealloc];
@@ -200,7 +200,7 @@ static Isgl3dActionManager * _instance = nil;
 	return ([_actions count] != 0);
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	NSMutableArray * terminatedActions = [NSMutableArray arrayWithCapacity:0];
 
 	// Update all actions	
@@ -223,18 +223,18 @@ static Isgl3dActionManager * _instance = nil;
 	return [_actions containsObject:action];
 }
 
-- (void) addAction:(Isgl3dAction *)action {
+- (void)addAction:(Isgl3dAction *)action {
 	[_actions addObject:action];
 	
 	// Star the action
 	[action startWithTarget:_target];
 }
 
-- (void) stopAction:(Isgl3dAction *)action {
+- (void)stopAction:(Isgl3dAction *)action {
 	[_actions removeObject:action];
 }
 
-- (void) stopAllActions {
+- (void)stopAllActions {
 	[_actions removeAllObjects];
 }
 

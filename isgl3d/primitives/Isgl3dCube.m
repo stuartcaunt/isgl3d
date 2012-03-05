@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@
 @synthesize height = _height;
 @synthesize depth = _depth;
 
-+ (id) meshWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny {
++ (id)meshWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny {
 	return [[[self alloc] initWithGeometry:width height:height depth:depth nx:nx ny:ny] autorelease];
 }
 
@@ -68,13 +68,13 @@
 }
 
 	
-- (void) dealloc {
+- (void)dealloc {
 	
     [super dealloc];
 }
 
 	
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 	
 	int indice = 0;
 	// Top

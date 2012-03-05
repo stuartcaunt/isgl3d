@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,7 +75,7 @@
  * @param height The height of the progress bar in pixels.
  * @param isVertical Specified whether the progress bar is oriented vertically or not.
  */
-+ (id) progressBarWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical;
++ (id)progressBarWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical;
 
 /**
  * Initialises the progress bar with a material and specified geometrical properties.
@@ -84,7 +84,7 @@
  * @param height The height of the progress bar in pixels.
  * @param isVertical Specified whether the progress bar is oriented vertically or not.
  */
-- (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical;
+- (id)initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical;
 
 
 @end

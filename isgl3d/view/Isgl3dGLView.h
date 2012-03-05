@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,10 @@
 
 
 @protocol Isgl3dTouchDelegate
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
 @end
 
 
@@ -70,13 +70,13 @@
 /*
  *
  */
-- (void) prepareRender;
+- (void)prepareRender;
 
 /**
  * Used to finalize the rendering in OpenGL. 
  * This should never be called manually.
  */
-- (void) finalizeRender;
+- (void)finalizeRender;
 
 /**
  * Returns the pixel colour as a hex string for a specific x and y location on the screen.

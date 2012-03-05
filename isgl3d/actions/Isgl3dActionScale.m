@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -28,41 +28,43 @@
 
 #import "Isgl3dActionScale.h"
 #import "Isgl3dNode.h"
+#import "Isgl3dVector3.h"
+
 
 #pragma mark Isgl3dActionScaleTo
 
 @implementation Isgl3dActionScaleTo
 
 
-+ (id) actionWithDuration:(float)duration scale:(float)scale {
++ (id)actionWithDuration:(float)duration scale:(float)scale {
 	return [[[self alloc] initWithDuration:duration scale:scale] autorelease];
 }
 
-- (id) initWithDuration:(float)duration scale:(float)scale {
+- (id)initWithDuration:(float)duration scale:(float)scale {
 	if ((self = [super initWithDuration:duration])) {
-		_finalScale = iv3(scale, scale, scale);
+		_finalScale = Isgl3dVector3Make(scale, scale, scale);
 	}
 	
 	return self;
 }
 
-+ (id) actionWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
++ (id)actionWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
 	return [[[self alloc] initWithDuration:duration scaleX:scaleX scaleY:scaleY scaleZ:scaleZ] autorelease];
 }
 
-- (id) initWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
+- (id)initWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
 	if ((self = [super initWithDuration:duration])) {
-		_finalScale = iv3(scaleX, scaleY, scaleZ);
+		_finalScale = Isgl3dVector3Make(scaleX, scaleY, scaleZ);
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionScaleTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration scaleX:_finalScale.x scaleY:_finalScale.y scaleZ:_finalScale.z];
 
 	return copy;
@@ -72,11 +74,11 @@
 	[super startWithTarget:target];
 	Isgl3dNode * node = (Isgl3dNode *)target;
 	
-	_initialScale = iv3(node.scaleX, node.scaleY, node.scaleZ);
-	_vector = iv3(_finalScale.x - _initialScale.x, _finalScale.y - _initialScale.y, _finalScale.z - _initialScale.z);
+	_initialScale = Isgl3dVector3Make(node.scaleX, node.scaleY, node.scaleZ);
+	_vector = Isgl3dVector3Make(_finalScale.x - _initialScale.x, _finalScale.y - _initialScale.y, _finalScale.z - _initialScale.z);
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setScale:_initialScale.x + progress * _vector.x scaleY:_initialScale.y + progress * _vector.y scaleZ:_initialScale.z + progress * _vector.z];
 }
 
@@ -87,35 +89,35 @@
 @implementation Isgl3dActionScaleBy
 
 
-+ (id) actionWithDuration:(float)duration scale:(float)scale {
++ (id)actionWithDuration:(float)duration scale:(float)scale {
 	return [[[self alloc] initWithDuration:duration scale:scale] autorelease];
 }
 
-- (id) initWithDuration:(float)duration scale:(float)scale {
+- (id)initWithDuration:(float)duration scale:(float)scale {
 	if ((self = [super initWithDuration:duration])) {
-		_finalScaling = iv3(scale, scale, scale);
+		_finalScaling = Isgl3dVector3Make(scale, scale, scale);
 	}
 	
 	return self;
 }
 
-+ (id) actionWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
++ (id)actionWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
 	return [[[self alloc] initWithDuration:duration scaleX:scaleX scaleY:scaleY scaleZ:scaleZ] autorelease];
 }
 
-- (id) initWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
+- (id)initWithDuration:(float)duration scaleX:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
 	if ((self = [super initWithDuration:duration])) {
-		_finalScaling = iv3(scaleX, scaleY, scaleZ);
+		_finalScaling = Isgl3dVector3Make(scaleX, scaleY, scaleZ);
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionScaleBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration scaleX:_finalScaling.x scaleY:_finalScaling.y scaleZ:_finalScaling.z];
 
 	return copy;
@@ -125,12 +127,12 @@
 	[super startWithTarget:target];
 	Isgl3dNode * node = (Isgl3dNode *)target;
 	
-	_initialScale = iv3(node.scaleX, node.scaleY, node.scaleZ);
-	Isgl3dVector3 finalScale = iv3(_initialScale.x * _finalScaling.x, _initialScale.y * _finalScaling.y, _initialScale.z * _finalScaling.z);
-	_vector = iv3(finalScale.x - _initialScale.x, finalScale.y - _initialScale.y, finalScale.z - _initialScale.z);
+	_initialScale = Isgl3dVector3Make(node.scaleX, node.scaleY, node.scaleZ);
+	Isgl3dVector3 finalScale = Isgl3dVector3Make(_initialScale.x * _finalScaling.x, _initialScale.y * _finalScaling.y, _initialScale.z * _finalScaling.z);
+	_vector = Isgl3dVector3Make(finalScale.x - _initialScale.x, finalScale.y - _initialScale.y, finalScale.z - _initialScale.z);
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setScale:_initialScale.x + progress * _vector.x scaleY:_initialScale.y + progress * _vector.y scaleZ:_initialScale.z + progress * _vector.z];
 }
 

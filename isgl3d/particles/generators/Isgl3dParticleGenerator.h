@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -123,31 +123,31 @@
  * @param particleSystem The particle system.
  * @param node The particle node.
  */
-+ (id) generatorWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node;
++ (id)generatorWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node;
 
 /*
  * Initialises the generator with a particle system and a particle node.
  * @param particleSystem The particle system.
  * @param node The particle node.
  */
-- (id) initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node;
+- (id)initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node;
 
 /**
  * Starts the animation.
  */
-- (void) startAnimation;
+- (void)startAnimation;
 
 /**
  * Stops the animation.
  */
-- (void) stopAnimation;
+- (void)stopAnimation;
 
 /**
  * Specifies the animation frame interval, the number of frames that should be skipped before updating the
  * animation. By default this is 1 implying a desired frame rate of 60fps. A value of 2 would produce 30fps.
  * @param frameInterval The interval between frames to update the animation. 
  */
-- (void) setAnimationFrameInterval:(NSInteger)frameInterval;
+- (void)setAnimationFrameInterval:(NSInteger)frameInterval;
 
 /**
  * Method to generate particle paths for the given particles to provide the animation.

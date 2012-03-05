@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -33,11 +33,11 @@
 
 @implementation Isgl3dActionRepeatForever
 
-+ (id) actionWithAction:(Isgl3dActionInterval *)action {
++ (id)actionWithAction:(Isgl3dActionInterval *)action {
 	return [[[self alloc] initWithAction:action] autorelease];
 }
 
-- (id) initWithAction:(Isgl3dActionInterval *)action {
+- (id)initWithAction:(Isgl3dActionInterval *)action {
 	if ((self = [super init])) {
 		_action = [action retain];
 	}
@@ -45,13 +45,13 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_action release];
 	
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRepeatForever * copy = [[[self class] allocWithZone:zone] initWithAction:_action];
 
 	return copy;
@@ -63,7 +63,7 @@
 	[_action startWithTarget:_target];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	[_action tick:dt];
 	
 	if (_action.hasTerminated) {

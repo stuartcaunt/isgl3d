@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,25 @@
 #import "TerrainMeshDemoView.h"
 #import "Isgl3dDemoCameraController.h"
 
+
+@interface TerrainMeshDemoView () {
+@private
+    Isgl3dNodeCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@end
+
+
+#pragma mark -
 @implementation TerrainMeshDemoView
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
 		_cameraController.orbit = 40;
 		_cameraController.theta = 30;
 		_cameraController.phi = 10;
@@ -47,7 +59,7 @@
 		Isgl3dPlane * planeMesh = [Isgl3dPlane meshWithGeometry:32 height:32 nx:4 ny:4];
 		_plane = [_container createNodeWithMesh:planeMesh andMaterial:dataMaterial];
 		_plane.rotationX = -90;
-		_plane.position = iv3(0, -5, 0);
+		_plane.position = Isgl3dVector3Make(0, -5, 0);
 		_plane.lightingEnabled = NO;
 	
 		Isgl3dTerrainMesh * terrainMesh = [Isgl3dTerrainMesh meshWithTerrainDataFile:@"RaceTrack1Path_512.png" channel:2 width:32 depth:32 height:10 nx:32 nz:32];
@@ -55,7 +67,7 @@
 	
 		// Add light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.005];
-		light.position = iv3(5, 10, 10);
+		light.position = Isgl3dVector3Make(5, 10, 10);
 		[self.scene addChild:light];	
 
 		// Schedule updates
@@ -67,8 +79,25 @@
 
 - (void) dealloc {
 	[_cameraController release];
+    _cameraController = nil;
 
 	[super dealloc];
+}
+
+- (void)createSceneCamera {
+    CGSize viewSize = self.viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
+    [perspectiveLens release];
+    
+    self.camera = standardCamera;
+    [standardCamera release];
+    [self.scene addChild:standardCamera];
 }
 
 - (void) onActivated {

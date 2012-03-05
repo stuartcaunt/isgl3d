@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@
 static Isgl3dUVMap *theStandardUVMap = nil;
 
 
-- (id) initWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC {
+- (id)initWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC {
 	if ((self = [super init])) {
 		_uA = uA;
 		_vA = vA;
@@ -54,7 +54,7 @@ static Isgl3dUVMap *theStandardUVMap = nil;
 	return self;
 }	
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
     return [[Isgl3dUVMap allocWithZone:zone] initWithUA:_uA vA:_vA uB:_uB vB:_vB uC:_uC vC:_vC];
 }
 

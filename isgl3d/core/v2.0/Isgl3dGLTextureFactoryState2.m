@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,12 +35,12 @@
 @interface Isgl3dGLTextureFactoryState2 (PrivateMethods)
 - (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 - (unsigned int) createTextureForDepthRender:(int)width height:(int)height;
-- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY ;
+- (void)handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY ;
 @end
 
 @implementation Isgl3dGLTextureFactoryState2
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		
@@ -49,7 +49,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
@@ -156,7 +156,7 @@
 	return [Isgl3dGLDepthRenderTexture2 textureWithId:textureIndex width:width height:height];
 }
 
-- (void) deleteTextureId:(unsigned int)textureId {
+- (void)deleteTextureId:(unsigned int)textureId {
 	glDeleteTextures(1, &textureId);
 }
 
@@ -193,7 +193,7 @@
 	return textureIndex;
 }
 
-- (void) handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (void)handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	if (precision == Isgl3dTexturePrecisionHigh) {
 		glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

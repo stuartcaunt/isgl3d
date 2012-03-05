@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -130,13 +130,13 @@
  * @param updateFrequency The frequency at which the acceleration should be recalculated. The default is 
  * for 30 times a second.
  */
-- (void) setup:(float) updateFrequency;
+- (void)setup:(float) updateFrequency;
 
 /**
  * Starts the tilt calibration. This lasts for 20 cycles, after which the gravity vector is modified. The rawGravity
  * vector always contains the gravity as determined by the device.
  */
-- (void) startTiltCalibration;
+- (void)startTiltCalibration;
 
 /**
  * Returns the rotation angle (angle about the z-axis) of the device. If a tiltCutoff has been specified and the current
@@ -154,6 +154,6 @@
 /*
  * Implementation of the UIAccelerometerDelegate protocol. 
  */
-- (void) accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration;
+- (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration;
 
 @end

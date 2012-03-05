@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@
 @synthesize object = _object;
 @synthesize touches = _touches;
 
-- (id) initWithObject:(id)object forTouches:(NSSet *)touches {
+- (id)initWithObject:(id)object forTouches:(NSSet *)touches {
 
 	if ((self = [super init])) {
 		_object = [object retain];
@@ -41,7 +41,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_object release];
 	[_touches release];
 	

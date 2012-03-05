@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -44,12 +44,12 @@
  * Allocates and initialises (autorelease) an Isgl3dActionRepeatForever with an action to repeat
  * @param action The action to repeat forever
  */
-+ (id) actionWithAction:(Isgl3dActionInterval *)action;
++ (id)actionWithAction:(Isgl3dActionInterval *)action;
 
 /**
  * Initialises the an Isgl3dActionRepeatForever with an action to repeat.
  * @param action The action to repeat forever
  */
-- (id) initWithAction:(Isgl3dActionInterval *)action;
+- (id)initWithAction:(Isgl3dActionInterval *)action;
 
 @end

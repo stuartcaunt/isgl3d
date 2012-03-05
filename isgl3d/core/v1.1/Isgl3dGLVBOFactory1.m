@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,14 +31,14 @@
 
 @implementation Isgl3dGLVBOFactory1
 
-- (id) init {
+- (id)init {
 	if ((self = [super init])) {
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
@@ -88,36 +88,36 @@
 	return bufferIndex;
 }
 
-- (void) createBufferFromArray:(const float*)array size:(int)size atIndex:(unsigned int)bufferIndex {
+- (void)createBufferFromArray:(const float*)array size:(int)size atIndex:(unsigned int)bufferIndex {
 	glBindBuffer(GL_ARRAY_BUFFER, bufferIndex);
 	
 	// Copy data from local memory
 	glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)(size * sizeof(GLfloat)), array, GL_STATIC_DRAW);
 }
 
-- (void) createBufferFromFloatArray:(Isgl3dFloatArray *)floatArray atIndex:(unsigned int)bufferIndex {
+- (void)createBufferFromFloatArray:(Isgl3dFloatArray *)floatArray atIndex:(unsigned int)bufferIndex {
 	[self createBufferFromArray:[floatArray array] size:[floatArray size] atIndex:bufferIndex];
 }
 
-- (void) createBufferFromElementArray:(const unsigned short*)array size:(int)size atIndex:(unsigned int)bufferIndex {
+- (void)createBufferFromElementArray:(const unsigned short*)array size:(int)size atIndex:(unsigned int)bufferIndex {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferIndex);
 	
 	// Copy data from local memory
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (GLsizeiptr)(size * sizeof(GLushort)), array, GL_STATIC_DRAW);
 }
 
-- (void) createBufferFromUShortElementArray:(Isgl3dUShortArray *)ushortArray atIndex:(unsigned int)bufferIndex {
+- (void)createBufferFromUShortElementArray:(Isgl3dUShortArray *)ushortArray atIndex:(unsigned int)bufferIndex {
 	[self createBufferFromElementArray:[ushortArray array] size:[ushortArray size] atIndex:bufferIndex];
 }
 
-- (void) createBufferFromUnsignedCharArray:(const unsigned char *)array size:(unsigned int)size atIndex:(unsigned int)bufferIndex {
+- (void)createBufferFromUnsignedCharArray:(const unsigned char *)array size:(unsigned int)size atIndex:(unsigned int)bufferIndex {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferIndex);
 	
 	// Copy data from local memory
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (GLsizeiptr)(size), array, GL_STATIC_DRAW);
 }
 
-- (void) deleteBuffer:(unsigned int)bufferIndex {
+- (void)deleteBuffer:(unsigned int)bufferIndex {
 	if (bufferIndex > 0) {
 		glDeleteBuffers(1, &bufferIndex);
 	}

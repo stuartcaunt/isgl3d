@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,17 +36,21 @@
 #import "Isgl3dDirector.h"
 #import "Isgl3dActionManager.h"
 #import "Isgl3dAction.h"
+#import "Isgl3dMathUtils.h"
 #import "Isgl3dMatrix4.h"
 
 
 static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
+
 @interface Isgl3dNode ()
-- (void) updateEulerAngles;
-- (void) updateRotationMatrix;
-- (void) updateLocalTransformation; 
+- (void)updateEulerAngles;
+- (void)updateRotationMatrix;
+- (void)updateLocalTransformation; 
 @end
 
+
+#pragma mark -
 @implementation Isgl3dNode
 
 @synthesize worldTransformation = _worldTransformation;
@@ -62,11 +66,11 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 @synthesize interactive = _interactive;
 @synthesize isVisible = _isVisible;
 
-+ (id) node {
++ (id)node {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {    
+- (id)init {    
     if ((self = [super init])) {
 
 		_localTransformation = Isgl3dMatrix4Identity;
@@ -107,7 +111,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_children release];
 
 	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
@@ -115,8 +119,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone *)zone {
-    Isgl3dNode * copy = [[[self class] allocWithZone:zone] init];
+- (id)copyWithZone:(NSZone *)zone {
+    Isgl3dNode *copy = [[[self class] allocWithZone:zone] init];
 
 	copy->_rotationX = _rotationX;
 	copy->_rotationY = _rotationY;
@@ -144,7 +148,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
     copy->_interactive = _interactive;
     copy->_isVisible = _isVisible;
 
-	for (Isgl3dNode * child in _children) {
+	for (Isgl3dNode *child in _children) {
 		[copy addChild:[[child copy] autorelease]];
 	}
 	
@@ -153,41 +157,41 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 #pragma mark translation rotation scaling
 
-- (float) x {
+- (float)x {
 	return _localTransformation.m30;
 }
 
-- (void) setX:(float)x {
+- (void)setX:(float)x {
 	_localTransformation.m30 = x;
 	
 	_transformationDirty = YES;
 }
 
-- (float) y {
+- (float)y {
 	return _localTransformation.m31;
 }
 
-- (void) setY:(float)y {
+- (void)setY:(float)y {
 	_localTransformation.m31 = y;
 	
 	_transformationDirty = YES;
 }
 
-- (float) z {
+- (float)z {
 	return _localTransformation.m32;
 }
 
-- (void) setZ:(float)z {
+- (void)setZ:(float)z {
 	_localTransformation.m32 = z;
 	
 	_transformationDirty = YES;
 }
 
-- (Isgl3dVector3) position {
+- (Isgl3dVector3)position {
 	return im4ToPosition(&_localTransformation);
 }
 
-- (void) setPosition:(Isgl3dVector3)position {
+- (void)setPosition:(Isgl3dVector3)position {
 	_localTransformation.m30 = position.x;
 	_localTransformation.m31 = position.y;
 	_localTransformation.m32 = position.z;
@@ -195,85 +199,85 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_transformationDirty = YES;
 }
 
-- (float) rotationX {
+- (float)rotationX {
 	if (_eulerAnglesDirty) {
 		[self updateEulerAngles];
 	}
 	return _rotationX;
 }
 
-- (void) setRotationX:(float)rotationX {
+- (void)setRotationX:(float)rotationX {
 	_rotationX = rotationX;
 	
 	_rotationMatrixDirty = YES;
 	_localTransformationDirty = YES;
 }
 
-- (float) rotationY {
+- (float)rotationY {
 	if (_eulerAnglesDirty) {
 		[self updateEulerAngles];
 	}
 	return _rotationY;
 }
 
-- (void) setRotationY:(float)rotationY {
+- (void)setRotationY:(float)rotationY {
 	_rotationY = rotationY;
 	
 	_rotationMatrixDirty = YES;
 	_localTransformationDirty = YES;
 }
 
-- (float) rotationZ {
+- (float)rotationZ {
 	if (_eulerAnglesDirty) {
 		[self updateEulerAngles];
 	}
 	return _rotationZ;
 }
 
-- (void) setRotationZ:(float)rotationZ {
+- (void)setRotationZ:(float)rotationZ {
 	_rotationZ = rotationZ;
 	
 	_rotationMatrixDirty = YES;
 	_localTransformationDirty = YES;
 }
 
-- (float) scaleX {
+- (float)scaleX {
 	return _scaleX;
 }
 
-- (void) setScaleX:(float)scaleX {
+- (void)setScaleX:(float)scaleX {
 	_scaleX = scaleX;
 
 	_localTransformationDirty = YES;
 }
 
-- (float) scaleY {
+- (float)scaleY {
 	return _scaleY;
 }
 
-- (void) setScaleY:(float)scaleY {
+- (void)setScaleY:(float)scaleY {
 	_scaleY = scaleY;
 
 	_localTransformationDirty = YES;
 }
 
-- (float) scaleZ {
+- (float)scaleZ {
 	return _scaleZ;
 }
 
-- (void) setScaleZ:(float)scaleZ {
+- (void)setScaleZ:(float)scaleZ {
 	_scaleZ = scaleZ;
 
 	_localTransformationDirty = YES;
 }
 
-- (void) setPositionValues:(float)x y:(float)y z:(float)z {
+- (void)setPositionValues:(float)x y:(float)y z:(float)z {
 	im4SetTranslation(&_localTransformation, x, y, z);
 	
 	_transformationDirty = YES;
 }
 
-- (void) translateByValues:(float)x y:(float)y z:(float)z {
+- (void)translateByValues:(float)x y:(float)y z:(float)z {
 	if (_rotationMatrixDirty) {
 		[self updateRotationMatrix];
 	}
@@ -282,7 +286,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_transformationDirty = YES;
 }
 
-- (void) translateByVector:(Isgl3dVector3)vector {
+- (void)translateByVector:(Isgl3dVector3)vector {
 	if (_rotationMatrixDirty) {
 		[self updateRotationMatrix];
 	}
@@ -291,42 +295,42 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_transformationDirty = YES;
 }
 
-- (void) pitch:(float)angle {
+- (void)pitch:(float)angle {
 	if (_rotationMatrixDirty) {
 		[self updateRotationMatrix];
 	}
 
-	Isgl3dVector3 axis = im4MultVector3x3(&_localTransformation, &Isgl3dVector3Right);
+    Isgl3dVector3 axis = Isgl3dMatrix4MultiplyVector3(_localTransformation, Isgl3dVector3Right);
 	[self rotate:angle x:axis.x y:axis.y z:axis.z];
 }
 
-- (void) yaw:(float)angle {
+- (void)yaw:(float)angle {
 	if (_rotationMatrixDirty) {
 		[self updateRotationMatrix];
 	}
 
-	Isgl3dVector3 axis = im4MultVector3x3(&_localTransformation, &Isgl3dVector3Up);
+	Isgl3dVector3 axis = Isgl3dMatrix4MultiplyVector3(_localTransformation, Isgl3dVector3Up);
 	[self rotate:angle x:axis.x y:axis.y z:axis.z];
 }
 
-- (void) roll:(float)angle {
+- (void)roll:(float)angle {
 	if (_rotationMatrixDirty) {
 		[self updateRotationMatrix];
 	}
 
-	Isgl3dVector3 axis = im4MultVector3x3(&_localTransformation, &Isgl3dVector3Backward);
+	Isgl3dVector3 axis = Isgl3dMatrix4MultiplyVector3(_localTransformation, Isgl3dVector3Backward);
 	[self rotate:angle x:axis.x y:axis.y z:axis.z];
 }
 
-- (void) rotate:(float)angle x:(float)x y:(float)y z:(float)z {
-	im4Rotate(&_localTransformation, angle, x, y, z);
+- (void)rotate:(float)angle x:(float)x y:(float)y z:(float)z {
+    _localTransformation = Isgl3dMatrix4Rotate(_localTransformation, Isgl3dMathDegreesToRadians(angle), x, y, z);
 	
 	_rotationMatrixDirty = NO;
 	_eulerAnglesDirty = YES;
 	_localTransformationDirty = YES;
 }
 
-- (void) setRotation:(float)angle x:(float)x y:(float)y z:(float)z {
+- (void)setRotation:(float)angle x:(float)x y:(float)y z:(float)z {
 	im4SetRotation(&_localTransformation, angle, x, y, z);
 	
 	_rotationMatrixDirty = NO;
@@ -335,11 +339,11 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 
-- (void) setScale:(float)scale {
+- (void)setScale:(float)scale {
 	[self setScale:scale scaleY:scale scaleZ:scale];
 }
 
-- (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
+- (void)setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ {
 	_scaleX = scaleX;
 	_scaleY = scaleY;
 	_scaleZ = scaleZ;
@@ -347,7 +351,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_localTransformationDirty = YES;
 }
 
-- (void) resetTransformation {
+- (void)resetTransformation {
 	_localTransformation = Isgl3dMatrix4Identity;
 	
 	_localTransformationDirty = YES;
@@ -355,7 +359,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_eulerAnglesDirty = YES;
 }
 
-- (void) setTransformation:(Isgl3dMatrix4)transformation {
+- (void)setTransformation:(Isgl3dMatrix4)transformation {
 	_localTransformation = transformation;
 	
     Isgl3dVector3 currentScale = im4ToScaleValues(&_localTransformation);
@@ -368,7 +372,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_eulerAnglesDirty = YES;
 }
 
-- (void) setTransformationFromOpenGLMatrix:(float *)transformation {
+- (void)setTransformationFromOpenGLMatrix:(float *)transformation {
 	im4SetTransformationFromOpenGLMatrix(&_localTransformation, transformation);
 
     Isgl3dVector3 currentScale = im4ToScaleValues(&_localTransformation);
@@ -381,7 +385,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_eulerAnglesDirty = YES;
 }
 
-- (void) getTransformationAsOpenGLMatrix:(float *)transformation {
+- (void)getTransformationAsOpenGLMatrix:(float *)transformation {
 	if (_localTransformationDirty) {
 		[self updateLocalTransformation];
 	}
@@ -390,31 +394,28 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 
-- (void) copyWorldPositionToArray:(float *)position {
+- (void)copyWorldPositionToArray:(float *)position {
 	position[0] = _worldTransformation.m30;
 	position[1] = _worldTransformation.m31;
 	position[2] = _worldTransformation.m32;
 	position[3] = _worldTransformation.m33;
 }
 
-- (Isgl3dVector3) worldPosition {
-	return iv3(_worldTransformation.m30, _worldTransformation.m31, _worldTransformation.m32);
+- (Isgl3dVector3)worldPosition {
+	return Isgl3dVector3Make(_worldTransformation.m30, _worldTransformation.m31, _worldTransformation.m32);
 	
 }
 
-- (float) getZTransformation:(Isgl3dMatrix4 *)viewMatrix {
-	Isgl3dMatrix4 modelViewMatrix;
-	im4Copy(&modelViewMatrix, viewMatrix);
-	im4Multiply(&modelViewMatrix, &_worldTransformation);
-	
+- (float)getZTransformation:(Isgl3dMatrix4 *)viewMatrix {
+	Isgl3dMatrix4 modelViewMatrix = Isgl3dMatrix4Multiply(*viewMatrix, _worldTransformation);
 	float z = modelViewMatrix.m32;
 	
 	return z;
 }
 
-- (Isgl3dVector4) asPlaneWithNormal:(Isgl3dVector3)normal {
+- (Isgl3dVector4)asPlaneWithNormal:(Isgl3dVector3)normal {
 	
-	Isgl3dVector3 transformedNormal = im4MultVector3x3(&_worldTransformation, &normal); 
+    Isgl3dVector3 transformedNormal = Isgl3dMatrix4MultiplyVector3(_worldTransformation, normal);
 	
 	float A = transformedNormal.x;
 	float B = transformedNormal.y;
@@ -424,7 +425,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	return iv4(A, B, C, D);
 }
 
-- (void) updateEulerAngles {
+- (void)updateEulerAngles {
 	Isgl3dVector3 r = im4ToEulerAngles(&_localTransformation);
 	_rotationX = r.x;
 	_rotationY = r.y;
@@ -433,13 +434,13 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	_eulerAnglesDirty = NO;
 }
 
-- (void) updateRotationMatrix {
+- (void)updateRotationMatrix {
 	im4SetRotationFromEuler(&_localTransformation, _rotationX, _rotationY, _rotationZ);
 	
 	_rotationMatrixDirty = NO;
 }
 
-- (void) updateLocalTransformation {
+- (void)updateLocalTransformation {
 	// Translation already set
 	
 	// Convert rotation matrix into euler angles if necessary
@@ -455,11 +456,11 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 
-- (void) setTransformationDirty:(BOOL)isDirty {
+- (void)setTransformationDirty:(BOOL)isDirty {
 	_transformationDirty = isDirty;
 }
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	
 	// Recalculate local transformation if necessary
 	if (_localTransformationDirty) {
@@ -479,11 +480,9 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 		// Calculate world transformation
 		if (parentTransformation) {
-			im4Copy(&_worldTransformation, parentTransformation);
-			im4Multiply(&_worldTransformation, &_localTransformation);
-			
+            _worldTransformation = Isgl3dMatrix4Multiply(*parentTransformation, _localTransformation);
 		} else {
-			im4Copy(&_worldTransformation, &_localTransformation);
+            _worldTransformation = _localTransformation;
 		}
 		
 		_transformationDirty = NO;
@@ -499,35 +498,35 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 #pragma mark scene graph
 
-- (Isgl3dNode *) createNode {
+- (Isgl3dNode *)createNode {
 	return [self addChild:[Isgl3dNode node]];
 }
 
-- (Isgl3dMeshNode *) createNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
+- (Isgl3dMeshNode *)createNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
 	return (Isgl3dMeshNode *)[self addChild:[Isgl3dMeshNode nodeWithMesh:mesh andMaterial:material]];
 }
 
-- (Isgl3dParticleNode *) createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
+- (Isgl3dParticleNode *)createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
 	return (Isgl3dParticleNode *)[self addChild:[Isgl3dParticleNode nodeWithParticle:particle andMaterial:material]];
 }
 
-- (Isgl3dBillboardNode *) createBillboardNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
+- (Isgl3dBillboardNode *)createBillboardNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
 	return (Isgl3dBillboardNode *)[self addChild:[Isgl3dBillboardNode nodeWithMesh:mesh andMaterial:material]];
 }
 
-- (Isgl3dSkeletonNode *) createSkeletonNode {
+- (Isgl3dSkeletonNode *)createSkeletonNode {
 	return (Isgl3dSkeletonNode *)[self addChild:[Isgl3dSkeletonNode skeletonNode]];
 }
 
-- (Isgl3dFollowNode *) createFollowNodeWithTarget:(Isgl3dNode *)target {
+- (Isgl3dFollowNode *)createFollowNodeWithTarget:(Isgl3dNode *)target {
 	return (Isgl3dFollowNode *)[self addChild:[Isgl3dFollowNode nodeWithTarget:target]];
 }
 
-- (Isgl3dLight *) createLightNode {
+- (Isgl3dLight *)createLightNode {
 	return (Isgl3dLight *)[self addChild:[Isgl3dLight light]];
 }
 
-- (Isgl3dNode *) addChild:(Isgl3dNode *)child {
+- (Isgl3dNode *)addChild:(Isgl3dNode *)child {
 	child.parent = self;
 	[_children addObject:child];
 	_hasChildren = YES;
@@ -539,7 +538,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	return child;
 }
 
-- (void) removeChild:(Isgl3dNode *)child {
+- (void)removeChild:(Isgl3dNode *)child {
 	child.parent = nil;
 	[_children removeObject:child];
 	
@@ -554,11 +553,11 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) removeFromParent {
+- (void)removeFromParent {
 	[_parent removeChild:self];
 }
 
-- (void) activate {
+- (void)activate {
 	_isRunning = YES;
 	for (Isgl3dNode * child in _children) {
 		[child activate];
@@ -569,7 +568,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[self onActivated];
 }
 
-- (void) deactivate {
+- (void)deactivate {
 	_isRunning = NO;
 	for (Isgl3dNode * child in _children) {
 		[child deactivate];
@@ -580,19 +579,19 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[self onDeactivated];
 }
 
-- (void) onActivated {
+- (void)onActivated {
 	// To be over-ridden	
 }
 
-- (void) onDeactivated {
+- (void)onDeactivated {
 	// To be over-ridden	
 }
 
-- (void) clearAll {
+- (void)clearAll {
 	[_children removeAllObjects];
 }
 
-- (void) renderLights:(Isgl3dGLRenderer *)renderer {
+- (void)renderLights:(Isgl3dGLRenderer *)renderer {
 	
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
@@ -603,7 +602,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
+- (void)render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
 	
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
@@ -614,7 +613,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {
+- (void)renderForEventCapture:(Isgl3dGLRenderer *)renderer {
 	
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
@@ -625,7 +624,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) renderForShadowMap:(Isgl3dGLRenderer *)renderer {
+- (void)renderForShadowMap:(Isgl3dGLRenderer *)renderer {
 	
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
@@ -636,7 +635,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) renderForPlanarShadows:(Isgl3dGLRenderer *)renderer {
+- (void)renderForPlanarShadows:(Isgl3dGLRenderer *)renderer {
 	
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
@@ -647,7 +646,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) collectAlphaObjects:(NSMutableArray *)alphaObjects {
+- (void)collectAlphaObjects:(NSMutableArray *)alphaObjects {
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
 			if (node.isVisible) {
@@ -657,12 +656,12 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}	
 }
 
-- (void) enableAlphaCullingWithValue:(float)value {
+- (void)enableAlphaCullingWithValue:(float)value {
 	_alphaCulling = YES;
 	_alphaCullValue = value;
 }
 
-- (void) occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
+- (void)occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle {
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
 			if (node.isVisible) {
@@ -673,23 +672,23 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 }
 
 
-+ (void) setOcclusionMode:(Isgl3dOcclusionMode)mode {
++ (void)setOcclusionMode:(Isgl3dOcclusionMode)mode {
 	Isgl3dNode_OcclusionMode = mode;
 }
 
-+ (Isgl3dOcclusionMode) occlusionMode {
++ (Isgl3dOcclusionMode)occlusionMode {
 	return Isgl3dNode_OcclusionMode;
 }
 
-- (BOOL) lightingEnabled {
+- (BOOL)lightingEnabled {
 	return _lightingEnabled;
 }
 
-- (void) setLightingEnabled:(BOOL)lightingEnabled {
+- (void)setLightingEnabled:(BOOL)lightingEnabled {
 	_lightingEnabled = lightingEnabled;
 }
 
-- (void) createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
+- (void)createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
 			if (node.isVisible) {
@@ -699,7 +698,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
+- (void)createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene {
 	if (_hasChildren && _isVisible) {
 		for (Isgl3dNode * node in _children) {
 			if (node.isVisible) {
@@ -709,14 +708,14 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	}
 }
 
-- (void) enableShadowCastingWithChildren:(BOOL)enableShadowCasting {
+- (void)enableShadowCastingWithChildren:(BOOL)enableShadowCasting {
 	_enableShadowCasting = enableShadowCasting;
 	for (Isgl3dNode * node in _children) {
 		[node enableShadowCastingWithChildren:enableShadowCasting];
     }
 }
 
-- (void) setAlphaWithChildren:(float)alpha {
+- (void)setAlphaWithChildren:(float)alpha {
 	_alpha = alpha;
 	for (Isgl3dNode * node in _children) {
 		[node setAlphaWithChildren:alpha];
@@ -744,15 +743,15 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	[[Isgl3dDirector sharedInstance] setGestureRecognizerDelegate:aDelegate forGestureRecognizer:gestureRecognizer];
 }
 
-- (void) runAction:(Isgl3dAction *)action {
+- (void)runAction:(Isgl3dAction *)action {
 	[[Isgl3dActionManager sharedInstance] addAction:action toTarget:self isPaused:!_isRunning];
 }
 
-- (void) stopAction:(Isgl3dAction *)action {
+- (void)stopAction:(Isgl3dAction *)action {
 	[[Isgl3dActionManager sharedInstance] stopAction:action];
 }
 
-- (void) stopAllActions {
+- (void)stopAllActions {
 	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
 }
 

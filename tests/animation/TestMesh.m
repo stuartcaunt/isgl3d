@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 
 @implementation TestMesh
 
-- (id) initWithGeometry:(float)width length:(float)length height:(float)height nx:(int)nx ny:(int)ny factor:(float)factor {
+- (id)initWithGeometry:(float)width length:(float)length height:(float)height nx:(int)nx ny:(int)ny factor:(float)factor {
 	
 	if ((self = [super init])) {
 		_width = width;

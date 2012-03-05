@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,14 @@
 
 @implementation Isgl3dTutorial3View
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 	
+        Isgl3dLookAtCamera *standardCamera = (Isgl3dLookAtCamera *)self.camera;
 		// Translate the camera and modify the look-at position (used to center the torus in the screen).
-		self.camera.position = iv3(2, 9, 10);
-		[self.camera lookAt:0.5 y:0 z:1];
+		standardCamera.eyePosition = Isgl3dVector3Make(2.0f, 9.0f, 10.0f);
+        standardCamera.centerPosition = Isgl3dVector3Make(0.5f, 0.0f, 1.0f);
 		
 		// Create the torus texture material, with darker ambient color
 		Isgl3dTextureMaterial *  torusMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"donut.png" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
@@ -55,7 +56,7 @@
 		// Create a mesh node in the scene using plane primitive and plane material, then rotate and translate it.
 		Isgl3dMeshNode * planeNode = [self.scene createNodeWithMesh:plane andMaterial:planeMaterial];
 		planeNode.rotationX = -90;
-		planeNode.position = iv3(0, -10, 0);
+		planeNode.position = Isgl3dVector3Make(0, -10, 0);
 	
 		// Create directional white light and add to scene
 		Isgl3dLight * light = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
@@ -70,12 +71,12 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	// Rotate the torus
 	_torusNode.rotationY += 1;
 }
@@ -91,7 +92,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

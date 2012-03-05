@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,16 +36,16 @@
 	float _blackAndAlpha[4];
 }
 
-- (id) initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
+- (id)initWithVertexShaderName:(NSString *)vertexShaderName fragmentShaderName:(NSString *)fragmentShaderName vsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader;
 
-- (void) setTexture:(Isgl3dGLTexture *)texture;
-- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
-- (void) setNormalMapping:(Isgl3dGLTexture *)texture;
-- (void) enableLighting:(BOOL)lightingEnabled;
-- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix;
-- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
-- (void) setShadowMap:(Isgl3dGLTexture *)texture;
-- (void) setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha;
-- (void) setCaptureColor:(float *)color;
+- (void)setTexture:(Isgl3dGLTexture *)texture;
+- (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
+- (void)setNormalMapping:(Isgl3dGLTexture *)texture;
+- (void)enableLighting:(BOOL)lightingEnabled;
+- (void)setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix;
+- (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void)setShadowMap:(Isgl3dGLTexture *)texture;
+- (void)setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha;
+- (void)setCaptureColor:(float *)color;
 
 @end

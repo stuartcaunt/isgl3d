@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http:isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,31 +27,17 @@
 #import "Isgl3dMathTypes.h"
 
 
-#define iv3(X, Y, Z) iv3Create(X, Y, Z)
 #define iv4(X, Y, Z, W) iv4Create(X, Y, Z, W)
 
 
 #pragma mark Isgl3dVector3
 
-extern Isgl3dVector3 Isgl3dVector3Forward;
-extern Isgl3dVector3 Isgl3dVector3Backward;
-extern Isgl3dVector3 Isgl3dVector3Left;
-extern Isgl3dVector3 Isgl3dVector3Right;
-extern Isgl3dVector3 Isgl3dVector3Up;
-extern Isgl3dVector3 Isgl3dVector3Down;
-
-
-/**
- * Creates a vector with the given components.
- * @param x The x component.
- * @param y The y component.
- * @param z The z component.
- */
-static inline Isgl3dVector3 iv3Create(float x, float y, float z)
-{
-	Isgl3dVector3 v = {x, y, z};
-	return v;
-}
+extern const Isgl3dVector3 Isgl3dVector3Forward;
+extern const Isgl3dVector3 Isgl3dVector3Backward;
+extern const Isgl3dVector3 Isgl3dVector3Left;
+extern const Isgl3dVector3 Isgl3dVector3Right;
+extern const Isgl3dVector3 Isgl3dVector3Up;
+extern const Isgl3dVector3 Isgl3dVector3Down;
 
 
 /**
@@ -63,32 +49,6 @@ static inline void iv3Reset(Isgl3dVector3 * a)
 	a->x = 0;
 	a->y = 0;
 	a->z = 0;
-}
-
-/**
- * Copies the vector components of one vector into another.
- * @param a The destination vector.
- * @param b The source vector.
- */
-static inline void iv3Copy(Isgl3dVector3 * a, Isgl3dVector3 * b)
-{
-	a->x = b->x;
-	a->y = b->y;
-	a->z = b->z;
-}
-
-/**
- * Copies values into a vector.
- * @param a The destination vector.
- * @param x The x component.
- * @param y The y component.
- * @param z The z component.
- */
-static inline void iv3Fill(Isgl3dVector3 * a, float x, float y, float z)
-{
-	a->x = x;
-	a->y = y;
-	a->z = z;
 }
 
 /**

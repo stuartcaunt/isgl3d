@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,11 @@
 @synthesize repeat = _repeat;
 @synthesize frameRate = _frameRate;
 
-+ (id) controllerWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
++ (id)controllerWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
 	return [[[self alloc] initWithSkeleton:skeleton andNumberOfFrames:numberOfFrames] autorelease];
 }
 
-- (id) initWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
+- (id)initWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames {
     if ((self = [super init])) {
 		_skeleton = [skeleton retain];
 		_numberOfFrames = numberOfFrames;
@@ -50,7 +50,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_skeleton release];
 	if (_animating) {
 		[self pause];
@@ -59,14 +59,14 @@
 	[super dealloc];
 }
 
-- (void) setFrame:(unsigned int)frame {
+- (void)setFrame:(unsigned int)frame {
 	if (frame < _numberOfFrames) {
 		_currentFrame = frame;
 		[_skeleton setFrame:_currentFrame];
 	}
 }
 
-- (void) nextFrame {
+- (void)nextFrame {
 	_currentFrame++;
 	if (_currentFrame == _numberOfFrames) {
 		
@@ -84,7 +84,7 @@
 	
 }
 
-- (void) start {
+- (void)start {
 	if (!_animating) {
 		_animating = YES;
 
@@ -92,7 +92,7 @@
 	}
 }
 
-- (void) stop {
+- (void)stop {
 	if (_animating) {
 		[_animationTimer invalidate];
 
@@ -104,7 +104,7 @@
 	
 }
 
-- (void) pause {
+- (void)pause {
 	if (_animating) {
 		[_animationTimer invalidate];
 
@@ -113,7 +113,7 @@
 	}
 }
 
-- (void) updateAnimation:(id)sender {
+- (void)updateAnimation:(id)sender {
 	[self nextFrame];
 }
 

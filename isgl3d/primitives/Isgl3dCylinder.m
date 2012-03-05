@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,11 +27,11 @@
 
 @implementation Isgl3dCylinder
 
-+ (id) meshWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
++ (id)meshWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
 	return [[[self alloc] initWithGeometry:height radius:radius ns:ns nt:nt openEnded:openEnded] autorelease];
 }
 
-- (id) initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
+- (id)initWithGeometry:(float)height radius:(float)radius ns:(int)ns nt:(int)nt openEnded:(BOOL)openEnded {
 	
 	if ((self = [super initWithGeometry:height topRadius:radius bottomRadius:radius ns:ns nt:nt openEnded:openEnded])) {
 	}
@@ -39,7 +39,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [super dealloc];
 }
 

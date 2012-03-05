@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,29 +41,29 @@
 @synthesize spotCutoffAngle = _spotCutoffAngle;
 @synthesize spotFalloffExponent = _spotFalloffExponent;
 
-+ (id) light {
++ (id)light {
 	return [[[self alloc] init] autorelease];
 }
 
-+ (id) lightWithColorArray:(float *)color {
++ (id)lightWithColorArray:(float *)color {
 	return [[[self alloc] initWithColorArray:color] autorelease];
 }
 
-+ (id) lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
++ (id)lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
 	return [[[self alloc] initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation] autorelease];
 }
 
-- (id) init {
+- (id)init {
 	return [self initWithHexColor:@"000000" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
 }
 
-- (id) initWithColorArray:(float *)color {
+- (id)initWithColorArray:(float *)color {
 	
 	NSString  * colorString = [Isgl3dColorUtil rgbString:color];
 	return [self initWithHexColor:@"000000" diffuseColor:colorString specularColor:colorString attenuation:0];
 }
 
-- (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
+- (id)initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
 	
 	if ((self = [super init])) {
 		_constantAttenuation = 1.0;
@@ -89,7 +89,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_color release];
 	
 	[super dealloc];
@@ -108,10 +108,10 @@
 }
 
 - (Isgl3dVector3) directionAsVector {
-	return iv3(-self.x, -self.y, -self.z);
+	return Isgl3dVector3Make(-self.x, -self.y, -self.z);
 }
 
-- (void) setDirection:(float)x y:(float)y z:(float)z {
+- (void)setDirection:(float)x y:(float)y z:(float)z {
 	self.x = -x;
 	self.y = -y;
 	self.z = -z;
@@ -122,7 +122,7 @@
 }
 
 
-- (void) setSpotDirection:(float)x y:(float)y z:(float)z {
+- (void)setSpotDirection:(float)x y:(float)y z:(float)z {
 	float length = sqrt(x*x + y*y + z*z);
 	_spotDirection[0] = x / length;
 	_spotDirection[1] = y / length;
@@ -130,11 +130,11 @@
 }
 
 
-- (void) renderLights:(Isgl3dGLRenderer *)renderer {
+- (void)renderLights:(Isgl3dGLRenderer *)renderer {
 	[renderer addLight:self];
 }
 
-- (void) setRenderLight:(BOOL)renderLight {
+- (void)setRenderLight:(BOOL)renderLight {
 	if (_lightType == DirectionalLight && renderLight) {
 		Isgl3dLog(Warn, @"Light is directional an cannot therefore be rendered on scene");
 		return;
@@ -162,7 +162,7 @@
 }
 
 
-- (void) setRenderedMesh:(Isgl3dGLMesh *)mesh {
+- (void)setRenderedMesh:(Isgl3dGLMesh *)mesh {
 	if (_lightType == DirectionalLight) {
 		Isgl3dLog(Warn, @"Light is directional an cannot therefore be rendered on scene");
 		return;
@@ -181,7 +181,7 @@
 
 
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	// Directional lights are not subject to parent transformations:
 	//   their direction remains constant, but the direction is stored as a translation
 	//   so copy it from the local transformation

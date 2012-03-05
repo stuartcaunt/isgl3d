@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,11 +34,11 @@
 @synthesize contentSize = _contentSize;
 @synthesize isHighDefinition = _isHighDefinition;
 
-+ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
++ (id)textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
 	return [[[self alloc] initWithId:textureId width:width height:height] autorelease];
 }
 
-+ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize {
++ (id)textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize {
 	return [[[self alloc] initWithId:textureId width:width height:height contentSize:contentSize] autorelease];
 }
 
@@ -58,7 +58,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[[Isgl3dGLTextureFactory sharedInstance] deleteTexture:self];
 
 	[super dealloc];

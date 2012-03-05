@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,18 +32,18 @@
 
 
 @interface Isgl3dGLContext1 ()
-- (void) checkGLExtensions;
+- (void)checkGLExtensions;
 - (BOOL) createBuffers:(CAEAGLLayer *)eaglLayer;
 - (BOOL) createExtensionBuffers;
-- (void) releaseBuffers;
-- (void) releaseExtensionBuffers;
+- (void)releaseBuffers;
+- (void)releaseExtensionBuffers;
 @end
 
 
 @implementation Isgl3dGLContext1
 
 // Create an ES 1.1 context
-- (id) initWithLayer:(CAEAGLLayer *) layer {
+- (id)initWithLayer:(CAEAGLLayer *) layer {
 	
 	if ((self = [super init])) {
 
@@ -80,7 +80,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	// Release all buffers
 	[self releaseBuffers];
@@ -101,7 +101,7 @@
 }
 
 
-- (void) checkGLExtensions {
+- (void)checkGLExtensions {
 	// Check and activate additional OpenGL extensions
 	//const GLubyte *str = glGetString(GL_EXTENSIONS);
 	//NSString *featuresStr = [NSString stringWithCString:(const char *)str encoding:NSASCIIStringEncoding];
@@ -356,7 +356,7 @@
 	return [_currentRenderer autorelease];
 }
 
-- (void) prepareRender {
+- (void)prepareRender {
 	[super prepareRender];
 	
 	if(_msaaAvailable && _msaaEnabled){		
@@ -368,7 +368,7 @@
 	}
 }
 
-- (void) finalizeRender {
+- (void)finalizeRender {
 	[super finalizeRender];
 
 	if (_msaaAvailable && _msaaEnabled) {
@@ -413,7 +413,7 @@
 	return pixelString;
 }
 
-- (void) setMsaaEnabled:(BOOL)value {
+- (void)setMsaaEnabled:(BOOL)value {
     if (!_msaaAvailable)
         return;
     
@@ -428,13 +428,13 @@
     }
 }
 
-- (void) switchToStandardBuffers
+- (void)switchToStandardBuffers
 {
 	glBindFramebufferOES(GL_FRAMEBUFFER_OES, _defaultFrameBuffer);
 	glBindRenderbufferOES(GL_RENDERBUFFER_OES, _colorRenderBuffer);
 }
 
-- (void) switchToMsaaBuffers
+- (void)switchToMsaaBuffers
 {
 	if (_msaaAvailable && _msaaEnabled) {
 		glBindFramebufferOES(GL_FRAMEBUFFER_OES, _msaaFrameBuffer);

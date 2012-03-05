@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,7 +62,7 @@
  * will subsequently be forwarded to this object.
  * @param responder An object implementing the Isgl3dTouchScreenResponder protocol to which touch events should be forwarded.
  */
-- (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder;
+- (void)addResponder:(id <Isgl3dTouchScreenResponder>)responder;
 
 /*
  * Adds a new object that implements the Isgl3dTouchScreenResponder protocol to the array of responders. Only touch events
@@ -70,7 +70,7 @@
  * @param responder An object implementing the Isgl3dTouchScreenResponder protocol to which touch events should be forwarded.
  * @param view The view in which events will be forwared to the responder 
  */
-- (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder withView:(Isgl3dView *)view;
+- (void)addResponder:(id <Isgl3dTouchScreenResponder>)responder withView:(Isgl3dView *)view;
 
 /**
  * Removes a particular object that implements the Isgl3dTouchScreenResponder protocol from the array of responders.
@@ -79,7 +79,7 @@
  * this reason, the dealloc method of the object will never be called and hence a memory leak is possible.
  * @param responder An object implementing the Isgl3dTouchScreenResponder protocol that should be removed from the array of responders.
  */
-- (void) removeResponder:(id <Isgl3dTouchScreenResponder>)responder;
+- (void)removeResponder:(id <Isgl3dTouchScreenResponder>)responder;
 
 /**
  * Tells the receiver when one or more fingers touch down in a view or window.
@@ -128,10 +128,10 @@
 @property (nonatomic, readonly) id<Isgl3dTouchScreenResponder> responder;
 
 
-+ (id) responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder;
-+ (id) responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view;
++ (id)responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder;
++ (id)responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view;
 
-- (id) initWithResponder:(id<Isgl3dTouchScreenResponder>)responder;
-- (id) initWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view;
+- (id)initWithResponder:(id<Isgl3dTouchScreenResponder>)responder;
+- (id)initWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view;
 
 @end

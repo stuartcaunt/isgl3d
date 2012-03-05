@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -121,12 +121,12 @@
 /**
  * Allocates and initialises (autorelease) Isgl3dGLMesh.
  */
-+ (id) mesh;
++ (id)mesh;
 
 /**
  * Initialises the Isgl3dGLMesh.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Needs to be called to construct the full VBO data in the GPU.
@@ -136,7 +136,7 @@
  * This is typically called internally (by Isgl3dPrimitive for example) and does not have to be called if the
  * data is set explicitly.
  */
-- (void) constructVBOData;
+- (void)constructVBOData;
 
 /**
  * Used to construct the raw mesh data (vertices and indices).
@@ -145,7 +145,7 @@
  * This is typically called internally (by Isgl3dPrimitive for example) and does not have to be called if the
  * data is set explicitly.
  */
-- (void) constructMeshData;
+- (void)constructMeshData;
 
 /**
  * Returns the raw, interlaced vertex data.
@@ -175,7 +175,7 @@
  * @param numberOfElements the true number of indices contained in the array (for ushort data for example, this equals indexDataSize / sizeof(ushort)).
  * @param vboData An Isgl3dGLVBOData object containing information on the structure of the raw vertex data.
  */
-- (void) setVertices:(unsigned char *)vertexData withVertexDataSize:(unsigned int)vertexDataSize andIndices:(unsigned char *)indices 
+- (void)setVertices:(unsigned char *)vertexData withVertexDataSize:(unsigned int)vertexDataSize andIndices:(unsigned char *)indices 
              withIndexDataSize:(unsigned int)indexDataSize andNumberOfElements:(unsigned int)numberOfElements andVBOData:(Isgl3dGLVBOData *)vboData;
 
 /**
@@ -191,7 +191,7 @@
  * @param vertexData the raw vertex data cast as an unsigned char pointer.
  * @param vertexDataSize the vertex data size in bytes.
  */
-- (void) setVertexData:(unsigned char *)vertexData withSize:(unsigned int)vertexDataSize;
+- (void)setVertexData:(unsigned char *)vertexData withSize:(unsigned int)vertexDataSize;
 
 /**
  * Sets the index data.
@@ -200,13 +200,13 @@
  * @param indexDataSize the index data size in bytes.
  * @param numberOfElements the true number of indices contained in the array (for ushort data for example, this equals indexDataSize / sizeof(ushort)).
  */
-- (void) setIndices:(unsigned char *)indices withSize:(unsigned int)indexDataSize andNumberOfElements:(unsigned int)numberOfElements;
+- (void)setIndices:(unsigned char *)indices withSize:(unsigned int)indexDataSize andNumberOfElements:(unsigned int)numberOfElements;
 
 /**
  * Explicitly sets the VBO data relevant to the raw vertex and index data. When this is called the raw data is sent to the GPU
  * and registered.
  * @param vboData An Isgl3dGLVBOData object containing information on the structure of the raw vertex data.
  */
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData;
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData;
 
 @end

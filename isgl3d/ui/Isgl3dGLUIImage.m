@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,16 +31,16 @@
 
 @implementation Isgl3dGLUIImage
 
-+ (id) imageWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
++ (id)imageWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 	return [[[self alloc] initWithMaterial:material width:width height:height] autorelease];
 }
 
-+ (id) imageWithMaterial:(Isgl3dMaterial *)material andRectangle:(CGRect)rectangle width:(unsigned int)width height:(unsigned int)height {
++ (id)imageWithMaterial:(Isgl3dMaterial *)material andRectangle:(CGRect)rectangle width:(unsigned int)width height:(unsigned int)height {
 	return [[[self alloc] initWithMaterial:material andRectangle:rectangle width:width height:height] autorelease];
 }
 
 
-- (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
+- (id)initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 
 	float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
 	float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
@@ -51,7 +51,7 @@
 	return self;	
 }
 
-- (id) initWithMaterial:(Isgl3dMaterial *)material andRectangle:(CGRect)rectangle width:(unsigned int)width height:(unsigned int)height {
+- (id)initWithMaterial:(Isgl3dMaterial *)material andRectangle:(CGRect)rectangle width:(unsigned int)width height:(unsigned int)height {
 	if ([material isKindOfClass:[Isgl3dTextureMaterial class]]) {
 		Isgl3dTextureMaterial * textureMaterial = (Isgl3dTextureMaterial *)material;
 		float materialWidth = textureMaterial.width;
@@ -88,7 +88,7 @@
 	
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[super dealloc];
 }

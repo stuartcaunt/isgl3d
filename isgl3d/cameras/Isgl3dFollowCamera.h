@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
  *
  */
 
-#import "Isgl3dCamera.h"
+#import "Isgl3dNodeCamera.h"
 
 /**
  * The Isgl3dFollowCamera is used to follow the movement (translations) of a target node.
@@ -38,37 +38,7 @@
  * By modifying the stiffness of the spring, the resistance to movement and the mass of the camera,
  * the behaviour of the camera can be changed accordingly.
  */
-@interface Isgl3dFollowCamera : Isgl3dCamera {
-	    
-@private
-	Isgl3dNode * _target;
-
-	Isgl3dMatrix4 _targetMovementIT;
-
-	Isgl3dVector3 _currentTargetPosition;
-	Isgl3dVector3 _currentPosition;
-	
-	Isgl3dVector3 _oldTargetPosition;
-	Isgl3dVector3 _oldPosition;
-	
-	Isgl3dVector3 _desiredPosition;
-	Isgl3dVector3 _elasticForce;
-	Isgl3dVector3 _dampingForce;
-	Isgl3dVector3 _velocity;
-	Isgl3dVector3 _acceleration;
-	Isgl3dVector3 _newVelocity;
-	Isgl3dVector3 _newPosition;
-	Isgl3dVector3 _newPositionInPlane;
-	Isgl3dVector3 _targetPosition;
-
-	float _stiffness;
-	float _damping;
-	float _mass;
-	float _lookAhead;
-
-	BOOL _useRealTime;
-	
-	BOOL _initialized;
+@interface Isgl3dFollowCamera : Isgl3dNodeCamera {
 }
 
 /**
@@ -109,73 +79,14 @@
 @property (nonatomic) BOOL useRealTime;
 
 /**
- * Allocates and initialises (autorelease) camera with a target node.
- * Note: For perspective projections the camera can only be used if the width and height are set 
- * @param target The target node.
+ *
  */
-+ (id) cameraWithTarget:(Isgl3dNode *)target;
-
-/**
- * Allocates and initialises (autorelease) camera with a specified width and height and a target.
- * @param width The width of the view.
- * @param height The height of the view.
- * @param target The target node.
- */
-+ (id) cameraWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target;
-
-/**
- * Allocates and initialises (autorelease) camera with user-defined geometry and a target node.
- * @param width The width of the view.
- * @param height The height of the view.
- * @param x The x position of the camera.
- * @param y The y position of the camera.
- * @param z The z position of the camera.
- * @param upX The x component of the up vector.
- * @param upY The y component of the up vector.
- * @param upZ The z component of the up vector.
- * @param lookAtX The x position where the camera will look at.
- * @param lookAtY The y position where the camera will look at.
- * @param lookAtZ The z position where the camera will look at.
- * @param target The target node.
- */
-+ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target;
-
-/**
- * Initialises the camera with a target node.
- * Note: For perspective projections the camera can only be used if the width and height are set 
- * @param target The target node.
- */
-- (id) initWithTarget:(Isgl3dNode *)target;
-
-/**
- * Initialises the camera with a specified width and height and a target.
- * @param width The width of the view.
- * @param height The height of the view.
- * @param target The target node.
- */
-- (id) initWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target;
-
-/**
- * Initialises the camera with user-defined geometry and a target node.
- * @param width The width of the view.
- * @param height The height of the view.
- * @param x The x position of the camera.
- * @param y The y position of the camera.
- * @param z The z position of the camera.
- * @param upX The x component of the up vector.
- * @param upY The y component of the up vector.
- * @param upZ The z component of the up vector.
- * @param lookAtX The x position where the camera will look at.
- * @param lookAtY The y position where the camera will look at.
- * @param lookAtZ The z position where the camera will look at.
- * @param target The target node.
- */
-- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target;
+- (id)initWithLens:(id<Isgl3dCameraLens>)lens position:(Isgl3dVector3)position andTarget:(Isgl3dNode *)target up:(Isgl3dVector3)up;
 
 /**
  * Sets the target to a different Isgl3dNode.
  * @param target The target node.
  */
-- (void) setTarget:(Isgl3dNode *)target;
+- (void)setTarget:(Isgl3dNode *)target;
 
 @end

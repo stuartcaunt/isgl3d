@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ static Isgl3dTouchScreen * _instance = nil;
 
 @implementation Isgl3dTouchScreen
 
-- (id) init {
+- (id)init {
 
 	if ((self = [super init])) {
 		_responders = [[NSMutableArray alloc] init];
@@ -40,7 +40,7 @@ static Isgl3dTouchScreen * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[_responders release];
     [super dealloc];
@@ -64,15 +64,15 @@ static Isgl3dTouchScreen * _instance = nil;
 	}
 }
 
-- (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder {
+- (void)addResponder:(id <Isgl3dTouchScreenResponder>)responder {
 	[_responders addObject:[Isgl3dViewTouchResponder responderWithResponder:responder]];
 }
 
-- (void) addResponder:(id <Isgl3dTouchScreenResponder>)responder withView:(Isgl3dView *)view {
+- (void)addResponder:(id <Isgl3dTouchScreenResponder>)responder withView:(Isgl3dView *)view {
 	[_responders addObject:[Isgl3dViewTouchResponder responderWithResponder:responder andView:view]];
 }
 
-- (void) removeResponder:(id <Isgl3dTouchScreenResponder>)responder {
+- (void)removeResponder:(id <Isgl3dTouchScreenResponder>)responder {
 	for (Isgl3dViewTouchResponder * viewResponder in _responders) {
 		if (viewResponder.responder == responder) {
 			[_responders removeObject:viewResponder];
@@ -81,7 +81,7 @@ static Isgl3dTouchScreen * _instance = nil;
 	}
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	for (Isgl3dViewTouchResponder * viewResponder in _responders) {
 		if (viewResponder.view) {
 			// Filter events in view
@@ -104,7 +104,7 @@ static Isgl3dTouchScreen * _instance = nil;
 	}
 }
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	for (Isgl3dViewTouchResponder * viewResponder in _responders) {
 		if (viewResponder.view) {
 			// Filter events in view
@@ -127,14 +127,14 @@ static Isgl3dTouchScreen * _instance = nil;
 	}
 }
 
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	for (Isgl3dViewTouchResponder * viewResponder in _responders) {
 		// Send all events to all responder
 		[viewResponder.responder touchesEnded:touches withEvent:event];
 	}
 }
 
-- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	for (Isgl3dViewTouchResponder * viewResponder in _responders) {
 		// Send all events to all responder
 		if ([viewResponder.responder respondsToSelector:@selector(touchesCancelled:withEvent:)]) {
@@ -154,15 +154,15 @@ static Isgl3dTouchScreen * _instance = nil;
 @synthesize responder = _responder;
 
 
-+ (id) responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder {
++ (id)responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder {
 	return [[[self alloc] initWithResponder:responder] autorelease];
 }
 
-+ (id) responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view {
++ (id)responderWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view {
 	return [[[self alloc] initWithResponder:responder andView:view] autorelease];
 }
 
-- (id) initWithResponder:(id<Isgl3dTouchScreenResponder>)responder {
+- (id)initWithResponder:(id<Isgl3dTouchScreenResponder>)responder {
 	if ((self = [super init])) {
 		_responder = [responder retain];
 		_view = nil;
@@ -172,7 +172,7 @@ static Isgl3dTouchScreen * _instance = nil;
 	
 }
 
-- (id) initWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view {
+- (id)initWithResponder:(id<Isgl3dTouchScreenResponder>)responder andView:(Isgl3dView *)view {
 	if ((self = [super init])) {
 		_responder = [responder retain];
 		_view = view;
@@ -182,7 +182,7 @@ static Isgl3dTouchScreen * _instance = nil;
 	
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_responder release];
     [super dealloc];
 }

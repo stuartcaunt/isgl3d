@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,11 +38,11 @@
 
 @implementation Isgl3dTerrainMesh
 
-+ (id) meshWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
++ (id)meshWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
 	return [[[self alloc] initWithTerrainDataFile:terrainDataFile channel:channel width:width depth:depth height:height nx:nx nz:nz] autorelease];
 }
 
-- (id) initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
+- (id)initWithTerrainDataFile:(NSString *)terrainDataFile channel:(unsigned int)channel width:(float)width depth:(float)depth height:(float)height nx:(int)nx nz:(int)nz {
 	if ((self = [super init])) {
 		_terrainDataFile = [terrainDataFile retain];
 		_channel = channel;
@@ -59,13 +59,13 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_terrainDataFile release];
 	
     [super dealloc];
 }
 
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 
 	// Create UIImage
 	UIImage * terrainDataImage = [self loadImage:_terrainDataFile];

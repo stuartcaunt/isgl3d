@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,346 +26,191 @@
 #import "Isgl3dCamera.h"
 #import "Isgl3dGLU.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dMathUtils.h"
 
-@interface Isgl3dCamera (PrivateMethods)
-- (void) calculateViewMatrix;
-- (void) calculateViewProjectionMatrix;
+
+@interface Isgl3dCamera () {
+@private
+    BOOL _inverseViewMatrixDirty;
+    BOOL _eyePositionDirty;
+    Isgl3dVector3 _eyePosition;
+}
+@property (nonatomic,assign,readonly) Isgl3dMatrix4 inverseViewMatrix;
 @end
 
+
+#pragma mark -
+#
 @implementation Isgl3dCamera
 
 @synthesize viewMatrix = _viewMatrix;
-@synthesize projectionMatrix = _projectionMatrix;
-@synthesize initialCameraPosition = _initialCameraPosition;
-@synthesize initialCameraLookAt = _initialCameraLookAt;
-@synthesize up = _up;
-@synthesize isPerspective = _isPerspective;
-@synthesize aspect = _aspect;
-@synthesize width = _width;
-@synthesize height = _height;
-@synthesize near = _near;
-@synthesize far = _far;
-@synthesize left = _left;
-@synthesize right = _right;
-@synthesize bottom = _bottom;
-@synthesize top = _top;
-@synthesize isTargetCamera = _isTargetCamera;
+@synthesize viewProjectionMatrix = _viewProjectionMatrix;
+@synthesize lens = _lens;
 
-+ (id) camera {
-	return [[[self alloc] init] autorelease];
+
++ (id)cameraWithLens:(id<Isgl3dCameraLens>)lens {
+    return [[[self alloc] initWithLens:lens] autorelease];
 }
 
-+ (id) cameraWithWidth:(float)width andHeight:(float)height {
-	return [[[self alloc] initWithWidth:width andHeight:height] autorelease];
++ (id)cameraWithPerspectiveProjection:(float)fovyRadians aspect:(float)aspect nearZ:(float)nearZ farZ:(float)farZ {
+    return [[[self alloc] initWithPerspectiveProjection:fovyRadians aspect:aspect nearZ:nearZ farZ:farZ] autorelease];
 }
 
-+ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
-	return [[[self alloc] initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ] autorelease];
++ (id)cameraWithOrthographicProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top nearZ:(float)nearZ farZ:(float)farZ {
+    return [[[self alloc] initWithOrthographicProjection:left right:right bottom:bottom top:top nearZ:nearZ farZ:farZ] autorelease];
 }
 
 
-- (id) init {
-	return [self initWithWidth:0 height:0 andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f];
+#pragma mark -
+#
+- (id)init {
+    [NSException raise:NSInvalidArgumentException format:@"camera must be initialized with a lens"];
+    return nil;
 }
 
-- (id) initWithWidth:(float)width andHeight:(float)height {
-	
-	return [self initWithWidth:width height:height andCoordinates:0.0f y:0.0f z:10.0f upX:0.0f upY:1.0f upZ:0.0f lookAtX:0.0f lookAtY:0.0f lookAtZ:0.0f];
+- (id)initWithLens:(id<Isgl3dCameraLens>)lens {
+    if (lens == nil)
+        [NSException raise:NSInvalidArgumentException format:@"camera must be initialized with a lens"];
+
+    if (self = [super init]) {
+        self.viewMatrix = Isgl3dMatrix4Identity;
+        
+        self.lens = lens;
+    }
+    return self;
 }
 
-- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ {
-	
-	if ((self = [super init])) {
-		iv3Fill(&_lookAt, lookAtX, lookAtY, lookAtZ);
-		iv3Fill(&_initialCameraPosition, x, y, z);
-		iv3Copy(&_initialCameraLookAt, &_lookAt);
-		iv3Fill(&_up, upX, upY, upZ);		
-		
-		_isTargetCamera = YES;
-		
-		_zoom = 1;
-		_isPerspective = YES;
-		
-		_viewProjectionMatrixDirty = YES;
-		
-		_width = width;
-		_height = height;
-		
-		[self setPositionValues:x y:y z:z];
-
-		// Initialise view matrix
-		_localTransformationDirty = YES;
-		Isgl3dMatrix4 identity = Isgl3dMatrix4Identity;
-		[self updateWorldTransformation:&identity];
-	}
-	
-	return self;
+- (id)initWithPerspectiveProjection:(float)fovyRadians aspect:(float)aspect nearZ:(float)nearZ farZ:(float)farZ {
+    if (self = [super init]) {
+        self.viewMatrix = Isgl3dMatrix4Identity;
+        _inverseViewMatrix = Isgl3dMatrix4Identity;
+        
+        Isgl3dPerspectiveProjection *perspectiveProjection = [[Isgl3dPerspectiveProjection alloc] initWithFovyRadians:fovyRadians aspect:aspect nearZ:nearZ farZ:farZ];
+        self.lens = perspectiveProjection;
+        [perspectiveProjection release];
+    }
+    return self;
 }
 
-- (void) dealloc {
+- (id)initWithOrthographicProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top nearZ:(float)nearZ farZ:(float)farZ {
+    if (self = [super init]) {
+        self.viewMatrix = Isgl3dMatrix4Identity;
+        _inverseViewMatrix = Isgl3dMatrix4Identity;
 
-	[super dealloc];
+        Isgl3dOrthographicProjection *orthographicProjection = [[Isgl3dOrthographicProjection alloc] initWithLeft:left right:right bottom:bottom top:top nearZ:nearZ farZ:farZ];
+        self.lens = orthographicProjection;
+        [orthographicProjection release];
+    }
+    return self;
 }
 
-- (void) reset {
-	iv3Copy(&_lookAt, &_initialCameraLookAt);
-    [self setPositionValues:_initialCameraPosition.x y:_initialCameraPosition.y z:_initialCameraPosition.z];
+- (void)dealloc {
+    [(NSObject<Isgl3dCameraLens> *)_lens removeObserver:self forKeyPath:kLensProjectionMatrixKey];
+    [_lens release];
+    _lens = nil;
+    
+    [super dealloc];
 }
 
-- (void) setPerspectiveProjection:(float)fovy near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {
-	if (_width == 0 || _height == 0) {
-		Isgl3dLog(Error, @"Isgl3dCamera : cannot set perspective projection because width and height of view are unknown.");
-		return;
-	}
-	
-	_aspect = _width / _height;
-	
-	_projectionMatrix = [Isgl3dGLU perspective:fovy aspect:_aspect near:near far:far zoom:_zoom orientation:orientation];
 
-	_fov = fovy;
-	//Isgl3dLog(Info, @"Fov = %f", _fov);
-	_near = near;
-	_far = far;
-	
-	_orientation = orientation;
-	
-	_top = tan(_fov * M_PI / 360.0) * _near;
-	_bottom = -_top;
-	_left = _aspect * _bottom;
-	_right = _aspect * _top;
-	
-	if (_orientation == Isgl3dOrientation90CounterClockwise || _orientation == Isgl3dOrientation90Clockwise) {
-		_focus = 0.5 * _width / (_zoom * tan(_fov * M_PI / 360.0));
-	} else {
-		_focus = 0.5 * _height / (_zoom * tan(_fov * M_PI / 360.0));
-	}
-	
-	_isPerspective = YES;
-	
-	_viewProjectionMatrixDirty = YES;
+#pragma mark - Key-value-observing
+#
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == self.lens) {
+        if ([keyPath isEqualToString:kLensProjectionMatrixKey]) {
+            _viewProjectionMatrixDirty = YES;
+            return;
+        }
+    }
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
-- (void) setOrthoProjection:(float)left right:(float)right bottom:(float)bottom top:(float)top near:(float)near far:(float)far orientation:(isgl3dOrientation)orientation {
-	
-	_projectionMatrix = [Isgl3dGLU ortho:left right:right bottom:bottom top:top near:near far:far zoom:_zoom orientation:orientation];
 
-	_left = left;
-	_right = right;
-	_bottom = bottom;
-	_top = top;
-	_near = near;
-	_far = far;
-
-	_orientation = orientation;
-
-	_isPerspective = NO;
-
-	_viewProjectionMatrixDirty = YES;
+#pragma mark -
+#
+- (void)setViewMatrix:(Isgl3dMatrix4)viewMatrix {
+    if ((viewMatrix.m03 != 0.0f) || (viewMatrix.m13 != 0.0f) || (viewMatrix.m23 != 0.0f) || (viewMatrix.m33 != 1.0f))
+        [NSException raise:NSInvalidArgumentException format:@"invalid view matrix for camera"];
+    
+    _viewProjectionMatrixDirty = YES;
+    _inverseViewMatrixDirty = YES;
+    _eyePositionDirty = YES;
+    
+    _viewMatrix = viewMatrix;
 }
 
-- (void) setWidth:(float)width andHeight:(float)height {
-	if (width != _width || height != _height) {
-		_width = width;
-		_height = height;
-	}
+- (Isgl3dMatrix4)inverseViewMatrix {
+    if (_inverseViewMatrixDirty) {
+        _inverseViewMatrix = Isgl3dMatrix4Invert(_viewMatrix, NULL);
+        _inverseViewMatrixDirty = NO;
+    }
+    return _inverseViewMatrix;
 }
 
-- (void) setOrientation:(isgl3dOrientation)orientation {
-	_orientation = orientation;
-	if (_isPerspective) {
-		[self setPerspectiveProjection:_fov near:_near far:_far orientation:_orientation];
-		
-	} else {
-		[self setOrthoProjection:_left right:_right bottom:_bottom top:_top near:_near far:_far orientation:_orientation];
-	}
+- (void)setLens:(id<Isgl3dCameraLens>)lens {
+    if (lens == nil)
+        [NSException raise:NSInvalidArgumentException format:@"lens of camera must not be nil"];
+    
+    if (lens != _lens) {
+        if (_lens != nil) {
+            [(NSObject<Isgl3dCameraLens> *)_lens removeObserver:self forKeyPath:kLensProjectionMatrixKey];
+        }
+        
+        [_lens release];
+        _lens = [lens retain];
+        
+        if (_lens != nil) {
+            [(NSObject<Isgl3dCameraLens> *)_lens addObserver:self forKeyPath:kLensProjectionMatrixKey options:0 context:nil];
+        }
+    }
 }
 
-- (void) setFov:(float)fov {
-	_fov = fov;
-	if (_isPerspective) {
-		[self setPerspectiveProjection:_fov near:_near far:_far orientation:_orientation];
-	}
+- (Isgl3dMatrix4)projectionMatrix {
+    return self.lens.projectionMatrix;
 }
 
-- (float) fov {
-	return _fov;
+- (Isgl3dMatrix4)viewProjectionMatrix {
+    if (_viewProjectionMatrixDirty) {
+        _viewProjectionMatrix = Isgl3dMatrix4Multiply(self.lens.projectionMatrix, _viewMatrix);
+        _viewProjectionMatrixDirty = NO;
+    }
+    return _viewProjectionMatrix;
 }
 
-- (void) setFocus:(float)focus {
-	if (focus > 0) {
-		_focus = focus;
-
-		//Isgl3dLog(Info, @"Focus = %f", _focus);
-		if (_isPerspective) {
-			float fov;
-			
-			if (_orientation == Isgl3dOrientation90CounterClockwise) {
-				fov = (360.0 / M_PI) * atan2(_width, 2 * _zoom * _focus);
-			} else {
-				fov = (360.0 / M_PI) * atan2(_height, 2 * _zoom * _focus);
-			}
-			[self setPerspectiveProjection:fov near:_near far:_far orientation:_orientation];
-		}
-	}	
+- (Isgl3dVector3)eyePosition {
+    // check if the eye position needs to be recalculated
+    if (_eyePositionDirty) {
+        // get the eye position from the inverse view matrix
+        Isgl3dMatrix4 inverseViewMatrix = self.inverseViewMatrix;
+        _eyePosition = Isgl3dVector3Make(inverseViewMatrix.m30, inverseViewMatrix.m31, inverseViewMatrix.m32);
+    }
+    return _eyePosition;
 }
 
-- (float) focus {
-	return _focus;
+- (void)setEyePosition:(Isgl3dVector3)eyePosition {
+    _eyePosition = eyePosition;
+
+    Isgl3dVector3 lookAtVector = self.lookAt;
+    Isgl3dVector3 upVector = self.up;
+    _viewMatrix = Isgl3dMatrix4MakeLookAt(_eyePosition.x, _eyePosition.y, _eyePosition.z,
+                                          lookAtVector.x, lookAtVector.y, lookAtVector.z,
+                                          upVector.x, upVector.y, upVector.z);
+    
+    _eyePositionDirty = NO;
+    _inverseViewMatrixDirty = YES;
+    _viewProjectionMatrixDirty = YES;
 }
 
-- (void) setZoom:(float)zoom {
-	if (zoom > 0) {
-		_zoom = zoom;
-
-		//Isgl3dLog(Info, @"Zoom = %f", _zoom);
-		if (_isPerspective) {
-			float fov;
-			if (_orientation == Isgl3dOrientation90CounterClockwise) {
-				fov = (360.0 / M_PI) * atan2(_width, 2 * _zoom * _focus);
-			} else {
-				fov = (360.0 / M_PI) * atan2(_height, 2 * _zoom * _focus);
-			}
-			[self setPerspectiveProjection:fov near:_near far:_far orientation:_orientation];
-		}
-	}	
+- (Isgl3dVector3)right {
+    return Isgl3dVector3Make(_viewMatrix.m00, _viewMatrix.m10, _viewMatrix.m20);
 }
 
-- (float) zoom {
-	return _zoom;
+- (Isgl3dVector3)up {
+    return Isgl3dVector3Make(_viewMatrix.m01, _viewMatrix.m11, _viewMatrix.m21);
 }
 
-- (void) setLookAt:(Isgl3dVector3)lookAt {
-	iv3Copy(&_lookAt, &lookAt);
-	_localTransformationDirty = YES;
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
-	}
-}
-
-- (void) lookAt:(float)x y:(float)y z:(float)z {
-	iv3Fill(&_lookAt, x, y, z);
-	_localTransformationDirty = YES;
-}
-
-- (Isgl3dVector3) getLookAt {
-	return _lookAt;
-}
-
-- (Isgl3dVector3) getEyeNormal {
-	Isgl3dVector3 eyeNormal = iv3(_lookAt.x, _lookAt.y, _lookAt.z);
-	Isgl3dVector3 position = [self worldPosition];
-	iv3Sub(&eyeNormal, &position);
-	return eyeNormal;
-}
-
-- (float) getLookAtX {
-	return _lookAt.x;
-}
-
-- (float) getLookAtY {
-	return _lookAt.y;
-}
-
-- (float) getLookAtZ {
-	return _lookAt.z;
-}
-
-- (void) translateLookAt:(float)x y:(float)y z:(float)z {
-	iv3Translate(&_lookAt, x, y, z);
-
-	_localTransformationDirty = YES;
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
-	}
-}
-
-- (void) rotateLookAtOnX:(float)angle centerY:(float)centerY centerZ:(float)centerZ {
-	iv3RotateX(&_lookAt, angle, centerY, centerZ);
-
-	_localTransformationDirty = YES;
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
-	}
-}
-
-- (void) rotateLookAtOnY:(float)angle centerX:(float)centerX centerZ:(float)centerZ {
-	iv3RotateY(&_lookAt, angle, centerX, centerZ);
-
-	_localTransformationDirty = YES;
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
-	}
-}
-
-- (void) rotateLookAtOnZ:(float)angle centerX:(float)centerX centerY:(float)centerY  {
-	iv3RotateZ(&_lookAt, angle, centerX, centerY);
-
-	_localTransformationDirty = YES;
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
-	}
-}
-
-- (float) getDistanceToLookAt {
-	Isgl3dVector3 position = [self worldPosition];
-	return iv3DistanceBetween(&position, &_lookAt);
-}
-
-- (void) setDistanceToLookAt:(float)distance {
-	Isgl3dVector3 position = [self worldPosition];
-	iv3Sub(&position, &_lookAt);
-	iv3Normalize(&position);
-	iv3Scale(&position, distance);
-	
-	[self setPositionValues:_lookAt.x + position.x y:_lookAt.y + position.y z:_lookAt.z + position.z];
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting lookAt has no effect");
-	}
-}
-
-- (void) setUpX:(float)x y:(float)y z:(float)z {
-	iv3Fill(&_up, x, y, z);		
-	_localTransformationDirty = YES;
-	if (!_isTargetCamera) {
-		Isgl3dLog(Warn, @"Isgl3dCamera : not a target camera, setting \"up\" has no effect");
-	}
-}
-
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
-
-	BOOL calculateViewMatrix = (_localTransformationDirty || _transformationDirty);
-	[super updateWorldTransformation:parentTransformation];
-
-	if (calculateViewMatrix) {
-		[self calculateViewMatrix];
-	}
-}
-
-- (void) calculateViewMatrix {
-	
-	_cameraPosition = [self worldPosition];
-	
-	if (_isTargetCamera) {
-		// Calculate view matrix from lookat position
-		_viewMatrix = [Isgl3dGLU lookAt:_cameraPosition.x eyey:_cameraPosition.y eyez:_cameraPosition.z 
-					  centerx:_lookAt.x centery:_lookAt.y centerz:_lookAt.z 
-					  upx:_up.x upy:_up.y upz:_up.z];
-	} else {	
-		// Calculate view matrix as the inverse of the current world transformation
-		im4Copy(&_viewMatrix, &_worldTransformation);
-		im4Invert(&_viewMatrix);
-	}
-		
-	_viewProjectionMatrixDirty = YES;
-}
-
-- (Isgl3dMatrix4) viewProjectionMatrix {
-	if (_viewProjectionMatrixDirty) {
-		im4Copy(&_viewProjectionMatrix, &_projectionMatrix);
-		im4Multiply(&_viewProjectionMatrix, &_viewMatrix);
-		_viewProjectionMatrixDirty = NO;
-	}
-	return _viewProjectionMatrix;
+- (Isgl3dVector3)lookAt {
+    return Isgl3dVector3Make(_viewMatrix.m02, _viewMatrix.m12, _viewMatrix.m22);
 }
 
 @end

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,14 +48,14 @@
  * wish to add an event listener to.
  * @param object The interactive object for which event listeners should be attached.
  */
-+ (id) filterWithObject:(Isgl3dNode *)object;
++ (id)filterWithObject:(Isgl3dNode *)object;
 
 /**
  * Initialises the Isgl3dSingleTouchFilter with an Isgl3dNode that we
  * wish to add an event listener to.
  * @param object The interactive object for which event listeners should be attached.
  */
-- (id) initWithObject:(Isgl3dNode *)object;
+- (id)initWithObject:(Isgl3dNode *)object;
 
 /**
  * Adds an event listener to the filter. A callback is sent to the specified object and method
@@ -65,7 +65,7 @@
  * @param method The method of the object that will handle the event.
  * @param eventType The type of event for which the method will be called. 
  */
-- (void) addEvent3DListener:(id)object method:(SEL)method forEventType:(NSString *)eventType;
+- (void)addEvent3DListener:(id)object method:(SEL)method forEventType:(NSString *)eventType;
 
 
 @end

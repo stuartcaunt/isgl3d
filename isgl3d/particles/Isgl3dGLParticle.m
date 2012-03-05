@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@
 #import "Isgl3dUShortArray.h"
 
 @interface Isgl3dGLParticle (PrivateMethods)
-- (void) fillArrays;
+- (void)fillArrays;
 @end
 
 @implementation Isgl3dGLParticle
@@ -38,11 +38,11 @@
 @synthesize dirty = _dirty;
 @synthesize distanceFromPoint = _distanceFromPoint;
 
-+ (id) particle {
++ (id)particle {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		
@@ -74,7 +74,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	// Release buffer data
 	[[Isgl3dGLVBOFactory sharedInstance] deleteBuffer:_vboData.vboIndex];
@@ -96,7 +96,7 @@
 	return _size;
 }
 
-- (void) setSize:(float)size {
+- (void)setSize:(float)size {
 	_size = size;
 	_dirty = YES;
 }
@@ -105,7 +105,7 @@
 	return _x;
 }
 
-- (void) setX:(float)x {
+- (void)setX:(float)x {
 	_x = x;
 	_dirty = YES;
 }
@@ -114,7 +114,7 @@
 	return _y;
 }
 
-- (void) setY:(float)y {
+- (void)setY:(float)y {
 	_y = y;
 	_dirty = YES;
 }
@@ -123,7 +123,7 @@
 	return _z;
 }
 
-- (void) setZ:(float)z {
+- (void)setZ:(float)z {
 	_z = z;
 	_dirty = YES;
 }
@@ -132,7 +132,7 @@
 	return _color;
 }
 
-- (void) setColor:(float)r g:(float)g b:(float)b {
+- (void)setColor:(float)r g:(float)g b:(float)b {
 	_color[0] = r;
 	_color[1] = g;
 	_color[2] = b;
@@ -142,7 +142,7 @@
 	_dirty = YES;
 }
 
-- (void) setColor:(float)r g:(float)g b:(float)b a:(float)a {
+- (void)setColor:(float)r g:(float)g b:(float)b a:(float)a {
 	_color[0] = r;
 	_color[1] = g;
 	_color[2] = b;
@@ -154,7 +154,7 @@
 	_dirty = YES;
 }
 
-- (void) setAttenuation:(float)constant linear:(float)linear quadratic:(float)quadratic {
+- (void)setAttenuation:(float)constant linear:(float)linear quadratic:(float)quadratic {
 	_attenuation[0] = constant;
 	_attenuation[1] = linear;
 	_attenuation[2] = quadratic;
@@ -178,10 +178,10 @@
 }
 
 
-- (void) update {
+- (void)update {
 }
 
-- (void) buildArrays {
+- (void)buildArrays {
 	
 	if (_vertexData) {
 		[_vertexData release];
@@ -214,7 +214,7 @@
 }
 
 
-- (void) calculateDistanceFromX:(float)x y:(float)y z:(float)z {
+- (void)calculateDistanceFromX:(float)x y:(float)y z:(float)z {
 	_distanceFromPoint = sqrt((x - _x) * (x - _x) + (y - _y) * (y - _y) + (z - _z) * (z - _z)); 
 }
 
@@ -228,7 +228,7 @@
 	return retVal;
 }
 
-- (void) fillArrays {
+- (void)fillArrays {
 	[_vertexData add:_x];
 	[_vertexData add:_y];
 	[_vertexData add:_z];
@@ -243,7 +243,7 @@
 	[_indices add:0];
 }
 
-- (void) prepareForEventCapture:(float)r g:(float)g b:(float)b {
+- (void)prepareForEventCapture:(float)r g:(float)g b:(float)b {
 	_color[0] = r;
 	_color[1] = g;
 	_color[2] = b;
@@ -251,7 +251,7 @@
 	[self buildArrays];
 }
 
-- (void) restoreRenderColor {
+- (void)restoreRenderColor {
 	_color[0] = _renderColor[0];
 	_color[1] = _renderColor[1];
 	_color[2] = _renderColor[2];

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,18 +29,18 @@
 static Isgl3dScheduler * _instance = nil;
 
 @interface Isgl3dScheduler ()
-- (id) initSingleton;
+- (id)initSingleton;
 @end
 
 @implementation Isgl3dScheduler
 
-- (id) init {
+- (id)init {
 	NSLog(@"Isgl3dScheduler::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
 
-- (id) initSingleton {
+- (id)initSingleton {
 	
 	if ((self = [super init])) {
 		_timers = [[NSMutableArray alloc] init];
@@ -49,7 +49,7 @@ static Isgl3dScheduler * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_timers release];
 	
 	[super dealloc];
@@ -73,7 +73,7 @@ static Isgl3dScheduler * _instance = nil;
 	}
 }
 
-- (void) schedule:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused {
+- (void)schedule:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused {
 	// check that target doesn't already exist
 	BOOL exists = NO;
 	for (Isgl3dTimer * timer in _timers) {
@@ -90,7 +90,7 @@ static Isgl3dScheduler * _instance = nil;
 	}
 }
 
-- (void) unschedule:(id)target {
+- (void)unschedule:(id)target {
 	for (Isgl3dTimer * timer in _timers) {
 		if (timer.target == target) {
 			[_timers removeObject:timer];
@@ -100,7 +100,7 @@ static Isgl3dScheduler * _instance = nil;
 	
 }
 
-- (void) pause:(id)target {
+- (void)pause:(id)target {
 	for (Isgl3dTimer * timer in _timers) {
 		if (timer.target == target) {
 			timer.isPaused = YES;
@@ -109,7 +109,7 @@ static Isgl3dScheduler * _instance = nil;
 	}
 }
 
-- (void) resume:(id)target {
+- (void)resume:(id)target {
 	for (Isgl3dTimer * timer in _timers) {
 		if (timer.target == target) {
 			timer.isPaused = NO;
@@ -118,7 +118,7 @@ static Isgl3dScheduler * _instance = nil;
 	}
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	for (Isgl3dTimer * timer in _timers) {
 		if (!timer.isPaused) {
 			[timer tick:dt];
@@ -138,11 +138,11 @@ static Isgl3dScheduler * _instance = nil;
 @synthesize target = _target;
 @synthesize isPaused = _isPaused;
 
-+ (id) timerWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused {
++ (id)timerWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused {
 	return [[[self alloc] initWithTarget:target selector:selector isPaused:isPaused] autorelease];
 }
 
-- (id) initWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused {
+- (id)initWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused {
 	if ((self = [super init])) {
 		_target = target;
 		_selector = selector;
@@ -152,7 +152,7 @@ static Isgl3dScheduler * _instance = nil;
 	return self;
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	_method(_target, _selector, dt);
 }
 

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@
 @synthesize msaaEnabled=_msaaEnabled;
 
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		_msaaAvailable = NO;
@@ -57,10 +57,10 @@
 	return true;
 }
 
-- (void) prepareRender {
+- (void)prepareRender {
 }
 
-- (void) finalizeRender {
+- (void)finalizeRender {
 }
 
 - (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y {

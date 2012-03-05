@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@
 #import "Isgl3dLog.h"
 
 @interface Isgl3dTween (PrivateMethods)
-- (void) handleParameters:(NSDictionary *)parameters;
+- (void)handleParameters:(NSDictionary *)parameters;
 - (float) tweenFunc:(float)progression;
 - (float) easeOutBounce:(float)progression;
 - (float) easeOutThrow:(float)progression;
@@ -42,7 +42,7 @@
 	return [super init];
 }
 
-- (id) initWithObject:(id)object forParameters:(NSDictionary *)parameters {
+- (id)initWithObject:(id)object forParameters:(NSDictionary *)parameters {
 	if ((self = [super init])) {
 		_object = object;
 		_startTime = [[NSDate alloc] init];
@@ -56,7 +56,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[_initialValues release];
 	[_finalValues release];
@@ -72,7 +72,7 @@
 }
 
 
-- (void) handleParameters:(NSDictionary *)parameters {
+- (void)handleParameters:(NSDictionary *)parameters {
 	for (NSString * key in parameters) {
 		if ([key isEqualToString:TWEEN_DURATION]) {
 			// Verify that time is a NSNumber
@@ -137,7 +137,7 @@
 	return [_finalValues allKeys];
 }
 
-- (void) removeProperty:(NSString *)property {
+- (void)removeProperty:(NSString *)property {
 	[_finalValues removeObjectForKey:property];
 	[_initialValues removeObjectForKey:property];
 }
@@ -147,7 +147,7 @@
 	
 }
 
-- (void) update:(NSDate *)currentTime {
+- (void)update:(NSDate *)currentTime {
 	NSTimeInterval timeInterval = [currentTime timeIntervalSinceDate:_startTime];
 	
 	// Check to see if this is the last tween
@@ -176,7 +176,7 @@
 	
 }
 
-- (void) onComplete {
+- (void)onComplete {
 	
 	if (_onCompleteTarget != nil) {
 		if ([_onCompleteTarget respondsToSelector:_onCompleteSelector]) {

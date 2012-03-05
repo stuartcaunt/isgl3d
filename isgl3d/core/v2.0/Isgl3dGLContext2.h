@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,13 +67,13 @@
 	CGDataProviderRef _currentRenderImageDataRef;
 }
 
-- (id) initWithLayer:(CAEAGLLayer *) layer;
+- (id)initWithLayer:(CAEAGLLayer *) layer;
 
 /**
  * @result (autorelease) a new GLProgram
  */
 - (Isgl3dGLProgram *) createProgram;
-- (void) useProgram:(Isgl3dGLProgram *)program;
+- (void)useProgram:(Isgl3dGLProgram *)program;
 
 @end
 

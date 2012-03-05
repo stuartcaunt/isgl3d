@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,23 @@
  */
 
 #import "PODTestView.h"
-#include "Isgl3dPODImporter.h"
+#import "Isgl3dPODImporter.h"
 
+
+@interface PODTestView () {
+@private
+    Isgl3dNodeCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@end
+
+
+#pragma mark -
 @implementation PODTestView
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 
@@ -58,14 +70,15 @@
 		_teapot.enableShadowCasting = YES;
 	
 		light.planarShadowsNode = [podImporter meshNodeWithName:@"Plane01"];
-		light.planarShadowsNodeNormal = iv3(0, 1, 0);
+		light.planarShadowsNodeNormal = Isgl3dVector3Make(0, 1, 0);
 	
 		// Set the camera up as it has been saved in the POD
-		// Remove camera created in super, added from POD later
-		[self.camera removeFromParent];
+        // Make sure the view size is set properly
 		self.camera = [podImporter cameraAtIndex:0];
+        CGSize viewSize = self.viewport.size;
+        [self.camera.lens viewSizeUpdated:viewSize];
 		[self.scene addChild:self.camera];
-		
+        
 		[self setSceneAmbient:[Isgl3dColorUtil rgbString:[podImporter ambientColor]]];
 		
 		// Schedule updates
@@ -75,12 +88,14 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
+- (void)createSceneCamera {
+}
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	[_teapot setRotation:_angle += 1 x:0 y:1 z:0];
 }
 
@@ -96,7 +111,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

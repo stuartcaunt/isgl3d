@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,11 @@
 #import "animators/Isgl3dBoneNode.h"
 #import "animators/Isgl3dKeyframeMesh.h"
 #import "animators/Isgl3dSkeletonNode.h"
+#import "cameras/Isgl3dCameraLens.h"
+#import "cameras/Isgl3dFocusZoomPerspectiveLens.h"
 #import "cameras/Isgl3dCamera.h"
+#import "cameras/Isgl3dLookAtCamera.h"
+#import "cameras/Isgl3dNodeCamera.h"
 #import "cameras/Isgl3dFollowCamera.h"
 #import "cameras/Isgl3dSpringCamera.h"
 #import "containers/Isgl3dBillboardNode.h"

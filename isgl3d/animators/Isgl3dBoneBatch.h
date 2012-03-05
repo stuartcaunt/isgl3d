@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -68,14 +68,14 @@
  * @param numberOfElements The number of elements (vertices) concerned with this bone batch.
  * @param elementOffset The starting offset of the original mesh for this bone batch.
  */
-+ (id) boneBatchWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset;
++ (id)boneBatchWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset;
 
 /**
  * Initialises the bone batch with a portion of the mesh to be animated.
  * @param numberOfElements The number of elements (vertices) concerned with this bone batch.
  * @param elementOffset The starting offset of the original mesh for this bone batch.
  */
-- (id) initWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset;
+- (id)initWithNumberOfElements:(unsigned int)numberOfElements andElementOffset:(unsigned int)elementOffset;
 
 /**
  * Adds the bone transformations for a given frame number.
@@ -83,7 +83,7 @@
  * @param transformations The Isgl3dArray of transformations (Isgl3dMatrix4 structure) for each of the bones associated with the bone batch.
  * @param frame The corresponding frame number.
  */
-- (void) addBoneTransformations:(Isgl3dArray *)transformations forFrame:(unsigned int)frame;
+- (void)addBoneTransformations:(Isgl3dArray *)transformations forFrame:(unsigned int)frame;
 
 /*
  * Sets the frame number and accordingly the transformation for each bone.
@@ -92,7 +92,7 @@
  * Note that this is called internally in iSGL3D by the Isgl3dAnimatedMesh which iterates over all bone batches
  * associated with the mesh: this method should never be called explicitly. 
  */
-- (void) setFrame:(unsigned int)frameNumber;
+- (void)setFrame:(unsigned int)frameNumber;
 
 /*
  * Renders the corresponding portion of the mesh with the Isgl3DRender.
@@ -100,7 +100,7 @@
  * 
  * Note that this is called internally in iSGL3D and should never be called explicitly.
  */
-- (void) renderMesh:(Isgl3dGLRenderer *)renderer;
+- (void)renderMesh:(Isgl3dGLRenderer *)renderer;
 
 /*
  * Specifies that the global transformation needs to be updated.
@@ -108,7 +108,7 @@
  * 
  * Note that this is called internally in iSGL3D and should never be called explicitly.
  */
-- (void) setTransformationDirty:(BOOL)isDirty;
+- (void)setTransformationDirty:(BOOL)isDirty;
 
 /*
  * Updates the global transformation of the node.
@@ -116,6 +116,6 @@
  * 
  * Note that this is called internally in iSGL3D and should never be called explicitly.
  */
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation;
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation;
 
 @end

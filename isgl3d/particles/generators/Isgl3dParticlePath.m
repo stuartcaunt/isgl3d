@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,11 +33,11 @@
 @synthesize particle = _particle;
 @synthesize isCompleted = _isCompleted;
 
-+ (id) pathWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration {
++ (id)pathWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration {
 	return [[[self alloc] initWithParticle:particle andPath:path forDuration:duration] autorelease];
 }
 
-- (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration {
+- (id)initWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration {
 	
 	if ((self = [super init])) {
 		_particle = particle;
@@ -57,7 +57,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_particle release];
 	
 	[_path release];
@@ -65,7 +65,7 @@
 	[super dealloc];
 }
 
-- (void) update:(float)timeDelta {
+- (void)update:(float)timeDelta {
 	_lastTime = _lastTime + timeDelta;
 	float timeInterval = _lastTime;
 	
@@ -100,7 +100,7 @@
 	}
 }
 
-- (void) restart {
+- (void)restart {
 	_lastTime = 0;
 	_isCompleted = NO;
 }

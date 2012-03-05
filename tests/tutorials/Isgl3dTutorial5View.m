@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,20 +26,29 @@
 #import "Isgl3dTutorial5View.h"
 #import "Isgl3dDemoCameraController.h"
 
-@interface Isgl3dTutorial5View ()
-- (void) createUfoAtX:(float)x y:(float)y z:(float)z 
+
+@interface Isgl3dTutorial5View () {
+@private
+    Isgl3dNodeCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+- (void)createUfoAtX:(float)x y:(float)y z:(float)z 
 			hullMesh:(Isgl3dGLMesh *)hullMesh hullMaterial:(Isgl3dMaterial *)hullMaterial
 			shellMesh:(Isgl3dGLMesh *)shellMesh shellMaterial:(Isgl3dMaterial *)shellMaterial;
 @end
 
+
+#pragma mark -
 @implementation Isgl3dTutorial5View
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 	
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
 		_cameraController.orbit = 25;
 		_cameraController.theta = 60;
 		_cameraController.phi = 20;
@@ -96,27 +105,45 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	// Release camera controller
 	[_cameraController release];
+    _cameraController = nil;
 	
 	// Release UFO array
 	[_ufos release];
+    _ufos = nil;
 
 	[super dealloc];
 }
 
-- (void) onActivated {
+- (void)createSceneCamera {
+    CGSize viewSize = self.viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
+    [perspectiveLens release];
+    
+    self.camera = standardCamera;
+    [standardCamera release];
+    [self.scene addChild:standardCamera];
+}
+
+- (void)onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
 }
 
-- (void) onDeactivated {
+- (void)onDeactivated {
 	// Remove camera controller from touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	
 	// Rotate all UFOs
 	for (Isgl3dMeshNode * ufo in _ufos) {
@@ -135,7 +162,7 @@
 /*
  * Callback for touch event on 3D object
  */
-- (void) objectTouched:(Isgl3dEvent3D *)event {
+- (void)objectTouched:(Isgl3dEvent3D *)event {
 	// Update camera target
 	_cameraController.target = event.object;
 }
@@ -143,18 +170,18 @@
 /*
  * Create UFO object at specific position
  */
-- (void) createUfoAtX:(float)x y:(float)y z:(float)z 
+- (void)createUfoAtX:(float)x y:(float)y z:(float)z 
 			hullMesh:(Isgl3dGLMesh *)hullMesh hullMaterial:(Isgl3dMaterial *)hullMaterial
 			shellMesh:(Isgl3dGLMesh *)shellMesh shellMaterial:(Isgl3dMaterial *)shellMaterial {
 	// Create mesh node for main hull of UFO: translate and set interactive to be able to target camera on it
 	Isgl3dMeshNode * ufo = [self.scene createNodeWithMesh:hullMesh andMaterial:hullMaterial];
-	ufo.position = iv3(x, y, z);
+	ufo.position = Isgl3dVector3Make(x, y, z);
 	ufo.interactive = YES;
 	[ufo addEvent3DListener:self method:@selector(objectTouched:) forEventType:TOUCH_EVENT];
 
 	// Create UFO shell (child of hull node)
 	Isgl3dMeshNode * ufoShell = [ufo createNodeWithMesh:shellMesh andMaterial:shellMaterial];
-	ufoShell.position = iv3(0, 0.6, 0);
+	ufoShell.position = Isgl3dVector3Make(0, 0.6, 0);
 	
 	// Make shell transparent
 	ufoShell.alpha = 0.7;
@@ -173,7 +200,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

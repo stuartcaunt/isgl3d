@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +77,7 @@ typedef enum {
  * @param nSegmentHeight The number of segments along the y-axis.
  * @param nSegmentDepth The number of segments along the z-axis.
  */
-+ (id) cubeWithDimensions:(float)width height:(float)height depth:(float)depth 
++ (id)cubeWithDimensions:(float)width height:(float)height depth:(float)depth 
 		 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /** 
@@ -91,7 +91,7 @@ typedef enum {
  * @param nSegmentHeight The number of segments along the y-axis.
  * @param nSegmentDepth The number of segments along the z-axis.
  */
-+ (id) cubeWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
++ (id)cubeWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
 					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /** 
@@ -103,7 +103,7 @@ typedef enum {
  * @param nSegmentHeight The number of segments along the y-axis.
  * @param nSegmentDepth The number of segments along the z-axis.
  */
-+ (id) cubeWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
++ (id)cubeWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
 					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /**
@@ -116,7 +116,7 @@ typedef enum {
  * @param nSegmentHeight The number of segments along the y-axis.
  * @param nSegmentDepth The number of segments along the z-axis.
  */
-- (id) initWithDimensions:(float)width height:(float)height depth:(float)depth 
+- (id)initWithDimensions:(float)width height:(float)height depth:(float)depth 
 		 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /** 
@@ -130,7 +130,7 @@ typedef enum {
  * @param nSegmentHeight The number of segments along the y-axis.
  * @param nSegmentDepth The number of segments along the z-axis.
  */
-- (id) initWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
+- (id)initWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
 					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /** 
@@ -142,7 +142,7 @@ typedef enum {
  * @param nSegmentHeight The number of segments along the y-axis.
  * @param nSegmentDepth The number of segments along the z-axis.
  */
-- (id) initWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
+- (id)initWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
 					 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth;
 
 /**

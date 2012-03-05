@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 #import "Isgl3dMathTypes.h"
 #import "Isgl3dVector.h"
+#import "Isgl3dVector3.h"
 #import "Isgl3dQuaternion.h"
 
 
@@ -49,19 +50,6 @@
 
 #pragma mark -
 
-/**
- * Creates an Isgl3dMatrix4 structure from given values.
- * @result A specified matrix.
- */
-static inline Isgl3dMatrix4 im4Create(float sxx, float sxy, float sxz, float tx, float syx, float syy, float syz, float ty, float szx, float szy, float szz, float tz, float swx, float swy, float swz, float tw)
-{
-	Isgl3dMatrix4 matrix = {
-		sxx, syx, szx, swx,
-		sxy, syy, szy, swy,
-		sxz, syz, szz, swz,
-		tx,  ty,  tz,  tw };
-	return matrix;	
-}
 
 /**
  * Creates an Isgl3dMatrix4 structure with all values set to 0.
@@ -74,20 +62,6 @@ static inline Isgl3dMatrix4 im4CreateEmpty()
 		0, 0, 0, 0,
 		0, 0, 0, 0,
 		0, 0, 0, 0 };
-	return matrix;	
-}
-
-/**
- * Creates an identity matrix.
- * @result An identity matrix.
- */
-static inline Isgl3dMatrix4 im4CreateIdentity()
-{
-	Isgl3dMatrix4 matrix = {
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		0, 0, 0, 1 };
 	return matrix;	
 }
 
@@ -207,39 +181,6 @@ static inline float im4Determinant3x3(Isgl3dMatrix4 * m)
 }
 
 /**
- * Inverts the matrix.
- */
-void im4Invert(Isgl3dMatrix4 * m);
-
-/**
- * Inverts the 3x3 part of the matrix.
- */
-void im4Invert3x3(Isgl3dMatrix4 * m);
-
-/**
- * Copies the matrix components of one matrix into another.
- * @param a The destination matrix.
- * @param b The source matrix.
- */
-static inline void im4Copy(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b)
-{
-	a->m00 = b->m00;	a->m10 = b->m10;	a->m20 = b->m20;	a->m30  = b->m30;
-	a->m01 = b->m01;	a->m11 = b->m11;	a->m21 = b->m21;	a->m31  = b->m31;
-	a->m02 = b->m02;	a->m12 = b->m12;	a->m22 = b->m22;	a->m32  = b->m32;
-	a->m03 = b->m03;	a->m13 = b->m13;	a->m23 = b->m23;	a->m33  = b->m33;
-}
-
-/**
- * Performs a rotation on a matrix around a given axis.
- * @param m The matrix.
- * @param angle The angle of rotation in degrees.
- * @param x The x component of the axis of rotation.
- * @param y The y component of the axis of rotation.
- * @param z The z component of the axis of rotation.
- */
-void im4Rotate(Isgl3dMatrix4 * m, float angle, float x, float y, float z);
-
-/**
  * Performs a translation on a matrix by a given distance.
  * @param m The matrix.
  * @param x The distance along the x-axis of the translation.
@@ -338,61 +279,6 @@ static inline float im4TranslationLength(Isgl3dMatrix4 * m)
 }
 
 /**
- * Multiplies two matrices. The result is a = a x b.
- * @param a The left-hand matrix, stores result after calculation.
- * @param b The right-hand matrix.
- */
-void im4Multiply(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b);
-
-/**
- * Multiplies two matrices. The result is a = b x a.
- * @param a The right-hand matrix, stores result after calculation.
- * @param b The left-hand matrix.
- */
-void im4MultiplyOnLeft(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b);
-
-/**
- * Performs a multiplication on a given matrix with it being on the left, using only the 3x3 part of the matrix.
- * The resulting matrix is stored in "a".
- * The translation components of the matrix are not affected.
- * @param a The matrix to be multiplied on the left, result stored in this matrix. 
- * @param b The matrix to be multiplied on the right. 
- */
-void im4MultiplyOnLeft3x3(Isgl3dMatrix4 * a, Isgl3dMatrix4 * b);
-
-/**
- * Performs a multiplication by the matrix on the given 4-component vector.
- * @param m The matrix multiplier. 
- * @param vector The vector to be multiplied.
- * @result The result of the multiplication on given vector
- */
-Isgl3dVector4 im4MultVector4(Isgl3dMatrix4 * m, Isgl3dVector4 * vector); 
-
-/**
- * Performs a multiplication by the matrix on the given 3-component vector with the translational components of the matrix included.
- * @param m The matrix multiplier. 
- * @param vector The vector to be multiplied.
- * @result The result of the multiplication on given vector
- */
-Isgl3dVector3 im4MultVector(Isgl3dMatrix4 * m, Isgl3dVector3 * vector); 
-
-/**
- * Performs a multiplication on the given 3-component vector with the only the 3x3 part of the matrix.
- * @param m The matrix multiplier. 
- * @param vector The vector to be multiplied.
- * @result The result of the multiplication on given vector
- */
-Isgl3dVector3 im4MultVector3x3(Isgl3dMatrix4 * m, Isgl3dVector3 * vector); 
-
-/**
- * Performs a multiplication by the matrix on the array equivalent of a 4-component vector.
- * @param m The matrix multiplier. 
- * @param array The array to be multiplied. Result is stored in the same array.
- */
-void im4MultArray4(Isgl3dMatrix4 * m, float * array); 
-
-
-/**
  * Returns the 3x3 part of a matrix as a column-major float array.
  * @param m The matrix. 
  * @param array The float array into which the column-major representation of the matrix is set.
@@ -476,6 +362,6 @@ Isgl3dVector3 im4ToScaleValues(Isgl3dMatrix4 * m);
  */
 static inline Isgl3dVector3 im4ToPosition(Isgl3dMatrix4 * m) 
 {
-	return iv3(m->m30, m->m31, m->m32);
+	return Isgl3dVector3Make(m->m30, m->m31, m->m32);
 }
 

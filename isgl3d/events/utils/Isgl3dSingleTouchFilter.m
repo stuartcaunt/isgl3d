@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,20 +29,20 @@
 #import "Isgl3dNode.h"
 
 @interface Isgl3dSingleTouchFilter (PrivateMethods)
-- (void) touchesBegan:(Isgl3dEvent3D *)event;
-- (void) touchesMoved:(Isgl3dEvent3D *)event;
-- (void) touchesEnded:(Isgl3dEvent3D *)event;
-- (void) handleEvent:(UITouch *)touch forEventType:(NSString *)eventType;
+- (void)touchesBegan:(Isgl3dEvent3D *)event;
+- (void)touchesMoved:(Isgl3dEvent3D *)event;
+- (void)touchesEnded:(Isgl3dEvent3D *)event;
+- (void)handleEvent:(UITouch *)touch forEventType:(NSString *)eventType;
 @end
 
 
 @implementation Isgl3dSingleTouchFilter
 
-+ (id) filterWithObject:(Isgl3dNode *)object {
++ (id)filterWithObject:(Isgl3dNode *)object {
 	return [[[self alloc] initWithObject:object] autorelease];
 }
 
-- (id) initWithObject:(Isgl3dNode *)object {
+- (id)initWithObject:(Isgl3dNode *)object {
 
 	if ((self = [super init])) {
 		_object = object;
@@ -57,19 +57,19 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_listeners release];
 	
     [super dealloc];
 }
 
-- (void) addEvent3DListener:(id)object method:(SEL)method forEventType:(NSString *)eventType {
+- (void)addEvent3DListener:(id)object method:(SEL)method forEventType:(NSString *)eventType {
 	Isgl3dEvent3DListener * listener = [[[Isgl3dEvent3DListener alloc] initWithObject:object method:method] autorelease];
 	
 	[_listeners setObject:listener forKey:eventType];
 }
 
-- (void) touchesBegan:(Isgl3dEvent3D *)event {
+- (void)touchesBegan:(Isgl3dEvent3D *)event {
 	if (_eventId == nil) {
 		UITouch * touch = [[event.touches allObjects] objectAtIndex:0];
 		// do not remove retain : _eventId released otherwise
@@ -80,7 +80,7 @@
 	
 } 
 
-- (void) touchesMoved:(Isgl3dEvent3D *)event {
+- (void)touchesMoved:(Isgl3dEvent3D *)event {
 	if (_eventId != nil) {
 		for (UITouch * touch in event.touches) {
 
@@ -96,7 +96,7 @@
 	}
 } 
 
-- (void) touchesEnded:(Isgl3dEvent3D *)event {
+- (void)touchesEnded:(Isgl3dEvent3D *)event {
 	if (_eventId != nil) {
 		for (UITouch * touch in event.touches) {
 			if ([_eventId isEqualToString:NSStringFromCGPoint([touch previousLocationInView:touch.view])]) {
@@ -120,7 +120,7 @@
 	
 } 
 
-- (void) handleEvent:(UITouch *)touch forEventType:(NSString *)eventType {
+- (void)handleEvent:(UITouch *)touch forEventType:(NSString *)eventType {
 	Isgl3dEvent3DListener * listener = [_listeners objectForKey:eventType];
 	if (listener != nil) {
 

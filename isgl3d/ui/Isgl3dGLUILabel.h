@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
-+ (id) labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
++ (id)labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
 
 /**
  * Allocates and initialises (autorelease) label with text, a font and a font size.
@@ -61,7 +61,7 @@
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
-+ (id) labelWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
++ (id)labelWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
 
 /**
  * Initialises the label with text, a font and a font size.
@@ -69,7 +69,7 @@
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
-- (id) initWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
+- (id)initWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize;
 
 /**
  * Initialises the label with text, a font and a font size.
@@ -83,12 +83,12 @@
  * @param fontName The name of the font.
  * @param fontSize The size of the font.
  */
-- (id) initWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
+- (id)initWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
 
 /**
  * Modifies the text to be shown on the label.
  * @param text The text to be displayed.
  */
-- (void) setText:(NSString *)text;
+- (void)setText:(NSString *)text;
 
 @end

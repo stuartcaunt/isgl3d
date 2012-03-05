@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,12 @@
 
 @implementation Isgl3dTutorial4View
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		
 		// Translate the camera.
-		self.camera.position = iv3(7, 4, 10);
+		self.camera.eyePosition = Isgl3dVector3Make(7.0f, 4.0f, 10.0f);
 
 		// Create texture material for the ball with darker ambient color.
 		Isgl3dTextureMaterial * ballMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ball.png" shininess:0.7 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
@@ -51,7 +51,7 @@
 		// Create the pitch node from plane mesh and pitch material with container as parent. Rotate and translate it. Disable lighting effects.
 		Isgl3dMeshNode * pitch = [_container createNodeWithMesh:plane andMaterial:pitchMaterial];
 		pitch.rotationX = -90;
-		pitch.position = iv3(0, -1, 0);
+		pitch.position = Isgl3dVector3Make(0, -1, 0);
 		pitch.lightingEnabled = NO;
 		
 		// Create a number of ball nodes.
@@ -60,7 +60,7 @@
 				
 				// Create ball node from sphere mesh and ball material with container as parent. Translate it.
 				Isgl3dMeshNode * ballNode = [_container createNodeWithMesh:sphere andMaterial:ballMaterial];
-				ballNode.position = iv3(i * 4 - 6, 0, j * 4 - 4);
+				ballNode.position = Isgl3dVector3Make(i * 4 - 6, 0, j * 4 - 4);
 				
 				// Set the ball as interactive and add an event listener for the touch event.
 				ballNode.interactive = YES;
@@ -82,12 +82,12 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	// Rotate the container.
 	_container.rotationY += 0.3;
 }
@@ -95,7 +95,7 @@
 /*
  * Callback for touch event on 3D object
  */
-- (void) objectTouched:(Isgl3dEvent3D *)event {
+- (void)objectTouched:(Isgl3dEvent3D *)event {
 	
 	// Get the object associated with the 3D event.
 	Isgl3dNode * object = event.object;
@@ -113,7 +113,7 @@
 /*
  * Callback when tween ended
  */
-- (void) tweenEnded:(id)sender {
+- (void)tweenEnded:(id)sender {
 	// Create a new tween to move the object back to original position (duration 1.5s).
 	[Isgl3dTweener addTween:sender withParameters:[NSDictionary dictionaryWithObjectsAndKeys:	
 			[NSNumber numberWithFloat:1.5], TWEEN_DURATION, 
@@ -131,7 +131,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

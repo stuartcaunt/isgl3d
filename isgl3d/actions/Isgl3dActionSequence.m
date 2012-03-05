@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -30,7 +30,7 @@
 
 @implementation Isgl3dActionSequence
 
-+ (id) actionWithActions:(Isgl3dActionFixedDuration *)action, ... {
++ (id)actionWithActions:(Isgl3dActionFixedDuration *)action, ... {
 	NSMutableArray * actions = [NSMutableArray arrayWithCapacity:2];
 
 	va_list params;
@@ -46,11 +46,11 @@
 	return [[[self alloc] initWithActionsArray:actions] autorelease];
 }
 
-+ (id) actionWithActionsArray:(NSArray *)actions {
++ (id)actionWithActionsArray:(NSArray *)actions {
 	return [[[self alloc] initWithActionsArray:actions] autorelease];
 }
 
-- (id) initWithActions:(Isgl3dActionFixedDuration *)action, ... {
+- (id)initWithActions:(Isgl3dActionFixedDuration *)action, ... {
 	if ((self = [super init])) {
 		_actions = [[NSMutableArray alloc] init];
 
@@ -69,7 +69,7 @@
 	return self;
 }
 
-- (id) initWithActionsArray:(NSArray *)actions {
+- (id)initWithActionsArray:(NSArray *)actions {
 	if ((self = [super init])) {
 		_actions = [actions mutableCopy];
 
@@ -79,13 +79,13 @@
 }
 
 
-- (void) dealloc {
+- (void)dealloc {
 	[_actions release];
 	
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	NSMutableArray * actionsCopy = [[NSMutableArray alloc] initWithArray:_actions copyItems:YES];
 	Isgl3dActionSequence * copy = [[[self class] allocWithZone:zone] initWithActionsArray:[actionsCopy autorelease]];
 
@@ -115,7 +115,7 @@
 	return _isLastAction && [_currentAction hasTerminated];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	if ([_currentAction hasTerminated]) {
 		if (!_isLastAction) {
 			_currentActionIndex++;

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,13 +37,13 @@
 @synthesize currentFrameID = _currentFrameID;
 @synthesize frameRate = _frameRate;
 
-+ (id) materialWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
++ (id)materialWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
 					shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureFiles:textureFilenameList animationName:animationName shininess:shininess 
 					precision:precision repeatX:repeatX repeatY:repeatY] autorelease];	
 }
 
-+ (id) materialWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
++ (id)materialWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
 					animationName:(NSString *)animationName 
 					shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureFilenameFormat:textureFilenameFormat textureFirstID:textureFirstID textureLastID:textureLastID
@@ -51,7 +51,7 @@
 }
 
 
-- (id) initWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
+- (id)initWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
 			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	if ([textureFilenameList count] > 0 &&
@@ -92,7 +92,7 @@
 	return self;
 }
 
-- (id) initWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
+- (id)initWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
 			  animationName:(NSString *)animationName 
 			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
@@ -106,7 +106,7 @@
 	return self;
 }
 				
-- (void) dealloc {
+- (void)dealloc {
 	[_animationName release];
 	[_textureFilenameList release];
 	[_textureList release];
@@ -121,7 +121,7 @@
 }
 				
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
+- (void)prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 
 	// Control animation
 	if (_isRunning == YES) {
@@ -156,16 +156,16 @@
 
 #pragma mark Animation control methods
 
-- (void) startAnimation {
+- (void)startAnimation {
 	[self gotoAnimationFrame:0];
 	_isRunning = YES;
 }
 
-- (void) stopAnimation {
+- (void)stopAnimation {
 	_isRunning = NO;
 }
 
-- (void) resumeAnimation {
+- (void)resumeAnimation {
 	_isRunning = YES;
 }
 
@@ -183,7 +183,7 @@
 	return NO;
 }
 
-- (void) setFrameRate:(float)frameRate {
+- (void)setFrameRate:(float)frameRate {
 	_frameRate = frameRate;
 }
 

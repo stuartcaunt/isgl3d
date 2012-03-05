@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,11 @@
 
 @implementation Isgl3dShaderMaterial
 
-+ (id) materialWithShader:(Isgl3dCustomShader *)shader {
++ (id)materialWithShader:(Isgl3dCustomShader *)shader {
 	return [[[self alloc] initWithShader:shader] autorelease];
 }
 
-- (id) initWithShader:(Isgl3dCustomShader *)shader {
+- (id)initWithShader:(Isgl3dCustomShader *)shader {
 	
 	if ((self = [super init])) {
 		self.shader = shader;
@@ -44,7 +44,7 @@
 }
 
 
-- (void) dealloc {
+- (void)dealloc {
 	if (_shader) {
 		[_shader release];
 	}
@@ -53,7 +53,7 @@
 
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dShaderMaterial * copy = [super copyWithZone:zone];
 	
 	copy.shader = _shader;
@@ -66,7 +66,7 @@
 	return _shader;
 }
 
-- (void) setShader:(Isgl3dCustomShader *)shader {
+- (void)setShader:(Isgl3dCustomShader *)shader {
 	if (_shader != shader) {
 		[_shader release];
 		_shader = nil;
@@ -80,7 +80,7 @@
 	}
 }
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
+- (void)prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 	// Requirements don't count here - shader is custom/independent
 	
 	// Pass current node to shader if it needs it

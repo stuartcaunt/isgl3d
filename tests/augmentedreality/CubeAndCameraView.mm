@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,14 +26,26 @@
 #import "CubeAndCameraView.h"
 #import "Isgl3dDemoCameraController.h"
 
+
+@interface CubeAndCameraView (){
+@private
+    Isgl3dNodeCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@end
+
+
+#pragma mark -
 @implementation CubeAndCameraView
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
 		_cameraController.orbit = 16;
 		_cameraController.theta = 30;
 		_cameraController.phi = 30;
@@ -51,24 +63,40 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_cameraController release];
+    _cameraController = nil;
 
 	[super dealloc];
 }
 
+- (void)createSceneCamera {
+    CGSize viewSize = self.viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
+    [perspectiveLens release];
+    
+    self.camera = standardCamera;
+    [standardCamera release];
+    [self.scene addChild:standardCamera];
+}
 
-- (void) onActivated {
+- (void)onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
 }
 
-- (void) onDeactivated {
+- (void)onDeactivated {
 	// Remove camera controller from touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	
 	// Rotate the cube by 1 degree about its y-axis
 	[_cube rotate:1 x:0 y:1 z:0];
@@ -88,7 +116,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationPortrait;
 

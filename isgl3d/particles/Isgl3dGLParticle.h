@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -130,12 +130,12 @@
 /**
  * Allocates and initialises (autorelease) the particle with default values: position (0, 0, 0), attenuation (1, 0, 0), color (1, 1, 1, 1), size 32. 
  */
-+ (id) particle;
++ (id)particle;
 
 /**
  * Initialises the particle with default values: position (0, 0, 0), attenuation (1, 0, 0), color (1, 1, 1, 1), size 32. 
  */
-- (id) init;
+- (id)init;
 
 /**
  * Returns the color of the particle.
@@ -149,7 +149,7 @@
  * @param g The green component.
  * @param b The blue component.
  */
-- (void) setColor:(float)r g:(float)g b:(float)b;
+- (void)setColor:(float)r g:(float)g b:(float)b;
 
 /**
  * Sets the color of the particle.
@@ -158,7 +158,7 @@
  * @param b The blue component.
  * @param a The alpha component.
  */
-- (void) setColor:(float)r g:(float)g b:(float)b a:(float)a;
+- (void)setColor:(float)r g:(float)g b:(float)b a:(float)a;
 
 /**
  * Sets the attenuation of the particle controlling its appearance with distance from the observer.
@@ -166,7 +166,7 @@
  * @param linear The linear attenuation component.
  * @param quadratic The quadratic attenuation component.
  */
-- (void) setAttenuation:(float)constant linear:(float)linear quadratic:(float)quadratic;
+- (void)setAttenuation:(float)constant linear:(float)linear quadratic:(float)quadratic;
 
 /**
  * Returns the current attenuation as a 3-value float array [c, l, q].
@@ -198,13 +198,13 @@
  * The vertex data arrays are updated.
  * This is called internally by iSGL3D and should not be called explictly.
  */
-- (void) update;
+- (void)update;
 
 /*
  * Builds the arrays of vertex and index data.
  * This is called internally by iSGL3D and should not be called explictly.
  */
-- (void) buildArrays;
+- (void)buildArrays;
 
 
 /**
@@ -213,7 +213,7 @@
  * @param y The y coordinate of the point;
  * @param z The z coordinate of the point;
  */
-- (void) calculateDistanceFromX:(float)x y:(float)y z:(float)z;
+- (void)calculateDistanceFromX:(float)x y:(float)y z:(float)z;
 
 /**
  * Sets the color of the particle to the desired capture color.
@@ -224,12 +224,12 @@
  * @param g green
  * @param b blue
  */
-- (void) prepareForEventCapture:(float)r g:(float)g b:(float)b;
+- (void)prepareForEventCapture:(float)r g:(float)g b:(float)b;
 
 /**
  * Restores the original color of the particle after the event capture has taken place.
  * Note: This is called internally by iSGL3D and should not be called manually.
  */
-- (void) restoreRenderColor;
+- (void)restoreRenderColor;
 
 @end

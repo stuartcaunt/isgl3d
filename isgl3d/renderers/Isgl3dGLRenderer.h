@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -89,71 +89,71 @@ typedef enum {
 @property (nonatomic) float shadowAlpha;
 @property (nonatomic) BOOL stencilBufferAvailable;
 
-- (id) init;
-- (void) reset;
+- (id)init;
+- (void)reset;
 
-- (void) clear:(unsigned int)bufferBits;
-- (void) clear:(unsigned int)bufferBits color:(float *)color;
-- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport;
-- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport;
+- (void)clear:(unsigned int)bufferBits;
+- (void)clear:(unsigned int)bufferBits color:(float *)color;
+- (void)clear:(unsigned int)bufferBits viewport:(CGRect)viewport;
+- (void)clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport;
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix;
-- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
-- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix;
-- (void) setPlanarShadowsMatrix:(Isgl3dMatrix4 *)planarShadowsMatrix;
-- (void) setupMatrices;
+- (void)setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix;
+- (void)setViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void)setModelMatrix:(Isgl3dMatrix4 *)modelMatrix;
+- (void)setPlanarShadowsMatrix:(Isgl3dMatrix4 *)planarShadowsMatrix;
+- (void)setupMatrices;
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData;
-- (void) setElementBufferData:(unsigned int)bufferId;
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData;
+- (void)setElementBufferData:(unsigned int)bufferId;
 
-- (void) setTexture:(Isgl3dGLTexture *)texture;
-- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
-- (void) setNormalMap:(Isgl3dGLTexture *)texture;
+- (void)setTexture:(Isgl3dGLTexture *)texture;
+- (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
+- (void)setNormalMap:(Isgl3dGLTexture *)texture;
 
-- (void) addLight:(Isgl3dLight *)light;
-- (void) setSceneAmbient:(NSString *)ambient;
-- (void) enableLighting:(BOOL)lightingEnabled;
-
-
-- (void) setRendererRequirements:(unsigned int)rendererRequirements;
+- (void)addLight:(Isgl3dLight *)light;
+- (void)setSceneAmbient:(NSString *)ambient;
+- (void)enableLighting:(BOOL)lightingEnabled;
 
 
-- (void) enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace;
-- (void) setAlphaCullingValue:(float)cullValue;
+- (void)setRendererRequirements:(unsigned int)rendererRequirements;
 
-- (void) enablePointSprites:(BOOL)pointSpriteEnabled;
-- (void) setPointAttenuation:(float *)attenuation;
 
-- (void) enableNormalization:(BOOL)nomalizationEnabled;
+- (void)enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace;
+- (void)setAlphaCullingValue:(float)cullValue;
 
-- (void) enableSkinning:(BOOL)skinningEnabled;
-- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations;
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
+- (void)enablePointSprites:(BOOL)pointSpriteEnabled;
+- (void)setPointAttenuation:(float *)attenuation;
 
-- (void) setCaptureColor:(float *)color;
-- (void) resetCaptureColor;
+- (void)enableNormalization:(BOOL)nomalizationEnabled;
 
-- (void) initRenderForShadowMap;
-- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
-- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position;
-- (void) setShadowMap:(Isgl3dGLTexture *)texture;
+- (void)enableSkinning:(BOOL)skinningEnabled;
+- (void)setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations;
+- (void)setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex;
+
+- (void)setCaptureColor:(float *)color;
+- (void)resetCaptureColor;
+
+- (void)initRenderForShadowMap;
+- (void)setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position;
+- (void)setShadowMap:(Isgl3dGLTexture *)texture;
 - (BOOL) shadowMapActive;
-- (void) enableShadowStencil:(BOOL)shadowStencilEnabled;
+- (void)enableShadowStencil:(BOOL)shadowStencilEnabled;
 
-- (void) initRenderForPlanarShadows;
-- (void) finishRenderForPlanarShadows;
-- (void) initRenderForShadowMapRendering;
-- (void) finishRenderForShadowMapRendering;
+- (void)initRenderForPlanarShadows;
+- (void)finishRenderForPlanarShadows;
+- (void)initRenderForShadowMapRendering;
+- (void)finishRenderForShadowMapRendering;
 
-- (void) clean;
+- (void)clean;
 
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt;
-- (void) onSceneRenderReady;
-- (void) onModelRenderReady;
-- (void) onModelRenderEnds;
-- (void) onSceneRenderEnds;
-- (void) onRenderPhaseEnds;
-- (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset;
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt;
+- (void)onSceneRenderReady;
+- (void)onModelRenderReady;
+- (void)onModelRenderEnds;
+- (void)onSceneRenderEnds;
+- (void)onRenderPhaseEnds;
+- (void)render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset;
 
 
 - (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;

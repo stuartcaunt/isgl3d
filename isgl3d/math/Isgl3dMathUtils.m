@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -112,7 +112,7 @@ NSString * NSStringFromIsgl3dMatrix3(Isgl3dMatrix3 matrix)
 
 NSString * NSStringFromIsgl3dMatrix4(Isgl3dMatrix4 matrix)
 {
-    return [NSString stringWithFormat:@"{%g, %g, %g, %g}, {%g, %g, %g, %g}, {%g, %g, %g, %g}",
+    return [NSString stringWithFormat:@"{%g, %g, %g, %g}, {%g, %g, %g, %g}, {%g, %g, %g, %g}, {%g, %g, %g, %g}",
             matrix.m00, matrix.m01, matrix.m02, matrix.m03,
             matrix.m10, matrix.m11, matrix.m12, matrix.m13,
             matrix.m20, matrix.m21, matrix.m22, matrix.m23,

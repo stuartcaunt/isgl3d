@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@
 
 static Isgl3dObject3DGrabber * _instance;
 
-- (id) init {
+- (id)init {
 	if ((self = [super init])) {
 		_activeObjects = [[NSMutableDictionary alloc] init];
 		_objectCount = 0;
@@ -41,7 +41,7 @@ static Isgl3dObject3DGrabber * _instance;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[_activeObjects release]; 
 	
@@ -65,13 +65,13 @@ static Isgl3dObject3DGrabber * _instance;
 	}
 }
 
-- (void) startCapture {
+- (void)startCapture {
 	_objectCount = 0;
 	[_activeObjects removeAllObjects];
 	
 }
 
-- (void) getCaptureColor:(float *)color forObject:(Isgl3dNode *)object {
+- (void)getCaptureColor:(float *)color forObject:(Isgl3dNode *)object {
 	_objectCount++;
 	
 	NSString * colorString = [NSString stringWithFormat:@"0x%06X", _objectCount];

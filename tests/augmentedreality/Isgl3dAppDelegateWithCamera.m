@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 
 @implementation Isgl3dAppDelegateWithCamera
 
-- (void) applicationDidFinishLaunching:(UIApplication*)application {
+- (void)applicationDidFinishLaunching:(UIApplication*)application {
 	[super applicationDidFinishLaunching:application];
 	
 	// Create a UIImagePickerController for the camera view
@@ -58,7 +58,7 @@
 	[Isgl3dDirector sharedInstance].openGLView.opaque = NO;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[super dealloc];
 }

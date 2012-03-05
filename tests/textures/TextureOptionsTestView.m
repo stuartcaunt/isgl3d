@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,9 +25,20 @@
 
 #import "TextureOptionsTestView.h"
 
+@interface TextureOptionsTestView () {
+@private
+    Isgl3dNodeCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@end
+
+
+#pragma mark -
 @implementation TextureOptionsTestView
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 
@@ -41,11 +52,11 @@
 		
 		_plane1 = [self.scene createNodeWithMesh:planeMesh andMaterial:textureMaterial];
 		_plane1.rotationX = -90;
-		_plane1.position = iv3(0, -0.5, 0);
+		_plane1.position = Isgl3dVector3Make(0, -0.5, 0);
 	
 		_plane2 = [self.scene createNodeWithMesh:planeMesh andMaterial:textureMaterial2];
 		_plane2.rotationX = 90;
-		_plane2.position = iv3(0, 0.5, 0);
+		_plane2.position = Isgl3dVector3Make(0, 0.5, 0);
 		
 		// Schedule updates
 		[self schedule:@selector(tick:)];
@@ -59,6 +70,21 @@
 	[super dealloc];
 }
 
+- (void)createSceneCamera {
+    CGSize viewSize = self.viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
+    [perspectiveLens release];
+    
+    self.camera = standardCamera;
+    [standardCamera release];
+    [self.scene addChild:standardCamera];
+}
 
 - (void) tick:(float)dt {
 	_planeAngle += 1;

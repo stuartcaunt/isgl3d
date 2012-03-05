@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -42,13 +42,13 @@
  * Allocates and initialises (autorelease) the Isgl3dActionEase with an action to ease.
  * @param action The action to ease
  */
-+ (id) actionWithAction:(Isgl3dActionInterval *)action;
++ (id)actionWithAction:(Isgl3dActionInterval *)action;
 
 /**
  * Initialises (autorelease) the Isgl3dActionEase with an action to ease.
  * @param action The action to ease
  */
-- (id) initWithAction:(Isgl3dActionInterval *)action;
+- (id)initWithAction:(Isgl3dActionInterval *)action;
 
 @end
 
@@ -67,14 +67,14 @@
  * @param action The action to ease
  * @param rate The rate of ease
  */
-+ (id) actionWithAction:(Isgl3dActionInterval *)action rate:(float)rate;
++ (id)actionWithAction:(Isgl3dActionInterval *)action rate:(float)rate;
 
 /**
  * Initialises (autorelease) the Isgl3dActionEase with an action to ease and rate.
  * @param action The action to ease
  * @param rate The rate of ease
  */
-- (id) initWithAction:(Isgl3dActionInterval *)action rate:(float)rate;
+- (id)initWithAction:(Isgl3dActionInterval *)action rate:(float)rate;
 
 @end
 
@@ -174,14 +174,14 @@
  * @param action The action to ease
  * @param period The period
  */
-+ (id) actionWithAction:(Isgl3dActionInterval *)action period:(float)period;
++ (id)actionWithAction:(Isgl3dActionInterval *)action period:(float)period;
 
 /**
  * Initialises (autorelease) the Isgl3dActionEaseElastic with an action to ease and period (default = 0.3).
  * @param action The action to ease
  * @param period The period
  */
-- (id) initWithAction:(Isgl3dActionInterval *)action period:(float)period;
+- (id)initWithAction:(Isgl3dActionInterval *)action period:(float)period;
 
 @end
 

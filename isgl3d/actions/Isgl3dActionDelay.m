@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -32,28 +32,28 @@
 
 @implementation Isgl3dActionDelay
 
-+ (id) actionWithDuration:(float)duration {
++ (id)actionWithDuration:(float)duration {
 	return [[[self alloc] initWithDuration:duration] autorelease];
 }
 
-- (id) initWithDuration:(float)duration {
+- (id)initWithDuration:(float)duration {
 	if ((self = [super initWithDuration:duration])) {
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionDelay * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	// do nothing
 }
 

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -96,7 +96,7 @@
  * @param repeatX Indicates whether the material will be repeated (tessellated) across the rendered object in the x-direction.
  * @param repeatY Indicates whether the material will be repeated (tessellated) across the rendered object in the y-direction.
  */
-+ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
++ (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * Allocates and initialises (autorelease) texture material from an image file.
@@ -108,20 +108,20 @@
  * @param mirrorX Indicates whether the material will be mirrored when repeated across the rendered object in the x-direction.
  * @param mirrorY Indicates whether the material will be mirrored when repeated across the rendered object in the y-direction.
  */
-+ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
++ (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 
 /**
  * Allocates and initialises (autorelease) texture material from an image file using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
  * @param fileName The name of the image file.
  */
-+ (id) materialWithTextureFile:(NSString *)fileName;
++ (id)materialWithTextureFile:(NSString *)fileName;
 
 /**
  * Allocates and initialises (autorelease) texture material from an image file and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
  * @param fileName The name of the image file.
  * @param shininess The shininess of the material.
  */
-+ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess;
++ (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess;
 
 /**
  * Allocates and initialises (autorelease) texture material from an UIImage object.
@@ -132,7 +132,7 @@
  * @param repeatX Indicates whether the material will be repeated (tessellated) across the rendered object in the x-direction.
  * @param repeatY Indicates whether the material will be repeated (tessellated) across the rendered object in the y-direction.
  */
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 
 /**
@@ -146,14 +146,14 @@
  * @param mirrorX Indicates whether the material will be mirrored when repeated across the rendered object in the x-direction.
  * @param mirrorY Indicates whether the material will be mirrored when repeated across the rendered object in the y-direction.
  */
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 
 /**
  * Allocates and initialises (autorelease) texture material from an UIImage object using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
  * @param image UIImage object for the new texture.
  * @param key The key of the image object.
  */
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key;
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key;
 
 /**
  * Allocates and initialises (autorelease) texture material from an UIImage object and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
@@ -161,7 +161,7 @@
  * @param key The key of the image object.
  * @param shininess The shininess of the material.
  */
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess;
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess;
 
 /**
  * Allocates and initialises (autorelease) texture material with text to be rendered.
@@ -169,7 +169,7 @@
  * @param fontName The name of the font.
  * @param fontSize The size of the font. 
  */
-+ (id) materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
++ (id)materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
 
 /**
  * Initialises the texture material from an image file.
@@ -179,7 +179,7 @@
  * @param repeatX Indicates whether the material will be repeated (tessellated) across the rendered object in the x-direction.
  * @param repeatY Indicates whether the material will be repeated (tessellated) across the rendered object in the y-direction.
  */
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (id)initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * Initialises the texture material from an image file.
@@ -191,20 +191,20 @@
  * @param mirrorX Indicates whether the material will be mirrored when repeated across the rendered object in the x-direction.
  * @param mirrorY Indicates whether the material will be mirrored when repeated across the rendered object in the y-direction.
  */
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
+- (id)initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 
 /**
  * Initialises the texture material from an image file using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
  * @param fileName The name of the image file.
  */
-- (id) initWithTextureFile:(NSString *)fileName;
+- (id)initWithTextureFile:(NSString *)fileName;
 
 /**
  * Initialises the texture material from an image file and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
  * @param fileName The name of the image file.
  * @param shininess The shininess of the material.
  */
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess;
+- (id)initWithTextureFile:(NSString *)fileName shininess:(float)shininess;
 
 /**
  * Initialises the texture material from an UIImage object.
@@ -215,7 +215,7 @@
  * @param repeatX Indicates whether the material will be repeated (tessellated) across the rendered object in the x-direction.
  * @param repeatY Indicates whether the material will be repeated (tessellated) across the rendered object in the y-direction.
  */
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
  * Initialises the texture material from an UIImage object.
@@ -228,14 +228,14 @@
  * @param mirrorX Indicates whether the material will be mirrored when repeated across the rendered object in the x-direction.
  * @param mirrorY Indicates whether the material will be mirrored when repeated across the rendered object in the y-direction.
  */
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 
 /**
  * Initialises the texture material from an UIImage object using default values of 0 shininess, Isgl3dTexturePrecisionMedium precision and no repeats.
  * @param image UIImage object
  * @param key The key of the image object.
  */
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key;
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key;
 
 /**
  * Initialises the texture material from an UIImage object and a given shininess, using default values Isgl3dTexturePrecisionMedium precision and no repeats.
@@ -243,7 +243,7 @@
  * @param key The key of the image object.
  * @param shininess The shiness of the material.
  */
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess;
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess;
 
 
 /**
@@ -252,9 +252,9 @@
  * @param fontName The name of the font.
  * @param fontSize The size of the font. 
  */
-- (id) initWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
+- (id)initWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
 
-- (void) setNormalMapFromFile:(NSString *)normalMapFileName;
-- (void) setNormalMapFromUIImage:(UIImage *)image;
+- (void)setNormalMapFromFile:(NSString *)normalMapFileName;
+- (void)setNormalMapFromUIImage:(UIImage *)image;
 
 @end

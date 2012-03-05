@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,11 +35,11 @@
 @synthesize longs = _longs;
 @synthesize lats = _lats;
 
-+ (id) meshWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
++ (id)meshWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
 	return [[[self alloc] initWithGeometry:a b:b k:k longs:longs lats:lats] autorelease];
 }
 
-- (id) initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
+- (id)initWithGeometry:(float)a b:(float)b k:(float)k longs:(int)longs lats:(int)lats {
 	
 	if ((self = [super init])) {
 		_a = a;
@@ -54,11 +54,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [super dealloc];
 }
 
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 	
 	float a2 = _a * _a;
 	float b2 = _b * _b;

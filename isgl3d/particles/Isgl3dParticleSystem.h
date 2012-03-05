@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,12 +53,12 @@
 /**
  * Allocates and initialises (autorelease) particle system.
  */
-+ (id) particleSystem;
++ (id)particleSystem;
 
 /**
  * Initialises the particle system.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Creates and adds a particle to the particle system.
@@ -70,7 +70,7 @@
  * Removes a particle from the particle system.
  * @param particle The particle to be removed.
  */
-- (void) removeParticle:(Isgl3dGLParticle *)particle;
+- (void)removeParticle:(Isgl3dGLParticle *)particle;
 
 /**
  * Returns the number of particles in the system.
@@ -85,6 +85,6 @@
  * @param y The y coordinate of the point;
  * @param z The z coordinate of the point;
  */
-- (void) sortDecreasingDistanceFromX:(float)x y:(float)y z:(float)z;
+- (void)sortDecreasingDistanceFromX:(float)x y:(float)y z:(float)z;
 
 @end

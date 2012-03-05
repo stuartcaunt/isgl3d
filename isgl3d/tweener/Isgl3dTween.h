@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -123,7 +123,7 @@
  * @param object The object to be tweened.
  * @param parameters An NSDictionary of key-values to parameterize the tween (see discussion).
  */
-- (id) initWithObject:(id)object forParameters:(NSDictionary *)parameters;
+- (id)initWithObject:(id)object forParameters:(NSDictionary *)parameters;
 
 /**
  * Returns YES if the tween has completed.
@@ -142,19 +142,19 @@
  * Note: this is called internally by Isgl3dTweener and should not be called explicitly.
  * @param currentTime the current real time.
  */
-- (void) update:(NSDate *)currentTime;
+- (void)update:(NSDate *)currentTime;
 
 /*
  * Executes the callback method if one has been provided. 
  * Note: this is called internally by Isgl3dTweener and should not be called explicitly.
  */
-- (void) onComplete;
+- (void)onComplete;
 
 /*
  * Removes a property to be tweened.
  * Note: this is called internally by Isgl3dTweener and should not be called explicitly.
  * @param property The name of the property.
  */
-- (void) removeProperty:(NSString *)property;
+- (void)removeProperty:(NSString *)property;
 
 @end

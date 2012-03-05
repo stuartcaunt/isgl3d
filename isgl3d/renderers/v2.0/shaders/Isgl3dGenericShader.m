@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,21 +34,24 @@
 
 
 @interface Isgl3dGenericShader (PrivateMethods)
-- (void) handleStates;
+- (void)handleStates;
 @end
 
 //static GLVBOData * _currentVBOData = nil;
 
 @implementation Isgl3dGenericShader
 
-- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id)initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
 	if ((self = [super initWithVertexShaderName:@"generic.vsh" fragmentShaderName:@"generic.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
 		
 		_currentState = [[Isgl3dShaderState alloc] init];
 		_previousState = [[Isgl3dShaderState alloc] init];
 	
-		_biasMatrix = im4(0.5, 0, 0, 0.5, 0, 0.5, 0, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0, 1);
+		_biasMatrix = Isgl3dMatrix4Matrix4Make(0.5f, 0.0f, 0.0f, 0.5f,
+                                               0.0f, 0.5f, 0.0f, 0.5f,
+                                               0.0f, 0.0f, 0.5f, 0.5f,
+                                               0.0f, 0.0f, 0.0f, 1.0f);
 		_shadowMapTransformMatrix = Isgl3dMatrix4Identity;
 		
 		_sceneAmbient[0] = 0.0;
@@ -75,7 +78,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[_currentState release];
 	[_previousState release];
@@ -84,7 +87,7 @@
 }
 
 
-- (void) getAttributeAndUniformLocations {
+- (void)getAttributeAndUniformLocations {
 
 	// Attributes
 	_vertexAttributeLocation = [_glProgram getAttributeLocation:@"a_vertex"];
@@ -146,19 +149,19 @@
 	
 }
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
+- (void)setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
 }
 
-- (void) setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
+- (void)setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
     [self setUniformMatrix3:_normalMatrixUniformLocation matrix:normalMatrix];
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
+- (void)setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	[self setUniformMatrix4:_mvpMatrixUniformLocation matrix:modelViewProjectionMatrix];
 }
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData {
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_normalAttributeLocation size:VBO_NORMAL_SIZE strideBytes:vboData.stride offset:vboData.normalOffset];
 	if (_texCoordAttributeLocation != -1 && vboData.uvOffset != -1) {
@@ -170,7 +173,7 @@
 	}
 }
 
-- (void) setTexture:(Isgl3dGLTexture *)texture {
+- (void)setTexture:(Isgl3dGLTexture *)texture {
 	if (_samplerLocation != -1) {
 		// Bind the texture
 		[self bindTexture:texture textureUnit:TEXTURE0_INDEX];
@@ -180,7 +183,7 @@
 	_currentState.textureEnabled = YES;
 }
 
-- (void) setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
+- (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
 	
 	if (_planarShadowsActive) {
 		_blackAndAlpha[3] = _shadowAlpha;
@@ -205,7 +208,7 @@
 	_currentState.textureEnabled = NO;
 }
 
-- (void) setNormalMapping:(Isgl3dGLTexture *)texture {
+- (void)setNormalMapping:(Isgl3dGLTexture *)texture {
 	if (_normalMapSamplerLocation != -1) {
 		// Bind the texture
 		[self bindTexture:texture textureUnit:NORMALMAP_INDEX];
@@ -215,7 +218,7 @@
 	_currentState.normalMappingEnabled = YES;
 }
 
-- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	if (_lightCount >= MAX_LIGHTS) {
 		Isgl3dLog(Warn, @"Number of lights exceeds %i", MAX_LIGHTS);
 		return;
@@ -235,10 +238,11 @@
 	[self setUniform4f:_lightSpecularLocation[lightIndex] values:[light specularLight]];
 	
 	// set light position, take into account translation from viewer's position
-	float transformedLightPosition[4];
-	[light copyWorldPositionToArray:transformedLightPosition];
-	im4MultArray4(viewMatrix, transformedLightPosition);
-	[self setUniform4f:_lightPositionLocation[lightIndex] values:transformedLightPosition];
+	Isgl3dVector4 transformedLightPosition;
+	[light copyWorldPositionToArray:transformedLightPosition.v];
+	
+    transformedLightPosition = Isgl3dMatrix4MultiplyVector4(*viewMatrix, transformedLightPosition);
+	[self setUniform4f:_lightPositionLocation[lightIndex] values:transformedLightPosition.v];
 	
 	// set attenuation factors
 	_attenuation[0] = light.constantAttenuation;
@@ -249,12 +253,10 @@
 	// Set spot factors
 	if (light.lightType == SpotLight) {
 		// set spot light direction, take into account translation from viewer's position
-		float spotDirection[4];
-		memcpy(spotDirection, [light spotDirection], sizeof(float) * 3);
-		spotDirection[3] = 0.;
-		
-		im4MultArray4(viewMatrix, spotDirection);
-		[self setUniform3f:_lightSpotDirectionLocation[lightIndex] values:spotDirection];
+		Isgl3dVector4 spotDirection = Isgl3dVector4MakeWithVector3(Isgl3dVector3MakeWithArray([light spotDirection]), 0.0f);
+        spotDirection = Isgl3dMatrix4MultiplyVector4(*viewMatrix, spotDirection);
+
+		[self setUniform3f:_lightSpotDirectionLocation[lightIndex] values:spotDirection.v];
 
 		[self setUniform1f:_lightSpotCutoffAngleLocation[lightIndex] value:light.spotCutoffAngle];
 		[self setUniform1f:_lightSpotFalloffExponentLocation[lightIndex] value:light.spotFalloffExponent];
@@ -265,7 +267,7 @@
 	
 }
 
-- (void) setSceneAmbient:(NSString *)ambient {
+- (void)setSceneAmbient:(NSString *)ambient {
 	if (![_sceneAmbientString isEqualToString:ambient]) { 
 		_sceneAmbientString = ambient;
 		
@@ -276,27 +278,27 @@
 	}
 }
 
-- (void) enableLighting:(BOOL)lightingEnabled {
+- (void)enableLighting:(BOOL)lightingEnabled {
 	_currentState.lightingEnabled = lightingEnabled; 
 }
 
-- (void) setAlphaCullingValue:(float)cullValue {
+- (void)setAlphaCullingValue:(float)cullValue {
 	if (_alphaTestValueUniformLocation != -1) {
 		[self setUniform1f:_alphaTestValueUniformLocation value:cullValue];
 	}
 }
 
-- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
+- (void)setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 	[self setUniformMatrix4:_boneMatrixArrayUniformLocation matrix:transformations size:8];
 	[self setUniformMatrix3:_boneMatrixArrayITUniformLocation matrix:inverseTransformations size:8];
 }
 
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
+- (void)setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 	[self setUniform1i:_boneCountUniformLocation value:numberOfBonesPerVertex];
 }
 
 
-- (void) setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
+- (void)setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
 	if (_mcToLightMatrixUniformLocation != -1) {
         _shadowMapTransformMatrix = Isgl3dMatrix4Multiply(_biasMatrix, *mvpMatrix);
 		
@@ -304,41 +306,41 @@
 	}
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	// set light position, take into account translation from viewer's position
-	float transformedLightPosition[4] = {position->x, position->y, position->z, 1.0};
-	im4MultArray4(viewMatrix, transformedLightPosition);
-	[self setUniform4f:_shadowCastingLightPositionLocation values:transformedLightPosition];
+	Isgl3dVector4 transformedLightPosition = Isgl3dVector4MakeWithVector3(*position, 1.0f);
+    transformedLightPosition = Isgl3dMatrix4MultiplyVector4(*viewMatrix, transformedLightPosition);
+	[self setUniform4f:_shadowCastingLightPositionLocation values:transformedLightPosition.v];
 }
 
-- (void) setShadowMap:(Isgl3dGLTexture *)texture {
+- (void)setShadowMap:(Isgl3dGLTexture *)texture {
 	if (_shadowMapSamplerLocation != -1) {
 		[self bindTexture:texture textureUnit:SHADOWMAP_INDEX];
 		[self setUniformSampler:_shadowMapSamplerLocation forTextureUnit:SHADOWMAP_INDEX];
 	}
 }
 
-- (void) setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha {
+- (void)setPlanarShadowsActive:(BOOL)planarShadowsActive shadowAlpha:(float)shadowAlpha {
 	_planarShadowsActive = planarShadowsActive;
 	_shadowAlpha = shadowAlpha;
 }
 
-- (void) onModelRenderReady {
+- (void)onModelRenderReady {
 	[self handleStates];
 }
 
-- (void) onModelRenderEnds {
+- (void)onModelRenderEnds {
 	// save client states
 	[_previousState copyFrom:_currentState];
 	[_currentState reset];
 }
 
-- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+- (void)render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
 	// render elements
 	glDrawElements(GL_TRIANGLES, numberOfElements, GL_UNSIGNED_SHORT, &((unsigned short *)0)[elementOffset]);
 }
 
-- (void) handleStates {
+- (void)handleStates {
 
 	if (!_currentState.textureEnabled && _previousState.textureEnabled) {
 		//glDisable(GL_BLEND);
@@ -364,7 +366,7 @@
 	
 }
 
-- (void) clean {
+- (void)clean {
 	for (int i = 0; i < MAX_LIGHTS; i++) {
 		[self setUniform1i:_lightEnabledLocation[i] value:0];
 	}

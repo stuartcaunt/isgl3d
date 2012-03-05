@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@
 	NSMutableDictionary * _listeners;  
 }
 
-- (id) init;
+- (id)init;
 
 /**
  * Adds a new event listener to the object (eg Isgl3dMeshNode) for a particular type of event.
@@ -61,13 +61,13 @@
  * @param method The method in the object that is called when the event is triggered.
  * @param eventType The type of event to react to.
  */
-- (void) removeEvent3DListenerForObject:(id)object method:(SEL)method forEventType:(NSString *)eventType;
+- (void)removeEvent3DListenerForObject:(id)object method:(SEL)method forEventType:(NSString *)eventType;
 
 /**
  * Directly removes the Isgl3dEvent3DListener.
  * @param listener The event listener.
  */
-- (void) removeEvent3DListener:(Isgl3dEvent3DListener *)listener;
+- (void)removeEvent3DListener:(Isgl3dEvent3DListener *)listener;
 
 /*
  * Dispatches the event to all concerned listeners.
@@ -76,7 +76,7 @@
  * @param touches The set of UITouches.
  * @param eventType The type of event.
  */
-- (void) dispatchEvent:(NSSet *)touches forEventType:(NSString *)eventType;
+- (void)dispatchEvent:(NSSet *)touches forEventType:(NSString *)eventType;
 
 
 @end

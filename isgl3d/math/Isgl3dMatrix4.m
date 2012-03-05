@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -86,7 +86,7 @@ Isgl3dMatrix4 Isgl3dMatrix4Invert(Isgl3dMatrix4 matrix, bool *isInvertible)
 	m.m23 = -invDet * (matrix.m00 * (matrix.m11 * matrix.m23 - matrix.m13 * matrix.m21) - matrix.m01 * (matrix.m10 * matrix.m23 - matrix.m13 * matrix.m20) + matrix.m03 * (matrix.m10 * matrix.m21 - matrix.m11 * matrix.m20));
 	m.m33 =  invDet * (matrix.m00 * (matrix.m11 * matrix.m22 - matrix.m12 * matrix.m21) - matrix.m01 * (matrix.m10 * matrix.m22 - matrix.m12 * matrix.m20) + matrix.m02 * (matrix.m10 * matrix.m21 - matrix.m11 * matrix.m20));
 
-    if (*isInvertible)
+    if (isInvertible != NULL)
         *isInvertible = true;
     
     return m;

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,22 +37,22 @@
 /**
  * Initialises the Isgl3dGLDepthRenderTexture with an OpenGL texture object for a given width and height.
  */
-- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
+- (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
 
 /**
  * Clears and prepares the texture.
  */
-- (void) clear;
+- (void)clear;
 
 /**
  * Initializes the texture to be rendered onto.
  */
-- (void) initializeRender;
+- (void)initializeRender;
 
 /**
  * Finalizes the texture after rendering.
  */
-- (void) finalizeRender;
+- (void)finalizeRender;
 
 
 

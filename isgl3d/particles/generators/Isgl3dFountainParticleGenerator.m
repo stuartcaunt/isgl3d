@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,10 @@
 #import "Isgl3dGLParticle.h"
 #import "Isgl3dArray.h"
 #import "Isgl3dVector.h"
+#import "Isgl3dVector3.h"
 #import <stdlib.h>
 #import <time.h>
+
 
 @implementation Isgl3dFountainParticleGenerator
 
@@ -37,7 +39,7 @@
 @synthesize height = _height;
 @synthesize time = _time;
 
-- (id) initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
+- (id)initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
 	
 	if ((self = [super initWithParticleSystem:particleSystem andNode:node])) {
 		srandom(time(NULL));
@@ -49,7 +51,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
@@ -80,7 +82,7 @@
 			float y = yEnd * (v0 * progression - 0.5 * g * progression * progression);
 			float z = zEnd * progression;
 			
-			Isgl3dVector3 pathData = iv3(x, y, z);
+			Isgl3dVector3 pathData = Isgl3dVector3Make(x, y, z);
 			IA_ADD(path, pathData);
 		}
 		

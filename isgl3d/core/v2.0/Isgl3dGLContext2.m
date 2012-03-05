@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,11 +36,11 @@
 @property (nonatomic) GLuint activeFrameBuffer;
 @property (nonatomic) GLuint activeRenderBuffer;
 
-- (void) checkGLExtensions;
+- (void)checkGLExtensions;
 - (BOOL) createBuffers:(CAEAGLLayer *)eaglLayer;
 - (BOOL) createExtensionBuffers;
-- (void) releaseBuffers;
-- (void) releaseExtensionBuffers;
+- (void)releaseBuffers;
+- (void)releaseExtensionBuffers;
 
 - (void)freeCurrentRenderImageData;
 @end
@@ -64,7 +64,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 
 
 // Create an ES 2.0 context
-- (id) initWithLayer:(CAEAGLLayer *) layer {
+- (id)initWithLayer:(CAEAGLLayer *) layer {
 	
 	if ((self = [super init])) {
 		
@@ -107,7 +107,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	// Release all buffers
 	[self releaseBuffers];
@@ -128,7 +128,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	[super dealloc];
 }
 
-- (void) checkGLExtensions {
+- (void)checkGLExtensions {
 	// Check and activate additional OpenGL extensions
     _msaaAvailable = CheckForGLExtension(@"GL_APPLE_framebuffer_multisample");
     _framebufferDiscardAvailable = CheckForGLExtension(@"GL_EXT_discard_framebuffer");
@@ -385,7 +385,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	return [[[Isgl3dGLProgram alloc] init] autorelease];
 }
 
-- (void) useProgram:(Isgl3dGLProgram *)program {
+- (void)useProgram:(Isgl3dGLProgram *)program {
 	glUseProgram([program glProgram]);
 }
 
@@ -396,7 +396,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	return [_currentRenderer autorelease];
 }
 
-- (void) prepareRender {
+- (void)prepareRender {
 	[super prepareRender];
 	
 	if(_msaaAvailable && _msaaEnabled) {
@@ -407,7 +407,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
     self.activeRenderBuffer = _colorRenderBuffer;
 }
 
-- (void) finalizeRender {
+- (void)finalizeRender {
 	[super finalizeRender];
 	
 	if (_msaaAvailable && _msaaEnabled) {
@@ -523,7 +523,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	return _currentRenderImage;
 }
 
-- (void) setMsaaEnabled:(BOOL)value {
+- (void)setMsaaEnabled:(BOOL)value {
     if (!_msaaAvailable)
         return;
     

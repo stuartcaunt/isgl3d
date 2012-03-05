@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -46,14 +46,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate to
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRotateXTo with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate to
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -73,14 +73,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate to
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRotateYTo with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate to
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -100,14 +100,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate to
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRotateZTo with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate to
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -126,14 +126,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRotateXBy with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -152,14 +152,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRotateYBy with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -178,14 +178,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRotateZBy with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -205,14 +205,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionYawBy with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -231,14 +231,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionPitchBy with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -257,14 +257,14 @@
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-+ (id) actionWithDuration:(float)duration angle:(float)angle;
++ (id)actionWithDuration:(float)duration angle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionRollBy with a duration and end rotation.
  * @param duration The duration of the action
  * @param angle The angle to rotate by
  */
-- (id) initWithDuration:(float)duration angle:(float)angle;
+- (id)initWithDuration:(float)duration angle:(float)angle;
 
 @end
 
@@ -282,13 +282,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetRotationX with a rotation.
  * @param angle The angle to rotate to
  */
-+ (id) actionWithAngle:(float)angle;
++ (id)actionWithAngle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionSetRotationX with a rotation.
  * @param angle The angle to rotate to
  */
-- (id) initWithAngle:(float)angle;
+- (id)initWithAngle:(float)angle;
 
 @end
 
@@ -305,13 +305,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetRotationY with a rotation.
  * @param angle The angle to rotate to
  */
-+ (id) actionWithAngle:(float)angle;
++ (id)actionWithAngle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionSetRotationY with a rotation.
  * @param angle The angle to rotate to
  */
-- (id) initWithAngle:(float)angle;
+- (id)initWithAngle:(float)angle;
 
 @end
 
@@ -328,13 +328,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetRotationZ with a rotation.
  * @param angle The angle to rotate to
  */
-+ (id) actionWithAngle:(float)angle;
++ (id)actionWithAngle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionSetRotationZ with a rotation.
  * @param angle The angle to rotate to
  */
-- (id) initWithAngle:(float)angle;
+- (id)initWithAngle:(float)angle;
 
 @end
 
@@ -351,13 +351,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetYaw with a rotation.
  * @param angle The angle to rotate by
  */
-+ (id) actionWithAngle:(float)angle;
++ (id)actionWithAngle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionSetYaw with a rotation.
  * @param angle The angle to rotate by
  */
-- (id) initWithAngle:(float)angle;
+- (id)initWithAngle:(float)angle;
 
 @end
 
@@ -374,13 +374,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetPitch with a rotation.
  * @param angle The angle to rotate by
  */
-+ (id) actionWithAngle:(float)angle;
++ (id)actionWithAngle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionSetPitch with a rotation.
  * @param angle The angle to rotate by
  */
-- (id) initWithAngle:(float)angle;
+- (id)initWithAngle:(float)angle;
 
 @end
 
@@ -397,13 +397,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetRoll with a rotation.
  * @param angle The angle to rotate by
  */
-+ (id) actionWithAngle:(float)angle;
++ (id)actionWithAngle:(float)angle;
 
 /**
  * Initialises the an Isgl3dActionSetRoll with a rotation.
  * @param angle The angle to rotate by
  */
-- (id) initWithAngle:(float)angle;
+- (id)initWithAngle:(float)angle;
 
 @end
 

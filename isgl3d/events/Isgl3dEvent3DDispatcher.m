@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 
 @implementation Isgl3dEvent3DDispatcher
 
-- (id) init {
+- (id)init {
 
 	if ((self = [super init])) {
 		_listeners = [[NSMutableDictionary alloc] init];
@@ -38,7 +38,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[_listeners release];
 		
@@ -58,7 +58,7 @@
 	return [listener autorelease];
 }
 
-- (void) removeEvent3DListenerForObject:(id)object method:(SEL)method forEventType:(NSString *)eventType {
+- (void)removeEvent3DListenerForObject:(id)object method:(SEL)method forEventType:(NSString *)eventType {
 	if ([_listeners objectForKey:eventType] == nil) {
 		return;
 	}
@@ -72,7 +72,7 @@
 	}
 }
 
-- (void) removeEvent3DListener:(Isgl3dEvent3DListener *)listener {
+- (void)removeEvent3DListener:(Isgl3dEvent3DListener *)listener {
 
 	for (NSString * eventType in _listeners) {
 		NSMutableArray * array = [_listeners objectForKey:eventType];
@@ -84,7 +84,7 @@
 	
 }
 
-- (void) dispatchEvent:(NSSet *)touches forEventType:(NSString *)eventType {
+- (void)dispatchEvent:(NSSet *)touches forEventType:(NSString *)eventType {
 	if ([_listeners objectForKey:eventType] != nil) {
 		
 		Isgl3dEvent3D * event = [[Isgl3dEvent3D alloc] initWithObject:self forTouches:touches];

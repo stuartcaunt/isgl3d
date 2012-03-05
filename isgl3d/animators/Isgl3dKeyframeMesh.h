@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -106,31 +106,31 @@ typedef struct {
 /**
  * Allocates and initialises (autorelease) Isgl3dKeyframeMesh with an initial mesh.
  */
-+ (id) keyframeMeshWithMesh:(Isgl3dGLMesh *)mesh;
++ (id)keyframeMeshWithMesh:(Isgl3dGLMesh *)mesh;
 
 /**
  * Initialises the Isgl3dKeyframeMesh with an initial mesh.
  */
-- (id) initWithMesh:(Isgl3dGLMesh *)mesh;
+- (id)initWithMesh:(Isgl3dGLMesh *)mesh;
 
 /**
  * Adds new keyframe mesh data from an Isgl3dGLMesh.
  * @param mesh The mesh data to be added for a keyframe.
  */
-- (void) addKeyframeMesh:(Isgl3dGLMesh *)mesh;
+- (void)addKeyframeMesh:(Isgl3dGLMesh *)mesh;
 
 /**
  * Adds a new keyframe animation data.
  * @param meshIndex The mesh index for the frame (index relative to order in which meshes are added)
  * @param duration The duration of the frame. 
  */
-- (void) addKeyframeAnimationData:(unsigned int)meshIndex duration:(float)duration;
+- (void)addKeyframeAnimationData:(unsigned int)meshIndex duration:(float)duration;
 
 /**
  * Updates the animation with a given delta time.
  * @param dt The delta time.
  */
-- (void) update:(float)dt;
+- (void)update:(float)dt;
 
 /**
  * Interpolates the mesh data between two meshes for a given factor between 0 and 1.
@@ -139,16 +139,16 @@ typedef struct {
  * @param mesh2Index the index of mesh2.
  * @param factor the interpolation factor between 0 and 1.
  */
-- (void) interpolateMesh1:(unsigned int)mesh1Index andMesh2:(unsigned int)mesh2Index withFactor:(float)factor;
+- (void)interpolateMesh1:(unsigned int)mesh1Index andMesh2:(unsigned int)mesh2Index withFactor:(float)factor;
 
 /**
  * Starts automatic animation of the meshes.
  */
-- (void) startAnimation;
+- (void)startAnimation;
 
 /**
  * Stops the animation of the meshes.
  */
-- (void) stopAnimation;
+- (void)stopAnimation;
 
 @end

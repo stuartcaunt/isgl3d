@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,7 +55,7 @@
  * @param nx The number of segments along the x-axis.
  * @param ny The number of segments along the y-axis.
  */
-+ (id) meshWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny;
++ (id)meshWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny;
 
 /**
  * Allocates and initialises (autorelease) plane with the specified geometry and with a specific UV mapping.
@@ -83,7 +83,7 @@
  * @param ny The number of segments along the y-axis.
  * @param uvMap The Isgl3dUVMap for mapping a texture material.
  */
-+ (id) meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap;
++ (id)meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap;
 
 /**
  * Initialises the plane with the specified geometry.
@@ -92,7 +92,7 @@
  * @param nx The number of segments along the x-axis.
  * @param ny The number of segments along the y-axis.
  */
-- (id) initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny;
+- (id)initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny;
 
 /**
  * Initialises the plane with the specified geometry and with a specific UV mapping.
@@ -120,6 +120,6 @@
  * @param ny The number of segments along the y-axis.
  * @param uvMap The Isgl3dUVMap for mapping a texture material.
  */
-- (id) initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap;
+- (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(const Isgl3dUVMap *)uvMap;
 
 @end

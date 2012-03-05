@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@
 @synthesize boneWeightEnabled = _boneWeightEnabled;
 @synthesize lightingEnabled = _lightingEnabled;
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		[self reset];
@@ -54,12 +54,12 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) copyFrom:(Isgl3dGLRenderer1State *)state {
+- (void)copyFrom:(Isgl3dGLRenderer1State *)state {
 	_vertexEnabled = state.vertexEnabled;
 	_colorEnabled = state.colorEnabled;
 	_normalEnabled = state.normalEnabled;
@@ -78,7 +78,7 @@
 	_lightingEnabled = state.lightingEnabled;
 }
 
-- (void) reset {
+- (void)reset {
 	_vertexEnabled = false;
 	_colorEnabled = false;
 	_normalEnabled = false;

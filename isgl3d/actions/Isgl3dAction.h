@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -49,24 +49,24 @@
 /**
  * Allocates and initialises (autorelease) the base Isl3dAction.
  */
-+ (id) action;
++ (id)action;
 
 /**
  * Initialises the base Isgl3dAction.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Copies the action.
  */
-- (id) copyWithZone:(NSZone *) zone;
+- (id)copyWithZone:(NSZone *) zone;
 
 /**
  * Called internally when starting the action to associate it with the target and perform any other initialisation.
  * Note : This is called internally by the iSGL3D framework and should not be called manually.
  * @param target The target to run the action on.
  */
-- (void) startWithTarget:(id)target;
+- (void)startWithTarget:(id)target;
 
 /**
  * Returns true if the action has terminated.
@@ -78,13 +78,13 @@
  * Note : This is called internally by the iSGL3D framework and should not be called manually.
  * @param dt The delta time since the last update.
  */
-- (void) tick:(float)dt;
+- (void)tick:(float)dt;
 
 /**
  * Updates the action with a progress between 0 (started) and 1 (terminated).
  * Note : This is called internally by the iSGL3D framework and should not be called manually.
  * @param progress The progress of the action between 0 and 1.
  */
-- (void) update:(float)progress;
+- (void)update:(float)progress;
 
 @end

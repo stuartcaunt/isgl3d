@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -174,12 +174,12 @@
 /**
  * The children of this node. Returns an NSArray of Isgl3dNodes.
  */
-@property (readonly) NSArray * children;
+@property (readonly) NSArray *children;
 
 /**
  * The parent of this node. Can be null if the node is at the root of the scene graph.
  */
-@property (assign) Isgl3dNode * parent;
+@property (assign) Isgl3dNode *parent;
 
 /**
  * Indicates whether the node is to have shadows rendered on it (only when shadow mapping
@@ -256,12 +256,12 @@
 /**
  * Allocates and initialises (autorelease) node (position at (0, 0, 0) and zero rotation and no scaling).
  */
-+ (id) node;
++ (id)node;
 
 /**
  * Initialises the node (position at (0, 0, 0) and zero rotation and no scaling).
  */
-- (id) init;
+- (id)init;
 
 #pragma mark translation rotation scaling
 
@@ -272,7 +272,7 @@
  * @param y The position along the y axis in the object's local frame of reference.
  * @param z The position along the z axis in the object's local frame of reference.
  */
-- (void) setPositionValues:(float)x y:(float)y z:(float)z;
+- (void)setPositionValues:(float)x y:(float)y z:(float)z;
 
 /**
  * Translates the object by a given amount from its current position in the objects local frame of reference.
@@ -281,31 +281,31 @@
  * @param y The displacement along the y axis in the object's local frame of reference.
  * @param z The displacement along the z axis in the object's local frame of reference.
  */
-- (void) translateByValues:(float)x y:(float)y z:(float)z;
+- (void)translateByValues:(float)x y:(float)y z:(float)z;
 
 /**
  * Translates the object along a vector from its current position.
  * @param vector The displacement in three dimensions in the object's local frame of reference.
  */
-- (void) translateByVector:(Isgl3dVector3)vector;
+- (void)translateByVector:(Isgl3dVector3)vector;
 
 /**
  * Rotates the object about its local x axis by given angle
  * @param angle The angle of rotation in degrees
  */
-- (void) pitch:(float)angle;
+- (void)pitch:(float)angle;
 
 /**
  * Rotates the object about its local y axis by given angle
  * @param angle The angle of rotation in degrees
  */
-- (void) yaw:(float)angle;
+- (void)yaw:(float)angle;
 
 /**
  * Rotates the object about its local z axis by given angle
  * @param angle The angle of rotation in degrees
  */
-- (void) roll:(float)angle;
+- (void)roll:(float)angle;
 
 /**
  * Performs a general rotation of the object by a given angle about a vector defined
@@ -315,7 +315,7 @@
  * @param y The y component of the axis of rotation.
  * @param z The z component of the axis of rotation.
  */
-- (void) rotate:(float)angle x:(float)x y:(float)y z:(float)z;
+- (void)rotate:(float)angle x:(float)x y:(float)y z:(float)z;
 
 /**
  * Sets the rotation of the object by a given angle about a general vector defined
@@ -325,13 +325,13 @@
  * @param y The y component of the axis of rotation.
  * @param z The z component of the axis of rotation.
  */
-- (void) setRotation:(float)angle x:(float)x y:(float)y z:(float)z;
+- (void)setRotation:(float)angle x:(float)x y:(float)y z:(float)z;
 
 /**
  * Sets a global scaling factor for the object (identical in x-, y- and z-directions).
  * @param scale The scaling factor.
  */
-- (void) setScale:(float)scale;
+- (void)setScale:(float)scale;
 
 /**
  * Sets scaling factors along each axis.
@@ -339,43 +339,43 @@
  * @param scaleY The scaling factor in the y-direction.
  * @param scaleZ The scaling factor in the z-direction.
  */
-- (void) setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
+- (void)setScale:(float)scaleX scaleY:(float)scaleY scaleZ:(float)scaleZ;
 
 /**
  * Reset's the local transformation.
  */
-- (void) resetTransformation;
+- (void)resetTransformation;
 
 /**
  * Set's the object's local transformation from a given transformation matrix.
  * @param transformation The local transformation of the object.
  */
-- (void) setTransformation:(Isgl3dMatrix4)transformation;
+- (void)setTransformation:(Isgl3dMatrix4)transformation;
 
 /**
  * Set's the object's local transformation from array of column-wise values representing
  * a 4x4 matrix (same format as OpenGL).
  * @param transformation The local transformation of the object as a column-wise array of values.
  */
-- (void) setTransformationFromOpenGLMatrix:(float *)transformation;
+- (void)setTransformationFromOpenGLMatrix:(float *)transformation;
 
 /**
  * USed to obtain the local transformation as a column-wise array of values representing the 
  * 4x4 matrix.
  * @param transformation Current column-wise array of values for the local transformation is stored here.
  */
-- (void) getTransformationAsOpenGLMatrix:(float *)transformation;
+- (void)getTransformationAsOpenGLMatrix:(float *)transformation;
 
 /**
  * Copies the current world position of the object into an array of 4 values representing the 4 translation elements of a 4x4 matrix (tx, ty, tz, tw).
  * @param position The current world position (tx, ty, tz, tw) of the object is set into this float array.
  */
-- (void) copyWorldPositionToArray:(float *)position;
+- (void)copyWorldPositionToArray:(float *)position;
 
 /**
  * Returns the world position as an I3DVector.
  */
-- (Isgl3dVector3) worldPosition;
+- (Isgl3dVector3)worldPosition;
 
 /**
  * This is used to return the equation of a plane that passes through the object's world position
@@ -384,21 +384,21 @@
  * @param normal The normal to the plane.
  * @result Vector representation of the plane with transformed normal passing through the object's position. 
  */
-- (Isgl3dVector4) asPlaneWithNormal:(Isgl3dVector3)normal;
+- (Isgl3dVector4)asPlaneWithNormal:(Isgl3dVector3)normal;
 
 /*
  * Indicates to the object that its transformation needs to be recalculated.
  * Note that this intended to be called internally by iSGL3D.
  * @param isDirty Indicates whether the transformation needs to be recalculated or not.
  */
-- (void) setTransformationDirty:(BOOL)isDirty;
+- (void)setTransformationDirty:(BOOL)isDirty;
 
 /*
  * Updates the world transformation of the object given the parent's world transformation.
  * Note that this intended to be called internally by iSGL3D.
  * @param parentTransformation The parent's world transformation matrix.
  */
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation;
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation;
 
 /*
  * Given a view matrix, this returns the distance along the observer's viewing direction to the object.
@@ -406,7 +406,7 @@
  * @param viewMatrix The view matrix to transform objects to the viewer's frame of reference.
  * @return Distance along the z-axis of the viewer to the object.
  */
-- (float) getZTransformation:(Isgl3dMatrix4 *)viewMatrix;
+- (float)getZTransformation:(Isgl3dMatrix4 *)viewMatrix;
 
 
 #pragma mark scene graph
@@ -416,7 +416,7 @@
  * Utility method to create an Isgl3dNode and add it as a child.
  * @return Isgl3dNode (autorelease) The created node.
  */
-- (Isgl3dNode *) createNode;
+- (Isgl3dNode *)createNode;
 
 /**
  * Utility method to create an Isgl3dMeshNode and add it as a child.
@@ -424,7 +424,7 @@
  * @param material The material to be mapped onto the mesh.
  * @return (autorelease) The created node.
  */
-- (Isgl3dMeshNode *) createNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
+- (Isgl3dMeshNode *)createNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Utility method to create an Isgl3dParticleNode and add it as a child.
@@ -432,7 +432,7 @@
  * @param material The material to be displayed on the particle.
  * @return (autorelease) The created node.
  */
-- (Isgl3dParticleNode *) createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
+- (Isgl3dParticleNode *)createNodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Utility method to create an Isgl3dBillboardNode and add it as a child.
@@ -440,73 +440,73 @@
  * @param material The material to be displayed on the mesh.
  * @return (autorelease) The created node.
  */
-- (Isgl3dBillboardNode *) createBillboardNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
+- (Isgl3dBillboardNode *)createBillboardNodeWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Utility method to create an Isgl3dSkeletonNode and add it as a child.
  * @return (autorelease) The created node.
  */
-- (Isgl3dSkeletonNode *) createSkeletonNode;
+- (Isgl3dSkeletonNode *)createSkeletonNode;
 
 /**
  * Utility method to create an Isgl3dFollowNode and add it as a child.
  * @param target The target node to be followed.
  * @return (autorelease) The created node.
  */
-- (Isgl3dFollowNode *) createFollowNodeWithTarget:(Isgl3dNode *)target;
+- (Isgl3dFollowNode *)createFollowNodeWithTarget:(Isgl3dNode *)target;
 
 /**
  * Utility method to create an Isgl3dLight and add it as a child.
  * @return (autorelease) The created node.
  */
-- (Isgl3dLight *) createLightNode;
+- (Isgl3dLight *)createLightNode;
 
 /**
  * Adds a child node to the current one. The parent of the child node is automatically set.
  * @param child The child node to be added.
  * @return The child node.
  */
-- (Isgl3dNode *) addChild:(Isgl3dNode *)child;
+- (Isgl3dNode *)addChild:(Isgl3dNode *)child;
 
 /**
  * Removes a child node to the current one. The parent of the child node is automatically set to nil.
  * @param child The child node to be removed.
  */
-- (void) removeChild:(Isgl3dNode *)child;
+- (void)removeChild:(Isgl3dNode *)child;
 
 /**
  * Removes the node from its parent.
  */
-- (void) removeFromParent;
+- (void)removeFromParent;
 
 /**
  * Activates the node and all its children. Called when a view is made active or a child is added to an already active node.
  * Note : This is called internally by iSGL3D and should not be called manually. Any code that needs to
  * be handled when the node is activated should be added in "onActivated".
  */
-- (void) activate;
+- (void)activate;
 
 /**
  * Deactivates the node and all its children. Called when a view is made deactive or a child is removed from an active node.
  * Note : This is called internally by iSGL3D and should not be called manually. Any code that needs to
  * be handled when the node is deactivated should be added in "onDeactivated".
  */
-- (void) deactivate;
+- (void)deactivate;
 
 /**
  * Called by "activate": any code that needs to be called when a node is activated should be implemented here in sub-classes.
  */
-- (void) onActivated;
+- (void)onActivated;
 
 /**
  * Called by "deactivate": any code that needs to be called when a node is deactivated should be implemented here in sub-classes.
  */
-- (void) onDeactivated;
+- (void)onDeactivated;
 
 /**
  * Removes all child nodes.
  */
-- (void) clearAll;
+- (void)clearAll;
 
 /**
  * Sets the mode of occlusion. The mode determines how the alpha value is calculated, relating to the distance
@@ -521,7 +521,7 @@
  * The occlusion mode is static, therefore the same for all nodes in the scene.
  * @param mode The mode of occlusion.
  */
-+ (void) setOcclusionMode:(Isgl3dOcclusionMode)mode;
++ (void)setOcclusionMode:(Isgl3dOcclusionMode)mode;
 
 /**
  * Returns the current occlusion mode.
@@ -533,19 +533,19 @@
  * Sets whether the node casts shadows and iterates over children with the same value.
  * @param enableShadowCasting Specifies whether shadow casting is enabled or not.
  */
-- (void) enableShadowCastingWithChildren:(BOOL)enableShadowCasting;
+- (void)enableShadowCastingWithChildren:(BOOL)enableShadowCasting;
 
 /**
  * Sets the alpha value for the node and iterates over all children with the same value.
  * @param alpha The alpha value of the node (between 0 and 1).
  */
-- (void) setAlphaWithChildren:(float)alpha;
+- (void)setAlphaWithChildren:(float)alpha;
 
 /**
  * Sets the node to be alpha culling for a specific value of alpha.
  * @param value The minimum alpha value that will be rendered, less than this and the pixel is culled.
  */
-- (void) enableAlphaCullingWithValue:(float)value;
+- (void)enableAlphaCullingWithValue:(float)value;
 
 /*
  * Renders/initialises the lighting contained in the node. Iterates over children to perform the same operation.
@@ -553,7 +553,7 @@
  * Note: this is called internally by iSGL3D and should not be called directly. 
  * @param renderer The renderer.
  */
-- (void) renderLights:(Isgl3dGLRenderer *)renderer;
+- (void)renderLights:(Isgl3dGLRenderer *)renderer;
 
 /*
  * Renders all renderable nodes. Iterates over children to perform the same operation.
@@ -561,7 +561,7 @@
  * Note: this is called internally by iSGL3D and should not be called directly. 
  * @param renderer The renderer.
  */
-- (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque;
+- (void)render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque;
 
 /*
  * Renders for event capture if interactive. Iterates over children to perform the same operation.
@@ -569,7 +569,7 @@
  * Note: this is called internally by iSGL3D and should not be called directly. 
  * @param renderer The renderer.
  */
-- (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer;
+- (void)renderForEventCapture:(Isgl3dGLRenderer *)renderer;
 
 /*
  * Renders for shadow map creating, if node is shadow casting. Iterates over children to perform the same operation.
@@ -577,7 +577,7 @@
  * Note: this is called internally by iSGL3D and should not be called directly. 
  * @param renderer The renderer.
  */
-- (void) renderForShadowMap:(Isgl3dGLRenderer *)renderer;
+- (void)renderForShadowMap:(Isgl3dGLRenderer *)renderer;
 
 /*
  * Renders for planar shadows, if node is shadow casting. Iterates over children to perform the same operation.
@@ -585,14 +585,14 @@
  * Note: this is called internally by iSGL3D and should not be called directly. 
  * @param renderer The renderer.
  */
-- (void) renderForPlanarShadows:(Isgl3dGLRenderer *)renderer;
+- (void)renderForPlanarShadows:(Isgl3dGLRenderer *)renderer;
 
 /*
  * Obtains all child nodes that are transparent (either explicitly set or with an alpha < 1).
  * 
  * Note: this is called internally by iSGL3D and should not be called directly. 
  */
-- (void) collectAlphaObjects:(NSMutableArray *)alphaObjects;
+- (void)collectAlphaObjects:(NSMutableArray *)alphaObjects;
 
 /*
  * Determines if and by how much the node is occulting the a target. The alpha value of the 
@@ -604,7 +604,7 @@
  * @param targetDistance The distance from the observer to the target.
  * @param maxAngle The maximum angle for which occlusion should be considered. 
  */
-- (void) occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle;
+- (void)occlusionTest:(Isgl3dVector3 *)eye normal:(Isgl3dVector3 *)normal targetDistance:(float)targetDistance maxAngle:(float)maxAngle;
 
 /*
  * Creates the shadow map for the scene. The shadow rendering light is searched for in the node
@@ -612,7 +612,7 @@
  * 
  * Note: this is called internally by iSGL3D and should not be called directly. 
  */
-- (void) createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene;
+- (void)createShadowMaps:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene;
 
 /*
  * Creates the matrices necessary for planar shadows in the scene. The shadow rendering light is searched for in the node
@@ -620,7 +620,7 @@
  * 
  * Note: this is called internally by iSGL3D and should not be called directly. 
  */
-- (void) createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene;
+- (void)createPlanarShadows:(Isgl3dGLRenderer *)renderer forScene:(Isgl3dNode *)scene;
 
 /**
  * Add a gesture recognizer to this node.
@@ -655,17 +655,17 @@
  * Runs a Isgl3dAction using this node as the target.
  * @param action The action to be run on this node.
  */
-- (void) runAction:(Isgl3dAction *)action;
+- (void)runAction:(Isgl3dAction *)action;
 
 /**
  * Stops a Isgl3dAction.
  * @param action The action to be stopped.
  */
-- (void) stopAction:(Isgl3dAction *)action;
+- (void)stopAction:(Isgl3dAction *)action;
 
 /**
  * Stops all actions associated with this node.
  */
-- (void) stopAllActions;
+- (void)stopAllActions;
 
 @end

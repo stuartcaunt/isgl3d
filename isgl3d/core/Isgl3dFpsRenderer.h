@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -64,18 +64,18 @@
  * Initialises an Isgl3dFpsRenderer with the specified orientation.
  * @param orientation The orientation of the device.
  */
-- (id) initWithOrientation:(isgl3dOrientation)orientation;
+- (id)initWithOrientation:(isgl3dOrientation)orientation;
 
 /**
  * Updates the calculation of the current framerate and renders the value on the display.
  * Rendering occurs once every 10 frames. If isPaused is specified then the framerate is
  * not calculated and "paused" is displayed in its place.
  */
-- (void) update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused;
+- (void)update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused;
 
 /**
  * Updates the viewport rectangle. Called when the Isgl3dDirector has a change in viewport size or content scale factor.
  */
-- (void) updateViewport;
+- (void)updateViewport;
 
 @end

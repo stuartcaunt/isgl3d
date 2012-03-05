@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -31,18 +31,18 @@
 @implementation Isgl3dActionFixedDuration
 
 
-- (id) init {
+- (id)init {
 	if ((self = [super init])) {
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionFixedDuration * copy = [[[self class] allocWithZone:zone] init];
 
 	return copy;

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@
 
 
 @interface Isgl3dTextureMaterial ()
-- (id) initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
+- (id)initWithCubemapTextureFiles:(NSArray *)pathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 @end
 
 
@@ -41,48 +41,48 @@
 @synthesize texture=_texture;
 @synthesize normalMap=_normalMap;
 
-+ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
++ (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
 }
 
-+ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
++ (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY] autorelease];
 }
 
-+ (id) materialWithTextureFile:(NSString *)fileName {
++ (id)materialWithTextureFile:(NSString *)fileName {
 	return [[[self alloc] initWithTextureFile:fileName] autorelease];
 }
 
-+ (id) materialWithTextureFile:(NSString *)fileName shininess:(float)shininess {
++ (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess] autorelease];
 }
 
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	return [[[self alloc] initWithTextureUIImage:image key:key shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY] autorelease];
 }
 
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureUIImage:image key:key shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
 }
 
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key {
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key {
 	return [[[self alloc] initWithTextureUIImage:image key:key] autorelease];
 }
 
-+ (id) materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess {
++ (id)materialWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess {
 	return [[[self alloc] initWithTextureUIImage:image key:key shininess:shininess] autorelease];
 }
 
-+ (id) materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
++ (id)materialWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	return [[[self alloc] initWithText:text fontName:fontName fontSize:fontSize] autorelease];
 }
 
 
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (id)initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [self initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY mirrorX:NO mirrorY:NO];
 }
 
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (id)initWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 	
@@ -94,15 +94,15 @@
 	return self;
 }
 
-- (id) initWithTextureFile:(NSString *)fileName {
+- (id)initWithTextureFile:(NSString *)fileName {
 	return [self initWithTextureFile:fileName shininess:0.0f precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 }
 
-- (id) initWithTextureFile:(NSString *)fileName shininess:(float)shininess {
+- (id)initWithTextureFile:(NSString *)fileName shininess:(float)shininess {
 	return [self initWithTextureFile:fileName shininess:shininess precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 }
 
-- (id) initWithCubemapTextureFiles:(NSArray *)texturePathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (id)initWithCubemapTextureFiles:(NSArray *)texturePathArray shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 	
@@ -114,11 +114,11 @@
 	return self;
 }
 
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [self initWithTextureUIImage:image key:key shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY mirrorX:NO mirrorY:NO];
 }
 
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
     
 	NSString * specular = (shininess > 0) ? @"FFFFFF" : @"000000";
 
@@ -129,11 +129,11 @@
 	return self;   
 }
 
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key {
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key {
 	return [self initWithTextureUIImage:image key:key shininess:0.0f precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 }
 
-- (id) initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess {
+- (id)initWithTextureUIImage:(UIImage *)image key:(NSString *)key shininess:(float)shininess {
 	return [self initWithTextureUIImage:image key:key shininess:shininess precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 }
 
@@ -146,17 +146,17 @@
 	return self;
 }
 
-- (void) setNormalMapFromFile:(NSString *)normalMapFileName {
+- (void)setNormalMapFromFile:(NSString *)normalMapFileName {
     _normalMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:normalMapFileName] retain];
     _isNormalMapped = YES;
 }
 
-- (void) setNormalMapFromUIImage:(UIImage *)image {
+- (void)setNormalMapFromUIImage:(UIImage *)image {
     _normalMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromUIImage:image key:@"NormalMapping"] retain];
     _isNormalMapped = YES;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_texture release];
 	_texture = nil;
 
@@ -166,7 +166,7 @@
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dTextureMaterial * copy = [super copyWithZone:zone];
 	
 	copy.texture = _texture;
@@ -176,7 +176,7 @@
 	return copy;
 }
 
-- (void) prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
+- (void)prepareRenderer:(Isgl3dGLRenderer *)renderer requirements:(unsigned int)requirements alpha:(float)alpha node:(Isgl3dNode *)node {
 	requirements |= TEXTURE_MAPPING_ON;
     if(_isNormalMapped)
         requirements |= NORMAL_MAPPING_ON;
@@ -208,7 +208,7 @@
 	return _texture.isHighDefinition;
 }
 
-- (void) setIsHighDefinition:(BOOL)isHighDefinition {
+- (void)setIsHighDefinition:(BOOL)isHighDefinition {
 	_texture.isHighDefinition = isHighDefinition;
 }
 

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,32 +32,32 @@
 
 
 @interface Isgl3dMultiMaterialCube (PrivateMethods)
-- (void) buildAllFaces:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray;
+- (void)buildAllFaces:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray;
 @end
 
 
 @implementation Isgl3dMultiMaterialCube 
 
-+ (id) cubeWithDimensions:(float)width height:(float)height depth:(float)depth 
++ (id)cubeWithDimensions:(float)width height:(float)height depth:(float)depth 
 		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 	return [[[self alloc] initWithDimensions:width height:height depth:depth 
 		nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth] autorelease];
 }
 
-+ (id) cubeWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
++ (id)cubeWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
 		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 	return [[[self alloc] initWithDimensionsAndMaterials:materialArray uvMapArray:uvMapArray width:width height:height depth:depth 
 		nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth] autorelease];
 }
 
-+ (id) cubeWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
++ (id)cubeWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
 		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 	return [[[self alloc] initWithDimensionsAndRandomColors:width height:height depth:depth 
 		nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth] autorelease];
 }
 
 
-- (id) initWithDimensions:(float)width height:(float)height depth:(float)depth 
+- (id)initWithDimensions:(float)width height:(float)height depth:(float)depth 
 		 nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 	
 	if ((self = [super init])) {
@@ -75,7 +75,7 @@
 }
 
 
-- (id) initWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
+- (id)initWithDimensionsAndMaterials:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray width:(float)width height:(float)height depth:(float)depth 
 		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 
 	if ((self = [self initWithDimensions:width height:height depth:depth nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth])) {
@@ -85,7 +85,7 @@
     return self;
 }
 
-- (id) initWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
+- (id)initWithDimensionsAndRandomColors:(float)width height:(float)height depth:(float)depth 
 		nSegmentWidth:(int)nSegmentWidth nSegmentHeight:(int)nSegmentHeight nSegmentDepth:(int)nSegmentDepth {
 
 	if ((self = [self initWithDimensions:width height:height depth:depth nSegmentWidth:nSegmentWidth nSegmentHeight:nSegmentHeight nSegmentDepth:nSegmentDepth])) {
@@ -102,11 +102,11 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (void) buildAllFaces:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray {
+- (void)buildAllFaces:(NSArray *)materialArray uvMapArray:(NSArray *)uvMapArray {
 	
 	if ([materialArray count] != 6) {
 		@throw [NSException exceptionWithName:@"NSException" 

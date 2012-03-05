@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@
 #import "Isgl3dScheduler.h"
 
 @interface Isgl3dKeyframeMesh ()
-- (void) initialiseVBODataWithMesh:(Isgl3dGLMesh *)mesh;
+- (void)initialiseVBODataWithMesh:(Isgl3dGLMesh *)mesh;
 - (Isgl3dArray *) createKeyframeMeshDataFromMesh:(Isgl3dGLMesh *)mesh;
 @end
 
@@ -42,11 +42,11 @@
 @synthesize currentFrameDuration = _currentFrameDuration;
 @synthesize isAnimating = _isAnimating;
 
-+ (id) keyframeMeshWithMesh:(Isgl3dGLMesh *)mesh {
++ (id)keyframeMeshWithMesh:(Isgl3dGLMesh *)mesh {
 	return [[[self alloc] initWithMesh:mesh] autorelease];
 }
 
-- (id) initWithMesh:(Isgl3dGLMesh *)mesh {
+- (id)initWithMesh:(Isgl3dGLMesh *)mesh {
 	if ((self = [super init])) {
 		_meshData = [[NSMutableArray alloc] init];
 		_animationData = IA_ALLOC_INIT(Isgl3dKeyframeAnimationData);
@@ -62,7 +62,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	if (_isAnimating) {
 		[self stopAnimation];
 	}
@@ -74,7 +74,7 @@
 	[super dealloc];
 }
 
-- (void) initialiseVBODataWithMesh:(Isgl3dGLMesh *)mesh {
+- (void)initialiseVBODataWithMesh:(Isgl3dGLMesh *)mesh {
 	// Initialise vertex data from mesh: 
 	//   - All keyframe meshes added afterwards must have the same number of vertices
 	[self setVertices:mesh.vertexData withVertexDataSize:mesh.vertexDataSize andIndices:mesh.indices withIndexDataSize:mesh.indexDataSize 
@@ -96,7 +96,7 @@
 	[self addKeyframeMesh:mesh];
 }
 
-- (void) addKeyframeMesh:(Isgl3dGLMesh *)mesh {
+- (void)addKeyframeMesh:(Isgl3dGLMesh *)mesh {
 	// Create the keyframe mesh data from the original mesh data
 	Isgl3dArray * meshData = [self createKeyframeMeshDataFromMesh:mesh];
 	
@@ -109,7 +109,7 @@
 	}
 }
 
-- (void) addKeyframeAnimationData:(unsigned int)meshIndex duration:(float)duration {
+- (void)addKeyframeAnimationData:(unsigned int)meshIndex duration:(float)duration {
 	// Add keyframe animation data (mesh index and duration)
 	if (meshIndex < _nMeshes) {
 		Isgl3dKeyframeAnimationData frame = {meshIndex, duration};
@@ -162,7 +162,7 @@
 	return meshData;
 }
 
-- (void) startAnimation {
+- (void)startAnimation {
 	if (!_isAnimating) {
 		[[Isgl3dScheduler sharedInstance] schedule:self selector:@selector(update:) isPaused:NO];
 		
@@ -170,7 +170,7 @@
 	}
 }
 
-- (void) stopAnimation {
+- (void)stopAnimation {
 	if (_isAnimating) {
 		[[Isgl3dScheduler sharedInstance] unschedule:self];
 
@@ -179,7 +179,7 @@
 }
 
 
-- (void) update:(float)dt {
+- (void)update:(float)dt {
 	// Check that interpolation is needed (not if both meshes to be used are the same)
 	BOOL interpolationNecessary = NO;
 	
@@ -221,7 +221,7 @@
 	}
 }
 
-- (void) interpolateMesh1:(unsigned int)mesh1Index andMesh2:(unsigned int)mesh2Index withFactor:(float)f {
+- (void)interpolateMesh1:(unsigned int)mesh1Index andMesh2:(unsigned int)mesh2Index withFactor:(float)f {
 	if (mesh1Index >= _nMeshes) {
 		Isgl3dLog(Error, @"Isgl3dKeyframeMesh : mesh1 index (%d) exceeds limit (%d)", mesh1Index, _nMeshes - 1);
 		return;

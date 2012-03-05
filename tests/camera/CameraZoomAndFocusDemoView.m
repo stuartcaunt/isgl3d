@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,17 +25,30 @@
 
 #import "CameraZoomAndFocusDemoView.h"
 
+
+@interface CameraZoomAndFocusDemoView () {
+@private
+    Isgl3dFocusZoomPerspectiveLens *_perspectiveLens;
+    Isgl3dLookAtCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dLookAtCamera *camera;
+@end
+
+
 @implementation CameraZoomAndFocusDemoView
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 
-		self.camera.position = iv3(0, 0, 1000);
-		self.camera.focus = 4;
-		self.camera.zoom = 10;
-		_zoom = self.camera.zoom;
-		_focus = self.camera.focus;
+
+        _perspectiveLens.focus = 4.0f;
+        _perspectiveLens.zoom = 10.0f;
+        
+		_zoom = _perspectiveLens.zoom;
+		_focus = _perspectiveLens.focus;
 		_theta = 0;	 	
 		_moving = NO;	
 
@@ -52,28 +65,28 @@
 	
 			Isgl3dMeshNode * bottomNode = [self.scene createNodeWithMesh:horizontalPlane andMaterial:blueMaterial];
 			bottomNode.rotationX = -90;
-			bottomNode.position = iv3(0, -200, -(i - 1) * 1000);
+			bottomNode.position = Isgl3dVector3Make(0, -200, -(i - 1) * 1000);
 			bottomNode.doubleSided = YES;
 	
 			Isgl3dMeshNode * topNode = [self.scene createNodeWithMesh:horizontalPlane andMaterial:greenMaterial];
 			topNode.rotationX = 90;
-			topNode.position = iv3(0, 200, -(i - 1) * 1000);
+			topNode.position = Isgl3dVector3Make(0, 200, -(i - 1) * 1000);
 			topNode.doubleSided = YES;
 	
 			Isgl3dMeshNode * rightNode = [self.scene createNodeWithMesh:sidePlane andMaterial:redMaterial];
 			rightNode.rotationY = -90;
-			rightNode.position = iv3(450, 0, -(i - 1) * 1000);
+			rightNode.position = Isgl3dVector3Make(450, 0, -(i - 1) * 1000);
 			rightNode.doubleSided = YES;
 			
 			Isgl3dMeshNode * leftNode = [self.scene createNodeWithMesh:sidePlane andMaterial:yellowMaterial];
 			leftNode.rotationY = 90;
-			leftNode.position = iv3(-450, 0, -(i - 1) * 1000);
+			leftNode.position = Isgl3dVector3Make(-450, 0, -(i - 1) * 1000);
 			leftNode.doubleSided = YES;
 		}
 		
 		// Add shadow casting light
 		Isgl3dLight * light  = [Isgl3dLight lightWithHexColor:@"FFFFFF" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0];
-		light.position = iv3(400, 1000, 400);
+		light.position = Isgl3dVector3Make(400, 1000, 400);
 		[self.scene addChild:light];
 	
 		// Initialise accelerometer
@@ -87,22 +100,42 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) onActivated {
+- (void)createSceneCamera {
+    CGSize viewSize = self.viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    
+    Isgl3dFocusZoomPerspectiveLens *perspectiveLens = [[Isgl3dFocusZoomPerspectiveLens alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 1000.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
+                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
+                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
+                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    _perspectiveLens = perspectiveLens;
+    [perspectiveLens release];
+    
+    self.camera = standardCamera;
+    [standardCamera release];
+}
+
+- (void)onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:self];
 }
 
-- (void) onDeactivated {
+- (void)onDeactivated {
 	// Remove camera controller from touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] removeResponder:self];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	
 	float orbitDistance = 1000;
 	float y = orbitDistance * cos([[Isgl3dAccelerometer sharedInstance] tiltAngle]);
@@ -111,7 +144,7 @@
 	_theta += 0.05 * [[Isgl3dAccelerometer sharedInstance] rotationAngle];
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	self.camera.position = iv3(x, y, z);
+	self.camera.eyePosition = Isgl3dVector3Make(x, y, z);
 
 	if (_moving) {
 		_focus += _dFocus;
@@ -124,8 +157,8 @@
 			_focus = 1;
 		}
 		
-		self.camera.focus = _focus;
-		self.camera.zoom = _zoom;
+		_perspectiveLens.focus = _focus;
+		_perspectiveLens.zoom = _zoom;
 		
 		_moving = NO;
 	}
@@ -173,7 +206,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

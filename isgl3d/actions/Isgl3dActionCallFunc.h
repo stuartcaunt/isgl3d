@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -44,13 +44,13 @@
  * @param target The target to call the selector on
  * @param selector The selector to call
  */
-+ (id) actionWithTarget:(id)target selector:(SEL)selector;
++ (id)actionWithTarget:(id)target selector:(SEL)selector;
 
 /**
  * Initialises the Isgl3dActionCallFunc with a function target and selector.
  * @param target The target to call the selector on
  * @param selector The selector to call
  */
-- (id) initWithTarget:(id)target selector:(SEL)selector;
+- (id)initWithTarget:(id)target selector:(SEL)selector;
 
 @end

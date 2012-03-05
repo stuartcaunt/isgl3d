@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,12 +48,12 @@
 /**
  * Allocates and initialises (autorelease) bone node.
  */
-+ (id) boneNode;
++ (id)boneNode;
 
 /**
  * Intialises the bone node.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Creates an Isgl3dBoneNode and automatically adds it as a child.
@@ -68,7 +68,7 @@
  * for the same frame number.
  * @param transformation The column-major transformation matrix in raw float format for the frame.
  */
-- (void) addFrameTransformationFromOpenGLMatrix:(float *)transformation;
+- (void)addFrameTransformationFromOpenGLMatrix:(float *)transformation;
 
 /*
  * Sets the frame number and accordingly the transformation for each bone.
@@ -76,7 +76,7 @@
  * Note that this is called internally in iSGL3D by the Isgl3dSkeletonNode which iterates over all bone batches
  * associated with the mesh. 
  */
-- (void) setFrame:(unsigned int)frameNumber;
+- (void)setFrame:(unsigned int)frameNumber;
 
 
 @end

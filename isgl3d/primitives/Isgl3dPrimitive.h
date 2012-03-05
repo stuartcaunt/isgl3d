@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@
 /**
  * Initialises the Isgl3dPrimitive.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Constructs all vertex and index data to be passed to the GPU. This is unimplemented in the Isgl3dPrimitive
@@ -59,6 +59,6 @@
  * @param vertexData An array of floating point values for the vertex data.
  * @param indices An array of unsigned short values for the index data.
  */
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices;
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices;
 
 @end

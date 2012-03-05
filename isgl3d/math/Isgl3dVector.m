@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +24,19 @@
  */
 
 #import "Isgl3dVector.h"
+#import "Isgl3dMathUtils.h"
+#import "Isgl3dVector3.h"
 
-static float DEG_TO_RAD = M_PI / 180.0f;
 
 #pragma mark Isgl3dVector3
 
-Isgl3dVector3 Isgl3dVector3Forward = {0, 0, -1};
-Isgl3dVector3 Isgl3dVector3Backward = {0, 0, 1};
-Isgl3dVector3 Isgl3dVector3Left = {-1, 0, 0};
-Isgl3dVector3 Isgl3dVector3Right = {1, 0, 0};
-Isgl3dVector3 Isgl3dVector3Up = {0, 1, 0};
-Isgl3dVector3 Isgl3dVector3Down = {0, -1, 0};
+const Isgl3dVector3 Isgl3dVector3Forward    = {  0.0f,  0.0f, -1.0f };
+const Isgl3dVector3 Isgl3dVector3Backward   = {  0.0f,  0.0f,  1.0f };
+const Isgl3dVector3 Isgl3dVector3Left       = { -1.0f,  0.0f,  0.0f };
+const Isgl3dVector3 Isgl3dVector3Right      = {  1.0f,  0.0f,  0.0f };
+const Isgl3dVector3 Isgl3dVector3Up         = {  0.0f,  1.0f,  0.0f };
+const Isgl3dVector3 Isgl3dVector3Down       = {  0.0f, -1.0f,  0.0f };
+
 
 float iv3DistanceBetween(Isgl3dVector3 * a, Isgl3dVector3 * b) {
 	float lx = b->x - a->x;
@@ -66,8 +68,8 @@ void iv3Normalize(Isgl3dVector3 * a) {
 }
 
 float iv3AngleBetween(Isgl3dVector3 * a, Isgl3dVector3 * b) {
-	Isgl3dVector3 aCopy = iv3(a->x, a->y, a->z);
-	Isgl3dVector3 bCopy = iv3(b->x, b->y, b->z);
+	Isgl3dVector3 aCopy = Isgl3dVector3Make(a->x, a->y, a->z);
+	Isgl3dVector3 bCopy = Isgl3dVector3Make(b->x, b->y, b->z);
 	
 	iv3Normalize(&aCopy);
 	iv3Normalize(&bCopy);
@@ -86,7 +88,7 @@ float iv3AngleBetween(Isgl3dVector3 * a, Isgl3dVector3 * b) {
 
 void iv3RotateX(Isgl3dVector3 * a, float angle, float centerY, float centerZ) {
 
-	angle *= DEG_TO_RAD;
+	angle = Isgl3dMathDegreesToRadians(angle);
 	float cosRY = cos(angle);
 	float sinRY = sin(angle);
 	
@@ -99,7 +101,7 @@ void iv3RotateX(Isgl3dVector3 * a, float angle, float centerY, float centerZ) {
 
 void iv3RotateY(Isgl3dVector3 * a, float angle, float centerX, float centerZ) {
 	
-	angle *= DEG_TO_RAD;
+	angle = Isgl3dMathDegreesToRadians(angle);
 	float cosRY = cos(angle);
 	float sinRY = sin(angle);
 	
@@ -112,7 +114,7 @@ void iv3RotateY(Isgl3dVector3 * a, float angle, float centerX, float centerZ) {
 	
 void iv3RotateZ(Isgl3dVector3 * a, float angle, float centerX, float centerY) {
 
-	angle *= DEG_TO_RAD;
+	angle = Isgl3dMathDegreesToRadians(angle);
 	float cosRY = cos(angle);
 	float sinRY = sin(angle);
 	

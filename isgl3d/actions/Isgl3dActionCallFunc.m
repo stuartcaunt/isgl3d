@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -32,11 +32,11 @@
 
 @implementation Isgl3dActionCallFunc
 
-+ (id) actionWithTarget:(id)target selector:(SEL)selector {
++ (id)actionWithTarget:(id)target selector:(SEL)selector {
 	return [[[self alloc] initWithTarget:target selector:selector] autorelease];
 }
 
-- (id) initWithTarget:(id)target selector:(SEL)selector {
+- (id)initWithTarget:(id)target selector:(SEL)selector {
 	if ((self = [super init])) {
 		_funcTarget = target;
 		_funcSelector = selector;
@@ -45,17 +45,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionCallFunc * copy = [[[self class] allocWithZone:zone] initWithTarget:_funcTarget selector:_funcSelector];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_funcTarget performSelector:_funcSelector];
 }
 

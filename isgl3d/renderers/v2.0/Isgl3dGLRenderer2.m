@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,16 +61,16 @@
     
 	GLuint _currentElementBufferId;
 }
-//- (void) initRendererState;
-- (void) handleStates;
+//- (void)initRendererState;
+- (void)handleStates;
 - (Isgl3dInternalShader *) shaderForRendererRequirements:(unsigned int)rendererRequirements;
-- (void) setPlanarShadowsActive:(BOOL)planarShadowActive;
+- (void)setPlanarShadowsActive:(BOOL)planarShadowActive;
 @end
 
 
 @implementation Isgl3dGLRenderer2
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
        	_mvMatrix = Isgl3dMatrix4Identity;
@@ -99,7 +99,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_currentState release];
 	[_previousState release];
 
@@ -110,7 +110,7 @@
 }
 
 
-- (void) clear:(unsigned int)bufferBits {
+- (void)clear:(unsigned int)bufferBits {
 	unsigned int glBufferBits = 0;
 	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
 	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
@@ -119,7 +119,7 @@
 	glClear(glBufferBits);
 }
 
-- (void) clear:(unsigned int)bufferBits color:(float *)color {
+- (void)clear:(unsigned int)bufferBits color:(float *)color {
 	unsigned int glBufferBits = 0;
 	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
 	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
@@ -130,7 +130,7 @@
 	glClear(glBufferBits);
 }
 
-- (void) clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
+- (void)clear:(unsigned int)bufferBits viewport:(CGRect)viewport {
 	unsigned int glBufferBits = 0;
 	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
 	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
@@ -143,7 +143,7 @@
 	glDisable(GL_SCISSOR_TEST);	
 }
 
-- (void) clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
+- (void)clear:(unsigned int)bufferBits color:(float *)color viewport:(CGRect)viewport {
 	unsigned int glBufferBits = 0;
 	glBufferBits |= (bufferBits & ISGL3D_COLOR_BUFFER_BIT) ? GL_COLOR_BUFFER_BIT : 0;
 	glBufferBits |= (bufferBits & ISGL3D_DEPTH_BUFFER_BIT) ? GL_DEPTH_BUFFER_BIT : 0;
@@ -216,7 +216,7 @@
 	return shader;
 }
 
-- (void) setRendererRequirements:(unsigned int)rendererRequirements {
+- (void)setRendererRequirements:(unsigned int)rendererRequirements {
 
 	// Determine which shader to use depending on requirements - create new one if needed
 	Isgl3dShader * shader = [self shaderForRendererRequirements:rendererRequirements];
@@ -230,7 +230,7 @@
 		Isgl3dLog(Error, @"Isgl3dGLRenderer2 : Error in getting shader for requirements 0x%04X", rendererRequirements);
 	}
 }
-- (void) reset {
+- (void)reset {
 	
 	// save client states
 	[_previousState copyFrom:_currentState];
@@ -242,12 +242,12 @@
 	
 }
 
-- (void) setShaderActive:(Isgl3dShader *)shader {
+- (void)setShaderActive:(Isgl3dShader *)shader {
 	_activeShader = shader;
 	[_activeShader setActive];		
 }
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
+- (void)setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
 	[super setProjectionMatrix:projectionMatrix];
 	
 	// Pass projection matrix to all custom shaders
@@ -257,7 +257,7 @@
 	}
 }
 
-- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	[super setViewMatrix:viewMatrix];
 	
 	// Pass view matrix to all custom shaders
@@ -268,10 +268,10 @@
 }
 
 
-- (void) setupMatrices {
+- (void)setupMatrices {
 
 	// calculate model-view matrix
-	im4Copy(&_mvMatrix, &_viewMatrix);
+    _mvMatrix = _viewMatrix;
 	if (_planarShadowsActive) {
         _mvMatrix = Isgl3dMatrix4Multiply(_mvMatrix, _planarShadowsMatrix);
 	}
@@ -303,7 +303,7 @@
 	}
 }
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData {
 	if (_currentVBOIndex != vboData.vboIndex) {
 		[_activeShader bindVertexBuffer:vboData.vboIndex];
 		[_activeShader setVBOData:vboData];
@@ -311,7 +311,7 @@
 	}
 }
 
-- (void) setElementBufferData:(unsigned int)bufferId {
+- (void)setElementBufferData:(unsigned int)bufferId {
 	// Bind element index buffer
 	if (_currentElementBufferId != bufferId) {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferId);
@@ -320,7 +320,7 @@
 }
 
 // Called only by Isgl3dTextureMaterial
-- (void) setTexture:(Isgl3dGLTexture *)texture {
+- (void)setTexture:(Isgl3dGLTexture *)texture {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setTexture:texture];
 		_currentState.alphaBlendEnabled = YES;
@@ -328,7 +328,7 @@
 }
 
 // Called only by Isgl3dTextureMaterial
-- (void) setNormalMap:(Isgl3dGLTexture *)texture {
+- (void)setNormalMap:(Isgl3dGLTexture *)texture {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setNormalMapping:texture];
 		_currentState.alphaBlendEnabled = YES;
@@ -336,14 +336,14 @@
 }
 
 // Called only by Isgl3dColorMaterial
-- (void) setMaterialData:(GLfloat *)ambientColor diffuseColor:(GLfloat *)diffuseColor specularColor:(GLfloat *)specularColor withShininess:(GLfloat)shininess {
+- (void)setMaterialData:(GLfloat *)ambientColor diffuseColor:(GLfloat *)diffuseColor specularColor:(GLfloat *)specularColor withShininess:(GLfloat)shininess {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setMaterialData:ambientColor diffuseColor:diffuseColor specularColor:specularColor withShininess:shininess];
 		_currentState.alphaBlendEnabled = YES;
 	}
 }
 
-- (void) addLight:(Isgl3dLight *)light {
+- (void)addLight:(Isgl3dLight *)light {
 	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
 	Isgl3dInternalShader * shader;
 	while ((shader = [enumerator nextObject])) {
@@ -359,7 +359,7 @@
 	}
 }
 
-- (void) setSceneAmbient:(NSString *)ambient {
+- (void)setSceneAmbient:(NSString *)ambient {
 	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
 	Isgl3dInternalShader * shader;
 	while ((shader = [enumerator nextObject])) {
@@ -376,47 +376,47 @@
 }
 
 
-- (void) enableLighting:(BOOL)lightingEnabled {
+- (void)enableLighting:(BOOL)lightingEnabled {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader enableLighting:lightingEnabled];
 	}
 }
 
-- (void) enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace {
+- (void)enableCulling:(BOOL)cullingEnabled backFace:(BOOL)backFace {
 	_currentState.cullingEnabled = cullingEnabled;
 	_currentState.backFaceCulling = backFace;
 }
 
-- (void) setAlphaCullingValue:(float)cullValue {
+- (void)setAlphaCullingValue:(float)cullValue {
 	[_activeShader setAlphaCullingValue:cullValue];
 }
 
-- (void) enablePointSprites:(BOOL)pointSpriteEnabled {
+- (void)enablePointSprites:(BOOL)pointSpriteEnabled {
 }
 
-- (void) setPointAttenuation:(float *)attenuation {
+- (void)setPointAttenuation:(float *)attenuation {
 	[_activeShader setPointAttenuation:attenuation];
 }
 
-- (void) enableSkinning:(BOOL)skinningEnabled {
+- (void)enableSkinning:(BOOL)skinningEnabled {
 }
 
-- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
+- (void)setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 	[_activeShader setBoneTransformations:transformations andInverseTransformations:inverseTransformations];
 }
 
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
+- (void)setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 	[_activeShader setNumberOfBonesPerVertex:numberOfBonesPerVertex];
 }
 
 
-- (void) setCaptureColor:(float *)color {
+- (void)setCaptureColor:(float *)color {
 	if ([_activeShader isKindOfClass:[Isgl3dInternalShader class]]) {
 		[(Isgl3dInternalShader *)_activeShader setCaptureColor:color];
 	}
 }
 
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt {
 	// Clean up of custom shaders (remove any that are no longer retained)
 	NSMutableArray * unretainedShaders = [NSMutableArray arrayWithCapacity:1];
 	for (NSString * key in _customShaders) {
@@ -439,7 +439,7 @@
 	} 
 }
 
-- (void) onSceneRenderReady {
+- (void)onSceneRenderReady {
 	// custom handling of phase event
 	for (NSString * key in _customShaders) {
 		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
@@ -448,14 +448,14 @@
 	} 
 }
 
-- (void) onModelRenderReady {
+- (void)onModelRenderReady {
 	// handle client states
 	[self handleStates];
 	
 	[_activeShader onModelRenderReady];
 }
 
-- (void) onModelRenderEnds {
+- (void)onModelRenderEnds {
 	// save client states
 	[_previousState copyFrom:_currentState];
 	[_currentState reset];
@@ -463,7 +463,7 @@
 	[_activeShader onModelRenderEnds];
 }
 
-- (void) onSceneRenderEnds {
+- (void)onSceneRenderEnds {
 	// custom handling of phase event
 	for (NSString * key in _customShaders) {
 		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
@@ -472,7 +472,7 @@
 	} 
 }
 
-- (void) onRenderPhaseEnds {
+- (void)onRenderPhaseEnds {
 	// custom handling of phase event
 	for (NSString * key in _customShaders) {
 		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
@@ -481,13 +481,13 @@
 	} 
 }
 
-- (void) render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+- (void)render:(Isgl3dRenderType)renderType withNumberOfElements:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
 	_renderedObjects++;
 	[_activeShader render:numberOfElements atOffset:elementOffset];
 		
 }
 
-- (void) handleStates {
+- (void)handleStates {
 
 	if (!_currentState.cullingEnabled && _previousState.cullingEnabled) {
 		glDisable(GL_CULL_FACE);
@@ -510,15 +510,15 @@
 	
 }
 
-- (void) initRenderForShadowMap {
+- (void)initRenderForShadowMap {
 	_currentState.alphaBlendEnabled = false;
 }
 
-- (void) setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	_lightViewProjectionMatrix = Isgl3dMatrix4Multiply(_projectionMatrix, *viewMatrix);
 }
 
-- (void) setShadowCastingLightPosition:(Isgl3dVector3 *)position {
+- (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position {
 	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
 	Isgl3dInternalShader * shader;
 	while ((shader = [enumerator nextObject])) {
@@ -528,7 +528,7 @@
 }
 
 
-- (void) setShadowMap:(Isgl3dGLTexture *)texture {
+- (void)setShadowMap:(Isgl3dGLTexture *)texture {
 	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
 	Isgl3dInternalShader * shader;
 	while ((shader = [enumerator nextObject])) {
@@ -542,7 +542,7 @@
 	return _shadowMapActive;
 }
 
-- (void) setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
+- (void)setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
 	if (!_stencilBufferAvailable && shadowRenderingMethod != Isgl3dShadowNone) {
 		_shadowRenderingMethod = Isgl3dShadowNone;
 		Isgl3dLog(Warn, @"Isgl3dGLRenderer2 : Request for shadow rendering refused: not available on this device");
@@ -557,7 +557,7 @@
 	}
 }
 
-- (void) enableShadowStencil:(BOOL)shadowStencilEnabled {
+- (void)enableShadowStencil:(BOOL)shadowStencilEnabled {
 	if (_stencilBufferAvailable) {
 		if (shadowStencilEnabled) {
 			glEnable(GL_STENCIL_TEST);
@@ -569,7 +569,7 @@
 	}
 }
 
-- (void) initRenderForPlanarShadows {
+- (void)initRenderForPlanarShadows {
 	if (_stencilBufferAvailable) {
 		_currentState.alphaBlendEnabled = YES;
 		
@@ -586,7 +586,7 @@
 	}
 }
 
-- (void) finishRenderForPlanarShadows {
+- (void)finishRenderForPlanarShadows {
 	if (_stencilBufferAvailable) {
 		glDisable(GL_POLYGON_OFFSET_FILL);
 		glDisable(GL_STENCIL_TEST);
@@ -594,7 +594,7 @@
 	}	
 }
 
-- (void) setPlanarShadowsActive:(BOOL)planarShadowsActive {
+- (void)setPlanarShadowsActive:(BOOL)planarShadowsActive {
 	_planarShadowsActive = planarShadowsActive;
 	
 	NSEnumerator *enumerator = [_internalShaders objectEnumerator];
@@ -605,7 +605,7 @@
 	}	
 }
 
-- (void) clean {
+- (void)clean {
 //	Isgl3dLog(Info, @"Last number of rendered objects = %i", _renderedObjects);
 	for (NSNumber * key in _internalShaders) {
 		Isgl3dInternalShader * shader = [_internalShaders objectForKey:key];

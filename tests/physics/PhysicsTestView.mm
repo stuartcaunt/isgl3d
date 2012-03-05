@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,15 +36,23 @@
 #include "btBox2dShape.h"
 
 
-@interface PhysicsTestView (PrivateMethods)
-- (void) createSphere;
-- (void) createCube;
+@interface PhysicsTestView () {
+@private
+    Isgl3dNodeCamera *_camera;
+}
+@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+- (void)createSphere;
+- (void)createCube;
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution isFalling:(BOOL)isFalling;
 @end
 
+
+#pragma mark -
 @implementation PhysicsTestView
 
-- (id) init {
+@synthesize camera = _camera;
+
+- (id)init {
 	
 	if ((self = [super init])) {
 		_physicsObjects = [[NSMutableArray alloc] init];
@@ -53,7 +61,7 @@
 	 	srandom(time(NULL));
 	
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithCamera:self.camera andView:self];
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
 		_cameraController.orbit = 16;
 		_cameraController.theta = 30;
 		_cameraController.phi = 30;
@@ -97,13 +105,13 @@
 		btCollisionShape* groundShape = new btBox2dShape(btVector3(5, 5, 0));
 		Isgl3dMeshNode * node = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
 		[node setRotation:-90 x:1 y:0 z:0];
-		node.position = iv3(0, -2, 0);
+		node.position = Isgl3dVector3Make(0, -2, 0);
 		Isgl3dPhysicsObject3D * physicsObject = [self createPhysicsObject:node shape:groundShape mass:0 restitution:0.6 isFalling:NO];
 		
 	
 		_light  = [[Isgl3dShadowCastingLight alloc] initWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.003];
 		[self.scene addChild:_light];
-		_light.position = iv3(10, 20, 10);
+		_light.position = Isgl3dVector3Make(10, 20, 10);
 	
 		_light.planarShadowsNode = physicsObject.node;
 	
@@ -118,8 +126,9 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_cameraController release];
+    _cameraController = nil;
 
 	delete _discreteDynamicsWorld;
 	delete _collisionConfig;
@@ -128,31 +137,56 @@
 	delete _constraintSolver;
 	
 	[_physicsObjects release];
+    _physicsObjects = nil;
 	[_physicsWorld release];
+    _physicsWorld = nil;
 	[_beachBallMaterial release];
+    _beachBallMaterial = nil;
 	[_isglLogo release];
+    _isglLogo = nil;
 	[_sphereMesh release];
+    _sphereMesh = nil;
 	[_cubeMesh release];
+    _cubeMesh = nil;
 
 	[_light release];
+    _light = nil;
 	
 	[_cubesNode release];
+    _cubesNode = nil;
 	[_spheresNode release];
+    _spheresNode = nil;
 
 	[super dealloc];
 }
 
-- (void) onActivated {
+- (void)createSceneCamera {
+    CGSize viewSize = self.viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
+    [perspectiveLens release];
+    
+    self.camera = standardCamera;
+    [standardCamera release];
+    [self.scene addChild:standardCamera];
+}
+
+- (void)onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
 }
 
-- (void) onDeactivated {
+- (void)onDeactivated {
 	// Remove camera controller from touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] removeResponder:_cameraController];
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 
 	// Get time since last step
 	NSDate * currentTime = [[NSDate alloc] init];
@@ -196,7 +230,7 @@
 }
 
 
-- (void) createSphere {
+- (void)createSphere {
 	
 	btCollisionShape * sphereShape = new btSphereShape(_sphereMesh.radius);
 	Isgl3dMeshNode * node = [_spheresNode createNodeWithMesh:_sphereMesh andMaterial:_beachBallMaterial];
@@ -206,7 +240,7 @@
 	
 }
 
-- (void) createCube {
+- (void)createCube {
 	
 	btCollisionShape* boxShape = new btBoxShape(btVector3(_cubeMesh.width / 2, _cubeMesh.height / 2, _cubeMesh.depth / 2));
 	Isgl3dMeshNode * node = [_cubesNode createNodeWithMesh:_cubeMesh andMaterial:_isglLogo];
@@ -247,7 +281,7 @@
  */
 @implementation AppDelegate
 
-- (void) createViews {
+- (void)createViews {
 	// Set the device orientation
 	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
 

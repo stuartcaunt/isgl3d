@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -33,11 +33,11 @@
 
 @implementation Isgl3dActionAlphaTo
 
-+ (id) actionWithDuration:(float)duration alpha:(float)alpha {
++ (id)actionWithDuration:(float)duration alpha:(float)alpha {
 	return [[[self alloc] initWithDuration:duration alpha:alpha] autorelease];
 }
 
-- (id) initWithDuration:(float)duration alpha:(float)alpha {
+- (id)initWithDuration:(float)duration alpha:(float)alpha {
 	if ((self = [super initWithDuration:duration])) {
 		_finalAlpha = alpha;
 	}
@@ -45,11 +45,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionAlphaTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration alpha:_finalAlpha];
 
 	return copy;
@@ -61,7 +61,7 @@
 	_delta = _finalAlpha - _initialAlpha;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setAlpha:_initialAlpha + progress * _delta];
 }
 
@@ -71,22 +71,22 @@
 
 @implementation Isgl3dActionFadeIn
 
-+ (id) actionWithDuration:(float)duration {
++ (id)actionWithDuration:(float)duration {
 	return [[[self alloc] initWithDuration:duration] autorelease];
 }
 
-- (id) initWithDuration:(float)duration {
+- (id)initWithDuration:(float)duration {
 	if ((self = [super initWithDuration:duration])) {
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionFadeIn * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
 
 	return copy;
@@ -97,7 +97,7 @@
 	((Isgl3dNode *)target).alpha = 0.0f;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setAlpha:progress];
 }
 
@@ -107,22 +107,22 @@
 
 @implementation Isgl3dActionFadeOut
 
-+ (id) actionWithDuration:(float)duration {
++ (id)actionWithDuration:(float)duration {
 	return [[[self alloc] initWithDuration:duration] autorelease];
 }
 
-- (id) initWithDuration:(float)duration {
+- (id)initWithDuration:(float)duration {
 	if ((self = [super initWithDuration:duration])) {
 	}
 	
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionFadeOut * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
 
 	return copy;
@@ -133,7 +133,7 @@
 	((Isgl3dNode *)target).alpha = 1.0f;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setAlpha:(1.0f - progress)];
 }
 
@@ -143,11 +143,11 @@
 
 @implementation Isgl3dActionSetAlpha
 
-+ (id) actionWithAlpha:(float)alpha {
++ (id)actionWithAlpha:(float)alpha {
 	return [[[self alloc] initWithAlpha:alpha] autorelease];
 }
 
-- (id) initWithAlpha:(float)alpha {
+- (id)initWithAlpha:(float)alpha {
 	if ((self = [super init])) {
 		_finalAlpha = alpha;
 	}
@@ -155,17 +155,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetAlpha * copy = [[[self class] allocWithZone:zone] initWithAlpha:_finalAlpha];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setAlpha:_finalAlpha];
 }
 

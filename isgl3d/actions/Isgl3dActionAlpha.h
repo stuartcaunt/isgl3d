@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -46,14 +46,14 @@
  * @param duration The duration of the action
  * @param alpha The desired alpha
  */
-+ (id) actionWithDuration:(float)duration alpha:(float)alpha;
++ (id)actionWithDuration:(float)duration alpha:(float)alpha;
 
 /**
  * Initialises the an Isgl3dActionAlphaTo with a duration and end alpha.
  * @param duration The duration of the action
  * @param alpha The desired alpha
  */
-- (id) initWithDuration:(float)duration alpha:(float)alpha;
+- (id)initWithDuration:(float)duration alpha:(float)alpha;
 
 @end
 
@@ -69,13 +69,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionFadeIn.
  * @param duration The duration of the action
  */
-+ (id) actionWithDuration:(float)duration;
++ (id)actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionFadeIn.
  * @param duration The duration of the action
  */
-- (id) initWithDuration:(float)duration;
+- (id)initWithDuration:(float)duration;
 
 @end
 
@@ -91,13 +91,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionFadeOut.
  * @param duration The duration of the action
  */
-+ (id) actionWithDuration:(float)duration;
++ (id)actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionFadeIn.
  * @param duration The duration of the action
  */
-- (id) initWithDuration:(float)duration;
+- (id)initWithDuration:(float)duration;
 
 @end
 
@@ -114,12 +114,12 @@
  * Allocates and initialises (autorelease) an Isgl3dActionSetAlpha with an alpha.
  * @param alpha The desired alpha
  */
-+ (id) actionWithAlpha:(float)alpha;
++ (id)actionWithAlpha:(float)alpha;
 
 /**
  * Initialises the an Isgl3dActionSetAlpha with analpha.
  * @param alpha The desired alpha
  */
-- (id) initWithAlpha:(float)alpha;
+- (id)initWithAlpha:(float)alpha;
 
 @end

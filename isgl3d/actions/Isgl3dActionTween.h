@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -47,7 +47,7 @@
  * @param property The name of the property to tween
  * @param value The desired value for the property
  */
-+ (id) actionWithDuration:(float)duration property:(NSString *)property value:(float)value;
++ (id)actionWithDuration:(float)duration property:(NSString *)property value:(float)value;
 
 /**
  * Initialises the an Isgl3dActionTweenTo with a duration, property and end value.
@@ -55,7 +55,7 @@
  * @param property The name of the property to tween
  * @param value The desired value for the property
  */
-- (id) initWithDuration:(float)duration property:(NSString *)property value:(float)value;
+- (id)initWithDuration:(float)duration property:(NSString *)property value:(float)value;
 
 @end
 
@@ -76,7 +76,7 @@
  * @param property The name of the property to tween
  * @param value The desired change in value of the property 
  */
-+ (id) actionWithDuration:(float)duration property:(NSString *)property value:(float)value;
++ (id)actionWithDuration:(float)duration property:(NSString *)property value:(float)value;
 
 /**
  * Initialises the an Isgl3dActionTweenBy with a duration, property and delta value.
@@ -84,6 +84,6 @@
  * @param property The name of the property to tween
  * @param value The desired change in value of the property 
  */
-- (id) initWithDuration:(float)duration property:(NSString *)property value:(float)value;
+- (id)initWithDuration:(float)duration property:(NSString *)property value:(float)value;
 
 @end

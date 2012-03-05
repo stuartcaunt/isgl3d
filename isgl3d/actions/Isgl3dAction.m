@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -34,11 +34,11 @@
 
 @synthesize target = _target;
 
-+ (id) action {
++ (id)action {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
 	if ((self = [super init])) {
 		_target = nil;
 	}
@@ -46,17 +46,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dAction * copy = [[[self class] allocWithZone:zone] init];
 
 	return copy;
 }
 
-- (void) startWithTarget:(id)target {
+- (void)startWithTarget:(id)target {
 	_target = target;
 }
 
@@ -65,11 +65,11 @@
 	return YES;
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	// to be over-ridden
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	// to be over-ridden
 }
 

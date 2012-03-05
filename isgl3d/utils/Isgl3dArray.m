@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,34 +27,34 @@
 
 @implementation Isgl3dArray
 
-- (id) initForSizeType:(size_t)sizeType {
+- (id)initForSizeType:(size_t)sizeType {
 	if ((self = [super init])) {
 		_cArray = iaCreateForTypeSize(sizeType);
 	}
 	return self;
 }
 
-- (id) initForSizeType:(size_t)sizeType withCapacity:(unsigned int)capacity {
+- (id)initForSizeType:(size_t)sizeType withCapacity:(unsigned int)capacity {
 	if ((self = [super init])) {
 		_cArray = iaCreateForTypeSizeWithCapacity(sizeType, capacity);
 	}
 	return self;
 }
 
-- (id) initForSizeType:(size_t)sizeType withArray:(void *)array count:(unsigned int)count {
+- (id)initForSizeType:(size_t)sizeType withArray:(void *)array count:(unsigned int)count {
 	if ((self = [super init])) {
 		_cArray = iaCreateForTypeSizeWithArray(sizeType, array, count);
 	}
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	ICA_DELETE(_cArray);
 	
 	[super dealloc];
 }
 
-- (void) add:(const void *)value {
+- (void)add:(const void *)value {
 	iaAdd(_cArray, value);
 }
 
@@ -62,7 +62,7 @@
 	return iaGet(_cArray, index);
 }
 
-- (void) clear {
+- (void)clear {
 	iaClear(_cArray);
 }
 

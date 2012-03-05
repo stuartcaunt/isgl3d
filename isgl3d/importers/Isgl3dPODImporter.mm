@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,11 +33,13 @@
 #import "Isgl3dTextureMaterial.h"
 #import "Isgl3dLight.h"
 #import "Isgl3dGLVBOData.h"
-#import "Isgl3dCamera.h"
+#import "Isgl3dNodeCamera.h"
+#import "Isgl3dLookAtCamera.h"
 #import "Isgl3dDirector.h"
 #import "isgl3dTypes.h"
 #import "isgl3dArray.h"
 #import "Isgl3dLog.h"
+#import "Isgl3dMathUtils.h"
 
 
 @interface Isgl3dPODImporter () {
@@ -81,23 +83,23 @@
  */
 - (Isgl3dAnimatedMeshNode *) createAnimatedMeshNode:(unsigned int)nodeId meshId:(unsigned int)meshId mesh:(Isgl3dGLMesh *)mesh material:(Isgl3dMaterial *)material;
 
-- (void) buildBones;
-- (void) buildMeshesAndMaterials;
-- (void) buildMeshNodes;
+- (void)buildBones;
+- (void)buildMeshesAndMaterials;
+- (void)buildMeshNodes;
 
 @end
 
 @implementation Isgl3dPODImporter
 
-+ (id) podImporterWithResource:(NSString *)name {
++ (id)podImporterWithResource:(NSString *)name {
 	return [[[self alloc] initWithResource:name] autorelease];
 }
 
-+ (id) podImporterWithFile:(NSString *)filePath {
++ (id)podImporterWithFile:(NSString *)filePath {
 	return [[[self alloc] initWithFile:filePath] autorelease];
 }
 
-- (id) initWithResource:(NSString *)name {
+- (id)initWithResource:(NSString *)name {
     if ((name == nil) || (name.length == 0)) {
         [NSException raise:NSInvalidArgumentException format:@"invalid resource name specified"];
     }
@@ -115,7 +117,7 @@
     return [self initWithFile:resourcePath];
 }
 
-- (id) initWithFile:(NSString *)filePath {
+- (id)initWithFile:(NSString *)filePath {
     if ((filePath == nil) || (filePath.length == 0)) {
         [NSException raise:NSInvalidArgumentException format:@"invalid file path specified"];
     }
@@ -156,7 +158,7 @@
 	
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[_meshes release];
 	[_meshNodes release];
@@ -174,7 +176,7 @@
 	[super dealloc];
 }
 
-- (void) printPODInfo {
+- (void)printPODInfo {
 	NSLog(@"POD info:");
 	NSLog(@"Number of cameras: %i", _podScene->nNumCamera);
 	for (int i = 0; i < _podScene->nNumCamera; i++) {
@@ -263,7 +265,7 @@
 }
 
 
-- (void) addMeshesToScene:(Isgl3dNode *)scene {
+- (void)addMeshesToScene:(Isgl3dNode *)scene {
 	
 	if (!_buildMeshNodesComplete) {
 		[_meshNodes removeAllObjects];
@@ -344,7 +346,7 @@
 }
 
 
-- (Isgl3dCamera *) cameraAtIndex:(unsigned int)cameraIndex {
+- (Isgl3dNodeCamera *) cameraAtIndex:(unsigned int)cameraIndex {
 	if (!_buildSceneObjectsComplete) {
 		[self buildSceneObjects];
 	}	
@@ -376,7 +378,7 @@
 
 
 
-- (void) configureLight:(Isgl3dLight *)light fromNode:(NSString *)nodeName {
+- (void)configureLight:(Isgl3dLight *)light fromNode:(NSString *)nodeName {
 	for (int i = 0; i < _podScene->nNumMeshNode; i++) {
 		SPODNode & node = _podScene->pNode[i];
 		if ([nodeName isEqualToString:[NSString stringWithUTF8String:node.pszName]]) {
@@ -393,7 +395,7 @@
 }
 
 
-- (void) addBonesToSkeleton:(Isgl3dSkeletonNode *)skeleton {
+- (void)addBonesToSkeleton:(Isgl3dSkeletonNode *)skeleton {
 
 	if (!_boneBuildComplete) {
 		[_boneNodeIndices removeAllObjects];
@@ -429,7 +431,7 @@
 	_boneBuildComplete = NO;
 }
 
-- (void) modifyTexture:(NSString *)podTextureFileName withTexture:(NSString *)replacementFileName {
+- (void)modifyTexture:(NSString *)podTextureFileName withTexture:(NSString *)replacementFileName {
 	[_textureMods setObject:replacementFileName forKey:podTextureFileName];
 }
 
@@ -439,7 +441,7 @@
  */
 
 
-- (void) buildMeshesAndMaterials {
+- (void)buildMeshesAndMaterials {
 	// Iterate over nodes and create meshes and materials as necessary
 
 	// Create array of textures
@@ -504,7 +506,7 @@
 	_meshesAndMaterialsComplete = YES;
 }
 
-- (void) buildSceneObjects {
+- (void)buildSceneObjects {
 	
 	if (!_buildMeshNodesComplete) {
 		[self buildMeshNodes];
@@ -514,21 +516,31 @@
 	// Create array of cameras
 	for (int i = 0; i < _podScene->nNumCamera; i++) {
 		SPODCamera & cameraInfo = _podScene->pCamera[i];
-		PVRTVECTOR3 pos;
-		PVRTVECTOR3 lookAt;
-
-		float fov = _podScene->GetCameraPos(pos, lookAt, i) * 180 / M_PI;
-		float fNear = cameraInfo.fNear;
-		float fFar = cameraInfo.fFar;
+		float nearZ = cameraInfo.fNear;
+		float farZ = cameraInfo.fFar;
+        
+        PVRTVECTOR3 eye = { 0.0f, 0.0f, 0.0f };
+        PVRTVECTOR3 center = { 0.0f, 0.0f, 0.0f };
+        PVRTVECTOR3 up = { 0.0f, 0.0f, 0.0f };
+        float fovyRadians = _podScene->GetCamera(eye, center, up, i);
 		
-		NSLog(@"Creating camera: pos = [%f, %f, %f], lookAt = [%f, %f, %f], fov = %f, near = %f, far = %f", pos.x, pos.y, pos.z, lookAt.x, lookAt.y, lookAt.z, fov, fNear, fFar);
+		NSLog(@"Creating camera: pos = [%f, %f, %f], lookAt = [%f, %f, %f], fov = %f, near = %f, far = %f",
+              eye.x, eye.y, eye.z, center.x, center.y, center.z, Isgl3dMathRadiansToDegrees(fovyRadians), nearZ, farZ);
 	
 		CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
-		Isgl3dCamera * camera = [[Isgl3dCamera alloc] initWithWidth:windowSize.width height:windowSize.height andCoordinates:pos.x y:pos.y z:pos.z upX:0 upY:1 upZ:0 lookAtX:lookAt.x lookAtY:lookAt.y lookAtZ:lookAt.z];
-		[camera setPerspectiveProjection:fov near:fNear far:fFar orientation:[Isgl3dDirector sharedInstance].deviceOrientation];
-		
-
-		[_cameras addObject:[camera autorelease]];
+        
+        Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:windowSize fovyRadians:fovyRadians nearZ:nearZ farZ:farZ];
+        
+        Isgl3dNodeCamera *nodeCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens
+                                                                     position:Isgl3dVector3Make(eye.x, eye.y, eye.z)
+                                                                 lookAtTarget:Isgl3dVector3Make(center.x, center.y, center.z)
+                                                                           up:Isgl3dVector3Make(up.x, up.y, up.z)];
+        
+        //Isgl3dLookAtCamera *camera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens eyeX:eye.x eyeY:eye.y eyeZ:eye.z centerX:center.x centerY:center.y centerZ:center.z upX:up.x upY:up.y upZ:up.z];
+        [perspectiveLens release];
+        
+		[_cameras addObject:nodeCamera];
+        [nodeCamera release];
 	}
 	
 	// Create lights
@@ -546,7 +558,7 @@
 		light.quadraticAttenuation = lightInfo.fQuadraticAttenuation;
 		if (lightInfo.eType == ePODPoint) {
 			light.lightType = PointLight;
-			light.position = iv3(pos.x, pos.y, pos.z);
+			light.position = Isgl3dVector3Make(pos.x, pos.y, pos.z);
 
 		} else if (lightInfo.eType == ePODDirectional) {
 			light.lightType = DirectionalLight;
@@ -554,7 +566,7 @@
 
 		} else {
 			light.lightType = SpotLight;
-			light.position = iv3(pos.x, pos.y, pos.z);
+			light.position = Isgl3dVector3Make(pos.x, pos.y, pos.z);
 			light.spotCutoffAngle = lightInfo.fFalloffAngle * 180 / M_PI;
 			light.spotFalloffExponent = lightInfo.fFalloffExponent;
 			[light setSpotDirection:dirn.x y:dirn.y z:dirn.z];
@@ -566,7 +578,7 @@
 	_buildSceneObjectsComplete = YES;
 }
 
-- (void) buildMeshNodes {
+- (void)buildMeshNodes {
 	
 	if (!_meshesAndMaterialsComplete) {
 		[self buildMeshesAndMaterials];
@@ -633,7 +645,7 @@
 	_buildMeshNodesComplete = YES;
 }
 
-- (void) buildBones {
+- (void)buildBones {
 	
 	// Get all bone node indexes from all meshes
 	NSMutableArray * meshBoneNodeIndexes = [[NSMutableArray alloc] init];

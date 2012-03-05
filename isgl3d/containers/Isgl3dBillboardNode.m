@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,12 @@
 #import "Isgl3dBillboardNode.h"
 #import "Isgl3dDirector.h"
 #import "Isgl3dCamera.h"
+#import "Isgl3dMatrix4.h"
+
 
 @implementation Isgl3dBillboardNode
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 
 	// Update world transformation, including all children as normal	
 	[super updateWorldTransformation:parentTransformation];
@@ -38,7 +40,7 @@
 	// faces the camera : use inverted view matrix
 	Isgl3dCamera * camera = [Isgl3dDirector sharedInstance].activeCamera;
 	Isgl3dMatrix4 viewMatrix = camera.viewMatrix;
-	im4Invert3x3(&viewMatrix);
+    viewMatrix = Isgl3dMatrix4Invert(viewMatrix, NULL);
 	
 	_worldTransformation.m00 = viewMatrix.m00 * _scaleX;
 	_worldTransformation.m10 = viewMatrix.m10 * _scaleX;

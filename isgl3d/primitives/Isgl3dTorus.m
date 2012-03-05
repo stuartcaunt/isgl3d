@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +32,11 @@
 @synthesize radius = _radius;
 @synthesize tubeRadius = _tubeRadius;
 
-+ (id) meshWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
++ (id)meshWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
 	return [[[self alloc] initWithGeometry:radius tubeRadius:tubeRadius ns:ns nt:nt] autorelease];
 }
 
-- (id) initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
+- (id)initWithGeometry:(float)radius tubeRadius:(float)tubeRadius ns:(int)ns nt:(int)nt {
 	
 	if ((self = [super init])) {
 		_radius = radius;
@@ -50,11 +50,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [super dealloc];
 }
 
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 	
 	for (int s = 0; s <= _ns; s++) {
 		float theta = s * 2 * M_PI / _ns;

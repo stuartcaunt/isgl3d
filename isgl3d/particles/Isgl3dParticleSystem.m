@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,11 +33,11 @@
 
 @synthesize particles = _particles;
 
-+ (id) particleSystem {
++ (id)particleSystem {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		_particles = [[NSMutableArray alloc] init];
@@ -46,7 +46,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_particles release];
 	
 	[super dealloc];
@@ -61,7 +61,7 @@
 	return particle;
 }
 
-- (void) removeParticle:(Isgl3dGLParticle *)particle {
+- (void)removeParticle:(Isgl3dGLParticle *)particle {
 	[_particles removeObject:particle];
 	
 	_dirty = YES;
@@ -71,11 +71,11 @@
 	return [_particles count];
 }
 
-- (void) update {
+- (void)update {
 	_dirty = YES;
 }
 
-- (void) fillArrays {
+- (void)fillArrays {
 	int counter = 0;
 	for (Isgl3dGLParticle * particle in _particles) {
 		[_vertexData add:particle.x];
@@ -93,7 +93,7 @@
 	}
 }
 
-- (void) sortDecreasingDistanceFromX:(float)x y:(float)y z:(float)z {
+- (void)sortDecreasingDistanceFromX:(float)x y:(float)y z:(float)z {
 	for (Isgl3dGLParticle * particle in _particles) {
 		[particle calculateDistanceFromX:x y:y z:z];
 	}	
@@ -101,14 +101,14 @@
 	[_particles sortUsingSelector:@selector(compareDistances:)];
 }
 
-- (void) prepareForEventCapture:(float)r g:(float)g b:(float)b {
+- (void)prepareForEventCapture:(float)r g:(float)g b:(float)b {
 	for (Isgl3dGLParticle * particle in _particles) {
 		[particle prepareForEventCapture:r g:g b:b];
 	}	
 	[self buildArrays];
 }
 
-- (void) restoreRenderColor {
+- (void)restoreRenderColor {
 	for (Isgl3dGLParticle * particle in _particles) {
 		[particle restoreRenderColor];
 	}	

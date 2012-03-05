@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -74,7 +74,7 @@
  * @param width The width of the texture.
  * @param height The height of the texture.
  */
-+ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
++ (id)textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
 
 /**
  * Allocates and initialises (autorelease) an Isgl3dGLTexture for an OpenGL texture object of given width and height and
@@ -84,7 +84,7 @@
  * @param height The height of the texture.
  * @param contentSize The size of the content.
  */
-+ (id) textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
++ (id)textureWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
 /**
  * Initialises an Isgl3dGLTexture for an OpenGL texture object of given width and height.
@@ -92,7 +92,7 @@
  * @param width The width of the texture.
  * @param height The height of the texture.
  */
-- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
+- (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
 
 /**
  * Intialises an Isgl3dGLTexture for an OpenGL texture object of given width and height and
@@ -102,6 +102,6 @@
  * @param height The height of the texture.
  * @param contentSize The size of the content.
  */
-- (id) initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
+- (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height contentSize:(CGSize)contentSize;
 
 @end

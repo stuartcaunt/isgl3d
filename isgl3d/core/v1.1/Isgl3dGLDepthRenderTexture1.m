@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	if (_frameBuffer) {
 		glDeleteFramebuffersOES(1, &_frameBuffer);
 		_frameBuffer = 0;
@@ -70,7 +70,7 @@
 	[super dealloc];
 }
 
-- (void) clear {
+- (void)clear {
 	glViewport(0, 0, self.width, self.height);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0, 0, 0, 1);
@@ -79,11 +79,11 @@
 }
 
 
-- (void) initializeRender {
+- (void)initializeRender {
 	glBindFramebufferOES(GL_FRAMEBUFFER_OES, _frameBuffer);
 }
 
-- (void) finalizeRender {
+- (void)finalizeRender {
 	glBindFramebufferOES(GL_FRAMEBUFFER_OES, _oldFrameBuffer);
 }
 

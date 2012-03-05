@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,7 @@
  * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  */
-+ (id) materialWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
++ (id)materialWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
 			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
@@ -103,7 +103,7 @@
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  * 
  */
-+ (id) materialWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
++ (id)materialWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
 						   animationName:(NSString *)animationName 
 						  shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
@@ -118,7 +118,7 @@
  * @param repeatX Inidicates whether the material will be repeated (tesselated) across the rendered object in the x-direction.
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  */
-- (id) initWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
+- (id)initWithTextureFiles:(NSArray *)textureFilenameList animationName:(NSString *)animationName 
 			 shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
 /**
@@ -137,7 +137,7 @@
  * @param repeatY Inidicates whether the material will be repeated (tesselated) across the rendered object in the y-direction.
  * 
  */
-- (id) initWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
+- (id)initWithTextureFilenameFormat:(NSString *)textureFilenameFormat textureFirstID:(int)textureFirstID textureLastID:(int)textureLastID
 						   animationName:(NSString *)animationName 
 						  shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 
@@ -146,17 +146,17 @@
 /**
  * Starts the animation at frame 0 and loops when last frame is reached.
  */
-- (void) startAnimation;
+- (void)startAnimation;
 
 /**
  * Stops the animation.
  */
-- (void) stopAnimation;
+- (void)stopAnimation;
 
 /**
  * Resumes the animation from the last frame number before stopAnimation being called.
  */
-- (void) resumeAnimation;
+- (void)resumeAnimation;
 
 /**
  * Goes to a specific frame in the animation.
@@ -169,6 +169,6 @@
  * Sets the frame rate for the animation in frames per second. The default value is 24.
  * @param frameRate Frame rate in number of frames per second. 
  */
-- (void) setFrameRate:(float)frameRate;
+- (void)setFrameRate:(float)frameRate;
 
 @end

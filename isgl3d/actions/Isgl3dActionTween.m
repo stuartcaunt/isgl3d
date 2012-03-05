@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -33,11 +33,11 @@
 
 @implementation Isgl3dActionTweenTo
 
-+ (id) actionWithDuration:(float)duration property:(NSString *)property value:(float)value {
++ (id)actionWithDuration:(float)duration property:(NSString *)property value:(float)value {
 	return [[[self alloc] initWithDuration:duration property:property value:value] autorelease];
 }
 
-- (id) initWithDuration:(float)duration property:(NSString *)property value:(float)value {
+- (id)initWithDuration:(float)duration property:(NSString *)property value:(float)value {
 	if ((self = [super initWithDuration:duration])) {
 		_property = property;
 		_finalValue = value;
@@ -46,11 +46,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionTweenTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration property:_property value:_finalValue];
 
 	return copy;
@@ -70,7 +70,7 @@
 	}
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setValue:[NSNumber numberWithFloat:_initialValue + progress * _delta] forKey:_property];
 }
 
@@ -80,11 +80,11 @@
 
 @implementation Isgl3dActionTweenBy
 
-+ (id) actionWithDuration:(float)duration property:(NSString *)property value:(float)value {
++ (id)actionWithDuration:(float)duration property:(NSString *)property value:(float)value {
 	return [[[self alloc] initWithDuration:duration property:property value:value] autorelease];
 }
 
-- (id) initWithDuration:(float)duration property:(NSString *)property value:(float)value {
+- (id)initWithDuration:(float)duration property:(NSString *)property value:(float)value {
 	if ((self = [super initWithDuration:duration])) {
 		_property = property;
 		_delta = value;
@@ -93,11 +93,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionTweenBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration property:_property value:_delta];
 
 	return copy;
@@ -115,7 +115,7 @@
 	}
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setValue:[NSNumber numberWithFloat:_initialValue + progress * _delta] forKey:_property];
 }
 

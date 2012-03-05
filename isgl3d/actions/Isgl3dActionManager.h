@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -60,7 +60,7 @@
  * Updates all running actions with the delta time since the last frame.
  * @param dt The delta time since the last frame.
  */
-- (void) tick:(float)dt;
+- (void)tick:(float)dt;
 
 /**
  * Adds an action to a specified target that will be run in the next tick after when the target is not paused.
@@ -68,31 +68,31 @@
  * @param target The target to run the action on.
  * @param isPaused Specified if the target is currently paused.
  */
-- (void) addAction:(Isgl3dAction *)action toTarget:(id)target isPaused:(BOOL)isPaused;
+- (void)addAction:(Isgl3dAction *)action toTarget:(id)target isPaused:(BOOL)isPaused;
 
 /**
  * Stops an action.
  * @param action The action to be stopped.
  */
-- (void) stopAction:(Isgl3dAction *)action;
+- (void)stopAction:(Isgl3dAction *)action;
 
 /**
  * Stops all actions associated with a particular target.
  * @param target The target on which all the actions are to be stopped.
  */
-- (void) stopAllActionsForTarget:(id)target;
+- (void)stopAllActionsForTarget:(id)target;
 
 /**
  * Pauses all actions associated with a particular target.
  * @param target The target on which all the actions are to be paused.
  */
-- (void) pauseActionsForTarget:(id)target;
+- (void)pauseActionsForTarget:(id)target;
 
 /**
  * Resumes all actions associated with a particular target.
  * @param target The target on which all the actions are to be resumed.
  */
-- (void) resumeActionsForTarget:(id)target;
+- (void)resumeActionsForTarget:(id)target;
 
 
 
@@ -121,20 +121,20 @@
  * @param target The target object.
  * @param isPaused Specified whether the handler is initially paused.
  */
-+ (id) handlerWithTarget:(id)target isPaused:(BOOL)isPaused;
++ (id)handlerWithTarget:(id)target isPaused:(BOOL)isPaused;
 
 /**
  * Initialises an actions handler for a specific target
  * @param target The target object.
  * @param isPaused Specified whether the handler is initially paused.
  */
-- (id) initWithTarget:(id)target isPaused:(BOOL)isPaused;
+- (id)initWithTarget:(id)target isPaused:(BOOL)isPaused;
 
 /**
  * Calls the tick method on all actions associated with the target
  * @param dt The delta time since the last call.
  */
-- (void) tick:(float)dt;
+- (void)tick:(float)dt;
 
 /**
  * Returns true if the handler contains the specified action.
@@ -145,18 +145,18 @@
  * Adds an action to to the handler.
  * @param action The action to be run.
  */
-- (void) addAction:(Isgl3dAction *)action;
+- (void)addAction:(Isgl3dAction *)action;
 
 /**
  * Stops an action.
  * @param action The action to be stopped.
  */
-- (void) stopAction:(Isgl3dAction *)action;
+- (void)stopAction:(Isgl3dAction *)action;
 
 /**
  * Stops all actions.
  * @param target The target on which all the actions are to be stopped.
  */
-- (void) stopAllActions;
+- (void)stopAllActions;
 
 @end

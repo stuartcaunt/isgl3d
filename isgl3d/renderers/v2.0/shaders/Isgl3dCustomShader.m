@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@
 @synthesize numberOfBonesPerVertex = _numberOfBonesPerVertex;
 @synthesize activeNode = _activeNode;
 
-+ (id) shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
++ (id)shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			key:(NSString *)key {
 				
@@ -57,7 +57,7 @@
 				
 }
 
-+ (id) shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
++ (id)shaderWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			vertexShaderPreProcessorHeader:(NSString *)vertexShaderPreProcessorHeader 
 			fragmentShaderPreProcessorHeader:(NSString *)fragmentShaderPreProcessorHeader 
@@ -71,7 +71,7 @@
 				
 }
 
-- (id) initWithVertexShaderFile:(NSString *)vertexShaderFile 
+- (id)initWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			key:(NSString *)key {
 				
@@ -82,7 +82,7 @@
 							key:key];
 }
 
-- (id) initWithVertexShaderFile:(NSString *)vertexShaderFile 
+- (id)initWithVertexShaderFile:(NSString *)vertexShaderFile 
 			fragmentShaderFile:(NSString *)fragmentShaderFile 
 			vertexShaderPreProcessorHeader:(NSString *)vertexShaderPreProcessorHeader 
 			fragmentShaderPreProcessorHeader:(NSString *)fragmentShaderPreProcessorHeader 
@@ -105,71 +105,71 @@
 }
 
 
-- (void) dealloc {
+- (void)dealloc {
 	[_lights release];
 
 	[super dealloc];
 }
 
 
-- (void) clean {
+- (void)clean {
 	[_lights removeAllObjects];
 }
 
-- (void) setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
+- (void)setModelMatrix:(Isgl3dMatrix4 *)modelMatrix {
 	_modelMatrix = modelMatrix;
 }
 
-- (void) setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)setViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	_viewMatrix = viewMatrix;
 }
 
-- (void) setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
+- (void)setProjectionMatrix:(Isgl3dMatrix4 *)projectionMatrix {
 	_projectionMatrix = projectionMatrix;
 }
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
+- (void)setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	_modelViewMatrix = modelViewMatrix;
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
+- (void)setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	_modelViewProjectionMatrix = modelViewProjectionMatrix;
 }
 
-- (void) setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
+- (void)setNormalMatrix:(Isgl3dMatrix3 *)normalMatrix {
     _normalMatrix = normalMatrix;
 }
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData {
 	_vboData = vboData;
 }
 
-- (void) addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	[_lights addObject:light];
 }
 
-- (void) setSceneAmbient:(NSString *)ambient {
+- (void)setSceneAmbient:(NSString *)ambient {
 	_sceneAmbient = ambient;
 }
 
-- (void) setAlphaCullingValue:(float)cullValue {
+- (void)setAlphaCullingValue:(float)cullValue {
 	_alphaCullingValue = cullValue;
 }
 
-- (void) setPointAttenuation:(float *)attenuation {
+- (void)setPointAttenuation:(float *)attenuation {
 	_pointAttenuation = attenuation;
 }
 
-- (void) setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
+- (void)setBoneTransformations:(Isgl3dArray *)transformations andInverseTransformations:(Isgl3dArray *)inverseTransformations {
 	_boneTransformations = transformations;
 	_boneInverseTransformations = inverseTransformations;
 }
 
-- (void) setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
+- (void)setNumberOfBonesPerVertex:(unsigned int)numberOfBonesPerVertex {
 	_numberOfBonesPerVertex = numberOfBonesPerVertex;
 }
 
-- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+- (void)render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
 	if (_shaderType == Isgl3dCustomShaderTrianglesType) {
 		glDrawElements(GL_TRIANGLES, numberOfElements, GL_UNSIGNED_SHORT, &((unsigned short *)0)[elementOffset]);
 	} else {
@@ -177,32 +177,32 @@
 	}
 }
 
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt {
 	// to be over-ridden if needed
 }
 
 
-- (void) onSceneRenderReady {
-	// to be over-ridden if needed
-	
-}
-
-- (void) onModelRenderReady {
+- (void)onSceneRenderReady {
 	// to be over-ridden if needed
 	
 }
 
-- (void) onModelRenderEnds {
+- (void)onModelRenderReady {
 	// to be over-ridden if needed
 	
 }
 
-- (void) onSceneRenderEnds {
+- (void)onModelRenderEnds {
 	// to be over-ridden if needed
 	
 }
 
-- (void) onRenderPhaseEnds {
+- (void)onSceneRenderEnds {
+	// to be over-ridden if needed
+	
+}
+
+- (void)onRenderPhaseEnds {
 	// to be over-ridden if needed
 	
 }

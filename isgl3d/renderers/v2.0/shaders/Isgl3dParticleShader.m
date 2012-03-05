@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,12 @@
 #import "Isgl3dGLVBOData.h"
 
 @interface Isgl3dParticleShader (PrivateMethods)
-- (void) handleStates;
+- (void)handleStates;
 @end
 
 @implementation Isgl3dParticleShader
 
-- (id) initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
+- (id)initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
 	if ((self = [super initWithVertexShaderName:@"particle.vsh" fragmentShaderName:@"particle.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
 
@@ -53,7 +53,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[_currentState release];
 	[_previousState release];
@@ -62,7 +62,7 @@
 }
 
 
-- (void) getAttributeAndUniformLocations {
+- (void)getAttributeAndUniformLocations {
 	// Attributes
 	_vertexAttributeLocation = [_glProgram getAttributeLocation:@"a_vertex"];
 	_pointSizeAttributeLocation = [_glProgram getAttributeLocation:@"a_pointSize"];
@@ -90,21 +90,21 @@
 	_alphaTestValueUniformLocation = [_glProgram getUniformLocation:@"u_alphaTestValue"];
 }
 
-- (void) setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
+- (void)setModelViewMatrix:(Isgl3dMatrix4 *)modelViewMatrix {
 	[self setUniformMatrix4:_mvMatrixUniformLocation matrix:modelViewMatrix];
 }
 
-- (void) setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
+- (void)setModelViewProjectionMatrix:(Isgl3dMatrix4 *)modelViewProjectionMatrix {
 	[self setUniformMatrix4:_mvpMatrixUniformLocation matrix:modelViewProjectionMatrix];
 }
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData {
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexAttributeLocation size:VBO_POSITION_SIZE strideBytes:vboData.stride offset:vboData.positionOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_vertexColorAttributeLocation size:VBO_COLOR_SIZE strideBytes:vboData.stride offset:vboData.colorOffset];
 	[self setVertexAttribute:GL_FLOAT attributeLocation:_pointSizeAttributeLocation size:VBO_SIZE_SIZE strideBytes:vboData.stride offset:vboData.sizeOffset];
 }
 
-- (void) setTexture:(Isgl3dGLTexture *)texture {
+- (void)setTexture:(Isgl3dGLTexture *)texture {
 	// Bind the texture
 	if (_samplerLocation != -1) {
 		[self bindTexture:texture textureUnit:0];
@@ -115,19 +115,19 @@
 }
 
 
-- (void) setAlphaCullingValue:(float)cullValue {
+- (void)setAlphaCullingValue:(float)cullValue {
 	if (_alphaTestValueUniformLocation != -1) {
 		[self setUniform1f:_alphaTestValueUniformLocation value:cullValue];
 	}
 }
 
-- (void) setPointAttenuation:(float *)attenuation {
+- (void)setPointAttenuation:(float *)attenuation {
 	[self setUniform1f:_pointConstantAttenuation value:attenuation[0]];
 	[self setUniform1f:_pointLinearAttenuation value:attenuation[1]];
 	[self setUniform1f:_pointQuadraticAttenuation value:attenuation[2]];
 }
 
-- (void) render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
+- (void)render:(unsigned int)numberOfElements atOffset:(unsigned int)elementOffset {
 	[self handleStates];
 	
 	// render elements
@@ -138,7 +138,7 @@
 	[_currentState reset];
 }
 
-- (void) handleStates {
+- (void)handleStates {
 
 	if (!_currentState.textureEnabled && _previousState.textureEnabled) {
 	
@@ -152,7 +152,7 @@
 
 }
 
-- (void) clean {
+- (void)clean {
 
 	[self setActive];
 

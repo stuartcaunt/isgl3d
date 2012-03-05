@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,14 +44,14 @@
  * @param particle The particle to be rendered.
  * @param material The material used to render the particle.
  */
-+ (id) nodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
++ (id)nodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Initialises the node with a particle and material.
  * @param particle The particle to be rendered.
  * @param material The material used to render the particle.
  */
-- (id) initWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
+- (id)initWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material;
 
 
 @end

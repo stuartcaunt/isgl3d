@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -132,14 +132,14 @@
  * Initialises an Isgl3dArray for a given size_t object with an initial capacity of 1.
  * @param sizeType the size in bytes for the objects to be stored.
  */
-- (id) initForSizeType:(size_t)sizeType;
+- (id)initForSizeType:(size_t)sizeType;
 
 /**
  * Initialises an Isgl3dArray for a given size_t object with a specified capacity.
  * @param sizeType the size in bytes for the objects to be stored.
  * @param capacity The initial capacity (nuber of obejcts) of the array.
  */
-- (id) initForSizeType:(size_t)sizeType withCapacity:(unsigned int)capacity;
+- (id)initForSizeType:(size_t)sizeType withCapacity:(unsigned int)capacity;
 
 /**
  * Initialises an Isgl3CArray for a given size_t object, initialised with the data from a standard c array.
@@ -148,13 +148,13 @@
  * @param array the c array of data to be copied into the Isgl3dCArray.
  * @param count the number of elements to be copied.
  */
-- (id) initForSizeType:(size_t)sizeType withArray:(void *)array count:(unsigned int)count;
+- (id)initForSizeType:(size_t)sizeType withArray:(void *)array count:(unsigned int)count;
 
 /**
  * Adds a new value to the array. The value must be of the original size_t given to the Isgl3dArray at initialisation.
  * @param value The value to be added (copied into) the array.
  */
-- (void) add:(const void *)value;
+- (void)add:(const void *)value;
 
 /**
  * Returns a pointer to an element in the array at a given index.
@@ -167,7 +167,7 @@
  * Clears the array. Note that this does not delete the allocated memory for the data, simply
  * initialises the count to zero.
  */
-- (void) clear;
+- (void)clear;
 
 /**
  * Returns the raw array of data

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,8 +30,8 @@
 static Isgl3dAccelerometer * _instance = nil;
 
 @interface Isgl3dAccelerometer ()
-- (void) calculateGravity;
-- (void) calibrateTilt;
+- (void)calculateGravity;
+- (void)calibrateTilt;
 @end
 
 @implementation Isgl3dAccelerometer
@@ -40,7 +40,7 @@ static Isgl3dAccelerometer * _instance = nil;
 @synthesize isCalibrating = _isCalibrating;
 @synthesize tiltCutoff = _tiltCutoff;
 
-- (id) init {
+- (id)init {
 
 	if ((self = [super init])) {
 		_updateFrequency = 30;
@@ -53,7 +53,7 @@ static Isgl3dAccelerometer * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
     [super dealloc];
 }
@@ -76,7 +76,7 @@ static Isgl3dAccelerometer * _instance = nil;
 	}
 }
 
-- (void) setup:(float)updateFrequency {
+- (void)setup:(float)updateFrequency {
 	//Configure and start accelerometer
 	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / updateFrequency)];
 	[[UIAccelerometer sharedAccelerometer] setDelegate:self];
@@ -84,7 +84,7 @@ static Isgl3dAccelerometer * _instance = nil;
 	_updateFrequency = updateFrequency;
 }
 
-- (void) setUpdateFrequency:(float)updateFrequency {
+- (void)setUpdateFrequency:(float)updateFrequency {
 	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / updateFrequency)];
 	_updateFrequency = updateFrequency;
 }
@@ -105,7 +105,7 @@ static Isgl3dAccelerometer * _instance = nil;
 	return _acceleration;
 }
 
-- (void) accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration {
+- (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration {
 
 	// Store raw data, modified with device rotation
 	if (_deviceOrientation == Isgl3dOrientation0) {
@@ -153,13 +153,13 @@ static Isgl3dAccelerometer * _instance = nil;
 	
 }
 
-- (void) startTiltCalibration {
+- (void)startTiltCalibration {
 	_calibrationSampleNumber = 0;
 	_isCalibrating = YES;
 }
 
 
-- (void) calculateGravity {
+- (void)calculateGravity {
 
     _rawGravity[0] = (_acceleration[0] * LOWPASS_FILTER_VALUE) + _rawGravity[0] * (1.0 - LOWPASS_FILTER_VALUE);
     _rawGravity[1] = (_acceleration[1] * LOWPASS_FILTER_VALUE) + _rawGravity[1] * (1.0 - LOWPASS_FILTER_VALUE);
@@ -183,7 +183,7 @@ static Isgl3dAccelerometer * _instance = nil;
 
 }
 
-- (void) calibrateTilt {
+- (void)calibrateTilt {
 	_calibrationY[_calibrationSampleNumber] = _acceleration[1];
 	_calibrationZ[_calibrationSampleNumber] = _acceleration[2];
 

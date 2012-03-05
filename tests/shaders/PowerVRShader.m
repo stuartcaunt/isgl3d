@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,9 @@
 #import "Isgl3dGLTextureFactory.h"
 #import "Isgl3dGLTexture.h"
 #import "Isgl3dLight.h"
+#import "Isgl3dVector4.h"
+#import "Isgl3dMatrix4.h"
+
 
 #define MATERIAL_TEXTUREINDEX 0
 #define NOISE_TEXTUREINDEX 1
@@ -35,11 +38,11 @@
 @implementation PowerVRShader
 
 
-+ (id) shaderWithKey:(NSString *)key {
++ (id)shaderWithKey:(NSString *)key {
 	return [[[self alloc] initWithKey:key] autorelease];
 }
 
-- (id) initWithKey:(NSString *)key {
+- (id)initWithKey:(NSString *)key {
 	if ((self = [super initWithVertexShaderFile:@"powervrShader.vsh" fragmentShaderFile:@"powervrShader.fsh" key:key])) {
 
 		_fAnim = 0.0f;
@@ -55,14 +58,14 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_materialTexture release];
 	[_noiseTexture release];
 
 	[super dealloc];
 }
 
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt {
 	// Update the animation factor with a new render phase
 	_fAnim += dt * 0.05;
 	if (_fAnim > 0.5f) {
@@ -71,19 +74,19 @@
 	[self setUniform1fWithName:@"fAnim" value:_fAnim];
 }
 
-- (void) onSceneRenderReady {
+- (void)onSceneRenderReady {
 	// Update lighting (use only first light)
 	if ([_lights count] > 0) {
 		Isgl3dLight * light = [self.lights objectAtIndex:0]; 
 
-		float lightPosition[4];
-		[light copyWorldPositionToArray:lightPosition];
-		im4MultArray4(self.viewMatrix, lightPosition);
-		[self setUniform3fWithName:@"myLightDirection" values:lightPosition];
+        Isgl3dVector4 lightPosition;
+        [light copyWorldPositionToArray:lightPosition.v];
+        lightPosition = Isgl3dMatrix4MultiplyVector4(*self.viewMatrix, lightPosition);
+		[self setUniform3fWithName:@"myLightDirection" values:lightPosition.v];
 	}
 }
 
-- (void) onModelRenderReady {
+- (void)onModelRenderReady {
 	
 	// bind the vertex data to the attributes
 	[self setVertexAttribute:GL_FLOAT attributeName:@"myVertex" size:VBO_POSITION_SIZE strideBytes:self.vboData.stride offset:self.vboData.positionOffset];

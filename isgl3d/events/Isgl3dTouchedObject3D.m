@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@
 
 @synthesize object = _object;
 
-- (id) initWithObject:(Isgl3dNode *)object {
+- (id)initWithObject:(Isgl3dNode *)object {
 	if ((self = [super init])) {
 		_object = [object retain];
 		
@@ -46,7 +46,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_object release];
 	[_previousLocations release];
 	[_newTouches release];
@@ -54,12 +54,12 @@
     [super dealloc];
 }
 
-- (void) addTouch:(UITouch *)touch {
+- (void)addTouch:(UITouch *)touch {
 	[_newTouches addObject:touch];
 	[_previousLocations addObject:NSStringFromCGPoint([touch locationInView:touch.view])];
 }
 
-- (void) removeTouch:(UITouch *)touch {
+- (void)removeTouch:(UITouch *)touch {
 
 	// Find touch at CURRENT location (touch has not moved)
 	NSString * previousLocation;
@@ -85,7 +85,7 @@
 	}
 }
 
-- (void) moveTouch:(UITouch *)touch  {
+- (void)moveTouch:(UITouch *)touch  {
 
 	// Find touch at PREVIOUS location (touch HAS moved)
 	NSString * previousLocation;
@@ -126,11 +126,11 @@
 }
 
 
-- (void) startEventCycle {
+- (void)startEventCycle {
 	[_newTouches removeAllObjects];
 }
 
-- (void) fireEventForType:(NSString *)eventType {
+- (void)fireEventForType:(NSString *)eventType {
 	if ([_newTouches count] > 0) {
 		[_object dispatchEvent:_newTouches forEventType:eventType];
 	}

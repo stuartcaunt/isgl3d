@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,11 @@
 
 @implementation Isgl3dParticleNode
 
-+ (id) nodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
++ (id)nodeWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
 	return [[[self alloc] initWithParticle:particle andMaterial:material] autorelease];
 }
 
-- (id) initWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
+- (id)initWithParticle:(Isgl3dGLParticle *)particle andMaterial:(Isgl3dMaterial *)material {
 	 if ((self = [super init])) {
 
 		_particle = [particle retain];
@@ -45,14 +45,14 @@
 	 return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_particle release];
 	[_material release];
 	
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dParticleNode * copy = [super copyWithZone:zone];
 	
 	copy->_particle = [_particle retain];
@@ -61,7 +61,7 @@
 	return copy;
 }
 
-- (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
+- (void)render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
 
 	if (_material) {
 		if (_transparent != opaque) {
@@ -102,7 +102,7 @@
 	[super render:renderer opaque:opaque];
 }
 
-- (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer {
+- (void)renderForEventCapture:(Isgl3dGLRenderer *)renderer {
 
 	if (_material && self.interactive) {
 
@@ -146,7 +146,7 @@
 	[super renderForEventCapture:renderer];
 }
 
-- (void) collectAlphaObjects:(NSMutableArray *)alphaObjects {
+- (void)collectAlphaObjects:(NSMutableArray *)alphaObjects {
 	if (_transparent) {
 		[alphaObjects addObject:self];
 	}

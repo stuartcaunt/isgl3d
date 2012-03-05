@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,25 +48,25 @@
     return [CAEAGLLayer class];
 }
 
-+ (id) viewWithFrame:(CGRect)frame {
++ (id)viewWithFrame:(CGRect)frame {
 	return [[[self alloc] initWithFrame:frame] autorelease];
 }
 
-+ (id) viewWithFrameFromPlist:(CGRect)frame {
++ (id)viewWithFrameFromPlist:(CGRect)frame {
 	return [[[self alloc] initWithFrameFromPlist:frame] autorelease];
 }
 
-+ (id) viewWithFrameForES1:(CGRect)frame {
++ (id)viewWithFrameForES1:(CGRect)frame {
 	return [[[self alloc] initWithFrameForES1:frame] autorelease];
 }
 
-+ (id) viewWithFrameForES2:(CGRect)frame {
++ (id)viewWithFrameForES2:(CGRect)frame {
 	return [[[self alloc] initWithFrameForES2:frame] autorelease];
 }
 
 
 
-- (id) initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame {
 	
 	if ((self = [super initWithFrame:frame])) {
 		
@@ -79,7 +79,7 @@
 	return self;
 }
 
-- (id) initWithFrameFromPlist:(CGRect)frame {
+- (id)initWithFrameFromPlist:(CGRect)frame {
 	
 	if ((self = [super initWithFrame:frame])) {
 		
@@ -92,7 +92,7 @@
 	return self;
 }
 
-- (id) initWithFrameForES1:(CGRect)frame {
+- (id)initWithFrameForES1:(CGRect)frame {
 	
 	if ((self = [super initWithFrame:frame])) {
 		
@@ -105,7 +105,7 @@
 	return self;
 }
 
-- (id) initWithFrameForES2:(CGRect)frame {
+- (id)initWithFrameForES2:(CGRect)frame {
 	
 	if ((self = [super initWithFrame:frame])) {
 		
@@ -118,7 +118,7 @@
 	return self;
 }
 
-- (id) initWithCoder:(NSCoder*)coder {    
+- (id)initWithCoder:(NSCoder*)coder {    
     if ((self = [super initWithCoder:coder])) {
 		
 		if (![self initContextFromPlist]) {
@@ -130,7 +130,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	if (_glContext) {
 	    [_glContext release];
 	}
@@ -216,16 +216,16 @@
 	return [_glContext createRenderer];
 }
 
-- (void) prepareRender {
+- (void)prepareRender {
 	[_glContext prepareRender];
 }
 
-- (void) finalizeRender {
+- (void)finalizeRender {
 	[_glContext finalizeRender];
 }
 
 
-- (void) layoutSubviews {
+- (void)layoutSubviews {
 	CGRect bounds = self.bounds;
 	
 	if ((roundf(bounds.size.width) != _drawableWidth) || (roundf(bounds.size.height) != _drawableHeight)) {

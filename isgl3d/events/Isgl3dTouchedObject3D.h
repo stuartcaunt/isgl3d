@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,16 +40,16 @@
 }
 @property (nonatomic, readonly) Isgl3dNode *object;
 
-- (id) initWithObject:(Isgl3dNode *)object;
-- (void) addTouch:(UITouch *)touch;
-- (void) removeTouch:(UITouch *)touch;
-- (void) moveTouch:(UITouch *)touch;
+- (id)initWithObject:(Isgl3dNode *)object;
+- (void)addTouch:(UITouch *)touch;
+- (void)removeTouch:(UITouch *)touch;
+- (void)moveTouch:(UITouch *)touch;
 
 - (BOOL) respondsToObject:(Isgl3dNode *)object;
 - (BOOL) respondsToLocation:(NSString *)location;
 - (BOOL) hasNoTouches;
 
-- (void) startEventCycle;
-- (void) fireEventForType:(NSString *)eventType;
+- (void)startEventCycle;
+- (void)fireEventForType:(NSString *)eventType;
 
 @end

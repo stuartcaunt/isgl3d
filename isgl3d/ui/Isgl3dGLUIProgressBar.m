@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,11 +39,11 @@
 @synthesize progressStepSize = _progressStepSize;
 @synthesize isSwapped = _isSwapped;
 
-+ (id) progressBarWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical {
++ (id)progressBarWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical {
 	return [[[self alloc] initWithMaterial:material width:width height:height vertical:isVertical] autorelease];
 }
 
-- (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical {
+- (id)initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height vertical:(BOOL)isVertical {
 	
 	if ((self = [super initWithMesh:nil andMaterial:material])) {
 		[self setWidth:width andHeight:height];
@@ -61,12 +61,12 @@
 }
 
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[super dealloc];
 }
 
-- (void) setProgress:(float)progress {
+- (void)setProgress:(float)progress {
 	if (progress > 100) {
 		progress = 100;
 	}
@@ -100,7 +100,7 @@
 	return _progress;
 }
 
-- (void) setX:(unsigned int)x andY:(unsigned int)y {
+- (void)setX:(unsigned int)x andY:(unsigned int)y {
 	[super setX:x andY:y];
 	_originalX = x;
 	_originalY = y;
@@ -127,7 +127,7 @@
 	}
 }
 
-- (void) setIsSwapped:(BOOL)isSwapped {
+- (void)setIsSwapped:(BOOL)isSwapped {
 	_isSwapped = isSwapped;
 	if (isSwapped) {
 		self.fixLeft = NO;

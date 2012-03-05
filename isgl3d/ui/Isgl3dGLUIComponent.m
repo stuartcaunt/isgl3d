@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@
 @synthesize centerX = _centerX;
 @synthesize centerY = _centerY;
  
-- (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
+- (id)initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
 	if ((self = [super initWithMesh:mesh andMaterial:material])) {
 		_x = 0;
 		_y = 0;
@@ -65,13 +65,13 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[super dealloc];
 }
 
 
-- (void) setX:(unsigned int)x andY:(unsigned int)y {
+- (void)setX:(unsigned int)x andY:(unsigned int)y {
 	_x = x * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_y = y * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_xInPixels = x * [Isgl3dDirector sharedInstance].contentScaleFactor;
@@ -79,7 +79,7 @@
 	_meshDirty = YES;
 }
 
-- (void) setXInPixels:(unsigned int)x andYInPixels:(unsigned int)y {
+- (void)setXInPixels:(unsigned int)x andYInPixels:(unsigned int)y {
 	_x = x / [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_y = y / [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_xInPixels = x;
@@ -87,7 +87,7 @@
 	_meshDirty = YES;
 }
 
-- (void) setWidth:(unsigned int)width andHeight:(unsigned int)height {
+- (void)setWidth:(unsigned int)width andHeight:(unsigned int)height {
 	_width = width;
 	_height = height;
 	_widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;
@@ -95,7 +95,7 @@
 	_meshDirty = YES;
 }
 
-- (void) setWidthInPixels:(unsigned int)width andHeightInPixels:(unsigned int)height {
+- (void)setWidthInPixels:(unsigned int)width andHeightInPixels:(unsigned int)height {
 	_width = width * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_height = height * [Isgl3dDirector sharedInstance].contentScaleFactor;
 	_widthInPixels = width;
@@ -103,7 +103,7 @@
 	_meshDirty = YES;
 }
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	if (_meshDirty) {
 		float x;
 		float y;

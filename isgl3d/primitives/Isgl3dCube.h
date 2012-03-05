@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -71,7 +71,7 @@
  * @param nx the number of segments horizontally of a face.
  * @param ny the number of segments vertically of a face.
  */
-+ (id) meshWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
++ (id)meshWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
 
 /**
  * Initialises the cube with the the specified geometry.
@@ -81,7 +81,7 @@
  * @param nx the number of segments horizontally of a face.
  * @param ny the number of segments vertically of a face.
  */
-- (id) initWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
+- (id)initWithGeometry:(float)width height:(float)height depth:(float)depth nx:(int)nx ny:(int)ny;
 
 
 @end

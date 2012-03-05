@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@
 @synthesize backFaceCulling = _backFaceCulling;
 @synthesize alphaBlendEnabled = _alphaBlendEnabled;
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 		[self reset];
@@ -41,18 +41,18 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) copyFrom:(Isgl3dGLRenderer2State *)state {
+- (void)copyFrom:(Isgl3dGLRenderer2State *)state {
 	_cullingEnabled = state.cullingEnabled;
 	_backFaceCulling = state.backFaceCulling;
 	_alphaBlendEnabled = state.alphaBlendEnabled;
 }
 
-- (void) reset {
+- (void)reset {
 	_cullingEnabled = false;
 	_backFaceCulling = true;
 	_alphaBlendEnabled = false;

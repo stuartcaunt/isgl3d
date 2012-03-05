@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -71,55 +71,55 @@
  * Allocates, initialises and returns an autoreleased Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is determined by the capabilities of the device: the latest version is chosen.
  */
-+ (id) viewWithFrame:(CGRect)frame;
++ (id)viewWithFrame:(CGRect)frame;
 
 /**
  * Allocates, initialises and returns an autoreleased Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is set in isgl3d.plist.
  */
-+ (id) viewWithFrameFromPlist:(CGRect)frame;
++ (id)viewWithFrameFromPlist:(CGRect)frame;
 
 /**
  * Allocates, initialises and returns an autoreleased Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is set to OpenGL ES 1.1.
  */
-+ (id) viewWithFrameForES1:(CGRect)frame;
++ (id)viewWithFrameForES1:(CGRect)frame;
 
 /**
  * Allocates, initialises and returns an autoreleased Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is set to OpenGL ES 2.0.
  */
-+ (id) viewWithFrameForES2:(CGRect)frame;
++ (id)viewWithFrameForES2:(CGRect)frame;
 
 /**
  * Initialises an Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is determined by the capabilities of the device: the latest version is chosen.
  */
-- (id) initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame;
 
 /**
  * Initialises an Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is set in isgl3d.plist.
  */
-- (id) initWithFrameFromPlist:(CGRect)frame;
+- (id)initWithFrameFromPlist:(CGRect)frame;
 
 /**
  * Initialises an Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is set to OpenGL ES 1.1.
  */
-- (id) initWithFrameForES1:(CGRect)frame;
+- (id)initWithFrameForES1:(CGRect)frame;
 
 /**
  * Initialises an Isgl3dEAGLView with a given frame.
  * The OpenGL vesion is set to OpenGL ES 2.0.
  */
-- (id) initWithFrameForES2:(CGRect)frame;
+- (id)initWithFrameForES2:(CGRect)frame;
 
 /**
  * Initialises an Isgl3dEAGLView with a code. This is used when created with interface builder which is not the expected usage.
  * The OpenGL vesion is set in isgl3d.plist.
  */
-- (id) initWithCoder:(NSCoder*)coder; 
+- (id)initWithCoder:(NSCoder*)coder; 
 
 /**
  * Allocates, initialises and returns an autoreleased Isgl3dGLRenderer for either OpenGL 1.1 or 2.0.
@@ -132,7 +132,7 @@
  * Used to finalize the rendering in OpenGL. 
  * This should never be called manually.
  */
-- (void) finalizeRender;
+- (void)finalizeRender;
 
 /**
  * Returns the pixel colour as a hex string for a specific x and y location on the screen.

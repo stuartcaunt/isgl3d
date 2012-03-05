@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,9 @@
 #import "Isgl3dGLParticle.h"
 
 @interface Isgl3dParticleGenerator (PrivateMethods)
-- (void) updateParticles;
+- (void)updateParticles;
 - (Isgl3dGLParticle *)createParticle;
-- (void) removeParticle:(Isgl3dGLParticle *)particle;
+- (void)removeParticle:(Isgl3dGLParticle *)particle;
 @end
 
 @implementation Isgl3dParticleGenerator
@@ -46,11 +46,11 @@
 @synthesize nPathSteps = _nPathSteps;
 
 
-+ (id) generatorWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
++ (id)generatorWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
 	return [[[self alloc] initWithParticleSystem:particleSystem andNode:node] autorelease];
 }
 
-- (id) initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
+- (id)initWithParticleSystem:(Isgl3dParticleSystem *)particleSystem andNode:(Isgl3dParticleNode *)node {
 	
 	if ((self = [super init])) {
 		_particleSystem = [particleSystem retain];
@@ -78,7 +78,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_particleSystem release];
 	[_particleNode release];
 	[_particlePaths release];
@@ -86,7 +86,7 @@
 	[super dealloc];
 }
 
-- (void) startAnimation {
+- (void)startAnimation {
 	// Check to see if animation already happening
 	if (!_animating) {
 		_animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * _animationFrameInterval) target:self selector:@selector(updateParticles) userInfo:nil repeats:TRUE];
@@ -95,7 +95,7 @@
 	}	
 }
 
-- (void) stopAnimation {
+- (void)stopAnimation {
 	if (_animating) {
 		[_animationTimer invalidate];
 		_animationTimer = nil;
@@ -103,7 +103,7 @@
 	}	
 }
 
-- (void) setAnimationFrameInterval:(NSInteger)frameInterval {
+- (void)setAnimationFrameInterval:(NSInteger)frameInterval {
 	if (frameInterval >= 1) {
 		_animationFrameInterval = frameInterval;
 		
@@ -114,7 +114,7 @@
 	}
 }
 
-- (void) updateParticles {
+- (void)updateParticles {
 	float timeDelta = ((1.0 / 60.0) * _animationFrameInterval);
 	float newTime = _precTime + timeDelta;
 	
@@ -201,7 +201,7 @@
 	return particle;
 }
 
-- (void) removeParticle:(Isgl3dGLParticle *)particle {
+- (void)removeParticle:(Isgl3dGLParticle *)particle {
 	[_particleSystem removeParticle:particle];
 	_nParticles -= 1;
 
@@ -211,7 +211,7 @@
 	return _selfDestructing;
 }
 
-- (void) setSelfDestructing:(BOOL)isSelfDestructing {
+- (void)setSelfDestructing:(BOOL)isSelfDestructing {
 	// Release old instance if no longer self destructing
 	if (_selfDestructing) {
 		[_instance release];

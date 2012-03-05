@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +27,13 @@
 #import "Isgl3dFloatArray.h"
 #import "Isgl3dUShortArray.h"
 #import "Isgl3dVector.h"
+#import "Isgl3dVector3.h"
+
 
 @interface Isgl3dCubeSphere (PrivateMethods)
 - (Isgl3dVector3) intersectionOfVector:(Isgl3dVector3)vector withPlane:(Isgl3dVector4)plane;
 @end
+
 
 @implementation Isgl3dCubeSphere
 
@@ -38,11 +41,11 @@
 @synthesize longs = _longs;
 @synthesize lats = _lats;
 
-+ (id) meshWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
++ (id)meshWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
 	return [[[self alloc] initWithGeometry:radius longs:longs lats:lats] autorelease];
 }
 
-- (id) initWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
+- (id)initWithGeometry:(float)radius longs:(int)longs lats:(int)lats {
 	
 	if ((self = [super init])) {
 		_radius = radius;
@@ -55,11 +58,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
     [super dealloc];
 }
 
-- (void) fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
+- (void)fillVertexData:(Isgl3dFloatArray *)vertexData andIndices:(Isgl3dUShortArray *)indices {
 	
 	int lats = _lats;
 	if (lats % 4 != 0) {
@@ -98,7 +101,7 @@
 			float cosPhi = cos(phi);
 
 			// Find intersection of point with different planes making up sphere			
-			Isgl3dVector3 ptOnSphere = iv3(cosPhi * sinTheta, cosTheta, sinPhi * sinTheta);
+			Isgl3dVector3 ptOnSphere = Isgl3dVector3Make(cosPhi * sinTheta, cosTheta, sinPhi * sinTheta);
 			Isgl3dVector3 intersection;			
 
 			if (latNumber < lats / 4) {
@@ -194,7 +197,7 @@
 	
 	float l = -d / (a*x + b*y + c*z);
 	
-	return iv3(l*x, l*y, l*z);
+	return Isgl3dVector3Make(l*x, l*y, l*z);
 }
 
 

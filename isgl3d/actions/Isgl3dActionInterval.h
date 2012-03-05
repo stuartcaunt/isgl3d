@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -46,13 +46,13 @@
  * Allocates and initialises (autorelease) an Isgl3dActionInterval with a duration.
  * @param duration The duration of the action
  */
-+ (id) actionWithDuration:(float)duration;
++ (id)actionWithDuration:(float)duration;
 
 /**
  * Initialises the an Isgl3dActionInterval with a duration.
  * @param duration The duration of the action
  */
-- (id) initWithDuration:(float)duration;
+- (id)initWithDuration:(float)duration;
 
 
 @end

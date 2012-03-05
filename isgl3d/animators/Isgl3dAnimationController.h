@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,14 +70,14 @@
  * @param skeleton The skeleton to be animated (containing Isgl3dBoneNodes and/or Isgl3dAnimatedMeshes).
  * @param numberOfFrames The number of frames contained in the animation sequence.
  */
-+ (id) controllerWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames;
++ (id)controllerWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames;
 
 /**
  * Initialises the animation controller with a given skeleton and specifies the number of frames.
  * @param skeleton The skeleton to be animated (containing Isgl3dBoneNodes and/or Isgl3dAnimatedMeshes).
  * @param numberOfFrames The number of frames contained in the animation sequence.
  */
-- (id) initWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames;
+- (id)initWithSkeleton:(Isgl3dSkeletonNode *)skeleton andNumberOfFrames:(unsigned int)numberOfFrames;
 
 /**
  * Explicitly sets the current frame number and updates the skeleton.
@@ -85,7 +85,7 @@
  * the value is ignored.
  * @param frame The desired frame number (between 0 and numberOfFrames - 1)
  */
-- (void) setFrame:(unsigned int)frame;
+- (void)setFrame:(unsigned int)frame;
 
 /**
  * Increments the current frame number.
@@ -93,24 +93,24 @@
  * the frame number is set to zero (if repeating animation has been chosen) or it stays at the last frame
  * and the animation stops.
  */
-- (void) nextFrame;
+- (void)nextFrame;
 
 /**
  * Starts the animation (if it is not already started). 
  * An NSTimer automatically calls nextFrame for the desired frame rate. 
  */
-- (void) start;
+- (void)start;
 
 /**
  * Stops the animation.
  * The NSTimer (used for automatic animation) is destroyed and the current frame is set to zero.
  */
-- (void) stop;
+- (void)stop;
 
 /**
  * Pauses the animation.
  * The NSTimer (used for automatic animation) is destroyed but the current frame number is retained.
  */
-- (void) pause;
+- (void)pause;
 
 @end

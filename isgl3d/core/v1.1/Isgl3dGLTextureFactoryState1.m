@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,13 +32,13 @@
 #import <OpenGLES/ES1/glext.h>
 
 @interface Isgl3dGLTextureFactoryState1 (PrivateMethods)
-- (void) handleParameters:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
+- (void)handleParameters:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
 - (unsigned int) createTextureForDepthRender:(int)width height:(int)height;
 @end
 
 @implementation Isgl3dGLTextureFactoryState1
 
-- (id) init {
+- (id)init {
 	
 	if ((self = [super init])) {
 	}
@@ -46,7 +46,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
@@ -123,7 +123,7 @@
 }
 
 
-- (void) deleteTextureId:(unsigned int)textureId {
+- (void)deleteTextureId:(unsigned int)textureId {
 	glDeleteTextures(1, &textureId);
 }
 
@@ -139,7 +139,7 @@
 	return 0;
 }
 
-- (void) handleParameters:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (void)handleParameters:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	if (precision == Isgl3dTexturePrecisionHigh) {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

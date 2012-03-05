@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,11 +33,11 @@
 @synthesize node = _node;
 @synthesize rigidBody = _rigidBody;
 
-+ (id) physicsObjectWithNode:(Isgl3dNode *)node andRigidBody:(btRigidBody *)rigidBody {
++ (id)physicsObjectWithNode:(Isgl3dNode *)node andRigidBody:(btRigidBody *)rigidBody {
 	return [[[self alloc] initWithNode:node andRigidBody:rigidBody] autorelease];
 }
 
-- (id) initWithNode:(Isgl3dNode *)node andRigidBody:(btRigidBody *)rigidBody {
+- (id)initWithNode:(Isgl3dNode *)node andRigidBody:(btRigidBody *)rigidBody {
     if ((self = [super init])) {
     	_node = [node retain];
     	_rigidBody = rigidBody;
@@ -47,7 +47,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_node release];
 	
 	delete _rigidBody->getMotionState();
@@ -57,7 +57,7 @@
 	[super dealloc];
 }
 
-- (void) applyForce:(Isgl3dVector3)force withPosition:(Isgl3dVector3)position {
+- (void)applyForce:(Isgl3dVector3)force withPosition:(Isgl3dVector3)position {
 	btVector3 bodyForce(force.x, force.y, force.z);
 	btVector3 bodyPosition(position.x, position.y, position.z);
 

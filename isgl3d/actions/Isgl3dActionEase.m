@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -38,7 +38,7 @@
 
 @implementation Isgl3dActionEase
 
-+ (id) actionWithAction:(Isgl3dActionInterval *)action {
++ (id)actionWithAction:(Isgl3dActionInterval *)action {
 	return [[[self alloc] initWithAction:action] autorelease];
 }
 
@@ -49,13 +49,13 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_action release];
 	
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dAction * copy = [[[self class] allocWithZone:zone] initWithAction:[[_action copy] autorelease]];
 
 	return copy;
@@ -67,7 +67,7 @@
 	[_action startWithTarget:_target];
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	// To be over-ridden
 	[_action update:progress];
 }
@@ -79,7 +79,7 @@
 
 @implementation Isgl3dActionEaseRate
 
-+ (id) actionWithAction:(Isgl3dActionInterval *)action rate:(float)rate {
++ (id)actionWithAction:(Isgl3dActionInterval *)action rate:(float)rate {
 	return [[[self alloc] initWithAction:action rate:rate] autorelease];
 }
 
@@ -90,11 +90,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dAction * copy = [[[self class] allocWithZone:zone] initWithAction:[[_action copy] autorelease] rate:_rate];
 
 	return copy;
@@ -105,7 +105,7 @@
 #pragma mark Isgl3dActionEaseIn
 
 @implementation Isgl3dActionEaseIn
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:powf(progress, _rate)];
 }
 @end
@@ -113,7 +113,7 @@
 #pragma mark Isgl3dActionEaseOut
 
 @implementation Isgl3dActionEaseOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:powf(progress, 1.0f/_rate)];
 }
 @end
@@ -121,7 +121,7 @@
 #pragma mark Isgl3dActionEaseInOut
 
 @implementation Isgl3dActionEaseInOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	int sign = 1;
 	int r = (int)_rate;
 	
@@ -142,7 +142,7 @@
 #pragma mark Isgl3dActionEaseExponentialIn
 
 @implementation Isgl3dActionEaseExponentialIn
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:(progress == 0.0f) ? 0.0f : powf(2.0f, 10.0f * (progress - 1.0f)) - 0.001f];
 }
 @end
@@ -150,7 +150,7 @@
 #pragma mark Isgl3dActionEaseExponentialOut
 
 @implementation Isgl3dActionEaseExponentialOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:(progress == 1.0f) ? 1.0f : (-powf(2.0f, -10.0f * progress) + 1.0f)];
 }
 @end
@@ -158,7 +158,7 @@
 #pragma mark Isgl3dActionEaseExponentialInOut
 
 @implementation Isgl3dActionEaseExponentialInOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	progress /= 0.5f;
 	if (progress < 1) {
 		progress = 0.5f * powf(2.0f, 10.0f * (progress - 1.0f));
@@ -173,7 +173,7 @@
 #pragma mark Isgl3dActionEaseSineIn
 
 @implementation Isgl3dActionEaseSineIn
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:-1.0f * cosf(0.5f * progress * M_PI) + 1.0f];
 }
 @end
@@ -181,7 +181,7 @@
 #pragma mark Isgl3dActionEaseSineOut
 
 @implementation Isgl3dActionEaseSineOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:sinf(0.5f * progress * M_PI)];
 }
 @end
@@ -189,7 +189,7 @@
 #pragma mark Isgl3dActionEaseSineInOut
 
 @implementation Isgl3dActionEaseSineInOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_action update:-0.5f * (cosf(M_PI * progress) - 1.0f)];
 }
 @end
@@ -198,22 +198,22 @@
 
 @implementation Isgl3dActionEaseElastic
 
-+ (id) actionWithAction:(Isgl3dActionInterval *)action period:(float)period {
++ (id)actionWithAction:(Isgl3dActionInterval *)action period:(float)period {
 	return [[[self alloc] initWithAction:action period:period] autorelease];
 }
 
-- (id) initWithAction:(Isgl3dActionInterval *)action {
+- (id)initWithAction:(Isgl3dActionInterval *)action {
 	return [self initWithAction:action period:0.3f];
 }
 
-- (id) initWithAction:(Isgl3dActionInterval *)action period:(float)period {
+- (id)initWithAction:(Isgl3dActionInterval *)action period:(float)period {
 	if ((self = [super initWithAction:action])) {
 		_period = period;
 	}
 	return self;
 }
 
-- (id) copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
 	Isgl3dAction * copy = [[[self class] allocWithZone:zone] initWithAction:[[_action copy] autorelease] period:_period];
 	return copy;
 }
@@ -223,7 +223,7 @@
 #pragma mark Isgl3dActionEaseElasticIn
 
 @implementation Isgl3dActionEaseElasticIn
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float newProgress = 0.0f;
 	if (progress == 0.0f || progress == 1.0f) {
 		newProgress = progress;
@@ -240,7 +240,7 @@
 #pragma mark Isgl3dActionEaseElasticOut
 
 @implementation Isgl3dActionEaseElasticOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float newProgress = 0.0f;
 	if (progress == 0.0f || progress == 1.0f) {
 		newProgress = progress;
@@ -256,7 +256,7 @@
 #pragma mark Isgl3dActionEaseElasticInOut
 
 @implementation Isgl3dActionEaseElasticInOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float newProgress = 0.0f;
 	if (progress == 0.0f || progress == 1.0f) {
 		newProgress = progress;
@@ -303,7 +303,7 @@
 #pragma mark Isgl3dActionEaseBounceIn
 
 @implementation Isgl3dActionEaseBounceIn
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float newProgress = 1.0f - [self bounceTime:1.0f - progress];	
 	[_action update:newProgress];
 }
@@ -312,7 +312,7 @@
 #pragma mark Isgl3dActionEaseBounceOut
 
 @implementation Isgl3dActionEaseBounceOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float newProgress = [self bounceTime:progress];	
 	[_action update:newProgress];
 }
@@ -321,7 +321,7 @@
 #pragma mark Isgl3dActionEaseBounceInOut
 
 @implementation Isgl3dActionEaseBounceInOut
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float newProgress = 0.0f;
 	if (progress < 0.5f) {
 		progress = progress * 2.0f;

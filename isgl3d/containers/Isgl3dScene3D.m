@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,11 +28,11 @@
 
 @implementation Isgl3dScene3D
 
-+ (id) scene {
++ (id)scene {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
     if ((self = [super init])) {
 		_alphaNodes = [[NSMutableArray alloc] init];
 		_sortedNodes = [[NSMutableArray alloc] init];
@@ -41,14 +41,14 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_sortedNodes release];
 	[_alphaNodes release];
 
 	[super dealloc];
 }
 
-- (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 
 	// Collect in array all transparent objects in the scene
 	[self collectAlphaObjects:_alphaNodes];
@@ -85,7 +85,7 @@
 @synthesize distance = _distance;
 @synthesize node = _node;
 
-- (id) initWithDistance:(float)distance forNode:(Isgl3dNode *)node {
+- (id)initWithDistance:(float)distance forNode:(Isgl3dNode *)node {
     if ((self = [super init])) {
     	_distance = distance;
     	
@@ -95,7 +95,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_node release];
 
 	[super dealloc];

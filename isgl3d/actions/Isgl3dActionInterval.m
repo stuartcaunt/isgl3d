@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -32,11 +32,11 @@
 
 @synthesize elapsedTime = _elapsedTime;
 
-+ (id) actionWithDuration:(float)duration {
++ (id)actionWithDuration:(float)duration {
 	return [[[self alloc] initWithDuration:duration] autorelease];
 }
 
-- (id) initWithDuration:(float)duration {
+- (id)initWithDuration:(float)duration {
 	if ((self = [super init])) {
 		
 		// Ensure that duration is positive and greater than 0
@@ -50,11 +50,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionInterval * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration];
 
 	return copy;
@@ -75,7 +75,7 @@
 	return _elapsedTime >= _duration;
 }
 
-- (void) tick:(float)dt {
+- (void)tick:(float)dt {
 	float progress = 0.0f;
 	if (_isFirstTick) {
 		_isFirstTick = NO;

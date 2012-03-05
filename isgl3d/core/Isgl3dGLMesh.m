@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,11 +35,11 @@
 @synthesize indexDataSize = _indexDataSize;
 @synthesize numberOfElements = _numberOfElements;
 
-+ (id) mesh {
++ (id)mesh {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {    
+- (id)init {    
     if ((self = [super init])) {
 		
 		_vertexData = 0;
@@ -50,7 +50,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 
 	if (_vertexData) {
@@ -70,7 +70,7 @@
 	[super dealloc];
 }
 
-- (void) constructVBOData {
+- (void)constructVBOData {
 	if (_vertexData) {
 		free(_vertexData);
 		_vertexData = 0;
@@ -91,7 +91,7 @@
 	}	
 }
 
-- (void) constructMeshData {
+- (void)constructMeshData {
 	// Overload
 }
 
@@ -103,7 +103,7 @@
 	return _vertexData;
 }
 
-- (void) setVertexData:(unsigned char *)vertexData withSize:(unsigned int)vertexDataSize {
+- (void)setVertexData:(unsigned char *)vertexData withSize:(unsigned int)vertexDataSize {
 	if (_vertexData) {
 		free(_vertexData);
 	}
@@ -117,7 +117,7 @@
 	return _indices;
 }
 
-- (void) setIndices:(unsigned char *)indices withSize:(unsigned int)indexDataSize andNumberOfElements:(unsigned int)numberOfElements {
+- (void)setIndices:(unsigned char *)indices withSize:(unsigned int)indexDataSize andNumberOfElements:(unsigned int)numberOfElements {
 	if (_indices) {
 		free(_indices);
 	}
@@ -132,7 +132,7 @@
 	return _vboData;
 }
 
-- (void) setVBOData:(Isgl3dGLVBOData *)vboData {
+- (void)setVBOData:(Isgl3dGLVBOData *)vboData {
 	if (vboData != _vboData) {
 		[_vboData release];
 		_vboData = [vboData retain];
@@ -152,7 +152,7 @@
 }
 
 
-- (void) setVertices:(unsigned char *)vertexData withVertexDataSize:(unsigned int)vertexDataSize andIndices:(unsigned char *)indices 
+- (void)setVertices:(unsigned char *)vertexData withVertexDataSize:(unsigned int)vertexDataSize andIndices:(unsigned char *)indices 
 			withIndexDataSize:(unsigned int)indexDataSize andNumberOfElements:(unsigned int)numberOfElements andVBOData:(Isgl3dGLVBOData *)vboData {
 
 	// Vertex data

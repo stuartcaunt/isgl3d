@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -45,25 +45,25 @@
  * Allocates and initialises (autorelease) the Isgl3dActionSequence with a series of actions to execute.
  * @param action The first in a list of actions to run sequentially (terminated by nil)
  */
-+ (id) actionWithActions:(Isgl3dActionFixedDuration *)action, ...;
++ (id)actionWithActions:(Isgl3dActionFixedDuration *)action, ...;
 
 /**
  * Allocates and initialises (autorelease) the Isgl3dActionSequence with an array of actions to execute.
  * @param actions An array of actions to run sequentially
  */
-+ (id) actionWithActionsArray:(NSArray *)actions;
++ (id)actionWithActionsArray:(NSArray *)actions;
 
 /**
  * Initialises the Isgl3dActionSequence with a series of actions to execute.
  * @param action The first in a list of actions to run sequentially (terminated by nil)
  */
-- (id) initWithActions:(Isgl3dActionFixedDuration *)action, ...;
+- (id)initWithActions:(Isgl3dActionFixedDuration *)action, ...;
 
 /**
  * Initialises the Isgl3dActionSequence with an array of actions to execute.
  * @param actions An array of actions to run sequentially
  */
-- (id) initWithActionsArray:(NSArray *)actions;
+- (id)initWithActionsArray:(NSArray *)actions;
 
 
 @end

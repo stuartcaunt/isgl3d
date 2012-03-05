@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -28,17 +28,19 @@
 
 #import "Isgl3dActionMove.h"
 #import "Isgl3dNode.h"
+#import "Isgl3dVector3.h"
+
 
 #pragma mark Isgl3dActionMoveTo
 
 @implementation Isgl3dActionMoveTo
 
 
-+ (id) actionWithDuration:(float)duration position:(Isgl3dVector3)position {
++ (id)actionWithDuration:(float)duration position:(Isgl3dVector3)position {
 	return [[[self alloc] initWithDuration:duration position:position] autorelease];
 }
 
-- (id) initWithDuration:(float)duration position:(Isgl3dVector3)position {
+- (id)initWithDuration:(float)duration position:(Isgl3dVector3)position {
 	if ((self = [super initWithDuration:duration])) {
 		_finalPosition = position;
 	}
@@ -46,11 +48,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionMoveTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration position:_finalPosition];
 
 	return copy;
@@ -63,8 +65,8 @@
 	iv3Sub(&_vector, &_initialPosition);
 }
 
-- (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
+- (void)update:(float)progress {
+	[_target setPosition:Isgl3dVector3Make(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
 }
 
 @end
@@ -74,11 +76,11 @@
 @implementation Isgl3dActionMoveBy
 
 
-+ (id) actionWithDuration:(float)duration vector:(Isgl3dVector3)vector {
++ (id)actionWithDuration:(float)duration vector:(Isgl3dVector3)vector {
 	return [[[self alloc] initWithDuration:duration vector:vector] autorelease];
 }
 
-- (id) initWithDuration:(float)duration vector:(Isgl3dVector3)vector {
+- (id)initWithDuration:(float)duration vector:(Isgl3dVector3)vector {
 	if ((self = [super initWithDuration:duration])) {
 		_vector = vector;
 	}
@@ -86,11 +88,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionMoveBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration vector:_vector];
 
 	return copy;
@@ -101,8 +103,8 @@
 	_initialPosition = ((Isgl3dNode *)target).position;
 }
 
-- (void) update:(float)progress {
-	[_target setPosition:iv3(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
+- (void)update:(float)progress {
+	[_target setPosition:Isgl3dVector3Make(_initialPosition.x + progress * _vector.x, _initialPosition.y + progress * _vector.y, _initialPosition.z + progress * _vector.z)];
 }
 
 @end
@@ -112,11 +114,11 @@
 @implementation Isgl3dActionSetPosition
 
 
-+ (id) actionWithPosition:(Isgl3dVector3)position {
++ (id)actionWithPosition:(Isgl3dVector3)position {
 	return [[[self alloc] initWithPosition:position] autorelease];
 }
 
-- (id) initWithPosition:(Isgl3dVector3)position {
+- (id)initWithPosition:(Isgl3dVector3)position {
 	if ((self = [super init])) {
 		_finalPosition = position;
 	}
@@ -124,17 +126,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetPosition * copy = [[[self class] allocWithZone:zone] initWithPosition:_finalPosition];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setPosition:_finalPosition];
 }
 

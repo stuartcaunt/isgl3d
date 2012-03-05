@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,8 +32,9 @@
 
 
 @class Isgl3dScene3D;
-@class Isgl3dCamera;
 @class Isgl3dGLRenderer;
+@class Isgl3dNodeCamera;
+@protocol Isgl3dCamera;
 
 
 /**
@@ -62,46 +63,17 @@
  * 
  */
 @interface Isgl3dView : NSObject {
-
-@private
-	isgl3dOrientation _viewOrientation;
-	isgl3dOrientation _deviceViewOrientation;
-
-	Isgl3dScene3D * _scene;
-	Isgl3dCamera * _camera;
-
-	BOOL _isRunning;
-
-	BOOL _zSortingEnabled;
-
-	BOOL _occlusionTestingEnabled;
-	float _occlusionTestingAngle;
-	Isgl3dVector3 _eyeNormal;
-	Isgl3dVector3 _cameraPosition;
-	
-	CGRect _viewport;
-	CGRect _viewportInPixels;
-	BOOL _isOpaque;
-	float _backgroundColor[4];
-	
-	BOOL _isEventCaptureEnabled;
-	
-	NSString * _sceneAmbient;
-	
-	BOOL _cameraUpdateOnly;
-	
-	BOOL _autoResizeViewport;
 }
 
 /**
  * The scene to be rendered. Only one scene at a time can be rendered but it can be changed dynamically at runtime.
  */
-@property (nonatomic, retain) Isgl3dScene3D * scene;
+@property (nonatomic,retain) Isgl3dScene3D *scene;
 
 /**
  * The camera to view the scene from. The camera can be changed at runtime.
  */
-@property (nonatomic, retain) Isgl3dCamera * camera;
+@property (nonatomic,retain) id<Isgl3dCamera> camera;
 
 /**
  * Indicates whether z-sorting should be enabled for transparent objects. This resolves some z-buffer rendering problems but is 
@@ -201,65 +173,65 @@
 /**
  * Allocates, initialises and returns an autoreleased Isgl3dView.
  */
-+ (id) view;
++ (id)view;
 
 /**
  * Initialises an Isgl3dView.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Sets occlusion testing to true and the maximum angle for which it occurs.
  * @param angle The maximum angle (between the camera-target vector and the camera-node vector) for which nodes become transparent.
  */
-- (void) setOcclusionTestingEnabledWithAngle:(float)angle;
+- (void)setOcclusionTestingEnabledWithAngle:(float)angle;
 
 /**
  * Activates the Isgl3dView.
  * Note, this should never be called manually. This is called by the Isgl3dDirector when the view is added to it. Any code that needs to
  * be handled when the view is activated should be added in "onActivated".
  */
-- (void) activate;
+- (void)activate;
 
 /**
  * Deactivates the Isgl3dView.
  * Note, this should never be called manually. This is called by the Isgl3dDirector when the view is removed from it. Any code that needs to
  * be handled when the view is deactivated should be added in "onDeactivated".
  */
-- (void) deactivate;
+- (void)deactivate;
 
 /**
  * Called by "activate": any code that needs to be called when a view is activated should be implemented here in sub-classes.
  */
-- (void) onActivated;
+- (void)onActivated;
 
 /**
  * Called by "deactivate": any code that needs to be called when a view is deactivated should be implemented here in sub-classes.
  */
-- (void) onDeactivated;
+- (void)onDeactivated;
 
 /**
  * Adds a specified selector method to the Isgl3dScheduler. 
  * The selector is called at every frame allowing for scene updates to be coded.
  */
-- (void) schedule:(SEL)selector;
+- (void)schedule:(SEL)selector;
 
 /**
  * Unschedules the selector (specified in "schedule:") in the Isgl3dScheduler.
  */
-- (void) unschedule;
+- (void)unschedule;
 
 /**
  * Updates all model matrices in the scene.
  * Note this should never be called manually. This is called by the Isgl3dDirector at each frame during the render process.
  */
-- (void) updateModelMatrices;
+- (void)updateModelMatrices;
 
 /**
  * Renders the scene as viewed by the camera through the specified viewport.
  * Note this should never be called manually. This is called by the Isgl3dDirector at each frame during the render process.
  */
-- (void) render:(Isgl3dGLRenderer *)renderer;
+- (void)render:(Isgl3dGLRenderer *)renderer;
 
 /**
  * Renders the scene as viewed by the shadow casting light to produce a shadow map. This is only available when 
@@ -267,13 +239,13 @@
  * Warning: this is experimental.
  * Note this should never be called manually. This is called by the Isgl3dDirector at each frame during the render process.
  */
-- (void) renderForShadowMaps:(Isgl3dGLRenderer *)renderer;
+- (void)renderForShadowMaps:(Isgl3dGLRenderer *)renderer;
 
 /**
  * Renders the scene as viewed by the camera through the specified viewport to produce data used in the 3D event capturing.
  * Note this should never be called manually. This is called by the Isgl3dDirector at each frame during the render process.
  */
-- (void) renderForEventCapture:(Isgl3dGLRenderer *)renderer;
+- (void)renderForEventCapture:(Isgl3dGLRenderer *)renderer;
 
 /**
  * Converts a window point relative to the UIKit user interface to a point in the local coordinate system of the viewport.
@@ -286,7 +258,7 @@
  * @param uiPoint A CGPoint relative to the main window. Note that (0, 0) is top left
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
  */
-- (CGPoint) convertUIPointToView:(CGPoint)uiPoint;
+- (CGPoint)convertUIPointToView:(CGPoint)uiPoint;
 
 /**
  * Converts a window point relative to the UIKit user interface to a point in the local coordinate system of the viewport.
@@ -299,14 +271,14 @@
  * @param uiPoint A CGPoint relative to the main window. Note that (0, 0) is top left
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left in pixels.
  */
-- (CGPoint) convertUIPointToViewInPixels:(CGPoint)uiPoint;
+- (CGPoint)convertUIPointToViewInPixels:(CGPoint)uiPoint;
 
 /**
  * Returns true if a window point relative to the UIKit user interface is inside the viewport of the Isgl3dView.
  * @param uiPoint A CGPoint relative to the main window. Note that (0, 0) is top left
  * @return true if the point is inside the Isgl3dView viewport.
  */
-- (BOOL) isUIPointInView:(CGPoint)uiPoint;
+- (BOOL)isUIPointInView:(CGPoint)uiPoint;
 
 /**
  * Converts a 3D world position to a 2D position in the viewport equivalent to where the position is rendered
@@ -319,7 +291,7 @@
  * @param worldPosition an Isgl3dVector3 containing the 3D world position to be translated to 2D viewport point.
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left.
  */
-- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition;
+- (CGPoint)convertWorldPositionToView:(Isgl3dVector3)worldPosition;
 
 /**
  * Converts a 3D world position to a 2D position in the viewport equivalent to where the position is rendered
@@ -332,13 +304,13 @@
  * @param worldPosition an Isgl3dVector3 containing the 3D world position to be translated to 2D viewport point.
  * @return A CGPoint relative to the viewport with (0, 0) at the bottom left in pixels.
  */
-- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition;
+- (CGPoint)convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition;
 
 /**
  * Resizes the viewport automatically if it is using the same rectangle as the main window, otherwise does nothing.
  * Note this should never be called manually. This is called by the Isgl3dDirector during a window resize operation.
  */
-- (void) onResizeFromLayer;
+- (void)onResizeFromLayer;
 
 @end
 
@@ -351,6 +323,7 @@
  */
 @interface Isgl3dBasic3DView : Isgl3dView {
 }
+- (void)createSceneCamera;
 @end
 
 #pragma mark Isgl3dBasic2DView
@@ -360,5 +333,7 @@
  * This can be used, for example, when creating a user interface (or HUD) for the iSGL3D application.
  * Both scene and camera can be modified if needed. When modifying the viewport, the camera projection matrix is automatically ajusted.
  */
-@interface Isgl3dBasic2DView : Isgl3dView
+@interface Isgl3dBasic2DView : Isgl3dView {
+}
+- (void)createSceneCamera;
 @end

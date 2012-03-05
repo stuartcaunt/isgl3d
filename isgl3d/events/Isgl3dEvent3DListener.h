@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,7 +60,7 @@
  * @param object The object with the callback method.
  * @param method The method to be called when the event is triggered.
  */
-- (id) initWithObject:(id)object method:(SEL)method;
+- (id)initWithObject:(id)object method:(SEL)method;
 
 /*
  * Calls the handler specified by the object and method.
@@ -68,6 +68,6 @@
  * 
  * @param event the Isgl3dEvent3D.
  */
-- (void) handleEvent:(Isgl3dEvent3D *)event;
+- (void)handleEvent:(Isgl3dEvent3D *)event;
 
 @end

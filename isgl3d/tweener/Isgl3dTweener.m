@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,9 @@
 #import "Isgl3dTween.h"
 
 @interface Isgl3dTweener (PrivateMethods)
-- (void) addTweenToInstance:(id)object withParameters:(NSDictionary *)parameters;
-- (void) startAnimation;
-- (void) stopAnimation;
+- (void)addTweenToInstance:(id)object withParameters:(NSDictionary *)parameters;
+- (void)startAnimation;
+- (void)stopAnimation;
 @end
 
 @implementation Isgl3dTweener
@@ -46,7 +46,7 @@ static Isgl3dTweener * _instance;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	//Isgl3dLog(Info, @"Deleting tweener");
 	[self stopAnimation];
 	[_activeTweens release];
@@ -71,7 +71,7 @@ static Isgl3dTweener * _instance;
 	}
 }
 
-- (void) addTweenToInstance:(id)object withParameters:(NSDictionary *)parameters {
+- (void)addTweenToInstance:(id)object withParameters:(NSDictionary *)parameters {
 	
 	Isgl3dTween * newTween = [[Isgl3dTween alloc] initWithObject:object forParameters:parameters];
 	
@@ -109,7 +109,7 @@ static Isgl3dTweener * _instance;
 	[self startAnimation];
 }
 
-- (void) updateTweens:(id)sender {
+- (void)updateTweens:(id)sender {
 	
 	NSMutableArray * completedTweens = [[NSMutableArray alloc] init];
 	
@@ -146,7 +146,7 @@ static Isgl3dTweener * _instance;
 }
 
 
-- (void) startAnimation {
+- (void)startAnimation {
 	// Check to see if animation already happening
 	if (!_animating) {
 		_animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)(1.0 / 60.0) target:self selector:@selector(updateTweens:) userInfo:nil repeats:TRUE];

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,12 +45,12 @@
 /*
  * Allocates and initialises (autorelease) Isgl3dSkeletonNode.
  */
-+ (id) skeletonNode;
++ (id)skeletonNode;
 
 /*
  * Initialises the Isgl3dSkeletonNode.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Creates an Isgl3dBoneNode and automatically adds it as a child.
@@ -66,6 +66,6 @@
  * @param frameNumber The desired frame number
  * Note that this is called automatically by the Isgl3dAnimationController if this is in use. 
  */
-- (void) setFrame:(unsigned int)frameNumber;
+- (void)setFrame:(unsigned int)frameNumber;
 
 @end

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@
 /**
  * Initialises an empty array with a capacity of 1.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Initialises an empty array with a given capacity.
@@ -49,14 +49,14 @@
  * is set to 19 through this, the real capacity will be 32.
  * @param size The initial capacity of the array.
  */
-- (id) initWithSize:(unsigned int)size;
+- (id)initWithSize:(unsigned int)size;
 
 /**
  * Initialises the array with data.
  * @param count The number of elements in the array provided.
  * @param array The initial data to be stored in the array.
  */
-- (id) initWithStdArray:(int)count array:(float *)array;
+- (id)initWithStdArray:(int)count array:(float *)array;
 
 /**
  * Returns the value for the given index. An error is reported if the index is outside the array capacity.
@@ -73,7 +73,7 @@
  * Adds a value to the array. The array resizes automatically if capacity is reached.
  * @param value The value to be added.
  */
-- (void) add:(float)value;
+- (void)add:(float)value;
 
 /**
  * Returns the number of data elements in the array (not the capacity).

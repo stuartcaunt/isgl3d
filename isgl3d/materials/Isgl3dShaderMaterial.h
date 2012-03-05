@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,13 +47,13 @@
  * Allocates and initialises (autorelease) an Isgl3dShaderMaterial with the specified Isgl3dCustomShader shader.
  * @param shader The custom shader to be used to render the object.
  */
-+ (id) materialWithShader:(Isgl3dCustomShader *)shader;
++ (id)materialWithShader:(Isgl3dCustomShader *)shader;
 
 /**
  * Initialises an Isgl3dShaderMaterial with the specified Isgl3dCustomShader shader.
  * @param shader The custom shader to be used to render the object.
  */
-- (id) initWithShader:(Isgl3dCustomShader *)shader;
+- (id)initWithShader:(Isgl3dCustomShader *)shader;
 
 
 @end

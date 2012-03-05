@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -132,34 +132,34 @@
  * @param mesh The mesh to be rendered.
  * @param material The material to be drawn over the mesh.
  */
-- (id) initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
+- (id)initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Sets both x and y at the same time in <em>points</em>. <em>Points</em> are identical for rentina and non-retina displays.
  * @param x The x-coordinate in points on the screen of the component.
  * @param y The y-coordinate in points on the screen of the component.
  */
-- (void) setX:(unsigned int)x andY:(unsigned int)y;
+- (void)setX:(unsigned int)x andY:(unsigned int)y;
 
 /**
  * Sets both x and y at the same time in pixels. Pixels differ for rentina and non-retina displays.
  * @param x The x-coordinate in pixels on the screen of the component.
  * @param y The y-coordinate in pixels on the screen of the component.
  */
-- (void) setXInPixels:(unsigned int)x andYInPixels:(unsigned int)y;
+- (void)setXInPixels:(unsigned int)x andYInPixels:(unsigned int)y;
 
 /**
  * Sets the width and height of the component in <em>points</em>. <em>Points</em> are identical for rentina and non-retina displays.
  * @param width The width in points of the component.
  * @param height The height in points of the component.
  */
-- (void) setWidth:(unsigned int)width andHeight:(unsigned int)height;
+- (void)setWidth:(unsigned int)width andHeight:(unsigned int)height;
 
 /**
  * Sets the width and height of the component in pixels. Pixels are different for rentina and non-retina displays.
  * @param width The width in pixels of the component.
  * @param height The height in pixels of the component.
  */
-- (void) setWidthInPixels:(unsigned int)width andHeightInPixels:(unsigned int)height;
+- (void)setWidthInPixels:(unsigned int)width andHeightInPixels:(unsigned int)height;
 
 @end

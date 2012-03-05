@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,11 @@
 
 @implementation Isgl3dPhysicsWorld
 
-+ (id) physicsWorld {
++ (id)physicsWorld {
 	return [[[self alloc] init] autorelease];
 }
 
-- (id) init {
+- (id)init {
     if ((self = [super init])) {
     	
     	_lastStepTime = [[NSDate alloc] init];
@@ -45,7 +45,7 @@
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	
 	[_lastStepTime release];
 	[_physicsObjects release];
@@ -53,11 +53,11 @@
 	[super dealloc];
 }
 
-- (void) setDiscreteDynamicsWorld:(btDiscreteDynamicsWorld *)discreteDynamicsWorld {
+- (void)setDiscreteDynamicsWorld:(btDiscreteDynamicsWorld *)discreteDynamicsWorld {
 	_discreteDynamicsWorld = discreteDynamicsWorld;
 }
 
-- (void) addPhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject {
+- (void)addPhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject {
 	
 	// Add collision object to dynamics world
 	_discreteDynamicsWorld->addRigidBody(physicsObject.rigidBody);
@@ -66,7 +66,7 @@
 	[_physicsObjects addObject:physicsObject];
 }
 
-- (void) removePhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject {
+- (void)removePhysicsObject:(Isgl3dPhysicsObject3D *)physicsObject {
 	// Remove from render list
 	[physicsObject.node removeFromParent];
 
@@ -77,7 +77,7 @@
 	[_physicsObjects removeObject:physicsObject];
 }
 
-- (void) clearAll {
+- (void)clearAll {
 	[super clearAll];
 	
 	for (Isgl3dPhysicsObject3D * physicsObject in _physicsObjects) {
@@ -87,7 +87,7 @@
 	[_physicsObjects removeAllObjects];
 }
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	// Get time since last step
 	NSDate * currentTime = [[NSDate alloc] init];
 	
@@ -109,7 +109,7 @@
 	[super updateWorldTransformation:parentTransformation];
 }
 
-- (void) setGravity:(float)x y:(float)y z:(float)z {
+- (void)setGravity:(float)x y:(float)y z:(float)z {
 	_discreteDynamicsWorld->setGravity(btVector3(x, y, z));
 }
 

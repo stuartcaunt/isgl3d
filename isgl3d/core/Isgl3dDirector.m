@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,12 +50,12 @@ static Isgl3dDirector * _instance = nil;
 
 @interface Isgl3dDirector ()
 @property (nonatomic, retain) Isgl3dGestureManager *gestureManager;
-- (id) initSingleton;
-- (void) setContentScaleFactor:(float)contentScaleFactor;
-- (void) mainLoop;
-- (void) calculateDeltaTime;
-- (void) render;
-- (void) renderForEventCapture;
+- (id)initSingleton;
+- (void)setContentScaleFactor:(float)contentScaleFactor;
+- (void)mainLoop;
+- (void)calculateDeltaTime;
+- (void)render;
+- (void)renderForEventCapture;
 @end
 
 @implementation Isgl3dDirector
@@ -74,13 +74,13 @@ static Isgl3dDirector * _instance = nil;
 @synthesize gestureManager = _gestureManager;
 
 
-- (id) init {
+- (id)init {
 	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
 
-- (id) initSingleton {
+- (id)initSingleton {
 	
 	if ((self = [super init])) {
 		Isgl3dLog(Info, @"%@", isgl3dVersion());
@@ -142,7 +142,7 @@ static Isgl3dDirector * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	Isgl3dLog(Info, @"Isgl3dDirector : dealloc");
 
 	[_gestureManager release];
@@ -203,7 +203,7 @@ static Isgl3dDirector * _instance = nil;
 	return _backgroundColor;
 }
 
-- (void) setBackgroundColor:(float *)color {
+- (void)setBackgroundColor:(float *)color {
 	memcpy(_backgroundColor, color, sizeof(float) * 4);
 }
 
@@ -211,7 +211,7 @@ static Isgl3dDirector * _instance = nil;
 	return [Isgl3dColorUtil rgbaString:_backgroundColor];
 }
 
-- (void) setBackgroundColorString:(NSString *)colorString {
+- (void)setBackgroundColorString:(NSString *)colorString {
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:_backgroundColor];
 }
 
@@ -219,7 +219,7 @@ static Isgl3dDirector * _instance = nil;
 	return _deviceOrientation;
 }
 
-- (void) setDeviceOrientation:(isgl3dOrientation)orientation {
+- (void)setDeviceOrientation:(isgl3dOrientation)orientation {
 
 	if (_autoRotationStrategy != Isgl3dAutoRotationByUIViewController) {
 		// If autorotate is enabled via UIViewController then ignore user-specified device rotations: keep as portrait
@@ -267,7 +267,7 @@ static Isgl3dDirector * _instance = nil;
 	return _autoRotationStrategy;
 }
 
-- (void) setAutoRotationStrategy:(isgl3dAutoRotationStrategy)autoRotationStrategy {
+- (void)setAutoRotationStrategy:(isgl3dAutoRotationStrategy)autoRotationStrategy {
 	// Force portrait orientation if controlled by UIViewController
 	if (autoRotationStrategy == Isgl3dAutoRotationByUIViewController) {
 		self.deviceOrientation = Isgl3dOrientationPortrait;
@@ -275,7 +275,7 @@ static Isgl3dDirector * _instance = nil;
 	_autoRotationStrategy = autoRotationStrategy;
 }
 
-- (void) setOpenGLView:(UIView<Isgl3dGLView> *)glView {
+- (void)setOpenGLView:(UIView<Isgl3dGLView> *)glView {
 	if (glView != _glView) {
 
 		[_gestureManager release];
@@ -330,7 +330,7 @@ static Isgl3dDirector * _instance = nil;
 	return _renderer.shadowRenderingMethod;
 }
 
-- (void) setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
+- (void)setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
 	_renderer.shadowRenderingMethod = shadowRenderingMethod;
 }
 
@@ -338,7 +338,7 @@ static Isgl3dDirector * _instance = nil;
 	return _renderer.shadowAlpha;
 }
 
-- (void) setShadowAlpha:(float)shadowAlpha {
+- (void)setShadowAlpha:(float)shadowAlpha {
 	_renderer.shadowAlpha = shadowAlpha;
 }
 
@@ -351,7 +351,7 @@ static Isgl3dDirector * _instance = nil;
 	return _antiAliasingEnabled;
 }
 
-- (void) setAntiAliasingEnabled:(BOOL)value {
+- (void)setAntiAliasingEnabled:(BOOL)value {
     if (value != _antiAliasingEnabled) {
         _antiAliasingEnabled = value;
 
@@ -363,7 +363,7 @@ static Isgl3dDirector * _instance = nil;
 
 #pragma mark start animation control
 
-- (void) setAnimationInterval:(float)animationInterval {
+- (void)setAnimationInterval:(float)animationInterval {
     if (animationInterval > 0) {
         _animationInterval = animationInterval;
 		Isgl3dLog(Info, @"Isgl3dDirector : animation frame interval set to %3.1ffps", 1. / animationInterval);
@@ -376,7 +376,7 @@ static Isgl3dDirector * _instance = nil;
 }
 
 
-- (void) startAnimation {
+- (void)startAnimation {
     if (!_isAnimating) {
         if (_displayLinkSupported) {
 
@@ -395,7 +395,7 @@ static Isgl3dDirector * _instance = nil;
     }
 }
 
-- (void) stopAnimation {
+- (void)stopAnimation {
     if (_isAnimating) {
         if (_displayLinkSupported) {
             [_displayLink invalidate];
@@ -410,11 +410,11 @@ static Isgl3dDirector * _instance = nil;
     }
 }
 
-- (void) run {
+- (void)run {
 	[self startAnimation];	
 }
 
-- (void) end {
+- (void)end {
 	[self stopAnimation];
 
 	[Isgl3dScheduler resetInstance];
@@ -438,7 +438,7 @@ static Isgl3dDirector * _instance = nil;
 	_glView = nil;
 }
 
-- (void) pause {
+- (void)pause {
 	if (_isPaused) {
 		return;
 	}
@@ -449,7 +449,7 @@ static Isgl3dDirector * _instance = nil;
 	_isPaused = YES;
 }
 
-- (void) resume {
+- (void)resume {
 	if (!_isPaused) {
 		return;
 	}
@@ -467,18 +467,18 @@ static Isgl3dDirector * _instance = nil;
 #pragma mark runtime errors
 
 
-- (void) onMemoryWarning {
+- (void)onMemoryWarning {
 	Isgl3dLog(Error, @"Isgl3dDirector : received memory warning");
 }
 
-- (void) onSignificantTimeChange {
+- (void)onSignificantTimeChange {
 	_hasSignificationTimeChange = YES;
 }
 
 
 #pragma mark views
 
-- (void) addView:(Isgl3dView *)view {
+- (void)addView:(Isgl3dView *)view {
 	[_views addObject:view];
 	
 	// Set active camera
@@ -491,7 +491,7 @@ static Isgl3dDirector * _instance = nil;
 	[view activate];
 }
 
-- (void) removeView:(Isgl3dView *)view {
+- (void)removeView:(Isgl3dView *)view {
 	[_views removeObject:view];
 
 	// Deactivate the view when it has been removed
@@ -509,7 +509,7 @@ static Isgl3dDirector * _instance = nil;
 	return [_gestureManager nodeForTouch:touch];
 }
 
-- (void) enableRetinaDisplay:(BOOL)enabled {
+- (void)enableRetinaDisplay:(BOOL)enabled {
 	if (enabled && !_glView) {
 		Isgl3dLog(Error, @"Isgl3dDirector : cannot enable retina display before Isgl3dEAGLView has been set.");
 		return;
@@ -545,7 +545,7 @@ static Isgl3dDirector * _instance = nil;
 	}
 }
 
-- (void) setContentScaleFactor:(float)contentScaleFactor {
+- (void)setContentScaleFactor:(float)contentScaleFactor {
 	if (_contentScaleFactor != contentScaleFactor) {
 		_contentScaleFactor = contentScaleFactor;
 		
@@ -567,7 +567,7 @@ static Isgl3dDirector * _instance = nil;
 	}
 }
 
-- (void) onResizeFromLayer {
+- (void)onResizeFromLayer {
 	_windowRect = [_glView bounds];
 	_windowRectInPixels = CGRectMake(_windowRect.origin.x * _contentScaleFactor, 
 		_windowRect.origin.y * _contentScaleFactor, 
@@ -587,7 +587,7 @@ static Isgl3dDirector * _instance = nil;
 
 #pragma mark main loop
 
-- (void) mainLoop {
+- (void)mainLoop {
 	// Calculate change in time 
 	[self calculateDeltaTime];
 	
@@ -623,7 +623,7 @@ static Isgl3dDirector * _instance = nil;
 	[_glView finalizeRender];
 }
 
-- (void) calculateDeltaTime {
+- (void)calculateDeltaTime {
 	struct timeval now;
 	
 	gettimeofday(&now, NULL);
@@ -642,7 +642,7 @@ static Isgl3dDirector * _instance = nil;
 
 #pragma mark rendering
 
-- (void) render {
+- (void)render {
 
 	// Clear the color buffer of full screen (depth/stencil handled by individual views)
 	[_renderer clear:ISGL3D_COLOR_BUFFER_BIT color:_backgroundColor viewport:_windowRectInPixels];
@@ -673,7 +673,7 @@ static Isgl3dDirector * _instance = nil;
 	}
 }
 
-- (void) renderForEventCapture {
+- (void)renderForEventCapture {
 
 	// Initialise capture of objects
 	[[Isgl3dObject3DGrabber sharedInstance] startCapture];
@@ -688,13 +688,13 @@ static Isgl3dDirector * _instance = nil;
 	}
 }
 
-- (void) renderFPS {
+- (void)renderFPS {
 	
 }
 
 #pragma mark Isgl3dTouchDelegate implementation
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	// Handle Object3D events
 	_objectTouched = [_event3DHandler touchesBegan:touches withEvent:event];
@@ -705,7 +705,7 @@ static Isgl3dDirector * _instance = nil;
 	_objectTouched = NO;
 }
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	// Handle Object3D events
 	[_event3DHandler touchesMoved:touches withEvent:event];
 
@@ -713,7 +713,7 @@ static Isgl3dDirector * _instance = nil;
 	[[Isgl3dTouchScreen sharedInstance] touchesMoved:touches withEvent:event];
 }
 
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
 	// Handle Object3D events
 	[_event3DHandler touchesEnded:touches withEvent:event];
@@ -722,7 +722,7 @@ static Isgl3dDirector * _instance = nil;
 	[[Isgl3dTouchScreen sharedInstance] touchesEnded:touches withEvent:event];
 }
 
-- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 
 	// Dispatch event to touch screen
 	[[Isgl3dTouchScreen sharedInstance] touchesCancelled:touches withEvent:event];

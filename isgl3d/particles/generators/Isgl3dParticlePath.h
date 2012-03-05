@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,7 +63,7 @@
  * @param path An array of position coordinates of the positions along the path.
  * @param duration The duration to move from the first to last point in the path.
  */
-+ (id) pathWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration;
++ (id)pathWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration;
 
 /**
  * Initialises the particle path with an Isgl3dGLParticle, an array of points that make up the path and a duration the 
@@ -72,7 +72,7 @@
  * @param path An array of position coordinates of the positions along the path.
  * @param duration The duration to move from the first to last point in the path.
  */
-- (id) initWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration;
+- (id)initWithParticle:(Isgl3dGLParticle *)particle andPath:(Isgl3dArray *)path forDuration:(float)duration;
 
 /**
  * Called internally by iSGL3D to update the position of the particle.
@@ -80,11 +80,11 @@
  * the particle's current position.
  * @param timeDelta The time since the last update in seconds.
  */
-- (void) update:(float)timeDelta;
+- (void)update:(float)timeDelta;
 
 /**
  * Called internally by iSGL3D to restart a particle along its path.
  * Sets the elapsed time to 0 and isCompleted to NO;
  */
-- (void) restart;
+- (void)restart;
 @end

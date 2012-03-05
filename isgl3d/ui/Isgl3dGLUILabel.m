@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@
 @synthesize material = _material;
 @synthesize mesh = _mesh;
 
-- (void) dealloc {
+- (void)dealloc {
 	[_material release];
 	[_material release];
 	[super dealloc];
@@ -57,15 +57,15 @@
 
 @implementation Isgl3dGLUILabel
 
-+ (id) labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize {
++ (id)labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize {
 	return [[[self alloc] initWithText:text fontName:fontName fontSize:fontSize] autorelease];
 }
 
-+ (id) labelWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
++ (id)labelWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	return [[[self alloc] initWithTextCharacterSet:text fontName:fontName fontSize:fontSize] autorelease];
 }
 
-- (id) initWithText:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
+- (id)initWithText:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	if ((self = [super initWithMesh:nil andMaterial:nil])) {
 		
 		_fontName = [fontName retain];
@@ -76,7 +76,7 @@
 	return self;
 }
 
-- (id) initWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
+- (id)initWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
 	if ((self = [self initWithText:text fontName:fontName fontSize:fontSize])) {
         _useCharacterSet = YES;
         _characters = [[NSMutableDictionary alloc] init];
@@ -86,7 +86,7 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	if (_characters) {
 		[_characters release];
 	}
@@ -97,7 +97,7 @@
 	[super dealloc];
 }
 
-- (void) setText:(NSString *)text {
+- (void)setText:(NSString *)text {
 	if (text && ![text isEqualToString:_text]) {
 		[_text release];
 		_text = [text retain];
@@ -178,7 +178,7 @@
 	
 }
 
-- (void) render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
+- (void)render:(Isgl3dGLRenderer *)renderer opaque:(BOOL)opaque {
 	
 	if (!_useCharacterSet) {
 		[super render:renderer opaque:opaque];

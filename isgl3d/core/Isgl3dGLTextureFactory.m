@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,10 +34,10 @@
 static Isgl3dGLTextureFactory * _instance = nil;
 
 @interface Isgl3dGLTextureFactory ()
-- (id) initSingleton;
+- (id)initSingleton;
 - (Isgl3dGLTexture *) createTextureFromCompressedFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 - (UIImage *) loadImage:(NSString *)path;
-- (void) copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height;
+- (void)copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height;
 - (BOOL) imageIsHD:(NSString *)path;
 - (NSString *) textureKeyForFile:(NSString *)file precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY;
 - (unsigned int) nearestPowerOf2:(unsigned int)value;
@@ -48,13 +48,13 @@ static Isgl3dGLTextureFactory * _instance = nil;
 @implementation Isgl3dGLTextureFactory
 
 
-- (id) init {
+- (id)init {
 	NSLog(@"Isgl3dGLTextureFactory::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
 
-- (id) initSingleton {
+- (id)initSingleton {
 	
 	if ((self = [super init])) {
 		_textures = [[NSMutableDictionary alloc] init];
@@ -63,7 +63,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[_textures release];
 
@@ -92,7 +92,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	}
 }
 
-- (void) setState:(Isgl3dGLTextureFactoryState *)state {
+- (void)setState:(Isgl3dGLTextureFactoryState *)state {
 
 	if (state != _state) {
 		if (_state) {
@@ -106,7 +106,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	}
 }
 
-- (void) clear {
+- (void)clear {
 	[_textures removeAllObjects];
 }
 
@@ -423,7 +423,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 
 
 
-- (void) deleteTexture:(Isgl3dGLTexture *)texture {
+- (void)deleteTexture:(Isgl3dGLTexture *)texture {
 	if (_state) {
 		[_state deleteTextureId:texture.textureId];
 		
@@ -516,7 +516,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	return NO;	
 }
 
-- (void) copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height {
+- (void)copyImage:(UIImage *)image toRawData:(void *)data width:(unsigned int)width height:(unsigned int)height {
 	unsigned int imageWidth = CGImageGetWidth(image.CGImage);
 	unsigned int imageHeight = CGImageGetHeight(image.CGImage);
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();

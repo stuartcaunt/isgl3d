@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  * 
  * This class is inspired from equivalent functionality provided by cocos2d :
  * cocos2d for iPhone: http://www.cocos2d-iphone.org
@@ -33,11 +33,11 @@
 
 @implementation Isgl3dActionRotateXTo
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_finalAngle = angle;
 	}
@@ -45,11 +45,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRotateXTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_finalAngle];
 
 	return copy;
@@ -61,7 +61,7 @@
 	_delta = _finalAngle - _initialAngle;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationX:_initialAngle + progress * _delta];
 }
 
@@ -71,11 +71,11 @@
 
 @implementation Isgl3dActionRotateYTo
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_finalAngle = angle;
 	}
@@ -83,11 +83,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRotateYTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_finalAngle];
 
 	return copy;
@@ -99,7 +99,7 @@
 	_delta = _finalAngle - _initialAngle;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationY:_initialAngle + progress * _delta];
 }
 
@@ -109,11 +109,11 @@
 
 @implementation Isgl3dActionRotateZTo
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_finalAngle = angle;
 	}
@@ -121,11 +121,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRotateZTo * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_finalAngle];
 
 	return copy;
@@ -137,7 +137,7 @@
 	_delta = _finalAngle - _initialAngle;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationZ:_initialAngle + progress * _delta];
 }
 
@@ -147,11 +147,11 @@
 
 @implementation Isgl3dActionRotateXBy
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_delta = angle;
 	}
@@ -159,11 +159,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRotateXBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_delta];
 
 	return copy;
@@ -174,7 +174,7 @@
 	_initialAngle = ((Isgl3dNode *)target).rotationX;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationX:_initialAngle + progress * _delta];
 }
 
@@ -184,11 +184,11 @@
 
 @implementation Isgl3dActionRotateYBy
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_delta = angle;
 	}
@@ -196,11 +196,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRotateYBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_delta];
 
 	return copy;
@@ -211,7 +211,7 @@
 	_initialAngle = ((Isgl3dNode *)target).rotationY;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationY:_initialAngle + progress * _delta];
 }
 
@@ -221,11 +221,11 @@
 
 @implementation Isgl3dActionRotateZBy
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_delta = angle;
 	}
@@ -233,11 +233,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRotateZBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_delta];
 
 	return copy;
@@ -248,7 +248,7 @@
 	_initialAngle = ((Isgl3dNode *)target).rotationZ;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationZ:_initialAngle + progress * _delta];
 }
 
@@ -258,11 +258,11 @@
 
 @implementation Isgl3dActionYawBy
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_angle = angle;
 	}
@@ -270,11 +270,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionYawBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_angle];
 
 	return copy;
@@ -285,7 +285,7 @@
 	[super startWithTarget:target];
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float desiredAngle = progress * _angle;
 	[_target yaw:desiredAngle - _lastAngle];
 	
@@ -298,11 +298,11 @@
 
 @implementation Isgl3dActionPitchBy
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_angle = angle;
 	}
@@ -310,11 +310,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionPitchBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_angle];
 
 	return copy;
@@ -325,7 +325,7 @@
 	[super startWithTarget:target];
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float desiredAngle = progress * _angle;
 	[_target pitch:desiredAngle - _lastAngle];
 	
@@ -338,11 +338,11 @@
 
 @implementation Isgl3dActionRollBy
 
-+ (id) actionWithDuration:(float)duration angle:(float)angle {
++ (id)actionWithDuration:(float)duration angle:(float)angle {
 	return [[[self alloc] initWithDuration:duration angle:angle] autorelease];
 }
 
-- (id) initWithDuration:(float)duration angle:(float)angle {
+- (id)initWithDuration:(float)duration angle:(float)angle {
 	if ((self = [super initWithDuration:duration])) {
 		_angle = angle;
 	}
@@ -350,11 +350,11 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionRollBy * copy = [[[self class] allocWithZone:zone] initWithDuration:_duration angle:_angle];
 
 	return copy;
@@ -365,7 +365,7 @@
 	[super startWithTarget:target];
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	float desiredAngle = progress * _angle;
 	[_target roll:desiredAngle - _lastAngle];
 	
@@ -378,11 +378,11 @@
 
 @implementation Isgl3dActionSetRotationX
 
-+ (id) actionWithAngle:(float)angle {
++ (id)actionWithAngle:(float)angle {
 	return [[[self alloc] initWithAngle:angle] autorelease];
 }
 
-- (id) initWithAngle:(float)angle {
+- (id)initWithAngle:(float)angle {
 	if ((self = [super init])) {
 		_finalAngle = angle;
 	}
@@ -390,17 +390,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetRotationX * copy = [[[self class] allocWithZone:zone] initWithAngle:_finalAngle];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationX:_finalAngle];
 }
 
@@ -410,11 +410,11 @@
 
 @implementation Isgl3dActionSetRotationY
 
-+ (id) actionWithAngle:(float)angle {
++ (id)actionWithAngle:(float)angle {
 	return [[[self alloc] initWithAngle:angle] autorelease];
 }
 
-- (id) initWithAngle:(float)angle {
+- (id)initWithAngle:(float)angle {
 	if ((self = [super init])) {
 		_finalAngle = angle;
 	}
@@ -422,17 +422,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetRotationY * copy = [[[self class] allocWithZone:zone] initWithAngle:_finalAngle];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationY:_finalAngle];
 }
 
@@ -442,11 +442,11 @@
 
 @implementation Isgl3dActionSetRotationZ
 
-+ (id) actionWithAngle:(float)angle {
++ (id)actionWithAngle:(float)angle {
 	return [[[self alloc] initWithAngle:angle] autorelease];
 }
 
-- (id) initWithAngle:(float)angle {
+- (id)initWithAngle:(float)angle {
 	if ((self = [super init])) {
 		_finalAngle = angle;
 	}
@@ -454,17 +454,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetRotationZ * copy = [[[self class] allocWithZone:zone] initWithAngle:_finalAngle];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target setRotationZ:_finalAngle];
 }
 
@@ -474,11 +474,11 @@
 
 @implementation Isgl3dActionSetPitch
 
-+ (id) actionWithAngle:(float)angle {
++ (id)actionWithAngle:(float)angle {
 	return [[[self alloc] initWithAngle:angle] autorelease];
 }
 
-- (id) initWithAngle:(float)angle {
+- (id)initWithAngle:(float)angle {
 	if ((self = [super init])) {
 		_finalAngle = angle;
 	}
@@ -486,17 +486,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetPitch * copy = [[[self class] allocWithZone:zone] initWithAngle:_finalAngle];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target pitch:_finalAngle];
 }
 
@@ -506,11 +506,11 @@
 
 @implementation Isgl3dActionSetYaw
 
-+ (id) actionWithAngle:(float)angle {
++ (id)actionWithAngle:(float)angle {
 	return [[[self alloc] initWithAngle:angle] autorelease];
 }
 
-- (id) initWithAngle:(float)angle {
+- (id)initWithAngle:(float)angle {
 	if ((self = [super init])) {
 		_finalAngle = angle;
 	}
@@ -518,17 +518,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetYaw * copy = [[[self class] allocWithZone:zone] initWithAngle:_finalAngle];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target yaw:_finalAngle];
 }
 
@@ -538,11 +538,11 @@
 
 @implementation Isgl3dActionSetRoll
 
-+ (id) actionWithAngle:(float)angle {
++ (id)actionWithAngle:(float)angle {
 	return [[[self alloc] initWithAngle:angle] autorelease];
 }
 
-- (id) initWithAngle:(float)angle {
+- (id)initWithAngle:(float)angle {
 	if ((self = [super init])) {
 		_finalAngle = angle;
 	}
@@ -550,17 +550,17 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[super dealloc];
 }
 
-- (id) copyWithZone:(NSZone*)zone {
+- (id)copyWithZone:(NSZone*)zone {
 	Isgl3dActionSetRoll * copy = [[[self class] allocWithZone:zone] initWithAngle:_finalAngle];
 
 	return copy;
 }
 
-- (void) update:(float)progress {
+- (void)update:(float)progress {
 	[_target roll:_finalAngle];
 }
 

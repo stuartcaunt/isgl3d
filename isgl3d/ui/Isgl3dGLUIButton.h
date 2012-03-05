@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,13 +48,13 @@
  * @param width The width of the button.
  * @param height The height of the button.
  */
-+ (id) buttonWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height;
++ (id)buttonWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height;
 
 /**
  * Allocates and initialises (autorelease) button with a material and uses a default width and height (32 x 32 pixels).
  * @param material The material to be rendered on the button.
  */
-+ (id) buttonWithMaterial:(Isgl3dMaterial *)material;
++ (id)buttonWithMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Initialises the button with a material and a button width and height in pixels.
@@ -62,13 +62,13 @@
  * @param width The width of the button.
  * @param height The height of the button.
  */
-- (id) initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height;
+- (id)initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height;
 
 /**
  * Initialises the button with a material and uses a default width and height (32 x 32 pixels).
  * @param material The material to be rendered on the button.
  */
-- (id) initWithMaterial:(Isgl3dMaterial *)material;
+- (id)initWithMaterial:(Isgl3dMaterial *)material;
 
 /**
  * Creates and adds an user touch event listener to the button.
@@ -83,6 +83,6 @@
  * Removes a user touch event listener from the button.
  * @param listener The listener to be removed.
  */
-- (void) removeEventListener:(Isgl3dEvent3DListener *)listener;
+- (void)removeEventListener:(Isgl3dEvent3DListener *)listener;
 
 @end

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,38 @@
 #import "Isgl3dDirector.h"
 
 
-@interface Isgl3dFollowCamera ()
-- (void) initialiseTarget:(Isgl3dNode *)target;
+@interface Isgl3dFollowCamera () {
+@private
+	Isgl3dNode * _target;
+    
+	Isgl3dMatrix4 _targetMovementIT;
+    
+	Isgl3dVector3 _currentTargetPosition;
+	Isgl3dVector3 _currentPosition;
+	
+	Isgl3dVector3 _oldTargetPosition;
+	Isgl3dVector3 _oldPosition;
+	
+	Isgl3dVector3 _desiredPosition;
+	Isgl3dVector3 _elasticForce;
+	Isgl3dVector3 _dampingForce;
+	Isgl3dVector3 _velocity;
+	Isgl3dVector3 _acceleration;
+	Isgl3dVector3 _newVelocity;
+	Isgl3dVector3 _newPosition;
+	Isgl3dVector3 _newPositionInPlane;
+	Isgl3dVector3 _targetPosition;
+    
+	float _stiffness;
+	float _damping;
+	float _mass;
+	float _lookAhead;
+    
+	BOOL _useRealTime;
+	
+	BOOL _initialized;
+}
+- (void)initializeTarget:(Isgl3dNode *)target;
 @end
 
 @implementation Isgl3dFollowCamera
@@ -43,88 +73,49 @@
 @synthesize target = _target;
 @synthesize useRealTime = _useRealTime;
 
-+ (id) cameraWithTarget:(Isgl3dNode *)target {
-	return [[[self alloc] initWithTarget:target] autorelease];
-}
 
-+ (id) cameraWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target {
-	return [[[self alloc] initWithWidth:width andHeight:height andTarget:target] autorelease];
-}
-
-+ (id) cameraWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target {
-	return [[[self alloc] initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ andTarget:target] autorelease];
-}
-
-
-- (id) initWithTarget:(Isgl3dNode *)target {
+- (id)initWithLens:(id<Isgl3dCameraLens>)lens position:(Isgl3dVector3)position andTarget:(Isgl3dNode *)target up:(Isgl3dVector3)up {
 	
-	if ((self = [super init])) {
-		[self initialiseTarget:target];
+    Isgl3dVector3 lookAtTarget = [target worldPosition];
+    
+    if (self = [super initWithLens:lens position:position lookAtTarget:lookAtTarget up:up]) {
+		[self initializeTarget:target];
 	}
 	
 	return self;
 }
 
-- (id) initWithWidth:(float)width andHeight:(float)height andTarget:(Isgl3dNode *)target {
-	
-	if ((self = [super initWithWidth:width andHeight:height])) {
-		[self initialiseTarget:target];
-	}
-	
-	return self;
-}
-
-- (id) initWithWidth:(float)width height:(float)height andCoordinates:(float)x y:(float)y z:(float)z upX:(float)upX upY:(float)upY upZ:(float)upZ lookAtX:(float)lookAtX lookAtY:(float)lookAtY lookAtZ:(float)lookAtZ andTarget:(Isgl3dNode *)target {
-	
-	if ((self = [super initWithWidth:width height:height andCoordinates:x y:y z:z upX:upX upY:upY upZ:upZ lookAtX:lookAtX lookAtY:lookAtY lookAtZ:lookAtZ])) {
-		[self initialiseTarget:target];
-	}
-	
-	return self;
-}
-
-- (void) dealloc {
-	if (_target) {
-		[_target release];
-	}
+- (void)dealloc {
+    [_target release];
+    _target = nil;
 
 	[super dealloc];
 }
 
-- (void) initialiseTarget:(Isgl3dNode *)target {
-		
-	if (target) {
-		_target = [target retain];
-	}
+- (void)initializeTarget:(Isgl3dNode *)target {
+    
+    self.target = target;
 	
-	_desiredPosition = iv3(0, 5, 10);
+	_desiredPosition = Isgl3dVector3Make(0.0f, 5.0f, 10.0f);
 	
-	_stiffness = 10;
-	_damping = 4;
-	_mass = 1.;
-	_lookAhead = 10;
+	_stiffness = 10.0f;
+	_damping = 4.0f;
+	_mass = 1.0f;
+	_lookAhead = 10.0f;
 	_useRealTime = NO;
 	
 	_initialized = NO;
 }
 
-- (void) setTarget:(Isgl3dNode *)target {
+- (void)setTarget:(Isgl3dNode *)target {
 	if (_target != target) {
-		if (_target) {
-			[_target release];
-		}
-		
-		_target = target;
-		if (_target) {
-			[_target retain];
-		}
-		
+        [_target release];
+		_target = [target retain];
 	}
 }
 
 
-- (void) updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
-
+- (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 
 	if (_target) {
 		// Get current positions
@@ -133,93 +124,71 @@
 	
 		// Initialise old follower position if necessary
 		if (!_initialized) {
-			iv3Copy(&_oldPosition, &_currentPosition);
-			iv3Copy(&_oldTargetPosition, &_currentTargetPosition);
+            _oldPosition = _currentPosition;
+            _oldTargetPosition = _currentTargetPosition;
 			_initialized = YES;
 		}
 	
-		float dt = 1./60.;
+		float dt = 1.0f / 60.0f;
 		if (_useRealTime) {
 			dt = [Isgl3dDirector sharedInstance].deltaTime;
 		}
 		
-		if (iv3DistanceBetween(&_currentTargetPosition, &_oldTargetPosition) > 0.01) {
+		if (Isgl3dVector3Distance(_currentTargetPosition, _oldTargetPosition) > 0.01f) {
+            
 			// Calculate transformation matrix along line of movement of target
-			Isgl3dMatrix4 targetMovementTransformation = [Isgl3dGLU lookAt:_oldTargetPosition.x eyey:_oldTargetPosition.y eyez:_oldTargetPosition.z centerx:_currentTargetPosition.x centery:_currentTargetPosition.y centerz:_currentTargetPosition.z upx:0 upy:1 upz:0];
-			im4Copy(&_targetMovementIT, &targetMovementTransformation);
-			im4Invert(&_targetMovementIT);
+            Isgl3dMatrix4 targetMovementTransformation = Isgl3dMatrix4MakeLookAt(_oldTargetPosition.x, _oldTargetPosition.y, _oldTargetPosition.z,
+                                                                                 _currentTargetPosition.x, _currentTargetPosition.y, _currentTargetPosition.z,
+                                                                                 0.0f, 1.0f, 0.0f);
+            _targetMovementIT = Isgl3dMatrix4Invert(targetMovementTransformation, NULL);
 	
 			// Get desired position in real-world coordinates
-			_elasticForce = im4MultVector(&_targetMovementIT, &_desiredPosition);
+            _elasticForce = Isgl3dMatrix4MultiplyVector3WithTranslation(_targetMovementIT, _desiredPosition);
 			
 			// Calculate elastic force from vector between current and desired position
-			iv3Sub(&_elasticForce, &_currentPosition);
-			iv3Scale(&_elasticForce, _stiffness);
+            _elasticForce = Isgl3dVector3Subtract(_elasticForce, _currentPosition);
+            _elasticForce = Isgl3dVector3MultiplyScalar(_elasticForce, _stiffness);
 		
 			// Calculate resistance from current velocity
-			iv3Copy(&_velocity, &_currentPosition);
-			iv3Sub(&_velocity, &_oldPosition);
-			iv3Scale(&_velocity, 1./dt);
+            _velocity = Isgl3dVector3Subtract(_currentPosition, _oldPosition);
+            _velocity = Isgl3dVector3MultiplyScalar(_velocity, 1.0f/dt);
 			
-			iv3Copy(&_dampingForce, &_velocity);
-			iv3Scale(&_dampingForce, -_damping);
+            _dampingForce = Isgl3dVector3MultiplyScalar(_velocity, -_damping);
 		
 			// Convert resulting position from forces
-			iv3Copy(&_acceleration, &_elasticForce),
-			iv3Add(&_acceleration, &_dampingForce),
-			iv3Scale(&_acceleration, 1./_mass);
+            _acceleration = Isgl3dVector3Add(_elasticForce, _dampingForce);
+            _acceleration = Isgl3dVector3MultiplyScalar(_acceleration, 1.0f/_mass);
 
-			iv3Copy(&_newVelocity, &_acceleration);
-			iv3Scale(&_newVelocity, dt);
-			iv3Add(&_newVelocity, &_velocity);
+            _newVelocity = Isgl3dVector3MultiplyScalar(_acceleration, dt);
+            _newVelocity = Isgl3dVector3Add(_newVelocity, _velocity);
 			
-			iv3Copy(&_newPosition, &_newVelocity);
-			iv3Scale(&_newPosition, dt);
-			iv3Add(&_newPosition, &_currentPosition);
-			
+            _newPosition = Isgl3dVector3MultiplyScalar(_newVelocity, dt);
+            _newPosition = Isgl3dVector3Add(_newPosition, _currentPosition);
 			
 			// Calculate lookAt along line between current position and target position
-			iv3Copy(&_newPositionInPlane, &_newPosition);
+            _newPositionInPlane = _newPosition;
 			_newPositionInPlane.y = 0;
-			iv3Copy(&_targetPosition, &_currentPosition);
-			iv3Sub(&_targetPosition, &_newPositionInPlane);
-			iv3Normalize(&_targetPosition),
-			iv3Scale(&_targetPosition, _lookAhead);
-			iv3Add(&_targetPosition, &_currentTargetPosition);
+            
+            _targetPosition = Isgl3dVector3Subtract(_currentPosition, _newPositionInPlane);
+            _targetPosition = Isgl3dVector3Normalize(_targetPosition);
+            _targetPosition = Isgl3dVector3MultiplyScalar(_targetPosition, _lookAhead);
+            _targetPosition = Isgl3dVector3Add(_targetPosition, _currentTargetPosition);
 			
 			// Set translation and lookAt
 			[super setPosition:_newPosition];
-			[super setLookAt:_targetPosition];
+			[super setLookAtTarget:_targetPosition];
 		}
 	
-		iv3Copy(&_oldTargetPosition, &_currentTargetPosition);
-		iv3Copy(&_oldPosition, &_currentPosition);
+        _oldTargetPosition = _currentTargetPosition;
+        _oldPosition = _currentPosition;
 	}
 	
 	[super updateWorldTransformation:parentTransformation];
 }
 
-- (void) setLookAt:(Isgl3dVector3)lookAt {
-	_lookAhead = -lookAt.z;
-	[super setLookAt:lookAt];
+- (void)setLookAtTarget:(Isgl3dVector3)lookAtTarget {
+	_lookAhead = -lookAtTarget.z;
+	[super setLookAtTarget:lookAtTarget];
 }
-
-- (void) lookAt:(float)x y:(float)y z:(float)z {
-	_lookAhead = -z;
-	[super lookAt:x y:y z:z];
-}
-
-- (void) setPositionValues:(float)x y:(float)y z:(float)z {
-	_desiredPosition = iv3(x, y, z);
-	
-	[super setPositionValues:x y:y z:z];
-}
-
-- (void) setPosition:(Isgl3dVector3)translation {
-	_desiredPosition = translation;
-	
-	[super setPosition:translation];
-}
-
 
 @end

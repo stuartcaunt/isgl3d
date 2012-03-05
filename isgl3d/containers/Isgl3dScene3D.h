@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,12 +44,12 @@
 /**
  * Allocates and initialises (autorelease) Isgl3dScene3D node.
  */
-+ (id) scene;
++ (id)scene;
 
 /**
  * Initialises the Isgl3dScene3D node.
  */
-- (id) init;
+- (id)init;
 
 /*
  * Renders all transparent objects on the scene, if the z-sorting option has been chosen in the view.
@@ -65,7 +65,7 @@
  * @param renderer The Renderer.
  * @param viewMatrix The view matrix.
  */
-- (void) renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void)renderZSortedAlphaObjects:(Isgl3dGLRenderer *)renderer viewMatrix:(Isgl3dMatrix4 *)viewMatrix;
 
 @end
 
@@ -98,7 +98,7 @@
  * @param distance Distance from the camera.
  * @param node The Isgl3dNode.
  */
-- (id) initWithDistance:(float)distance forNode:(Isgl3dNode *)node;
+- (id)initWithDistance:(float)distance forNode:(Isgl3dNode *)node;
 
 /**
  * Compares distances between another node and this node.

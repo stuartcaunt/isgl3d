@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,32 +65,32 @@
  * @param selector The selector method in the target.
  * @param isPaused Specified whether the timer is initially paused.
  */
-- (void) schedule:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused;
+- (void)schedule:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused;
 
 /**
  * Removes a scheduled timer for a specific target.
  * @param target The target object.
  */
-- (void) unschedule:(id)target;
+- (void)unschedule:(id)target;
 
 /**
  * Pauses the scheduled timer for a specific target.
  * @param target The target object.
  */
-- (void) pause:(id)target;
+- (void)pause:(id)target;
 
 /**
  * Resumes a paused timer for a specific target.
  * @param target The target object.
  */
-- (void) resume:(id)target;
+- (void)resume:(id)target;
 
 /**
  * Calls the target::selector in all timers (that are not currently paused).
  * This should never be called: for internal use by Isgl3dDirector.
  * @param dt The delta time since the last call.
  */
-- (void) tick:(float)dt;
+- (void)tick:(float)dt;
 
 @end
 
@@ -118,7 +118,7 @@
  * @param selector The selector method in the target.
  * @param isPaused Specified whether the timer is initially paused.
  */
-+ (id) timerWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused;
++ (id)timerWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused;
 
 /**
  * Initialises a timer with a target and selector
@@ -126,12 +126,12 @@
  * @param selector The selector method in the target.
  * @param isPaused Specified whether the timer is initially paused.
  */
-- (id) initWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused;
+- (id)initWithTarget:(id)target selector:(SEL)selector isPaused:(BOOL)isPaused;
 
 /**
  * Calls the target::selector.
  * @param dt The delta time since the last call.
  */
-- (void) tick:(float)dt;
+- (void)tick:(float)dt;
 
 @end

@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,11 @@
 @implementation DemoShader
 
 
-+ (id) shaderWithKey:(NSString *)key {
++ (id)shaderWithKey:(NSString *)key {
 	return [[[self alloc] initWithKey:key] autorelease];
 }
 
-- (id) initWithKey:(NSString *)key {
+- (id)initWithKey:(NSString *)key {
 	if ((self = [super initWithVertexShaderFile:@"demoShader.vsh" fragmentShaderFile:@"demoShader.fsh" key:key])) {
 	
 		// Initialise the min and max height uniforms
@@ -44,19 +44,19 @@
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 
 	[super dealloc];
 }
 
-- (void) onRenderPhaseBeginsWithDeltaTime:(float)dt {
+- (void)onRenderPhaseBeginsWithDeltaTime:(float)dt {
 	// Update the animation factor with a new render phase
 	_time += dt;
 	float val = 0.5f * (1.0f + sin(2.0f * M_PI * _time / 1.0f));
 	[self setUniform1fWithName:@"u_factor" value:val];
 }
 
-- (void) onModelRenderReady {
+- (void)onModelRenderReady {
 	// Bind the vertex data to the attributes
 	[self setVertexAttribute:GL_FLOAT attributeName:@"a_vertex" size:VBO_POSITION_SIZE strideBytes:self.vboData.stride offset:self.vboData.positionOffset];
 

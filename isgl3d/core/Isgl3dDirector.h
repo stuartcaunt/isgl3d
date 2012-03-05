@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,15 +33,15 @@
 @class Isgl3dGLRenderer;
 @class Isgl3dEvent3DHandler;
 @class Isgl3dFpsRenderer;
-@class Isgl3dCamera;
 @class Isgl3dGestureManager;
 @class Isgl3dNode;
 @class Isgl3dCustomShader;
+@protocol Isgl3dCamera;
 
 
 @protocol Isgl3dRenderPhaseCallback
-- (void) preRender;
-- (void) postRender;
+- (void)preRender;
+- (void)postRender;
 @end
 
 /**
@@ -85,7 +85,7 @@
 	NSMutableArray * _views;
 	
 	// Active camera, used during rendering, represents camera used for each view
-	Isgl3dCamera * _activeCamera; 
+	id<Isgl3dCamera> _activeCamera; 
 	
 	Isgl3dGLRenderer * _renderer;
 	
@@ -237,7 +237,7 @@
 /**
  * Returns the currently active camera during the render phase.
  */
-@property (nonatomic, readonly) Isgl3dCamera * activeCamera;
+@property (nonatomic, readonly) id<Isgl3dCamera> activeCamera;
 
 /**
  * The render phase callback allows for user operations to occur during the main laop.
@@ -270,65 +270,65 @@
  * Sets the animation interval in seconds.
  * @param animationInterval The animation interval in seconds. 
  */
-- (void) setAnimationInterval:(float)animationInterval;
+- (void)setAnimationInterval:(float)animationInterval;
 
 /**
  * Starts the animation timer.
  * This should be used with caution : the main point of entry to the animation is via "run".
  */
-- (void) startAnimation;
+- (void)startAnimation;
 
 /**
  * Stops the animation timer.
  * This should be used with caution : if this is called nothing will be rendered. To continue rendering use "pause".
  */
-- (void) stopAnimation;
+- (void)stopAnimation;
 
 /**
  * Starts the main loop and animation for the Isgl3dDirector. 
  * This is the main point of entry to run an iSGL3D application.
  */
-- (void) run;
+- (void)run;
 
 /**
  * Stops the animation and resets the Isgl3dDirector. 
  * This should only be used when the application ends. After being called the Isgl3dUIView and all Isgl3dViews need to 
  * be added again to the director.
  */
-- (void) end;
+- (void)end;
 
 /**
  * Pauses the animation.
  */
-- (void) pause;
+- (void)pause;
 
 /**
  * Resumes the animation after pause.
  */
-- (void) resume;
+- (void)resume;
 
 /**
  * Should be called when the application receives a memory warning.
  */
-- (void) onMemoryWarning;
+- (void)onMemoryWarning;
 
 /**
  * Should be called when a significant time elapses between two frames.
  */
-- (void) onSignificantTimeChange;
+- (void)onSignificantTimeChange;
 
 /**
  * Called internally when the UIView rendering layer is resized.
  * Note, this should never be called manually. This is called internally by the Isgl3dEAGLView.
  */
-- (void) onResizeFromLayer;
+- (void)onResizeFromLayer;
 
 /**
  * Sets the Isgl3dUIView.
  * From the Isgl3dEAGLView the Isgl3dDirector determines the size of the window and creates the renderers.
  * @param glView The Isgl3dEAGLView containing the OpenGL buffers. 
  */
-- (void) setOpenGLView:(UIView<Isgl3dGLView> *)glView;
+- (void)setOpenGLView:(UIView<Isgl3dGLView> *)glView;
 
 /**
  * Returns the Isgl3dEAGLView currently in use.
@@ -341,13 +341,13 @@
  * to the Isgl3dDirector.
  * @param view The Isgl3dView to be added and rendered at each frame. 
  */
-- (void) addView:(Isgl3dView *)view;
+- (void)addView:(Isgl3dView *)view;
 
 /**
  * Removes and Isgl3dView from the Isgl3dDirector.
  * @param view The Isgl3dView to be removed. 
  */
-- (void) removeView:(Isgl3dView *)view;
+- (void)removeView:(Isgl3dView *)view;
 
 /**
  * Returns the pixel colour as a hex string for a specific x and y location on the screen.
@@ -367,7 +367,7 @@
  * Enables or disables the retina display if the device allows it.
  * @param enabled True if the retina display should be enabled.
  */
-- (void) enableRetinaDisplay:(BOOL)enabled;
+- (void)enableRetinaDisplay:(BOOL)enabled;
 
 /**
  * Add a gesture recognizer for the node. The same gesture recognizer may be added for different nodes.

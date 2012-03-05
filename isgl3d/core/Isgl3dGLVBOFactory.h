@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,12 +37,12 @@
 	Isgl3dGLVBOFactory * _concreteFactory;
 }
 
-- (id) init;
+- (id)init;
 
 + (Isgl3dGLVBOFactory *) sharedInstance;
 + (void) resetInstance;
 
-- (void) setConcreteFactory:(Isgl3dGLVBOFactory *)concreteFactory;
+- (void)setConcreteFactory:(Isgl3dGLVBOFactory *)concreteFactory;
 
 - (unsigned int) createBufferFromArray:(const float*)array size:(int)size;
 - (unsigned int) createBufferFromFloatArray:(Isgl3dFloatArray *)floatArray;
@@ -50,13 +50,13 @@
 - (unsigned int) createBufferFromUShortElementArray:(Isgl3dUShortArray *)ushortArray;
 - (unsigned int) createBufferFromUnsignedCharArray:(const unsigned char *)array size:(unsigned int)size;
 
-- (void) createBufferFromArray:(const float*)array size:(int)size atIndex:(unsigned int)bufferIndex;
-- (void) createBufferFromFloatArray:(Isgl3dFloatArray *)floatArray atIndex:(unsigned int)bufferIndex;
-- (void) createBufferFromElementArray:(const unsigned short*)array size:(int)size atIndex:(unsigned int)bufferIndex;
-- (void) createBufferFromUShortElementArray:(Isgl3dUShortArray *)ushortArray atIndex:(unsigned int)bufferIndex;
-- (void) createBufferFromUnsignedCharArray:(const unsigned char *)array size:(unsigned int)size atIndex:(unsigned int)bufferIndex;
+- (void)createBufferFromArray:(const float*)array size:(int)size atIndex:(unsigned int)bufferIndex;
+- (void)createBufferFromFloatArray:(Isgl3dFloatArray *)floatArray atIndex:(unsigned int)bufferIndex;
+- (void)createBufferFromElementArray:(const unsigned short*)array size:(int)size atIndex:(unsigned int)bufferIndex;
+- (void)createBufferFromUShortElementArray:(Isgl3dUShortArray *)ushortArray atIndex:(unsigned int)bufferIndex;
+- (void)createBufferFromUnsignedCharArray:(const unsigned char *)array size:(unsigned int)size atIndex:(unsigned int)bufferIndex;
 
-- (void) deleteBuffer:(unsigned int)bufferIndex;
+- (void)deleteBuffer:(unsigned int)bufferIndex;
 
 @end
 

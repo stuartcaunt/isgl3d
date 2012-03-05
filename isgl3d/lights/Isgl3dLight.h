@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -132,14 +132,14 @@ typedef enum {
 /**
  * Allocates and initialises (autorelease) light source with default values: white diffuse and specular, no ambient and no attenuation.
  */
-+ (id) light;
++ (id)light;
 
 /**
  * Allocates and initialises (autorelease) light source with a float array (r, g, b) used for both diffuse and specular light colors. The ambient color is black
  * and no attenuation is used.
  * @param color Float array of colors (three values: red, green and blue) used for diffuse and specular light colors.
  */
-+ (id) lightWithColorArray:(float *)color;
++ (id)lightWithColorArray:(float *)color;
 
 /**
  * Allocates and initialises (autorelease) light source with all color components and attenuation.
@@ -148,19 +148,19 @@ typedef enum {
  * @param specularColor Hex string containing specular component of the light source.
  * @param attenuation The attenuation of the light source.
  */
-+ (id) lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
++ (id)lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
 
 /**
  * Initialises the light source with default values: white diffuse and specular, no ambient and no attenuation.
  */
-- (id) init;
+- (id)init;
 
 /**
  * Initialises the light source with a float array (r, g, b) used for both diffuse and specular light colors. The ambient color is black
  * and no attenuation is used.
  * @param color Float array of colors (three values: red, green and blue) used for diffuse and specular light colors.
  */
-- (id) initWithColorArray:(float *)color;
+- (id)initWithColorArray:(float *)color;
 
 /**
  * Initialises the light source with all color components and attenuation.
@@ -169,7 +169,7 @@ typedef enum {
  * @param specularColor Hex string containing specular component of the light source.
  * @param attenuation The attenuation of the light source.
  */
-- (id) initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
+- (id)initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation;
 
 /**
  * Returns the current ambient light color as an rgba array of floats.
@@ -201,7 +201,7 @@ typedef enum {
  * @param y The y-component of the direction.
  * @param z The z-component of the direction.
  */
-- (void) setDirection:(float)x y:(float)y z:(float)z;
+- (void)setDirection:(float)x y:(float)y z:(float)z;
 
 /**
  * For spot lights only, returns the direction of the spot light as an array of 3 float values
@@ -216,7 +216,7 @@ typedef enum {
  * @param y The y-component of the spot light direction.
  * @param z The z-component of the spot light direction.
  */
-- (void) setSpotDirection:(float)x y:(float)y z:(float)z;
+- (void)setSpotDirection:(float)x y:(float)y z:(float)z;
 
 
 /**
@@ -224,7 +224,7 @@ typedef enum {
  * color material is added to the mesh with the same color as the diffuse light component.
  * @param mesh The mesh to be rendered.
  */
-- (void) setRenderedMesh:(Isgl3dGLMesh *)mesh;
+- (void)setRenderedMesh:(Isgl3dGLMesh *)mesh;
 
 
 @end

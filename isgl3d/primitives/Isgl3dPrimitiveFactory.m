@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 
 @implementation Isgl3dPrimitiveFactory
 
-- (id) init {
+- (id)init {
 	if ((self = [super init])) {
 		_primitives = [[NSMutableDictionary alloc] init];
 	}
@@ -50,7 +50,7 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 	return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_primitives release];
 	
 	[super dealloc];

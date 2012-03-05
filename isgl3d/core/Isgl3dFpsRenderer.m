@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2011 Stuart Caunt
+ * Copyright (c) 2010-2012 Stuart Caunt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,10 +28,12 @@
 #import "Isgl3dGLU.h"
 #import "Isgl3dDirector.h"
 #import "Isgl3dGLRenderer.h"
+#import "Isgl3dMatrix4.h"
+
 
 @implementation Isgl3dFpsRenderer 
 
-- (id) initWithOrientation:(isgl3dOrientation)orientation {
+- (id)initWithOrientation:(isgl3dOrientation)orientation {
 	if ((self = [super init])) {
 
 		_orientation = orientation;
@@ -52,14 +54,14 @@
 		_viewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
 		
 		// Create view and projection matrices
-		_viewMatrix = [Isgl3dGLU lookAt:0 eyey:0 eyez:1 centerx:0 centery:0 centerz:0 upx:0 upy:1 upz:1];
-		_projectionMatrix = [Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation];
+        _viewMatrix = Isgl3dMatrix4MakeLookAt(0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+        _projectionMatrix = Isgl3dMatrix4MakeOrtho(0.0f, _viewportInPixels.size.width, 0.0f, _viewportInPixels.size.height, 1.0f, 1000.0f);
 		
 	}
     return self;
 }
 
-- (void) dealloc {
+- (void)dealloc {
 	[_fpsLabel release];
 
 	[super dealloc];
@@ -69,22 +71,22 @@
 	return _orientation;
 }
 
-- (void) setOrientation:(isgl3dOrientation)orientation {
+- (void)setOrientation:(isgl3dOrientation)orientation {
 	
 	// Update projection matrix
 	_orientation = orientation;
-	_projectionMatrix = [Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:orientation];
+    _projectionMatrix = Isgl3dMatrix4MakeOrtho(0.0f, _viewportInPixels.size.width, 0.0f, _viewportInPixels.size.height, 1.0f, 1000.0f);
 }
 
-- (void) updateViewport {
+- (void)updateViewport {
 	// Get viewport from director
 	_viewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
 	
 	// Update projection matrix
-	_projectionMatrix = [Isgl3dGLU ortho:0 right:_viewportInPixels.size.width bottom:0 top:_viewportInPixels.size.height near:1 far:1000 zoom:1 orientation:_orientation];
+    _projectionMatrix = Isgl3dMatrix4MakeOrtho(0.0f, _viewportInPixels.size.width, 0.0f, _viewportInPixels.size.height, 1.0f, 1000.0f);
 }
 
-- (void) update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused {
+- (void)update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused {
 
 	if (!isPaused) {
 		// Update fps calculation
