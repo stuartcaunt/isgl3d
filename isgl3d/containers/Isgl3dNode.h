@@ -45,6 +45,7 @@
 @class Isgl3dGLRenderer;
 @class Isgl3dActionManager;
 @class Isgl3dAction;
+@class Isgl3dAudioData;
 
 /**
  * The Isgl3dNode provides an interface to perform transformations on a node.
@@ -105,12 +106,8 @@
 	BOOL _isVisible;
 	
 	BOOL _isRunning;
-	
-@private
-
-	Isgl3dNode * _parent;
-
-	BOOL _hasChildren;
+    
+    BOOL _isAudioNode;	
 }
 
 /**
@@ -667,5 +664,12 @@
  * Stops all actions associated with this node.
  */
 - (void)stopAllActions;
+
+/**
+ * Loads Ausio file assosiated to this Node
+ */
+- (void) loadAudioForNode:(NSString*)fileName ReferenceDistance:(float)rDist MaxDistance:(float)maxDist;
+- (void) updateAudioPosition;
+- (void) playAudio:(BOOL)loop;
 
 @end

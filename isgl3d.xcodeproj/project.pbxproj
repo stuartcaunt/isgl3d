@@ -1320,6 +1320,257 @@
 		17F7A88012FA0D6100C7BB82 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
 		17F7A88A12FA0D7F00C7BB82 /* LightingDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F7A88912FA0D7F00C7BB82 /* LightingDemoView.m */; };
 		17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
+		4E5A466914FF76120010AFD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466614FF76120010AFD3 /* AudioToolbox.framework */; };
+		4E5A466A14FF76120010AFD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466614FF76120010AFD3 /* AudioToolbox.framework */; };
+		4E5A466B14FF76120010AFD3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466714FF76120010AFD3 /* AVFoundation.framework */; };
+		4E5A466C14FF76120010AFD3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466714FF76120010AFD3 /* AVFoundation.framework */; };
+		4E5A466D14FF76120010AFD3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466814FF76120010AFD3 /* OpenAL.framework */; };
+		4E5A466E14FF76120010AFD3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466814FF76120010AFD3 /* OpenAL.framework */; };
+		4E5A46AF14FF7FFA0010AFD3 /* Isgl3dAudioData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5A46AD14FF7FF90010AFD3 /* Isgl3dAudioData.h */; };
+		4E5A46B014FF7FFA0010AFD3 /* Isgl3dAudioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A46AE14FF7FF90010AFD3 /* Isgl3dAudioData.m */; };
+		4E5A46B314FF84580010AFD3 /* Isgl3dAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5A46B114FF84550010AFD3 /* Isgl3dAudioManager.h */; };
+		4E5A46B414FF84580010AFD3 /* Isgl3dAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A46B214FF84560010AFD3 /* Isgl3dAudioManager.m */; };
+		4E5A48F814FF8DA50010AFD3 /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A012FA0EB800C7BB82 /* capture.fsh */; };
+		4E5A48F914FF8DA50010AFD3 /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A112FA0EB800C7BB82 /* capture.vsh */; };
+		4E5A48FA14FF8DA50010AFD3 /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A212FA0EB800C7BB82 /* generic.fsh */; };
+		4E5A48FB14FF8DA50010AFD3 /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A312FA0EB800C7BB82 /* generic.vsh */; };
+		4E5A48FC14FF8DA50010AFD3 /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A412FA0EB800C7BB82 /* particle.fsh */; };
+		4E5A48FD14FF8DA50010AFD3 /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A512FA0EB800C7BB82 /* particle.vsh */; };
+		4E5A48FE14FF8DA50010AFD3 /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */; };
+		4E5A48FF14FF8DA50010AFD3 /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */; };
+		4E5A490014FF8DA50010AFD3 /* red_checker.png in Resources */ = {isa = PBXBuildFile; fileRef = 1731227B12FC76D100861D84 /* red_checker.png */; };
+		4E5A490114FF8DA50010AFD3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DB13708A2100152EFE /* Default.png */; };
+		4E5A490214FF8DA50010AFD3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DC13708A2100152EFE /* Icon.png */; };
+		4E5A490314FF8DA50010AFD3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175CD4DD13708A2100152EFE /* Icon@2x.png */; };
+		4E5A490514FF8DA50010AFD3 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
+		4E5A490614FF8DA50010AFD3 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
+		4E5A490714FF8DA50010AFD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
+		4E5A490814FF8DA50010AFD3 /* Isgl3dAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1733546F13408C38000F26F0 /* Isgl3dAppDelegate.mm */; };
+		4E5A490B14FF8DA50010AFD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
+		4E5A490C14FF8DA50010AFD3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227F12F8C8C000F80DFD /* OpenGLES.framework */; };
+		4E5A490D14FF8DA50010AFD3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
+		4E5A490E14FF8DA50010AFD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
+		4E5A490F14FF8DA50010AFD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		4E5A491014FF8DA50010AFD3 /* libisgl3d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libisgl3d.a */; };
+		4E5A491714FF8E050010AFD3 /* AudioDemoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5A46B714FF8CF30010AFD3 /* AudioDemoView.h */; };
+		4E5A491914FF8E0C0010AFD3 /* AudioDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A46B814FF8CF30010AFD3 /* AudioDemoView.m */; };
+		4E5A491A14FF8F7B0010AFD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466614FF76120010AFD3 /* AudioToolbox.framework */; };
+		4E5A491B14FF8F7B0010AFD3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466714FF76120010AFD3 /* AVFoundation.framework */; };
+		4E5A491C14FF8F7B0010AFD3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466814FF76120010AFD3 /* OpenAL.framework */; };
+		4E73ED8A14FF92F600836AE8 /* HappyAlley.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E73ED8814FF92E500836AE8 /* HappyAlley.caf */; };
+		4E93B46115009FB800AC02CE /* Isgl3dAnimatedMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66312F87EC5008D39E8 /* Isgl3dAnimatedMeshNode.h */; };
+		4E93B46215009FB800AC02CE /* Isgl3dAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66512F87EC5008D39E8 /* Isgl3dAnimationController.h */; };
+		4E93B46315009FB800AC02CE /* Isgl3dBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66712F87EC5008D39E8 /* Isgl3dBoneBatch.h */; };
+		4E93B46415009FB800AC02CE /* Isgl3dBoneNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66912F87EC5008D39E8 /* Isgl3dBoneNode.h */; };
+		4E93B46515009FB800AC02CE /* Isgl3dSkeletonNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66B12F87EC5008D39E8 /* Isgl3dSkeletonNode.h */; };
+		4E93B46615009FB800AC02CE /* Isgl3dCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D66E12F87EC5008D39E8 /* Isgl3dCamera.h */; };
+		4E93B46715009FB800AC02CE /* Isgl3dFollowCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67012F87EC5008D39E8 /* Isgl3dFollowCamera.h */; };
+		4E93B46815009FB800AC02CE /* Isgl3dSpringCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67212F87EC5008D39E8 /* Isgl3dSpringCamera.h */; };
+		4E93B46915009FB800AC02CE /* Isgl3dFollowNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67512F87EC5008D39E8 /* Isgl3dFollowNode.h */; };
+		4E93B46A15009FB800AC02CE /* Isgl3dMeshNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67712F87EC5008D39E8 /* Isgl3dMeshNode.h */; };
+		4E93B46B15009FB800AC02CE /* Isgl3dNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67912F87EC5008D39E8 /* Isgl3dNode.h */; };
+		4E93B46C15009FB800AC02CE /* Isgl3dParticleNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67B12F87EC5008D39E8 /* Isgl3dParticleNode.h */; };
+		4E93B46D15009FB800AC02CE /* Isgl3dScene3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D67D12F87EC5008D39E8 /* Isgl3dScene3D.h */; };
+		4E93B46E15009FB800AC02CE /* Isgl3dGLContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D68412F87EC5008D39E8 /* Isgl3dGLContext.h */; };
+		4E93B46F15009FB800AC02CE /* Isgl3dGLDepthRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D68612F87EC5008D39E8 /* Isgl3dGLDepthRenderTexture.h */; };
+		4E93B47015009FB800AC02CE /* Isgl3dGLMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D68812F87EC5008D39E8 /* Isgl3dGLMesh.h */; };
+		4E93B47115009FB800AC02CE /* Isgl3dGLTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D68C12F87EC5008D39E8 /* Isgl3dGLTexture.h */; };
+		4E93B47215009FB800AC02CE /* Isgl3dGLTextureFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D68E12F87EC5008D39E8 /* Isgl3dGLTextureFactory.h */; };
+		4E93B47315009FB800AC02CE /* Isgl3dGLTextureFactoryState.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69012F87EC5008D39E8 /* Isgl3dGLTextureFactoryState.h */; };
+		4E93B47415009FB800AC02CE /* Isgl3dGLVBOData.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69212F87EC5008D39E8 /* Isgl3dGLVBOData.h */; };
+		4E93B47515009FB800AC02CE /* Isgl3dGLVBOFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69412F87EC5008D39E8 /* Isgl3dGLVBOFactory.h */; };
+		4E93B47615009FB800AC02CE /* Isgl3dUVMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69812F87EC5008D39E8 /* Isgl3dUVMap.h */; };
+		4E93B47715009FB800AC02CE /* Isgl3dGLContext1.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69B12F87EC5008D39E8 /* Isgl3dGLContext1.h */; };
+		4E93B47815009FB800AC02CE /* Isgl3dGLDepthRenderTexture1.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69D12F87EC5008D39E8 /* Isgl3dGLDepthRenderTexture1.h */; };
+		4E93B47915009FB800AC02CE /* Isgl3dGLTextureFactoryState1.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D69F12F87EC5008D39E8 /* Isgl3dGLTextureFactoryState1.h */; };
+		4E93B47A15009FB800AC02CE /* Isgl3dGLVBOFactory1.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6A112F87EC5008D39E8 /* Isgl3dGLVBOFactory1.h */; };
+		4E93B47B15009FB800AC02CE /* Isgl3dGLContext2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6A412F87EC5008D39E8 /* Isgl3dGLContext2.h */; };
+		4E93B47C15009FB800AC02CE /* Isgl3dGLDepthRenderTexture2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6A612F87EC5008D39E8 /* Isgl3dGLDepthRenderTexture2.h */; };
+		4E93B47D15009FB800AC02CE /* Isgl3dGLTextureFactoryState2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6AA12F87EC5008D39E8 /* Isgl3dGLTextureFactoryState2.h */; };
+		4E93B47E15009FB800AC02CE /* Isgl3dGLVBOFactory2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6AC12F87EC5008D39E8 /* Isgl3dGLVBOFactory2.h */; };
+		4E93B47F15009FB800AC02CE /* Isgl3dAccelerometer.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6AF12F87EC5008D39E8 /* Isgl3dAccelerometer.h */; };
+		4E93B48015009FB800AC02CE /* Isgl3dEvent3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6B112F87EC5008D39E8 /* Isgl3dEvent3D.h */; };
+		4E93B48115009FB800AC02CE /* Isgl3dEvent3DDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6B312F87EC5008D39E8 /* Isgl3dEvent3DDispatcher.h */; };
+		4E93B48215009FB800AC02CE /* Isgl3dEvent3DHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6B512F87EC5008D39E8 /* Isgl3dEvent3DHandler.h */; };
+		4E93B48315009FB800AC02CE /* Isgl3dEvent3DListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6B712F87EC5008D39E8 /* Isgl3dEvent3DListener.h */; };
+		4E93B48415009FB800AC02CE /* Isgl3dEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6B912F87EC5008D39E8 /* Isgl3dEventType.h */; };
+		4E93B48515009FB800AC02CE /* Isgl3dObject3DGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6BA12F87EC5008D39E8 /* Isgl3dObject3DGrabber.h */; };
+		4E93B48615009FB800AC02CE /* Isgl3dTouchedObject3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6BC12F87EC5008D39E8 /* Isgl3dTouchedObject3D.h */; };
+		4E93B48715009FB800AC02CE /* Isgl3dTouchScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6BE12F87EC5008D39E8 /* Isgl3dTouchScreen.h */; };
+		4E93B48815009FB800AC02CE /* Isgl3dTouchScreenResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6C012F87EC5008D39E8 /* Isgl3dTouchScreenResponder.h */; };
+		4E93B48915009FB800AC02CE /* Isgl3dSingleTouchFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6C212F87EC5008D39E8 /* Isgl3dSingleTouchFilter.h */; };
+		4E93B48A15009FB800AC02CE /* Isgl3dLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6CA12F87EC5008D39E8 /* Isgl3dLight.h */; };
+		4E93B48B15009FB800AC02CE /* Isgl3dShadowCastingLight.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6CC12F87EC5008D39E8 /* Isgl3dShadowCastingLight.h */; };
+		4E93B48C15009FB800AC02CE /* Isgl3dAnimatedTextureMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6CF12F87EC5008D39E8 /* Isgl3dAnimatedTextureMaterial.h */; };
+		4E93B48D15009FB800AC02CE /* Isgl3dColorMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6D112F87EC5008D39E8 /* Isgl3dColorMaterial.h */; };
+		4E93B48E15009FB800AC02CE /* Isgl3dMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6D312F87EC5008D39E8 /* Isgl3dMaterial.h */; };
+		4E93B48F15009FB800AC02CE /* Isgl3dTextureMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6D512F87EC5008D39E8 /* Isgl3dTextureMaterial.h */; };
+		4E93B49015009FB800AC02CE /* Isgl3dGLU.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6D812F87EC5008D39E8 /* Isgl3dGLU.h */; };
+		4E93B49115009FB800AC02CE /* Isgl3dExplosionParticleGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6E612F87EC5008D39E8 /* Isgl3dExplosionParticleGenerator.h */; };
+		4E93B49215009FB800AC02CE /* Isgl3dFountainBounceParticleGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6E812F87EC5008D39E8 /* Isgl3dFountainBounceParticleGenerator.h */; };
+		4E93B49315009FB800AC02CE /* Isgl3dFountainParticleGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6EA12F87EC5008D39E8 /* Isgl3dFountainParticleGenerator.h */; };
+		4E93B49415009FB800AC02CE /* Isgl3dParticleGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6EC12F87EC5008D39E8 /* Isgl3dParticleGenerator.h */; };
+		4E93B49515009FB800AC02CE /* Isgl3dParticlePath.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6EE12F87EC5008D39E8 /* Isgl3dParticlePath.h */; };
+		4E93B49615009FB800AC02CE /* Isgl3dGLParticle.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6F212F87EC5008D39E8 /* Isgl3dGLParticle.h */; };
+		4E93B49715009FB800AC02CE /* Isgl3dParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D6F412F87EC5008D39E8 /* Isgl3dParticleSystem.h */; };
+		4E93B49815009FB800AC02CE /* Isgl3dArrow.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70012F87EC5008D39E8 /* Isgl3dArrow.h */; };
+		4E93B49915009FB800AC02CE /* Isgl3dCone.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70212F87EC5008D39E8 /* Isgl3dCone.h */; };
+		4E93B49A15009FB800AC02CE /* Isgl3dCube.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70412F87EC5008D39E8 /* Isgl3dCube.h */; };
+		4E93B49B15009FB800AC02CE /* Isgl3dCubeSphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70612F87EC5008D39E8 /* Isgl3dCubeSphere.h */; };
+		4E93B49C15009FB800AC02CE /* Isgl3dCylinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70812F87EC5008D39E8 /* Isgl3dCylinder.h */; };
+		4E93B49D15009FB800AC02CE /* Isgl3dEllipsoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70A12F87EC5008D39E8 /* Isgl3dEllipsoid.h */; };
+		4E93B49E15009FB800AC02CE /* Isgl3dGoursatSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70C12F87EC5008D39E8 /* Isgl3dGoursatSurface.h */; };
+		4E93B49F15009FB800AC02CE /* Isgl3dMultiMaterialCube.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D70E12F87EC5008D39E8 /* Isgl3dMultiMaterialCube.h */; };
+		4E93B4A015009FB800AC02CE /* Isgl3dOvoid.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71012F87EC5008D39E8 /* Isgl3dOvoid.h */; };
+		4E93B4A115009FB800AC02CE /* Isgl3dPlane.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71212F87EC5008D39E8 /* Isgl3dPlane.h */; };
+		4E93B4A215009FB800AC02CE /* Isgl3dPrimitive.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71412F87EC5008D39E8 /* Isgl3dPrimitive.h */; };
+		4E93B4A315009FB800AC02CE /* Isgl3dPrimitiveFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71612F87EC5008D39E8 /* Isgl3dPrimitiveFactory.h */; };
+		4E93B4A415009FB800AC02CE /* Isgl3dSphere.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71812F87EC5008D39E8 /* Isgl3dSphere.h */; };
+		4E93B4A515009FB800AC02CE /* Isgl3dTerrainMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71A12F87EC5008D39E8 /* Isgl3dTerrainMesh.h */; };
+		4E93B4A615009FB800AC02CE /* Isgl3dTorus.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71C12F87EC5008D39E8 /* Isgl3dTorus.h */; };
+		4E93B4A715009FB800AC02CE /* Isgl3dGLRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D71F12F87EC5008D39E8 /* Isgl3dGLRenderer.h */; };
+		4E93B4A815009FB800AC02CE /* Isgl3dGLRenderer1.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D72212F87EC5008D39E8 /* Isgl3dGLRenderer1.h */; };
+		4E93B4A915009FB800AC02CE /* Isgl3dGLRenderer1State.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D72412F87EC5008D39E8 /* Isgl3dGLRenderer1State.h */; };
+		4E93B4AA15009FB800AC02CE /* Isgl3dGLRenderer2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D72712F87EC5008D39E8 /* Isgl3dGLRenderer2.h */; };
+		4E93B4AB15009FB800AC02CE /* Isgl3dGLRenderer2State.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D72912F87EC5008D39E8 /* Isgl3dGLRenderer2State.h */; };
+		4E93B4AC15009FB800AC02CE /* Isgl3dCaptureShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D72C12F87EC5008D39E8 /* Isgl3dCaptureShader.h */; };
+		4E93B4AD15009FB800AC02CE /* Isgl3dGenericShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D72E12F87EC5008D39E8 /* Isgl3dGenericShader.h */; };
+		4E93B4AE15009FB800AC02CE /* Isgl3dParticleShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D73012F87EC5008D39E8 /* Isgl3dParticleShader.h */; };
+		4E93B4AF15009FB800AC02CE /* Isgl3dShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D73212F87EC5008D39E8 /* Isgl3dShader.h */; };
+		4E93B4B015009FB800AC02CE /* Isgl3dShaderState.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D73412F87EC5008D39E8 /* Isgl3dShaderState.h */; };
+		4E93B4B115009FB800AC02CE /* Isgl3dShadowMapShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D73612F87EC5008D39E8 /* Isgl3dShadowMapShader.h */; };
+		4E93B4B215009FB800AC02CE /* Isgl3dTween.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D73912F87EC5008D39E8 /* Isgl3dTween.h */; };
+		4E93B4B315009FB800AC02CE /* Isgl3dTweener.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D73B12F87EC5008D39E8 /* Isgl3dTweener.h */; };
+		4E93B4B415009FB800AC02CE /* Isgl3dGLUIButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74012F87EC5008D39E8 /* Isgl3dGLUIButton.h */; };
+		4E93B4B515009FB800AC02CE /* Isgl3dGLUIComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74212F87EC5008D39E8 /* Isgl3dGLUIComponent.h */; };
+		4E93B4B615009FB800AC02CE /* Isgl3dGLUIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74412F87EC5008D39E8 /* Isgl3dGLUIImage.h */; };
+		4E93B4B715009FB800AC02CE /* Isgl3dGLUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74612F87EC5008D39E8 /* Isgl3dGLUILabel.h */; };
+		4E93B4B815009FB800AC02CE /* Isgl3dGLUIProgressBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74812F87EC5008D39E8 /* Isgl3dGLUIProgressBar.h */; };
+		4E93B4B915009FB800AC02CE /* Isgl3dColorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74B12F87EC5008D39E8 /* Isgl3dColorUtil.h */; };
+		4E93B4BA15009FB800AC02CE /* Isgl3dFloatArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D74D12F87EC5008D39E8 /* Isgl3dFloatArray.h */; };
+		4E93B4BB15009FB800AC02CE /* Isgl3dLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D75112F87EC5008D39E8 /* Isgl3dLog.h */; };
+		4E93B4BC15009FB800AC02CE /* Isgl3dUShortArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 17F1D75312F87EC5008D39E8 /* Isgl3dUShortArray.h */; };
+		4E93B4BD15009FB800AC02CE /* Isgl3dBillboardNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 17BE1734132E92AF00D053BA /* Isgl3dBillboardNode.h */; };
+		4E93B4BE15009FB800AC02CE /* Isgl3dDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F86E3133E67A5007F4671 /* Isgl3dDirector.h */; };
+		4E93B4BF15009FB800AC02CE /* Isgl3dScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F86E7133E67BB007F4671 /* Isgl3dScheduler.h */; };
+		4E93B4C015009FB800AC02CE /* Isgl3dView.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F86F0133E67CA007F4671 /* Isgl3dView.h */; };
+		4E93B4C115009FB800AC02CE /* Isgl3dGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F8769133FC65A007F4671 /* Isgl3dGLProgram.h */; };
+		4E93B4C215009FB800AC02CE /* Isgl3dFpsRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 179F876D133FC68E007F4671 /* Isgl3dFpsRenderer.h */; };
+		4E93B4C315009FB800AC02CE /* (null) in Headers */ = {isa = PBXBuildFile; };
+		4E93B4C415009FB800AC02CE /* Isgl3dVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 1756F4DA1347874000205D76 /* Isgl3dVector.h */; };
+		4E93B4C515009FB800AC02CE /* Isgl3dMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 1756F5421347A5AD00205D76 /* Isgl3dMatrix.h */; };
+		4E93B4C615009FB800AC02CE /* Isgl3dArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C15C7D1348F4A5004EF5C3 /* Isgl3dArray.h */; };
+		4E93B4C715009FB800AC02CE /* Isgl3dCArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 172792EB134A3E5C0043956C /* Isgl3dCArray.h */; };
+		4E93B4C815009FB800AC02CE /* Isgl3dQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 176903481355E2890010B4CB /* Isgl3dQuaternion.h */; };
+		4E93B4C915009FB800AC02CE /* SpringCameraTestView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB021358B014002C3288 /* SpringCameraTestView.h */; };
+		4E93B4CA15009FB800AC02CE /* neon_matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB401358D6F7002C3288 /* neon_matrix_impl.h */; };
+		4E93B4CB15009FB800AC02CE /* common_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB431358D6F7002C3288 /* common_macros.h */; };
+		4E93B4CC15009FB800AC02CE /* matrix_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB441358D6F7002C3288 /* matrix_impl.h */; };
+		4E93B4CD15009FB800AC02CE /* utility_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB461358D6F7002C3288 /* utility_impl.h */; };
+		4E93B4CE15009FB800AC02CE /* vfp_clobbers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1713BB481358D6F7002C3288 /* vfp_clobbers.h */; };
+		4E93B4CF15009FB800AC02CE /* Isgl3dPODImporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A3E60E135A18B90022BAD8 /* Isgl3dPODImporter.h */; };
+		4E93B4D015009FB800AC02CE /* Isgl3dKeyframeMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CDF5A913674DB500893070 /* Isgl3dKeyframeMesh.h */; };
+		4E93B4D115009FB800AC02CE /* Isgl3dGestureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */; };
+		4E93B4D215009FB800AC02CE /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
+		4E93B4D315009FB800AC02CE /* Isgl3dShaderMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 17EA00BE13F0AAB500924372 /* Isgl3dShaderMaterial.h */; };
+		4E93B4D415009FB800AC02CE /* Isgl3dCustomShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17EA00C213F0AAD200924372 /* Isgl3dCustomShader.h */; };
+		4E93B4D515009FB800AC02CE /* Isgl3dInternalShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 17A4823D13F2B7F40098AC3F /* Isgl3dInternalShader.h */; };
+		4E93B4D615009FB800AC02CE /* Isgl3dAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772713F459E2003F6E46 /* Isgl3dAction.h */; };
+		4E93B4D715009FB800AC02CE /* Isgl3dActionFixedDuration.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772913F459E2003F6E46 /* Isgl3dActionFixedDuration.h */; };
+		4E93B4D815009FB800AC02CE /* Isgl3dActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772B13F459E2003F6E46 /* Isgl3dActionInstant.h */; };
+		4E93B4D915009FB800AC02CE /* Isgl3dActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772D13F459E2003F6E46 /* Isgl3dActionInterval.h */; };
+		4E93B4DA15009FB800AC02CE /* Isgl3dActionSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0772F13F459E2003F6E46 /* Isgl3dActionSequence.h */; };
+		4E93B4DB15009FB800AC02CE /* Isgl3dActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D0773F13F4A38C003F6E46 /* Isgl3dActionManager.h */; };
+		4E93B4DC15009FB800AC02CE /* Isgl3dActionMove.h in Headers */ = {isa = PBXBuildFile; fileRef = 17DC4E4B13F509580002B569 /* Isgl3dActionMove.h */; };
+		4E93B4DD15009FB800AC02CE /* Isgl3dActionRotate.h in Headers */ = {isa = PBXBuildFile; fileRef = 17DC4E4F13F50CAC0002B569 /* Isgl3dActionRotate.h */; };
+		4E93B4DE15009FB800AC02CE /* Isgl3dActionScale.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C0894413F516DC006F682B /* Isgl3dActionScale.h */; };
+		4E93B4DF15009FB800AC02CE /* Isgl3dActionAlpha.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C0894813F5269D006F682B /* Isgl3dActionAlpha.h */; };
+		4E93B4E015009FB800AC02CE /* Isgl3dActionCallFunc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C0894C13F5A565006F682B /* Isgl3dActionCallFunc.h */; };
+		4E93B4E115009FB800AC02CE /* Isgl3dActionDelay.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C0895013F5A7C3006F682B /* Isgl3dActionDelay.h */; };
+		4E93B4E215009FB800AC02CE /* Isgl3dActionParallel.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C0895413F5C64E006F682B /* Isgl3dActionParallel.h */; };
+		4E93B4E315009FB800AC02CE /* Isgl3dActionEase.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C2F0A113F5D12A0002C7D3 /* Isgl3dActionEase.h */; };
+		4E93B4E415009FB800AC02CE /* Isgl3dActionTween.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C2F0A513F5E1D60002C7D3 /* Isgl3dActionTween.h */; };
+		4E93B4E515009FB800AC02CE /* Isgl3dActionRepeat.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C2F0A913F5E7C70002C7D3 /* Isgl3dActionRepeat.h */; };
+		4E93B4E615009FB800AC02CE /* PVRTArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */; };
+		4E93B4E715009FB800AC02CE /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */; };
+		4E93B4E815009FB800AC02CE /* PVRTBoneBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15914CCFA9000BAEB8A /* PVRTBoneBatch.h */; };
+		4E93B4E915009FB800AC02CE /* PVRTDecompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15B14CCFA9000BAEB8A /* PVRTDecompress.h */; };
+		4E93B4EA15009FB800AC02CE /* PVRTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15D14CCFA9000BAEB8A /* PVRTError.h */; };
+		4E93B4EB15009FB800AC02CE /* PVRTFixedPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15F14CCFA9000BAEB8A /* PVRTFixedPoint.h */; };
+		4E93B4EC15009FB800AC02CE /* PVRTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16114CCFA9000BAEB8A /* PVRTGeometry.h */; };
+		4E93B4ED15009FB800AC02CE /* PVRTGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16214CCFA9000BAEB8A /* PVRTGlobal.h */; };
+		4E93B4EE15009FB800AC02CE /* PVRTHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16314CCFA9000BAEB8A /* PVRTHash.h */; };
+		4E93B4EF15009FB800AC02CE /* PVRTMathTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16414CCFA9000BAEB8A /* PVRTMathTable.h */; };
+		4E93B4F015009FB800AC02CE /* PVRTMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16514CCFA9000BAEB8A /* PVRTMatrix.h */; };
+		4E93B4F115009FB800AC02CE /* PVRTMemoryFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16814CCFA9000BAEB8A /* PVRTMemoryFileSystem.h */; };
+		4E93B4F215009FB800AC02CE /* PVRTMisc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16A14CCFA9000BAEB8A /* PVRTMisc.h */; };
+		4E93B4F315009FB800AC02CE /* PVRTModelPOD.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16C14CCFA9000BAEB8A /* PVRTModelPOD.h */; };
+		4E93B4F415009FB800AC02CE /* PVRTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16D14CCFA9000BAEB8A /* PVRTools.h */; };
+		4E93B4F515009FB800AC02CE /* PVRTPFXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA16F14CCFA9000BAEB8A /* PVRTPFXParser.h */; };
+		4E93B4F615009FB800AC02CE /* PVRTPrint3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17114CCFA9000BAEB8A /* PVRTPrint3D.h */; };
+		4E93B4F715009FB800AC02CE /* PVRTPrint3Ddat.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17214CCFA9000BAEB8A /* PVRTPrint3Ddat.h */; };
+		4E93B4F815009FB800AC02CE /* PVRTQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17314CCFA9000BAEB8A /* PVRTQuaternion.h */; };
+		4E93B4F915009FB800AC02CE /* PVRTResourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17714CCFA9000BAEB8A /* PVRTResourceFile.h */; };
+		4E93B4FA15009FB800AC02CE /* PVRTShadowVol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17914CCFA9000BAEB8A /* PVRTShadowVol.h */; };
+		4E93B4FB15009FB800AC02CE /* PVRTSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17A14CCFA9000BAEB8A /* PVRTSingleton.h */; };
+		4E93B4FC15009FB800AC02CE /* PVRTSkipGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17B14CCFA9000BAEB8A /* PVRTSkipGraph.h */; };
+		4E93B4FD15009FB800AC02CE /* PVRTString.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17D14CCFA9000BAEB8A /* PVRTString.h */; };
+		4E93B4FE15009FB800AC02CE /* PVRTTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA17F14CCFA9000BAEB8A /* PVRTTexture.h */; };
+		4E93B4FF15009FB800AC02CE /* PVRTTrans.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18114CCFA9000BAEB8A /* PVRTTrans.h */; };
+		4E93B50015009FB800AC02CE /* PVRTTriStrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18314CCFA9000BAEB8A /* PVRTTriStrip.h */; };
+		4E93B50115009FB800AC02CE /* PVRTVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18514CCFA9000BAEB8A /* PVRTVector.h */; };
+		4E93B50215009FB800AC02CE /* PVRTVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA18714CCFA9000BAEB8A /* PVRTVertex.h */; };
+		4E93B50315009FB800AC02CE /* OGLES2Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BA14CCFABE00BAEB8A /* OGLES2Tools.h */; };
+		4E93B50415009FB800AC02CE /* PVRTBackgroundShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BC14CCFABE00BAEB8A /* PVRTBackgroundShaders.h */; };
+		4E93B50515009FB800AC02CE /* PVRTContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BD14CCFABE00BAEB8A /* PVRTContext.h */; };
+		4E93B50615009FB800AC02CE /* PVRTgles2Ext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1BF14CCFABE00BAEB8A /* PVRTgles2Ext.h */; };
+		4E93B50715009FB800AC02CE /* PVRTPFXParserAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C114CCFABE00BAEB8A /* PVRTPFXParserAPI.h */; };
+		4E93B50815009FB800AC02CE /* PVRTPrint3DIMGLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C314CCFABE00BAEB8A /* PVRTPrint3DIMGLogo.h */; };
+		4E93B50915009FB800AC02CE /* PVRTPrint3DPVRLogo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C414CCFABE00BAEB8A /* PVRTPrint3DPVRLogo.h */; };
+		4E93B50A15009FB800AC02CE /* PVRTPrint3DShaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C514CCFABE00BAEB8A /* PVRTPrint3DShaders.h */; };
+		4E93B50B15009FB800AC02CE /* PVRTShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C714CCFABE00BAEB8A /* PVRTShader.h */; };
+		4E93B50C15009FB800AC02CE /* PVRTTextureAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */; };
+		4E93B50D15009FB800AC02CE /* Isgl3dMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */; };
+		4E93B50E15009FB800AC02CE /* Isgl3dVector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFA9214FEE2F30040102B /* Isgl3dVector3.h */; };
+		4E93B50F15009FB800AC02CE /* Isgl3dMatrix4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFA9714FEE3790040102B /* Isgl3dMatrix4.h */; };
+		4E93B51015009FB800AC02CE /* Isgl3dVector4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFABE14FEE7970040102B /* Isgl3dVector4.h */; };
+		4E93B51115009FB800AC02CE /* Isgl3dMatrix3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFAD314FEECC30040102B /* Isgl3dMatrix3.h */; };
+		4E93B51215009FB800AC02CE /* Isgl3dAudioData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5A46AD14FF7FF90010AFD3 /* Isgl3dAudioData.h */; };
+		4E93B51315009FB800AC02CE /* Isgl3dAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5A46B114FF84550010AFD3 /* Isgl3dAudioManager.h */; };
+		4E93B51415009FB800AC02CE /* AudioDemoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E5A46B714FF8CF30010AFD3 /* AudioDemoView.h */; };
+		4E93B5D215009FB800AC02CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		4E93B5D315009FB800AC02CE /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A871114CF190200C17DC5 /* GLKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4E93B5D415009FB800AC02CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466614FF76120010AFD3 /* AudioToolbox.framework */; };
+		4E93B5D515009FB800AC02CE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466714FF76120010AFD3 /* AVFoundation.framework */; };
+		4E93B5D615009FB800AC02CE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5A466814FF76120010AFD3 /* OpenAL.framework */; };
+		4E93B5DD1500A0C700AC02CE /* OALAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45E514FF5AAE0010AFD3 /* OALAction.m */; };
+		4E93B5DE1500A0C700AC02CE /* OALActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45E714FF5AAE0010AFD3 /* OALActionManager.m */; };
+		4E93B5DF1500A0C700AC02CE /* OALAudioActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45E914FF5AAE0010AFD3 /* OALAudioActions.m */; };
+		4E93B5E01500A0C700AC02CE /* OALFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45EB14FF5AAE0010AFD3 /* OALFunction.m */; };
+		4E93B5E11500A0C700AC02CE /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45ED14FF5AAE0010AFD3 /* OALUtilityActions.m */; };
+		4E93B5E21500A0C700AC02CE /* OALAudioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45F014FF5AAE0010AFD3 /* OALAudioTrack.m */; };
+		4E93B5E31500A0C700AC02CE /* OALAudioTrackNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45F214FF5AAE0010AFD3 /* OALAudioTrackNotifications.m */; };
+		4E93B5E41500A0C700AC02CE /* OALAudioTracks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45F414FF5AAE0010AFD3 /* OALAudioTracks.m */; };
+		4E93B5E51500A0C700AC02CE /* OALSimpleAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45F714FF5AAE0010AFD3 /* OALSimpleAudio.m */; };
+		4E93B5E61500A0C700AC02CE /* ALBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45FC14FF5AAE0010AFD3 /* ALBuffer.m */; };
+		4E93B5E71500A0C700AC02CE /* ALCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A45FE14FF5AAE0010AFD3 /* ALCaptureDevice.m */; };
+		4E93B5E81500A0C700AC02CE /* ALChannelSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460014FF5AAE0010AFD3 /* ALChannelSource.m */; };
+		4E93B5E91500A0C700AC02CE /* ALContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460214FF5AAE0010AFD3 /* ALContext.m */; };
+		4E93B5EA1500A0C700AC02CE /* ALDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460414FF5AAE0010AFD3 /* ALDevice.m */; };
+		4E93B5EB1500A0C700AC02CE /* ALListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460614FF5AAE0010AFD3 /* ALListener.m */; };
+		4E93B5EC1500A0C700AC02CE /* ALSoundSourcePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460914FF5AAE0010AFD3 /* ALSoundSourcePool.m */; };
+		4E93B5ED1500A0C700AC02CE /* ALSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460B14FF5AAE0010AFD3 /* ALSource.m */; };
+		4E93B5EE1500A0C700AC02CE /* ALWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A460E14FF5AAE0010AFD3 /* ALWrapper.m */; };
+		4E93B5EF1500A0C700AC02CE /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461014FF5AAE0010AFD3 /* OpenALManager.m */; };
+		4E93B5F01500A0C700AC02CE /* OALAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461314FF5AAE0010AFD3 /* OALAudioSession.m */; };
+		4E93B5F11500A0C700AC02CE /* OALSuspendHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461514FF5AAE0010AFD3 /* OALSuspendHandler.m */; };
+		4E93B5F21500A0C700AC02CE /* IOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461814FF5AAE0010AFD3 /* IOSVersion.m */; };
+		4E93B5F31500A0C700AC02CE /* mach_timing.c in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461914FF5AAE0010AFD3 /* mach_timing.c */; };
+		4E93B5F41500A0C700AC02CE /* NSMutableArray+WeakReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461C14FF5AAE0010AFD3 /* NSMutableArray+WeakReferences.m */; };
+		4E93B5F51500A0C700AC02CE /* OALAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A461E14FF5AAE0010AFD3 /* OALAudioFile.m */; };
+		4E93B5F61500A0C700AC02CE /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5A462114FF5AAE0010AFD3 /* OALTools.m */; };
+		4E93B5FB1500A26500AC02CE /* libisgl3dAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E93B5DA15009FB900AC02CE /* libisgl3dAudio.a */; };
+		4E93B6211500AC4D00AC02CE /* ColdFunk.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4E73ED8714FF92E500836AE8 /* ColdFunk.caf */; };
 		4EA7751914ED046F009E6AD6 /* norm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751614ED0467009E6AD6 /* norm1.png */; };
 		4EA7751A14ED046F009E6AD6 /* norm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751714ED0467009E6AD6 /* norm4.png */; };
 		8B0FA33F13E8038500E798BA /* Isgl3dGestureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */; };
@@ -1887,6 +2138,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = isgl3d;
+		};
+		4E5A48F614FF8DA50010AFD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = isgl3d;
+		};
+		4E93B5DB1500A01D00AC02CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E93B45F15009FB800AC02CE;
+			remoteInfo = isgl3dAudio;
 		};
 		8B4B558214F45592007EEFAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2631,6 +2896,78 @@
 		17F7A8A512FA0EB800C7BB82 /* particle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vsh; sourceTree = "<group>"; };
 		17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.fsh; sourceTree = "<group>"; };
 		17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
+		4E5A45E414FF5AAE0010AFD3 /* OALAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAction.h; sourceTree = "<group>"; };
+		4E5A45E514FF5AAE0010AFD3 /* OALAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAction.m; sourceTree = "<group>"; };
+		4E5A45E614FF5AAE0010AFD3 /* OALActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALActionManager.h; sourceTree = "<group>"; };
+		4E5A45E714FF5AAE0010AFD3 /* OALActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALActionManager.m; sourceTree = "<group>"; };
+		4E5A45E814FF5AAE0010AFD3 /* OALAudioActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioActions.h; sourceTree = "<group>"; };
+		4E5A45E914FF5AAE0010AFD3 /* OALAudioActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioActions.m; sourceTree = "<group>"; };
+		4E5A45EA14FF5AAE0010AFD3 /* OALFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALFunction.h; sourceTree = "<group>"; };
+		4E5A45EB14FF5AAE0010AFD3 /* OALFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALFunction.m; sourceTree = "<group>"; };
+		4E5A45EC14FF5AAE0010AFD3 /* OALUtilityActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALUtilityActions.h; sourceTree = "<group>"; };
+		4E5A45ED14FF5AAE0010AFD3 /* OALUtilityActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALUtilityActions.m; sourceTree = "<group>"; };
+		4E5A45EF14FF5AAE0010AFD3 /* OALAudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioTrack.h; sourceTree = "<group>"; };
+		4E5A45F014FF5AAE0010AFD3 /* OALAudioTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioTrack.m; sourceTree = "<group>"; };
+		4E5A45F114FF5AAE0010AFD3 /* OALAudioTrackNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioTrackNotifications.h; sourceTree = "<group>"; };
+		4E5A45F214FF5AAE0010AFD3 /* OALAudioTrackNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioTrackNotifications.m; sourceTree = "<group>"; };
+		4E5A45F314FF5AAE0010AFD3 /* OALAudioTracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioTracks.h; sourceTree = "<group>"; };
+		4E5A45F414FF5AAE0010AFD3 /* OALAudioTracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioTracks.m; sourceTree = "<group>"; };
+		4E5A45F614FF5AAE0010AFD3 /* OALSimpleAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALSimpleAudio.h; sourceTree = "<group>"; };
+		4E5A45F714FF5AAE0010AFD3 /* OALSimpleAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALSimpleAudio.m; sourceTree = "<group>"; };
+		4E5A45F814FF5AAE0010AFD3 /* ObjectAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectAL.h; sourceTree = "<group>"; };
+		4E5A45F914FF5AAE0010AFD3 /* ObjectALConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectALConfig.h; sourceTree = "<group>"; };
+		4E5A45FB14FF5AAE0010AFD3 /* ALBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALBuffer.h; sourceTree = "<group>"; };
+		4E5A45FC14FF5AAE0010AFD3 /* ALBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBuffer.m; sourceTree = "<group>"; };
+		4E5A45FD14FF5AAE0010AFD3 /* ALCaptureDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALCaptureDevice.h; sourceTree = "<group>"; };
+		4E5A45FE14FF5AAE0010AFD3 /* ALCaptureDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALCaptureDevice.m; sourceTree = "<group>"; };
+		4E5A45FF14FF5AAE0010AFD3 /* ALChannelSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALChannelSource.h; sourceTree = "<group>"; };
+		4E5A460014FF5AAE0010AFD3 /* ALChannelSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALChannelSource.m; sourceTree = "<group>"; };
+		4E5A460114FF5AAE0010AFD3 /* ALContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALContext.h; sourceTree = "<group>"; };
+		4E5A460214FF5AAE0010AFD3 /* ALContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALContext.m; sourceTree = "<group>"; };
+		4E5A460314FF5AAE0010AFD3 /* ALDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALDevice.h; sourceTree = "<group>"; };
+		4E5A460414FF5AAE0010AFD3 /* ALDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALDevice.m; sourceTree = "<group>"; };
+		4E5A460514FF5AAE0010AFD3 /* ALListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALListener.h; sourceTree = "<group>"; };
+		4E5A460614FF5AAE0010AFD3 /* ALListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALListener.m; sourceTree = "<group>"; };
+		4E5A460714FF5AAE0010AFD3 /* ALSoundSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSoundSource.h; sourceTree = "<group>"; };
+		4E5A460814FF5AAE0010AFD3 /* ALSoundSourcePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSoundSourcePool.h; sourceTree = "<group>"; };
+		4E5A460914FF5AAE0010AFD3 /* ALSoundSourcePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSoundSourcePool.m; sourceTree = "<group>"; };
+		4E5A460A14FF5AAE0010AFD3 /* ALSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALSource.h; sourceTree = "<group>"; };
+		4E5A460B14FF5AAE0010AFD3 /* ALSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALSource.m; sourceTree = "<group>"; };
+		4E5A460C14FF5AAE0010AFD3 /* ALTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTypes.h; sourceTree = "<group>"; };
+		4E5A460D14FF5AAE0010AFD3 /* ALWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALWrapper.h; sourceTree = "<group>"; };
+		4E5A460E14FF5AAE0010AFD3 /* ALWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALWrapper.m; sourceTree = "<group>"; };
+		4E5A460F14FF5AAE0010AFD3 /* OpenALManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenALManager.h; sourceTree = "<group>"; };
+		4E5A461014FF5AAE0010AFD3 /* OpenALManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenALManager.m; sourceTree = "<group>"; };
+		4E5A461214FF5AAE0010AFD3 /* OALAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioSession.h; sourceTree = "<group>"; };
+		4E5A461314FF5AAE0010AFD3 /* OALAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioSession.m; sourceTree = "<group>"; };
+		4E5A461414FF5AAE0010AFD3 /* OALSuspendHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALSuspendHandler.h; sourceTree = "<group>"; };
+		4E5A461514FF5AAE0010AFD3 /* OALSuspendHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALSuspendHandler.m; sourceTree = "<group>"; };
+		4E5A461714FF5AAE0010AFD3 /* IOSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSVersion.h; sourceTree = "<group>"; };
+		4E5A461814FF5AAE0010AFD3 /* IOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSVersion.m; sourceTree = "<group>"; };
+		4E5A461914FF5AAE0010AFD3 /* mach_timing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_timing.c; sourceTree = "<group>"; };
+		4E5A461A14FF5AAE0010AFD3 /* mach_timing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_timing.h; sourceTree = "<group>"; };
+		4E5A461B14FF5AAE0010AFD3 /* NSMutableArray+WeakReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+WeakReferences.h"; sourceTree = "<group>"; };
+		4E5A461C14FF5AAE0010AFD3 /* NSMutableArray+WeakReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+WeakReferences.m"; sourceTree = "<group>"; };
+		4E5A461D14FF5AAE0010AFD3 /* OALAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioFile.h; sourceTree = "<group>"; };
+		4E5A461E14FF5AAE0010AFD3 /* OALAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioFile.m; sourceTree = "<group>"; };
+		4E5A461F14FF5AAE0010AFD3 /* OALNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALNotifications.h; sourceTree = "<group>"; };
+		4E5A462014FF5AAE0010AFD3 /* OALTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALTools.h; sourceTree = "<group>"; };
+		4E5A462114FF5AAE0010AFD3 /* OALTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALTools.m; sourceTree = "<group>"; };
+		4E5A462214FF5AAE0010AFD3 /* ObjectALMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectALMacros.h; sourceTree = "<group>"; };
+		4E5A462314FF5AAE0010AFD3 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		4E5A466614FF76120010AFD3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4E5A466714FF76120010AFD3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E5A466814FF76120010AFD3 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		4E5A46AD14FF7FF90010AFD3 /* Isgl3dAudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAudioData.h; sourceTree = "<group>"; };
+		4E5A46AE14FF7FF90010AFD3 /* Isgl3dAudioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAudioData.m; sourceTree = "<group>"; };
+		4E5A46B114FF84550010AFD3 /* Isgl3dAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dAudioManager.h; sourceTree = "<group>"; };
+		4E5A46B214FF84560010AFD3 /* Isgl3dAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dAudioManager.m; sourceTree = "<group>"; };
+		4E5A46B714FF8CF30010AFD3 /* AudioDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDemoView.h; sourceTree = "<group>"; };
+		4E5A46B814FF8CF30010AFD3 /* AudioDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDemoView.m; sourceTree = "<group>"; };
+		4E5A491414FF8DA50010AFD3 /* SoundDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E73ED8714FF92E500836AE8 /* ColdFunk.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ColdFunk.caf; sourceTree = "<group>"; };
+		4E73ED8814FF92E500836AE8 /* HappyAlley.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HappyAlley.caf; sourceTree = "<group>"; };
+		4E93B5DA15009FB900AC02CE /* libisgl3dAudio.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libisgl3dAudio.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EA7751614ED0467009E6AD6 /* norm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm1.png; sourceTree = "<group>"; };
 		4EA7751714ED0467009E6AD6 /* norm4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm4.png; sourceTree = "<group>"; };
 		8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGestureManager.h; sourceTree = "<group>"; };
@@ -2648,6 +2985,7 @@
 		8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalMappingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4B55B114F455FE007EEFAA /* NormalMappingDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalMappingDemoView.h; sourceTree = "<group>"; };
 		8B4B55B214F455FE007EEFAA /* NormalMappingDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalMappingDemoView.m; sourceTree = "<group>"; };
+		8B612285150698920033AA6F /* LICENSE.ObjectAL */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.ObjectAL; sourceTree = "<group>"; };
 		8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMathTypes.h; sourceTree = "<group>"; };
 		8B8A871114CF190200C17DC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8B8A871814CF1E6D00C17DC5 /* isgl3d-Apps-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "isgl3d-Apps-Prefix.pch"; path = "../isgl3d/isgl3d-Apps-Prefix.pch"; sourceTree = "<group>"; };
@@ -3029,6 +3367,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E5A466914FF76120010AFD3 /* AudioToolbox.framework in Frameworks */,
+				4E5A466B14FF76120010AFD3 /* AVFoundation.framework in Frameworks */,
+				4E5A466D14FF76120010AFD3 /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3157,6 +3498,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4E5A490A14FF8DA50010AFD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E5A491A14FF8F7B0010AFD3 /* AudioToolbox.framework in Frameworks */,
+				4E5A491B14FF8F7B0010AFD3 /* AVFoundation.framework in Frameworks */,
+				4E5A491C14FF8F7B0010AFD3 /* OpenAL.framework in Frameworks */,
+				4E5A490B14FF8DA50010AFD3 /* CoreGraphics.framework in Frameworks */,
+				4E5A490C14FF8DA50010AFD3 /* OpenGLES.framework in Frameworks */,
+				4E5A490D14FF8DA50010AFD3 /* QuartzCore.framework in Frameworks */,
+				4E5A490E14FF8DA50010AFD3 /* UIKit.framework in Frameworks */,
+				4E5A490F14FF8DA50010AFD3 /* Foundation.framework in Frameworks */,
+				4E93B5FB1500A26500AC02CE /* libisgl3dAudio.a in Frameworks */,
+				4E5A491014FF8DA50010AFD3 /* libisgl3d.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E93B5D115009FB800AC02CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E93B5D215009FB800AC02CE /* Foundation.framework in Frameworks */,
+				4E93B5D315009FB800AC02CE /* GLKit.framework in Frameworks */,
+				4E93B5D415009FB800AC02CE /* AudioToolbox.framework in Frameworks */,
+				4E93B5D515009FB800AC02CE /* AVFoundation.framework in Frameworks */,
+				4E93B5D615009FB800AC02CE /* OpenAL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B4B55A314F45592007EEFAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3177,6 +3547,9 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				8B8A871214CF190200C17DC5 /* GLKit.framework in Frameworks */,
+				4E5A466A14FF76120010AFD3 /* AudioToolbox.framework in Frameworks */,
+				4E5A466C14FF76120010AFD3 /* AVFoundation.framework in Frameworks */,
+				4E5A466E14FF76120010AFD3 /* OpenAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3221,6 +3594,8 @@
 				17D0776413F4A643003F6E46 /* ActionsDemo.app */,
 				17C2F0D613F6CCEE0002C7D3 /* GesturesDemo.app */,
 				8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */,
+				4E5A491414FF8DA50010AFD3 /* SoundDemo.app */,
+				4E93B5DA15009FB900AC02CE /* libisgl3dAudio.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3235,6 +3610,7 @@
 				17F1E05B12F88FFA008D39E8 /* tests */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				8B612285150698920033AA6F /* LICENSE.ObjectAL */,
 				17116C1812FF1D9500C4BC65 /* LICENSE.bullet */,
 				17116C1912FF1D9500C4BC65 /* LICENSE.IMGTEC */,
 				17116C1A12FF1D9500C4BC65 /* LICENSE.isgl3d */,
@@ -3245,6 +3621,9 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E5A466614FF76120010AFD3 /* AudioToolbox.framework */,
+				4E5A466714FF76120010AFD3 /* AVFoundation.framework */,
+				4E5A466814FF76120010AFD3 /* OpenAL.framework */,
 				17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */,
 				17B7227F12F8C8C000F80DFD /* OpenGLES.framework */,
 				17B7228112F8C8C000F80DFD /* QuartzCore.framework */,
@@ -4109,6 +4488,10 @@
 				179F86E8133E67BB007F4671 /* Isgl3dScheduler.m */,
 				17F1D69812F87EC5008D39E8 /* Isgl3dUVMap.h */,
 				17F1D69912F87EC5008D39E8 /* Isgl3dUVMap.m */,
+				4E5A46AD14FF7FF90010AFD3 /* Isgl3dAudioData.h */,
+				4E5A46AE14FF7FF90010AFD3 /* Isgl3dAudioData.m */,
+				4E5A46B114FF84550010AFD3 /* Isgl3dAudioManager.h */,
+				4E5A46B214FF84560010AFD3 /* Isgl3dAudioManager.m */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -4424,6 +4807,7 @@
 		17F1D88512F88AD8008D39E8 /* external */ = {
 			isa = PBXGroup;
 			children = (
+				4E5A45E214FF5AAE0010AFD3 /* ObjectAL */,
 				8BDBA04B14CCF5CE00BAEB8A /* PowerVR_SDK-2.0.9 */,
 				171CB9D513196FE7003712F4 /* bullet */,
 			);
@@ -4433,6 +4817,7 @@
 		17F1E05A12F88FFA008D39E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E73ED8614FF92E500836AE8 /* sound */,
 				176236EF12F9CA87008CDB4B /* images */,
 				1731223512FB597700861D84 /* pods */,
 				17F7A89F12FA0EB800C7BB82 /* Shaders */,
@@ -4447,6 +4832,7 @@
 		17F1E05B12F88FFA008D39E8 /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				4E5A46B614FF8CF30010AFD3 /* audio */,
 				17F1E07812F89324008D39E8 /* accelerometer */,
 				17D0776613F4A675003F6E46 /* actions */,
 				17CDF5CD1367544500893070 /* animation */,
@@ -4511,6 +4897,130 @@
 				17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		4E5A45E214FF5AAE0010AFD3 /* ObjectAL */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A45E314FF5AAE0010AFD3 /* Actions */,
+				4E5A45EE14FF5AAE0010AFD3 /* AudioTrack */,
+				4E5A45FA14FF5AAE0010AFD3 /* OpenAL */,
+				4E5A461114FF5AAE0010AFD3 /* Session */,
+				4E5A461614FF5AAE0010AFD3 /* Support */,
+				4E5A45F614FF5AAE0010AFD3 /* OALSimpleAudio.h */,
+				4E5A45F714FF5AAE0010AFD3 /* OALSimpleAudio.m */,
+				4E5A45F814FF5AAE0010AFD3 /* ObjectAL.h */,
+				4E5A45F914FF5AAE0010AFD3 /* ObjectALConfig.h */,
+			);
+			path = ObjectAL;
+			sourceTree = "<group>";
+		};
+		4E5A45E314FF5AAE0010AFD3 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A45E414FF5AAE0010AFD3 /* OALAction.h */,
+				4E5A45E514FF5AAE0010AFD3 /* OALAction.m */,
+				4E5A45E614FF5AAE0010AFD3 /* OALActionManager.h */,
+				4E5A45E714FF5AAE0010AFD3 /* OALActionManager.m */,
+				4E5A45E814FF5AAE0010AFD3 /* OALAudioActions.h */,
+				4E5A45E914FF5AAE0010AFD3 /* OALAudioActions.m */,
+				4E5A45EA14FF5AAE0010AFD3 /* OALFunction.h */,
+				4E5A45EB14FF5AAE0010AFD3 /* OALFunction.m */,
+				4E5A45EC14FF5AAE0010AFD3 /* OALUtilityActions.h */,
+				4E5A45ED14FF5AAE0010AFD3 /* OALUtilityActions.m */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		4E5A45EE14FF5AAE0010AFD3 /* AudioTrack */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A45EF14FF5AAE0010AFD3 /* OALAudioTrack.h */,
+				4E5A45F014FF5AAE0010AFD3 /* OALAudioTrack.m */,
+				4E5A45F114FF5AAE0010AFD3 /* OALAudioTrackNotifications.h */,
+				4E5A45F214FF5AAE0010AFD3 /* OALAudioTrackNotifications.m */,
+				4E5A45F314FF5AAE0010AFD3 /* OALAudioTracks.h */,
+				4E5A45F414FF5AAE0010AFD3 /* OALAudioTracks.m */,
+			);
+			path = AudioTrack;
+			sourceTree = "<group>";
+		};
+		4E5A45FA14FF5AAE0010AFD3 /* OpenAL */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A45FB14FF5AAE0010AFD3 /* ALBuffer.h */,
+				4E5A45FC14FF5AAE0010AFD3 /* ALBuffer.m */,
+				4E5A45FD14FF5AAE0010AFD3 /* ALCaptureDevice.h */,
+				4E5A45FE14FF5AAE0010AFD3 /* ALCaptureDevice.m */,
+				4E5A45FF14FF5AAE0010AFD3 /* ALChannelSource.h */,
+				4E5A460014FF5AAE0010AFD3 /* ALChannelSource.m */,
+				4E5A460114FF5AAE0010AFD3 /* ALContext.h */,
+				4E5A460214FF5AAE0010AFD3 /* ALContext.m */,
+				4E5A460314FF5AAE0010AFD3 /* ALDevice.h */,
+				4E5A460414FF5AAE0010AFD3 /* ALDevice.m */,
+				4E5A460514FF5AAE0010AFD3 /* ALListener.h */,
+				4E5A460614FF5AAE0010AFD3 /* ALListener.m */,
+				4E5A460714FF5AAE0010AFD3 /* ALSoundSource.h */,
+				4E5A460814FF5AAE0010AFD3 /* ALSoundSourcePool.h */,
+				4E5A460914FF5AAE0010AFD3 /* ALSoundSourcePool.m */,
+				4E5A460A14FF5AAE0010AFD3 /* ALSource.h */,
+				4E5A460B14FF5AAE0010AFD3 /* ALSource.m */,
+				4E5A460C14FF5AAE0010AFD3 /* ALTypes.h */,
+				4E5A460D14FF5AAE0010AFD3 /* ALWrapper.h */,
+				4E5A460E14FF5AAE0010AFD3 /* ALWrapper.m */,
+				4E5A460F14FF5AAE0010AFD3 /* OpenALManager.h */,
+				4E5A461014FF5AAE0010AFD3 /* OpenALManager.m */,
+			);
+			path = OpenAL;
+			sourceTree = "<group>";
+		};
+		4E5A461114FF5AAE0010AFD3 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A461214FF5AAE0010AFD3 /* OALAudioSession.h */,
+				4E5A461314FF5AAE0010AFD3 /* OALAudioSession.m */,
+				4E5A461414FF5AAE0010AFD3 /* OALSuspendHandler.h */,
+				4E5A461514FF5AAE0010AFD3 /* OALSuspendHandler.m */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		4E5A461614FF5AAE0010AFD3 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A461714FF5AAE0010AFD3 /* IOSVersion.h */,
+				4E5A461814FF5AAE0010AFD3 /* IOSVersion.m */,
+				4E5A461914FF5AAE0010AFD3 /* mach_timing.c */,
+				4E5A461A14FF5AAE0010AFD3 /* mach_timing.h */,
+				4E5A461B14FF5AAE0010AFD3 /* NSMutableArray+WeakReferences.h */,
+				4E5A461C14FF5AAE0010AFD3 /* NSMutableArray+WeakReferences.m */,
+				4E5A461D14FF5AAE0010AFD3 /* OALAudioFile.h */,
+				4E5A461E14FF5AAE0010AFD3 /* OALAudioFile.m */,
+				4E5A461F14FF5AAE0010AFD3 /* OALNotifications.h */,
+				4E5A462014FF5AAE0010AFD3 /* OALTools.h */,
+				4E5A462114FF5AAE0010AFD3 /* OALTools.m */,
+				4E5A462214FF5AAE0010AFD3 /* ObjectALMacros.h */,
+				4E5A462314FF5AAE0010AFD3 /* SynthesizeSingleton.h */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		4E5A46B614FF8CF30010AFD3 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				4E5A46B714FF8CF30010AFD3 /* AudioDemoView.h */,
+				4E5A46B814FF8CF30010AFD3 /* AudioDemoView.m */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
+		4E73ED8614FF92E500836AE8 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				4E73ED8714FF92E500836AE8 /* ColdFunk.caf */,
+				4E73ED8814FF92E500836AE8 /* HappyAlley.caf */,
+			);
+			path = sound;
 			sourceTree = "<group>";
 		};
 		8BDBA04B14CCF5CE00BAEB8A /* PowerVR_SDK-2.0.9 */ = {
@@ -4787,6 +5297,193 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4E93B46015009FB800AC02CE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E93B46115009FB800AC02CE /* Isgl3dAnimatedMeshNode.h in Headers */,
+				4E93B46215009FB800AC02CE /* Isgl3dAnimationController.h in Headers */,
+				4E93B46315009FB800AC02CE /* Isgl3dBoneBatch.h in Headers */,
+				4E93B46415009FB800AC02CE /* Isgl3dBoneNode.h in Headers */,
+				4E93B46515009FB800AC02CE /* Isgl3dSkeletonNode.h in Headers */,
+				4E93B46615009FB800AC02CE /* Isgl3dCamera.h in Headers */,
+				4E93B46715009FB800AC02CE /* Isgl3dFollowCamera.h in Headers */,
+				4E93B46815009FB800AC02CE /* Isgl3dSpringCamera.h in Headers */,
+				4E93B46915009FB800AC02CE /* Isgl3dFollowNode.h in Headers */,
+				4E93B46A15009FB800AC02CE /* Isgl3dMeshNode.h in Headers */,
+				4E93B46B15009FB800AC02CE /* Isgl3dNode.h in Headers */,
+				4E93B46C15009FB800AC02CE /* Isgl3dParticleNode.h in Headers */,
+				4E93B46D15009FB800AC02CE /* Isgl3dScene3D.h in Headers */,
+				4E93B46E15009FB800AC02CE /* Isgl3dGLContext.h in Headers */,
+				4E93B46F15009FB800AC02CE /* Isgl3dGLDepthRenderTexture.h in Headers */,
+				4E93B47015009FB800AC02CE /* Isgl3dGLMesh.h in Headers */,
+				4E93B47115009FB800AC02CE /* Isgl3dGLTexture.h in Headers */,
+				4E93B47215009FB800AC02CE /* Isgl3dGLTextureFactory.h in Headers */,
+				4E93B47315009FB800AC02CE /* Isgl3dGLTextureFactoryState.h in Headers */,
+				4E93B47415009FB800AC02CE /* Isgl3dGLVBOData.h in Headers */,
+				4E93B47515009FB800AC02CE /* Isgl3dGLVBOFactory.h in Headers */,
+				4E93B47615009FB800AC02CE /* Isgl3dUVMap.h in Headers */,
+				4E93B47715009FB800AC02CE /* Isgl3dGLContext1.h in Headers */,
+				4E93B47815009FB800AC02CE /* Isgl3dGLDepthRenderTexture1.h in Headers */,
+				4E93B47915009FB800AC02CE /* Isgl3dGLTextureFactoryState1.h in Headers */,
+				4E93B47A15009FB800AC02CE /* Isgl3dGLVBOFactory1.h in Headers */,
+				4E93B47B15009FB800AC02CE /* Isgl3dGLContext2.h in Headers */,
+				4E93B47C15009FB800AC02CE /* Isgl3dGLDepthRenderTexture2.h in Headers */,
+				4E93B47D15009FB800AC02CE /* Isgl3dGLTextureFactoryState2.h in Headers */,
+				4E93B47E15009FB800AC02CE /* Isgl3dGLVBOFactory2.h in Headers */,
+				4E93B47F15009FB800AC02CE /* Isgl3dAccelerometer.h in Headers */,
+				4E93B48015009FB800AC02CE /* Isgl3dEvent3D.h in Headers */,
+				4E93B48115009FB800AC02CE /* Isgl3dEvent3DDispatcher.h in Headers */,
+				4E93B48215009FB800AC02CE /* Isgl3dEvent3DHandler.h in Headers */,
+				4E93B48315009FB800AC02CE /* Isgl3dEvent3DListener.h in Headers */,
+				4E93B48415009FB800AC02CE /* Isgl3dEventType.h in Headers */,
+				4E93B48515009FB800AC02CE /* Isgl3dObject3DGrabber.h in Headers */,
+				4E93B48615009FB800AC02CE /* Isgl3dTouchedObject3D.h in Headers */,
+				4E93B48715009FB800AC02CE /* Isgl3dTouchScreen.h in Headers */,
+				4E93B48815009FB800AC02CE /* Isgl3dTouchScreenResponder.h in Headers */,
+				4E93B48915009FB800AC02CE /* Isgl3dSingleTouchFilter.h in Headers */,
+				4E93B48A15009FB800AC02CE /* Isgl3dLight.h in Headers */,
+				4E93B48B15009FB800AC02CE /* Isgl3dShadowCastingLight.h in Headers */,
+				4E93B48C15009FB800AC02CE /* Isgl3dAnimatedTextureMaterial.h in Headers */,
+				4E93B48D15009FB800AC02CE /* Isgl3dColorMaterial.h in Headers */,
+				4E93B48E15009FB800AC02CE /* Isgl3dMaterial.h in Headers */,
+				4E93B48F15009FB800AC02CE /* Isgl3dTextureMaterial.h in Headers */,
+				4E93B49015009FB800AC02CE /* Isgl3dGLU.h in Headers */,
+				4E93B49115009FB800AC02CE /* Isgl3dExplosionParticleGenerator.h in Headers */,
+				4E93B49215009FB800AC02CE /* Isgl3dFountainBounceParticleGenerator.h in Headers */,
+				4E93B49315009FB800AC02CE /* Isgl3dFountainParticleGenerator.h in Headers */,
+				4E93B49415009FB800AC02CE /* Isgl3dParticleGenerator.h in Headers */,
+				4E93B49515009FB800AC02CE /* Isgl3dParticlePath.h in Headers */,
+				4E93B49615009FB800AC02CE /* Isgl3dGLParticle.h in Headers */,
+				4E93B49715009FB800AC02CE /* Isgl3dParticleSystem.h in Headers */,
+				4E93B49815009FB800AC02CE /* Isgl3dArrow.h in Headers */,
+				4E93B49915009FB800AC02CE /* Isgl3dCone.h in Headers */,
+				4E93B49A15009FB800AC02CE /* Isgl3dCube.h in Headers */,
+				4E93B49B15009FB800AC02CE /* Isgl3dCubeSphere.h in Headers */,
+				4E93B49C15009FB800AC02CE /* Isgl3dCylinder.h in Headers */,
+				4E93B49D15009FB800AC02CE /* Isgl3dEllipsoid.h in Headers */,
+				4E93B49E15009FB800AC02CE /* Isgl3dGoursatSurface.h in Headers */,
+				4E93B49F15009FB800AC02CE /* Isgl3dMultiMaterialCube.h in Headers */,
+				4E93B4A015009FB800AC02CE /* Isgl3dOvoid.h in Headers */,
+				4E93B4A115009FB800AC02CE /* Isgl3dPlane.h in Headers */,
+				4E93B4A215009FB800AC02CE /* Isgl3dPrimitive.h in Headers */,
+				4E93B4A315009FB800AC02CE /* Isgl3dPrimitiveFactory.h in Headers */,
+				4E93B4A415009FB800AC02CE /* Isgl3dSphere.h in Headers */,
+				4E93B4A515009FB800AC02CE /* Isgl3dTerrainMesh.h in Headers */,
+				4E93B4A615009FB800AC02CE /* Isgl3dTorus.h in Headers */,
+				4E93B4A715009FB800AC02CE /* Isgl3dGLRenderer.h in Headers */,
+				4E93B4A815009FB800AC02CE /* Isgl3dGLRenderer1.h in Headers */,
+				4E93B4A915009FB800AC02CE /* Isgl3dGLRenderer1State.h in Headers */,
+				4E93B4AA15009FB800AC02CE /* Isgl3dGLRenderer2.h in Headers */,
+				4E93B4AB15009FB800AC02CE /* Isgl3dGLRenderer2State.h in Headers */,
+				4E93B4AC15009FB800AC02CE /* Isgl3dCaptureShader.h in Headers */,
+				4E93B4AD15009FB800AC02CE /* Isgl3dGenericShader.h in Headers */,
+				4E93B4AE15009FB800AC02CE /* Isgl3dParticleShader.h in Headers */,
+				4E93B4AF15009FB800AC02CE /* Isgl3dShader.h in Headers */,
+				4E93B4B015009FB800AC02CE /* Isgl3dShaderState.h in Headers */,
+				4E93B4B115009FB800AC02CE /* Isgl3dShadowMapShader.h in Headers */,
+				4E93B4B215009FB800AC02CE /* Isgl3dTween.h in Headers */,
+				4E93B4B315009FB800AC02CE /* Isgl3dTweener.h in Headers */,
+				4E93B4B415009FB800AC02CE /* Isgl3dGLUIButton.h in Headers */,
+				4E93B4B515009FB800AC02CE /* Isgl3dGLUIComponent.h in Headers */,
+				4E93B4B615009FB800AC02CE /* Isgl3dGLUIImage.h in Headers */,
+				4E93B4B715009FB800AC02CE /* Isgl3dGLUILabel.h in Headers */,
+				4E93B4B815009FB800AC02CE /* Isgl3dGLUIProgressBar.h in Headers */,
+				4E93B4B915009FB800AC02CE /* Isgl3dColorUtil.h in Headers */,
+				4E93B4BA15009FB800AC02CE /* Isgl3dFloatArray.h in Headers */,
+				4E93B4BB15009FB800AC02CE /* Isgl3dLog.h in Headers */,
+				4E93B4BC15009FB800AC02CE /* Isgl3dUShortArray.h in Headers */,
+				4E93B4BD15009FB800AC02CE /* Isgl3dBillboardNode.h in Headers */,
+				4E93B4BE15009FB800AC02CE /* Isgl3dDirector.h in Headers */,
+				4E93B4BF15009FB800AC02CE /* Isgl3dScheduler.h in Headers */,
+				4E93B4C015009FB800AC02CE /* Isgl3dView.h in Headers */,
+				4E93B4C115009FB800AC02CE /* Isgl3dGLProgram.h in Headers */,
+				4E93B4C215009FB800AC02CE /* Isgl3dFpsRenderer.h in Headers */,
+				4E93B4C315009FB800AC02CE /* (null) in Headers */,
+				4E93B4C415009FB800AC02CE /* Isgl3dVector.h in Headers */,
+				4E93B4C515009FB800AC02CE /* Isgl3dMatrix.h in Headers */,
+				4E93B4C615009FB800AC02CE /* Isgl3dArray.h in Headers */,
+				4E93B4C715009FB800AC02CE /* Isgl3dCArray.h in Headers */,
+				4E93B4C815009FB800AC02CE /* Isgl3dQuaternion.h in Headers */,
+				4E93B4C915009FB800AC02CE /* SpringCameraTestView.h in Headers */,
+				4E93B4CA15009FB800AC02CE /* neon_matrix_impl.h in Headers */,
+				4E93B4CB15009FB800AC02CE /* common_macros.h in Headers */,
+				4E93B4CC15009FB800AC02CE /* matrix_impl.h in Headers */,
+				4E93B4CD15009FB800AC02CE /* utility_impl.h in Headers */,
+				4E93B4CE15009FB800AC02CE /* vfp_clobbers.h in Headers */,
+				4E93B4CF15009FB800AC02CE /* Isgl3dPODImporter.h in Headers */,
+				4E93B4D015009FB800AC02CE /* Isgl3dKeyframeMesh.h in Headers */,
+				4E93B4D115009FB800AC02CE /* Isgl3dGestureManager.h in Headers */,
+				4E93B4D215009FB800AC02CE /* Isgl3dPVRLoader.h in Headers */,
+				4E93B4D315009FB800AC02CE /* Isgl3dShaderMaterial.h in Headers */,
+				4E93B4D415009FB800AC02CE /* Isgl3dCustomShader.h in Headers */,
+				4E93B4D515009FB800AC02CE /* Isgl3dInternalShader.h in Headers */,
+				4E93B4D615009FB800AC02CE /* Isgl3dAction.h in Headers */,
+				4E93B4D715009FB800AC02CE /* Isgl3dActionFixedDuration.h in Headers */,
+				4E93B4D815009FB800AC02CE /* Isgl3dActionInstant.h in Headers */,
+				4E93B4D915009FB800AC02CE /* Isgl3dActionInterval.h in Headers */,
+				4E93B4DA15009FB800AC02CE /* Isgl3dActionSequence.h in Headers */,
+				4E93B4DB15009FB800AC02CE /* Isgl3dActionManager.h in Headers */,
+				4E93B4DC15009FB800AC02CE /* Isgl3dActionMove.h in Headers */,
+				4E93B4DD15009FB800AC02CE /* Isgl3dActionRotate.h in Headers */,
+				4E93B4DE15009FB800AC02CE /* Isgl3dActionScale.h in Headers */,
+				4E93B4DF15009FB800AC02CE /* Isgl3dActionAlpha.h in Headers */,
+				4E93B4E015009FB800AC02CE /* Isgl3dActionCallFunc.h in Headers */,
+				4E93B4E115009FB800AC02CE /* Isgl3dActionDelay.h in Headers */,
+				4E93B4E215009FB800AC02CE /* Isgl3dActionParallel.h in Headers */,
+				4E93B4E315009FB800AC02CE /* Isgl3dActionEase.h in Headers */,
+				4E93B4E415009FB800AC02CE /* Isgl3dActionTween.h in Headers */,
+				4E93B4E515009FB800AC02CE /* Isgl3dActionRepeat.h in Headers */,
+				4E93B4E615009FB800AC02CE /* PVRTArray.h in Headers */,
+				4E93B4E715009FB800AC02CE /* PVRTBackground.h in Headers */,
+				4E93B4E815009FB800AC02CE /* PVRTBoneBatch.h in Headers */,
+				4E93B4E915009FB800AC02CE /* PVRTDecompress.h in Headers */,
+				4E93B4EA15009FB800AC02CE /* PVRTError.h in Headers */,
+				4E93B4EB15009FB800AC02CE /* PVRTFixedPoint.h in Headers */,
+				4E93B4EC15009FB800AC02CE /* PVRTGeometry.h in Headers */,
+				4E93B4ED15009FB800AC02CE /* PVRTGlobal.h in Headers */,
+				4E93B4EE15009FB800AC02CE /* PVRTHash.h in Headers */,
+				4E93B4EF15009FB800AC02CE /* PVRTMathTable.h in Headers */,
+				4E93B4F015009FB800AC02CE /* PVRTMatrix.h in Headers */,
+				4E93B4F115009FB800AC02CE /* PVRTMemoryFileSystem.h in Headers */,
+				4E93B4F215009FB800AC02CE /* PVRTMisc.h in Headers */,
+				4E93B4F315009FB800AC02CE /* PVRTModelPOD.h in Headers */,
+				4E93B4F415009FB800AC02CE /* PVRTools.h in Headers */,
+				4E93B4F515009FB800AC02CE /* PVRTPFXParser.h in Headers */,
+				4E93B4F615009FB800AC02CE /* PVRTPrint3D.h in Headers */,
+				4E93B4F715009FB800AC02CE /* PVRTPrint3Ddat.h in Headers */,
+				4E93B4F815009FB800AC02CE /* PVRTQuaternion.h in Headers */,
+				4E93B4F915009FB800AC02CE /* PVRTResourceFile.h in Headers */,
+				4E93B4FA15009FB800AC02CE /* PVRTShadowVol.h in Headers */,
+				4E93B4FB15009FB800AC02CE /* PVRTSingleton.h in Headers */,
+				4E93B4FC15009FB800AC02CE /* PVRTSkipGraph.h in Headers */,
+				4E93B4FD15009FB800AC02CE /* PVRTString.h in Headers */,
+				4E93B4FE15009FB800AC02CE /* PVRTTexture.h in Headers */,
+				4E93B4FF15009FB800AC02CE /* PVRTTrans.h in Headers */,
+				4E93B50015009FB800AC02CE /* PVRTTriStrip.h in Headers */,
+				4E93B50115009FB800AC02CE /* PVRTVector.h in Headers */,
+				4E93B50215009FB800AC02CE /* PVRTVertex.h in Headers */,
+				4E93B50315009FB800AC02CE /* OGLES2Tools.h in Headers */,
+				4E93B50415009FB800AC02CE /* PVRTBackgroundShaders.h in Headers */,
+				4E93B50515009FB800AC02CE /* PVRTContext.h in Headers */,
+				4E93B50615009FB800AC02CE /* PVRTgles2Ext.h in Headers */,
+				4E93B50715009FB800AC02CE /* PVRTPFXParserAPI.h in Headers */,
+				4E93B50815009FB800AC02CE /* PVRTPrint3DIMGLogo.h in Headers */,
+				4E93B50915009FB800AC02CE /* PVRTPrint3DPVRLogo.h in Headers */,
+				4E93B50A15009FB800AC02CE /* PVRTPrint3DShaders.h in Headers */,
+				4E93B50B15009FB800AC02CE /* PVRTShader.h in Headers */,
+				4E93B50C15009FB800AC02CE /* PVRTTextureAPI.h in Headers */,
+				4E93B50D15009FB800AC02CE /* Isgl3dMathTypes.h in Headers */,
+				4E93B50E15009FB800AC02CE /* Isgl3dVector3.h in Headers */,
+				4E93B50F15009FB800AC02CE /* Isgl3dMatrix4.h in Headers */,
+				4E93B51015009FB800AC02CE /* Isgl3dVector4.h in Headers */,
+				4E93B51115009FB800AC02CE /* Isgl3dMatrix3.h in Headers */,
+				4E93B51215009FB800AC02CE /* Isgl3dAudioData.h in Headers */,
+				4E93B51315009FB800AC02CE /* Isgl3dAudioManager.h in Headers */,
+				4E93B51415009FB800AC02CE /* AudioDemoView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AAC07A0554694100DB518D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -4974,6 +5671,9 @@
 				8BA3FB65150289F60021E453 /* Isgl3dLookAtCamera.h in Headers */,
 				8BA3FB9C1502ACE90021E453 /* Isgl3dNodeCamera.h in Headers */,
 				8B92DC4E15054189007807C2 /* Isgl3dFocusZoomPerspectiveLens.h in Headers */,
+				4E5A46AF14FF7FFA0010AFD3 /* Isgl3dAudioData.h in Headers */,
+				4E5A46B314FF84580010AFD3 /* Isgl3dAudioManager.h in Headers */,
+				4E5A491714FF8E050010AFD3 /* AudioDemoView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5603,6 +6303,42 @@
 			productReference = 17F7A88412FA0D6100C7BB82 /* Lighting.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4E5A48F414FF8DA50010AFD3 /* SoundDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E5A491114FF8DA50010AFD3 /* Build configuration list for PBXNativeTarget "SoundDemo" */;
+			buildPhases = (
+				4E5A48F714FF8DA50010AFD3 /* Resources */,
+				4E5A490414FF8DA50010AFD3 /* Sources */,
+				4E5A490A14FF8DA50010AFD3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E5A48F514FF8DA50010AFD3 /* PBXTargetDependency */,
+				4E93B5DC1500A01D00AC02CE /* PBXTargetDependency */,
+			);
+			name = SoundDemo;
+			productName = CameraZoomAndFocus;
+			productReference = 4E5A491414FF8DA50010AFD3 /* SoundDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4E93B45F15009FB800AC02CE /* isgl3dAudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E93B5D715009FB900AC02CE /* Build configuration list for PBXNativeTarget "isgl3dAudio" */;
+			buildPhases = (
+				4E93B46015009FB800AC02CE /* Headers */,
+				4E93B51515009FB800AC02CE /* Sources */,
+				4E93B5D115009FB800AC02CE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = isgl3dAudio;
+			productName = isgl3d;
+			productReference = 4E93B5DA15009FB900AC02CE /* libisgl3dAudio.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		8B4B558014F45592007EEFAA /* NormalMappingDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B4B55AA14F45592007EEFAA /* Build configuration list for PBXNativeTarget "NormalMappingDemo" */;
@@ -5663,6 +6399,7 @@
 			targets = (
 				17A3E643135A1C380022BAD8 /* build all */,
 				D2AAC07D0554694100DB518D /* isgl3d */,
+				4E93B45F15009FB800AC02CE /* isgl3dAudio */,
 				17F1D86112F88A4A008D39E8 /* isgl3dbullet */,
 				17F1E06A12F89091008D39E8 /* Accelerometer */,
 				17F7A83C12FA0BB000C7BB82 /* CameraMovement */,
@@ -5696,6 +6433,7 @@
 				8B4B558014F45592007EEFAA /* NormalMappingDemo */,
 				17D0774313F4A643003F6E46 /* ActionsDemo */,
 				17C2F0B513F6CCEE0002C7D3 /* GesturesDemo */,
+				4E5A48F414FF8DA50010AFD3 /* SoundDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -6348,6 +7086,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4E5A48F714FF8DA50010AFD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E5A48F814FF8DA50010AFD3 /* capture.fsh in Resources */,
+				4E5A48F914FF8DA50010AFD3 /* capture.vsh in Resources */,
+				4E5A48FA14FF8DA50010AFD3 /* generic.fsh in Resources */,
+				4E5A48FB14FF8DA50010AFD3 /* generic.vsh in Resources */,
+				4E5A48FC14FF8DA50010AFD3 /* particle.fsh in Resources */,
+				4E5A48FD14FF8DA50010AFD3 /* particle.vsh in Resources */,
+				4E5A48FE14FF8DA50010AFD3 /* shadowMap.fsh in Resources */,
+				4E5A48FF14FF8DA50010AFD3 /* shadowMap.vsh in Resources */,
+				4E5A490014FF8DA50010AFD3 /* red_checker.png in Resources */,
+				4E5A490114FF8DA50010AFD3 /* Default.png in Resources */,
+				4E5A490214FF8DA50010AFD3 /* Icon.png in Resources */,
+				4E5A490314FF8DA50010AFD3 /* Icon@2x.png in Resources */,
+				4E73ED8A14FF92F600836AE8 /* HappyAlley.caf in Resources */,
+				4E93B6211500AC4D00AC02CE /* ColdFunk.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B4B558314F45592007EEFAA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6874,6 +7633,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4E5A490414FF8DA50010AFD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E5A490514FF8DA50010AFD3 /* Isgl3dDemoCameraController.m in Sources */,
+				4E5A490614FF8DA50010AFD3 /* Isgl3dViewController.m in Sources */,
+				4E5A490714FF8DA50010AFD3 /* main.m in Sources */,
+				4E5A490814FF8DA50010AFD3 /* Isgl3dAppDelegate.mm in Sources */,
+				4E5A491914FF8E0C0010AFD3 /* AudioDemoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E93B51515009FB800AC02CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E93B5DD1500A0C700AC02CE /* OALAction.m in Sources */,
+				4E93B5DE1500A0C700AC02CE /* OALActionManager.m in Sources */,
+				4E93B5DF1500A0C700AC02CE /* OALAudioActions.m in Sources */,
+				4E93B5E01500A0C700AC02CE /* OALFunction.m in Sources */,
+				4E93B5E11500A0C700AC02CE /* OALUtilityActions.m in Sources */,
+				4E93B5E21500A0C700AC02CE /* OALAudioTrack.m in Sources */,
+				4E93B5E31500A0C700AC02CE /* OALAudioTrackNotifications.m in Sources */,
+				4E93B5E41500A0C700AC02CE /* OALAudioTracks.m in Sources */,
+				4E93B5E51500A0C700AC02CE /* OALSimpleAudio.m in Sources */,
+				4E93B5E61500A0C700AC02CE /* ALBuffer.m in Sources */,
+				4E93B5E71500A0C700AC02CE /* ALCaptureDevice.m in Sources */,
+				4E93B5E81500A0C700AC02CE /* ALChannelSource.m in Sources */,
+				4E93B5E91500A0C700AC02CE /* ALContext.m in Sources */,
+				4E93B5EA1500A0C700AC02CE /* ALDevice.m in Sources */,
+				4E93B5EB1500A0C700AC02CE /* ALListener.m in Sources */,
+				4E93B5EC1500A0C700AC02CE /* ALSoundSourcePool.m in Sources */,
+				4E93B5ED1500A0C700AC02CE /* ALSource.m in Sources */,
+				4E93B5EE1500A0C700AC02CE /* ALWrapper.m in Sources */,
+				4E93B5EF1500A0C700AC02CE /* OpenALManager.m in Sources */,
+				4E93B5F01500A0C700AC02CE /* OALAudioSession.m in Sources */,
+				4E93B5F11500A0C700AC02CE /* OALSuspendHandler.m in Sources */,
+				4E93B5F21500A0C700AC02CE /* IOSVersion.m in Sources */,
+				4E93B5F31500A0C700AC02CE /* mach_timing.c in Sources */,
+				4E93B5F41500A0C700AC02CE /* NSMutableArray+WeakReferences.m in Sources */,
+				4E93B5F51500A0C700AC02CE /* OALAudioFile.m in Sources */,
+				4E93B5F61500A0C700AC02CE /* OALTools.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B4B559A14F45592007EEFAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7056,6 +7860,8 @@
 				8BA3FB66150289F60021E453 /* Isgl3dLookAtCamera.m in Sources */,
 				8BA3FB9D1502ACE90021E453 /* Isgl3dNodeCamera.m in Sources */,
 				8B92DC4F15054189007807C2 /* Isgl3dFocusZoomPerspectiveLens.m in Sources */,
+				4E5A46B014FF7FFA0010AFD3 /* Isgl3dAudioData.m in Sources */,
+				4E5A46B414FF84580010AFD3 /* Isgl3dAudioManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7371,6 +8177,16 @@
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* isgl3d */;
 			targetProxy = 17F7A87212FA0D6100C7BB82 /* PBXContainerItemProxy */;
+		};
+		4E5A48F514FF8DA50010AFD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* isgl3d */;
+			targetProxy = 4E5A48F614FF8DA50010AFD3 /* PBXContainerItemProxy */;
+		};
+		4E93B5DC1500A01D00AC02CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E93B45F15009FB800AC02CE /* isgl3dAudio */;
+			targetProxy = 4E93B5DB1500A01D00AC02CE /* PBXContainerItemProxy */;
 		};
 		8B4B558114F45592007EEFAA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -9016,6 +9832,93 @@
 			};
 			name = Release;
 		};
+		4E5A491214FF8DA50010AFD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = SoundDemo;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4E5A491314FF8DA50010AFD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = SoundDemo;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		4E93B5D815009FB900AC02CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				OTHER_CFLAGS = "-mno-thumb";
+				PRODUCT_NAME = isgl3dAudio;
+			};
+			name = Debug;
+		};
+		4E93B5D915009FB900AC02CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				OTHER_CFLAGS = "-mno-thumb";
+				PRODUCT_NAME = isgl3dAudio;
+			};
+			name = Release;
+		};
 		8B4B55AB14F45592007EEFAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -9380,6 +10283,24 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E5A491114FF8DA50010AFD3 /* Build configuration list for PBXNativeTarget "SoundDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E5A491214FF8DA50010AFD3 /* Debug */,
+				4E5A491314FF8DA50010AFD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E93B5D715009FB900AC02CE /* Build configuration list for PBXNativeTarget "isgl3dAudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E93B5D815009FB900AC02CE /* Debug */,
+				4E93B5D915009FB900AC02CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

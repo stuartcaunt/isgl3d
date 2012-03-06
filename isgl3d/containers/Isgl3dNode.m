@@ -38,12 +38,20 @@
 #import "Isgl3dAction.h"
 #import "Isgl3dMathUtils.h"
 #import "Isgl3dMatrix4.h"
-
+#import "Isgl3dAudioData.h"
+#import "Isgl3dAudioManager.h"
 
 static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanceAndAngle;
 
 
-@interface Isgl3dNode ()
+@interface Isgl3dNode () {
+@private
+	Isgl3dNode      * _parent;
+    Isgl3dAudioData *_audioSource;
+    
+	BOOL _hasChildren;
+    
+}
 - (void)updateEulerAngles;
 - (void)updateRotationMatrix;
 - (void)updateLocalTransformation; 
@@ -113,6 +121,9 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 - (void)dealloc {
 	[_children release];
+    _children = nil;
+    [_audioSource release];
+    _audioSource = nil;
 
 	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
 	
@@ -147,6 +158,8 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
     copy->_alphaCullValue = _alphaCullValue;
     copy->_interactive = _interactive;
     copy->_isVisible = _isVisible;
+    
+    copy->_audioSource = [_audioSource retain];
 
 	for (Isgl3dNode *child in _children) {
 		[copy addChild:[[child copy] autorelease]];
@@ -494,10 +507,13 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 			[node updateWorldTransformation:&_worldTransformation];
 	    }
 	}
+    
+    [self updateAudioPosition];
 }
 
-#pragma mark scene graph
 
+#pragma mark scene graph
+#
 - (Isgl3dNode *)createNode {
 	return [self addChild:[Isgl3dNode node]];
 }
@@ -753,6 +769,23 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 
 - (void)stopAllActions {
 	[[Isgl3dActionManager sharedInstance] stopAllActionsForTarget:self];
+}
+
+- (void)loadAudioForNode:(NSString*)fileName ReferenceDistance:(float)rDist MaxDistance:(float)maxDist {
+    _audioSource = [[Isgl3dAudioData alloc] initWithALBuffer:[[Isgl3dAudioManager sharedInstance] createAudioDataFromFile:fileName]];
+    _isAudioNode = YES;
+    [_audioSource setReferenceDistance:rDist];
+    [_audioSource setMaxDistance:maxDist];
+}
+
+- (void)updateAudioPosition {
+    if(_isAudioNode)
+        [_audioSource setPosition:self.position];
+}
+
+- (void)playAudio:(BOOL)loop {
+    if(_isAudioNode)
+        [_audioSource playAudio:loop];
 }
 
 @end
