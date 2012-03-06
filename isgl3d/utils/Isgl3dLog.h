@@ -35,20 +35,60 @@
 
 
 typedef enum {
-	Debug = 0,
-	Info,
-	Warn,
-	Error
+	Isgl3dLogLevelDebug = 0,
+	Isgl3dLogLevelInfo,
+	Isgl3dLogLevelWarn,
+	Isgl3dLogLevelError
 } Isgl3dLogLevel;
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
-void Isgl3dLog(Isgl3dLogLevel level, NSString * message, ...);
-void Isgl3dGLErrLog(Isgl3dLogLevel level, GLenum err, NSString * message, ...);
 
+    
+static NSString *Isgl3dLogPrefixForLogLevel(Isgl3dLogLevel level) {
+    switch (level) {
+        case Isgl3dLogLevelInfo:
+            return @"iSGL3D";
+            
+        case Isgl3dLogLevelDebug:
+            return @"iSGL3D (debug)";
+            
+        case Isgl3dLogLevelWarn:
+            return @"iSGL3D (WARN)";
+            
+        case Isgl3dLogLevelError:
+            return @"iSGL3D (ERROR)";
+            
+        default:
+            break;
+    }
+    return @"iSGL3D";
+}
+    
+    
+#define Isgl3dLog(level, format, ...) NSLog([@"%@ " stringByAppendingString:format], Isgl3dLogPrefixForLogLevel(level), ##__VA_ARGS__)
+    
+    
+#ifdef NDEBUG
+#define NSDebugLog(...) ((void)0)
+#define Isgl3dDebugLog(...) ((void)0)
+#define Isgl3dDebugLog2(...) ((void)0)
+#define Isgl3dClassDebugLog(...) ((void)0)
+#define Isgl3dClassDebugLog2(...) ((void)0)
+#else
+#define NSDebugLog NSLog
+#define Isgl3dDebugLog(level, format, ...) NSLog([@"%@ : " stringByAppendingString:format], Isgl3dLogPrefixForLogLevel(level), ##__VA_ARGS__)
+#define Isgl3dClassDebugLog(level, format, ...) NSLog([@"%@ [%@]: " stringByAppendingString:format], Isgl3dLogPrefixForLogLevel(level), NSStringFromClass([self class]), ##__VA_ARGS__)
+#if DEBUG >= 2
+#define Isgl3dClassDebugLog2(level, format, ...) NSLog([@"%@ [%@]: " stringByAppendingString:format], Isgl3dLogPrefixForLogLevel(level), NSStringFromClass([self class]), ##__VA_ARGS__)
+#else
+#define Isgl3dClassDebugLog2(...) ((void)0)
+#endif
+#endif
+
+    
 #ifdef __cplusplus
 }
 #endif // extern "C"

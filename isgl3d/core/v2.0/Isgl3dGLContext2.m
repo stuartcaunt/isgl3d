@@ -180,7 +180,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthRenderBuffer);
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-			Isgl3dLog(Error, @"Isgl3dGLContext2 : No depth buffer available on this device: failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"No depth buffer available on this device: failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
 			return succeeded;
 		}
 		
@@ -190,7 +190,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_STENCIL_INDEX8, _backingWidth, _backingHeight);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _stencilRenderBuffer);
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-			Isgl3dLog(Info, @"Isgl3dGLContext2 : Depth buffer in use, no stencil buffer on this device: some iSGL3D functionalities are not available.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Depth buffer in use, no stencil buffer on this device: some iSGL3D functionalities are not available.");
 			
 			glDeleteRenderbuffers(1, &_stencilRenderBuffer);
 			_stencilRenderBuffer = 0;
@@ -198,12 +198,12 @@ BOOL CheckForGLExtension(NSString *searchName) {
 			succeeded = YES;
 			
 		} else {
-			Isgl3dLog(Info, @"Isgl3dGLContext2 : Separate stencil and depth buffers in use: all iSGL3D functionalities available.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Separate stencil and depth buffers in use: all iSGL3D functionalities available.");
 			succeeded = YES;
 		}
 	}
 	else {
-		Isgl3dLog(Info, @"Isgl3dGLContext2 : Packed stencil and depth buffer in use: all iSGL3D functionalities available.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Packed stencil and depth buffer in use: all iSGL3D functionalities available.");
 		succeeded = YES;
 	}
 	
@@ -219,7 +219,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	
 	// MSAA support
     if (!_msaaAvailable) {
-		Isgl3dLog(Info, @"Isgl3dGLContext2 : MSAA unavailable for device.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"MSAA unavailable for device.");
         return YES;
     }
     
@@ -227,7 +227,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 		// Get the maximum number of MSAA samples
 		glGetIntegerv(GL_MAX_SAMPLES_APPLE, &_msaaSamples);
 		if (_msaaSamples <= 0) {
-			Isgl3dLog(Info, @"Isgl3dGLContext2 : MSAA unavailable for device (max samples <= 0).");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"MSAA unavailable for device (max samples <= 0).");
 			return succeeded;
 		}
 		
@@ -260,7 +260,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 			glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, _msaaSamples, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
 			glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _msaaDepthRenderBuffer);
 			if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-				Isgl3dLog(Error, @"Isgl3dGLContext2 : No MSAA depth buffer available on this device: failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+				Isgl3dClassDebugLog(Isgl3dLogLevelError, @"No MSAA depth buffer available on this device: failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
 				return succeeded;
 			}
 			
@@ -270,18 +270,18 @@ BOOL CheckForGLExtension(NSString *searchName) {
 			glRenderbufferStorageMultisampleAPPLE(GL_RENDERBUFFER, _msaaSamples, GL_STENCIL_INDEX8, _backingWidth, _backingHeight);
 			glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, _msaaStencilRenderBuffer);
 			if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-				Isgl3dLog(Info, @"Isgl3dGLContext2 : MSAA Depth buffer in use, no MSAA stencil buffer on this device: some iSGL3D functionalities are not available.");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"MSAA Depth buffer in use, no MSAA stencil buffer on this device: some iSGL3D functionalities are not available.");
 				
 				glDeleteRenderbuffers(1, &_msaaStencilRenderBuffer);
 				_msaaStencilRenderBuffer = 0;
 				_stencilBufferAvailable = NO;
 				
 			} else {
-				Isgl3dLog(Info, @"Isgl3dGLContext2 : Separate MSAA stencil and depth buffers in use: all iSGL3D functionalities available.");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Separate MSAA stencil and depth buffers in use: all iSGL3D functionalities available.");
 				succeeded = YES;
 			}
 		} else {
-			Isgl3dLog(Info, @"Isgl3dGLContext2 : Complete MSAA framebuffer object created: all iSGL3D functionalities available.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Complete MSAA framebuffer object created: all iSGL3D functionalities available.");
 			succeeded = YES;
 		}
 	} else {
@@ -445,7 +445,7 @@ BOOL CheckForGLExtension(NSString *searchName) {
 	// Get current width and height
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
-	Isgl3dLog(Info, @"Isgl3dGLContext2 : Resizing OpenGL buffers to %ix%i", _backingWidth, _backingHeight);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Resizing OpenGL buffers to %ix%i", _backingWidth, _backingHeight);
 
 	return YES;
 }

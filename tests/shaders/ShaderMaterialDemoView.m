@@ -153,7 +153,7 @@
 }
 
 - (void)objectTouched:(Isgl3dEvent3D *)event {
-	NSLog(@"object touched");
+	Isgl3dClassDebugLog2(Isgl3dLogLevelInfo, @"object touched");
 }
 
 @end

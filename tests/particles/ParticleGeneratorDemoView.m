@@ -111,7 +111,7 @@
 
 
 - (void)objectTouched:(Isgl3dEvent3D *)event {
-	NSLog(@"particles touched %i", [event.touches count]);
+	Isgl3dClassDebugLog2(Isgl3dLogLevelInfo, @"particles touched %i", [event.touches count]);
 }
 
 

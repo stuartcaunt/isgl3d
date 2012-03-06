@@ -35,7 +35,7 @@ static Isgl3dScheduler * _instance = nil;
 @implementation Isgl3dScheduler
 
 - (id)init {
-	NSLog(@"Isgl3dScheduler::init should not be called on singleton. Instance should be accessed via sharedInstance");
+	Isgl3dLog(Isgl3dLogLevelError, @"Isgl3dScheduler::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
@@ -84,7 +84,7 @@ static Isgl3dScheduler * _instance = nil;
 	}
 	
 	if (exists) {
-		Isgl3dLog(Error, @"Isgl3dScheduler : target added that is already scheduled.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"target added that is already scheduled.");
 	} else {
 		[_timers addObject:[Isgl3dTimer timerWithTarget:target selector:selector isPaused:isPaused]];
 	}

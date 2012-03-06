@@ -74,7 +74,7 @@
 	
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR) {
-		Isgl3dGLErrLog(Error, err, @"Error creating texture %i. glError: 0x%04X", textureIndex, err);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error creating texture %i. glError: 0x%04X", textureIndex, err);
 	}
 	
 	return textureIndex;
@@ -94,7 +94,7 @@
 		
 		GLenum err = glGetError();
 		if (err != GL_NO_ERROR) {
-			Isgl3dGLErrLog(Error, err, @"Error uploading compressed texture level: %d (format 0x%X, %ux%u, %u bytes). glError: 0x%04X", index, format, width, height, [data length], err);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error uploading compressed texture level: %d (format 0x%X, %ux%u, %u bytes). glError: 0x%04X", index, format, width, height, [data length], err);
 		}
 		
 		[self handleParameters:GL_TEXTURE_2D precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
@@ -144,7 +144,7 @@
 	
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR) {
-		Isgl3dGLErrLog(Error, err, @"Error creating cubemap texture. glError: 0x%04X", err);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error creating cubemap texture. glError: 0x%04X", err);
 	}
 	
 	return textureIndex;

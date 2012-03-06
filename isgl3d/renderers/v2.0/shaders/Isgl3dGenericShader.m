@@ -220,7 +220,7 @@
 
 - (void)addLight:(Isgl3dLight *)light viewMatrix:(Isgl3dMatrix4 *)viewMatrix {
 	if (_lightCount >= MAX_LIGHTS) {
-		Isgl3dLog(Warn, @"Number of lights exceeds %i", MAX_LIGHTS);
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Number of lights exceeds %i", MAX_LIGHTS);
 		return;
 	}
 	

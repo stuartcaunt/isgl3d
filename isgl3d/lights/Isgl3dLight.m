@@ -136,7 +136,7 @@
 
 - (void)setRenderLight:(BOOL)renderLight {
 	if (_lightType == DirectionalLight && renderLight) {
-		Isgl3dLog(Warn, @"Light is directional an cannot therefore be rendered on scene");
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Light is directional an cannot therefore be rendered on scene");
 		return;
 	}
 	
@@ -164,7 +164,7 @@
 
 - (void)setRenderedMesh:(Isgl3dGLMesh *)mesh {
 	if (_lightType == DirectionalLight) {
-		Isgl3dLog(Warn, @"Light is directional an cannot therefore be rendered on scene");
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Light is directional an cannot therefore be rendered on scene");
 		return;
 	}
 

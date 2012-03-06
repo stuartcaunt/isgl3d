@@ -33,7 +33,7 @@
     if ((self = [super init])) {
     	_program = glCreateProgram();
 		if (!_program) {
-			Isgl3dLog(Error, @"Could not create gl program");
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Could not create gl program");
             [self release];
             return nil;
 		}
@@ -69,7 +69,7 @@
 	NSString * shaderSource = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
 
 	if (!shaderSource) {
-		Isgl3dLog(Error, @"Failed to load shader file %s", file);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Failed to load shader file %s", file);
 		return FALSE;
 	}
 
@@ -93,7 +93,7 @@
 	// Create a shader
     GLuint shader = glCreateShader(shaderType);
 	if (!shader) {
-		Isgl3dLog(Error, @"Unable to create %s shader", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"));	   
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Unable to create %s shader", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"));	   
 		return FALSE;
 	}
     
@@ -112,7 +112,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetShaderInfoLog(shader, logLength, &logLength, error);
-	        Isgl3dLog(Info, @"Error compiling %s shader:\n%s", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"), error);
+	        Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error compiling %s shader:\n%s", ((shaderType == GL_VERTEX_SHADER) ? "vertex" : "fragment"), error);
 	        free(error);
 	    }
 
@@ -146,7 +146,7 @@
 	    if (logLength > 0) {
 	        GLchar *error = (GLchar *)malloc(logLength);
 	        glGetProgramInfoLog(_program, logLength, &logLength, error);
-	        Isgl3dLog(Error, @"Error in program linking:\n%s", error);
+	        Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error in program linking:\n%s", error);
 	        free(error);
 	    }
     	
@@ -174,7 +174,7 @@
     if (logLength > 0) {
         GLchar *error = (GLchar *)malloc(logLength);
         glGetProgramInfoLog(_program, logLength, &logLength, error);
-        Isgl3dLog(Error, @"Error in program validation:\n%s", error);
+        Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error in program validation:\n%s", error);
         free(error);
 
     	// clean up

@@ -66,7 +66,7 @@
 		_currentTextureId = 0;
 		_currentElementBufferId = 0;
 		
-		Isgl3dLog(Info, @"Isgl3dGLRenderer1 : created renderer for OpenGL ES 1.1");
+		Isgl3dLog(Isgl3dLogLevelInfo, @"Created renderer for OpenGL ES 1.1");
 	}
 	
 	return self;
@@ -307,7 +307,7 @@
 	_lightCount++;	
 	
 	if (_lightCount > MAX_LIGHTS) {
-		Isgl3dLog(Warn, @"Number of lights exceeds %i", MAX_LIGHTS);
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Number of lights exceeds %i", MAX_LIGHTS);
 		return;
 	}
 	
@@ -550,13 +550,13 @@
 - (void)setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
 	if (!_stencilBufferAvailable && shadowRenderingMethod != Isgl3dShadowNone) {
 		_shadowRenderingMethod = Isgl3dShadowNone;
-		Isgl3dLog(Warn, @"Isgl3dGLRenderer1 : Request for shadow rendering refused: not available on this device");
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Request for shadow rendering refused: not available on this device");
 	} else {
 		if (shadowRenderingMethod == Isgl3dShadowMaps) {
-			Isgl3dLog(Info, @"Isgl3dGLRenderer1 : Request for shadow mapping refused: not available with OpenGL ES 1.1. Using planar shadows.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Request for shadow mapping refused: not available with OpenGL ES 1.1. Using planar shadows.");
 			_shadowRenderingMethod = Isgl3dShadowPlanar;
 		} else {
-			Isgl3dLog(Info, @"Isgl3dGLRenderer1 : Planar shadows activated.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Planar shadows activated.");
 			_shadowRenderingMethod = shadowRenderingMethod;
 		}
 	}
@@ -614,7 +614,7 @@
 }
 
 - (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
-	Isgl3dLog(Error, @"Isgl3dRenderer1 : Cannot user shader materials using OpenGL ES1");
+	Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Cannot user shader materials using OpenGL ES1");
 	return NO;
 }
 

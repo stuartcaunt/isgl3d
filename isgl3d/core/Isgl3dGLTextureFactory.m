@@ -49,7 +49,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 
 
 - (id)init {
-	NSLog(@"Isgl3dGLTextureFactory::init should not be called on singleton. Instance should be accessed via sharedInstance");
+	Isgl3dLog(Isgl3dLogLevelError, @"Isgl3dGLTextureFactory::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
@@ -134,7 +134,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		
 		UIImage * image = [self loadImage:file];
 		if (!image) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactory: image %@ cannot be loaded", file);
+			Isgl3dDebugLog(Isgl3dLogLevelError, @"image %@ cannot be loaded", file);
 			return nil;
 		}
 		
@@ -159,7 +159,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		return texture;		
 	}
 
-	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createTextureFromFile: not initialised with factory state");
+	Isgl3dDebugLog(Isgl3dLogLevelError, @"createTextureFromFile: not initialised with factory state");
 	return nil;
 }
 
@@ -200,7 +200,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		return texture;		
 	}
     
-	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createTextureFromUIImage: not initialised with factory state");
+	Isgl3dDebugLog(Isgl3dLogLevelError, @"createTextureFromUIImage: not initialised with factory state");
 	return nil;
 }
 
@@ -236,7 +236,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	    [text drawInRect:CGRectMake(0, 0, dimensions.width, dimensions.height) withFont:uiFont lineBreakMode:UILineBreakModeWordWrap alignment:alignment];
 		
 		if (!uiFont) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Font '%@' not found", name);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Font '%@' not found", name);
 		}
 		UIGraphicsPopContext();
 		
@@ -249,7 +249,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 
 	}
 
-	Isgl3dLog(Error, @"GLTextureFactory.createTextureFromText: not initialised with factory state");
+	Isgl3dDebugLog(Isgl3dLogLevelError, @"createTextureFromText: not initialized with factory state");
 	return nil;
 }
 
@@ -280,17 +280,17 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		
 		BOOL isHD = [Isgl3dDirector sharedInstance].retinaDisplayEnabled;
 		if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file not found %@.%@", fileName, extension);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Compressed image file not found %@.%@", fileName, extension);
 
 			if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
 				fileName = origFileName;
 				filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
 
-				Isgl3dLog(Info, @"Isgl3dGLTextureFactor : Trying %@...", file);
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Trying %@...", file);
 	
 				isHD = NO;
 				if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-					Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Compressed image file not found %@.%@", fileName, extension);
+					Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Compressed image file not found %@.%@", fileName, extension);
 					return nil;
 				}
 				
@@ -309,7 +309,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 
 		return texture;		
 	} else {
-		Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createTextureFromCompressedFile: not initialised with factory state");
+		Isgl3dDebugLog(Isgl3dLogLevelError, @"createTextureFromCompressedFile: not initialized with factory state");
 	}
 
 	return nil;	
@@ -337,14 +337,14 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		}
 
 		if (compressed) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Cubemaps using compressed images is not yet available");
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Cubemaps using compressed images is not yet available");
 			[images release];
 			return nil;
 		}
 
 
 		if ([images count] != 6) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires 6 images: only %i given", [images count]);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Generation of cubmap texture requires 6 images: only %i given", [images count]);
 			[images release];
 			return nil;
 		}
@@ -363,7 +363,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		unsigned int height = [self nearestPowerOf2:imageHeight];
 		
 		if (imageHeight != imageWidth) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires images of equal width and height");
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Generation of cubmap texture requires images of equal width and height");
 			[images release];
 			return nil;
 		}
@@ -378,7 +378,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 			CGImageGetHeight(posZImage.CGImage) != imageWidth ||
 			CGImageGetWidth(negZImage.CGImage) != imageWidth ||
 			CGImageGetHeight(negZImage.CGImage) != imageWidth) {
-			Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Generation of cubmap texture requires all images to be the same size");
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Generation of cubmap texture requires all images to be the same size");
 			[images release];
 			return nil;
 		}
@@ -408,7 +408,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		return [Isgl3dGLTexture textureWithId:textureId width:width height:height];		
 	}
 
-	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createCubemapTextureFromFiles: not initialised with factory state");
+	Isgl3dDebugLog(Isgl3dLogLevelError, @"createCubemapTextureFromFiles: not initialised with factory state");
 	return nil;
 }
 
@@ -417,7 +417,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		return [_state createDepthRenderTexture:width height:height];
 	}
 
-	Isgl3dLog(Error, @"Isgl3dGLTextureFactory.createDepthRenderTexture: not initialised with factory state");
+	Isgl3dDebugLog(Isgl3dLogLevelError, @"createDepthRenderTexture: not initialised with factory state");
 	return nil;
 }
 
@@ -441,7 +441,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 		}
 		
 	} else {
-		Isgl3dLog(Error, @"Isgl3dGLTextureFactory.deleteTexture: not initialised with factory state");
+		Isgl3dDebugLog(Isgl3dLogLevelError, @"deleteTexture: not initialized with factory state");
 	}
 }
 
@@ -460,16 +460,16 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	
 	NSString * filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
 	if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : image file not found %@.%@", fileName, extension);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"image file not found %@.%@", fileName, extension);
 
 		if ([Isgl3dDirector sharedInstance].retinaDisplayEnabled) {
 			fileName = origFileName;
 			filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];  
 
-			Isgl3dLog(Info, @"Isgl3dGLTextureFactor : Trying %@...", path);
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Trying %@...", path);
 
 			if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-				Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Image file not found %@.%@", fileName, extension);
+				Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Image file not found %@.%@", fileName, extension);
 				return nil;
 			}
 			
@@ -483,7 +483,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
 	filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
 
 	if (!filePath) {
-		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Failed to load %@.%@", fileName, extension);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Failed to load %@.%@", fileName, extension);
 		return nil;
 	}
 	
@@ -492,7 +492,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
    	[texData release];
 
 	if (image == nil) {
-		Isgl3dLog(Error, @"Isgl3dGLTextureFactor : Failed to load %@.%@", fileName, extension);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Failed to load %@.%@", fileName, extension);
 	}
     return [image autorelease];	
 

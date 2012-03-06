@@ -40,11 +40,11 @@
 #import "Isgl3dNode.h"
 #import "Isgl3dCustomShader.h"
 #import "Isgl3dActionManager.h"
+#import "isgl3d.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <sys/time.h>
 
-extern NSString * isgl3dVersion();
 
 static Isgl3dDirector * _instance = nil;
 
@@ -75,7 +75,7 @@ static Isgl3dDirector * _instance = nil;
 
 
 - (id)init {
-	NSLog(@"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
+	Isgl3dLog(Isgl3dLogLevelError, @"Isgl3dDirector::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
@@ -83,8 +83,7 @@ static Isgl3dDirector * _instance = nil;
 - (id)initSingleton {
 	
 	if ((self = [super init])) {
-		Isgl3dLog(Info, @"%@", isgl3dVersion());
-
+        Isgl3dLog(Isgl3dLogLevelInfo, @"Engine started '%@', Copyright (C) 2012 Stuart Caunt, visit http://isgl3d.com", isgl3dVersion());
 
 		// Initialise timing method
 		_isAnimating = NO;
@@ -98,11 +97,11 @@ static Isgl3dDirector * _instance = nil;
 		NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
 		if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
 			_displayLinkSupported = YES;
-			Isgl3dLog(Info, @"Isgl3dDirector : created with CADisplayLink");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"created with CADisplayLink");
 
 		} else {
 			_displayLinkSupported = NO;
-			Isgl3dLog(Info, @"Isgl3dDirector : created with NSTimer");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"created with NSTimer");
 		}
 
 		// Default device orientation
@@ -135,7 +134,7 @@ static Isgl3dDirector * _instance = nil;
 		_renderPhaseCallback = nil;
 		
 #ifdef ISGL3D_MATRIX_MATH_ACCEL
-		Isgl3dLog(Info, @"Isgl3dDirector : hardware accelerated matrix operations using %@ library", ISGL3D_MATRIX_MATH_ACCEL);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"hardware accelerated matrix operations using %@ library", ISGL3D_MATRIX_MATH_ACCEL);
 #endif
 	}
 
@@ -143,7 +142,7 @@ static Isgl3dDirector * _instance = nil;
 }
 
 - (void)dealloc {
-	Isgl3dLog(Info, @"Isgl3dDirector : dealloc");
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"dealloc");
 
 	[_gestureManager release];
 	_gestureManager = nil;
@@ -227,22 +226,22 @@ static Isgl3dDirector * _instance = nil;
 			_deviceOrientation = orientation;
 			if (_deviceOrientation == Isgl3dOrientation0) {
 				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to portrait");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation180) {
 				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortraitUpsideDown animated:NO];
-				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to portrait upside down");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to portrait upside down");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
 				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:NO];
-				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape left");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to landscape left");
 				
 			} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
 				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-				Isgl3dLog(Info, @"Isgl3dDirector : setting device orientation to landscape right");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to landscape right");
 				
 			} else {
-				Isgl3dLog(Error, @"Isgl3dDirector : unknown device orientation");
+				Isgl3dClassDebugLog(Isgl3dLogLevelError, @"unknown device orientation");
 			} 
 		}
 	}
@@ -366,7 +365,7 @@ static Isgl3dDirector * _instance = nil;
 - (void)setAnimationInterval:(float)animationInterval {
     if (animationInterval > 0) {
         _animationInterval = animationInterval;
-		Isgl3dLog(Info, @"Isgl3dDirector : animation frame interval set to %3.1ffps", 1. / animationInterval);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"animation frame interval set to %3.1ffps", 1. / animationInterval);
         
         if (_isAnimating) {
             [self stopAnimation];
@@ -443,7 +442,7 @@ static Isgl3dDirector * _instance = nil;
 		return;
 	}
 	
-	Isgl3dLog(Info, @"Isgl3dDirector : paused");
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"paused");
 	_oldAnimationInterval = _animationInterval;
 	[self setAnimationInterval:1/4.0];
 	_isPaused = YES;
@@ -454,7 +453,7 @@ static Isgl3dDirector * _instance = nil;
 		return;
 	}
 
-	Isgl3dLog(Info, @"Isgl3dDirector : resumed");
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"resumed");
 	[self setAnimationInterval:_oldAnimationInterval];
 	
 	_isPaused = NO;
@@ -468,7 +467,7 @@ static Isgl3dDirector * _instance = nil;
 
 
 - (void)onMemoryWarning {
-	Isgl3dLog(Error, @"Isgl3dDirector : received memory warning");
+	Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"received memory warning");
 }
 
 - (void)onSignificantTimeChange {
@@ -511,7 +510,7 @@ static Isgl3dDirector * _instance = nil;
 
 - (void)enableRetinaDisplay:(BOOL)enabled {
 	if (enabled && !_glView) {
-		Isgl3dLog(Error, @"Isgl3dDirector : cannot enable retina display before Isgl3dEAGLView has been set.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"cannot enable retina display before Isgl3dEAGLView has been set.");
 		return;
 	}
 	
@@ -523,15 +522,15 @@ static Isgl3dDirector * _instance = nil;
 	// See if retina display is supported in iOS
 	if (enabled) {
 		if (![_glView respondsToSelector:@selector(setContentScaleFactor:)]) {
-			Isgl3dLog(Error, @"Isgl3dDirector : retina display not supported in this version of iOS.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"retina display not supported in this version of iOS.");
 		} else {
 			
 			// See if retina display is supported on device
 			if ([UIScreen mainScreen].scale == 1.0f) {
-				Isgl3dLog(Error, @"Isgl3dDirector : retina display not supported on this device.");
+				Isgl3dClassDebugLog(Isgl3dLogLevelError, @"retina display not supported on this device.");
 				
 			} else {
-				Isgl3dLog(Info, @"Isgl3dDirector : retina display enabled.");
+				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"retina display enabled.");
 				_retinaDisplayEnabled = YES;
 				[self setContentScaleFactor:2.0f];
 			}
@@ -539,7 +538,7 @@ static Isgl3dDirector * _instance = nil;
 		}
 		
 	} else {
-		Isgl3dLog(Info, @"Isgl3dDirector : retina display disabled.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"retina display disabled.");
 		_retinaDisplayEnabled = NO;
 		[self setContentScaleFactor:1.0f];
 	}
@@ -563,7 +562,7 @@ static Isgl3dDirector * _instance = nil;
             [view onResizeFromLayer];
         }
         
-		Isgl3dLog(Info, @"Isgl3dDirector : content scale factor changed, window size in pixels = %ix%i",  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"content scale factor changed, window size in pixels = %ix%i",  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
 	}
 }
 
@@ -582,7 +581,7 @@ static Isgl3dDirector * _instance = nil;
 		[view onResizeFromLayer];
 	}
 
-	Isgl3dLog(Info, @"Isgl3dDirector : layer resized, window size in points = %ix%i and pixels = %ix%i", (int)_windowRect.size.width, (int)_windowRect.size.height,  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"layer resized, window size in points = %ix%i and pixels = %ix%i", (int)_windowRect.size.width, (int)_windowRect.size.height,  (int)_windowRectInPixels.size.width, (int)_windowRectInPixels.size.height);
 }
 
 #pragma mark main loop

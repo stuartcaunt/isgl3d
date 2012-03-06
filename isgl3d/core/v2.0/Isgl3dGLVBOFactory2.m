@@ -88,7 +88,7 @@
 
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR) {
-		Isgl3dLog(Warn, @"Error creating buffer %i. glError: 0x%04X", bufferIndex, err);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error creating buffer %i. glError: 0x%04X", bufferIndex, err);
 	}
 		
 	return bufferIndex;

@@ -209,7 +209,7 @@
 	
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:extension];
 	if (!filePath) {
-		Isgl3dLog(Error, @"Failed to load %@", path);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Failed to load %@", path);
 		return nil;
 	}
 	
@@ -218,7 +218,7 @@
    	[imageData release];
     
 	if (image == nil) {
-		Isgl3dLog(Error, @"Failed to load %@", path);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Failed to load %@", path);
 	}
 
 	return [image autorelease];	

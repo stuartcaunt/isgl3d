@@ -39,7 +39,7 @@ static Isgl3dActionManager * _instance = nil;
 @implementation Isgl3dActionManager
 
 - (id)init {
-	NSLog(@"Isgl3dActionManager::init should not be called on singleton. Instance should be accessed via sharedInstance");
+	Isgl3dLog(Isgl3dLogLevelError, @"Isgl3dActionManager::init should not be called on singleton. Instance should be accessed via sharedInstance");
 	
 	return nil;
 }
@@ -103,7 +103,7 @@ static Isgl3dActionManager * _instance = nil;
 	Isgl3dActionsHandler * targetActionsHandler = nil;
 	for (Isgl3dActionsHandler * actionsHandler in _actionsHandlers) {
 		if ([actionsHandler containsAction:action]) {
-			Isgl3dLog(Error, @"Isgl3dActionManager : running action cannot be added twice");
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"running action cannot be added twice2");
 			return;
 			
 		} else if (actionsHandler.target == target) {

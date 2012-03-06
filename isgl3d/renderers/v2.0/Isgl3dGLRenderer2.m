@@ -93,7 +93,7 @@
 		_internalShaders = [[NSMutableDictionary alloc] init];
 		_customShaders = [[NSMutableDictionary alloc] init];
 
-		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : created renderer for OpenGL ES 2.0");
+		Isgl3dLog(Isgl3dLogLevelInfo, @"Created renderer for OpenGL ES 2.0");
 	}
 	
 	return self;
@@ -204,11 +204,11 @@
 		}
         
         if (shader) {
-            Isgl3dLog(Info, @"Created internal shader for renderer requirements %i", rendererRequirements);
+            Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Created internal shader for renderer requirements %i", rendererRequirements);
 			[_internalShaders setObject:shader forKey:[NSNumber numberWithUnsignedInt:rendererRequirements]];
 			[shader release];
         } else {
-            Isgl3dLog(Error, @"Isgl3dGLRenderer2 : Failed to add shader for renderer requirements %i", rendererRequirements);
+            Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Isgl3dGLRenderer2 : Failed to add shader for renderer requirements %i", rendererRequirements);
         }
 
 	}
@@ -227,7 +227,7 @@
 		[self setShaderActive:shader];
 	
 	} else {
-		Isgl3dLog(Error, @"Isgl3dGLRenderer2 : Error in getting shader for requirements 0x%04X", rendererRequirements);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error in getting shader for requirements 0x%04X", rendererRequirements);
 	}
 }
 - (void)reset {
@@ -427,7 +427,7 @@
 	} 
 
 	for (NSString * key in unretainedShaders) {
-		Isgl3dLog(Info, @"Isgl3dGLRenderer2 : custom shader with key \"%@\" no longer retained: deleting.", key);
+		Isgl3dClassDebugLog2(Isgl3dLogLevelInfo, @"custom shader with key \"%@\" no longer retained: deleting.", key);
 		[_customShaders removeObjectForKey:key];
 	}	
 	
@@ -545,13 +545,13 @@
 - (void)setShadowRenderingMethod:(isgl3dShadowType)shadowRenderingMethod {
 	if (!_stencilBufferAvailable && shadowRenderingMethod != Isgl3dShadowNone) {
 		_shadowRenderingMethod = Isgl3dShadowNone;
-		Isgl3dLog(Warn, @"Isgl3dGLRenderer2 : Request for shadow rendering refused: not available on this device");
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Request for shadow rendering refused: not available on this device");
 
 	} else {
 		if (shadowRenderingMethod == Isgl3dShadowMaps) {
-			Isgl3dLog(Info, @"Isgl3dGLRenderer2 : Shadow mapping activated.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Shadow mapping activated.");
 		} else {
-			Isgl3dLog(Info, @"Isgl3dGLRenderer2 : Planar shadows activated.");
+			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Planar shadows activated.");
 		}
 		_shadowRenderingMethod = shadowRenderingMethod;
 	}
@@ -624,7 +624,7 @@
 
 - (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader {
 	if ([_customShaders objectForKey:shader.key]) {
-		Isgl3dLog(Warn, @"Isgl3dGLRenderer2 : custom shader with key %@ already exists.", shader.key);
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"custom shader with key %@ already exists.", shader.key);
 		return NO;
 	}
 	

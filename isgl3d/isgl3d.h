@@ -23,6 +23,10 @@
  *
  */
 
+
+extern const NSString const* isgl3dVersion();
+
+
 #import "actions/Isgl3dAction.h"
 #import "actions/Isgl3dActionAlpha.h"
 #import "actions/Isgl3dActionCallFunc.h"
@@ -91,7 +95,6 @@
 #import "events/Isgl3dTouchScreen.h"
 #import "events/Isgl3dTouchScreenResponder.h"
 #import "events/utils/Isgl3dSingleTouchFilter.h"
-#import "isgl3dTypes.h"
 #import "lights/Isgl3dLight.h"
 #import "lights/Isgl3dShadowCastingLight.h"
 #import "materials/Isgl3dAnimatedTextureMaterial.h"
@@ -165,4 +168,5 @@
 #import "view/Isgl3dGLView.h"
 #import "view/Isgl3dEAGLView.h"
 #import "view/Isgl3dView.h"
+#import "isgl3dTypes.h"
 

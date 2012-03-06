@@ -141,7 +141,7 @@
 }
 
 - (void)callback1 {
-	NSLog(@"Callback1 called !");
+    Isgl3dDebugLog(Isgl3dLogLevelDebug, @"Callback1 called !");
 }
 
 

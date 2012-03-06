@@ -50,7 +50,7 @@
 	}			  
 	else
 	{
-		Isgl3dLog(Error, @"Error creating texture from file (%@)", file);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Error creating texture from file (%@)", file);
 	}
 	return textureIndex;
 }

@@ -68,7 +68,7 @@
 		
 		GLenum err = glGetError();
 		if (err != GL_NO_ERROR) {
-			Isgl3dGLErrLog(Error, err, @"Error uploading compressed texture level: %d. glError: 0x%04X", index, err);
+            Isgl3dLog(Isgl3dLogLevelError, @"Error uploading compressed texture level: %d. glError: 0x%04X", index, err);
 		}
 
 		[self handleParameters:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
@@ -104,14 +104,14 @@
 	
 	GLenum err = glGetError();
 	if (err != GL_NO_ERROR) {
-		Isgl3dGLErrLog(Error, err, @"Error uploading texture. glError: 0x%04X", err);
+		Isgl3dLog(Isgl3dLogLevelError, @"Error uploading texture. glError: 0x%04X", err);
 	}
 	
 	return textureIndex;
 }
 
 - (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
-	Isgl3dLog(Error, @"Isgl3dGLTextureFactory1.createCubemapTextureFromRawData not available for OpenGL ES 1.1");
+	Isgl3dDebugLog(Isgl3dLogLevelError, @"createCubemapTextureFromRawData not available for OpenGL ES 1.1");
 	return 0;
 }
 

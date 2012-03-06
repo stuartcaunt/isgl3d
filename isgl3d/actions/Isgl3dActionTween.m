@@ -59,7 +59,7 @@
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
 	if (![[_target valueForKey:_property] isKindOfClass:[NSNumber class]]) {
-		Isgl3dLog(Error, @"Isgl3dActionTweenTo: property %@ cannot be used for tween. Only NSNumber properties can be used", _property);
+		Isgl3dDebugLog(Isgl3dLogLevelError, @"property %@ cannot be used for tween. Only NSNumber properties can be used", _property);
 		_initialValue = _finalValue;
 		_delta = 0.0f;
 		
@@ -106,7 +106,7 @@
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
 	if (![[_target valueForKey:_property] isKindOfClass:[NSNumber class]]) {
-		Isgl3dLog(Error, @"Isgl3dActionTweenTo: property %@ cannot be used for tween. Only NSNumber properties can be used", _property);
+		Isgl3dDebugLog(Isgl3dLogLevelError, @"property %@ cannot be used for tween. Only NSNumber properties can be used", _property);
 		_initialValue = 0.0f;
 		
 	} else {

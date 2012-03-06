@@ -61,13 +61,13 @@ static unsigned int __textureUnitIndices[32] = {
        	
    		NSString * vertexShaderFileName = [[NSBundle mainBundle] pathForResource:vertexName ofType:vertexExtension];
    		if (!vertexShaderFileName) {
-			Isgl3dLog(Error, @"Isgl3dShader: cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"cannot create vertex shader: %@ does not exist in resources.", vertexShaderName);
 			return nil;
    		}
    		
 		NSString * fragmentShaderFileName = [[NSBundle mainBundle] pathForResource:fragmentName ofType:fragmentExtension];
    		if (!fragmentShaderFileName) {
-			Isgl3dLog(Error, @"Isgl3dShader: cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"cannot create fragment shader: %@ does not exist in resources.", fragmentShaderName);
 			return nil;
    		}
 	
@@ -120,7 +120,7 @@ static unsigned int __textureUnitIndices[32] = {
 		if (location >= 0) {
 			[_uniformNameIndices setObject:[NSNumber numberWithInt:location] forKey:name];
 		} else {
-			Isgl3dLog(Error, @"Isgl3dShader: cannot find uniform with name %@.", name);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"cannot find uniform with name %@.", name);
 		}
 		return location;
 	}
@@ -137,7 +137,7 @@ static unsigned int __textureUnitIndices[32] = {
 		if (location >= 0) {
 			[_attributeNameIndices setObject:[NSNumber numberWithInt:location] forKey:name];
 		} else {
-			Isgl3dLog(Error, @"Isgl3dShader: cannot find attribute with name %@.", name);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"cannot find attribute with name %@.", name);
 		}
 		return location;
 	}
@@ -354,7 +354,7 @@ static unsigned int __textureUnitIndices[32] = {
 
 - (void)bindTexture:(Isgl3dGLTexture *)texture textureUnit:(GLuint)textureUnit {
 	if (textureUnit > 31) {
-		Isgl3dLog(Warn, @"Isgl3dShader: a texture unit of %i is too hight: maximum value is 31.", textureUnit);
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Isgl3dShader: a texture unit of %i is too hight: maximum value is 31.", textureUnit);
 		
 	} else {
 		GLuint glTextureUnit = __textureUnitIndices[textureUnit];

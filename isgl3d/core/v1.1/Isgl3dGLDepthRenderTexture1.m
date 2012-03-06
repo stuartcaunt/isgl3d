@@ -47,7 +47,7 @@
 		glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, _depthRenderBuffer);
 			
 		if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
-			Isgl3dLog(Error, @"Failed to make complete framebuffer object for depth render texture %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Failed to make complete framebuffer object for depth render texture %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
 		}
 		
 		glBindFramebufferOES(GL_FRAMEBUFFER_OES, _oldFrameBuffer);

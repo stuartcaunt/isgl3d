@@ -103,7 +103,7 @@
 	if (index < _size) {
 		return _array[index];
 	}
-	Isgl3dLog(Error, @"Requested index %i is out of bounds [0, %i]", index, _size - 1);
+	Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Requested index %i is out of bounds [0, %i]", index, _size - 1);
 	return 0;
 }
 

@@ -107,7 +107,7 @@
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:name ofType:nil];
     
     if (resourcePath == nil) {
-        NSLog(@"iSGL3D : Error : Isgl3dPODImporter : POD file %@ does not exist.", resourcePath);
+        Isgl3dClassDebugLog(Isgl3dLogLevelError, @"POD file %@ does not exist.", resourcePath);
 
         [self release];
         self = nil;
@@ -126,7 +126,7 @@
 		_podScene = new CPVRTModelPOD();
 
 		if (_podScene->ReadFromFile([filePath UTF8String]) != PVR_SUCCESS) {
-			NSLog(@"iSGL3D : Error : Isgl3dPODImporter : Unable to parse POD file %@", filePath);
+			Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Unable to parse POD file %@", filePath);
 			delete _podScene;
             _podScene = NULL;
 
@@ -177,75 +177,75 @@
 }
 
 - (void)printPODInfo {
-	NSLog(@"POD info:");
-	NSLog(@"Number of cameras: %i", _podScene->nNumCamera);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"POD info:");
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of cameras: %i", _podScene->nNumCamera);
 	for (int i = 0; i < _podScene->nNumCamera; i++) {
 		SPODCamera & cameraInfo = _podScene->pCamera[i];
-		NSLog(@"\tcamera[%i] target index %i:", i, cameraInfo.nIdxTarget);
-		NSLog(@"\tcamera[%i] FOV %f:", i, cameraInfo.fFOV);
-		NSLog(@"\tcamera[%i] near %f:", i, cameraInfo.fNear);
-		NSLog(@"\tcamera[%i] far %f:", i, cameraInfo.fFar);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tcamera[%i] target index %i:", i, cameraInfo.nIdxTarget);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tcamera[%i] FOV %f:", i, cameraInfo.fFOV);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tcamera[%i] near %f:", i, cameraInfo.fNear);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tcamera[%i] far %f:", i, cameraInfo.fFar);
 	}
-	NSLog(@"\n");
+	NSDebugLog(@"\n");
 
-	NSLog(@"Number of lights: %i", _podScene->nNumLight);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of lights: %i", _podScene->nNumLight);
 	for (int i = 0; i < _podScene->nNumLight; i++) {
 		SPODLight & lightInfo = _podScene->pLight[i];
-		NSLog(@"\tlight[%i] target index %i:", i, lightInfo.nIdxTarget);
-		NSLog(@"\tlight[%i] color [%f, %f, %f]:", i, lightInfo.pfColour[0], lightInfo.pfColour[1], lightInfo.pfColour[2]);
-		NSLog(@"\tlight[%i] type (0 = Point, 1 = Directional, 2 = Spot) %i:", i, lightInfo.eType);
-		NSLog(@"\tlight[%i] constant attenuation %f:", i, lightInfo.fConstantAttenuation);
-		NSLog(@"\tlight[%i] linear attenuation %f:", i, lightInfo.fLinearAttenuation);
-		NSLog(@"\tlight[%i] falloff angle %f:", i, lightInfo.fFalloffAngle);
-		NSLog(@"\tlight[%i] falloff exponent %f:", i, lightInfo.fFalloffExponent);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] target index %i:", i, lightInfo.nIdxTarget);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] color [%f, %f, %f]:", i, lightInfo.pfColour[0], lightInfo.pfColour[1], lightInfo.pfColour[2]);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] type (0 = Point, 1 = Directional, 2 = Spot) %i:", i, lightInfo.eType);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] constant attenuation %f:", i, lightInfo.fConstantAttenuation);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] linear attenuation %f:", i, lightInfo.fLinearAttenuation);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] falloff angle %f:", i, lightInfo.fFalloffAngle);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tlight[%i] falloff exponent %f:", i, lightInfo.fFalloffExponent);
 	}
-	NSLog(@"\n");
+	NSDebugLog(@"\n");
 
-	NSLog(@"Number of meshes: %i", _podScene->nNumMesh);
-	NSLog(@"Number of mesh nodes: %i", _podScene->nNumMeshNode);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of meshes: %i", _podScene->nNumMesh);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of mesh nodes: %i", _podScene->nNumMeshNode);
 	for (int i = 0; i < _podScene->nNumMesh; i++) {
 		SPODMesh & mesh = _podScene->pMesh[i];
-		NSLog(@"\tmesh[%i] number of vertices %i:", i, mesh.nNumVertex);
-		NSLog(@"\tmesh[%i] number of faces %i:", i, mesh.nNumFaces);
-		NSLog(@"\tmesh[%i] is interleaved: %@", i, (mesh.pInterleaved == 0) ? @"no" : @"yes");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmesh[%i] number of vertices %i:", i, mesh.nNumVertex);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmesh[%i] number of faces %i:", i, mesh.nNumFaces);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmesh[%i] is interleaved: %@", i, (mesh.pInterleaved == 0) ? @"no" : @"yes");
 	}
-	NSLog(@"\n");
+	NSDebugLog(@"\n");
 
-	NSLog(@"Number of nodes: %i", _podScene->nNumNode);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of nodes: %i", _podScene->nNumNode);
 	for (int i = 0; i < _podScene->nNumNode; i++) {
 		SPODNode & node = _podScene->pNode[i];
-		NSLog(@"\tnode[%i] index %i:", i, node.nIdx);
-		NSLog(@"\tnode[%i] name %s:", i, node.pszName);
-		NSLog(@"\tnode[%i] material %i:", i, node.nIdxMaterial);
-		NSLog(@"\tnode[%i] parent %i:", i, node.nIdxParent);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tnode[%i] index %i:", i, node.nIdx);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tnode[%i] name %s:", i, node.pszName);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tnode[%i] material %i:", i, node.nIdxMaterial);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tnode[%i] parent %i:", i, node.nIdxParent);
 	}
-	NSLog(@"\n");
+	NSDebugLog(@"\n");
 
 	NSLog(@"Number of textures: %i", _podScene->nNumTexture);
 	for (int i = 0; i < _podScene->nNumTexture; i++) {
 		SPODTexture & texture = _podScene->pTexture[i];
-		NSLog(@"\ttexture[%i] filename %s:", i, texture.pszName);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\ttexture[%i] filename %s:", i, texture.pszName);
 	}
-	NSLog(@"\n");
+	NSDebugLog(@"\n");
 	
-	NSLog(@"Number of materials: %i", _podScene->nNumMaterial);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of materials: %i", _podScene->nNumMaterial);
 	for (int i = 0; i < _podScene->nNumMaterial; i++) {
 		SPODMaterial & material = _podScene->pMaterial[i];
-		NSLog(@"\tmaterial[%i] name %s:", i, material.pszName);
-		NSLog(@"\tmaterial[%i] texture diffuse index %i:", i, material.nIdxTexDiffuse);
-		NSLog(@"\tmaterial[%i] texture ambient index %i:", i, material.nIdxTexAmbient);
-		NSLog(@"\tmaterial[%i] texture specular index %i:", i, material.nIdxTexSpecularColour);
-		NSLog(@"\tmaterial[%i] texture spec level index %i:", i, material.nIdxTexSpecularLevel);
-		NSLog(@"\tmaterial[%i] texture bump index %i:", i, material.nIdxTexBump);
-		NSLog(@"\tmaterial[%i] opacity %f:", i, material.fMatOpacity);
-		NSLog(@"\tmaterial[%i] ambient [%f, %f, %f]:", i, material.pfMatAmbient[0], material.pfMatAmbient[1], material.pfMatAmbient[2]);
-		NSLog(@"\tmaterial[%i] diffuse [%f, %f, %f]:", i, material.pfMatDiffuse[0], material.pfMatDiffuse[1], material.pfMatDiffuse[2]);
-		NSLog(@"\tmaterial[%i] specular [%f, %f, %f]:", i, material.pfMatSpecular[0], material.pfMatSpecular[1], material.pfMatSpecular[2]);
-		NSLog(@"\tmaterial[%i] shininess %f:", i, material.fMatShininess);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] name %s:", i, material.pszName);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] texture diffuse index %i:", i, material.nIdxTexDiffuse);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] texture ambient index %i:", i, material.nIdxTexAmbient);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] texture specular index %i:", i, material.nIdxTexSpecularColour);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] texture spec level index %i:", i, material.nIdxTexSpecularLevel);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] texture bump index %i:", i, material.nIdxTexBump);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] opacity %f:", i, material.fMatOpacity);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] ambient [%f, %f, %f]:", i, material.pfMatAmbient[0], material.pfMatAmbient[1], material.pfMatAmbient[2]);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] diffuse [%f, %f, %f]:", i, material.pfMatDiffuse[0], material.pfMatDiffuse[1], material.pfMatDiffuse[2]);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] specular [%f, %f, %f]:", i, material.pfMatSpecular[0], material.pfMatSpecular[1], material.pfMatSpecular[2]);
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"\tmaterial[%i] shininess %f:", i, material.fMatShininess);
 	}
-	NSLog(@"\n");
+	NSDebugLog(@"\n");
 	
-	NSLog(@"Number of frames: %i", _podScene->nNumFrame);
+	Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Number of frames: %i", _podScene->nNumFrame);
 }
 
 - (unsigned int) numberOfMeshes {

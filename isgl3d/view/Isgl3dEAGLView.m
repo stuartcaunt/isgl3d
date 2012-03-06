@@ -152,7 +152,7 @@
         _drawableWidth = [_glContext backingWidth];
         _drawableHeight = [_glContext backingHeight];
 		
-		Isgl3dLog(Info, @"Isgl3dEAGLView : GLContext for OpenGL ES 1.X used.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"GLContext for OpenGL ES 1.X used.");
 		return YES;
 	}
 	return NO;
@@ -172,7 +172,7 @@
         _drawableWidth = [_glContext backingWidth];
         _drawableHeight = [_glContext backingHeight];
 		
-		Isgl3dLog(Info, @"Isgl3dEAGLView : GLContext for OpenGL ES 2.X used.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"GLContext for OpenGL ES 2.X used.");
 		return YES;
 	}
 	return NO;
@@ -202,12 +202,12 @@
 			return [self initContextForOpenGLES2];
 
 		} else {
-			Isgl3dLog(Warn, @"Isgl3dEAGLView : Got glcontextversion %i, which is not valid. Reverting to glContext1", glContextVersion);
+			Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"Got glcontextversion %i, which is not valid. Reverting to glContext1", glContextVersion);
 			return [self initContextForOpenGLES1];
 		}
 	}
 	
-	Isgl3dLog(Warn, @"Isgl3dEAGLView : glcontextversion not found in isgl3d.plist");
+	Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"glcontextversion not found in isgl3d.plist");
 	return [self initContextForLatestOpenGLES];
 	
 }

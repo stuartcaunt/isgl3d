@@ -461,10 +461,8 @@
 
 	if ((self = [super init])) {
 		self.scene = [Isgl3dScene3D scene];
-		Isgl3dLog(Info, @"Isgl3dBasic3DView : creating default scene.");
-		
-		CGSize viewSize = self.viewport.size;
-		Isgl3dLog(Info, @"Isgl3dBasic3DView : creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewSize));
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default scene.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(self.viewport.size));
 
         [self createSceneCamera];
 	}
@@ -499,7 +497,7 @@
 
 	if (self.camera) {
         [self.camera.lens viewSizeUpdated:viewport.size];
-		Isgl3dLog(Info, @"Isgl3dBasic3DView : setting camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
 	}
 }
 
@@ -513,10 +511,8 @@
 
 	if ((self = [super init])) {
 		self.scene = [Isgl3dScene3D scene];
-		Isgl3dLog(Info, @"Isgl3dBasic2DView : creating default scene.");
-
-        CGSize viewSize = self.viewportInPixels.size;
-		Isgl3dLog(Info, @"Isgl3dBasic2DView : creating default camera with ortho projection. Viewport size = %@", NSStringFromCGSize(viewSize));
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default scene.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with ortho projection. Viewport size = %@", NSStringFromCGSize(self.viewportInPixels.size));
 
 		[self createSceneCamera];
 	}
@@ -551,7 +547,7 @@
 
 	if (self.camera) {
         [self.camera.lens viewSizeUpdated:self.viewportInPixels.size];
-		Isgl3dLog(Info, @"Isgl3dBasic2DView : setting camera with ortho projection. Viewport size = %@", NSStringFromCGSize(self.viewportInPixels.size));
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting camera with ortho projection. Viewport size = %@", NSStringFromCGSize(self.viewportInPixels.size));
 	}
 }
 

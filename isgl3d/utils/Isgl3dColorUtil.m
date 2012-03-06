@@ -45,7 +45,7 @@
 	}
 		
 	if ([inColorString length] != 6 && [inColorString length] != 8) {
-		Isgl3dLog(Error, @"Input string is not a valid color: %s", inColorString);
+		Isgl3dDebugLog(Isgl3dLogLevelError, @"Input string is not a valid color: %s", inColorString);
 		return;
 	}
 

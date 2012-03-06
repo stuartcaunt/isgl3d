@@ -68,7 +68,7 @@
 		}
 		
 	} else {
-		NSLog(@"Isgl3dViewController:: ERROR : Unknown auto rotation strategy of Isgl3dDirector.");
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"Unknown auto rotation strategy of Isgl3dDirector.");
 		return NO;
 	}
 }

@@ -117,7 +117,7 @@
 		_nFrames++;
 	
 	} else {
-		Isgl3dLog(Error, @"Isgl3dKeyframeMesh : animation data contains mesh index outside bounds");
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"animation data contains mesh index outside bounds");
 	}
 	
 }
@@ -125,7 +125,7 @@
 - (Isgl3dArray *) createKeyframeMeshDataFromMesh:(Isgl3dGLMesh *)mesh {
 	// Verify that the new mesh data is coherent
 	if (mesh.numberOfVertices != _numberOfVertices) {
-		Isgl3dLog(Error, @"Isgl3dKeyframeMesh : cannot add mesh with %d vertices (expected %d)", mesh.numberOfVertices, _numberOfVertices);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"cannot add mesh with %d vertices (expected %d)", mesh.numberOfVertices, _numberOfVertices);
 		return nil;
 	}
 
@@ -223,16 +223,16 @@
 
 - (void)interpolateMesh1:(unsigned int)mesh1Index andMesh2:(unsigned int)mesh2Index withFactor:(float)f {
 	if (mesh1Index >= _nMeshes) {
-		Isgl3dLog(Error, @"Isgl3dKeyframeMesh : mesh1 index (%d) exceeds limit (%d)", mesh1Index, _nMeshes - 1);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"mesh1 index (%d) exceeds limit (%d)", mesh1Index, _nMeshes - 1);
 		return;
 	}
 	if (mesh2Index >= _nMeshes) {
-		Isgl3dLog(Error, @"Isgl3dKeyframeMesh : mesh2 index (%d) exceeds limit (%d)", mesh2Index, _nMeshes - 1);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"mesh2 index (%d) exceeds limit (%d)", mesh2Index, _nMeshes - 1);
 		return;
 	}
 	
 	if (f < 0.0f || f > 1.0f) {
-		Isgl3dLog(Error, @"Isgl3dKeyframeMesh : interpolation factor (%f) must be between 0 and 1", f);
+		Isgl3dClassDebugLog(Isgl3dLogLevelError, @"interpolation factor (%f) must be between 0 and 1", f);
 		return;
 	}
 	

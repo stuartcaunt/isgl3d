@@ -98,7 +98,7 @@
 
 		_lights = [[NSMutableArray alloc] init];
 
-        Isgl3dLog(Info, @"Created custom shader for key %@", key);
+        Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Created custom shader for key %@", key);
 
 	}
 	return self;
