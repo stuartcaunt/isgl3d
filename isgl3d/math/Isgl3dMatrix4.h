@@ -40,7 +40,7 @@
 
 #define Isgl3dMatrix4Identity GLKMatrix4Identity
 
-#define Isgl3dMatrix4Matrix4Make GLKMatrix4Make
+#define Isgl3dMatrix4Matrix GLKMatrix4Make
 #define Isgl3dMatrix4MakeAndTranspose GLKMatrix4MakeAndTranspose
 #define Isgl3dMatrix4MakeWithArray GLKMatrix4MakeWithArray
 #define Isgl3dMatrix4MakeWithArrayAndTranspose GLKMatrix4MakeWithArrayAndTranspose
@@ -114,7 +114,7 @@ extern "C" {
 extern const Isgl3dMatrix4 Isgl3dMatrix4Identity;
 
 
-static inline Isgl3dMatrix4 Isgl3dMatrix4Matrix4Make(float m00, float m01, float m02, float m03,
+static inline Isgl3dMatrix4 Isgl3dMatrix4Matrix(float m00, float m01, float m02, float m03,
                                                      float m10, float m11, float m12, float m13,
                                                      float m20, float m21, float m22, float m23,
                                                      float m30, float m31, float m32, float m33);
@@ -184,10 +184,10 @@ static inline void Isgl3dMatrix4MultiplyVector4Array(Isgl3dMatrix4 matrix, Isgl3
 #pragma mark -
 #pragma mark GLKit compatible Implementations
 #pragma mark -
-static inline Isgl3dMatrix4 Isgl3dMatrix4Matrix4Make(float m00, float m01, float m02, float m03,
-                                                     float m10, float m11, float m12, float m13,
-                                                     float m20, float m21, float m22, float m23,
-                                                     float m30, float m31, float m32, float m33)
+static inline Isgl3dMatrix4 Isgl3dMatrix4Matrix(float m00, float m01, float m02, float m03,
+                                                float m10, float m11, float m12, float m13,
+                                                float m20, float m21, float m22, float m23,
+                                                float m30, float m31, float m32, float m33)
 {
     Isgl3dMatrix4 m = { m00, m01, m02, m03,
                         m10, m11, m12, m13,

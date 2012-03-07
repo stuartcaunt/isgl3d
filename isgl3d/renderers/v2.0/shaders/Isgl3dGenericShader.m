@@ -48,7 +48,7 @@
 		_currentState = [[Isgl3dShaderState alloc] init];
 		_previousState = [[Isgl3dShaderState alloc] init];
 	
-		_biasMatrix = Isgl3dMatrix4Matrix4Make(0.5f, 0.0f, 0.0f, 0.5f,
+		_biasMatrix = Isgl3dMatrix4Matrix(0.5f, 0.0f, 0.0f, 0.5f,
                                                0.0f, 0.5f, 0.0f, 0.5f,
                                                0.0f, 0.0f, 0.5f, 0.5f,
                                                0.0f, 0.0f, 0.0f, 1.0f);
