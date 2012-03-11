@@ -617,9 +617,11 @@
 		[_indexedNodes setObject:node forKey:[NSNumber numberWithInteger:meshNodeInfo.nIdx]];
 
 		// Add node alpha
-		SPODMaterial & materialInfo = _podScene->pMaterial[meshNodeInfo.nIdxMaterial];
-		node.alpha = materialInfo.fMatOpacity;
-		node.transparent = node.alpha < 1.0 ? YES : NO;
+        if (meshNodeInfo.nIdxMaterial >= 0 && meshNodeInfo.nIdxMaterial < _podScene->nNumMaterial) {
+            SPODMaterial & materialInfo = _podScene->pMaterial[meshNodeInfo.nIdxMaterial];
+            node.alpha = materialInfo.fMatOpacity;
+            node.transparent = node.alpha < 1.0 ? YES : NO;
+        }
 
 		// Set the default node transformation
 		_podScene->SetFrame(0);
