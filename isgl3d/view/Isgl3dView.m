@@ -28,6 +28,9 @@
 #import "Isgl3dNode.h"
 #import "Isgl3dCamera.h"
 #import "Isgl3dLookAtCamera.h"
+#import "Isgl3dCamera.h"
+#import "Isgl3dNodeCamera.h"
+#import "Isgl3dOverlayCamera.h"
 #import "Isgl3dDirector.h"
 #import "Isgl3dScheduler.h"
 #import "Isgl3dGLRenderer.h"
@@ -39,11 +42,7 @@
 
 @interface Isgl3dView () {
 @private
-	isgl3dOrientation _viewOrientation;
-	isgl3dOrientation _deviceViewOrientation;
-    
-	Isgl3dScene3D * _scene;
-	id<Isgl3dCamera> _camera;
+    BOOL _displayFPS;
     
 	BOOL _isRunning;
     
@@ -72,32 +71,64 @@
 - (void)renderPlanarShadows:(Isgl3dGLRenderer *)renderer;
 @end
 
+
+#pragma mark -
 @implementation Isgl3dView
 
+@synthesize displayFPS = _displayFPS;
 @synthesize scene = _scene;
-@synthesize camera = _camera;
 @synthesize zSortingEnabled = _zSortingEnabled;
 @synthesize occlusionTestingEnabled = _occlusionTestingEnabled;
 @synthesize occlusionTestingAngle = _occlusionTestingAngle;
-@synthesize deviceViewOrientation = _deviceViewOrientation;
 @synthesize isOpaque = _isOpaque;
 @synthesize isEventCaptureEnabled = _isEventCaptureEnabled;
 @synthesize sceneAmbient = _sceneAmbient;
 @synthesize cameraUpdateOnly = _cameraUpdateOnly;
+@synthesize defaultCamera = _defaultCamera;
+@synthesize overlayCamera = _overlayCamera;
+@synthesize activeCamera = _activeCamera;
+
 
 + (id)view {
 	return [[[self alloc] init] autorelease];
 }
 
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+    
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewport.size fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
+                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
+                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
+                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    [perspectiveLens release];
+    return [standardCamera autorelease];
+}
+
++ (Isgl3dOverlayCamera *)createDefaultOverlayCameraForViewport:(CGRect)viewport {
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default overlay camera. Viewport size = %@", NSStringFromCGSize(viewport.size));
+
+    Isgl3dOverlayCamera *overlayCamera = [[Isgl3dOverlayCamera alloc] initWithViewport:viewport
+                                                                                  eyeX:0.0f eyeY:0.0f eyeZ:1.0f
+                                                                               centerX:0.0f centerY:0.0f centerZ:0.0f
+                                                                                   upX:0.0f upY:1.0f upZ:1.0f];
+    return [overlayCamera autorelease];
+}
+
+
+#pragma mark -
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 	 	
+        _displayFPS = NO;
 		_isRunning = NO;
 		_zSortingEnabled = NO;
-		
-		_viewOrientation = Isgl3dOrientation0;
-		_deviceViewOrientation = [Isgl3dDirector sharedInstance].deviceOrientation;
 		
 		// Get default viewport size from Isgl3dDirector (UIView window size)
 		self.viewport = [Isgl3dDirector sharedInstance].windowRect;
@@ -109,14 +140,33 @@
 
 		_isEventCaptureEnabled = YES;
 		
-		_sceneAmbient = @"333333ff";		
+		_sceneAmbient = @"333333ff";
+        
+        // Create the default scene camera
+        _cameras = [[NSMutableSet alloc] init];
+        
+        _defaultCamera = [[[self class] createDefaultSceneCameraForViewport:self.viewport] retain];
+
+        // TODO: don't use the window viewport but the viewport of the view itself
+        CGRect windowViewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
+        _overlayCamera = [[[self class] createDefaultOverlayCameraForViewport:windowViewportInPixels] retain];
+        
+        _activeCamera = _defaultCamera;
 	}
     
 	return self;
 }
 
 - (void)dealloc {
-    self.camera = nil;
+    [_overlayCamera release];
+    _overlayCamera = nil;
+    [_defaultCamera release];
+    _defaultCamera = nil;
+    
+    [_cameras release];
+    _cameras = nil;
+    
+    _activeCamera = nil;
     
 	[_scene release];
     _scene = nil;
@@ -127,9 +177,44 @@
 	[super dealloc];
 }
 
-// Properties
+- (void)addCamera:(id<Isgl3dCamera>)camera {
+    [self addCamera:camera setActive:NO];
+}
 
-- (CGRect) viewport {
+- (void)addCamera:(id<Isgl3dCamera>)camera setActive:(BOOL)setActive {
+    if ([_cameras containsObject:camera])
+        [NSException raise:NSInvalidArgumentException format:@"camera is already owned by the receiver"];
+    
+    [_cameras addObject:camera];
+    
+    if (setActive) {
+        _activeCamera = camera;
+    }
+}
+
+- (void)removeCamera:(id<Isgl3dCamera>)camera {
+    if ([_cameras containsObject:camera] == NO)
+        [NSException raise:NSInvalidArgumentException format:@"camera is not owned by the receiver"];
+    
+    // make the default scene camera the current one if the active camera is about to be removed
+    if (camera == _activeCamera)
+        _activeCamera = _defaultCamera;
+    [_cameras removeObject:camera];
+}
+
+
+#pragma mark -
+- (void)setActiveCamera:(id<Isgl3dCamera>)activeCamera {
+    if (_activeCamera != activeCamera) {
+        _activeCamera = activeCamera;
+    }
+}
+
+- (NSArray *)cameras {
+    return [_cameras allObjects];
+}
+
+- (CGRect)viewport {
 	return _viewport;
 }
 
@@ -150,13 +235,19 @@
 		_autoResizeViewport = NO;
 	}
 
+    // update all camera lenses
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"Updating view cameras for viewport size %@", NSStringFromCGSize(_viewportInPixels.size));
+    [self.defaultCamera.lens viewSizeUpdated:_viewportInPixels.size];
 
-	if (self.camera) {
-        [self.camera.lens viewSizeUpdated:_viewportInPixels.size];
-	}	
+    CGRect windowViewportInPixels = [Isgl3dDirector sharedInstance].windowRectInPixels;
+    [self.overlayCamera.lens viewSizeUpdated:windowViewportInPixels.size];
+    
+    for (id<Isgl3dCamera> camera in _cameras) {
+        [camera.lens viewSizeUpdated:_viewportInPixels.size];
+    }
 }
 
-- (CGRect) viewportInPixels {
+- (CGRect)viewportInPixels {
 	return _viewportInPixels;
 }
 
@@ -166,21 +257,7 @@
 	[self setViewport:viewport];
 }
 
-- (isgl3dOrientation) viewOrientation {
-	return _viewOrientation;
-}
-
-- (void)setViewOrientation:(isgl3dOrientation)orientation {
-	_viewOrientation = orientation;
-	_deviceViewOrientation = ([Isgl3dDirector sharedInstance].deviceOrientation - _viewOrientation) % 4;
-	
-	// Update camera orientation
-	if (self.camera) {
-        [self.camera.lens viewSizeUpdated:_viewportInPixels.size];
-	}
-}
-
-- (float *) backgroundColor {
+- (float *)backgroundColor {
 	return _backgroundColor;
 }
 
@@ -188,7 +265,7 @@
 	memcpy(_backgroundColor, color, sizeof(float) * 4);
 }
 
-- (NSString *) backgroundColorString {
+- (NSString *)backgroundColorString {
 	return [Isgl3dColorUtil rgbaString:_backgroundColor];
 }
 
@@ -270,7 +347,7 @@
 
 - (void)render:(Isgl3dGLRenderer *)renderer {
 	
-	if (_scene && self.camera) {
+	if (_scene && self.activeCamera) {
 
 		// Render to create a shadow map (if needed)
 		[self renderForShadowMaps:renderer];
@@ -282,8 +359,8 @@
 		[renderer clean];
 		
 		// Set camera characteristics
-		Isgl3dMatrix4 viewMatrix = self.camera.viewMatrix;
-		Isgl3dMatrix4 projectionMatrix = self.camera.projectionMatrix;
+		Isgl3dMatrix4 viewMatrix = self.activeCamera.viewMatrix;
+		Isgl3dMatrix4 projectionMatrix = self.activeCamera.projectionMatrix;
 		
 		[renderer setProjectionMatrix:&projectionMatrix];
 		[renderer setViewMatrix:&viewMatrix];
@@ -296,13 +373,13 @@
 
 		// handle occlusion testing
 		if (_occlusionTestingEnabled) {
-            if ([self.camera conformsToProtocol:@protocol(Isgl3dTargetCamera)]) {
-                id<Isgl3dCamera,Isgl3dTargetCamera> targetCamera = (id<Isgl3dCamera,Isgl3dTargetCamera>)self.camera;
+            if ([self.activeCamera conformsToProtocol:@protocol(Isgl3dTargetCamera)]) {
+                id<Isgl3dCamera,Isgl3dTargetCamera> targetCamera = (id<Isgl3dCamera,Isgl3dTargetCamera>)self.activeCamera;
                 Isgl3dVector3 eyeTargetVector = Isgl3dVector3Subtract(targetCamera.lookAtTarget, targetCamera.eyePosition);
                 float distance = Isgl3dVector3Length(eyeTargetVector);
                 _eyeNormal = Isgl3dVector3Normalize(eyeTargetVector);
                 
-                _cameraPosition = self.camera.eyePosition;
+                _cameraPosition = self.activeCamera.eyePosition;
                 
                 [_scene occlusionTest:&_cameraPosition normal:&_eyeNormal targetDistance:distance maxAngle:_occlusionTestingAngle];
             }
@@ -353,14 +430,14 @@
 }
 
 - (void)renderForEventCapture:(Isgl3dGLRenderer *)renderer {
-	if (_isEventCaptureEnabled && _scene && self.camera) {
+	if (_isEventCaptureEnabled && _scene && self.activeCamera) {
 	
 		// Clear the depth buffer	
 		[renderer clear:ISGL3D_DEPTH_BUFFER_BIT viewport:_viewportInPixels];
 		
 		// Set camera characteristics
-		Isgl3dMatrix4 projectionMatrix = self.camera.projectionMatrix;
-		Isgl3dMatrix4 viewMatrix = self.camera.viewMatrix;
+		Isgl3dMatrix4 projectionMatrix = self.activeCamera.projectionMatrix;
+		Isgl3dMatrix4 viewMatrix = self.activeCamera.viewMatrix;
 		[renderer setProjectionMatrix:&projectionMatrix];
 		[renderer setViewMatrix:&viewMatrix];
 		
@@ -369,46 +446,22 @@
 	}
 }
 
-- (CGPoint) convertUIPointToView:(CGPoint)uiPoint {
+- (CGPoint)convertUIPointToView:(CGPoint)uiPoint {
 	// Invert y coordinate (viewport in GL coordinates: origin at bottom left)
 	CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
 	uiPoint.y = windowSize.height - uiPoint.y;
 	
 	// UI point is in "points" not pixels
 	CGPoint viewportOrigin = _viewport.origin;
-	CGSize viewportSize = _viewport.size;
 	
 	// Convert relative to viewport
 	uiPoint.x -= viewportOrigin.x;
 	uiPoint.y -= viewportOrigin.y;
-
-	CGPoint viewPoint = CGPointZero;
-	
-	switch (_deviceViewOrientation) {
-		case Isgl3dOrientation0:
-			viewPoint = uiPoint;
-			break;
-
-		case Isgl3dOrientation180:
-			viewPoint.x = viewportSize.width - uiPoint.x;
-			viewPoint.y = viewportSize.height - uiPoint.y;
-			break;
-
-		case Isgl3dOrientation90Clockwise:
-			viewPoint.x = uiPoint.y;
-			viewPoint.y = viewportSize.width - uiPoint.x;
-			break;
-
-		case Isgl3dOrientation90CounterClockwise:
-			viewPoint.x = viewportSize.height - uiPoint.y;
-			viewPoint.y = uiPoint.x;
-			break;
-	}
-	
-	return viewPoint;
+    
+    return uiPoint;
 }
 
-- (CGPoint) convertUIPointToViewInPixels:(CGPoint)uiPoint {
+- (CGPoint)convertUIPointToViewInPixels:(CGPoint)uiPoint {
 	CGPoint pixelPoint = [self convertUIPointToView:uiPoint];
 	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
 	
@@ -416,7 +469,7 @@
 }
 
 
-- (BOOL) isUIPointInView:(CGPoint)uiPoint {
+- (BOOL)isUIPointInView:(CGPoint)uiPoint {
 	// Invert y coordinate (viewport in GL coordinates: origin at bottom left)
 	CGSize windowSize = [Isgl3dDirector sharedInstance].windowSize;
 	uiPoint.y = windowSize.height - uiPoint.y;
@@ -431,14 +484,14 @@
 	return YES;
 }
 
-- (CGPoint) convertWorldPositionToView:(Isgl3dVector3)worldPosition {
+- (CGPoint)convertWorldPositionToView:(Isgl3dVector3)worldPosition {
 	int viewport[4] = { _viewport.origin.x, _viewport.origin.y, _viewport.size.width, _viewport.size.height };
-    Isgl3dVector3 windowPosition = Isgl3dMathProject(worldPosition, Isgl3dMatrix4Identity, self.camera.viewProjectionMatrix, viewport);
+    Isgl3dVector3 windowPosition = Isgl3dMathProject(worldPosition, Isgl3dMatrix4Identity, self.activeCamera.viewProjectionMatrix, viewport);
     return CGPointMake(windowPosition.x, windowPosition.y);
 }
 
 
-- (CGPoint) convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition {
+- (CGPoint)convertWorldPositionToViewInPixels:(Isgl3dVector3)worldPosition {
 	CGPoint pixelPoint = [self convertWorldPositionToView:worldPosition];
 	float s = [Isgl3dDirector sharedInstance].contentScaleFactor;
 	return CGPointMake(pixelPoint.x * s, pixelPoint.y * s);
@@ -453,70 +506,37 @@
 
 @end
 
-#pragma mark Isgl3dBasic3DView
 
+#pragma mark Isgl3dBasic3DView
+#
 @implementation Isgl3dBasic3DView
 
-- (id)init {
-
-	if ((self = [super init])) {
-		self.scene = [Isgl3dScene3D scene];
-		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default scene.");
-		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(self.viewport.size));
-
-        [self createSceneCamera];
-	}
-	
-    return self;
-}
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
     float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewport.size fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
     
     Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
     Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
     Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
-                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
-                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
-                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
     [perspectiveLens release];
-
-    self.camera = standardCamera;
-    [standardCamera release];
+    
+    return [standardCamera autorelease];
 }
-
-- (void)setViewport:(CGRect)viewport {
-	[super setViewport:viewport];
-
-	if (self.camera) {
-        [self.camera.lens viewSizeUpdated:viewport.size];
-		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
-	}
-}
-
-@end
-
-#pragma mark Isgl3dBasic2DView
-
-@implementation Isgl3dBasic2DView
 
 - (id)init {
 
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		self.scene = [Isgl3dScene3D scene];
 		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default scene.");
-		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with ortho projection. Viewport size = %@", NSStringFromCGSize(self.viewportInPixels.size));
 
-		[self createSceneCamera];
+        // if the default camera is a node camera add it to the scene
+        if (self.defaultCamera && [self.defaultCamera isKindOfClass:[Isgl3dNodeCamera class]]) {
+            
+            Isgl3dNodeCamera *nodeCamera = (Isgl3dNodeCamera *)self.defaultCamera;
+            [self.scene addChild:nodeCamera];
+        }
 	}
-	
     return self;
 }
 
@@ -524,11 +544,17 @@
     [super dealloc];
 }
 
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewportInPixels.size;
-    
-    Isgl3dOrthographicProjection *orthographicLens = [[Isgl3dOrthographicProjection alloc] initFromViewSize:viewSize nearZ:1.0f farZ:1000.0f];
+@end
 
+
+#pragma mark Isgl3dBasic2DView
+#
+@implementation Isgl3dBasic2DView
+
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with ortho projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+    Isgl3dOrthographicProjection *orthographicLens = [[Isgl3dOrthographicProjection alloc] initFromViewSize:viewport.size nearZ:1.0f farZ:1000.0f];
+    
     Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
     Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
     Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
@@ -538,17 +564,21 @@
                                                                               upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
     [orthographicLens release];
     
-    self.camera = standardCamera;
-    [standardCamera release];
+    return [standardCamera autorelease];
 }
 
-- (void)setViewport:(CGRect)viewport {
-	[super setViewport:viewport];
+- (id)init {
 
-	if (self.camera) {
-        [self.camera.lens viewSizeUpdated:self.viewportInPixels.size];
-		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting camera with ortho projection. Viewport size = %@", NSStringFromCGSize(self.viewportInPixels.size));
+	if (self = [super init]) {
+		self.scene = [Isgl3dScene3D scene];
+		Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default scene.");
 	}
+	
+    return self;
+}
+
+- (void)dealloc {
+    [super dealloc];
 }
 
 @end

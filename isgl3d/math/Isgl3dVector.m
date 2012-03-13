@@ -38,52 +38,19 @@ const Isgl3dVector3 Isgl3dVector3Up         = {  0.0f,  1.0f,  0.0f };
 const Isgl3dVector3 Isgl3dVector3Down       = {  0.0f, -1.0f,  0.0f };
 
 
-float iv3DistanceBetween(Isgl3dVector3 * a, Isgl3dVector3 * b) {
-	float lx = b->x - a->x;
-	float ly = b->y - a->y;
-	float lz = b->z - a->z;
-	
-	return sqrt(lx * lx + ly * ly + lz * lz);
-}
-
-Isgl3dVector3 iv3Cross(Isgl3dVector3 * a, Isgl3dVector3 * b) {
-	Isgl3dVector3 result;
-	
-	result.x = 	  a->y * b->z - a->z * b->y;
-	result.y = 	  a->z * b->x - a->x * b->z;
-	result.z = 	  a->x * b->y - a->y * b->x;
-	
-	return result;	
-}
-
-void iv3Normalize(Isgl3dVector3 * a) {
-	float length = iv3Length(a);
-	
-	if (length != 0.0 && length != 1.0) {
-		length = 1.0 / length; // Save some CPU
-		a->x *= length;
-		a->y *= length;
-		a->z *= length;
-	}
-}
-
 float iv3AngleBetween(Isgl3dVector3 * a, Isgl3dVector3 * b) {
-	Isgl3dVector3 aCopy = Isgl3dVector3Make(a->x, a->y, a->z);
-	Isgl3dVector3 bCopy = Isgl3dVector3Make(b->x, b->y, b->z);
-	
-	iv3Normalize(&aCopy);
-	iv3Normalize(&bCopy);
+    
+    Isgl3dVector3 aCopy = Isgl3dVector3Normalize(*a);
+    Isgl3dVector3 bCopy = Isgl3dVector3Normalize(*b);
 
-	float dotProduct = iv3Dot(&aCopy, &bCopy);
+	float dotProduct = Isgl3dVector3DotProduct(aCopy, bCopy);
 
-	if (dotProduct > 1) {
-		dotProduct = 1;
+	if (dotProduct > 1.0f) {
+		dotProduct = 1.0f;
 	}
 	
 	float angle = acos(dotProduct) * 180 / M_PI;
-	
 	return angle;	
-	
 }
 
 void iv3RotateX(Isgl3dVector3 * a, float angle, float centerY, float centerZ) {
@@ -123,21 +90,5 @@ void iv3RotateZ(Isgl3dVector3 * a, float angle, float centerX, float centerY) {
 		
 	a->x = (tempX * cosRY ) - (tempY * sinRY);
 	a->y = (tempX * sinRY ) + (tempY * cosRY);
-}
-
-
-#pragma mark Isgl3dVector4
-
-
-void iv4Normalize(Isgl3dVector4 * a) {
-	float length = iv4Length(a);
-	
-	if (length != 0.0 && length != 1.0) {
-		length = 1.0 / length; // Save some CPU
-		a->x *= length;
-		a->y *= length;
-		a->z *= length;
-		a->w *= length;
-	}	
 }
 

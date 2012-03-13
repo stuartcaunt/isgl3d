@@ -29,11 +29,11 @@
 
 @interface SpringCameraTestView() {
 @private
-	Isgl3dNode * _container;
-	Isgl3dMeshNode * _sphere;
+	Isgl3dNode *_container;
+	Isgl3dMeshNode *_sphere;
 	
-	id<Isgl3dCamera> _staticCamera;
-	Isgl3dSpringCamera * _springCamera;
+	Isgl3dLookAtCamera *_staticCamera;
+	Isgl3dSpringCamera *_springCamera;
 	
 	float _angle;
 }
@@ -41,11 +41,32 @@
 @end
 
 
+#pragma mark -
 @implementation SpringCameraTestView
 
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+    
+    CGSize viewSize = viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
+                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
+                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
+                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    [perspectiveLens release];
+    return [standardCamera autorelease];
+}
+
+
+#pragma mark -
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_angle = 0;
 
 		// Enable shadows
@@ -53,7 +74,7 @@
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5f;
 		
 		// Keep a reference to the default camera and move it
-		_staticCamera = [self.camera retain];
+		_staticCamera = (Isgl3dLookAtCamera *)self.defaultCamera;
 		_staticCamera.eyePosition = Isgl3dVector3Make(0.0f, 14.0f, 20.0f);
         
 		// Create the ground surface
@@ -78,6 +99,7 @@
 		_springCamera.stiffness = 60.0f;
 		_springCamera.damping = 10.0f;
 		_springCamera.lookOffset = Isgl3dVector3Make(0.0f, 2.0f, 2.0f);
+        [self addCamera:_springCamera];
 		[self.scene addChild:_springCamera];
 		
 		// Create sphere (to represent camera)
@@ -113,19 +135,11 @@
     Isgl3dVector3 cameraUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
 
     Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:self.viewport.size fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    Isgl3dSpringCamera *camera = [[[Isgl3dSpringCamera alloc] initWithLens:perspectiveLens position:cameraPosition andTarget:target up:cameraUp] autorelease];
+    Isgl3dSpringCamera *camera = [[Isgl3dSpringCamera alloc] initWithLens:perspectiveLens position:cameraPosition andTarget:target up:cameraUp];
     [camera.lens viewSizeUpdated:self.viewport.size];
     [perspectiveLens release];
     
-    return camera;
-}
-
-- (void)setViewport:(CGRect)viewport {
-    [super setViewport:viewport];
-    
-	if (_springCamera) {
-        [_springCamera.lens viewSizeUpdated:viewport.size];
-	}	
+    return [camera autorelease];
 }
 
 - (void) onActivated {
@@ -144,10 +158,10 @@
 
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (self.camera == _staticCamera) {
-		self.camera = _springCamera;
+	if (self.activeCamera == _staticCamera) {
+		self.activeCamera = _springCamera;
 	} else {
-		self.camera = _staticCamera;
+		self.activeCamera = _staticCamera;
 	}
 	
 } 
@@ -197,12 +211,13 @@
 @implementation AppDelegate
 
 - (void) createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	[[Isgl3dDirector sharedInstance] addView:[SpringCameraTestView view]];
-	[[Isgl3dDirector sharedInstance] addView:[SimpleUIView view]];
+    SpringCameraTestView *view1 = [SpringCameraTestView view];
+    SimpleUIView *view2 = [SimpleUIView view];
+    view2.displayFPS = YES;
+    
+	[[Isgl3dDirector sharedInstance] addView:view1];
+	[[Isgl3dDirector sharedInstance] addView:view2];
 }
 
 @end

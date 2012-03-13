@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2012 Stuart Caunt
+ * Copyright (c) 2012 Holger Wiedemann
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,15 @@
  *
  */
 
+precision highp float;
+
+#define MAX_BONES 4
+
 attribute vec4 a_vertex;
+
 uniform mat4 u_mvpMatrix;
+
+varying mediump vec4 v_position;
 
 #ifdef SKINNING_ENABLED
 attribute mediump vec4 a_boneIndex;
@@ -41,10 +48,15 @@ void main(void) {
 	
 	if (u_boneCount > 0) {
 		highp mat4 boneMatrix = u_boneMatrixArray[boneIndex.x];
+        int j;
 	
 		vec4 vertexPosition = boneMatrix * a_vertex * boneWeights.x;
+		j = 1;
 		
-		for (lowp int i = 1; i < u_boneCount; ++i) {
+		for (int i=1; i<MAX_BONES; i++) {
+			if (j >= u_boneCount)
+                break;
+
 			// "rotate" the vector components
 			boneIndex = boneIndex.yzwx;
 			boneWeights = boneWeights.yzwx;
@@ -52,16 +64,20 @@ void main(void) {
 			boneMatrix = u_boneMatrixArray[boneIndex.x];
 
 			vertexPosition += boneMatrix * a_vertex * boneWeights.x;
+
+            j++;
 		}	
-		gl_Position = u_mvpMatrix * vertexPosition;
+		v_position = u_mvpMatrix * vertexPosition;
+		gl_Position = v_position;
 
 	} else {
-		gl_Position = u_mvpMatrix * a_vertex;
+		v_position = u_mvpMatrix * a_vertex;
+		gl_Position = v_position;
 	}
 
 #else
-	gl_Position = u_mvpMatrix * a_vertex;
+	v_position = u_mvpMatrix * a_vertex;
+	gl_Position = v_position;
 #endif
-
 
 }

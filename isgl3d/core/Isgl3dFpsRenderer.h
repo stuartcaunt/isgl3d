@@ -30,8 +30,11 @@
 #import "isgl3dTypes.h"
 #import "isgl3dMatrix.h"
 
+
 @class Isgl3dGLUILabel;
 @class Isgl3dGLRenderer;
+@class Isgl3dOverlayCamera;
+
 
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
@@ -44,38 +47,13 @@
  * 
  * The frame rate is shown in the bottom left of the display for whichever orientation is used.
  */
-@interface Isgl3dFpsRenderer : NSObject {
-
-@private
-	Isgl3dGLUILabel * _fpsLabel;
-	int _displayCounter;
-	float _deltaTimes[ISGL3D_FPS_N_TICKS];
-	float _fps;
-	unsigned long _tickIndex;
-	Isgl3dMatrix4 _projectionMatrix;
-	Isgl3dMatrix4 _viewMatrix;
-	CGRect _viewportInPixels;
-	isgl3dOrientation _orientation;
-}
-
-@property (nonatomic) isgl3dOrientation orientation;
-
-/**
- * Initialises an Isgl3dFpsRenderer with the specified orientation.
- * @param orientation The orientation of the device.
- */
-- (id)initWithOrientation:(isgl3dOrientation)orientation;
+@interface Isgl3dFpsRenderer : NSObject
 
 /**
  * Updates the calculation of the current framerate and renders the value on the display.
  * Rendering occurs once every 10 frames. If isPaused is specified then the framerate is
  * not calculated and "paused" is displayed in its place.
  */
-- (void)update:(float)dt andRender:(Isgl3dGLRenderer *)renderer isPaused:(BOOL)isPaused;
-
-/**
- * Updates the viewport rectangle. Called when the Isgl3dDirector has a change in viewport size or content scale factor.
- */
-- (void)updateViewport;
+- (void)update:(float)dt andRender:(Isgl3dGLRenderer *)renderer overlayCamera:(Isgl3dOverlayCamera *)overlayCamera isPaused:(BOOL)isPaused;
 
 @end

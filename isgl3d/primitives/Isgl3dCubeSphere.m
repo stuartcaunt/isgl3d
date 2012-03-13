@@ -28,6 +28,7 @@
 #import "Isgl3dUShortArray.h"
 #import "Isgl3dVector.h"
 #import "Isgl3dVector3.h"
+#import "Isgl3dVector4.h"
 
 
 @interface Isgl3dCubeSphere (PrivateMethods)
@@ -76,12 +77,13 @@
 	int nPerFace = longs / 4;
 	float root2 = sqrt(2);
 	
-	Isgl3dVector4 topPlane = iv4(0, 1, 0, -1);
-	Isgl3dVector4 bottomPlane = iv4(0, 1, 0, 1);
-	Isgl3dVector4 sePlane = iv4(1, 0, 1, -root2);
-	Isgl3dVector4 swPlane = iv4(1, 0, -1, root2);
-	Isgl3dVector4 nwPlane = iv4(1, 0, 1, root2);
-	Isgl3dVector4 nePlane = iv4(1, 0, -1, -root2);
+   
+	Isgl3dVector4 topPlane = Isgl3dVector4Make(0, 1, 0, -1);
+	Isgl3dVector4 bottomPlane = Isgl3dVector4Make(0, 1, 0, 1);
+	Isgl3dVector4 sePlane = Isgl3dVector4Make(1, 0, 1, -root2);
+	Isgl3dVector4 swPlane = Isgl3dVector4Make(1, 0, -1, root2);
+	Isgl3dVector4 nwPlane = Isgl3dVector4Make(1, 0, 1, root2);
+	Isgl3dVector4 nePlane = Isgl3dVector4Make(1, 0, -1, -root2);
 
 	float nx = 0;
 	float ny = 0;

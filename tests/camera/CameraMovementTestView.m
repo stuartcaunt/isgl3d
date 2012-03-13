@@ -28,22 +28,39 @@
 
 @interface CameraMovementTestView () {
 @private
+    Isgl3dLookAtCamera *_standardCamera;
     Isgl3dFocusZoomPerspectiveLens *_perspectiveLens;
-    Isgl3dLookAtCamera *_camera;
 }
-@property (nonatomic,retain) Isgl3dLookAtCamera *camera;
 @end
 
 
 #pragma mark -
 @implementation CameraMovementTestView
 
-@synthesize camera = _camera;
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    
+    Isgl3dFocusZoomPerspectiveLens *perspectiveLens = [[Isgl3dFocusZoomPerspectiveLens alloc] initFromViewSize:viewport.size fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 5.0f, 15.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
+                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
+                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
+                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    [perspectiveLens release];
+    return [standardCamera autorelease];
+}
 
+
+#pragma mark -
 - (id)init {
 	
-	if ((self = [super init])) {
-
+	if (self = [super init]) {
+        
+        _standardCamera = (Isgl3dLookAtCamera *)self.defaultCamera;
+        _perspectiveLens = (Isgl3dFocusZoomPerspectiveLens *)self.defaultCamera.lens;
         _perspectiveLens.focus = 4.0f;
         _perspectiveLens.zoom = 10.0f;
         
@@ -79,26 +96,6 @@
 	[super dealloc];
 }
 
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    
-    Isgl3dFocusZoomPerspectiveLens *perspectiveLens = [[Isgl3dFocusZoomPerspectiveLens alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 5.0f, 15.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
-                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
-                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
-                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
-    _perspectiveLens = perspectiveLens;
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-}
-
 - (void)onActivated {
 	[[Isgl3dTouchScreen sharedInstance] addResponder:self];
 }
@@ -117,7 +114,7 @@
 	_theta += 0.05 * [[Isgl3dAccelerometer sharedInstance] rotationAngle];
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	self.camera.eyePosition = Isgl3dVector3Make(x, y, z);
+	_standardCamera.eyePosition = Isgl3dVector3Make(x, y, z);
 
 	if (_moving) {
 		_focus += _dFocus;
@@ -181,11 +178,9 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [CameraMovementTestView view];
+	Isgl3dView *view = [CameraMovementTestView view];
+    view.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

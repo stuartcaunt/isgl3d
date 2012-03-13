@@ -28,13 +28,14 @@
 #import "Isgl3dGLTexture.h"
 #import "Isgl3dLog.h"
 #import "Isgl3dPVRLoader.h"
+#import "Isgl3dGLContext2.h"
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 
 
 @interface Isgl3dGLTextureFactoryState2 (PrivateMethods)
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
-- (unsigned int) createTextureForDepthRender:(int)width height:(int)height;
+- (unsigned int)createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY;
+- (unsigned int)createTextureForDepthRender:(int)width height:(int)height usePCF:(BOOL)usePCF;
 - (void)handleParameters:(GLenum)target precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY ;
 @end
 
@@ -42,10 +43,9 @@
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		
 	}
-	
 	return self;
 }
 
@@ -53,11 +53,11 @@
 	[super dealloc];
 }
 
-- (unsigned int) createTextureFromPVR:(NSString *)file outWidth:(unsigned int *)width outHeight:(unsigned int *)height {
+- (unsigned int)createTextureFromPVR:(NSString *)file outWidth:(unsigned int *)width outHeight:(unsigned int *)height {
 	return [Isgl3dPVRLoader createTextureFromPVR:file outWidth:width outHeight:height];
 }
 
-- (unsigned int) createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (unsigned int)createTextureFromRawData:(void *)data width:(int)width height:(int)height mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -80,7 +80,7 @@
 	return textureIndex;
 }
 
-- (unsigned int) createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (unsigned int)createTextureFromCompressedTexImageData:(NSArray *)imageData format:(unsigned int)format width:(uint32_t)width height:(uint32_t)height precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	unsigned int textureIndex;
 	
@@ -110,12 +110,11 @@
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	
-	
 	return textureIndex;
 }
 
 
-- (unsigned int) createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
+- (unsigned int)createCubemapTextureFromRawData:(void *)data width:(int)width mipmap:(BOOL)mipmap precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY mirrorX:(BOOL)mirrorX mirrorY:(BOOL)mirrorY {
 	
 	unsigned int textureIndex;
 	glGenTextures(1, &textureIndex);
@@ -150,8 +149,8 @@
 	return textureIndex;
 }
 
-- (Isgl3dGLDepthRenderTexture *) createDepthRenderTexture:(int)width height:(int)height {
-	unsigned int textureIndex = [self createTextureForDepthRender:width height:height];
+- (Isgl3dGLDepthRenderTexture *)createDepthRenderTexture:(int)width height:(int)height {
+	unsigned int textureIndex = [self createTextureForDepthRender:width height:height usePCF:NO];
 	
 	return [Isgl3dGLDepthRenderTexture2 textureWithId:textureIndex width:width height:height];
 }
@@ -160,7 +159,7 @@
 	glDeleteTextures(1, &textureId);
 }
 
-- (unsigned int) compressionFormatFromString:(NSString *)format {
+- (unsigned int)compressionFormatFromString:(NSString *)format {
 	if ([format isEqualToString:@"GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG"]) {
 		return GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
 		
@@ -171,25 +170,34 @@
 	return 0;
 }
 
-
-
-
-- (unsigned int) createTextureForDepthRender:(int)width height:(int)height {
+- (unsigned int)createTextureForDepthRender:(int)width height:(int)height usePCF:(BOOL)usePCF {
 	unsigned int textureIndex;
+    
 	glGenTextures(1, &textureIndex);
 	glBindTexture(GL_TEXTURE_2D, textureIndex);
 	
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nil);
-	//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, nil);
-	
-	// LINEAR or NEAREST ? 
-	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	
+
+	if ([Isgl3dGLContext2 openGLExtensionSupported:@"GL_OES_depth_texture"]) {
+        if (usePCF) {
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE_EXT, GL_COMPARE_REF_TO_TEXTURE_EXT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC_EXT, GL_LEQUAL);
+
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        } else {
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        }
+        
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, NULL);
+    } else {
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nil);
+    }
 	return textureIndex;
 }
 

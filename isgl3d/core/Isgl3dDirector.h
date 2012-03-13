@@ -74,10 +74,6 @@
 	id _displayLink;
 	NSTimer * _animationTimer;
 	
-	isgl3dOrientation _deviceOrientation;
-	isgl3dAutoRotationStrategy _autoRotationStrategy;
-	isgl3dAllowedAutoRotations _allowedAutoRotations;
-	
 	UIView<Isgl3dGLView> * _glView;
 	CGRect _windowRect;
 	CGRect _windowRectInPixels;
@@ -98,7 +94,6 @@
 	Isgl3dEvent3DHandler * _event3DHandler;
 	BOOL _objectTouched;
 	
-	BOOL _displayFPS;
 	Isgl3dFpsRenderer * _fpsRenderer;
 	
 	BOOL _retinaDisplayEnabled;
@@ -142,44 +137,6 @@
 @property (nonatomic, assign) NSString * backgroundColorString;
 
 /**
- * The orientation of the device.
- * Possible values are:
- * <ul>
- * <li>Isgl3dOrientation0: portrait.</li>
- * <li>Isgl3dOrientation90Clockwise: landscape, device rotated clockwise.</li>
- * <li>Isgl3dOrientation90CounterClockwise: landscape, device rotated counter-clockwise.</li>
- * <li>Isgl3dOrientation180: portrait, upside down.</li>
- * </ul>
- * 
- */
-@property (nonatomic) isgl3dOrientation deviceOrientation;
-
-/**
- * Specifies how iSGL3D should handle auto rotation of the device.
- * Possible values are:
- * <ul>
- * <li>Isgl3dAutoRotationNone: no auto-rotation, keep user-specified value.</li>
- * <li>Isgl3dAutoRotationByIsgl3dDirector: auto-rotation enabled and handled internally.</li>
- * <li>Isgl3dAutoRotationByUIViewController: auto-rotation handled by UIViewController (over-rides all user
- * specified values).</li>
- * </ul>
- * 
- */
-@property (nonatomic) isgl3dAutoRotationStrategy autoRotationStrategy;
-
-/**
- * Specifies which orientation types are allowed when auto-rotation is enabled
- * Possible values are:
- * <ul>
- * <li>Isgl3dAllowedAutoRotationsAll: all orientations are allowed.</li>
- * <li>Isgl3dAllowedAutoRotationsPortraitOnly: only portrait orientations are allowed.</li>
- * <li>Isgl3dAllowedAutoRotationsLandscapeOnly: only landscape orientations are allowed.</li>
- * </ul>
- * 
- */
-@property (nonatomic) isgl3dAllowedAutoRotations allowedAutoRotations;
-
-/**
  * The Isgl3dEAGLView with OpenGL-specific contexts.
  */
 @property (nonatomic, retain) UIView<Isgl3dGLView> * openGLView;
@@ -193,11 +150,6 @@
  * Returns a BOOL value of whether the Isgl3dDirector (and thereby all Isgl3dViews) are paused.
  */
 @property (nonatomic, readonly) BOOL isPaused;
-
-/**
- * Indicates whether the FPS should be displayed.
- */
-@property (nonatomic) BOOL displayFPS;
 
 /**
  * Returns true if a rendered object has been touched. 

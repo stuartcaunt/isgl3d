@@ -1,3 +1,31 @@
+/*
+ * iSGL3D: http://isgl3d.com
+ *
+ * Copyright (c) 2010-2012 Stuart Caunt
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
+
+precision highp float;
+
+
 #define MAX_LIGHTS 4
 #define MAX_BONES 4
 
@@ -51,6 +79,12 @@ varying vec3 v_lightDir;
 #endif
 
 #ifdef SHADOW_MAPPING_ENABLED
+varying highp vec4 v_shadowCoord;
+uniform vec4 u_shadowCastingLightPosition;
+uniform mat4 u_mcToLightMatrix;
+#endif
+
+#ifdef SHADOW_MAPPING_DEPTH_ENABLED
 varying highp vec4 v_shadowCoord;
 uniform vec4 u_shadowCastingLightPosition;
 uniform mat4 u_mcToLightMatrix;
@@ -241,19 +275,11 @@ void main(void) {
 #endif
 
 #ifdef SHADOW_MAPPING_ENABLED
-	// Vector between shadow casting light position and vertex
-	vec3 VP = u_shadowCastingLightPosition.xyz - ecPosition3;
-	
-	// Normalise
-	VP = normalize(VP);
-	
-	// angle between normal and light-vertex vector
-	float nDotVP = dot(VP, normal);
-    
 	v_shadowCoord = u_mcToLightMatrix * vertexPosition;
-	if (nDotVP < 0.0) {
-		v_shadowCoord = vec4(0.0, 0.0, 0.0, 1.0);
-	}
+#endif
+
+#ifdef SHADOW_MAPPING_DEPTH_ENABLED
+	v_shadowCoord = u_mcToLightMatrix * vertexPosition;
 #endif
 	
 	gl_Position = u_mvpMatrix * vertexPosition;

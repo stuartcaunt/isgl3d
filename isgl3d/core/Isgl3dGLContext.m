@@ -24,6 +24,24 @@
  */
 
 #import "Isgl3dGLContext.h"
+#ifdef GL_ES_VERSION_2_0
+#import <OpenGLES/ES2/gl.h>
+#else
+#import <OpenGLES/ES1/gl.h>
+#endif
+
+
+static NSArray *_glExtensionsNames = nil;
+
+BOOL CheckForGLExtension(NSString *searchName) {
+    if (_glExtensionsNames == nil) {
+        const char *extensionsCStr = (const char *)glGetString(GL_EXTENSIONS);
+        NSString *extensionsString = [NSString stringWithCString:extensionsCStr encoding: NSASCIIStringEncoding];
+        _glExtensionsNames = [[extensionsString componentsSeparatedByString:@" "] retain];
+    }
+    return [_glExtensionsNames containsObject:searchName];
+}
+
 
 @implementation Isgl3dGLContext
 
@@ -32,6 +50,11 @@
 @synthesize stencilBufferAvailable = _stencilBufferAvailable;
 @synthesize msaaAvailable=_msaaAvailable;
 @synthesize msaaEnabled=_msaaEnabled;
+
+
++ (BOOL)openGLExtensionSupported:(NSString *)extensionName {
+    return CheckForGLExtension(extensionName);
+}
 
 
 - (id)init {

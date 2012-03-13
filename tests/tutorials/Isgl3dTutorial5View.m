@@ -28,10 +28,7 @@
 
 
 @interface Isgl3dTutorial5View () {
-@private
-    Isgl3dNodeCamera *_camera;
 }
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
 - (void)createUfoAtX:(float)x y:(float)y z:(float)z 
 			hullMesh:(Isgl3dGLMesh *)hullMesh hullMaterial:(Isgl3dMaterial *)hullMaterial
 			shellMesh:(Isgl3dGLMesh *)shellMesh shellMaterial:(Isgl3dMaterial *)shellMaterial;
@@ -41,14 +38,14 @@
 #pragma mark -
 @implementation Isgl3dTutorial5View
 
-@synthesize camera = _camera;
-
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
+        
+        Isgl3dNodeCamera *standardCamera = (Isgl3dNodeCamera *)self.defaultCamera;
 	
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:standardCamera andView:self];
 		_cameraController.orbit = 25;
 		_cameraController.theta = 60;
 		_cameraController.phi = 20;
@@ -115,22 +112,6 @@
     _ufos = nil;
 
 	[super dealloc];
-}
-
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
 }
 
 - (void)onActivated {
@@ -201,11 +182,9 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [Isgl3dTutorial5View view];
+	Isgl3dView *view = [Isgl3dTutorial5View view];
+    view.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

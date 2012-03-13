@@ -27,12 +27,26 @@
 #import "Isgl3dGLProgram.h"
 #import "Isgl3dGLMesh.h"
 #import "Isgl3dGLVBOData.h"
+#import "Isgl3dGLContext2.h"
+
 
 @implementation Isgl3dShadowMapShader
 
 - (id)initWithVsPreProcHeader:(NSString *)vsPreProcHeader fsPreProcHeader:(NSString *)fsPreProcHeader {
 	
-	if ((self = [super initWithVertexShaderName:@"shadowMap.vsh" fragmentShaderName:@"shadowMap.fsh" vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader])) {
+    NSString *vertexShaderResource;
+    NSString *fragmentShaderResource;
+    
+	if ([Isgl3dGLContext2 openGLExtensionSupported:@"GL_OES_depth_texture"]) {
+        vertexShaderResource = @"shadowMapDepth.vsh";
+        fragmentShaderResource = @"shadowMapDepth.fsh";
+    } else {
+        vertexShaderResource = @"shadowMap.vsh";
+        fragmentShaderResource = @"shadowMap.fsh";
+    }
+        
+	if (self = [super initWithVertexShaderName:vertexShaderResource fragmentShaderName:fragmentShaderResource
+                               vsPreProcHeader:vsPreProcHeader fsPreProcHeader:fsPreProcHeader]) {
 	}
 	
 	return self;

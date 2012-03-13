@@ -37,8 +37,8 @@
 @property (nonatomic) GLuint activeRenderBuffer;
 
 - (void)checkGLExtensions;
-- (BOOL) createBuffers:(CAEAGLLayer *)eaglLayer;
-- (BOOL) createExtensionBuffers;
+- (BOOL)createBuffers:(CAEAGLLayer *)eaglLayer;
+- (BOOL)createExtensionBuffers;
 - (void)releaseBuffers;
 - (void)releaseExtensionBuffers;
 
@@ -51,22 +51,11 @@
 @synthesize activeFrameBuffer=_activeFrameBuffer;
 @synthesize activeRenderBuffer=_activeRenderBuffer;
 
-static NSArray *_glExtensionsNames = nil;
-
-BOOL CheckForGLExtension(NSString *searchName) {
-    if (_glExtensionsNames == nil) {
-        const char *extensionsCStr = (const char *)glGetString(GL_EXTENSIONS);
-        NSString *extensionsString = [NSString stringWithCString:extensionsCStr encoding: NSASCIIStringEncoding];
-        _glExtensionsNames = [[extensionsString componentsSeparatedByString:@" "] retain];
-    }
-    return [_glExtensionsNames containsObject:searchName];
-}
-
 
 // Create an ES 2.0 context
 - (id)initWithLayer:(CAEAGLLayer *) layer {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		
 		_msaaAvailable = NO;
 		_msaaEnabled = NO;
@@ -130,8 +119,8 @@ BOOL CheckForGLExtension(NSString *searchName) {
 
 - (void)checkGLExtensions {
 	// Check and activate additional OpenGL extensions
-    _msaaAvailable = CheckForGLExtension(@"GL_APPLE_framebuffer_multisample");
-    _framebufferDiscardAvailable = CheckForGLExtension(@"GL_EXT_discard_framebuffer");
+    _msaaAvailable = [Isgl3dGLContext openGLExtensionSupported:@"GL_APPLE_framebuffer_multisample"];
+    _framebufferDiscardAvailable = [Isgl3dGLContext openGLExtensionSupported:@"GL_EXT_discard_framebuffer"];
 }
 
 - (BOOL) createBuffers:(CAEAGLLayer *)eaglLayer {

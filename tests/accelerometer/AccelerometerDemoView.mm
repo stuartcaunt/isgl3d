@@ -32,23 +32,19 @@
 #include <BulletCollision/CollisionShapes/btBox2dShape.h>
 
 
-@interface AccelerometerDemoView () {
-@private
-    Isgl3dNodeCamera *_camera;
-}
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@interface AccelerometerDemoView ()
+@property (nonatomic,readonly) Isgl3dNodeCamera *activeNodeCamera;
 - (void)translateCamera:(float)phi;
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution;
 @end
 
 
+#pragma mark -
 @implementation AccelerometerDemoView
-
-@synthesize camera = _camera;
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 
 		_pauseActive = NO;	 	
 		_theta = M_PI / 2;
@@ -123,20 +119,8 @@
 	[super dealloc];
 }
 
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
+- (Isgl3dNodeCamera *)activeNodeCamera {
+    return (Isgl3dNodeCamera *)self.activeCamera;
 }
 
 - (void)tick:(float)dt {
@@ -155,7 +139,7 @@
 
 		// Rotate gravity vector x-z components relative to camera horizontal angle
 		// (Accelerometer returns gravity relative to the device itself: needs to be converted to coordinates of camera)
-		float horizontalAngle = atan2(self.camera.viewMatrix.m02, self.camera.viewMatrix.m22);
+		float horizontalAngle = atan2(self.activeNodeCamera.viewMatrix.m02, self.activeNodeCamera.viewMatrix.m22);
 		float transformedGravity[3];
 		transformedGravity[0] =  cos(horizontalAngle) * gravityVector[0] + sin(horizontalAngle) * gravityVector[2];
 		transformedGravity[1] = gravityVector[1];
@@ -199,7 +183,7 @@
 	float radius = _orbitalDistance * sin(phi);
 	float x = radius * sin(_theta);
 	float z = radius * cos(_theta);
-	self.camera.position = Isgl3dVector3Make(x, y, z);
+	self.activeNodeCamera.position = Isgl3dVector3Make(x, y, z);
 }
 
 - (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution {
@@ -233,7 +217,7 @@
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 
 		// Create a button to calibrate the accelerometer
 		Isgl3dTextureMaterial * calibrateButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"angle.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
@@ -278,9 +262,6 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
-
 	// Create views
 	AccelerometerDemoView * mainView = [AccelerometerDemoView view];
 	[[Isgl3dDirector sharedInstance] addView:mainView];

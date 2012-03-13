@@ -27,9 +27,6 @@
 #import "Isgl3dMathTypes.h"
 
 
-#define iv4(X, Y, Z, W) iv4Create(X, Y, Z, W)
-
-
 #pragma mark Isgl3dVector3
 
 extern const Isgl3dVector3 Isgl3dVector3Forward;
@@ -50,113 +47,6 @@ static inline void iv3Reset(Isgl3dVector3 * a)
 	a->y = 0;
 	a->z = 0;
 }
-
-/**
- * Performs addition of two vectors. Produces a = a + b.
- * @param a The first vector.
- * @param b The second vector.
- */
-static inline void iv3Add(Isgl3dVector3 * a, Isgl3dVector3 * b)
-{
-	a->x += b->x;
-	a->y += b->y;
-	a->z += b->z;
-}
-
-/**
- * Performs addition of vector components to a vector. 
- * @param a The first vector.
- * @param x The x component to be added.
- * @param y The y component to be added.
- * @param z The z component to be added.
- */
-static inline void iv3AddComponents(Isgl3dVector3 * a, float x, float y, float z)
-{
-	a->x += x;
-	a->y += y;
-	a->z += z;
-}
-
-/**
- * Performs subtraction of two vectors. Produces a = a - b.
- * @param a The first vector.
- * @param b The second vector.
- */
-static inline void iv3Sub(Isgl3dVector3 * a, Isgl3dVector3 * b)
-{
-	a->x -= b->x;
-	a->y -= b->y;
-	a->z -= b->z;
-}
-
-/**
- * Translates a vector by a given amount.
- * @param a The vector.
- * @param x The x translation.
- * @param y The y translation.
- * @param z The z translation.
- */
-static inline void iv3Translate(Isgl3dVector3 * a, float x, float y, float z)
-{
-	a->x += x;
-	a->y += y;
-	a->z += z;
-}
-
-/**
- * Scales a vector by a given amount.
- * @param a The vector.
- * @param scale The scale factor.
- */
-static inline void iv3Scale(Isgl3dVector3 * a, float scale) 
-{
-	a->x *= scale;
-	a->y *= scale;
-	a->z *= scale;
-}
-
-/**
- * Performs dot product of two vectors. Produces a = a . b.
- * @param a The first vector.
- * @param b The second vector.
- * @result the dot product of the two vectors.
- */
-static inline float iv3Dot(Isgl3dVector3 * a, Isgl3dVector3 * b)
-{
-	return a->x * b->x + a->y * b->y + a->z * b->z;
-}
-
-/**
- * Performs cross product of two vectors. Produces a = a x b.
- * @param a The first vector.
- * @param b The second vector.
- * @result The cross product of the two vectors.
- */
-Isgl3dVector3 iv3Cross(Isgl3dVector3 * a, Isgl3dVector3 * b);
-
-/**
- * Returns the length of a vector.
- * @param a The vector.
- * @result The length from the origin.
- */
-static inline float iv3Length(Isgl3dVector3 * a)
-{
-	return sqrt(a->x * a->x + a->y * a->y + a->z * a->z);
-}
-
-/**
- * Returns the distance between two vector positions.
- * @param a The first vector.
- * @param b The second vector.
- * @result The distance between the two points.
- */
-float iv3DistanceBetween(Isgl3dVector3 * a, Isgl3dVector3 * b);
-
-/**
- * Normalizes the vector.
- * @param a The vector.
- */
-void iv3Normalize(Isgl3dVector3 * a);
 
 /**
  * Determines if two vectors are equivalent to a given precision.
@@ -209,20 +99,6 @@ void iv3RotateZ(Isgl3dVector3 * a, float angle, float centerX, float centerY);
 #pragma mark Isgl3dVector4
 
 /**
- * Creates a vector with the given components.
- * @param x The x component.
- * @param y The y component.
- * @param z The z component.
- * @param w The w component.
- */
-static inline Isgl3dVector4 iv4Create(float x, float y, float z, float w)
-{
-	Isgl3dVector4 v = {x, y, z, w};
-	return v;
-}
-
-
-/**
  * Resets all the vector components to 0.
  * @param a The vector to be modified.
  */
@@ -232,19 +108,6 @@ static inline void iv4Reset(Isgl3dVector4 * a)
 	a->y = 0;
 	a->z = 0;
 	a->w = 0;
-}
-
-/**
- * Copies the vector components of one vector into another.
- * @param a The destination vector.
- * @param b The source vector.
- */
-static inline void iv4Copy(Isgl3dVector4 * a, Isgl3dVector4 * b)
-{
-	a->x = b->x;
-	a->y = b->y;
-	a->z = b->z;
-	a->w = b->w;
 }
 
 /**
@@ -262,87 +125,6 @@ static inline void iv4Fill(Isgl3dVector4 * a, float x, float y, float z, float w
 	a->z = z;
 	a->w = w;
 }
-
-/**
- * Performs addition of two vectors. Produces a = a + b.
- * @param a The first vector.
- * @param b The second vector.
- */
-static inline void iv4Add(Isgl3dVector4 * a, Isgl3dVector4 * b)
-{
-	a->x += b->x;
-	a->y += b->y;
-	a->z += b->z;
-	a->w += b->w;
-}
-
-/**
- * Performs addition of vector components to a vector. 
- * @param a The first vector.
- * @param x The x component to be added.
- * @param y The y component to be added.
- * @param z The z component to be added.
- * @param w The w component to be added.
- */
-static inline void iv4AddComponents(Isgl3dVector4 * a, float x, float y, float z, float w)
-{
-	a->x += x;
-	a->y += y;
-	a->z += z;
-	a->w += w;
-}
-
-/**
- * Performs subtraction of two vectors. Produces a = a - b.
- * @param a The first vector.
- * @param b The second vector.
- */
-static inline void iv4Sub(Isgl3dVector4 * a, Isgl3dVector4 * b)
-{
-	a->x -= b->x;
-	a->y -= b->y;
-	a->z -= b->z;
-	a->w -= b->w;
-}
-
-/**
- * Scales a vector by a given amount.
- * @param a The vector.
- * @param scale The scale factor.
- */
-static inline void iv4Scale(Isgl3dVector4 * a, float scale)
-{
-	a->x *= scale;
-	a->y *= scale;
-	a->z *= scale;
-	a->w *= scale;
-}
-
-/**
- * Performs dot product of two vectors. Produces a = a . b.
- * @param a The first vector.
- * @param b The second vector.
- */
-static inline float iv4Dot(Isgl3dVector4 * a, Isgl3dVector4 * b)
-{
-	return a->x * b->x + a->y * b->y + a->z * b->z + a->w * b->w;
-}
-
-/**
- * Returns the length of a vector.
- * @param a The vector.
- * @result The length from the origin.
- */
-static inline float iv4Length(Isgl3dVector4 * a)
-{
-	return sqrt(a->x * a->x + a->y * a->y + a->z * a->z + a->w * a->w);
-}
-
-/**
- * Normalizes the vector.
- * @param a The vector.
- */
-void iv4Normalize(Isgl3dVector4 * a);
 
 /**
  * Determines if two vectors are equivalent to a given precision.

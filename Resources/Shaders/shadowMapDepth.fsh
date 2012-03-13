@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2012 Stuart Caunt
+ * Copyright (c) 2012 Holger Wiedemann
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,42 +23,10 @@
  *
  */
 
-#import "isgl3d.h"
+precision highp float;
 
-@interface UITestView : Isgl3dBasic2DView {
+void main(void) {
+    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
 
-@end
-
-
-#pragma mark UIBackgroundView
-
-@interface UIBackgroundView : Isgl3dBasic2DView {
-}
-
-@end
-
-
-#pragma mark Simple3DView
-
-@class Isgl3dDemoCameraController;
-
-@interface Simple3DView : Isgl3dBasic3DView {
-
-@private	
-	Isgl3dMeshNode *_torus;
-	Isgl3dDemoCameraController * _cameraController;
-
-}
-
-@end
-
-/*
- * Principal class to be instantiated in main.h. 
- */
-#import "Isgl3dAppDelegate.h"
-@interface AppDelegate : Isgl3dAppDelegate
-- (void) createViews;
-@end
-
-
+			

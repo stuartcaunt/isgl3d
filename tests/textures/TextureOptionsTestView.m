@@ -25,23 +25,17 @@
 
 #import "TextureOptionsTestView.h"
 
-@interface TextureOptionsTestView () {
-@private
-    Isgl3dNodeCamera *_camera;
-}
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@interface TextureOptionsTestView ()
 @end
 
 
 #pragma mark -
 @implementation TextureOptionsTestView
 
-@synthesize camera = _camera;
-
 - (id)init {
 	
-	if ((self = [super init])) {
-
+	if (self = [super init]) {
+        
 		_planeAngle = 0;
 		_cameraDistanceAngle = 0;
 
@@ -70,22 +64,6 @@
 	[super dealloc];
 }
 
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
-}
-
 - (void) tick:(float)dt {
 	_planeAngle += 1;
 	if (_planeAngle > 360) {
@@ -99,7 +77,9 @@
 
 	[_plane1 rotate:0.3 x:0 y:1 z:0];	
 	[_plane2 rotate:0.3 x:0 y:1 z:0];
-	[self.camera setPositionValues:0 y:0.15 * sin(_cameraDistanceAngle * M_PI / 90) z:2 + 1.9 * sin(_cameraDistanceAngle * M_PI / 180)];
+	
+    Isgl3dNodeCamera *nodeCamera = (Isgl3dNodeCamera *)self.defaultCamera;
+    [nodeCamera setPositionValues:0 y:0.15 * sin(_cameraDistanceAngle * M_PI / 90) z:2 + 1.9 * sin(_cameraDistanceAngle * M_PI / 180)];
 	
 }
 
@@ -115,11 +95,10 @@
 @implementation AppDelegate
 
 - (void) createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [TextureOptionsTestView view];
+	Isgl3dView *view = [TextureOptionsTestView view];
+    view.displayFPS = YES;
+    
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

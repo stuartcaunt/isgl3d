@@ -27,19 +27,20 @@
 #define GENERIC_RENDERING @"GenericRendering"
 #define PARTICLE_RENDERING @"ParticleRendering"
 
-#define NOTHING_ON 0x00
-#define TEXTURE_MAPPING_ON 0x01
-#define ALPHA_CULLING_ON 0x02
-#define SHADOW_MAPPING_ON 0x04
-#define PARTICLES_ON 0x08
-#define SKINNING_ON 0x10
-#define SHADOW_MAP_CREATION_ON 0x20
-#define CAPTURE_ON 0x40
-#define NORMAL_MAPPING_ON 0x80
+#define NOTHING_ON                    0
+#define TEXTURE_MAPPING_ON      (1 << 0)
+#define ALPHA_CULLING_ON        (1 << 1)
+#define SHADOW_MAPPING_ON       (1 << 2)
+#define SHADOW_MAPPING_DEPTH_ON (1 << 3)
+#define PARTICLES_ON            (1 << 4)
+#define SKINNING_ON             (1 << 5)
+#define SHADOW_MAP_CREATION_ON  (1 << 6)
+#define CAPTURE_ON              (1 << 7)
+#define NORMAL_MAPPING_ON       (1 << 8)
 
-#define ISGL3D_COLOR_BUFFER_BIT 1
-#define ISGL3D_DEPTH_BUFFER_BIT 2
-#define ISGL3D_STENCIL_BUFFER_BIT 4
+#define ISGL3D_COLOR_BUFFER_BIT     1
+#define ISGL3D_DEPTH_BUFFER_BIT     2
+#define ISGL3D_STENCIL_BUFFER_BIT   4
 
 typedef enum {
 	Triangles = 0,
@@ -134,10 +135,10 @@ typedef enum {
 - (void)resetCaptureColor;
 
 - (void)initRenderForShadowMap;
-- (void)setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix;
+- (void)setShadowCastingLightProjectionViewMatrix:(Isgl3dMatrix4)viewProjectionMatrix;
 - (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position;
 - (void)setShadowMap:(Isgl3dGLTexture *)texture;
-- (BOOL) shadowMapActive;
+- (BOOL)shadowMapActive;
 - (void)enableShadowStencil:(BOOL)shadowStencilEnabled;
 
 - (void)initRenderForPlanarShadows;

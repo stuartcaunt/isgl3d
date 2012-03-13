@@ -1,7 +1,7 @@
 /*
  * iSGL3D: http://isgl3d.com
  *
- * Copyright (c) 2010-2012 Stuart Caunt
+ * Copyright (c) 2012 Holger Wiedemann
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,42 +23,13 @@
  *
  */
 
-#import "isgl3d.h"
-
-@interface UITestView : Isgl3dBasic2DView {
-}
-
-@end
+#import "Isgl3dLookAtCamera.h"
 
 
-#pragma mark UIBackgroundView
+@interface Isgl3dOverlayCamera : Isgl3dLookAtCamera
 
-@interface UIBackgroundView : Isgl3dBasic2DView {
-}
+@property (nonatomic, assign) CGRect viewport;
+
+- (id)initWithViewport:(CGRect)viewport eyeX:(float)eyeX eyeY:(float)eyeY eyeZ:(float)eyeZ centerX:(float)centerX centerY:(float)centerY centerZ:(float)centerZ upX:(float)upX upY:(float)upY upZ:(float)upZ;
 
 @end
-
-
-#pragma mark Simple3DView
-
-@class Isgl3dDemoCameraController;
-
-@interface Simple3DView : Isgl3dBasic3DView {
-
-@private	
-	Isgl3dMeshNode *_torus;
-	Isgl3dDemoCameraController * _cameraController;
-
-}
-
-@end
-
-/*
- * Principal class to be instantiated in main.h. 
- */
-#import "Isgl3dAppDelegate.h"
-@interface AppDelegate : Isgl3dAppDelegate
-- (void) createViews;
-@end
-
-

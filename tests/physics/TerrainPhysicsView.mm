@@ -34,32 +34,28 @@
 #include "btHeightfieldTerrainShape.h"
 
 
-@interface TerrainPhysicsView () {
-@private
-    Isgl3dNodeCamera *_camera;
-}
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
-
-- (void) createSphere;
-- (Isgl3dPhysicsObject3D *) createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution isFalling:(BOOL)isFalling;
-- (btCollisionShape *) createTerrainShapeFromFile:(NSString *)terrainDataFile width:(float)width depth:(float)depth nx:(unsigned int)nx ny:(unsigned int)ny channel:(unsigned int)channel height:(float)height;
-- (UIImage *) loadImage:(NSString *)path;
+@interface TerrainPhysicsView ()
+- (void)createSphere;
+- (Isgl3dPhysicsObject3D *)createPhysicsObject:(Isgl3dMeshNode *)node shape:(btCollisionShape *)shape mass:(float)mass restitution:(float)restitution isFalling:(BOOL)isFalling;
+- (btCollisionShape *)createTerrainShapeFromFile:(NSString *)terrainDataFile width:(float)width depth:(float)depth nx:(unsigned int)nx ny:(unsigned int)ny channel:(unsigned int)channel height:(float)height;
+- (UIImage *)loadImage:(NSString *)path;
 @end
 
 
 #pragma mark -
 @implementation TerrainPhysicsView
 
-@synthesize camera = _camera;
-
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
+        
 		_physicsObjects = [[NSMutableArray alloc] init];
 		_timeInterval = 0;
 		
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
+        Isgl3dNodeCamera *camera = (Isgl3dNodeCamera *)self.defaultCamera;
+
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:camera andView:self];
 		_cameraController.orbit = 40;
 		_cameraController.theta = 30;
 		_cameraController.phi = 10;
@@ -106,6 +102,7 @@
 
 - (void) dealloc {
 	[_cameraController release];
+    _cameraController = nil;
 	
 	delete _discreteDynamicsWorld;
 	delete _collisionConfig;
@@ -127,22 +124,6 @@
     _spheresNode = nil;
 
 	[super dealloc];
-}
-
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
 }
 
 - (void) onActivated {
@@ -299,11 +280,9 @@
 @implementation AppDelegate
 
 - (void) createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [TerrainPhysicsView view];
+	Isgl3dView *view = [TerrainPhysicsView view];
+    view.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

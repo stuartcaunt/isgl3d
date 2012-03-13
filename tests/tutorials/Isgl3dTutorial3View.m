@@ -25,13 +25,39 @@
 
 #import "Isgl3dTutorial3View.h"
 
+@interface Isgl3dTutorial3View ()
+@end
+
+
+#pragma mark -
 @implementation Isgl3dTutorial3View
 
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+    
+    CGSize viewSize = viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
+                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
+                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
+                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    [perspectiveLens release];
+    return [standardCamera autorelease];
+}
+
+
+#pragma mark -
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 	
-        Isgl3dLookAtCamera *standardCamera = (Isgl3dLookAtCamera *)self.camera;
+        Isgl3dLookAtCamera *standardCamera = (Isgl3dLookAtCamera *)self.defaultCamera;
+        
 		// Translate the camera and modify the look-at position (used to center the torus in the screen).
 		standardCamera.eyePosition = Isgl3dVector3Make(2.0f, 9.0f, 10.0f);
         standardCamera.centerPosition = Isgl3dVector3Make(0.5f, 0.0f, 1.0f);
@@ -81,23 +107,19 @@
 	_torusNode.rotationY += 1;
 }
 
-
-
 @end
 
-#pragma mark AppDelegate
 
+#pragma mark AppDelegate
 /*
  * Implement principal class: simply override the createViews method to return the desired demo view.
  */
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [Isgl3dTutorial3View view];
+	Isgl3dView *view = [Isgl3dTutorial3View view];
+    view.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

@@ -33,8 +33,8 @@
 
 @class Isgl3dScene3D;
 @class Isgl3dGLRenderer;
-@class Isgl3dNodeCamera;
 @protocol Isgl3dCamera;
+@class Isgl3dOverlayCamera;
 
 
 /**
@@ -63,7 +63,20 @@
  * 
  */
 @interface Isgl3dView : NSObject {
+@protected
+	Isgl3dScene3D * _scene;
+
+    id<Isgl3dCamera> _defaultCamera;
+    Isgl3dOverlayCamera *_overlayCamera;
+	id<Isgl3dCamera> _activeCamera;
+
+    NSMutableSet *_cameras;
 }
+
+/**
+ * Indicates whether the FPS should be displayed.
+ */
+@property (nonatomic,assign) BOOL displayFPS;
 
 /**
  * The scene to be rendered. Only one scene at a time can be rendered but it can be changed dynamically at runtime.
@@ -71,9 +84,29 @@
 @property (nonatomic,retain) Isgl3dScene3D *scene;
 
 /**
- * The camera to view the scene from. The camera can be changed at runtime.
+ * The default scene camera of the receiver.
  */
-@property (nonatomic,retain) id<Isgl3dCamera> camera;
+@property (nonatomic,retain,readonly) id<Isgl3dCamera> defaultCamera;
+
+/**
+ * The default camera of the receiver for all overlay controls.
+ */
+@property (nonatomic,retain,readonly) Isgl3dOverlayCamera *overlayCamera;
+
+/**
+ * The active camera of the receiver.
+ * The default active camera is the scene camera created by the createDefaultSceneCamera method.
+ * Cameras need to be added to the receiver with addCamera before they can be made active.
+ */
+@property (nonatomic,assign) id<Isgl3dCamera> activeCamera;
+
+/**
+ * The array of available cameras for the scene.
+ * Contains at least the default scene camera at index 0.
+ * Use addCamera and removeCamera to add additional cameras to the view which can be activated via the activeCamera property.
+ * The lenses of all cameras will be automatically updated if the viewport of the view changes.
+ */
+@property (nonatomic,readonly) NSArray *cameras;
 
 /**
  * Indicates whether z-sorting should be enabled for transparent objects. This resolves some z-buffer rendering problems but is 
@@ -117,25 +150,6 @@
 @property (nonatomic) CGRect viewportInPixels;
 
 /**
- * The orientation of the view.
- * Possible values are:
- * <ul>
- * <li>Isgl3dOrientation0: portrait.</li>
- * <li>Isgl3dOrientation90Clockwise: landscape, device rotated clockwise.</li>
- * <li>Isgl3dOrientation90CounterClockwise: landscape, device rotated counter-clockwise.</li>
- * <li>Isgl3dOrientation180: portrait, upside down.</li>
- * </ul>
- * 
- * The rendered scene will have an orientation being the combination of this orientation with the Isgl3dDirector device orientation.
- */
-@property (nonatomic) isgl3dOrientation viewOrientation;
-
-/**
- * Returns the combined view and device orientations.
- */
-@property (nonatomic, readonly) isgl3dOrientation deviceViewOrientation;
-
-/**
  * Specifies whether the view is opaque or not. By default it is opaque meaning than anything rendered behind will be erased.
  */
 @property (nonatomic) BOOL isOpaque;
@@ -176,9 +190,48 @@
 + (id)view;
 
 /**
+ * Creates the default scene camera of the receiver. Should never be called directly, this method is used by subclasses
+ * to create their own default scene camera.
+ *
+ * @param viewport Viewport with which the scene camera will be created.
+ * @return A default scene camera for the specified viewport.
+ */
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport;
+
+
+/**
+ * Creates the default overlay camera of the receiver. Should never be called directly, this method is used by subclasses
+ * to create their own default overlay camera.
+ *
+ * @param viewport Viewport with which the overlay camera will be created.
+ * @return A default overlay camera for the specified viewport.
+ */
++ (Isgl3dOverlayCamera *)createDefaultOverlayCameraForViewport:(CGRect)viewport;
+
+/**
  * Initialises an Isgl3dView.
  */
 - (id)init;
+
+/**
+ * Adds a new camera to the receiver without acitvating it.
+ *
+ * @param camera A camera which will be added to the list of available cameras of the receiver.
+ */
+- (void)addCamera:(id<Isgl3dCamera>)camera;
+
+/**
+ * Adds a new camera to the receiver.
+ *
+ * @param camera A camera which will be added to the list of available cameras of the receiver.
+ * @param setActive Specifies if the newly added camery should be activated for the receiver.
+ */
+- (void)addCamera:(id<Isgl3dCamera>)camera setActive:(BOOL)setActive;
+
+/**
+ * Remove a camera from list of available cameras of the receiver.
+ */
+- (void)removeCamera:(id<Isgl3dCamera>)camera;
 
 /**
  * Sets occlusion testing to true and the maximum angle for which it occurs.
@@ -323,7 +376,6 @@
  */
 @interface Isgl3dBasic3DView : Isgl3dView {
 }
-- (void)createSceneCamera;
 @end
 
 #pragma mark Isgl3dBasic2DView
@@ -335,5 +387,4 @@
  */
 @interface Isgl3dBasic2DView : Isgl3dView {
 }
-- (void)createSceneCamera;
 @end

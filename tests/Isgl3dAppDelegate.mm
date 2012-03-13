@@ -39,9 +39,6 @@
 	// Instantiate the Isgl3dDirector and set background color
 	[Isgl3dDirector sharedInstance].backgroundColorString = @"333333ff"; 
 
-	// Set the director to display the FPS
-	[Isgl3dDirector sharedInstance].displayFPS = YES; 
-
 	// Create the UIViewController
 	_viewController = [[Isgl3dViewController alloc] initWithNibName:nil bundle:nil];
 	_viewController.wantsFullScreenLayout = YES;
@@ -57,11 +54,6 @@
 	// Set view in director
 	[Isgl3dDirector sharedInstance].openGLView = glView;
     
-	// Specify auto-rotation strategy if required (for example via the UIViewController and only landscape)
-	[Isgl3dDirector sharedInstance].autoRotationStrategy = Isgl3dAutoRotationByUIViewController;
-	//[Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsLandscapeOnly;
-    [Isgl3dDirector sharedInstance].allowedAutoRotations = Isgl3dAllowedAutoRotationsAll;
-	
 	// Enable retina display : uncomment if desired
 	[[Isgl3dDirector sharedInstance] enableRetinaDisplay:YES];
 

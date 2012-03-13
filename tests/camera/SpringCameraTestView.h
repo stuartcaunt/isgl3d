@@ -42,7 +42,7 @@
  */
 #import "Isgl3dAppDelegate.h"
 @interface AppDelegate : Isgl3dAppDelegate
-- (void) createViews;
+- (void)createViews;
 @end
 
 

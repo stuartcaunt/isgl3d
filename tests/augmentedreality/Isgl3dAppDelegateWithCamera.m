@@ -33,26 +33,30 @@
 	[super applicationDidFinishLaunching:application];
 	
 	// Create a UIImagePickerController for the camera view
-	UIImagePickerController * cameraController = [[[UIImagePickerController alloc] init] autorelease];
+	UIImagePickerController *cameraController = [[[UIImagePickerController alloc] init] autorelease];
 	
-	// Check if camera available
-	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-		// Use camera
-		cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
-		cameraController.showsCameraControls = NO;
-	
-		// Scale camera to fill full screen
-		cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, 1.33, 1.33);
-	
-	} else {
-		// Use photo album
-		cameraController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-	}
-	
-	// Add camera view to window and send to back
-	[self.window addSubview:cameraController.view];
-	[self.window sendSubviewToBack:cameraController.view];
-	
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        NSLog(@"###  Demo is currently not available for iPad  ###");
+    } else {
+        // Check if camera available
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            // Use camera
+            cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            cameraController.showsCameraControls = NO;
+            
+            // Scale camera to fill full screen
+            cameraController.cameraViewTransform = CGAffineTransformScale(cameraController.cameraViewTransform, 1.33, 1.33);
+            
+        } else {
+            // Use photo album
+            cameraController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        }
+        
+        // Add camera view to window and send to back
+        [self.window addSubview:cameraController.view];
+        [self.window sendSubviewToBack:cameraController.view];
+    }
+    
 	// Make the opengl view transparent
 	[Isgl3dDirector sharedInstance].openGLView.backgroundColor = [UIColor clearColor];
 	[Isgl3dDirector sharedInstance].openGLView.opaque = NO;
