@@ -57,12 +57,12 @@
  * @param vC the v componenent of the top left coordinate.
  * @result (autorelease) UV map with specified coordinates.
  */
-+ (Isgl3dUVMap *) uvMapWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC;
++ (Isgl3dUVMap *)uvMapWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC;
 
 /**
  * Contains the default UV map using the full texture.
  */
-+ (Isgl3dUVMap *) standardUVMap;
++ (Isgl3dUVMap *)standardUVMap;
 
 /**
  * Contains the u componenent of the bottom left coordinate.

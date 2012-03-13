@@ -42,7 +42,7 @@ static Isgl3dUVMap *theStandardUVMap = nil;
 
 
 - (id)initWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC {
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_uA = uA;
 		_vA = vA;
 		_uB = uB;
@@ -59,14 +59,14 @@ static Isgl3dUVMap *theStandardUVMap = nil;
 }
 
 
-+ (Isgl3dUVMap *) uvMapWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC {
++ (Isgl3dUVMap *)uvMapWithUA:(float)uA vA:(float)vA uB:(float)uB vB:(float)vB  uC:(float)uC vC:(float)vC {
 	return [[[Isgl3dUVMap alloc] initWithUA:uA vA:vA uB:uB vB:vB uC:uC vC:vC] autorelease];
 }
 
 
-+ (Isgl3dUVMap *) standardUVMap {
++ (Isgl3dUVMap *)standardUVMap {
 	if (theStandardUVMap == nil) {
-		theStandardUVMap = [[Isgl3dUVMap uvMapWithUA:0.0 vA:0.0 uB:1.0 vB:0.0 uC:0.0 vC:1.0] retain];
+        theStandardUVMap = [[Isgl3dUVMap alloc] initWithUA:0.0 vA:0.0 uB:1.0 vB:0.0 uC:0.0 vC:1.0];
 	}
 	return theStandardUVMap;
 }

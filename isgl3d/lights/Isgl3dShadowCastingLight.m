@@ -56,7 +56,7 @@
 @synthesize planarShadowsNodeNormal = _planarShadowsNodeNormal;
 
 + (id)lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor fovyRadians:(float)fovyRadians attenuation:(float)attenuation {
-    return [[self alloc] initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor fovyRadians:fovyRadians attenuation:attenuation];
+    return [[[self alloc] initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor fovyRadians:fovyRadians attenuation:attenuation] autorelease];
 }
 
 

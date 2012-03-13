@@ -54,6 +54,8 @@
                            centerX:centerX centerY:centerY centerZ:centerZ
                                upX:upX upY:upY upZ:upZ]) {
     }
+    [orthographicLens release];
+    
     return self;
 }
 
