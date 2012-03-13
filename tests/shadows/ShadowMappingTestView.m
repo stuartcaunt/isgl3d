@@ -57,8 +57,8 @@
 		camera.eyePosition = Isgl3dVector3Make(5, 5, 6);
 
 		// Enable shadow rendering
-//		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowMaps;
-		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
+		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowMaps;
+//		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
 
 		// Construct scene
@@ -102,7 +102,7 @@
 		plane3.position = Isgl3dVector3Make(-6, 1, 0);
 		//plane3.enableShadowRendering = NO;
 		
-		_light  = [Isgl3dShadowCastingLight lightWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" attenuation:0.05];
+		_light = [Isgl3dShadowCastingLight lightWithHexColor:@"111111" diffuseColor:@"FFFFFF" specularColor:@"FFFFFF" fovyRadians:Isgl3dMathDegreesToRadians(65.0f) attenuation:0.05];
 		[self.scene addChild:_light];
 		_light.renderLight = YES;
 		_light.planarShadowsNode = plane;

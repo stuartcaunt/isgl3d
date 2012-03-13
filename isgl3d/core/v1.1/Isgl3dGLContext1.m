@@ -33,8 +33,8 @@
 
 @interface Isgl3dGLContext1 ()
 - (void)checkGLExtensions;
-- (BOOL) createBuffers:(CAEAGLLayer *)eaglLayer;
-- (BOOL) createExtensionBuffers;
+- (BOOL)createBuffers:(CAEAGLLayer *)eaglLayer;
+- (BOOL)createExtensionBuffers;
 - (void)releaseBuffers;
 - (void)releaseExtensionBuffers;
 @end

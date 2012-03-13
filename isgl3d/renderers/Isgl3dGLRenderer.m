@@ -203,7 +203,7 @@
 	return _shadowRenderingMethod;
 }
 
-- (void)setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
+- (void)setShadowCastingLightProjectionViewMatrix:(Isgl3dMatrix4)viewProjectionMatrix {
 }
 
 - (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position {

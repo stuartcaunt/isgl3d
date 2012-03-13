@@ -300,9 +300,9 @@
 
 - (void)setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix {
 	if (_mcToLightMatrixUniformLocation != -1) {
-        _shadowMapTransformMatrix = Isgl3dMatrix4Multiply(_biasMatrix, *mvpMatrix);
-		
-		[self setUniformMatrix4:_mcToLightMatrixUniformLocation matrix:&_shadowMapTransformMatrix];
+        //_shadowMapTransformMatrix = Isgl3dMatrix4Multiply(_biasMatrix, *mvpMatrix);
+		//[self setUniformMatrix4:_mcToLightMatrixUniformLocation matrix:&_shadowMapTransformMatrix];
+		[self setUniformMatrix4:_mcToLightMatrixUniformLocation matrix:mvpMatrix];
 	}
 }
 

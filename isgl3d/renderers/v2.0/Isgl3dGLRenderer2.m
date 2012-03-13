@@ -186,6 +186,10 @@
 			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_ENABLED\n"];
 			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_ENABLED\n"];
 		}
+		if (rendererRequirements & SHADOW_MAPPING_DEPTH_ON) {
+			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_DEPTH_ENABLED\n"];
+			fsPreProcHeader = [fsPreProcHeader stringByAppendingString:@"#define SHADOW_MAPPING_DEPTH_ENABLED\n"];
+		}
 		if (rendererRequirements & SKINNING_ON) {
 			vsPreProcHeader = [vsPreProcHeader stringByAppendingString:@"#define SKINNING_ENABLED\n"];
 		}
@@ -514,8 +518,8 @@
 	_currentState.alphaBlendEnabled = false;
 }
 
-- (void)setShadowCastingLightViewMatrix:(Isgl3dMatrix4 *)viewMatrix {
-	_lightViewProjectionMatrix = Isgl3dMatrix4Multiply(_projectionMatrix, *viewMatrix);
+- (void)setShadowCastingLightProjectionViewMatrix:(Isgl3dMatrix4)viewProjectionMatrix {
+    _lightViewProjectionMatrix = viewProjectionMatrix;
 }
 
 - (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position {

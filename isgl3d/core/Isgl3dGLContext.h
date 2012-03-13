@@ -31,6 +31,7 @@
 
 @class Isgl3dGLRenderer;
 
+
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
@@ -58,19 +59,21 @@
 @property (nonatomic, readonly) BOOL msaaAvailable;
 @property (nonatomic, assign) BOOL msaaEnabled;
 
++ (BOOL)openGLExtensionSupported:(NSString *)extensionName;
+
 /**
  * @result (autorelease) GLRenderer depending on Context version
  */
-- (Isgl3dGLRenderer *) createRenderer;
+- (Isgl3dGLRenderer *)createRenderer;
 
-- (BOOL) resizeFromLayer:(CAEAGLLayer *)layer;
+- (BOOL)resizeFromLayer:(CAEAGLLayer *)layer;
 
 - (void)prepareRender;
 - (void)finalizeRender;
 - (void)switchToStandardBuffers;
 - (void)switchToMsaaBuffers;
 
-- (NSString *) getPixelString:(unsigned int)x y:(unsigned int)y;
+- (NSString *)getPixelString:(unsigned int)x y:(unsigned int)y;
 
 @end
 

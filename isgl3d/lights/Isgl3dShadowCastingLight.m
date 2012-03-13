@@ -33,21 +33,47 @@
 #import "Isgl3dMathUtils.h"
 
 
-@interface Isgl3dShadowCastingLight (PrivateMethods)
+@interface Isgl3dShadowCastingLight () {
+@private
+	Isgl3dGLDepthRenderTexture *_shadowRenderTexture;
+    
+	Isgl3dMatrix4 _viewMatrix;
+    Isgl3dMatrix4 _projectionMatrix;
+    Isgl3dMatrix4 _viewProjectionMatrix;
+    BOOL _viewProjectionMatrixDirty;
+	
+	Isgl3dNode * _planarShadowsNode;
+	Isgl3dVector3 _planarShadowsNodeNormal;
+}
+@property (nonatomic, readonly) Isgl3dMatrix4 viewProjectionMatrix;
 - (void)calculateViewMatrix;
 @end
 
+
+#pragma mark -
 @implementation Isgl3dShadowCastingLight
 
 @synthesize planarShadowsNodeNormal = _planarShadowsNodeNormal;
 
++ (id)lightWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor fovyRadians:(float)fovyRadians attenuation:(float)attenuation {
+    return [[self alloc] initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor fovyRadians:fovyRadians attenuation:attenuation];
+}
+
+
+#pragma mark -
 - (id)initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor attenuation:(float)attenuation {
+    return [self initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor fovyRadians:Isgl3dMathDegreesToRadians(65.0f) attenuation:attenuation];
+}
+
+- (id)initWithHexColor:(NSString *)ambientColor diffuseColor:(NSString *)diffuseColor specularColor:(NSString *)specularColor fovyRadians:(float)fovyRadians attenuation:(float)attenuation {
 	
-	if ((self = [super initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation])) {
+	if (self = [super initWithHexColor:ambientColor diffuseColor:diffuseColor specularColor:specularColor attenuation:attenuation]) {
 
 		_planarShadowsNodeNormal = Isgl3dVector3Make(0.0f, 0.0f, 1.0f);
+        
+        _viewProjectionMatrixDirty = YES;
+        _projectionMatrix = Isgl3dMatrix4MakePerspective(fovyRadians, SHADOW_MAP_WIDTH/SHADOW_MAP_HEIGHT, 1.0f, 10000.0f);
 	}
-	
 	return self;
 }
 
@@ -69,7 +95,7 @@
 		
 		[renderer setShadowMap:_shadowRenderTexture];
 		
-		[renderer setShadowCastingLightViewMatrix:&_viewMatrix];
+        [renderer setShadowCastingLightProjectionViewMatrix:self.viewProjectionMatrix];
 		
 		Isgl3dVector3 worldPosition = [self worldPosition];
 		[renderer setShadowCastingLightPosition:&worldPosition];
@@ -89,7 +115,8 @@
 	
 	// Set view and projection matrices from light position
 	[renderer setViewMatrix:&_viewMatrix];
-		
+    [renderer setProjectionMatrix:&_projectionMatrix];
+    
 	[renderer initRenderForShadowMap];
 	
 	[scene renderForShadowMap:renderer];
@@ -103,7 +130,7 @@
 	if (_planarShadowsNode != nil) {
 		plane = [_planarShadowsNode asPlaneWithNormal:_planarShadowsNodeNormal];
 	} else {
-		plane = iv4(0, 1, 0, 0);
+		plane = Isgl3dVector4Make(0.0f, 1.0f, 0.0f, 0.0f);
 	}
 
 	// Create projection matrix
@@ -153,7 +180,7 @@
 - (void)resetTransformation {
 	[super resetTransformation];
 
-	[self setPositionValues:0 y:0 z:10];
+	[self setPositionValues:0.0f y:0.0f z:10.0f];
 }
 
 - (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
@@ -171,8 +198,19 @@
 	float lightPosition[4];
 	[self copyWorldPositionToArray:lightPosition];
 	
-    _viewMatrix = Isgl3dMatrix4MakeLookAt(lightPosition[0], lightPosition[1], lightPosition[2], 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    _viewMatrix = Isgl3dMatrix4MakeLookAt(lightPosition[0], lightPosition[1], lightPosition[2],
+                                          0.0f, 0.0f, 0.0f,
+                                          0.0f, 1.0f, 0.0f);
+    _viewProjectionMatrixDirty = YES;
 }
 
+
+- (Isgl3dMatrix4)viewProjectionMatrix {
+    if (_viewProjectionMatrixDirty == YES) {
+        _viewProjectionMatrix = Isgl3dMatrix4Multiply(_projectionMatrix, _viewMatrix);
+        _viewProjectionMatrixDirty = NO;
+    }
+    return _viewProjectionMatrix;
+}
 
 @end

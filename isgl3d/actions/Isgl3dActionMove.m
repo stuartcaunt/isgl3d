@@ -61,8 +61,7 @@
 -(void) startWithTarget:(id)target {
 	[super startWithTarget:target];
 	_initialPosition = ((Isgl3dNode *)target).position;
-	_vector = _finalPosition;
-	iv3Sub(&_vector, &_initialPosition);
+	_vector = Isgl3dVector3Subtract(_finalPosition, _initialPosition);
 }
 
 - (void)update:(float)progress {

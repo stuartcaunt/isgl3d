@@ -30,12 +30,15 @@
 #import "Isgl3dColorMaterial.h"
 #import "Isgl3dGLRenderer.h"
 #import "Isgl3dObject3DGrabber.h"
+#import "Isgl3dGLContext.h"
+
 
 @interface Isgl3dMeshNode (PrivateMethods)
 - (void)renderMesh:(Isgl3dGLRenderer *)renderer;
 @end
 
 
+#pragma mark -
 @implementation Isgl3dMeshNode
 
 @synthesize doubleSided = _doubleSided;
@@ -126,13 +129,11 @@
 	Isgl3dVector3 eyeToModelNormal;
 
     eyeToModel = Isgl3dVector3Make(_worldTransformation.m30, _worldTransformation.m31, _worldTransformation.m32);
-    
-	iv3Sub(&eyeToModel, eye);
+    eyeToModel = Isgl3dVector3Subtract(eyeToModel, *eye);
 
-    eyeToModelNormal = eyeToModel;
-	iv3Normalize(&eyeToModelNormal);
+    eyeToModelNormal = Isgl3dVector3Normalize(eyeToModel);
 	
-	float dot = iv3Dot(normal, &eyeToModelNormal);
+	float dot = Isgl3dVector3DotProduct(*normal, eyeToModelNormal);
 	float angle = acos(dot) * 180 / M_PI;
 	
 	
@@ -142,7 +143,7 @@
 	//            1 => at target
 	//        f > 1 => object behind target		
 	//        f < 0 => object behind camera		
-	float occlusionDistanceFactor = iv3Dot(normal, &eyeToModel) / targetDistance;
+	float occlusionDistanceFactor = Isgl3dVector3DotProduct(*normal, eyeToModelNormal) / targetDistance;
 	
 	// Calculate occlusion angle factor: 
 	//    0 < f < 1 => object between target and max angle
@@ -207,7 +208,10 @@
 		// Set the renderer requirements
 		unsigned int rendererRequirements = _alphaCulling ? ALPHA_CULLING_ON : 0;
 		if (_enableShadowRendering && renderer.shadowMapActive) {
-			rendererRequirements |= SHADOW_MAPPING_ON;
+            if ([Isgl3dGLContext openGLExtensionSupported:@"GL_OES_depth_texture"])
+                rendererRequirements |= SHADOW_MAPPING_DEPTH_ON;
+            else
+                rendererRequirements |= SHADOW_MAPPING_ON;
 		}
 		if (_skinningEnabled) {
 			rendererRequirements |= SKINNING_ON;

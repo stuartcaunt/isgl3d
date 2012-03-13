@@ -422,7 +422,7 @@ static Isgl3dOcclusionMode Isgl3dNode_OcclusionMode = Isgl3dOcclusionQuadDistanc
 	float C = transformedNormal.z;
 	float D = -(A * _worldTransformation.m30 + B * _worldTransformation.m31 + C * _worldTransformation.m32);
 	
-	return iv4(A, B, C, D);
+    return Isgl3dVector4Make(A, B, C, D);
 }
 
 - (void)updateEulerAngles {

@@ -72,7 +72,7 @@
         _oldTargetPosition = currentTargetPosition;
 	}
 
-	if (iv3DistanceBetween(&currentTargetPosition, &_oldTargetPosition) > 0.01) {
+	if (Isgl3dVector3Distance(currentTargetPosition, _oldTargetPosition) > 0.01f) {
 		// Calculate transformation matrix along line of movement of target
 		Isgl3dMatrix4 targetMovementTransformation;
 		if (_keepHorizontal) {

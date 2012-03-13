@@ -1328,6 +1328,70 @@
 		8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */; };
 		8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
 		8B0FA35A13E8046D00E798BA /* Isgl3dPVRLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA35813E8046D00E798BA /* Isgl3dPVRLoader.mm */; };
+		8B26BD69150FA41600614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD6A150FA41600614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD6B150FA41B00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD6C150FA41B00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD6D150FA41E00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD6E150FA41E00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD6F150FA42200614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD70150FA42200614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD71150FA42500614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD72150FA42500614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD73150FA42900614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD74150FA42900614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD75150FA42D00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD76150FA42D00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD77150FA43000614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD78150FA43000614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD79150FA43400614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD7A150FA43400614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD7B150FA43700614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD7C150FA43700614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD7D150FA43B00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD7E150FA43B00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD7F150FA43F00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD80150FA43F00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD81150FA44100614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD82150FA44100614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD83150FA44500614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD84150FA44500614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD85150FA44800614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD86150FA44800614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD87150FA44B00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD88150FA44B00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD89150FA44F00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD8A150FA44F00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD8B150FA45200614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD8C150FA45200614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD8D150FA45600614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD8E150FA45600614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD8F150FA45A00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD90150FA45A00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD91150FA45D00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD92150FA45D00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD93150FA46000614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD94150FA46000614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD95150FA46D00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD96150FA46D00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD97150FA47400614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD98150FA47400614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD99150FA47700614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD9A150FA47700614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD9B150FA47B00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD9C150FA47B00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD9D150FA47E00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BD9E150FA47E00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BD9F150FA48100614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BDA0150FA48100614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BDA1150FA48900614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BDA2150FA48900614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BDA3150FA48F00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BDA4150FA48F00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BDA5150FA49F00614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BDA6150FA49F00614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
+		8B26BDA7150FA4A300614A31 /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */; };
+		8B26BDA8150FA4A300614A31 /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */; };
 		8B2AFA9414FEE2F30040102B /* Isgl3dVector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFA9214FEE2F30040102B /* Isgl3dVector3.h */; };
 		8B2AFA9514FEE2F30040102B /* Isgl3dVector3.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AFA9314FEE2F30040102B /* Isgl3dVector3.m */; };
 		8B2AFA9914FEE3790040102B /* Isgl3dMatrix4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFA9714FEE3790040102B /* Isgl3dMatrix4.h */; };
@@ -2652,6 +2716,8 @@
 		8B4B55AD14F45592007EEFAA /* NormalMappingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalMappingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4B55B114F455FE007EEFAA /* NormalMappingDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalMappingDemoView.h; sourceTree = "<group>"; };
 		8B4B55B214F455FE007EEFAA /* NormalMappingDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalMappingDemoView.m; sourceTree = "<group>"; };
+		8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMapDepth.fsh; sourceTree = "<group>"; };
+		8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMapDepth.vsh; sourceTree = "<group>"; };
 		8B8A870E14CF182500C17DC5 /* Isgl3dMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMathTypes.h; sourceTree = "<group>"; };
 		8B8A871114CF190200C17DC5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		8B8A871814CF1E6D00C17DC5 /* isgl3d-Apps-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "isgl3d-Apps-Prefix.pch"; path = "../isgl3d/isgl3d-Apps-Prefix.pch"; sourceTree = "<group>"; };
@@ -4515,6 +4581,8 @@
 				17F7A8A512FA0EB800C7BB82 /* particle.vsh */,
 				17F7A8A612FA0EB800C7BB82 /* shadowMap.fsh */,
 				17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */,
+				8B52DA41150FA2B3006CE4F0 /* shadowMapDepth.fsh */,
+				8B52DA42150FA2B3006CE4F0 /* shadowMapDepth.vsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -5671,9 +5739,16 @@
 				17A3E643135A1C380022BAD8 /* build all */,
 				D2AAC07D0554694100DB518D /* isgl3d */,
 				17F1D86112F88A4A008D39E8 /* isgl3dbullet */,
-				17F1E06A12F89091008D39E8 /* Accelerometer */,
+				171CB8D713196403003712F4 /* Tutorial1 */,
+				171CB90913196613003712F4 /* Tutorial2 */,
+				171CB92F131966E7003712F4 /* Tutorial3 */,
+				171CB951131967C1003712F4 /* Tutorial4 */,
+				171CB97C13196880003712F4 /* Tutorial5 */,
 				17F7A83C12FA0BB000C7BB82 /* CameraMovement */,
 				1762371712F9CE06008CDB4B /* CameraZoomAndFocus */,
+				1713BABD1357979B002C3288 /* FollowCamera */,
+				1713BAE21358AFF6002C3288 /* SpringCamera */,
+				17F1E06A12F89091008D39E8 /* Accelerometer */,
 				17F7A87012FA0D6100C7BB82 /* Lighting */,
 				17801A46131A955A0045803F /* Occlusion */,
 				1731213D12FB3D6500861D84 /* ParticleSystem */,
@@ -5687,15 +5762,8 @@
 				173123A212FC841000861D84 /* TweeningDemo */,
 				173123EC12FD627B00861D84 /* UIDemo */,
 				171CB84913195C65003712F4 /* CubeOverCamera */,
-				171CB8D713196403003712F4 /* Tutorial1 */,
-				171CB90913196613003712F4 /* Tutorial2 */,
-				171CB92F131966E7003712F4 /* Tutorial3 */,
-				171CB951131967C1003712F4 /* Tutorial4 */,
-				171CB97C13196880003712F4 /* Tutorial5 */,
 				17BE1746132E94E400D053BA /* BillboardTest */,
 				17AD09D113434FD7005F5F7F /* ViewportTest */,
-				1713BABD1357979B002C3288 /* FollowCamera */,
-				1713BAE21358AFF6002C3288 /* SpringCamera */,
 				1755358C1360B4B700C593E3 /* TerrainPhysics */,
 				17CDF5AE136753FA00893070 /* KeyframeMeshAnimationTest */,
 				178A62E31368558A00BEFD2C /* KeyframePODAnimationTest */,
@@ -5720,6 +5788,8 @@
 				1713BAC61357979B002C3288 /* particle.vsh in Resources */,
 				1713BAC71357979B002C3288 /* shadowMap.fsh in Resources */,
 				1713BAC91357979B002C3288 /* shadowMap.vsh in Resources */,
+				8B26BD97150FA47400614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD98150FA47400614A31 /* shadowMapDepth.vsh in Resources */,
 				1713BAE013579801002C3288 /* wood.png in Resources */,
 				1713BAE113579907002C3288 /* red_checker.png in Resources */,
 				175CD4F513708A2100152EFE /* Default.png in Resources */,
@@ -5740,6 +5810,8 @@
 				1713BAEB1358AFF6002C3288 /* particle.vsh in Resources */,
 				1713BAEC1358AFF6002C3288 /* shadowMap.fsh in Resources */,
 				1713BAED1358AFF6002C3288 /* shadowMap.vsh in Resources */,
+				8B26BD99150FA47700614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD9A150FA47700614A31 /* shadowMapDepth.vsh in Resources */,
 				1713BAEE1358AFF6002C3288 /* wood.png in Resources */,
 				1713BAEF1358AFF6002C3288 /* red_checker.png in Resources */,
 				175CD4F613708A2100152EFE /* Default.png in Resources */,
@@ -5760,6 +5832,8 @@
 				17A95F04132575AE00D06694 /* particle.vsh in Resources */,
 				17A95F05132575AE00D06694 /* shadowMap.fsh in Resources */,
 				17A95F06132575AE00D06694 /* shadowMap.vsh in Resources */,
+				8B26BD87150FA44B00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD88150FA44B00614A31 /* shadowMapDepth.vsh in Resources */,
 				175CD4ED13708A2100152EFE /* Default.png in Resources */,
 				175CD50913708A2100152EFE /* Icon.png in Resources */,
 				175CD52513708A2100152EFE /* Icon@2x.png in Resources */,
@@ -5778,6 +5852,8 @@
 				17A95F0C132575B300D06694 /* particle.vsh in Resources */,
 				17A95F0D132575B300D06694 /* shadowMap.fsh in Resources */,
 				17A95F0E132575B300D06694 /* shadowMap.vsh in Resources */,
+				8B26BD89150FA44F00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD8A150FA44F00614A31 /* shadowMapDepth.vsh in Resources */,
 				175CD4EE13708A2100152EFE /* Default.png in Resources */,
 				175CD50A13708A2100152EFE /* Icon.png in Resources */,
 				175CD52613708A2100152EFE /* Icon@2x.png in Resources */,
@@ -5796,6 +5872,8 @@
 				17A95F14132575BA00D06694 /* particle.vsh in Resources */,
 				17A95F15132575BA00D06694 /* shadowMap.fsh in Resources */,
 				17A95F16132575BA00D06694 /* shadowMap.vsh in Resources */,
+				8B26BD8B150FA45200614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD8C150FA45200614A31 /* shadowMapDepth.vsh in Resources */,
 				175CD4EF13708A2100152EFE /* Default.png in Resources */,
 				175CD50B13708A2100152EFE /* Icon.png in Resources */,
 				175CD52713708A2100152EFE /* Icon@2x.png in Resources */,
@@ -5814,6 +5892,8 @@
 				17A95F1C132575C300D06694 /* particle.vsh in Resources */,
 				17A95F1D132575C300D06694 /* shadowMap.fsh in Resources */,
 				17A95F1E132575C300D06694 /* shadowMap.vsh in Resources */,
+				8B26BD8D150FA45600614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD8E150FA45600614A31 /* shadowMapDepth.vsh in Resources */,
 				171CB94D1319672F003712F4 /* cloth.png in Resources */,
 				171CB94E1319672F003712F4 /* donut.png in Resources */,
 				175CD4F013708A2100152EFE /* Default.png in Resources */,
@@ -5834,6 +5914,8 @@
 				173D5CF013241DC10092D2EE /* particle.vsh in Resources */,
 				173D5CF113241DC10092D2EE /* shadowMap.fsh in Resources */,
 				173D5CF213241DC10092D2EE /* shadowMap.vsh in Resources */,
+				8B26BD8F150FA45A00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD90150FA45A00614A31 /* shadowMapDepth.vsh in Resources */,
 				171CB956131967C1003712F4 /* cloth.png in Resources */,
 				171CB957131967C1003712F4 /* donut.png in Resources */,
 				171CB96F131967FF003712F4 /* ball.png in Resources */,
@@ -5861,6 +5943,8 @@
 				171CB98313196880003712F4 /* ball.png in Resources */,
 				171CB98413196880003712F4 /* pitch.png in Resources */,
 				171CB9AC131968F9003712F4 /* SpaceStation.png in Resources */,
+				8B26BD91150FA45D00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD92150FA45D00614A31 /* shadowMapDepth.vsh in Resources */,
 				171CB9AD131968F9003712F4 /* stars.png in Resources */,
 				171CB9AE131968F9003712F4 /* ufo00.png in Resources */,
 				171CB9AF131968F9003712F4 /* ufo01.png in Resources */,
@@ -5896,6 +5980,8 @@
 				17A95EC41325754F00D06694 /* particle.vsh in Resources */,
 				17A95EC51325754F00D06694 /* shadowMap.fsh in Resources */,
 				17A95EC61325754F00D06694 /* shadowMap.vsh in Resources */,
+				8B26BD73150FA42900614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD74150FA42900614A31 /* shadowMapDepth.vsh in Resources */,
 				1731216912FB3E0400861D84 /* particle.png in Resources */,
 				175CD4E313708A2100152EFE /* Default.png in Resources */,
 				175CD4FF13708A2100152EFE /* Icon.png in Resources */,
@@ -5915,6 +6001,8 @@
 				17A95ECC1325755C00D06694 /* particle.vsh in Resources */,
 				17A95ECD1325755C00D06694 /* shadowMap.fsh in Resources */,
 				17A95ECE1325755C00D06694 /* shadowMap.vsh in Resources */,
+				8B26BD75150FA42D00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD76150FA42D00614A31 /* shadowMapDepth.vsh in Resources */,
 				173121A612FB571900861D84 /* BeachBall.png in Resources */,
 				173121A712FB571900861D84 /* wood.png in Resources */,
 				173121A512FB570200861D84 /* cardboard.jpg in Resources */,
@@ -5936,6 +6024,8 @@
 				17A95ED41325756900D06694 /* particle.vsh in Resources */,
 				17A95ED51325756900D06694 /* shadowMap.fsh in Resources */,
 				17A95ED61325756900D06694 /* shadowMap.vsh in Resources */,
+				8B26BD77150FA43000614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD78150FA43000614A31 /* shadowMapDepth.vsh in Resources */,
 				1731223712FB597700861D84 /* Scene_float.pod in Resources */,
 				1731223F12FB59BE00861D84 /* kettle.bmp in Resources */,
 				1731224012FB59BE00861D84 /* TableCover.bmp in Resources */,
@@ -5957,6 +6047,8 @@
 				17A95EDC1325757400D06694 /* particle.vsh in Resources */,
 				17A95EDD1325757400D06694 /* shadowMap.fsh in Resources */,
 				17A95EDE1325757400D06694 /* shadowMap.vsh in Resources */,
+				8B26BD79150FA43400614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD7A150FA43400614A31 /* shadowMapDepth.vsh in Resources */,
 				1731227D12FC76D100861D84 /* red_checker.png in Resources */,
 				175CD4E613708A2100152EFE /* Default.png in Resources */,
 				175CD50213708A2100152EFE /* Icon.png in Resources */,
@@ -5978,6 +6070,8 @@
 				17A95EE41325757C00D06694 /* particle.vsh in Resources */,
 				17A95EE51325757C00D06694 /* shadowMap.fsh in Resources */,
 				17A95EE61325757C00D06694 /* shadowMap.vsh in Resources */,
+				8B26BD7B150FA43700614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD7C150FA43700614A31 /* shadowMapDepth.vsh in Resources */,
 				173122A012FC797300861D84 /* mars.png in Resources */,
 				173122BB12FC79BF00861D84 /* hostel.png in Resources */,
 				175CD4E713708A2100152EFE /* Default.png in Resources */,
@@ -5998,6 +6092,8 @@
 				173D5D1613241EAE0092D2EE /* particle.vsh in Resources */,
 				173D5D1713241EAE0092D2EE /* shadowMap.fsh in Resources */,
 				173D5D1813241EAE0092D2EE /* shadowMap.vsh in Resources */,
+				8B26BD7D150FA43B00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD7E150FA43B00614A31 /* shadowMapDepth.vsh in Resources */,
 				173122F812FC7BD500861D84 /* man.pod in Resources */,
 				173122FF12FC7BE000861D84 /* ground.png in Resources */,
 				175CD4E813708A2100152EFE /* Default.png in Resources */,
@@ -6021,6 +6117,8 @@
 				17A95EEC1325759800D06694 /* particle.vsh in Resources */,
 				17A95EED1325759800D06694 /* shadowMap.fsh in Resources */,
 				17A95EEE1325759800D06694 /* shadowMap.vsh in Resources */,
+				8B26BD7F150FA43F00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD80150FA43F00614A31 /* shadowMapDepth.vsh in Resources */,
 				1731233F12FC7E5200861D84 /* RaceTrack1Terrain_1024.png in Resources */,
 				1731235C12FC7EEC00861D84 /* RaceTrack1Path_512.png in Resources */,
 				175CD4E913708A2100152EFE /* Default.png in Resources */,
@@ -6041,6 +6139,8 @@
 				17A95EF4132575A000D06694 /* particle.vsh in Resources */,
 				17A95EF5132575A000D06694 /* shadowMap.fsh in Resources */,
 				17A95EF6132575A000D06694 /* shadowMap.vsh in Resources */,
+				8B26BD81150FA44100614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD82150FA44100614A31 /* shadowMapDepth.vsh in Resources */,
 				1731239A12FC831700861D84 /* rock_mipmap_4.pvr in Resources */,
 				175CD4EA13708A2100152EFE /* Default.png in Resources */,
 				175CD50613708A2100152EFE /* Icon.png in Resources */,
@@ -6060,6 +6160,8 @@
 				173D5D0913241E610092D2EE /* particle.vsh in Resources */,
 				173D5D0A13241E610092D2EE /* shadowMap.fsh in Resources */,
 				173D5D0B13241E610092D2EE /* shadowMap.vsh in Resources */,
+				8B26BD83150FA44500614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD84150FA44500614A31 /* shadowMapDepth.vsh in Resources */,
 				173123BF12FC847500861D84 /* checker.png in Resources */,
 				175CD4EB13708A2100152EFE /* Default.png in Resources */,
 				175CD50713708A2100152EFE /* Icon.png in Resources */,
@@ -6079,6 +6181,8 @@
 				17A95EFC132575A700D06694 /* particle.vsh in Resources */,
 				17A95EFD132575A700D06694 /* shadowMap.fsh in Resources */,
 				17A95EFE132575A700D06694 /* shadowMap.vsh in Resources */,
+				8B26BD85150FA44800614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD86150FA44800614A31 /* shadowMapDepth.vsh in Resources */,
 				1731240812FD62CE00861D84 /* angle.png in Resources */,
 				1731240912FD62CE00861D84 /* camera.png in Resources */,
 				17AD09D0134270E2005F5F7F /* red_checker.png in Resources */,
@@ -6102,6 +6206,8 @@
 				175535971360B4B700C593E3 /* particle.vsh in Resources */,
 				175535981360B4B700C593E3 /* shadowMap.fsh in Resources */,
 				175535991360B4B700C593E3 /* shadowMap.vsh in Resources */,
+				8B26BD9B150FA47B00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD9C150FA47B00614A31 /* shadowMapDepth.vsh in Resources */,
 				175535B91360B59A00C593E3 /* RaceTrack1Path_512.png in Resources */,
 				175535BA1360B59C00C593E3 /* RaceTrack1Terrain_1024.png in Resources */,
 				1755359A1360B4B700C593E3 /* BeachBall.png in Resources */,
@@ -6123,6 +6229,8 @@
 				17A95EB41325753C00D06694 /* particle.vsh in Resources */,
 				17A95EB51325753C00D06694 /* shadowMap.fsh in Resources */,
 				17A95EB61325753C00D06694 /* shadowMap.vsh in Resources */,
+				8B26BD6D150FA41E00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD6E150FA41E00614A31 /* shadowMapDepth.vsh in Resources */,
 				175CD4E013708A2100152EFE /* Default.png in Resources */,
 				175CD4FC13708A2100152EFE /* Icon.png in Resources */,
 				175CD51813708A2100152EFE /* Icon@2x.png in Resources */,
@@ -6141,6 +6249,8 @@
 				17A95EBC1325754800D06694 /* particle.vsh in Resources */,
 				17A95EBD1325754800D06694 /* shadowMap.fsh in Resources */,
 				17A95EBE1325754800D06694 /* shadowMap.vsh in Resources */,
+				8B26BD71150FA42500614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD72150FA42500614A31 /* shadowMapDepth.vsh in Resources */,
 				17801A4B131A955A0045803F /* mars.png in Resources */,
 				17801A4C131A955A0045803F /* particle.png in Resources */,
 				175CD4E213708A2100152EFE /* Default.png in Resources */,
@@ -6161,6 +6271,8 @@
 				178A62EC1368558A00BEFD2C /* particle.vsh in Resources */,
 				178A62ED1368558A00BEFD2C /* shadowMap.fsh in Resources */,
 				178A62EE1368558A00BEFD2C /* shadowMap.vsh in Resources */,
+				8B26BD9F150FA48100614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BDA0150FA48100614A31 /* shadowMapDepth.vsh in Resources */,
 				178A6306136855D200BEFD2C /* Scene_float.pod in Resources */,
 				178A630713685FA800BEFD2C /* kettle.bmp in Resources */,
 				178A6308136864D600BEFD2C /* TableCover.bmp in Resources */,
@@ -6183,6 +6295,8 @@
 				17A481B613F129880098AC3F /* particle.vsh in Resources */,
 				17A481B713F129880098AC3F /* shadowMap.fsh in Resources */,
 				17A481B813F129880098AC3F /* shadowMap.vsh in Resources */,
+				8B26BDA1150FA48900614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BDA2150FA48900614A31 /* shadowMapDepth.vsh in Resources */,
 				17A4821713F12A4E0098AC3F /* demoShader.fsh in Resources */,
 				17A4821913F12A4E0098AC3F /* demoShader.vsh in Resources */,
 				17A4823B13F286740098AC3F /* powervrShader.fsh in Resources */,
@@ -6209,8 +6323,10 @@
 				17AD09D913434FD7005F5F7F /* particle.fsh in Resources */,
 				17AD09DA13434FD7005F5F7F /* particle.vsh in Resources */,
 				17AD09DB13434FD7005F5F7F /* shadowMap.fsh in Resources */,
-				17AD09F113434FF6005F5F7F /* red_checker.png in Resources */,
 				17AD09DC13434FD7005F5F7F /* shadowMap.vsh in Resources */,
+				8B26BD95150FA46D00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD96150FA46D00614A31 /* shadowMapDepth.vsh in Resources */,
+				17AD09F113434FF6005F5F7F /* red_checker.png in Resources */,
 				175CD4F413708A2100152EFE /* Default.png in Resources */,
 				175CD51013708A2100152EFE /* Icon.png in Resources */,
 				175CD52C13708A2100152EFE /* Icon@2x.png in Resources */,
@@ -6229,6 +6345,8 @@
 				17BE174F132E94E400D053BA /* particle.vsh in Resources */,
 				17BE1750132E94E400D053BA /* shadowMap.fsh in Resources */,
 				17BE1751132E94E400D053BA /* shadowMap.vsh in Resources */,
+				8B26BD93150FA46000614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD94150FA46000614A31 /* shadowMapDepth.vsh in Resources */,
 				17BE17AD132E9C8400D053BA /* billboard.png in Resources */,
 				175CD4F313708A2100152EFE /* Default.png in Resources */,
 				175CD50F13708A2100152EFE /* Icon.png in Resources */,
@@ -6248,6 +6366,8 @@
 				17C2F0BE13F6CCEE0002C7D3 /* particle.vsh in Resources */,
 				17C2F0BF13F6CCEE0002C7D3 /* shadowMap.fsh in Resources */,
 				17C2F0C013F6CCEE0002C7D3 /* shadowMap.vsh in Resources */,
+				8B26BDA7150FA4A300614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BDA8150FA4A300614A31 /* shadowMapDepth.vsh in Resources */,
 				17C2F0C113F6CCEE0002C7D3 /* red_checker.png in Resources */,
 				17C2F0C213F6CCEE0002C7D3 /* Default.png in Resources */,
 				17C2F0C313F6CCEE0002C7D3 /* Icon.png in Resources */,
@@ -6267,6 +6387,8 @@
 				17CDF5B7136753FA00893070 /* particle.vsh in Resources */,
 				17CDF5B8136753FA00893070 /* shadowMap.fsh in Resources */,
 				17CDF5B9136753FA00893070 /* shadowMap.vsh in Resources */,
+				8B26BD9D150FA47E00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD9E150FA47E00614A31 /* shadowMapDepth.vsh in Resources */,
 				17CDF5D413675B1600893070 /* ground.png in Resources */,
 				175CD4F813708A2100152EFE /* Default.png in Resources */,
 				175CD51413708A2100152EFE /* Icon.png in Resources */,
@@ -6286,6 +6408,8 @@
 				17D0774C13F4A643003F6E46 /* particle.vsh in Resources */,
 				17D0774D13F4A643003F6E46 /* shadowMap.fsh in Resources */,
 				17D0774E13F4A643003F6E46 /* shadowMap.vsh in Resources */,
+				8B26BDA5150FA49F00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BDA6150FA49F00614A31 /* shadowMapDepth.vsh in Resources */,
 				17D0774F13F4A643003F6E46 /* red_checker.png in Resources */,
 				17D0775013F4A643003F6E46 /* Default.png in Resources */,
 				17D0775113F4A643003F6E46 /* Icon.png in Resources */,
@@ -6306,6 +6430,8 @@
 				17A95EA41325752500D06694 /* particle.vsh in Resources */,
 				17A95EA51325752500D06694 /* shadowMap.fsh in Resources */,
 				17A95EA61325752500D06694 /* shadowMap.vsh in Resources */,
+				8B26BD69150FA41600614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD6A150FA41600614A31 /* shadowMapDepth.vsh in Resources */,
 				176236F512F9CA87008CDB4B /* angle.png in Resources */,
 				176236F612F9CA87008CDB4B /* BeachBall.png in Resources */,
 				176236F712F9CA87008CDB4B /* camera.png in Resources */,
@@ -6330,6 +6456,8 @@
 				17A95EAC1325753200D06694 /* particle.vsh in Resources */,
 				17A95EAD1325753200D06694 /* shadowMap.fsh in Resources */,
 				17A95EAE1325753200D06694 /* shadowMap.vsh in Resources */,
+				8B26BD6B150FA41B00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD6C150FA41B00614A31 /* shadowMapDepth.vsh in Resources */,
 				175CD4DF13708A2100152EFE /* Default.png in Resources */,
 				175CD4FB13708A2100152EFE /* Icon.png in Resources */,
 				175CD51713708A2100152EFE /* Icon@2x.png in Resources */,
@@ -6348,6 +6476,8 @@
 				173D5D2C132421E30092D2EE /* particle.vsh in Resources */,
 				173D5D2D132421E30092D2EE /* shadowMap.fsh in Resources */,
 				173D5D2E132421E30092D2EE /* shadowMap.vsh in Resources */,
+				8B26BD6F150FA42200614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BD70150FA42200614A31 /* shadowMapDepth.vsh in Resources */,
 				17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */,
 				175CD4E113708A2100152EFE /* Default.png in Resources */,
 				175CD4FD13708A2100152EFE /* Icon.png in Resources */,
@@ -6367,6 +6497,8 @@
 				8B4B558914F45592007EEFAA /* particle.vsh in Resources */,
 				8B4B558A14F45592007EEFAA /* shadowMap.fsh in Resources */,
 				8B4B558B14F45592007EEFAA /* shadowMap.vsh in Resources */,
+				8B26BDA3150FA48F00614A31 /* shadowMapDepth.fsh in Resources */,
+				8B26BDA4150FA48F00614A31 /* shadowMapDepth.vsh in Resources */,
 				8B4B558C14F45592007EEFAA /* demoShader.fsh in Resources */,
 				8B4B558D14F45592007EEFAA /* demoShader.vsh in Resources */,
 				8B4B558E14F45592007EEFAA /* powervrShader.fsh in Resources */,
@@ -8021,6 +8153,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8044,6 +8180,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8527,7 +8667,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -8551,7 +8694,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
