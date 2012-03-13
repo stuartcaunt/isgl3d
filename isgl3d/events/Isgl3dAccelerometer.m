@@ -96,19 +96,19 @@ static Isgl3dAccelerometer * _instance = nil;
 	_updateFrequency = updateFrequency;
 }
 
-- (float) updateFrequency {
+- (float)updateFrequency {
 	return _updateFrequency;
 }
 
-- (float *) gravity {
+- (float *)gravity {
 	return _gravity;
 }
 
-- (float *) rawGravity {
+- (float *)rawGravity {
 	return _rawGravity;
 }
 
-- (float *) acceleration {
+- (float *)acceleration {
 	return _acceleration;
 }
 
