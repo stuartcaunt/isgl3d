@@ -59,7 +59,6 @@
 	float _acceleration[3];
 	
 	float _updateFrequency;
-	isgl3dOrientation _deviceOrientation;
 	
 	float _calibrationY[ACCELEROMETER_CALIBRATION_MAX];
 	float _calibrationZ[ACCELEROMETER_CALIBRATION_MAX];
@@ -93,11 +92,6 @@
  * Returns the raw acceleration of the device.
  */
 @property (nonatomic, readonly) float * acceleration;
-
-/**
- * Specified whether the orientation of the device - this changes the axes of the acceleration and gravity.
- */
-@property (nonatomic) isgl3dOrientation deviceOrientation;
 
 /**
  * Returns true if the the tilt of the device is being measured and the gravity vector

@@ -27,24 +27,19 @@
 #import "Isgl3dDemoCameraController.h"
 
 
-@interface ActionsDemoView () {
-@private
-    Isgl3dNodeCamera *_camera;
-}
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@interface ActionsDemoView ()
 @end
 
 
 #pragma mark -
 @implementation ActionsDemoView
 
-@synthesize camera = _camera;
-
 - (id)init {
 	
 	if ((self = [super init])) {
 		// Create and configure touch-screen camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
+        Isgl3dNodeCamera *nodeCamera = (Isgl3dNodeCamera *)self.defaultCamera;
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:nodeCamera andView:self];
 		_cameraController.orbit = 17;
 		_cameraController.theta = 30;
 		_cameraController.phi = 10;
@@ -109,22 +104,6 @@
 	[super dealloc];
 }
 
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
-}
-
 - (void)onActivated {
 	// Add camera controller to touch-screen manager
 	[[Isgl3dTouchScreen sharedInstance] addResponder:_cameraController];
@@ -157,11 +136,9 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [ActionsDemoView view];
+	Isgl3dView *view = [ActionsDemoView view];
+    view.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

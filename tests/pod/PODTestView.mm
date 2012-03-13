@@ -27,22 +27,22 @@
 #import "Isgl3dPODImporter.h"
 
 
-@interface PODTestView () {
-@private
-    Isgl3dNodeCamera *_camera;
-}
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@interface PODTestView ()
 @end
 
 
 #pragma mark -
 @implementation PODTestView
 
-@synthesize camera = _camera;
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    return nil;
+}
 
+
+#pragma mark -
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 
 		// Enable shadow rendering
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
@@ -74,10 +74,13 @@
 	
 		// Set the camera up as it has been saved in the POD
         // Make sure the view size is set properly
-		self.camera = [podImporter cameraAtIndex:0];
+        Isgl3dNodeCamera *nodeCamera = [podImporter cameraAtIndex:0];
         CGSize viewSize = self.viewport.size;
-        [self.camera.lens viewSizeUpdated:viewSize];
-		[self.scene addChild:self.camera];
+        [nodeCamera.lens viewSizeUpdated:viewSize];
+        
+		[self.scene addChild:nodeCamera];
+		_defaultCamera = nodeCamera;
+        [self addCamera:_defaultCamera setActive:YES];
         
 		[self setSceneAmbient:[Isgl3dColorUtil rgbString:[podImporter ambientColor]]];
 		
@@ -90,9 +93,6 @@
 
 - (void)dealloc {
 	[super dealloc];
-}
-
-- (void)createSceneCamera {
 }
 
 - (void)tick:(float)dt {
@@ -112,11 +112,10 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [PODTestView view];
+	Isgl3dView *view = [PODTestView view];
+    view.displayFPS = YES;
+    
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

@@ -56,6 +56,7 @@ extern const NSString const* isgl3dVersion();
 #import <isgl3d/Isgl3dNodeCamera.h>
 #import <isgl3d/Isgl3dFollowCamera.h>
 #import <isgl3d/Isgl3dSpringCamera.h>
+#import <isgl3d/Isgl3dOverlayCamera.h>
 #import <isgl3d/Isgl3dBillboardNode.h>
 #import <isgl3d/Isgl3dFollowNode.h>
 #import <isgl3d/Isgl3dMeshNode.h>

@@ -29,11 +29,11 @@
 
 @interface FollowCameraTestView () {
 @private
-	Isgl3dNode * _container;
-	Isgl3dMeshNode * _sphere;
+	Isgl3dNode *_container;
+	Isgl3dMeshNode *_sphere;
 	
-	id<Isgl3dCamera>  _staticCamera;
-	Isgl3dFollowCamera * _followCamera;
+	Isgl3dLookAtCamera *_staticCamera;
+	Isgl3dFollowCamera *_followCamera;
 	
 	float _angle;
 }
@@ -43,9 +43,29 @@
 
 @implementation FollowCameraTestView
 
++ (id<Isgl3dCamera>)createDefaultSceneCameraForViewport:(CGRect)viewport {
+    Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"creating default camera with perspective projection. Viewport size = %@", NSStringFromCGSize(viewport.size));
+    
+    CGSize viewSize = viewport.size;
+    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
+    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
+    
+    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
+    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
+    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
+    Isgl3dLookAtCamera *standardCamera = [[Isgl3dLookAtCamera alloc] initWithLens:perspectiveLens
+                                                                             eyeX:cameraPosition.x eyeY:cameraPosition.y eyeZ:cameraPosition.z
+                                                                          centerX:cameraLookAt.x centerY:cameraLookAt.y centerZ:cameraLookAt.z
+                                                                              upX:cameraLookUp.x upY:cameraLookUp.y upZ:cameraLookUp.z];
+    [perspectiveLens release];
+    return [standardCamera autorelease];
+}
+
+
+#pragma mark -
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_angle = 0.0f;
 
 		// Enable shadows
@@ -53,7 +73,7 @@
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
 		
 		// Keep a reference to the default camera and move it
-        _staticCamera = [self.camera retain];
+        _staticCamera = (Isgl3dLookAtCamera *)self.defaultCamera;
 		_staticCamera.eyePosition = Isgl3dVector3Make(0.0f, 14.0f, 20.0f);
         
 		// Create the ground surface
@@ -78,6 +98,7 @@
 		_followCamera.stiffness = 60.0f;
 		_followCamera.damping = 50.0f;
 		_followCamera.lookAhead = 1.0f;
+        [self addCamera:_followCamera];
 		[self.scene addChild:_followCamera];
 		
 		// Create sphere (to represent camera)
@@ -113,19 +134,11 @@
     Isgl3dVector3 cameraUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
     
     Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:self.viewport.size fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    Isgl3dFollowCamera *camera = [[[Isgl3dFollowCamera alloc] initWithLens:perspectiveLens position:cameraPosition andTarget:target up:cameraUp] autorelease];
+    Isgl3dFollowCamera *camera = [[Isgl3dFollowCamera alloc] initWithLens:perspectiveLens position:cameraPosition andTarget:target up:cameraUp];
     [camera.lens viewSizeUpdated:self.viewport.size];
     [perspectiveLens release];
     
-    return camera;
-}
-
-- (void)setViewport:(CGRect)viewport {
-    [super setViewport:viewport];
-    
-	if (_followCamera) {
-        [_followCamera.lens viewSizeUpdated:viewport.size];
-	}	
+    return [camera autorelease];
 }
 
 - (void)onActivated {
@@ -145,10 +158,10 @@
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (self.camera == _staticCamera) {
-		self.camera = _followCamera;
+	if (self.activeCamera == _staticCamera) {
+		self.activeCamera = _followCamera;
 	} else {
-		self.camera = _staticCamera;
+		self.activeCamera = _staticCamera;
 	}
 	
 } 
@@ -198,12 +211,13 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
-	// Create view and add to Isgl3dDirector
-	[[Isgl3dDirector sharedInstance] addView:[FollowCameraTestView view]];
-	[[Isgl3dDirector sharedInstance] addView:[SimpleUIView view]];
+	// Create views and add them to the Isgl3dDirector
+    FollowCameraTestView *view1 = [FollowCameraTestView view];
+    view1.displayFPS = YES;
+    SimpleUIView *view2 = [SimpleUIView view];
+    
+	[[Isgl3dDirector sharedInstance] addView:view1];
+	[[Isgl3dDirector sharedInstance] addView:view2];
 }
 
 @end

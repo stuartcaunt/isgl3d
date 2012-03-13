@@ -58,14 +58,14 @@ static Isgl3dDirector * _instance = nil;
 - (void)renderForEventCapture;
 @end
 
+
+#pragma mark -
 @implementation Isgl3dDirector
 
 @synthesize objectTouched = _objectTouched;
 @synthesize windowRect = _windowRect;
 @synthesize windowRectInPixels = _windowRectInPixels;
-@synthesize allowedAutoRotations = _allowedAutoRotations;
 @synthesize isPaused = _isPaused;
-@synthesize displayFPS = _displayFPS;
 @synthesize contentScaleFactor = _contentScaleFactor;
 @synthesize retinaDisplayEnabled = _retinaDisplayEnabled;
 @synthesize deltaTime = _dt;
@@ -104,12 +104,6 @@ static Isgl3dDirector * _instance = nil;
 			Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"created with NSTimer");
 		}
 
-		// Default device orientation
-		_deviceOrientation = Isgl3dOrientation0;
-
-		// Default no auto-rotation
-		_autoRotationStrategy = Isgl3dAutoRotationNone;
-		
 		_views = [[NSMutableArray alloc] init];
 		
 		// Initialise timing so that dt = 0 on first tick
@@ -123,8 +117,6 @@ static Isgl3dDirector * _instance = nil;
 		
 		// Create event3d handler
 		_event3DHandler = [[Isgl3dEvent3DHandler alloc] init];
-		
-		_displayFPS = NO;
 		
 		_retinaDisplayEnabled = NO;
 		_contentScaleFactor = 1.0f;
@@ -147,21 +139,20 @@ static Isgl3dDirector * _instance = nil;
 	[_gestureManager release];
 	_gestureManager = nil;
 	
-	if (_glView) {
-		[_glView release];
-	}
-
-	if (_renderer) {
-		[_renderer release];
-	}
-
-	if (_fpsRenderer) {
-		[_fpsRenderer release];
-	}
+    [_glView release];
+    _glView = nil;
+    
+    [_renderer release];
+    _renderer = nil;
+    
+    [_fpsRenderer release];
+    _fpsRenderer = nil;
 	
 	[_event3DHandler release];
+    _event3DHandler = nil;
 	
 	[_views release];
+    _views = nil;
 	
 	[super dealloc];
 }
@@ -214,66 +205,6 @@ static Isgl3dDirector * _instance = nil;
 	[Isgl3dColorUtil hexColorStringToFloatArray:colorString floatArray:_backgroundColor];
 }
 
-- (isgl3dOrientation) deviceOrientation {
-	return _deviceOrientation;
-}
-
-- (void)setDeviceOrientation:(isgl3dOrientation)orientation {
-
-	if (_autoRotationStrategy != Isgl3dAutoRotationByUIViewController) {
-		// If autorotate is enabled via UIViewController then ignore user-specified device rotations: keep as portrait
-		if (orientation != _deviceOrientation) {
-			_deviceOrientation = orientation;
-			if (_deviceOrientation == Isgl3dOrientation0) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to portrait");
-				
-			} else if (_deviceOrientation == Isgl3dOrientation180) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortraitUpsideDown animated:NO];
-				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to portrait upside down");
-				
-			} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:NO];
-				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to landscape left");
-				
-			} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
-				[[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-				Isgl3dClassDebugLog(Isgl3dLogLevelInfo, @"setting device orientation to landscape right");
-				
-			} else {
-				Isgl3dClassDebugLog(Isgl3dLogLevelError, @"unknown device orientation");
-			} 
-		}
-	}
-
-
-	// Force recalculation of all view orientations
-	for (Isgl3dView * view in _views) {
-		view.viewOrientation = view.viewOrientation;
-	}
-
-	// Update fps renderer projection	
-	if (_fpsRenderer) {
-		_fpsRenderer.orientation = _deviceOrientation;
-	}
-	
-	// Set the device orientation in the accelerometer
-	[Isgl3dAccelerometer sharedInstance].deviceOrientation = _deviceOrientation;
-	
-}
-
-- (isgl3dAutoRotationStrategy) autoRotationStrategy {
-	return _autoRotationStrategy;
-}
-
-- (void)setAutoRotationStrategy:(isgl3dAutoRotationStrategy)autoRotationStrategy {
-	// Force portrait orientation if controlled by UIViewController
-	if (autoRotationStrategy == Isgl3dAutoRotationByUIViewController) {
-		self.deviceOrientation = Isgl3dOrientationPortrait;
-	}
-	_autoRotationStrategy = autoRotationStrategy;
-}
-
 - (void)setOpenGLView:(UIView<Isgl3dGLView> *)glView {
 	if (glView != _glView) {
 
@@ -291,6 +222,7 @@ static Isgl3dDirector * _instance = nil;
 			
 			// Release the fps renderer
 			[_fpsRenderer release];
+            _fpsRenderer = nil;
 		}
 		
 		if (glView) {
@@ -309,7 +241,7 @@ static Isgl3dDirector * _instance = nil;
 			_glView.isgl3dTouchDelegate = self;
 			
 			// Create fps renderer
-			_fpsRenderer = [[Isgl3dFpsRenderer alloc] initWithOrientation:_deviceOrientation];
+			_fpsRenderer = [[Isgl3dFpsRenderer alloc] init];
 
 			_gestureManager = [[Isgl3dGestureManager alloc] initWithIsgl3dDirector:self];
 			
@@ -481,10 +413,7 @@ static Isgl3dDirector * _instance = nil;
 	[_views addObject:view];
 	
 	// Set active camera
-	_activeCamera = view.camera;
-	
-	// Force recalculation of view orientation
-	view.viewOrientation = view.viewOrientation;
+	_activeCamera = view.activeCamera;
 	
 	// Activate the view when it has been added
 	[view activate];
@@ -573,9 +502,6 @@ static Isgl3dDirector * _instance = nil;
 		_windowRect.size.width * _contentScaleFactor, 
         _windowRect.size.height * _contentScaleFactor);
 
-	// Update the viewport in the fps renderer
-	[_fpsRenderer updateViewport];
-
 	// Force recalculation of all view orientations
 	for (Isgl3dView * view in _views) {
 		[view onResizeFromLayer];
@@ -652,7 +578,7 @@ static Isgl3dDirector * _instance = nil;
 	// Render scenes in all views
 	for (Isgl3dView * view in _views) {
 		// Set active camera
-		_activeCamera = view.camera;
+		_activeCamera = view.activeCamera;
 		
 		// Update model transformations of view
 		if (!_isPaused) {
@@ -663,13 +589,16 @@ static Isgl3dDirector * _instance = nil;
 		[view render:_renderer];
 	}
 
+    // Render the fps if desired
+    // TODO: generic overlay rendering
+	for (Isgl3dView * view in _views) {
+        if (view.displayFPS && view.overlayCamera) {
+            [_fpsRenderer update:_dt andRender:_renderer overlayCamera:view.overlayCamera isPaused:_isPaused];
+        }
+    }
+    
 	// Handle any processing before rendering
 	[_renderer onRenderPhaseEnds];
-
-	// Render the fps if desired
-	if (_displayFPS) {
-		[_fpsRenderer update:_dt andRender:_renderer isPaused:_isPaused];
-	}
 }
 
 - (void)renderForEventCapture {

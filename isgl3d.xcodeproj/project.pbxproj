@@ -1322,6 +1322,8 @@
 		17F7A89C12FA0DF100C7BB82 /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 17F7A89B12FA0DF100C7BB82 /* mars.png */; };
 		4EA7751914ED046F009E6AD6 /* norm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751614ED0467009E6AD6 /* norm1.png */; };
 		4EA7751A14ED046F009E6AD6 /* norm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA7751714ED0467009E6AD6 /* norm4.png */; };
+		8B0A9E0A150EC227004B9965 /* Isgl3dOverlayCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0A9E08150EC227004B9965 /* Isgl3dOverlayCamera.h */; };
+		8B0A9E0B150EC227004B9965 /* Isgl3dOverlayCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A9E09150EC227004B9965 /* Isgl3dOverlayCamera.m */; };
 		8B0FA33F13E8038500E798BA /* Isgl3dGestureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */; };
 		8B0FA34013E8038500E798BA /* Isgl3dGestureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */; };
 		8B0FA35913E8046D00E798BA /* Isgl3dPVRLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */; };
@@ -2633,6 +2635,8 @@
 		17F7A8A712FA0EB800C7BB82 /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
 		4EA7751614ED0467009E6AD6 /* norm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm1.png; sourceTree = "<group>"; };
 		4EA7751714ED0467009E6AD6 /* norm4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = norm4.png; sourceTree = "<group>"; };
+		8B0A9E08150EC227004B9965 /* Isgl3dOverlayCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dOverlayCamera.h; sourceTree = "<group>"; };
+		8B0A9E09150EC227004B9965 /* Isgl3dOverlayCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dOverlayCamera.m; sourceTree = "<group>"; };
 		8B0FA33D13E8038500E798BA /* Isgl3dGestureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dGestureManager.h; sourceTree = "<group>"; };
 		8B0FA33E13E8038500E798BA /* Isgl3dGestureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dGestureManager.m; sourceTree = "<group>"; };
 		8B0FA35713E8046D00E798BA /* Isgl3dPVRLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dPVRLoader.h; sourceTree = "<group>"; };
@@ -4055,6 +4059,8 @@
 				17F1D67112F87EC5008D39E8 /* Isgl3dFollowCamera.m */,
 				17F1D67212F87EC5008D39E8 /* Isgl3dSpringCamera.h */,
 				17F1D67312F87EC5008D39E8 /* Isgl3dSpringCamera.m */,
+				8B0A9E08150EC227004B9965 /* Isgl3dOverlayCamera.h */,
+				8B0A9E09150EC227004B9965 /* Isgl3dOverlayCamera.m */,
 			);
 			path = cameras;
 			sourceTree = "<group>";
@@ -4974,6 +4980,7 @@
 				8BA3FB65150289F60021E453 /* Isgl3dLookAtCamera.h in Headers */,
 				8BA3FB9C1502ACE90021E453 /* Isgl3dNodeCamera.h in Headers */,
 				8B92DC4E15054189007807C2 /* Isgl3dFocusZoomPerspectiveLens.h in Headers */,
+				8B0A9E0A150EC227004B9965 /* Isgl3dOverlayCamera.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7056,6 +7063,7 @@
 				8BA3FB66150289F60021E453 /* Isgl3dLookAtCamera.m in Sources */,
 				8BA3FB9D1502ACE90021E453 /* Isgl3dNodeCamera.m in Sources */,
 				8B92DC4F15054189007807C2 /* Isgl3dFocusZoomPerspectiveLens.m in Sources */,
+				8B0A9E0B150EC227004B9965 /* Isgl3dOverlayCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7537,6 +7545,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7560,6 +7572,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7585,6 +7601,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7608,6 +7628,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7633,6 +7657,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7656,6 +7684,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7676,11 +7708,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = NO;
+				DEBUG = 1;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7700,10 +7737,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				COPY_PHASE_STRIP = YES;
+				DEBUG = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7729,6 +7771,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -7752,6 +7798,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -9027,7 +9077,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (
@@ -9051,7 +9104,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = USE_LATEST_GLES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = (

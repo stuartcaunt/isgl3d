@@ -39,7 +39,7 @@
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
         
         // Create tap recognizer handling all none node-taps        
         _rotationActive = YES;
@@ -99,6 +99,9 @@
     
     [_selectedMaterial release];
     _selectedMaterial = nil;
+    
+    [_container release];
+    _container = nil;
     
     [_sceneTapGestureRecognizer release];
     _sceneTapGestureRecognizer = nil;
@@ -184,11 +187,9 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create view and add to Isgl3dDirector
-	Isgl3dView * view = [GesturesDemoView view];
+	Isgl3dView *view = [GesturesDemoView view];
+    view.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:view];
 }
 

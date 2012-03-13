@@ -26,11 +26,7 @@
 #import "UITestView.h"
 
 
-@interface Simple3DView () {
-@private
-    Isgl3dNodeCamera *_camera;
-}
-@property (nonatomic,retain) Isgl3dNodeCamera *camera;
+@interface Simple3DView ()
 @end
 
 
@@ -39,7 +35,7 @@
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		// Create a button to calibrate the accelerometer
 		Isgl3dTextureMaterial * calibrateButtonMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"angle.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		Isgl3dGLUIButton * calibrateButton = [Isgl3dGLUIButton buttonWithMaterial:calibrateButtonMaterial];
@@ -93,13 +89,12 @@
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		// Create a button to calibrate the accelerometer
-		Isgl3dTextureMaterial * backgroundMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ui_bg.pvr" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
-		Isgl3dGLUIImage * background = [Isgl3dGLUIImage imageWithMaterial:backgroundMaterial andRectangle:CGRectMake(0, 0, 480, 320) width:480 height:320];
+		Isgl3dTextureMaterial *backgroundMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"ui_bg.pvr" shininess:0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+		Isgl3dGLUIImage *background = [Isgl3dGLUIImage imageWithMaterial:backgroundMaterial andRectangle:self.viewport width:self.viewport.size.width height:self.viewport.size.height];
 		[self.scene addChild:background];
 	}
-	
 	return self;
 }
 
@@ -117,11 +112,9 @@
 
 @implementation Simple3DView 
 
-@synthesize camera = _camera;
-
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		// Create the primitive
 		Isgl3dTextureMaterial * material = [Isgl3dTextureMaterial materialWithTextureFile:@"red_checker.png" shininess:0.9 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
 		Isgl3dTorus * torusMesh = [Isgl3dTorus meshWithGeometry:2 tubeRadius:1 ns:32 nt:32];
@@ -133,7 +126,9 @@
 		[self.scene addChild:light];
 
 		// Create camera controller
-		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:self.camera andView:self];
+        Isgl3dNodeCamera *nodeCamera = (Isgl3dNodeCamera *)self.defaultCamera;
+        
+		_cameraController = [[Isgl3dDemoCameraController alloc] initWithNodeCamera:nodeCamera andView:self];
 		_cameraController.orbit = 14;
 		_cameraController.theta = 30;
 		_cameraController.phi = 30;
@@ -149,22 +144,6 @@
     _cameraController = nil;
 		
 	[super dealloc];
-}
-
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
 }
 
 - (void) tick:(float)dt {
@@ -195,19 +174,17 @@
 @implementation AppDelegate
 
 - (void) createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientationLandscapeLeft;
-
 	// Create 2D view background and add to Isgl3dDirector
-	Isgl3dView * background = [UIBackgroundView view];
+	Isgl3dView *background = [UIBackgroundView view];
+    background.displayFPS = YES;
 	[[Isgl3dDirector sharedInstance] addView:background];
 
 	// Create 3D view and add to Isgl3dDirector
-	Isgl3dView * view = [Simple3DView view];
+	Isgl3dView *view = [Simple3DView view];
 	[[Isgl3dDirector sharedInstance] addView:view];
 
 	// Create UI and add to Isgl3dDirector
-	Isgl3dView * ui = [UITestView view];
+	Isgl3dView *ui = [UITestView view];
 	[[Isgl3dDirector sharedInstance] addView:ui];
 
 }

@@ -42,13 +42,14 @@
 @end
 
 
+#pragma mark -
 @implementation AccelerometerDemoView
 
 @synthesize camera = _camera;
 
 - (id)init {
 	
-	if ((self = [super init])) {
+	if (self = [super init]) {
 
 		_pauseActive = NO;	 	
 		_theta = M_PI / 2;
@@ -121,22 +122,6 @@
     _physicsWorld = nil;
 
 	[super dealloc];
-}
-
-- (void)createSceneCamera {
-    CGSize viewSize = self.viewport.size;
-    float fovyRadians = Isgl3dMathDegreesToRadians(45.0f);
-    Isgl3dPerspectiveProjection *perspectiveLens = [[Isgl3dPerspectiveProjection alloc] initFromViewSize:viewSize fovyRadians:fovyRadians nearZ:1.0f farZ:10000.0f];
-    
-    Isgl3dVector3 cameraPosition = Isgl3dVector3Make(0.0f, 0.0f, 10.0f);
-    Isgl3dVector3 cameraLookAt = Isgl3dVector3Make(0.0f, 0.0f, 0.0f);
-    Isgl3dVector3 cameraLookUp = Isgl3dVector3Make(0.0f, 1.0f, 0.0f);
-    Isgl3dNodeCamera *standardCamera = [[Isgl3dNodeCamera alloc] initWithLens:perspectiveLens position:cameraPosition lookAtTarget:cameraLookAt up:cameraLookUp];
-    [perspectiveLens release];
-    
-    self.camera = standardCamera;
-    [standardCamera release];
-    [self.scene addChild:standardCamera];
 }
 
 - (void)tick:(float)dt {
@@ -278,9 +263,6 @@
 @implementation AppDelegate
 
 - (void)createViews {
-	// Set the device orientation
-	[Isgl3dDirector sharedInstance].deviceOrientation = Isgl3dOrientation90CounterClockwise;
-
 	// Create views
 	AccelerometerDemoView * mainView = [AccelerometerDemoView view];
 	[[Isgl3dDirector sharedInstance] addView:mainView];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0A9E34150ED6BB004B9965 /* Isgl3dOverlayCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0A9E32150ED6BB004B9965 /* Isgl3dOverlayCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B0A9E35150ED6BB004B9965 /* Isgl3dOverlayCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A9E33150ED6BB004B9965 /* Isgl3dOverlayCamera.m */; };
 		8B2AFACC14FEEB810040102B /* Isgl3dMatrix4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFAC614FEEB810040102B /* Isgl3dMatrix4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B2AFACD14FEEB810040102B /* Isgl3dMatrix4.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2AFAC714FEEB810040102B /* Isgl3dMatrix4.m */; };
 		8B2AFACE14FEEB810040102B /* Isgl3dVector3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFAC814FEEB810040102B /* Isgl3dVector3.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -847,6 +849,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B0A9E32150ED6BB004B9965 /* Isgl3dOverlayCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dOverlayCamera.h; sourceTree = "<group>"; };
+		8B0A9E33150ED6BB004B9965 /* Isgl3dOverlayCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dOverlayCamera.m; sourceTree = "<group>"; };
 		8B2AFAC614FEEB810040102B /* Isgl3dMatrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix4.h; sourceTree = "<group>"; };
 		8B2AFAC714FEEB810040102B /* Isgl3dMatrix4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix4.m; sourceTree = "<group>"; };
 		8B2AFAC814FEEB810040102B /* Isgl3dVector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dVector3.h; sourceTree = "<group>"; };
@@ -855,7 +859,7 @@
 		8B2AFACB14FEEB810040102B /* Isgl3dVector4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector4.m; sourceTree = "<group>"; };
 		8B2AFADA14FEF1230040102B /* Isgl3dMatrix3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix3.h; sourceTree = "<group>"; };
 		8B2AFADB14FEF1230040102B /* Isgl3dMatrix3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix3.m; sourceTree = "<group>"; };
-		8B66CF6B14F679D600EE2444 /* isgl3d.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = isgl3d.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B66CF6B14F679D600EE2444 /* isgl3d */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = text; path = isgl3d; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B66CF6E14F679D600EE2444 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B66CF7214F679D600EE2444 /* isgl3d-framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "isgl3d-framework-Info.plist"; sourceTree = "<group>"; };
 		8B66CF7414F679D600EE2444 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1542,7 +1546,7 @@
 		8B66CF6C14F679D600EE2444 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B66CF6B14F679D600EE2444 /* isgl3d.framework */,
+				8B66CF6B14F679D600EE2444 /* isgl3d */,
 				8B66D5AD14F67EF000EE2444 /* libisgl3dbullet.a */,
 			);
 			name = Products;
@@ -1676,6 +1680,8 @@
 				8B66CFDF14F67B0C00EE2444 /* Isgl3dFollowCamera.m */,
 				8B66CFE014F67B0C00EE2444 /* Isgl3dSpringCamera.h */,
 				8B66CFE114F67B0C00EE2444 /* Isgl3dSpringCamera.m */,
+				8B0A9E32150ED6BB004B9965 /* Isgl3dOverlayCamera.h */,
+				8B0A9E33150ED6BB004B9965 /* Isgl3dOverlayCamera.m */,
 			);
 			name = cameras;
 			path = isgl3d/cameras;
@@ -2949,6 +2955,7 @@
 				8B92DC5F15057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.h in Headers */,
 				8B92DC6315057E4E007807C2 /* Isgl3dLookAtCamera.h in Headers */,
 				8B92DC6715057E5A007807C2 /* Isgl3dNodeCamera.h in Headers */,
+				8B0A9E34150ED6BB004B9965 /* Isgl3dOverlayCamera.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3156,7 +3163,7 @@
 			);
 			name = isgl3d;
 			productName = "isgl3d-framework";
-			productReference = 8B66CF6B14F679D600EE2444 /* isgl3d.framework */;
+			productReference = 8B66CF6B14F679D600EE2444 /* isgl3d */;
 			productType = "com.apple.product-type.framework.static";
 		};
 		8B66D5AC14F67EF000EE2444 /* isgl3dbullet */ = {
@@ -3411,6 +3418,7 @@
 				8B92DC6015057E35007807C2 /* Isgl3dFocusZoomPerspectiveLens.m in Sources */,
 				8B92DC6415057E4E007807C2 /* Isgl3dLookAtCamera.m in Sources */,
 				8B92DC6815057E5A007807C2 /* Isgl3dNodeCamera.m in Sources */,
+				8B0A9E35150ED6BB004B9965 /* Isgl3dOverlayCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

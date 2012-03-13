@@ -29,11 +29,15 @@
 
 static Isgl3dAccelerometer * _instance = nil;
 
+
 @interface Isgl3dAccelerometer ()
+@property (nonatomic,readonly) UIDeviceOrientation deviceOrientation;
 - (void)calculateGravity;
 - (void)calibrateTilt;
 @end
 
+
+#pragma mark -
 @implementation Isgl3dAccelerometer
 
 @synthesize deviceOrientation = _deviceOrientation;
@@ -42,18 +46,21 @@ static Isgl3dAccelerometer * _instance = nil;
 
 - (id)init {
 
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_updateFrequency = 30;
 		
 		_isCalibrating = NO;
 		_tiltActive = NO;
 		_tiltCutoff = 0;
+        
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 	}
 	
 	return self;
 }
 
 - (void)dealloc {
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 	
     [super dealloc];
 }
@@ -107,23 +114,25 @@ static Isgl3dAccelerometer * _instance = nil;
 
 - (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration {
 
+    UIDeviceOrientation deviceOrientation = self.deviceOrientation;
+    
 	// Store raw data, modified with device rotation
-	if (_deviceOrientation == Isgl3dOrientation0) {
+	if (deviceOrientation == UIDeviceOrientationPortrait) {
 	    _acceleration[0] = acceleration.x;
 	    _acceleration[1] = acceleration.y;
 	    _acceleration[2] = acceleration.z;
 		
-	} else if (_deviceOrientation == Isgl3dOrientation90Clockwise) {
+	} else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
 	    _acceleration[0] = acceleration.y;
 	    _acceleration[1] = -acceleration.x;
 	    _acceleration[2] = acceleration.z;
 		
-	} else if (_deviceOrientation == Isgl3dOrientation180) {
+	} else if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
 	    _acceleration[0] = -acceleration.x;
 	    _acceleration[1] = -acceleration.y;
 	    _acceleration[2] = acceleration.z;
 		
-	} else if (_deviceOrientation == Isgl3dOrientation90CounterClockwise) {
+	} else if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
 	    _acceleration[0] = -acceleration.y;
 	    _acceleration[1] = acceleration.x;
 	    _acceleration[2] = acceleration.z;
@@ -131,7 +140,7 @@ static Isgl3dAccelerometer * _instance = nil;
 
 
 	if (_isCalibrating) {
-		// normalise gravity
+		// normalize gravity
 		float length = sqrtf(_acceleration[0] * _acceleration[0] + _acceleration[1] * _acceleration[1] + _acceleration[2] * _acceleration[2]);
 	    _acceleration[0] /= length;
 	    _acceleration[1] /= length;
@@ -144,7 +153,7 @@ static Isgl3dAccelerometer * _instance = nil;
 		// Calculate gravity first...
 		[self calculateGravity];
 
-		// ... then normalise gravity
+		// ... then normalize gravity
 		float length = sqrtf(_acceleration[0] * _acceleration[0] + _acceleration[1] * _acceleration[1] + _acceleration[2] * _acceleration[2]);
 	    _acceleration[0] /= length;
 	    _acceleration[1] /= length;
@@ -211,14 +220,14 @@ static Isgl3dAccelerometer * _instance = nil;
 	}
 }
 
-- (float) tiltAngle {
+- (float)tiltAngle {
 	if (_isCalibrating) {
 		return 0;
 	}
 	return acos(-_rawGravity[2]);
 }
 
-- (float) rotationAngle {
+- (float)rotationAngle {
 	if (_isCalibrating) {
 		return 0;
 	}
@@ -228,6 +237,12 @@ static Isgl3dAccelerometer * _instance = nil;
 	} else {
 		return atan2(_rawGravity[0], -_rawGravity[1]);
 	}
+}
+
+
+#pragma mark -
+- (UIDeviceOrientation)deviceOrientation {
+    return [UIDevice currentDevice].orientation;
 }
 
 @end
