@@ -70,7 +70,7 @@
 		171CB86213195C65003712F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228112F8C8C000F80DFD /* QuartzCore.framework */; };
 		171CB86313195C65003712F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7228312F8C8C000F80DFD /* UIKit.framework */; };
 		171CB86A13195CF8003712F4 /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
-		171CB87013195D0C003712F4 /* CubeAndCameraView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */; };
+		171CB87013195D0C003712F4 /* CubeAndCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 171CB86D13195D0C003712F4 /* CubeAndCameraView.m */; };
 		171CB8E113196403003712F4 /* Isgl3dViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */; };
 		171CB8E213196403003712F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B71FE112F8B8F400F80DFD /* main.m */; };
 		171CB8E513196403003712F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */; };
@@ -1984,7 +1984,7 @@
 		1713BB481358D6F7002C3288 /* vfp_clobbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vfp_clobbers.h; sourceTree = "<group>"; };
 		171CB86713195C65003712F4 /* CubeOverCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeOverCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		171CB86C13195D0C003712F4 /* CubeAndCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeAndCameraView.h; sourceTree = "<group>"; };
-		171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubeAndCameraView.mm; sourceTree = "<group>"; };
+		171CB86D13195D0C003712F4 /* CubeAndCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubeAndCameraView.m; sourceTree = "<group>"; };
 		171CB8EE13196403003712F4 /* Tutorial1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tutorial1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		171CB8F2131964F1003712F4 /* Isgl3dTutorial1View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dTutorial1View.h; sourceTree = "<group>"; };
 		171CB8F3131964F1003712F4 /* Isgl3dTutorial1View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dTutorial1View.m; sourceTree = "<group>"; };
@@ -3353,7 +3353,7 @@
 				1733548613408D34000F26F0 /* Isgl3dAppDelegateWithCamera.h */,
 				1733548713408D34000F26F0 /* Isgl3dAppDelegateWithCamera.m */,
 				171CB86C13195D0C003712F4 /* CubeAndCameraView.h */,
-				171CB86D13195D0C003712F4 /* CubeAndCameraView.mm */,
+				171CB86D13195D0C003712F4 /* CubeAndCameraView.m */,
 			);
 			path = augmentedreality;
 			sourceTree = "<group>";
@@ -6546,7 +6546,7 @@
 				171CB86A13195CF8003712F4 /* Isgl3dDemoCameraController.m in Sources */,
 				171CB85813195C65003712F4 /* main.m in Sources */,
 				171CB85913195C65003712F4 /* Isgl3dViewController.m in Sources */,
-				171CB87013195D0C003712F4 /* CubeAndCameraView.mm in Sources */,
+				171CB87013195D0C003712F4 /* CubeAndCameraView.m in Sources */,
 				1733547F13408C38000F26F0 /* Isgl3dAppDelegate.mm in Sources */,
 				1733548813408D34000F26F0 /* Isgl3dAppDelegateWithCamera.m in Sources */,
 			);
