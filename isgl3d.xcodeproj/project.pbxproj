@@ -7533,12 +7533,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FollowCamera;
 				SDKROOT = iphoneos;
 			};
@@ -7556,12 +7551,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FollowCamera;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7581,12 +7571,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SpringCamera;
 				SDKROOT = iphoneos;
 			};
@@ -7604,12 +7589,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SpringCamera;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7631,12 +7611,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
 			};
@@ -7654,12 +7629,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7683,12 +7653,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
 			};
@@ -7710,12 +7675,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7739,12 +7699,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
 			};
@@ -7766,12 +7721,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7795,12 +7745,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
 			};
@@ -7822,12 +7767,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7852,12 +7792,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
 			};
@@ -7880,12 +7815,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7909,12 +7839,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
 			};
@@ -7936,12 +7861,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -7961,12 +7881,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
 			};
@@ -7984,12 +7899,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8010,12 +7920,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
 			};
@@ -8034,12 +7939,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8059,12 +7959,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
 			};
@@ -8082,12 +7977,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8107,12 +7997,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8130,12 +8015,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8159,12 +8039,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
 			};
@@ -8186,12 +8061,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8211,12 +8081,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
 			};
@@ -8234,12 +8099,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8259,12 +8119,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
 			};
@@ -8282,12 +8137,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8307,12 +8157,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
 			};
@@ -8330,12 +8175,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8355,12 +8195,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8378,12 +8213,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8403,12 +8233,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8426,12 +8251,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8452,12 +8272,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainPhysics;
 				SDKROOT = iphoneos;
 			};
@@ -8476,12 +8291,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainPhysics;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8501,12 +8311,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraZoomAndFocus;
 				SDKROOT = iphoneos;
 			};
@@ -8524,12 +8329,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraZoomAndFocus;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8549,12 +8349,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
 			};
@@ -8572,12 +8367,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8597,12 +8387,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframePODAnimationTest;
 				SDKROOT = iphoneos;
 			};
@@ -8620,12 +8405,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframePODAnimationTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8673,12 +8453,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShaderMaterialDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8700,12 +8475,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShaderMaterialDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8725,12 +8495,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ViewportTest;
 				SDKROOT = iphoneos;
 			};
@@ -8748,12 +8513,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ViewportTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8773,12 +8533,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = BillboardTest;
 				SDKROOT = iphoneos;
 			};
@@ -8796,12 +8551,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = BillboardTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8821,12 +8571,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = GesturesDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8844,12 +8589,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = GesturesDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8869,12 +8609,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframeMeshAnimationTest;
 				SDKROOT = iphoneos;
 			};
@@ -8892,12 +8627,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframeMeshAnimationTest;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8917,12 +8647,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ActionsDemo;
 				SDKROOT = iphoneos;
 			};
@@ -8940,12 +8665,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ActionsDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -8996,12 +8716,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Accelerometer;
 				SDKROOT = iphoneos;
 			};
@@ -9020,12 +8735,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Accelerometer;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -9045,12 +8755,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
 			};
@@ -9068,12 +8773,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -9093,12 +8793,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Lighting;
 				SDKROOT = iphoneos;
 			};
@@ -9116,12 +8811,7 @@
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Lighting;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -9229,12 +8919,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = NormalMappingDemo;
 				SDKROOT = iphoneos;
 			};
@@ -9256,12 +8941,7 @@
 				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = NormalMappingDemo;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;

@@ -64,10 +64,6 @@
 	BOOL _boneBuildComplete;
 	BOOL _meshesAndMaterialsComplete;
 }
-@end
-
-@interface Isgl3dPODImporter (PrivateMethods)
-
 /**
  * @result (autorelease) Mesh created from POD data
  */
@@ -76,19 +72,20 @@
 /**
  * @result (autorelease) BoneNode created from POD data
  */
-- (Isgl3dBoneNode *) createBoneNode:(unsigned int)nodeId;
+- (Isgl3dBoneNode *)createBoneNode:(unsigned int)nodeId;
 
 /**
  * @result (autorelease) AnimatedMesh created from POD data
  */
-- (Isgl3dAnimatedMeshNode *) createAnimatedMeshNode:(unsigned int)nodeId meshId:(unsigned int)meshId mesh:(Isgl3dGLMesh *)mesh material:(Isgl3dMaterial *)material;
+- (Isgl3dAnimatedMeshNode *)createAnimatedMeshNode:(unsigned int)nodeId meshId:(unsigned int)meshId mesh:(Isgl3dGLMesh *)mesh material:(Isgl3dMaterial *)material;
 
 - (void)buildBones;
 - (void)buildMeshesAndMaterials;
 - (void)buildMeshNodes;
-
 @end
 
+
+#pragma mark -
 @implementation Isgl3dPODImporter
 
 + (id)podImporterWithResource:(NSString *)name {
@@ -161,15 +158,25 @@
 - (void)dealloc {
 
 	[_meshes release];
+    _meshes = nil;
 	[_meshNodes release];
+    _meshNodes = nil;
 	[_boneNodes release];
+    _boneNodes = nil;
 	[_indexedNodes release];
+    _indexedNodes = nil;
 	[_boneNodeIndices release];
+    _boneNodeIndices = nil;
 	[_textures release];
+    _textures = nil;
 	[_materials release];
+    _materials = nil;
 	[_cameras release];
+    _cameras = nil;
 	[_lights release];
+    _lights = nil;
 	[_textureMods release];
+    _textureMods = nil;
 
 	delete _podScene;
 

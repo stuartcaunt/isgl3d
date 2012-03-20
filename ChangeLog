@@ -1,6 +1,12 @@
 Current branch 1.3.0 (2012-01-23)
-	Project migrated to the latest Xcode version 4.2
-	iOS Deployment target changed to 4.3
+	Project migrated to the latest Xcode version 4.3 and LLDB instead of GFB, tested with iOS 5.1
+	iOS Deployment target changed to 4.3, older iOS versions will no longer be supported
+	New math code with changed function naming (conforming to the Apple coding style guidelines), old functions are deprecated and are no longer supported.
+	More VFP/NEON accelerated matrix and vector functions
+	GLKit compatible math code
+	Normal mapping support (OpenGL ES 2.0 only)
+	Shadow mapping support (OpenGL ES 2.0 only)
+	iSGL3D Framework project
 
 Version 1.2.3 (2011-11-26)
 	Fix compiler bugs in template for Xcode4.2.
