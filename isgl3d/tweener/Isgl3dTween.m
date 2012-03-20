@@ -27,13 +27,15 @@
 #import <objc/runtime.h>
 #import "Isgl3dLog.h"
 
-@interface Isgl3dTween (PrivateMethods)
+@interface Isgl3dTween ()
 - (void)handleParameters:(NSDictionary *)parameters;
-- (float) tweenFunc:(float)progression;
-- (float) easeOutBounce:(float)progression;
-- (float) easeOutThrow:(float)progression;
+- (float)tweenFunc:(float)progression;
+- (float)easeOutBounce:(float)progression;
+- (float)easeOutThrow:(float)progression;
 @end
 
+
+#pragma mark -
 @implementation Isgl3dTween
 
 @synthesize object = _object;
@@ -43,7 +45,7 @@
 }
 
 - (id)initWithObject:(id)object forParameters:(NSDictionary *)parameters {
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_object = object;
 		_startTime = [[NSDate alloc] init];
 		_isCompleted = NO;
@@ -59,14 +61,17 @@
 - (void)dealloc {
 	
 	[_initialValues release];
+    _initialValues = nil;
 	[_finalValues release];
+    _finalValues = nil;
 	[_transition release];
+    _transition = nil;
 	
 	[_startTime release];
+    _startTime = nil;
 	
-	if (_onCompleteTarget) {
-		[_onCompleteTarget release];
-	}
+    [_onCompleteTarget release];
+    _onCompleteTarget = nil;
 	
 	[super dealloc];
 }
@@ -108,11 +113,11 @@
 			@try {
 				
 				// Verify that property value is an NSNumber
-				if (![[_object valueForKey:key] isKindOfClass:[NSNumber class]]) {
+				if (![[_object valueForKeyPath:key] isKindOfClass:[NSNumber class]]) {
 					Isgl3dClassDebugLog(Isgl3dLogLevelError, @"property %@ cannot be used for tween. Only NSNumber properties can be used", key);
 					
 				} else {
-					NSNumber * initialValue = [_object valueForKey:key];
+					NSNumber *initialValue = [_object valueForKeyPath:key];
 				
 					[_initialValues setObject:initialValue forKey:key];
 					[_finalValues setObject:[parameters objectForKey:key] forKey:key];
@@ -129,11 +134,11 @@
 	}
 }
 
-- (BOOL) isCompleted {
+- (BOOL)isCompleted {
 	return _isCompleted;
 }
 
-- (NSArray *) properties {
+- (NSArray *)properties {
 	return [_finalValues allKeys];
 }
 
@@ -142,7 +147,7 @@
 	[_initialValues removeObjectForKey:property];
 }
 
-- (BOOL) isEmpty {
+- (BOOL)isEmpty {
 	return [_finalValues count] == 0;
 	
 }
@@ -190,7 +195,7 @@
 /**
  * Calculate the tween function from progression [0..1]
  */
-- (float) tweenFunc:(float)progression {
+- (float)tweenFunc:(float)progression {
 	
 	if ([_transition isEqualToString:TWEEN_FUNC_LINEAR]) {
 		return progression;
@@ -218,11 +223,10 @@
 
 	} 
 	
-	
 	return progression;
 }
 
-- (float) easeOutBounce:(float)progression {
+- (float)easeOutBounce:(float)progression {
 	// calculted with rebound speed = f * incoming speed
 	float f = 0.7;
 	float t1 = 1.0 / (2.0*f*f*f + 2.0*f*f + 2.0*f + 1.0);
@@ -253,7 +257,7 @@
 	}
 }
 
-- (float) easeOutThrow:(float)progression {
+- (float)easeOutThrow:(float)progression {
 	float f = 0.2;
 	float g = 2 * (1.0 + 2 * f + 2 * sqrt(f * (1 + f)));
 	float v0 = sqrt(2 * g * (1 + f));
