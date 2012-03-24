@@ -2424,7 +2424,7 @@
 		17AD09F313435013005F5F7F /* ViewportTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewportTestView.m; path = viewport/ViewportTestView.m; sourceTree = "<group>"; };
 		17B71FE112F8B8F400F80DFD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17B720BE12F8BD7100F80DFD /* Isgl3dViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dViewController.h; sourceTree = "<group>"; };
-		17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Isgl3dViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		17B720BF12F8BD7100F80DFD /* Isgl3dViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Isgl3dViewController.m; sourceTree = "<group>"; };
 		17B7227D12F8C8C000F80DFD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		17B7227F12F8C8C000F80DFD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		17B7228112F8C8C000F80DFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -7536,6 +7536,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FollowCamera;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7554,6 +7555,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = FollowCamera;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7574,6 +7576,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SpringCamera;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7592,6 +7595,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SpringCamera;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7614,6 +7618,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7632,6 +7637,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CubeOverCamera;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7656,6 +7662,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7678,6 +7685,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial1;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7702,6 +7710,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7724,6 +7733,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial2;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7748,6 +7758,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7770,6 +7781,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial3;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7795,6 +7807,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7818,6 +7831,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial4;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7842,6 +7856,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7864,6 +7879,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Tutorial5;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7884,6 +7900,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7902,6 +7919,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ParticleSystem;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7923,6 +7941,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7942,6 +7961,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PhysicsTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -7962,6 +7982,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -7980,6 +8001,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PODTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8000,6 +8022,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8018,6 +8041,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = PrimitivesDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8042,6 +8066,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8064,6 +8089,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShadowMappingTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8084,6 +8110,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8102,6 +8129,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SkinningTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8122,6 +8150,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8140,6 +8169,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainMeshTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8160,6 +8190,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8178,6 +8209,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TextureOptionsTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8198,6 +8230,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8216,6 +8249,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TweeningDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8236,6 +8270,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8254,6 +8289,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = UIDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8275,6 +8311,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainPhysics;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8294,6 +8331,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = TerrainPhysics;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8314,6 +8352,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraZoomAndFocus;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8332,6 +8371,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraZoomAndFocus;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8352,6 +8392,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8370,6 +8411,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Occlusion;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8390,6 +8432,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframePODAnimationTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8408,6 +8451,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframePODAnimationTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8421,6 +8465,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8433,6 +8478,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -8456,6 +8502,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShaderMaterialDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8478,6 +8525,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ShaderMaterialDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8498,6 +8546,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ViewportTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8516,6 +8565,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ViewportTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8536,6 +8586,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = BillboardTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8554,6 +8605,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = BillboardTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8574,6 +8626,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = GesturesDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8592,6 +8645,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = GesturesDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8612,6 +8666,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframeMeshAnimationTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8630,6 +8685,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = KeyframeMeshAnimationTest;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8650,6 +8706,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ActionsDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8668,6 +8725,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = ActionsDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8684,6 +8742,7 @@
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8697,6 +8756,7 @@
 				HEADER_SEARCH_PATHS = "external/bullet/**";
 				PRODUCT_NAME = isgl3dbullet;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8719,6 +8779,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Accelerometer;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8738,6 +8799,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Accelerometer;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8758,6 +8820,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8776,6 +8839,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = CameraMovement;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8796,6 +8860,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Lighting;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8814,6 +8879,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Lighting;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -8839,6 +8905,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8860,6 +8927,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_CFLAGS = "-mno-thumb";
 				PRODUCT_NAME = isgl3d;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -8922,6 +8990,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = NormalMappingDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -8944,6 +9013,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = NormalMappingDemo;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;

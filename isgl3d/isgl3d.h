@@ -24,7 +24,7 @@
  */
 
 
-extern const NSString const* isgl3dVersion();
+extern NSString const* isgl3dVersion();
 
 
 #import "actions/Isgl3dAction.h"
