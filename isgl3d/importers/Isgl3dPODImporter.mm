@@ -635,7 +635,7 @@
 		// Set the default node transformation
 		_podScene->SetFrame(0);
 		PVRTMat4 podTransformation;
-		_podScene->GetWorldMatrix(podTransformation, meshNodeInfo);
+		_podScene->GetTransformationMatrix(podTransformation, meshNodeInfo);
 		[node setTransformationFromOpenGLMatrix:podTransformation.f];
 		
 	}
