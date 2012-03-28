@@ -29,15 +29,15 @@
 
 @interface NormalMappingDemoView : Isgl3dBasic3DView {
 	
-	Isgl3dNode * _container;
 	Isgl3dMeshNode * _torus;
 	Isgl3dMeshNode * _cone;
 	Isgl3dMeshNode * _cylinder;
 	Isgl3dMeshNode * _arrow;
 	Isgl3dMeshNode * _ovoid;
 	Isgl3dMeshNode * _gourat;
-	float _containerRotation;	
 
+    Isgl3dLight * _light;
+    Isgl3dNodeCamera * _camera;
 	Isgl3dDemoCameraController * _cameraController;
 }
 

@@ -40,6 +40,7 @@
 
 @synthesize texture=_texture;
 @synthesize normalMap=_normalMap;
+@synthesize specularMap=_specularMap;
 
 + (id)materialWithTextureFile:(NSString *)fileName shininess:(float)shininess precision:(Isgl3dTexturePrecision)precision repeatX:(BOOL)repeatX repeatY:(BOOL)repeatY {
 	return [[[self alloc] initWithTextureFile:fileName shininess:shininess precision:precision repeatX:repeatX repeatY:repeatY] autorelease];
@@ -146,8 +147,8 @@
 	return self;
 }
 
-- (void)setNormalMapFromFile:(NSString *)normalMapFileName {
-    _normalMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:normalMapFileName] retain];
+- (void)setNormalMapFromFile:(NSString *)fileName {
+    _normalMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:fileName] retain];
     _isNormalMapped = YES;
 }
 
@@ -156,13 +157,26 @@
     _isNormalMapped = YES;
 }
 
+- (void)setSpecularMapFromFile:(NSString *)fileName {
+    _specularMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromFile:fileName] retain];
+    _isSpecularMapped = YES;
+}
+
+- (void)setSpecularMapFromUIImage:(UIImage *)image {
+    _specularMap = [[[Isgl3dGLTextureFactory sharedInstance] createTextureFromUIImage:image key:@"SpecularMapping"] retain];
+    _isSpecularMapped = YES;
+}
+
 - (void)dealloc {
 	[_texture release];
 	_texture = nil;
 
     [_normalMap release];
 	_normalMap = nil;
-    
+
+    [_specularMap release];
+	_specularMap = nil;
+
 	[super dealloc];
 }
 
@@ -172,6 +186,7 @@
 	copy.texture = _texture;
 	copy.isHighDefinition = _isHighDefinition;
     copy.normalMap = _normalMap;
+    copy.specularMap = _specularMap;
 
 	return copy;
 }
@@ -180,6 +195,8 @@
 	requirements |= TEXTURE_MAPPING_ON;
     if(_isNormalMapped)
         requirements |= NORMAL_MAPPING_ON;
+    if(_isSpecularMapped)
+        requirements |= SPECULAR_MAPPING_ON;
 	[super prepareRenderer:renderer requirements:requirements alpha:alpha node:node];
 
 	// Enable point sprites if necessary
@@ -190,6 +207,8 @@
 	[renderer setTexture:_texture];
     if(_isNormalMapped)
         [renderer setNormalMap:_normalMap];
+    if(_isSpecularMapped)
+        [renderer setSpecularMap:_specularMap];
 }
 
 - (unsigned int) width {

@@ -37,6 +37,7 @@
 #define SHADOW_MAP_CREATION_ON  (1 << 6)
 #define CAPTURE_ON              (1 << 7)
 #define NORMAL_MAPPING_ON       (1 << 8)
+#define SPECULAR_MAPPING_ON     (1 << 9)
 
 #define ISGL3D_COLOR_BUFFER_BIT     1
 #define ISGL3D_DEPTH_BUFFER_BIT     2
@@ -110,6 +111,7 @@ typedef enum {
 - (void)setTexture:(Isgl3dGLTexture *)texture;
 - (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
 - (void)setNormalMap:(Isgl3dGLTexture *)texture;
+- (void)setSpecularMap:(Isgl3dGLTexture *)texture;
 
 - (void)addLight:(Isgl3dLight *)light;
 - (void)setSceneAmbient:(NSString *)ambient;

@@ -30,6 +30,7 @@
 @synthesize textureEnabled = _textureEnabled;
 @synthesize lightingEnabled = _lightingEnabled;
 @synthesize normalMappingEnabled = _normalMappingEnabled;
+@synthesize specularMappingEnabled = _specularMappingEnabled;
 
 - (id)init {
 	
@@ -50,12 +51,14 @@
 	_textureEnabled = state.textureEnabled;
 	_lightingEnabled = state.lightingEnabled;
 	_normalMappingEnabled = state.normalMappingEnabled;
+	_specularMappingEnabled = state.specularMappingEnabled;
 }
 
 - (void)reset {
 	_textureEnabled = false;
 	_lightingEnabled = false;
     _normalMappingEnabled = false;
+	_specularMappingEnabled = false;
 }
 
 

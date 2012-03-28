@@ -72,6 +72,9 @@
 - (void)setNormalMapping:(Isgl3dGLTexture *)texture {
 }
 
+- (void)setSpecularMapping:(Isgl3dGLTexture *)texture {
+}
+
 - (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess {
 }
 
