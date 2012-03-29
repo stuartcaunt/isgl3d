@@ -1450,6 +1450,7 @@
 		8BBE511F150060C0006CC905 /* Isgl3dEAGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE511D150060C0006CC905 /* Isgl3dEAGLView.h */; };
 		8BBE5120150060C0006CC905 /* Isgl3dEAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE511E150060C0006CC905 /* Isgl3dEAGLView.m */; };
 		8BBE5159150067A7006CC905 /* Isgl3dGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE5158150067A7006CC905 /* Isgl3dGLView.h */; };
+		8BCB07D915251E2E00448ACF /* Isgl3dDemoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 178963B812FB3AA500E6272F /* Isgl3dDemoCameraController.m */; };
 		8BDBA18814CCFA9000BAEB8A /* PVRTArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15614CCFA9000BAEB8A /* PVRTArray.h */; };
 		8BDBA18914CCFA9000BAEB8A /* PVRTBackground.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA15714CCFA9000BAEB8A /* PVRTBackground.h */; };
 		8BDBA18A14CCFA9000BAEB8A /* PVRTBoneBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA15814CCFA9000BAEB8A /* PVRTBoneBatch.cpp */; };
@@ -5754,9 +5755,9 @@
 				1731213D12FB3D6500861D84 /* ParticleSystem */,
 				1731217812FB562900861D84 /* PhysicsTest */,
 				173121B312FB58A000861D84 /* PODTest */,
+				173122D612FC7B9300861D84 /* SkinningTest */,
 				1731225812FC764100861D84 /* PrimitivesDemo */,
 				1731229B12FC797300861D84 /* ShadowMappingTest */,
-				173122D612FC7B9300861D84 /* SkinningTest */,
 				1731232012FC7DFA00861D84 /* TerrainMeshTest */,
 				1731237412FC82BD00861D84 /* TextureOptionsTest */,
 				173123A212FC841000861D84 /* TweeningDemo */,
@@ -6636,6 +6637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BCB07D915251E2E00448ACF /* Isgl3dDemoCameraController.m in Sources */,
 				173121BC12FB58A000861D84 /* Isgl3dViewController.m in Sources */,
 				173121BD12FB58A000861D84 /* main.m in Sources */,
 				173121CE12FB58F600861D84 /* PODTestView.mm in Sources */,
@@ -7957,6 +7959,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -7975,6 +7981,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "isgl3d/isgl3d-Apps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					USE_LATEST_GLES,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -8879,6 +8889,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -8897,6 +8908,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

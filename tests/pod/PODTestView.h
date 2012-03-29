@@ -25,15 +25,8 @@
 
 #import "isgl3d.h"
 
-@class Isgl3dScene;
-@class Isgl3dCamera;
 
-@interface PODTestView : Isgl3dBasic3DView {
-
-	float _angle;
-	Isgl3dMeshNode * _teapot;	
-}
-
+@interface PODTestView : Isgl3dBasic3DView
 @end
 
 

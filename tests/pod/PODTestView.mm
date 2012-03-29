@@ -27,7 +27,11 @@
 #import "Isgl3dPODImporter.h"
 
 
-@interface PODTestView ()
+@interface PODTestView () {
+@private
+	float _angle;
+	Isgl3dMeshNode * _teapot;	
+}
 @end
 
 
@@ -46,6 +50,7 @@
 
 		// Enable shadow rendering
 		[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowPlanar;
+        //[Isgl3dDirector sharedInstance].shadowRenderingMethod = Isgl3dShadowMaps;
 		[Isgl3dDirector sharedInstance].shadowAlpha = 0.5;
 
 		Isgl3dPODImporter * podImporter = [Isgl3dPODImporter podImporterWithResource:@"Scene_float.pod"];

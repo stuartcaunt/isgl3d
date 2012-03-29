@@ -28,7 +28,11 @@
 #import "Isgl3dDemoCameraController.h"
 
 
-@interface SkinningTestView ()
+@interface SkinningTestView () {
+@private
+	Isgl3dAnimationController * _animationController;
+	Isgl3dDemoCameraController * _cameraController;
+}
 @end
 
 

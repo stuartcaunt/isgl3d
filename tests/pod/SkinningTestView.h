@@ -27,12 +27,8 @@
 
 @class Isgl3dDemoCameraController;
 
-@interface SkinningTestView : Isgl3dBasic3DView {
 
-	Isgl3dAnimationController * _animationController;
-	Isgl3dDemoCameraController * _cameraController;
-}
-
+@interface SkinningTestView : Isgl3dBasic3DView
 @end
 
 

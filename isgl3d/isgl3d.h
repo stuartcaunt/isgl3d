@@ -24,7 +24,15 @@
  */
 
 
-extern const NSString const* isgl3dVersion();
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern NSString const* isgl3dVersion();
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #import "actions/Isgl3dAction.h"
