@@ -25,21 +25,8 @@
 
 #import "isgl3d.h"
 
-@class Isgl3dDemoCameraController;
 
-@interface NormalMappingDemoView : Isgl3dBasic3DView {
-	
-	Isgl3dNode * _container;
-	Isgl3dMeshNode * _torus;
-	Isgl3dMeshNode * _cone;
-	Isgl3dMeshNode * _cylinder;
-	Isgl3dMeshNode * _arrow;
-	Isgl3dMeshNode * _ovoid;
-	Isgl3dMeshNode * _gourat;
-	float _containerRotation;	
-
-	Isgl3dDemoCameraController * _cameraController;
-}
+@interface NormalMappingDemoView : Isgl3dBasic3DView
 
 @end
 

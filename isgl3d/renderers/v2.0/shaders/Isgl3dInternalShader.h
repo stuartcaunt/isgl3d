@@ -41,6 +41,7 @@
 - (void)setTexture:(Isgl3dGLTexture *)texture;
 - (void)setMaterialData:(float *)ambientColor diffuseColor:(float *)diffuseColor specularColor:(float *)specularColor withShininess:(float)shininess;
 - (void)setNormalMapping:(Isgl3dGLTexture *)texture;
+- (void)setSpecularMapping:(Isgl3dGLTexture *)texture;
 - (void)enableLighting:(BOOL)lightingEnabled;
 - (void)setShadowCastingMVPMatrix:(Isgl3dMatrix4 *)mvpMatrix;
 - (void)setShadowCastingLightPosition:(Isgl3dVector3 *)position viewMatrix:(Isgl3dMatrix4 *)viewMatrix;

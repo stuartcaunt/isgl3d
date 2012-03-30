@@ -51,9 +51,11 @@
 @protected
 	Isgl3dGLTexture * _texture;
     Isgl3dGLTexture * _normalMap;
+    Isgl3dGLTexture * _specularMap;
 
 	BOOL _isHighDefinition;
     BOOL _isNormalMapped;
+    BOOL _isSpecularMapped;
 }
 
 /**
@@ -87,6 +89,11 @@
  * Gets/sets the Isgl3dGLTexture associated with the NormalMap.
  */
 @property (nonatomic, retain) Isgl3dGLTexture *normalMap;
+
+/**
+ * Gets/sets the Isgl3dGLTexture associated with the SpecularMap.
+ */
+@property (nonatomic, retain) Isgl3dGLTexture *specularMap;
 
 /**
  * Allocates and initialises (autorelease) texture material from an image file.
@@ -254,7 +261,9 @@
  */
 - (id)initWithText:(NSString *)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize;
 
-- (void)setNormalMapFromFile:(NSString *)normalMapFileName;
+- (void)setNormalMapFromFile:(NSString *)fileName;
 - (void)setNormalMapFromUIImage:(UIImage *)image;
+- (void)setSpecularMapFromFile:(NSString *)fileName;
+- (void)setSpecularMapFromUIImage:(UIImage *)image;
 
 @end
