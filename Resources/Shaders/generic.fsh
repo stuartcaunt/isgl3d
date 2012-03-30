@@ -41,6 +41,10 @@ varying lowp vec3 v_normal;
 varying lowp vec3 v_lightDir;
 #endif
 
+#ifdef SPECULAR_MAPPING_ENABLED
+uniform sampler2D s_sm_texture;
+#endif
+
 #ifdef ALPHA_TEST_ENABLED
 uniform lowp float u_alphaTestValue;
 #endif
@@ -73,25 +77,17 @@ void main() {
 #endif
     
 #ifdef NORMAL_MAPPING_ENABLED
-    lowp float maxVariance = 0.2;
-	lowp float minVariance = maxVariance / 2.0;
-	lowp vec3 normalAdjusted = v_normal + normalize(texture2D(s_nm_texture, v_texCoord.st).rgb * maxVariance - minVariance);
-	lowp float diffuseIntensity = max(0.0, dot(normalize(normalAdjusted), normalize(v_lightDir)));
+	lowp vec3 normalAdjusted = normalize(texture2D(s_nm_texture, v_texCoord.st).rgb * 2.0 - 1.0 + v_normal);
+	lowp float diffuseIntensity = max(0.0, dot(normalAdjusted, v_lightDir));
+	lowp vec3 vReflection        = normalize(reflect(-normalAdjusted, v_lightDir));
+	lowp float specularIntensity = max(0.0, dot(normalAdjusted, vReflection));
     
-	lowp vec3 colour = diffuseIntensity * color.rgb;
-	lowp vec4 vFragColour = vec4(colour, 1.0);
-    
-	lowp vec3 vReflection        = normalize(reflect(-normalize(normalAdjusted), normalize(v_lightDir)));
-	lowp float specularIntensity = max(0.0, dot(normalize(normalAdjusted), vReflection));
-    
-	if (diffuseIntensity > 0.00098)
-	{
+	if (diffuseIntensity > 0.98) {
 		highp float fSpec = pow(specularIntensity, 64.0);
-		vFragColour.rgb += vec3(fSpec);
+		color.rgb = color.rgb + vec3(fSpec);
 	}
-    color = vFragColour;
+    color.rgb = color.rgb * diffuseIntensity;
 #endif
-
     
     lowp float shadowFactor = 1.0;
 
@@ -128,6 +124,10 @@ void main() {
             specular = vec4(0.0);
         }
     }
+#endif
+
+#ifdef SPECULAR_MAPPING_ENABLED
+    specular = specular * texture2D(s_sm_texture, v_texCoord);
 #endif
 
 	color = vec4(shadowFactor * (color.rgb + specular.rgb), color.a);
