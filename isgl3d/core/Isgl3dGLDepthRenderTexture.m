@@ -26,11 +26,19 @@
 #import "Isgl3dGLDepthRenderTexture.h"
 #import "Isgl3dGLTextureFactory.h"
 
+
+@interface Isgl3dGLDepthRenderTexture ()
+@end
+
+
+#pragma mark -
 @implementation Isgl3dGLDepthRenderTexture
+
+@dynamic culling;
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
 	
-	if ((self = [super initWithId:textureId width:width height:height])) {
+	if (self = [super initWithId:textureId width:width height:height]) {
 	}
 	
 	return self;
@@ -48,6 +56,13 @@
 }
 
 - (void)finalizeRender {
+}
+
+- (Isgl3dGLDepthRenderTextureCulling)culling {
+    return Isgl3dGLDepthRenderTextureCullingNone;
+}
+
+- (void)setCulling:(Isgl3dGLDepthRenderTextureCulling)culling {
 }
 
 @end

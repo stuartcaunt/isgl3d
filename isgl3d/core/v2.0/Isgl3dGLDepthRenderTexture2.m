@@ -28,12 +28,32 @@
 #import "Isgl3dGLContext2.h"
 
 
+@interface Isgl3dGLDepthRenderTexture2 () {
+@private
+	GLuint _frameBuffer;
+	GLuint _depthRenderBuffer;
+	
+	GLint _oldFrameBuffer;
+    GLint _oldRenderBuffer;
+
+    Isgl3dGLDepthRenderTextureCulling _culling;
+}
+
+@end
+
+
+#pragma mark -
 @implementation Isgl3dGLDepthRenderTexture2
+
+@synthesize culling = _culling;
 
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height {
 	
 	if (self = [super initWithId:textureId width:width height:height]) {
+        
+        _culling = Isgl3dGLDepthRenderTextureCullingFront;
+        
         _depthRenderBuffer = GL_NONE;
         _oldRenderBuffer = GL_NONE;
         
@@ -92,8 +112,10 @@
 	glEnable(GL_DEPTH_TEST);
 	glClearDepthf(1.0f);
 
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_FRONT);
+    if (self.culling != Isgl3dGLDepthRenderTextureCullingNone) {
+        glEnable(GL_CULL_FACE);
+        glCullFace(self.culling);
+    }
 }
 
 

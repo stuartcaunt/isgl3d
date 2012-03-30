@@ -25,14 +25,23 @@
 
 #import "Isgl3dGLTexture.h"
 
+
+typedef enum {
+	Isgl3dGLDepthRenderTextureCullingNone = GL_NONE,
+	Isgl3dGLDepthRenderTextureCullingFront = GL_FRONT,
+	Isgl3dGLDepthRenderTextureCullingBack = GL_BACK,
+	Isgl3dGLDepthRenderTextureCullingFrontAndBack = GL_FRONT_AND_BACK
+} Isgl3dGLDepthRenderTextureCulling;
+
+
 /**
  * The Isgl3dGLDepthRenderTexture is used internally to render z-buffer depth values onto a texture (used for example with shadow mapping).
  * 
  * Note : This class is intended for internal use only.
  */
-@interface Isgl3dGLDepthRenderTexture : Isgl3dGLTexture {
+@interface Isgl3dGLDepthRenderTexture : Isgl3dGLTexture
 
-}
+@property (nonatomic) Isgl3dGLDepthRenderTextureCulling culling;
 
 /**
  * Initialises the Isgl3dGLDepthRenderTexture with an OpenGL texture object for a given width and height.

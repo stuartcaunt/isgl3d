@@ -30,15 +30,9 @@
 /**
  * __isgl3d_internal__ Internal class of the iSGL3D framework
  */
-@interface Isgl3dGLDepthRenderTexture2 : Isgl3dGLDepthRenderTexture {
+@interface Isgl3dGLDepthRenderTexture2 : Isgl3dGLDepthRenderTexture
 
-@private
-	GLuint _frameBuffer;
-	GLuint _depthRenderBuffer;
-	
-	GLint _oldFrameBuffer;
-    GLint _oldRenderBuffer;
-}
+@property (nonatomic) Isgl3dGLDepthRenderTextureCulling culling;
 
 - (id)initWithId:(unsigned int)textureId width:(unsigned int)width height:(unsigned int)height;
 
