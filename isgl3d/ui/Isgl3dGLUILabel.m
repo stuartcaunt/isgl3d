@@ -23,8 +23,8 @@
  *
  */
 
+#import <isgl3d-framework/Isgl3dGLMesh.h>
 #import "Isgl3dGLUILabel.h"
-#import "Isgl3dNode.h"
 #import "Isgl3dTextureMaterial.h"
 #import "Isgl3dPrimitiveFactory.h"
 
@@ -47,7 +47,7 @@
 
 - (void)dealloc {
 	[_material release];
-	[_material release];
+	[_mesh release];
 	[super dealloc];
 }
 
@@ -87,13 +87,11 @@
 }
 
 - (void)dealloc {
-	if (_characters) {
-		[_characters release];
-	}
-	if (_characterNodes) {
-		[_characterNodes release];
-	}
-	
+	[_characters release];
+	[_characterNodes release];
+	[_fontName release];
+	[_text release];
+
 	[super dealloc];
 }
 
