@@ -59,6 +59,7 @@
 
 - (void)dealloc {
 	[_listeners release];
+    [_eventId release];
 	
     [super dealloc];
 }
