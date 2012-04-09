@@ -140,7 +140,7 @@
 
 		_isEventCaptureEnabled = YES;
 		
-		_sceneAmbient = @"333333ff";
+		_sceneAmbient = [@"333333ff" retain];
         
         // Create the default scene camera
         _cameras = [[NSMutableSet alloc] init];
@@ -170,6 +170,8 @@
     
 	[_scene release];
     _scene = nil;
+
+    [_sceneAmbient release];
 
 	// Make sure we're not receiving any more updates
 	[[Isgl3dScheduler sharedInstance] unschedule:self];
