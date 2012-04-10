@@ -33,15 +33,7 @@
  * Utility class to handle single touches on rendered objects (multi-touches are ignored). When multi
  * touches occur, only the first touch is handled, the others are ignored.
  */
-@interface Isgl3dSingleTouchFilter : NSObject {
-	    
-@private
-	Isgl3dNode * _object;
-
-	NSString * _eventId;
-	
-	NSMutableDictionary * _listeners;
-}
+@interface Isgl3dSingleTouchFilter : NSObject
 
 /**
  * Allocates and initialises (autorelease) Isgl3dSingleTouchFilter with an Isgl3dNode that we

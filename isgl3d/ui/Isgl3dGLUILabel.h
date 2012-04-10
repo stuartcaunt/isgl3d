@@ -28,18 +28,7 @@
 /**
  * The Isgl3dGLUILabel is used to render text labels onto the Isgl3dGLUI user interface.
  */
-@interface Isgl3dGLUILabel : Isgl3dGLUIComponent {
-	
-@private
-	NSString * _text;
-	NSString * _fontName;
-	CGFloat _size;
-	
-	
-	BOOL _useCharacterSet;
-	NSMutableDictionary * _characters;
-	NSMutableArray * _characterNodes;
-}
+@interface Isgl3dGLUILabel : Isgl3dGLUIComponent
 
 /**
  * Allocates and initialises (autorelease) label with text, a font and a font size.

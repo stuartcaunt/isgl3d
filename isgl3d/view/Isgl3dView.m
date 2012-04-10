@@ -140,7 +140,7 @@
 
 		_isEventCaptureEnabled = YES;
 		
-		_sceneAmbient = @"333333ff";
+        self.sceneAmbient = @"333333ff";
         
         // Create the default scene camera
         _cameras = [[NSMutableSet alloc] init];
@@ -165,6 +165,9 @@
     
     [_cameras release];
     _cameras = nil;
+
+    [_sceneAmbient release];
+    _sceneAmbient = nil;
     
     _activeCamera = nil;
     

@@ -40,6 +40,8 @@
 
 @end
 
+
+#pragma mark -
 @implementation Isgl3dGLCharacter
 
 @synthesize material = _material;
@@ -47,14 +49,32 @@
 
 - (void)dealloc {
 	[_material release];
-	[_material release];
+    _material = nil;
+    
+    [_mesh release];
+    _mesh = nil;
+
 	[super dealloc];
 }
 
 @end
 
 
+#pragma mark -
+@interface Isgl3dGLUILabel () {
+@private
+	NSString * _text;
+	NSString * _fontName;
+	CGFloat _size;
+	
+	BOOL _useCharacterSet;
+	NSMutableDictionary * _characters;
+	NSMutableArray * _characterNodes;
+}
+@end
 
+
+#pragma mark -
 @implementation Isgl3dGLUILabel
 
 + (id)labelWithText:(NSString *)text fontName:(NSString *)fontName fontSize:(CGFloat)fontSize {
@@ -66,7 +86,7 @@
 }
 
 - (id)initWithText:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
-	if ((self = [super initWithMesh:nil andMaterial:nil])) {
+	if (self = [super initWithMesh:nil andMaterial:nil]) {
 		
 		_fontName = [fontName retain];
 		_size = fontSize;
@@ -77,7 +97,7 @@
 }
 
 - (id)initWithTextCharacterSet:(NSString*)text fontName:(NSString*)fontName fontSize:(CGFloat)fontSize {
-	if ((self = [self initWithText:text fontName:fontName fontSize:fontSize])) {
+	if (self = [self initWithText:text fontName:fontName fontSize:fontSize]) {
         _useCharacterSet = YES;
         _characters = [[NSMutableDictionary alloc] init];
         _characterNodes = [[NSMutableArray alloc] init];
@@ -87,12 +107,14 @@
 }
 
 - (void)dealloc {
-	if (_characters) {
-		[_characters release];
-	}
-	if (_characterNodes) {
-		[_characterNodes release];
-	}
+    [_characters release];
+    _characters = nil;
+    [_characterNodes release];
+    _characterNodes = nil;
+    [_text release];
+    _text = nil;
+    [_fontName release];
+    _fontName = nil;
 	
 	[super dealloc];
 }

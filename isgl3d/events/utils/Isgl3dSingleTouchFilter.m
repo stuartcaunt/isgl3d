@@ -28,7 +28,15 @@
 #import "Isgl3dEvent3DListener.h"
 #import "Isgl3dNode.h"
 
-@interface Isgl3dSingleTouchFilter (PrivateMethods)
+
+@interface Isgl3dSingleTouchFilter () {
+@private
+	Isgl3dNode * _object;
+	NSString * _eventId;
+	NSMutableDictionary * _listeners;
+}
+@property (nonatomic, retain) NSString *eventId;
+
 - (void)touchesBegan:(Isgl3dEvent3D *)event;
 - (void)touchesMoved:(Isgl3dEvent3D *)event;
 - (void)touchesEnded:(Isgl3dEvent3D *)event;
@@ -36,7 +44,10 @@
 @end
 
 
+#pragma mark -
 @implementation Isgl3dSingleTouchFilter
+
+@synthesize eventId = _eventId;
 
 + (id)filterWithObject:(Isgl3dNode *)object {
 	return [[[self alloc] initWithObject:object] autorelease];
@@ -44,7 +55,7 @@
 
 - (id)initWithObject:(Isgl3dNode *)object {
 
-	if ((self = [super init])) {
+	if (self = [super init]) {
 		_object = object;
 		
 		_listeners = [[NSMutableDictionary alloc] init];
@@ -59,6 +70,12 @@
 
 - (void)dealloc {
 	[_listeners release];
+    _listeners = nil;
+    
+    [_eventId release];
+    _eventId = nil;
+    
+    _object = nil;
 	
     [super dealloc];
 }
@@ -72,8 +89,7 @@
 - (void)touchesBegan:(Isgl3dEvent3D *)event {
 	if (_eventId == nil) {
 		UITouch * touch = [[event.touches allObjects] objectAtIndex:0];
-		// do not remove retain : _eventId released otherwise
-		_eventId = [NSStringFromCGPoint([touch locationInView:touch.view]) retain];
+		self.eventId = NSStringFromCGPoint([touch locationInView:touch.view]);
 		
 		[self handleEvent:touch forEventType:TOUCH_EVENT];
 	}
@@ -85,9 +101,7 @@
 		for (UITouch * touch in event.touches) {
 
 			if ([_eventId isEqualToString:NSStringFromCGPoint([touch previousLocationInView:touch.view])]) {
-                [_eventId release];
-				// do not remove retain : _eventId released otherwise
-				_eventId = [NSStringFromCGPoint([touch locationInView:touch.view]) retain];
+				self.eventId = NSStringFromCGPoint([touch locationInView:touch.view]);
 		
 				[self handleEvent:touch forEventType:MOVE_EVENT];
 				return;
@@ -101,16 +115,14 @@
 		for (UITouch * touch in event.touches) {
 			if ([_eventId isEqualToString:NSStringFromCGPoint([touch previousLocationInView:touch.view])]) {
 				// Try previous location
-				[_eventId release];
-				_eventId = nil;
+                self.eventId = nil;
 		
 				[self handleEvent:touch forEventType:RELEASE_EVENT];
 				return;
 				
 			} else if ([_eventId isEqualToString:NSStringFromCGPoint([touch locationInView:touch.view])]) {
 				// Otherwise try current location
-				[_eventId release];
-				_eventId = nil;
+                self.eventId = nil;
 		
 				[self handleEvent:touch forEventType:RELEASE_EVENT];
 				return;
