@@ -104,6 +104,8 @@
 		Isgl3dPlane * plane = [[Isgl3dPlane alloc] initWithGeometry:10.0 height:10.0 nx:10 ny:10];
 		btCollisionShape* groundShape = new btBox2dShape(btVector3(5, 5, 0));
 		Isgl3dMeshNode * node = [_physicsWorld createNodeWithMesh:plane andMaterial:[woodMaterial autorelease]];
+        [plane release];
+        
 		[node setRotation:-90 x:1 y:0 z:0];
 		node.position = Isgl3dVector3Make(0, -2, 0);
 		Isgl3dPhysicsObject3D * physicsObject = [self createPhysicsObject:node shape:groundShape mass:0 restitution:0.6 isFalling:NO];

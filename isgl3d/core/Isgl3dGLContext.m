@@ -33,7 +33,7 @@
 
 static NSArray *_glExtensionsNames = nil;
 
-BOOL CheckForGLExtension(NSString *searchName) {
+static BOOL CheckForGLExtension(NSString *searchName) {
     if (_glExtensionsNames == nil) {
         const char *extensionsCStr = (const char *)glGetString(GL_EXTENSIONS);
         NSString *extensionsString = [NSString stringWithCString:extensionsCStr encoding: NSASCIIStringEncoding];
