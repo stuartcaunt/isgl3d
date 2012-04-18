@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F68E107153EB98300968EDA /* capture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F2153EB96800968EDA /* capture.fsh */; };
+		4F68E108153EB98300968EDA /* capture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F3153EB96800968EDA /* capture.vsh */; };
+		4F68E109153EB98300968EDA /* generic.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F4153EB96800968EDA /* generic.fsh */; };
+		4F68E10A153EB98300968EDA /* generic.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F5153EB96800968EDA /* generic.vsh */; };
+		4F68E10B153EB98300968EDA /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F6153EB96800968EDA /* particle.fsh */; };
+		4F68E10C153EB98300968EDA /* particle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F7153EB96800968EDA /* particle.vsh */; };
+		4F68E10D153EB98300968EDA /* shadowMap.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F8153EB96800968EDA /* shadowMap.fsh */; };
+		4F68E10E153EB98300968EDA /* shadowMap.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0F9153EB96800968EDA /* shadowMap.vsh */; };
+		4F68E10F153EB98300968EDA /* shadowMapDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0FA153EB96800968EDA /* shadowMapDepth.fsh */; };
+		4F68E110153EB98300968EDA /* shadowMapDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4F68E0FB153EB96800968EDA /* shadowMapDepth.vsh */; };
 		8B0A9E34150ED6BB004B9965 /* Isgl3dOverlayCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0A9E32150ED6BB004B9965 /* Isgl3dOverlayCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B0A9E35150ED6BB004B9965 /* Isgl3dOverlayCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A9E33150ED6BB004B9965 /* Isgl3dOverlayCamera.m */; };
 		8B2AFACC14FEEB810040102B /* Isgl3dMatrix4.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B2AFAC614FEEB810040102B /* Isgl3dMatrix4.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -351,7 +361,6 @@
 		8B66D5C114F67F6100EE2444 /* Isgl3dPhysicsObject3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D5BB14F67F6100EE2444 /* Isgl3dPhysicsObject3D.mm */; };
 		8B66D5C214F67F6100EE2444 /* Isgl3dPhysicsWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B66D5BC14F67F6100EE2444 /* Isgl3dPhysicsWorld.h */; };
 		8B66D5C314F67F6100EE2444 /* Isgl3dPhysicsWorld.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B66D5BD14F67F6100EE2444 /* Isgl3dPhysicsWorld.mm */; };
-		8B66D5C414F67F6B00EE2444 /* libisgl3dbullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B66D5AD14F67EF000EE2444 /* libisgl3dbullet.a */; };
 		8B66D6F514F67FAF00EE2444 /* btBulletCollisionCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B66D5C914F67FAE00EE2444 /* btBulletCollisionCommon.h */; };
 		8B66D6F614F67FAF00EE2444 /* btBulletDynamicsCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B66D5CA14F67FAE00EE2444 /* btBulletDynamicsCommon.h */; };
 		8B66D6F714F67FAF00EE2444 /* Bullet-C-Api.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B66D5CB14F67FAE00EE2444 /* Bullet-C-Api.h */; };
@@ -838,17 +847,17 @@
 		8BBE517515008F4F006CC905 /* Isgl3dGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBE517215008F4F006CC905 /* Isgl3dGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8B66D5C514F67F7300EE2444 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B66CF5F14F679D600EE2444 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8B66D5AC14F67EF000EE2444;
-			remoteInfo = isgl3dbullet;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		4F68E0F2153EB96800968EDA /* capture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = capture.fsh; sourceTree = "<group>"; };
+		4F68E0F3153EB96800968EDA /* capture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = capture.vsh; sourceTree = "<group>"; };
+		4F68E0F4153EB96800968EDA /* generic.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = generic.fsh; sourceTree = "<group>"; };
+		4F68E0F5153EB96800968EDA /* generic.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = generic.vsh; sourceTree = "<group>"; };
+		4F68E0F6153EB96800968EDA /* particle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.fsh; sourceTree = "<group>"; };
+		4F68E0F7153EB96800968EDA /* particle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vsh; sourceTree = "<group>"; };
+		4F68E0F8153EB96800968EDA /* shadowMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.fsh; sourceTree = "<group>"; };
+		4F68E0F9153EB96800968EDA /* shadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMap.vsh; sourceTree = "<group>"; };
+		4F68E0FA153EB96800968EDA /* shadowMapDepth.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMapDepth.fsh; sourceTree = "<group>"; };
+		4F68E0FB153EB96800968EDA /* shadowMapDepth.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shadowMapDepth.vsh; sourceTree = "<group>"; };
 		8B0A9E32150ED6BB004B9965 /* Isgl3dOverlayCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dOverlayCamera.h; sourceTree = "<group>"; };
 		8B0A9E33150ED6BB004B9965 /* Isgl3dOverlayCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dOverlayCamera.m; sourceTree = "<group>"; };
 		8B2AFAC614FEEB810040102B /* Isgl3dMatrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix4.h; sourceTree = "<group>"; };
@@ -859,7 +868,7 @@
 		8B2AFACB14FEEB810040102B /* Isgl3dVector4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dVector4.m; sourceTree = "<group>"; };
 		8B2AFADA14FEF1230040102B /* Isgl3dMatrix3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Isgl3dMatrix3.h; sourceTree = "<group>"; };
 		8B2AFADB14FEF1230040102B /* Isgl3dMatrix3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Isgl3dMatrix3.m; sourceTree = "<group>"; };
-		8B66CF6B14F679D600EE2444 /* isgl3d */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = text; path = isgl3d; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B66CF6B14F679D600EE2444 /* isgl3d */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = isgl3d; path = isgl3d.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B66CF6E14F679D600EE2444 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B66CF7214F679D600EE2444 /* isgl3d-framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "isgl3d-framework-Info.plist"; sourceTree = "<group>"; };
 		8B66CF7414F679D600EE2444 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1512,7 +1521,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B66D5C414F67F6B00EE2444 /* libisgl3dbullet.a in Frameworks */,
 				8B66CF6F14F679D600EE2444 /* Foundation.framework in Frameworks */,
 				8B66D90614F68D1900EE2444 /* CoreGraphics.framework in Frameworks */,
 				8B66D90414F68CF200EE2444 /* OpenGLES.framework in Frameworks */,
@@ -1532,12 +1540,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F68E0F1153EB96800968EDA /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				4F68E0F2153EB96800968EDA /* capture.fsh */,
+				4F68E0F3153EB96800968EDA /* capture.vsh */,
+				4F68E0F4153EB96800968EDA /* generic.fsh */,
+				4F68E0F5153EB96800968EDA /* generic.vsh */,
+				4F68E0F6153EB96800968EDA /* particle.fsh */,
+				4F68E0F7153EB96800968EDA /* particle.vsh */,
+				4F68E0F8153EB96800968EDA /* shadowMap.fsh */,
+				4F68E0F9153EB96800968EDA /* shadowMap.vsh */,
+				4F68E0FA153EB96800968EDA /* shadowMapDepth.fsh */,
+				4F68E0FB153EB96800968EDA /* shadowMapDepth.vsh */,
+			);
+			name = Shaders;
+			path = Resources/Shaders;
+			sourceTree = "<group>";
+		};
+		4F68E106153EB96D00968EDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F68E0F1153EB96800968EDA /* Shaders */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		8B66CF5D14F679D600EE2444 = {
 			isa = PBXGroup;
 			children = (
 				8B66CF7014F679D600EE2444 /* isgl3d-framework */,
 				8B66D1A714F67CB100EE2444 /* external */,
 				8B66D5AF14F67EF000EE2444 /* isgl3dbullet */,
+				4F68E106153EB96D00968EDA /* Resources */,
 				8B66CF6D14F679D600EE2444 /* Frameworks */,
 				8B66CF6C14F679D600EE2444 /* Products */,
 			);
@@ -3159,7 +3194,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8B66D5C614F67F7300EE2444 /* PBXTargetDependency */,
 			);
 			name = isgl3d;
 			productName = "isgl3d-framework";
@@ -3214,6 +3248,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F68E107153EB98300968EDA /* capture.fsh in Resources */,
+				4F68E108153EB98300968EDA /* capture.vsh in Resources */,
+				4F68E109153EB98300968EDA /* generic.fsh in Resources */,
+				4F68E10A153EB98300968EDA /* generic.vsh in Resources */,
+				4F68E10B153EB98300968EDA /* particle.fsh in Resources */,
+				4F68E10C153EB98300968EDA /* particle.vsh in Resources */,
+				4F68E10D153EB98300968EDA /* shadowMap.fsh in Resources */,
+				4F68E10E153EB98300968EDA /* shadowMap.vsh in Resources */,
+				4F68E10F153EB98300968EDA /* shadowMapDepth.fsh in Resources */,
+				4F68E110153EB98300968EDA /* shadowMapDepth.vsh in Resources */,
 				8B66CF7514F679D600EE2444 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3548,14 +3592,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8B66D5C614F67F7300EE2444 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8B66D5AC14F67EF000EE2444 /* isgl3dbullet */;
-			targetProxy = 8B66D5C514F67F7300EE2444 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8B66CF7314F679D600EE2444 /* InfoPlist.strings */ = {
