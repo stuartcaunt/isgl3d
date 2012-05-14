@@ -98,7 +98,7 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 	float uMax = contentSize.width / width;
 	float vMax = contentSize.height / height;
 	
-	Isgl3dGLMesh * labelMesh = [Isgl3dPlane meshWithGeometryAndUVMap:contentSize.width height:contentSize.height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
+	Isgl3dGLMesh * labelMesh = [Isgl3dPlane meshWithGeometryAndUVMap:contentSize.width * [Isgl3dDirector sharedInstance].contentScaleFactor height:contentSize.height * [Isgl3dDirector sharedInstance].contentScaleFactor nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
 //	GLMesh * labelMesh = [[Plane alloc] initWithGeometryAndUVMap:width height:height nx:2 ny:2 uvMap:[UVMap uvMapWithUA:0 vA:0 uB:0.5 vB:0 uC:0 vC:0.5]];
 	return labelMesh;	
 }
