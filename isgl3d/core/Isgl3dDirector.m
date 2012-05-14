@@ -342,6 +342,7 @@ static Isgl3dDirector * _instance = nil;
 }
 
 - (void)run {
+    [self onResizeFromLayer];
 	[self startAnimation];	
 }
 
