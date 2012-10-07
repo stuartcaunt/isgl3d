@@ -38,10 +38,6 @@
 @synthesize widthInPixels = _widthInPixels;
 @synthesize height = _height;
 @synthesize heightInPixels = _heightInPixels;
-@synthesize fixLeft = _fixLeft;
-@synthesize fixTop = _fixTop;
-@synthesize centerX = _centerX;
-@synthesize centerY = _centerY;
  
 - (id)initWithMesh:(Isgl3dGLMesh *)mesh andMaterial:(Isgl3dMaterial *)material {
 	if ((self = [super initWithMesh:mesh andMaterial:material])) {
@@ -56,10 +52,6 @@
 		_heightInPixels = 0;
 		_meshDirty = YES;
 		
-		_fixLeft = YES;
-		_fixTop = YES;
-		_centerX = NO;
-		_centerY = NO;
 		self.lightingEnabled = NO;
 	}
 	return self;
@@ -105,27 +97,8 @@
 
 - (void)updateWorldTransformation:(Isgl3dMatrix4 *)parentTransformation {
 	if (_meshDirty) {
-		float x;
-		float y;
-		if (_centerX) {
-			x = 1.0 * _xInPixels;
-		} else {
-			if (_fixLeft) {
-				x = _xInPixels + (_widthInPixels + 1)/ 2;
-			} else {
-				x = _xInPixels + _widthInPixels / 2;
-			}
-		}
-		
-		if (_centerY) {
-			y = _yInPixels;
-		} else {
-			if (_fixTop) {
-				y = (float)(_yInPixels + (_heightInPixels + 1) / 2);
-			} else {
-				y = (float)(_yInPixels + _heightInPixels / 2);
-			}
-		}
+        unsigned int x = _xInPixels;
+        unsigned int y = _yInPixels;
 				
 		[self setPositionValues:x y:y z:self.z];
 //		NSLog(@"setting x = %f y = %f z = %f", x, y, self.z);

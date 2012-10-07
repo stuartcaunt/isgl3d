@@ -88,7 +88,10 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 - (Isgl3dGLMesh *) UIButtonMesh {
 	Isgl3dGLMesh * buttonMesh = [_primitives objectForKey:GLUIBUTTON_MESH];
 	if (!buttonMesh) {
-		buttonMesh = [Isgl3dPlane meshWithGeometry:GLUIBUTTON_WIDTH * [Isgl3dDirector sharedInstance].contentScaleFactor height:GLUIBUTTON_HEIGHT * [Isgl3dDirector sharedInstance].contentScaleFactor nx:2 ny:2];
+        float width = GLUIBUTTON_WIDTH * [Isgl3dDirector sharedInstance].contentScaleFactor;
+        float height = GLUIBUTTON_HEIGHT * [Isgl3dDirector sharedInstance].contentScaleFactor;
+        // UI components have the bottom-left corner at (width, height), so offset the plane by (width/2, height/2).
+		buttonMesh = [Isgl3dPlane meshWithGeometry:width height:height nx:2 ny:2 offsetx:width/2 offsety:height/2];
 		[_primitives setObject:buttonMesh forKey:GLUIBUTTON_MESH];
 	}
 	return buttonMesh;	
@@ -98,7 +101,8 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 	float uMax = contentSize.width / width;
 	float vMax = contentSize.height / height;
 	
-	Isgl3dGLMesh * labelMesh = [Isgl3dPlane meshWithGeometryAndUVMap:contentSize.width height:contentSize.height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
+    // UI components have the bottom-left corner at (width, height), so offset the plane by (width/2, height/2).
+	Isgl3dGLMesh * labelMesh = [Isgl3dPlane meshWithGeometryAndUVMap:contentSize.width height:contentSize.height nx:2 ny:2  offsetx:(float)contentSize.width/2 offsety:(float)contentSize.height/2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
 //	GLMesh * labelMesh = [[Plane alloc] initWithGeometryAndUVMap:width height:height nx:2 ny:2 uvMap:[UVMap uvMapWithUA:0 vA:0 uB:0.5 vB:0 uC:0 vC:0.5]];
 	return labelMesh;	
 }
@@ -107,7 +111,7 @@ static Isgl3dPrimitiveFactory * _instance = nil;
 	float uMax = material.contentSize.width / material.width;
 	float vMax = material.contentSize.height / material.height;
 	
-	Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
+	Isgl3dPlane * plane = [Isgl3dPlane meshWithGeometryAndUVMap:width height:height nx:nx ny:ny offsetx:width/2 offsety:height/2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:uMax vB:0 uC:0 vC:vMax]];
 	return plane;	
 }
 

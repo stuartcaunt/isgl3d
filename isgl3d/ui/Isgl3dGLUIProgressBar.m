@@ -27,13 +27,6 @@
 #import "Isgl3dPlane.h"
 #import "Isgl3dUVMap.h"
 
-@interface Isgl3dGLUIProgressBar (PrivateMethods)
-/**
- * @result (autorelease) Plane with desired width and height reduced by factor proportional to progress
- */
-- (Isgl3dPlane *) createProgressBarPlane:(float)width height:(float)height progress:(float)progress vertical:(BOOL)isVertical;
-@end
-
 @implementation Isgl3dGLUIProgressBar
 
 @synthesize progressStepSize = _progressStepSize;
@@ -67,31 +60,60 @@
 }
 
 - (void)setProgress:(float)progress {
-	if (progress > 100) {
-		progress = 100;
+	if (progress > 100.0) {
+		progress = 100.0;
 	}
 
-	if (progress <= 0) {
-		progress = 0;
+	if (progress < 0.0) {
+		progress = 0.0;
 	}
+    
+    // If nothing has changed, we have nothing to do.
+    if (progress == _progress) {
+        return;
+    }
 	
-	if (fabs(_progress - progress) > _progressStepSize || (_progress != progress && progress == 0) || (_progress != progress && progress == 100)) {
+	if (fabs(_progress - progress) >= _progressStepSize || (progress == 0.0) || (progress == 100.0)) {
 		_progress = progress;
 		
-		[self setMesh:[self createProgressBarPlane:_fullWidth height:_fullHeight progress:progress vertical:_isVertical]];
+        float reduc = progress / 100.0;
+        Isgl3dPlane* plane = nil;
+        
 		if (_isVertical) {
-			float height = _fullHeight * _progress / 100.0;
-			[self setWidth:_fullWidth andHeight:height];
+            // Find the height of the component in full pixels.  Once we have that, find out
+            // what the screen reduction is, and use that to scale the UV mapping.  This avoids
+            // the texture jitter.
+			unsigned int height = _fullHeight * reduc;
+			[super setWidth:_fullWidth andHeight:height];
+            reduc = (float)height / _fullHeight;
+            
+            Isgl3dUVMap* uvmap = nil;
 			if (_isSwapped) {
 				[super setX:_originalX andY:_originalY + _fullHeight - height];
-			}
+                uvmap = [Isgl3dUVMap uvMapWithUA:0 vA:0 uB:1 vB:0 uC:0 vC:reduc];
+            } else {
+                uvmap = [Isgl3dUVMap uvMapWithUA:0 vA:1-reduc uB:1 vB:1-reduc uC:0 vC:1];
+            }
+            plane = [Isgl3dPlane meshWithGeometryAndUVMap:_fullWidth height:height nx:2 ny:2 offsetx:(float)_fullWidth/2 offsety:(float)height/2 uvMap:uvmap];
 		} else {
-			float width = _fullWidth * _progress / 100.0;
-			[self setWidth:width andHeight:_fullHeight];
+            // Find the width of the component in full pixels.  Once we have that, find out
+            // what the screen reduction is, and use that to scale the UV mapping.  This avoids
+            // the texture jitter.
+			unsigned int width = _fullWidth * reduc;
+			[super setWidth:width andHeight:_fullHeight];
+            reduc = (float)width / _fullWidth;
+            
+            Isgl3dUVMap* uvmap = nil;
 			if (_isSwapped) {
 				[super setX:_originalX + _fullWidth - width andY:_originalY];
-			}
+                uvmap = [Isgl3dUVMap uvMapWithUA:1-reduc vA:0 uB:1 vB:0 uC:1-reduc vC:1];
+			} else {
+                uvmap = [Isgl3dUVMap uvMapWithUA:0 vA:0 uB:reduc vB:0 uC:0 vC:1];
+            }
+            plane = [Isgl3dPlane meshWithGeometryAndUVMap:width height:_fullHeight nx:2 ny:2 offsetx:(float)width/2 offsety:(float)_fullHeight/2 uvMap:uvmap];
 		}
+        
+        [self setMesh:plane];
 	}
 	
 }
@@ -106,38 +128,19 @@
 	_originalY = y;
 }
 
-- (Isgl3dPlane *) createProgressBarPlane:(float)width height:(float)height progress:(float)progress vertical:(BOOL)isVertical {
-	if (progress <= 0) {
-		return nil;
-	}
-	
-	float reduc = progress * 0.01;
-	if (isVertical) {
-		if (_isSwapped) {
-			return [Isgl3dPlane meshWithGeometryAndUVMap:width height:height*reduc nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:reduc uB:1 vB:reduc uC:0 vC:0]];
-		} else {
-			return [Isgl3dPlane meshWithGeometryAndUVMap:width height:height*reduc nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:1 vB:0 uC:0 vC:reduc]];
-		}
-	} else {
-		if (_isSwapped) {
-			return [Isgl3dPlane meshWithGeometryAndUVMap:width*reduc height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:reduc vA:0 uB:0 vB:0 uC:reduc vC:1]];
-		} else {
-			return [Isgl3dPlane meshWithGeometryAndUVMap:width*reduc height:height nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:0 vA:0 uB:reduc vB:0 uC:0 vC:1]];
-		}
-	}
+- (void)setWidth:(unsigned int)width andHeight:(unsigned int)height {
+    _fullWidth = width;
+    _fullHeight = height;
+    [self setProgress:_progress];
 }
 
 - (void)setIsSwapped:(BOOL)isSwapped {
 	_isSwapped = isSwapped;
-	if (isSwapped) {
-		self.fixLeft = NO;
-	} else {
-		self.fixLeft = YES;
-	}
 	
 	// Force re-rendering of progress bar
 	float oldProgress = _progress;
 	_progress = -1;
 	self.progress = oldProgress;
 }
+
 @end

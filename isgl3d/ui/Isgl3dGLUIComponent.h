@@ -50,13 +50,6 @@
 	unsigned int _heightInPixels;
 	
 	BOOL _meshDirty;
-	
-	// "Fix left & top" stop pixel movement of component on specified side when resizing
-	BOOL _fixLeft;
-	BOOL _fixTop;
-
-	BOOL _centerX;
-	BOOL _centerY;
 }
 
 /**
@@ -102,29 +95,6 @@
  * The height of the component in pixels. This value differs for rentina and non-retina displays.
  */
 @property (nonatomic, readonly) unsigned int heightInPixels;
-
-/**
- * Fix left is used to correct undesirable behaviour when the component it resized (such as with an Isgl3dProgressBar). With
- * fixLeft the left hand side of the component will not move.
- */
-@property (nonatomic) BOOL fixLeft;
-
-/**
- * Fix top is used to correct undesirable behaviour when the component it resized (such as with an Isgl3dProgressBar). With
- * fixTop the top of the component will not move.
- */
-@property (nonatomic) BOOL fixTop;
-
-/**
- * Specifies whether the component should be centered horizontally on its x value.
- */
-@property (nonatomic) BOOL centerX;
-
-/**
- * Specifies whether the component should be centered vertically on its y value.
- */
-@property (nonatomic) BOOL centerY;
-
 
 /**
  * Initialises the component with a mesh and material.
