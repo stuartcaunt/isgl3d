@@ -1520,6 +1520,7 @@
 		8BDBA1D714CCFABE00BAEB8A /* PVRTShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C714CCFABE00BAEB8A /* PVRTShader.h */; };
 		8BDBA1D814CCFABE00BAEB8A /* PVRTTextureAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBA1C814CCFABE00BAEB8A /* PVRTTextureAPI.cpp */; };
 		8BDBA1D914CCFABE00BAEB8A /* PVRTTextureAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BDBA1C914CCFABE00BAEB8A /* PVRTTextureAPI.h */; };
+		A0BE2C3F16220D6600ECA56E /* tex.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E6075CB1521C9C40045AEFA /* tex.png */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -6183,6 +6184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BE2C3F16220D6600ECA56E /* tex.png in Resources */,
 				17A95EF7132575A700D06694 /* capture.fsh in Resources */,
 				17A95EF8132575A700D06694 /* capture.vsh in Resources */,
 				17A95EF9132575A700D06694 /* generic.fsh in Resources */,

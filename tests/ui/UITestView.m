@@ -56,6 +56,35 @@
 		[self.scene addChild:cameraButton];
 		[cameraButton setX:8 andY:8];
 		[cameraButton addEvent3DListener:self method:@selector(cameraButtonPressed:) forEventType:TOUCH_EVENT];
+        
+        // Create a number of progress bars to test each variation.
+        
+        progress = 0.0;
+        Isgl3dTextureMaterial* progressMaterial = [Isgl3dTextureMaterial materialWithTextureFile:@"tex.png" shininess:0.0 precision:Isgl3dTexturePrecisionMedium repeatX:NO repeatY:NO];
+
+        horizontalRegularProgress = [Isgl3dGLUIProgressBar progressBarWithMaterial:progressMaterial width:64 height:64 vertical:NO];
+        [horizontalRegularProgress setX:64 andY:8];
+        horizontalRegularProgress.progress = progress;
+        [self.scene addChild:horizontalRegularProgress];
+
+        horizontalSwappedProgress = [Isgl3dGLUIProgressBar progressBarWithMaterial:progressMaterial width:64 height:64 vertical:NO];
+        horizontalSwappedProgress.isSwapped = YES;
+        [horizontalSwappedProgress setX:128 andY:8];
+        horizontalSwappedProgress.progress = progress;
+        [self.scene addChild:horizontalSwappedProgress];
+
+        verticalRegularProgress = [Isgl3dGLUIProgressBar progressBarWithMaterial:progressMaterial width:64 height:64 vertical:YES];
+        [verticalRegularProgress setX:192 andY:8];
+        verticalRegularProgress.progress = progress;
+        [self.scene addChild:verticalRegularProgress];
+        
+        verticalSwappedProgress = [Isgl3dGLUIProgressBar progressBarWithMaterial:progressMaterial width:64 height:64 vertical:YES];
+        verticalSwappedProgress.isSwapped = YES;
+        [verticalSwappedProgress setX:256 andY:8];
+        verticalSwappedProgress.progress = progress;
+        [self.scene addChild:verticalSwappedProgress];
+
+        [self schedule:@selector(tick:)];
 	}
 	
 	return self;
@@ -78,6 +107,14 @@
 
 - (void) cameraButtonPressed:(Isgl3dEvent3D *)event {
 	NSLog(@"Camera button pressed");
+}
+
+- (void) tick:(float)dt {
+    progress = (progress >= 100.0 ? 0.0 : progress + 1.0);
+    horizontalRegularProgress.progress = progress;
+    horizontalSwappedProgress.progress = progress;
+    verticalRegularProgress.progress = progress;
+    verticalSwappedProgress.progress = progress;
 }
 
 @end

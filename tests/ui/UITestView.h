@@ -26,6 +26,12 @@
 #import "isgl3d.h"
 
 @interface UITestView : Isgl3dBasic2DView {
+@private
+    float progress;
+    Isgl3dGLUIProgressBar* horizontalRegularProgress;
+    Isgl3dGLUIProgressBar* horizontalSwappedProgress;
+    Isgl3dGLUIProgressBar* verticalRegularProgress;
+    Isgl3dGLUIProgressBar* verticalSwappedProgress;
 }
 
 @end

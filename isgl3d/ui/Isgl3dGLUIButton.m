@@ -53,10 +53,13 @@
 - (id)initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 	
     float contentScaleFactor = [Isgl3dDirector sharedInstance].contentScaleFactor;
+    // UI components have the bottom-left corner at (width, height), so offset the plane by (width/2, height/2).
 	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:width * contentScaleFactor
 	                                                       height:height * contentScaleFactor
 		                                                       nx:2
-		                                                       ny:2]
+		                                                       ny:2
+                                                          offsetx:(float)width * contentScaleFactor / 2
+                                                          offsety:(float)height * contentScaleFactor / 2]
 	                    andMaterial:material])) {
 		[self setWidth:width andHeight:height];
 		self.interactive = YES;

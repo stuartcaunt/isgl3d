@@ -30,6 +30,7 @@
 
 /**
  * The Isgl3dPlane constructs a planar mesh centered in the x-y plane, with z equal to 0.
+ * Optional offset parameters can be used to "move" the plane around in the x-y plane.
  * 
  * An Isgl3dUVMap can be added to the plane to fine-tune the rendering of texture maps.
  * 
@@ -38,7 +39,9 @@
 @interface Isgl3dPlane : Isgl3dPrimitive {
 @protected
 	float _width;
-	float _height;	
+	float _height;
+    float _offsetx;
+    float _offsety;
 }
 
 
@@ -50,6 +53,17 @@
  * @param ny The number of segments along the y-axis.
  */
 + (id)meshWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny;
+
+/**
+ * Allocates and initialises (autorelease) plane with the specified geometry.
+ * @param width The width of the plane in the x-direction.
+ * @param height The height of the plane in the y-direction.
+ * @param nx The number of segments along the x-axis.
+ * @param ny The number of segments along the y-axis.
+ * @param offsetx The offset added to every x coordinate value.
+ * @param offsety The offset added to every y coordinate value.
+ */
++ (id)meshWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety;
 
 /**
  * Allocates and initialises (autorelease) plane with the specified geometry and with a specific UV mapping.
@@ -80,6 +94,19 @@
 + (id)meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap;
 
 /**
+ * Allocates and initialises (autorelease) plane with the specified geometry and with a specific UV mapping.
+ *
+ * @param width The width of the plane in the x-direction.
+ * @param height The height of the plane in the y-direction.
+ * @param nx The number of segments along the x-axis.
+ * @param ny The number of segments along the y-axis.
+ * @param offsetx The offset added to every x coordinate value.
+ * @param offsety The offset added to every y coordinate value.
+ * @param uvMap The Isgl3dUVMap for mapping a texture material.
+ */
++ (id)meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety uvMap:(Isgl3dUVMap *)uvMap;
+
+/**
  * Initialises the plane with the specified geometry.
  * @param width The width of the plane in the x-direction.
  * @param height The height of the plane in the y-direction.
@@ -87,6 +114,17 @@
  * @param ny The number of segments along the y-axis.
  */
 - (id)initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny;
+
+/**
+ * Initialises the plane with the specified geometry.
+ * @param width The width of the plane in the x-direction.
+ * @param height The height of the plane in the y-direction.
+ * @param nx The number of segments along the x-axis.
+ * @param ny The number of segments along the y-axis.
+ * @param offsetx The offset added to every x coordinate value.
+ * @param offsety The offset added to every y coordinate value.
+ */
+- (id)initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety;
 
 /**
  * Initialises the plane with the specified geometry and with a specific UV mapping.
@@ -115,5 +153,18 @@
  * @param uvMap The Isgl3dUVMap for mapping a texture material.
  */
 - (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap;
+
+/**
+ * Initialises the plane with the specified geometry and with a specific UV mapping.
+ *
+ * @param width The width of the plane in the x-direction.
+ * @param height The height of the plane in the y-direction.
+ * @param nx The number of segments along the x-axis.
+ * @param ny The number of segments along the y-axis.
+ * @param offsetx The offset added to every x coordinate value.
+ * @param offsety The offset added to every y coordinate value.
+ * @param uvMap The Isgl3dUVMap for mapping a texture material.
+ */
+- (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety uvMap:(Isgl3dUVMap *)uvMap;
 
 @end

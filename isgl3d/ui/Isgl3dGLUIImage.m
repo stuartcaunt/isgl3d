@@ -43,8 +43,9 @@
 - (id)initWithMaterial:(Isgl3dMaterial *)material width:(unsigned int)width height:(unsigned int)height {
 
 	float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
-	float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
-	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:widthInPixels height:heightInPixels nx:2 ny:2] andMaterial:material])) {
+	float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;
+    // UI components have the bottom-left corner at (width, height), so offset the plane by (width/2, height/2).
+	if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometry:widthInPixels height:heightInPixels nx:2 ny:2 offsetx:widthInPixels/2 offsety:heightInPixels/2] andMaterial:material])) {
 		[self setWidth:width andHeight:height];
 	}
 	
@@ -75,8 +76,10 @@
 		float vc = va + size.height * scaleFactor / materialHeight;
 		
 		float widthInPixels = width * [Isgl3dDirector sharedInstance].contentScaleFactor;	
-		float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;	
-		if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometryAndUVMap:widthInPixels height:heightInPixels nx:2 ny:2 uvMap:[Isgl3dUVMap uvMapWithUA:ua vA:va uB:ub vB:vb uC:uc vC:vc]] andMaterial:material])) {
+		float heightInPixels = height * [Isgl3dDirector sharedInstance].contentScaleFactor;
+        
+        // UI components have the bottom-left corner at (width, height), so offset the plane by (width/2, height/2).
+		if ((self = [super initWithMesh:[Isgl3dPlane meshWithGeometryAndUVMap:widthInPixels height:heightInPixels nx:2 ny:2 offsetx:widthInPixels/2 offsety:heightInPixels/2 uvMap:[Isgl3dUVMap uvMapWithUA:ua vA:va uB:ub vB:vb uC:uc vC:vc]] andMaterial:material])) {
 			[self setWidth:width andHeight:height];
 		}
 		

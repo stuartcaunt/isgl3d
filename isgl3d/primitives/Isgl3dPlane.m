@@ -46,25 +46,38 @@
 	return [[[self alloc] initWithGeometry:width height:height nx:nx ny:ny] autorelease];
 }
 
++ (id)meshWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety {
+	return [[[self alloc] initWithGeometry:width height:height nx:nx ny:ny offsetx:offsetx offsety:offsety] autorelease];
+}
+
 + (id)meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap {
 	return [[[self alloc] initWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:uvMap] autorelease];
 }
 
++ (id)meshWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety uvMap:(Isgl3dUVMap *)uvMap {
+	return [[[self alloc] initWithGeometryAndUVMap:width height:height nx:nx ny:ny offsetx:offsetx offsety:offsety uvMap:uvMap] autorelease];
+}
+
 - (id)initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny {
-	
-	if (self = [self initWithGeometryAndUVMap:width height:height nx:nx ny:ny uvMap:nil]) {
-		// Empty.
-	}
-	
-	return self;
+	return [self initWithGeometryAndUVMap:width height:height nx:nx ny:ny offsetx:0.0 offsety:0.0 uvMap:nil];
+}
+
+- (id)initWithGeometry:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety {
+    return [self initWithGeometryAndUVMap:width height:height nx:nx ny:ny offsetx:offsetx offsety:offsety uvMap:nil];
 }
 
 - (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny uvMap:(Isgl3dUVMap *)uvMap {
+    return [self initWithGeometryAndUVMap:width height:height nx:nx ny:ny offsetx:0.0 offsety:0.0 uvMap:uvMap];
+}
+
+- (id)initWithGeometryAndUVMap:(float)width height:(float)height nx:(int)nx ny:(int)ny offsetx:(float)offsetx offsety:(float)offsety uvMap:(Isgl3dUVMap *)uvMap {
 	if (self = [super init]) {
 		_width = width;
 		_height = height;
 		_nx = nx;
 		_ny = ny;
+        _offsetx = offsetx;
+        _offsety = offsety;
 		
 		if (uvMap) {
 			_uvMap = [uvMap retain];
@@ -94,13 +107,13 @@
 	float uX, vX, uXY, vXY, iRatio, jRatio;
 	
 	for (int i = 0; i <= _nx; i++) {
-		float x = -(_width / 2) + i * (_width / _nx);
+		float x = -(_width / 2) + i * (_width / _nx) + _offsetx;
 		iRatio = (float)i / _nx;
 		uX = _uvMap.uA + iRatio * uABVector;
 		vX = _uvMap.vA + iRatio * vABVector;
 			 
 		for (int j = 0; j <= _ny; j++) {
-			float y = -(_height / 2) + j * (_height / _ny);
+			float y = -(_height / 2) + j * (_height / _ny) + _offsety;
 			jRatio = 1. - (float)j / _ny;
 			uXY = uX + jRatio * uACVector;
 			vXY = vX + jRatio * vACVector;
