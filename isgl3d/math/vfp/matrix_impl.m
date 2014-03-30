@@ -40,44 +40,44 @@ void Matrix4Mul(const float* src_mat_1, const float* src_mat_2, float* dst_mat) 
                 // function computes A*B as (B^T * A^T)^T.
                 
                 // Load the whole matrix into memory.
-                "fldmias  %1, {s8-s23}    \n\t"
+                "VLDMIA.32  %1, {s8-s23}    \n\t"
                 // Load first column to scalar bank.
-                "fldmias  %2!, {s0-s3}    \n\t"
+                "VLDMIA.32  %2!, {s0-s3}    \n\t"
                 // First column times matrix.
                 "fmuls s24, s8, s0        \n\t"
                 "fmacs s24, s12, s1       \n\t"
 
                 // Load second column to scalar bank.
-                "fldmias %2!,  {s4-s7}    \n\t"
+                "VLDMIA.32 %2!,  {s4-s7}    \n\t"
 
                 "fmacs s24, s16, s2       \n\t"
                 "fmacs s24, s20, s3       \n\t"
                 // Save first column.
-                "fstmias  %0!, {s24-s27}  \n\t" 
+                "VSTMIA.32  %0!, {s24-s27}  \n\t" 
   
                  // Second column times matrix.
                 "fmuls s28, s8, s4        \n\t"
                 "fmacs s28, s12, s5       \n\t"
 		
                 // Load third column to scalar bank.
-                "fldmias  %2!, {s0-s3}    \n\t"
+                "VLDMIA.32  %2!, {s0-s3}    \n\t"
 
                 "fmacs s28, s16, s6       \n\t"
                 "fmacs s28, s20, s7       \n\t"
                 // Save second column.
-                "fstmias  %0!, {s28-s31}  \n\t" 
+                "VSTMIA.32  %0!, {s28-s31}  \n\t" 
                 
                 // Third column times matrix.
                 "fmuls s24, s8, s0        \n\t"
                 "fmacs s24, s12, s1       \n\t"
 		
                 // Load fourth column to scalar bank.
-                "fldmias %2,  {s4-s7}    \n\t"
+                "VLDMIA.32 %2,  {s4-s7}    \n\t"
 
                 "fmacs s24, s16, s2       \n\t"
                 "fmacs s24, s20, s3       \n\t"
                  // Save third column.
-                "fstmias  %0!, {s24-s27}  \n\t" 
+                "VSTMIA.32  %0!, {s24-s27}  \n\t" 
                                 
                 // Fourth column times matrix.
                 "fmuls s28, s8, s4        \n\t"
@@ -85,7 +85,7 @@ void Matrix4Mul(const float* src_mat_1, const float* src_mat_2, float* dst_mat) 
                 "fmacs s28, s16, s6       \n\t"
                 "fmacs s28, s20, s7       \n\t"
                 // Save fourth column.
-                "fstmias  %0!, {s28-s31}  \n\t" 
+                "VSTMIA.32  %0!, {s28-s31}  \n\t" 
                 
                 VFP_VECTOR_LENGTH_ZERO
                 VFP_SWITCH_TO_THUMB
@@ -98,20 +98,20 @@ void Matrix4Mul(const float* src_mat_1, const float* src_mat_2, float* dst_mat) 
 // Load the matrix transposed into memory.
 // Uses registers 24 - 31 as scratch.
 // Increments sources address in register %0.
-#define VFP_LOAD_MATRIX0_T_TO_S8_S23 "fldmias  %0!, {s8-s11}    \n\t" \
+#define VFP_LOAD_MATRIX0_T_TO_S8_S23 "VLDMIA.32  %0!, {s8-s11}    \n\t" \
                                      "fcpys s12, s9             \n\t" \
                                      "fcpys s16, s10            \n\t" \
-                                     "fldmias  %0!, {s24-s27}   \n\t" \
+                                     "VLDMIA.32  %0!, {s24-s27}   \n\t" \
                                      "fcpys s20, s11            \n\t" \
                                      "fcpys s9,  s24            \n\t" \
                                      "fcpys s13, s25            \n\t" \
-                                     "fldmias  %0!, {s28-s31}   \n\t" \
+                                     "VLDMIA.32  %0!, {s28-s31}   \n\t" \
                                      "fcpys s17, s26            \n\t" \
                                      "fcpys s21, s27            \n\t" \
                                                                       \
                                      "fcpys s10,  s28           \n\t" \
                                      "fcpys s14, s29            \n\t" \
-                                     "fldmias  %0!, {s24-s27}   \n\t" \
+                                     "VLDMIA.32  %0!, {s24-s27}   \n\t" \
                                      "fcpys s18, s30            \n\t" \
                                      "fcpys s22, s31            \n\t" \
                                                                       \
@@ -129,21 +129,21 @@ void Matrix4Mul(const float* src_mat_1, const float* src_mat_2, float* dst_mat) 
 // Load the matrix transposed into memory.
 // Uses registers 24 - 31 as scratch.
 // Increments sources address in register %0.
-#define VFP_LOAD_MATRIX0_T_TO_S0_S15 "fldmias  %0!, {s0-s3}     \n\t" \
+#define VFP_LOAD_MATRIX0_T_TO_S0_S15 "VLDMIA.32  %0!, {s0-s3}     \n\t" \
                                      "fcpys s4, s1              \n\t" \
                                      "fcpys s8, s2              \n\t" \
-                                     "fldmias  %0!, {s24-s27}   \n\t" \
+                                     "VLDMIA.32  %0!, {s24-s27}   \n\t" \
                                      "fcpys s12, s3             \n\t" \
                                      \
                                      "fcpys s1,  s24            \n\t" \
                                      "fcpys s5,  s25            \n\t" \
-                                     "fldmias  %0!, {s28-s31}   \n\t" \
+                                     "VLDMIA.32  %0!, {s28-s31}   \n\t" \
                                      "fcpys s9, s26             \n\t" \
                                      "fcpys s13, s27            \n\t" \
                                      \
                                      "fcpys s2,  s28            \n\t" \
                                      "fcpys s6, s29             \n\t" \
-                                     "fldmias  %0!, {s24-s27}   \n\t" \
+                                     "VLDMIA.32  %0!, {s24-s27}   \n\t" \
                                      "fcpys s10, s30            \n\t" \
                                      "fcpys s14, s31            \n\t" \
                                      \
@@ -156,9 +156,9 @@ void Matrix4Vector4Mul(const float* src_mat, const float* src_vec, float* dst_ve
   __asm__ volatile (VFP_SWITCH_TO_ARM
                 
                 // Load the whole matrix.
-                "fldmias  %0, {s8-s23}     \n\t"                
+                "VLDMIA.32  %0, {s8-s23}     \n\t"                
                 // Load vector to scalar bank.
-                "fldmias  %1, {s0-s3}      \n\t"
+                "VLDMIA.32  %1, {s0-s3}      \n\t"
                 
                 VFP_VECTOR_LENGTH(3)
                 
@@ -169,7 +169,7 @@ void Matrix4Vector4Mul(const float* src_mat, const float* src_vec, float* dst_ve
                 "fmacs s24, s20, s3       \n\t"
                 
                 // Save vector.
-                "fstmias  %2, {s24-s27}  \n\t" 
+                "VSTMIA.32  %2, {s24-s27}  \n\t" 
                 
                 VFP_VECTOR_LENGTH_ZERO
                 VFP_SWITCH_TO_THUMB
@@ -183,10 +183,10 @@ void Matrix4Vector4Mul(const float* src_mat, const float* src_vec, float* dst_ve
 void Matrix4Vector3Mul(const float* src_mat, const float* src_vec, float* dst_vec) {  
   asm volatile (VFP_SWITCH_TO_ARM
                 // Load the whole matrix.
-                "fldmias  %0, {s8-s23}     \n\t"                
+                "VLDMIA.32  %0, {s8-s23}     \n\t"                
 
                 // Load vector to scalar bank.
-                "fldmias  %1, {s0-s2}    \n\t"
+                "VLDMIA.32  %1, {s0-s2}    \n\t"
 
                 VFP_VECTOR_LENGTH(3)
                 
@@ -197,7 +197,7 @@ void Matrix4Vector3Mul(const float* src_mat, const float* src_vec, float* dst_ve
                 "fadds s24, s24, s20      \n\t"
                 
                 // Save vector.
-                "fstmias  %2, {s24-s27}  \n\t" 
+                "VSTMIA.32  %2, {s24-s27}  \n\t" 
                 
                 VFP_VECTOR_LENGTH_ZERO
                 VFP_SWITCH_TO_THUMB
@@ -211,10 +211,10 @@ void Matrix4Vector3Mul(const float* src_mat, const float* src_vec, float w, floa
     asm volatile (VFP_SWITCH_TO_ARM
                  
                   // Load the whole matrix.
-                  "fldmias  %0, {s8-s23}     \n\t"                
+                  "VLDMIA.32  %0, {s8-s23}     \n\t"                
 
                   // Load vector to scalar bank.
-                  "fldmias  %1, {s0-s2}    \n\t"
+                  "VLDMIA.32  %1, {s0-s2}    \n\t"
                   
                   // Load w.
                   "fmsr   s3, %3             \n\t"
@@ -228,7 +228,7 @@ void Matrix4Vector3Mul(const float* src_mat, const float* src_vec, float w, floa
                   "fmacs s24, s20, s3       \n\t"                  
                   
                   // Save vector.
-                  "fstmias  %2, {s24-s27}  \n\t" 
+                  "VSTMIA.32  %2, {s24-s27}  \n\t" 
                   
                   VFP_VECTOR_LENGTH_ZERO
                   VFP_SWITCH_TO_THUMB
@@ -243,12 +243,12 @@ void Matrix4Vector3ArrayMul(int num, const float* src_mat, int src_stride,
                             float* dst_vec_array) {
   asm volatile (VFP_SWITCH_TO_ARM
                 // Load the whole matrix.
-                "fldmias  %2, {s8-s23}     \n\t"                
+                "VLDMIA.32  %2, {s8-s23}     \n\t"                
                 
                 VFP_VECTOR_LENGTH(3)
                 "L2000:                    \n\t"
                 // Load vector to scalar bank.
-                "fldmias  %0, {s0-s2}      \n\t"
+                "VLDMIA.32  %0, {s0-s2}      \n\t"
                 "adds %0, %0, %3           \n\t"
                 
                 // First column times matrix.
@@ -258,7 +258,7 @@ void Matrix4Vector3ArrayMul(int num, const float* src_mat, int src_stride,
                 "fadds s24, s24, s20       \n\t"
                 
                 // Save vector.
-                "fstmias  %1, {s24-s27}   \n\t" 
+                "VSTMIA.32  %1, {s24-s27}   \n\t" 
                 "adds %1, %1, %4           \n\t"
                 
                 "subs %5, %5, #1           \n\t"
@@ -278,14 +278,14 @@ void Matrix4Vector3ArrayMul(int num, const float* src_mat, float w, int src_stri
                             float* dst_vec_array) {
   asm volatile (VFP_SWITCH_TO_ARM
                 // Load the whole matrix.
-                "fldmias  %2, {s8-s23}     \n\t"                
+                "VLDMIA.32  %2, {s8-s23}     \n\t"                
                 
                 "fmsr s3, %6               \n\t"
                 
                 VFP_VECTOR_LENGTH(3)
                 "L2010:                    \n\t"
                 // Load vector to scalar bank.
-                "fldmias  %0, {s0-s2}      \n\t"
+                "VLDMIA.32  %0, {s0-s2}      \n\t"
                 "adds %0, %0, %3           \n\t"
                 
                 // First column times matrix.
@@ -295,7 +295,7 @@ void Matrix4Vector3ArrayMul(int num, const float* src_mat, float w, int src_stri
                 "fmacs s24, s20, s3        \n\t"
                 
                 // Save vector.
-                "fstmias  %1, {s24-s27}   \n\t" 
+                "VSTMIA.32  %1, {s24-s27}   \n\t" 
                 "adds %1, %1, %4           \n\t"
                 
                 "subs %5, %5, #1           \n\t"
@@ -457,9 +457,9 @@ void Matrix4Invert(const float* src_mat, float* dst_mat) {
                 
                 // Remember: destination matrix is in {s8 - s23}
                 "fmuls s24, s8, s0        \n\t"
-                "fstmias  %1!, {s24-s31}  \n\t" 
+                "VSTMIA.32  %1!, {s24-s31}  \n\t" 
                 "fmuls s8, s16, s0        \n\t"
-                "fstmias  %1, {s8-s15}    \n\t" 
+                "VSTMIA.32  %1, {s8-s15}    \n\t" 
                 
                 VFP_VECTOR_LENGTH(0)
                 

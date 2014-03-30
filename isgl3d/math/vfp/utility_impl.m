@@ -38,8 +38,8 @@ void memcpy_64byte_aligned_float(float *dst_ptr, const float *scr_ptr, int n) {
 
 				// Load 16 float == 64 byte = 256-bit
 				// load and store can only handle 64-bit per cycle == 2 float per cycle
-                "fldmias  %1!, {s8-s23}    \n\t"
-				"fstmias %0!, {s8-s23}   \n\t" 
+                "VLDMIA.32  %1!, {s8-s23}    \n\t"
+				"VSTMIA.32 %0!, {s8-s23}   \n\t" 
 				
                 VFP_VECTOR_LENGTH_ZERO
                 VFP_SWITCH_TO_THUMB
