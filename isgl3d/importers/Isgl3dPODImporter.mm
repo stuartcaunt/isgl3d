@@ -789,15 +789,15 @@
 		Isgl3dGLVBOData * vboData = [[Isgl3dGLVBOData alloc] init];
 		vboData.stride = podData->sVertex.nStride;
 		
-		vboData.positionOffset = (int)(podData->sVertex.pData);
-		vboData.normalOffset = (int)(podData->sNormals.pData);
+		vboData.positionOffset = (intptr_t)(podData->sVertex.pData);
+		vboData.normalOffset = (intptr_t)(podData->sNormals.pData);
 		if ((podData->nNumUVW)) {
-			vboData.uvOffset = (int)(podData->psUVW[0].pData);
+			vboData.uvOffset = (intptr_t)(podData->psUVW[0].pData);
 		}
 				
 		if (podData->sBoneIdx.pData && podData->sBoneWeight.pData) {
-			vboData.boneIndexOffset = (int)(podData->sBoneIdx.pData);
-			vboData.boneWeightOffset = (int)(podData->sBoneWeight.pData);
+			vboData.boneIndexOffset = (intptr_t)(podData->sBoneIdx.pData);
+			vboData.boneWeightOffset = (intptr_t)(podData->sBoneWeight.pData);
 			
 			vboData.boneIndexSize = podData->sBoneIdx.n;
 			vboData.boneWeightSize = podData->sBoneWeight.n;
