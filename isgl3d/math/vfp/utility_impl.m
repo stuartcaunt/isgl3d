@@ -30,6 +30,7 @@ not be misrepresented as being the original software.
 #import "utility_impl.h"
 #import "common_macros.h"
 
+#ifndef __ARM_NEON__
 
 // not tested ... probably not working
 void memcpy_64byte_aligned_float(float *dst_ptr, const float *scr_ptr, int n) {
@@ -50,5 +51,6 @@ void memcpy_64byte_aligned_float(float *dst_ptr, const float *scr_ptr, int n) {
 
 }
 
+#endif
 #endif
 #endif

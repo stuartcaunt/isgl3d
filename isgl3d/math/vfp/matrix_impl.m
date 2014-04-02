@@ -31,6 +31,8 @@ not be misrepresented as being the original software.
 #import "common_macros.h"
 #import "vfp_clobbers.h"
 
+#ifndef __ARM_NEON__
+
 void Matrix4Mul(const float* src_mat_1, const float* src_mat_2, float* dst_mat) {
   __asm__ volatile (VFP_SWITCH_TO_ARM
                 VFP_VECTOR_LENGTH(3)
@@ -471,6 +473,7 @@ void Matrix4Invert(const float* src_mat, float* dst_mat) {
   
 }
 */
-  
+
+#endif
 #endif
 #endif

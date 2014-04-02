@@ -35,7 +35,7 @@
 #if (TARGET_IPHONE_SIMULATOR == 0) && (TARGET_OS_IPHONE == 1)
 #define USE_ACC_MATH
 
-#ifdef _ARM_ARCH_7
+#ifdef __ARM_NEON__
 #define USE_NEON_MATH
 #else
 #define USE_VFP_MATH
