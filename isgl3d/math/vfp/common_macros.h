@@ -88,10 +88,10 @@ not be misrepresented as being the original software.
 // Use VFP_OP_* macros for VFP_OP or any FP assembler opcode that fits.
 #define VFP_FIXED_1_VECTOR_OP(VFP_OP, P_SRC_1, P_SRC_2, P_DST) \
   asm volatile (VFP_SWITCH_TO_ARM \
-                "fldmias  %1, s8        \n\t" \
-                "fldmias  %2, s16       \n\t" \
+                "VLDMIA.32  %1, s8        \n\t" \
+                "VLDMIA.32  %2, s16       \n\t" \
                 VFP_OP  " s8, s8, s16   \n\t" \
-                "fstmias  %0, s8        \n\t" \
+                "VSTMIA.32  %0, s8        \n\t" \
                 VFP_SWITCH_TO_THUMB \
                 : \
                 : "r" (P_DST), "r" (P_SRC_1), "r" (P_SRC_2) \
@@ -103,11 +103,11 @@ not be misrepresented as being the original software.
 // Use VFP_OP_* macros for VFP_OP or any FP assembler opcode that fits.
 #define VFP_FIXED_2_VECTOR_OP(VFP_OP, P_SRC_1, P_SRC_2, P_DST) \
   asm volatile (VFP_SWITCH_TO_ARM \
-                "fldmias  %1, {s8-s9}   \n\t" \
-                "fldmias  %2, {s16-s17} \n\t" \
+                "VLDMIA.32  %1, {s8-s9}   \n\t" \
+                "VLDMIA.32  %2, {s16-s17} \n\t" \
                 VFP_OP  " s8, s8, s16   \n\t" \
                 VFP_OP  " s9, s9, s17   \n\t" \
-                "fstmias  %0, {s8-s9}   \n\t" \
+                "VSTMIA.32  %0, {s8-s9}   \n\t" \
                 VFP_SWITCH_TO_THUMB \
                 : \
                 : "r" (P_DST), "r" (P_SRC_1), "r" (P_SRC_2) \
@@ -119,12 +119,12 @@ not be misrepresented as being the original software.
 // Use VFP_OP_* macros for VFP_OP or any FP assembler opcode that fits.
 #define VFP_FIXED_3_VECTOR_OP(VFP_OP, P_SRC_1, P_SRC_2, P_DST) \
   asm volatile (VFP_SWITCH_TO_ARM \
-                "fldmias  %1, {s8-s10}  \n\t" \
-                "fldmias  %2, {s16-s18} \n\t" \
+                "VLDMIA.32  %1, {s8-s10}  \n\t" \
+                "VLDMIA.32  %2, {s16-s18} \n\t" \
                 VFP_OP  " s8, s8, s16   \n\t" \
                 VFP_OP  " s9, s9, s17   \n\t" \
                 VFP_OP  " s10, s10, s18 \n\t" \
-                "fstmias  %0, {s8-s10}   \n\t" \
+                "VSTMIA.32  %0, {s8-s10}   \n\t" \
                 VFP_SWITCH_TO_THUMB \
                 : \
                 : "r" (P_DST), "r" (P_SRC_1), "r" (P_SRC_2) \
@@ -136,13 +136,13 @@ not be misrepresented as being the original software.
 // Use VFP_OP_* macros for VFP_OP or any FP assembler opcode that fits.
 #define VFP_FIXED_4_VECTOR_OP(VFP_OP, P_SRC_1, P_SRC_2, P_DST) \
   asm volatile (VFP_SWITCH_TO_ARM \
-                "fldmias  %1, {s8-s11}  \n\t" \
-                "fldmias  %2, {s16-s19} \n\t" \
+                "VLDMIA.32  %1, {s8-s11}  \n\t" \
+                "VLDMIA.32  %2, {s16-s19} \n\t" \
                 VFP_OP  " s8, s8, s16   \n\t" \
                 VFP_OP  " s9, s9, s17   \n\t" \
                 VFP_OP  " s10, s10, s18 \n\t" \
                 VFP_OP  " s11, s11, s19 \n\t" \
-                "fstmias  %0, {s8-s11}   \n\t" \
+                "VSTMIA.32  %0, {s8-s11}   \n\t" \
                 VFP_SWITCH_TO_THUMB \
                 : \
                 : "r" (P_DST), "r" (P_SRC_1), "r" (P_SRC_2) \
